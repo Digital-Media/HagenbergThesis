@@ -1,0 +1,1044 @@
+\chapter[Umgang mit Literatur]{Umgang mit Literatur und anderen Quellen}
+\label{cha:Literatur}
+
+\paragraph{Anmerkung:}
+Der Titel dieses Kapitels ist absichtlich so
+lang geraten, dass er nicht mehr in die Kopfzeile der Seiten passt. 
+In diesem Fall kann in der \verb!\chapter!-Anweisung 
+als optionales Argument \verb![..]! ein verkürzter Text für die
+Kopfzeile (und das Inhaltsverzeichnis) angegeben werden:
+%
+\begin{LaTeXCode}[numbers=none]
+\chapter[Umgang mit Literatur]{Umgang mit Literatur und anderen Quellen}
+\end{LaTeXCode}
+
+\section{Allgemeines}
+
+Der richtige Umgang mit Quellen ist ein wesentliches Element bei der Erstellung
+wissenschaftlicher Arbeiten im Allgemeinen (\sa\ Abschnitt \ref{sec:Plagiarismus}).
+Für die Gestaltung von Quellenangaben sind unterschiedlichste Richtlinien in
+Gebrauch, bestimmt \ua\ vom jeweiligen Fachgebiet oder Richtlinien von Verlagen und Hochschulen.
+Diese Vorlage sieht ein Schema vor, das in den natur\-wissen\-schaftlich-technischen 
+Disziplinen üblich ist.%
+\footnote{Anpassungen an andere Formen sind relativ leicht möglich.}
+Technisch basiert dieser Teil auf \texttt{BibTeX} \cite{Patashnik1988}
+\bzw\ \texttt{Biber}%
+\footnote{Wird seit Version 2013/02/19 anstelle von \texttt{bibtex} verwendet 
+	(s.\ \url{http://biblatex-biber.sourceforge.net/}),}
+in Kombination mit dem Paket \texttt{biblatex} \cite{Lehman2015}.
+
+
+Die Verwaltung von Quellen besteht grundsätzlich aus zwei Elementen: 
+\emph{Quellenverweise} im Text beziehen sich auf Einträge im \emph{Quellenverzeichnis}
+(oder in mehreren Quellenverzeichnissen).
+Das Quellenverzeichnis ist eine
+Zusammenstellung aller verwendeten Quellen, typischerweise ganz am Ende des Dokuments.
+Wichtig ist, dass jeder Quellenverweis einen zugehörigen, eindeutigen
+Eintrag im Quellenverzeichnis aufweist und jedes Element im Quellenverzeichnis auch
+im Text referenziert wird.
+
+
+
+\section{Quellenverweise}
+
+Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu verweisen, stellt \latex ein zentrales Kommando zur Verfügung.
+
+\subsection{Das {\tt {\bs}cite} Makro}
+
+Für Quellenverweise im laufenden Text verwendet man die Anweisung
+\begin{itemize}
+\item[] \verb!\cite{!\textit{Verweise}\verb!}! 
+				\quad oder \quad
+        \verb!\cite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
+\end{itemize}
+
+\noindent%
+\textit{Verweise} ist eine durch Kommas getrennte Auflistung von $1$--$n$ Quellen-\emph{Schlüsseln}
+zur Identifikation der entsprechenden Einträge im Quellenverzeichnis.
+Mit \textit{Zusatztext} können Ergänzungstexte zum aktuellen Quellenverweis angegeben
+werden, wie \zB Kapitel- oder Seitenangaben bei Büchern.
+Einige Beispiele dazu:
+
+\begin{LaTeXCode}[numbers=none]
+Mehr dazu findet sich in \cite{Kopka2003}.
+\end{LaTeXCode}
+$\rightarrow$ Mehr dazu findet sich in \cite{Kopka2003}.
+
+\begin{LaTeXCode}[numbers=none]
+Mehr über \emph{Styles} in \cite[Kap.\ 3]{Kopka2003}.
+\end{LaTeXCode}
+$\rightarrow$ Mehr über \emph{Styles} in \cite[Kap.\ 3]{Kopka2003}.
+
+\begin{LaTeXCode}[numbers=none]
+Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} sind falsch.
+\end{LaTeXCode}
+$\rightarrow$ Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} sind falsch.
+
+\begin{LaTeXCode}[numbers=none]
+Überholt sind auch \cite{BurgeBurger1999, Patashnik1988, Duden1997}.
+\end{LaTeXCode}
+$\rightarrow$ Überholt sind auch \cite{BurgeBurger1999, Patashnik1988, Duden1997}.
+
+Die Sortierung der Angaben im letzten Beispiel erfolgt automatisch.
+
+
+
+\subsection{Häufige Fehler}
+
+\subsubsection{Verweise außerhalb des Satzes}
+Quellenverweise sollten innerhalb oder am Ende eines Satzes (\dah vor
+dem Punkt) stehen, nicht \emph{außerhalb}:
+%
+\begin{center}
+\begin{tabular}{rl}
+ \textbf{Falsch:}  & \ldots hier ist der Satz aus. \cite{Oetiker2015} Und jetzt geht es weiter \ldots \\
+ \textbf{Richtig:} & \ldots hier ist der Satz aus \cite{Oetiker2015}. Und jetzt geht es weiter \ldots
+\end{tabular}
+\end{center}
+
+\subsubsection{Verweise ohne vorangehendes Leerzeichen}
+
+Ein Quellenverweis ist \emph{immer} durch ein Leerzeichen vom vorangehenden Wort getrennt, niemals wird er (wie etwa eine Fußnote) direkt an das Wort geschrieben:
+
+\begin{center}
+\begin{tabular}{rl}
+\textbf{Falsch:}  & \ldots hier folgt die Quellenangabe\cite{Oetiker2015} und es geht weiter \ldots \\
+\textbf{Richtig:} & \ldots hier folgt die Quellenangabe \cite{Oetiker2015} und es geht weiter \ldots
+\end{tabular}
+\end{center}
+
+\subsubsection{Zitate}
+Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird,
+sollte der Verweis im vorlaufenden Text und nicht
+\emph{innerhalb} des Zitats selbst platziert werden. Als Beispiel die folgende Passage
+aus \cite{Oetiker2015}:
+\begin{quote}
+Typographical design is a craft. Unskilled authors often commit
+serious formatting errors by assuming that book design is mostly a
+question of aesthetics---``If a document looks good artistically,
+it is well designed.'' But as a document has to be read and not
+hung up in a picture gallery, the readability and
+understandability is of much greater importance than the beautiful
+look of it.%
+\footnote{Man beachte die Verwendung von englischen Hochkommas innerhalb dieses
+Zitats.}
+\end{quote}
+Für das Zitat selbst sollte übrigens die dafür vorgesehene Umgebung
+%
+\begin{itemize}
+ \item[] \verb!\begin{quote}! \emph{Zitierter Text ...} \verb!\end{quote}!
+\end{itemize}
+%
+verwendet werden, die durch beidseitige Einrückungen das
+Zitat vom eigenen Text klar abgrenzt und damit die Gefahr von
+Unklarheiten (wo ist das Ende des Zitats?) mindert.
+Wenn gewünscht, kann das Innere des Zitats auch in Hochkommas verpackt 
+\emph{oder} kursiv gesetzt werden -- aber nicht beides!
+
+
+
+\subsection{Umgang mit Sekundärquellen}
+
+In seltenen Fällen kommt es vor, dass man eine Quelle \textbf{A} angeben
+möchte (oder muss), die man zwar nicht zur Hand -- und damit auch nicht selbst gelesen --
+hat, die aber in einer \emph{anderen}, vorliegenden Quelle \textbf{B} zitiert wird.
+In diesem Fall wird \textbf{A} als \emph{Original-} oder \emph{Primärquelle} und \textbf{B} 
+als \emph{Sekundärquelle} bezeichnet. Dabei sollten folgende Grundregeln beachtet werden:
+%
+\begin{itemize}
+\item
+\textbf{Sekundärquellen} nach Möglichkeit überhaupt \textbf{vermeiden}!
+\item
+Um eine Quelle in der üblichen Form zitieren zu können, muss man sie \textbf{immer selbst
+eingesehen} (gelesen) haben!
+\item
+Nur wenn man die Quelle wirklich \textbf{nicht} beschaffen kann, ist ein Verweis über eine Sekundärquelle
+zulässig. In diesem Fall sollten korrekterweise Pri\-mär- und Sekundärquelle \emph{gemeinsam} 
+angegeben werden, wie im nachfolgenden Beispiel gezeigt.
+\item
+\textbf{Wichtig:} In das Quellenverzeichnis wird \textbf{nur die tatsächlich vorliegende Quelle} 
+(\textbf{B}) und nicht die Originalarbeit aufgenommen!
+\end{itemize}
+%
+\textbf{Beispiel:} Angenommen man möchte aus dem berühmten Buch \emph{Dialogo} von Galileo Galilei 
+(an das man nur schwer herankommt) eine Stelle zitieren, die man in einem neueren Werk aus dem Jahr 1969 
+gefunden hat. Das könnte man \zB\ mit folgender Fußnote bewerkstelligen.%
+\footnote{Galileo Galilei, \emph{Dialogo sopra i due massimi sistemi del mondo tolemaico e copernicano}, 
+S.~314 (1632). Zitiert nach \cite[S.~59]{Hemleben1969}.} % Alle Seitennummern sind frei erfunden!
+
+
+\section{Quellenverzeichnis}
+
+Für die Erstellung des Quellenverzeichnisses gibt es in \latex zwei
+Möglichkeiten:
+\begin{enumerate}
+\item Das Quellenverzeichnis manuell zu formatieren (nicht zu empfehlen, 
+s.\ \cite[Abschn.\ 11.3]{Kopka2003}).
+\item Die Verwendung von \texttt{BibTeX}/\texttt{Biber} und einer zugehörigen 
+"`Literaturdatenbank"' (s.\ \cite[Kap.\ 12]{Kopka2003}).
+\end{enumerate}
+Tatsächlich ist die erste Variante nur bei sehr wenigen Literaturangaben interessant.
+Die Arbeit mit \texttt{BibTeX}/\texttt{biber} macht sich hingegen schnell bezahlt und ist zudem wesentlich
+flexibler.
+
+\subsection{Literaturdaten in BibTeX}
+\label{sec:bibtex}
+
+BibTeX ist ein eigenständiges Programm, das aus einer "`Literaturdatenbank"' (eine oder mehrere
+Textdateien mit vorgegebener Struktur) ein für \latex geeignetes Quellenverzeichnis
+erzeugt. Literatur zur Verwendung von BibTeX findet sich online, \zB \cite{Feder2006, Patashnik1988}.
+Die BibTeX-Datei zu dieser Vorlage ist \nolinkurl{literatur.bib} (im Hauptverzeichnis).
+
+BibTeX-Dateien können natürlich mit einem Texteditor manuell erstellt werden und für
+viele Literaturquellen sind bereits fertige BibTeX-Einträge online verfügbar.
+Dabei sollte man allerdings vorsichtig sein, denn diese Einträge sind (auch bei großen
+Institutionen und Verlagen) \textbf{häufig falsch oder syntaktisch fehlerhaft}!
+Man sollte sie daher nicht ungeprüft übernehmen und insbesondere die Endergebnisse genau kontrollieren.
+Darüber hinaus gibt es eigene Anwendungen zur Wartung von
+BibTeX-Verzeichnissen, wie beispielsweise
+\emph{JabRef}.\footnote{\url{http://jabref.sourceforge.net/}}
+
+
+\subsubsection{Verwendung von \texttt{biblatex} und \texttt{biber}}
+
+Dieses Dokument verwendet \texttt{biblatex} (Version 1.4 oder höher) in Verbindung
+mit dem Programm \texttt{biber}, 
+das viele Unzulänglichkeiten des traditionellen BibTeX-Work\-flows behebt und dessen Möglichkeiten deutlich erweitert.%
+\footnote{Tatsächlich ist \texttt{biblatex} die erste radikale (und längst notwendige) Überarbeitung des mittlerweile stark in die Jahre gekommenen BibTeX-Workflows. Zwar wird dabei BibTex weiterhin für 
+die Sortierung der Quellen verwendet, die Formatierung der Einträge und viele andere Elemente werden jedoch ausschließlich über \latex-Makros gesteuert.}
+Allerdings sind die in \texttt{biblatex} verwendeten Literaturdaten nicht mehr vollständig 
+rückwärts-kompatibel zu BibTeX. Es ist daher in der Regel notwendig, bestehende oder aus
+Online-Quellen übernommene BibTeX-Daten manuell zu überarbeiten (\sa\ Abschnitt~\ref{sec:TippsZuBibtex}).
+
+In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der Datei \nolinkurl{hgbthesis.cls} verpackt. Die typische Verwendung in der \latex-Haupt\-datei sieht folgendermaßen aus:
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[master,german]{hgbthesis}
+   ...
+\bibliography{literatur} /+\label{tex:literatur1}+/
+   ...
+\begin{document}
+   ...
+\MakeBibliography{Quellenverzeichnis} /+\label{tex:literatur2}+/
+\end{document}
+\end{LaTeXCode}
+%
+In der "`Präambel"' (Zeile \ref{tex:literatur1}) wird mit \verb!\bibliography{literatur}! 
+auf eine (modifizierte) BibTex-Datei \nolinkurl{literatur.bib} verwiesen.%
+\footnote{Das Makro 
+\texttt{{\bs}bibliography} ist eigentlich ein Relikt aus BibTeX
+und wird in \texttt{biblatex} durch die Anweisung \texttt{{\bs}addbibresource} 
+ersetzt. Beide Anweisungen sind gleichwertig, allerdings wird nur mit 
+\texttt{{\bs}bibliography} die zugehörige \texttt{.bib}-Datei im Fileverzeichnis von TeXnicCenter angezeigt.}
+Falls mehrere BibTeX-Dateien verwendet werden, können sie in der gleichen Form angegeben werden.
+
+Die Anweisung \verb!\MakeBibliography{..}! am Ende des Dokuments (Zeile~\ref{tex:literatur2})
+besorgt die Ausgabe des Quellenverzeichnisses, hier mit dem Titel "`Quellenverzeichnis"'.
+Dabei sind zwei Varianten möglich:
+%
+\begin{description}
+\item[\texttt{{\bs}MakeBibliography\{title\}}] ~ \newline
+   Erzeugt ein in mehrere \emph{Kategorien} (s.\ Abschnitt \ref{sec:BibKategorien}) geteiltes Quellenverzeichnis 
+   mit der Hauptüberschrift \texttt{title}. Diese Variante wird im vorliegenden Dokument verwendet.
+\item[\texttt{{\bs}MakeBibliography[nosplit]\{title\}}] ~ \newline
+   Erzeugt ein traditionelles \emph{einteiliges} Quellenverzeichnis mit der
+   Überschrift \texttt{title}. 
+\end{description}
+%
+Die Überschrift \texttt{title} scheint in beiden Fällen ohne Nummerierung 
+im Inhaltsverzeichnis auf (auf \texttt{chapter}-Ebene).
+Bei geteiltem Quellenverzeichnis werden die Überschriften der einzelnen Abschnitte auf 
+\texttt{section}-Ebene eingetragen.
+
+
+\subsection{Kategorien von Quellenangaben}
+\label{sec:BibKategorien}
+
+Für geteilte Quellenverzeichnisse sind in dieser Vorlage folgende drei Kategorien vorgesehen
+(s.\ Tabelle \ref{tab:QuellenUndEintragstypen}):%
+\footnote{Diese sind in der Datei \nolinkurl{hgbthesis.cls} definiert.
+Allfällige Änderungen sowie die Definition zusätzlicher Kategorien sind 
+bei Bedarf relativ leicht möglich.}
+%
+\begin{description}
+	\item[\texttt{literature}] -- für alle Quellen, die in gedruckter Form vorliegen;
+	\item[\texttt{avmedia}] -- für Filme, audio-visuelle Medien und Computer Games (auf DVD, CD, \usw);
+	\item[\texttt{online}] -- für Werke, die \emph{ausschließlich} online verfügbar sind.
+\end{description}
+%
+Jedes Quellenobjekt wird aufgrund des angegebenen BibTeX-Eintragtyps 
+\texttt{@\emph{type}} automatisch einer dieser Kategorien 
+zugeordnet (s.\ Tabelle~\ref{tab:BibKategorien}).
+Angeführt sind hier nur die wichtigsten Eintragstypen, die allerdings die meisten
+Fälle in der Praxis abdecken sollten und nachfolgend durch Beispiele erläutert sind.
+Alle nicht explizit angegebenen Einträge werden grundsätzlich in der Kategorie \emph{literature} 
+ausgegeben.
+
+\begin{table}
+\caption{Quellenarten und empfohlene BibTeX-Eintragstypen.}
+\label{tab:QuellenUndEintragstypen}
+\centering
+\begin{tabular}{llc}
+	\hline
+	Kategorie \emph{literature} & \texttt{@\emph{type}} & Seite\\
+	\hline
+	Buch (Textbuch, Monographie) & \texttt{@book} & \pageref{sec:@book}\\
+	Sammelband (Hrsg.\ + mehrere Autoren) & \texttt{@incollection} & \pageref{sec:@incollection} \\
+	Konferenz-, Tagungsband & \texttt{@inproceedings} & \pageref{sec:@inproceedings}\\
+	Beitrag in Zeitschrift, Journal & \texttt{@article} & \pageref{sec:@article}\\
+	Bachelor-, Master-, Diplomarbeit, Dissertation & \texttt{@thesis} & \pageref{sec:@thesis}\\
+	Technischer Bericht, Laborbericht & \texttt{@techreport} & \pageref{sec:@techreport}\\
+	Handbuch, Produktbeschreibung, Norm & \texttt{@manual} & \pageref{sec:@manual}\\
+	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
+%
+	\hline
+	Kategorie \emph{avmedia} & \\
+	\hline
+	Audio (CD) & \texttt{@audio} & \pageref{sec:@audio}\\
+	Video (auf VHS, DVD, Blu-ray Disk) & \texttt{@video} & \pageref{sec:@video}\\
+	Film (Kino) & \texttt{@movie} & \pageref{sec:@movie}\\
+	Computer Game, Softwareprodukt & \texttt{@software} & \pageref{sec:@software}\\
+%
+	\hline
+	Kategorie \emph{online} & \\
+	\hline
+	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www}\\
+	Online-Video, Bild, Grafik & \texttt{@online} & \pageref{sec:@online-video}\\
+\end{tabular}
+\end{table}
+
+
+\begin{table}
+\caption{Kategorien von Quellenangaben und zugehörige BibTeX-Eintragstypen.
+Bei geteiltem Quellenverzeichnis werden die Einträge jeder Kategorie in einem
+eigenen Abschnitt gesammelt.
+Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden Typen.}
+\label{tab:BibKategorien}
+\centering
+\definecolor{midgray}{gray}{0.5}
+\setlength{\tabcolsep}{6mm}
+\begin{tabular}{lll}
+	\emph{literature} & \emph{avmedia} & \emph{online} \\
+	\hline
+	\texttt{@book}          & \texttt{@audio}                & \texttt{@online} \\
+	\texttt{@incollection}  & \texttt{\color{midgray}@music} & \texttt{\color{midgray}@electronic} \\
+	\texttt{@inproceedings} & \texttt{@video}                & \texttt{\color{midgray}@www} \\
+	\texttt{@article}       & \texttt{@movie}                &  \\
+	\texttt{@thesis}        & \texttt{@software}             &  \\
+	\texttt{@techreport}    &  &  \\
+	\texttt{@manual}        &  &  \\
+	\texttt{@misc}          &  &  \\
+	\ldots                  &  &  \\
+	\hline
+\end{tabular}
+\end{table}
+
+%%------------------------------------------------------
+
+\subsection{Gedruckte Quellen (\emph{literature})}
+\label{sec:KategorieLiterature}
+
+Diese Kategorie umfasst alle Werke, die in gedruckter Form publiziert wurden,
+also beispielsweise in Büchern, Konferenzbänden, Zeitschriftenartikeln, Diplomarbeiten \usw
+In den folgenden Beispielen ist jeweils der BibTeX-Eintrag in der Datei \nolinkurl{literatur.bib}
+angegeben, gefolgt vom zugehörigen Ergebnis im Quellenverzeichnis.
+
+
+\subsubsection{\texttt{@book}}
+\label{sec:@book}
+Ein einbändiges Buch (Monographie), das von einem Autor oder mehreren Autoren zur Gänze gemeinsam verfasst und (typischerweise) von einem Verlag herausgegeben wurde.
+% 
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@book{BurgerBurge2006,
+    author={Burger, Wilhelm and Burge, Mark},
+    title={Digitale Bildverarbeitung},
+	  subtitle={Eine Einführung mit Java und ImageJ},
+    publisher={Springer-Verlag},
+    location={Heidelberg},
+    edition={2},
+    year={2005},
+    hyphenation={german}
+}
+\end{GenericCode}
+\item[\cite{BurgerBurge2006}]
+Wilhelm Burger und Mark Burge. \textit{Digitale Bildverarbeitung. Eine
+Einführung mit Java und ImageJ}. 2.\ Aufl.\ Heidelberg: Springer-Verlag,
+2006.
+\end{itemize}
+%\printbibliography[keyword=bookexample1,heading=noheader]\nocite{BurgerBurge2006}
+%
+\emph{Hinweis:} Die Auflagennummer (\texttt{edition}) wird üblicherweise nur angegeben, 
+wenn es \emph{mehr} als eine Ausgabe gibt -- also insbesondere \textbf{nicht für die 1.\ Auflage}, 
+wenn diese die einzige ist!
+\textbf{ISBN-Nummern} sollte man auch getrost \textbf{weglassen}.
+
+%%------------------------------------------------------
+
+\subsubsection{\texttt{@incollection}}
+\label{sec:@incollection}
+Ein in sich abgeschlossener und mit einem eigenen Titel versehener
+Beitrag eines oder mehrerer Autoren in einem Buch oder Sammelband.
+Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel des Sammelbands und
+\texttt{editor} der Name des Herausgebers.
+%
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@incollection{BurgeBurger1999,
+  author={Burge, Mark and Burger, Wilhelm},
+  title={Ear Biometrics},
+  booktitle={Biometrics: Personal Identification in Networked Society},
+  publisher={Kluwer Academic Publishers},
+  year={1999},
+  location={Boston},
+  editor={Jain, Anil K. and Bolle, Ruud and Pankanti, Sharath},
+  chapter={13},
+  pages={273-285},
+  hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{BurgeBurger1999}]
+Mark Burge und Wilhelm Burger. "`Ear Biometrics"'. In:\ \textit{Biometrics:
+Personal Identification in Networked Society}. Hrsg.\ von Anil K.\ Jain,
+Bolle Ruud und Pankanti Sharath. Boston:\ Kluwer Academic Publis-
+hers, 1999. Kap.\ 13, S.\ 273--285.
+\end{itemize}
+%\printbibliography[keyword=incollectionexample1,heading=noheader]\nocite{BurgeBurger1999}
+
+%%------------------------------------------------------
+
+\subsubsection{\texttt{@inproceedings}}
+\label{sec:@inproceedings}
+Konferenzbeitrag, individueller Beitrag in einem Tagungsband.
+Man beachte die Verwendung des neuen Felds \texttt{venue}
+zur Angabe des Tagungsorts und 
+\texttt{location} für den Ort der Publikation (des Verlags).
+
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@inproceedings{Burger1987,
+	author={Burger, Wilhelm and Bhanu, Bir},
+	title={Qualitative Motion Understanding},
+	booktitle={Proceedings of the Intl.\ Joint Conference on Artificial Intelligence},
+	year={1987},
+	month={5},
+	editor={McDermott, John P.},
+	venue={Mailand},
+	publisher={Morgan Kaufmann Publishers},
+	location={San Francisco},
+	pages={819-821},
+	hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{Burger1987}]
+Wilhelm Burger und Bir Bhanu. "`Qualitative Motion Understanding"'.
+In:\ \textit{Proceedings of the Intl.\ Joint Conference on Artificial Intelligence}.
+(Mailand). Hrsg.\ von John P.\ McDermott. San Francisco:\ Morgan
+Kaufmann Publishers, Mai 1987, S.\ 819--821.
+\end{itemize}
+%\printbibliography[keyword=inproceedingsexample1,heading=noheader]\nocite{Burger1987}
+
+%%------------------------------------------------------
+
+\subsubsection{\texttt{@article}}
+\label{sec:@article}
+Beitrag in einer Zeitschrift, einem wissenschaftlichen Journal oder einer Tageszeitung.
+Dabei steht \texttt{volume} üblicherweise für den Jahrgang und \texttt{number} für die 
+Nummer innerhalb des Jahrgangs. Der Zeitschriftennamen (\texttt{journal} oder
+\texttt{journaltitle}) sollte nur in begründeten Fällen abgekürzt werden, um Missverständnisse
+zu vermeiden.
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@article{Mermin1989,
+	author={Mermin, Nathaniel David},
+	title={What's wrong with these equations?},
+	journal={Physics Today},
+	volume={42},
+	number={10},
+	year={1989},
+	pages={9-11},
+	hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{Mermin1989}]
+Nathaniel David Mermin. "`What's wrong with these equations?"' In:\ \textit{Physics
+Today} 42.10 (1989), S. 9--11.
+\end{itemize}
+%\printbibliography[keyword=articleexample1,heading=noheader]\nocite{Mermin1989}
+%
+\emph{Hinweis:} Die Angabe einer Ausgabe für \emph{mehrere} Monate ist in \texttt{biblatex} nicht mehr
+über das Feld \texttt{month} möglich, denn dieses darf nur mehr \emph{einen} Wert enthalten.
+In diesem Fall kann jedoch einfach das \texttt{issue}-Feld verwendet (\zB\ \verb!issue={Mai/Juni}!
+im BibTeX-Eintrag zu \cite{Guttman2001}) und das \texttt{number}-Feld weggelassen werden.
+
+
+%%------------------------------------------------------
+
+\subsubsection{\texttt{@thesis}}
+\label{sec:@thesis}
+Dieser (neue) Eintragstyp kann allgemein für akademische Abschlussarbeiten verwendet werden. Er ersetzt
+insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertationen) sowie
+\texttt{@mastersthesis} (für Di\-plom- und Masterarbeiten), die allerdings weiterhin verwendet werden können. Zusätzlich ist damit etwa auch die Angabe von Bachelorarbeiten möglich.
+
+\bigskip % kludge to force heading to next page
+\paragraph{Dissertation (Doktorarbeit):}
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@thesis{Eberl1987,
+	author={Eberl, Gerhard},
+	title={Automatischer Landeanflug durch Rechnersehen},
+	type={phdthesis},
+	year={1987},
+	month={8},
+	institution={Universität der Bundeswehr, Fakultät für Raum- und Luftfahrttechnik},
+	location={München},
+	hyphenation={german}
+}
+\end{GenericCode}
+\item[\cite{Eberl1987}]
+Gerhard Eberl. "`Automatischer Landeanflug durch Rechnersehen"'.
+Diss.\ München:\ Universität der Bundeswehr, Fakultät für Raum- und
+Luftfahrttechnik, Aug.\ 1987.
+\end{itemize}
+%\printbibliography[keyword=phdthesisexample1,heading=noheader]\nocite{Eberl1987}
+
+\paragraph{Magister- oder Masterarbeit:} ~ \newline
+Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\{mathesis\}}.%
+%\footnote{Man beachte dabei, dass offiziell (zumindest in Österreich) auch die 
+%Abschlussarbeiten von \emph{Master}studiengängen weiterhin als "`Diplomarbeiten"' 
+%bezeichnet werden.} % ab März 2012 gilt das nicht mehr
+
+%%------------------------------------------------------
+
+\paragraph{Diplomarbeit:} ~ \newline
+Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\obnh\{Diplomarbeit\}}:%
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@thesis{Artner2007,
+	author={Artner, Nicole Maria},
+	title={Analyse und Reimplementierung des Mean-Shift Tracking-Verfahrens},
+	type={Diplomarbeit},
+	year={2007},
+	month={7},
+	institution={University of Applied Sciences Upper Austria, Digitale Medien},
+	location={Hagenberg, Austria},
+	url={http://theses.fh-hagenberg.at/thesis/Artner07},
+  hyphenation={german}
+}
+\end{GenericCode}
+\item[\cite{Artner2007}]
+Nicole Maria Artner. "`Analyse und Reimplementierung des Mean-Shift
+Tracking-Verfahrens"'. Diplomarbeit. Hagenberg, Austria:\ Upper 
+Austria University of Applied Sciences, Digitale Medien, Juli 2007. 
+\textsc{url}:\ \url{http://theses.fh-hagenberg.at/thesis/Artner07}.
+\end{itemize}
+%\printbibliography[keyword=diplomarbeitexample1,heading=noheader]\nocite{Artner2007}
+%
+Der Inhalt des Felds \verb!url={..}! wird dabei automatisch und ohne zusätzliche
+Kennzeichnung als URL gesetzt (mit dem \verb!\url{..}! Makro).
+
+%%------------------------------------------------------
+
+\paragraph{Bachelorarbeit:} ~ \newline
+Bachelorarbeiten gelten in der Regel zwar nicht als "`richtige"' Publikationen, bei Bedarf müssen sie aber dennoch referenziert werden können. 
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@thesis{Bacher2004,
+	author={Bacher, Florian},
+	title={Interaktionsmöglichkeiten mit Bildschirmen und großflächigen Projektionen},
+	type={Bachelorarbeit},
+	year={2004},
+	month={6},
+	institution={Upper Austria University of Applied Sciences, Medientechnik und {-design}},
+	location={Hagenberg, Austria},
+	hyphenation={german},
+	keywords={bachelorarbeitexample1} 
+}
+\end{GenericCode}
+\item[\cite{Bacher2004}]
+Florian Bacher. "`Interaktionsmöglichkeiten mit Bildschirmen und groß-
+flächigen Projektionen"'. Bachelorarbeit. Hagenberg, Austria:\ Upper
+Austria University of Applied Sciences, Medientechnik und {-design},
+Juni 2004.
+\end{itemize}
+%\printbibliography[keyword=bachelorarbeitexample1,heading=noheader]\nocite{Bacher2004}
+%
+
+
+%%------------------------------------------------------
+
+\subsubsection{\texttt{@techreport}}
+\label{sec:@techreport}
+Das sind typischerweise nummerierte Berichte (\emph{technical reports}) aus Unternehmen, 
+Hochschulinstituten oder Forschungsprojekten.
+Wichtig ist, dass die herausgebende Organisationseinheit (Firma, Institut, Fakultät \etc) und 
+Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben, sofern vorhanden. 
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@techreport{Drake1948,
+  author={Drake, Huber M. and McLaughlin, Milton D. and Goodman, Harold R.},
+  title={Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92},
+  institution={NASA Dryden Flight Research Center},
+  year={1948},
+  month={1},
+  location={Edwards, CA},
+  number={NACA-RM-L8A05A},
+  url={http://www.nasa.gov/centers/dryden/pdf/...05A.pdf},
+  hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{Drake1948}]
+Huber M.\ Drake, Milton D.\ McLaughlin und Harold R.\ Goodman.
+\textit{Results obtained during accelerated transonic tests of the Bell XS-1
+airplane in flights to a MACH number of 0.92}. Techn.\ Ber.\ NACA-
+RM-L8A05A. Edwards, CA:\ NASA Dryden Flight Research Center,
+Jan. 1948. \textsc{url}:\ \url{http://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf}.
+\end{itemize}
+%\printbibliography[keyword=techreportexample1,heading=noheader]\nocite{Drake1948}
+
+%%------------------------------------------------------
+
+\subsubsection{\texttt{@manual}}
+\label{sec:@manual}
+Dieser Publikationstyp bietet sich für Dokumente an, bei denen üblicherweise kein Autor genannt ist, wie etwa bei Produktbeschreibungen von Herstellern, Anleitungen, Präsentationen, Normen, White Papers \usw
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@manual{AMS2002,
+	author={{American Mathematical Society}},
+	title={User's Guide for the {\tt amsmath} Package},
+	year={2002},
+	month={2},
+	version={2.0},
+	url={ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf},
+	hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{AMS2002}]
+American Mathematical Society. 
+\textit{User's Guide for the {\tt amsmath} Package}. 
+Version 2.0. Feb. 2002. \textsc{url}: \url{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf}.
+\end{itemize}
+%\printbibliography[keyword=manualexample1,heading=noheader]\nocite{AMS2002}
+%
+In obigem Beispiel gilt zu beachten: 
+Da kein Autor bekannt ist, wird hier der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vorname}+\emph{Nachname} interpretiert wird.%
+\footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz für \texttt{author} akzeptiert.}
+
+
+%%------------------------------------------------------
+\subsubsection{\texttt{@misc}}
+\label{sec:@misc}
+Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
+nicht das Auslangen gefunden werden, sollte man sich zunächst die weiteren (hier nicht näher beschriebenen) 
+Typen im \texttt{biblatex}-Handbuch \cite{Lehman2015} ansehen, beispielsweise
+\texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin)
+oder \texttt{@patent} für ein Patent oder eine Patentanmeldung.
+
+Wenn nichts davon passt, dann kann auf den Typ \texttt{@misc} zurückgegriffen werden, der ein
+Textfeld \texttt{howpublished} vorsieht, in dem die Art der Publikation individuell 
+angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gesetzestext 
+(\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@misc{OoeRaumordnungsgesetz1994,
+	title={Oberösterreichisches Raumordnungsgesetz 1994},
+	howpublished={LGBl 1994/114 idF 1995/93},
+	url={http://www.ris.bka.gv.at/Dokumente/LrOO/...538.pdf},
+	hyphenation={german}
+}
+\end{GenericCode}
+\item[\cite{OoeRaumordnungsgesetz1994}]
+\textit{Oberösterreichisches Raumordnungsgesetz 1994}. LGBl 1994/114 idF
+1995/93. \textsc{url}: \url{http://www.ris.bka.gv.at/Dokumente/LrOO/LOO40007538/LOO40007538.pdf}.
+\end{itemize}
+%\printbibliography[keyword=miscexample1,heading=noheader]\nocite{OoeRaumordnungsgesetz1994}
+%
+
+
+
+\subsection{Filme und audio-visuelle Medien (\emph{avmedia})}
+\label{sec:KategorieAvmedia}
+
+Diese Kategorie ist dazu vorgesehen, audio-visuelle Produktionen wie Filme, 
+Tonaufzeichnungen, Audio-CDs, DVDs, VHS-Kassetten \usw\ zu erfassen.
+Damit gemeint sind Werke, die in physischer (jedoch nicht in gedruckter) Form
+veröffentlicht wurden.
+Nicht gemeint sind damit audio-visuelle Werke (Tonaufnahmen, Bilder, Videos) 
+die ausschließlich online verfügbar sind -- diese sollten mit einem Elementtyp 
+\texttt{@online} (s.\ Tabelle~\ref{tab:BibKategorien} und Abschnitt~\ref{sec:KategorieOnline}) ausgezeichnet werden.
+
+Die nachfolgend beschriebenen Typen \texttt{@audio}, \texttt{@video} und \texttt{@movie} 
+sind \emph{keine} BibTeX-Standardtypen. Sie sind aber in \texttt{biblatex} vorgesehen
+(und implizit durch \texttt{@misc} ersetzt) und werden hier empfohlen, um die automatische 
+Gliederung des Quellenverzeichnisses zu ermöglichen.
+
+\subsubsection{\texttt{@audio}}
+\label{sec:@audio}
+Hier ein Beispiel für die Spezifikation einer Audio-CD:
+%
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@audio{Zappa1995,
+  author={Zappa, Frank},
+  title={Freak Out},
+  howpublished={Audio-CD},
+  year={1995},
+  month={5},
+  note={Rykodisc, New York},
+  hyphenation={english},
+  keywords={audioexample1}
+}
+\end{GenericCode}
+\item[\cite{Zappa1995}]
+Frank Zappa. \textit{Freak Out}. Audio-CD. Rykodisc, New York. Mai 1995.
+\end{itemize}
+%\printbibliography[keyword=audioexample1,heading=noheader]\nocite{Zappa1995}
+%
+Anstelle von \verb!howpublished={Audio-CD}! könnte auch 
+\verb!type={audiocd}! verwendet werden.
+
+
+\subsubsection{\texttt{@video}}
+\label{sec:@video}
+Hier ein Beispiel für die Spezifikation einer DVD-Edition:
+%
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@video{Futurama1999,
+  author={Groening, Matt},
+  title={Futurama},
+	titleaddon={Season 1 Collection},
+  howpublished={DVD},
+  year={2002},
+  month={2},
+  note={Twentieth Century Fox Home Entertainment},
+  hyphenation={english}
+ }
+\end{GenericCode}
+\item[\cite{Futurama1999}]
+Matt Groening. \textit{Futurama}. Season 1 Collection. DVD. 
+Twentieth Century Fox Home Entertainment. Feb.\ 2002.
+\end{itemize}
+%\printbibliography[keyword=videoexample1,heading=noheader]\nocite{Futurama1999}
+%
+In diesem Fall ist das angegebene Datum der \emph{Erscheinungstermin}. 
+Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
+\texttt{author}-Feld weg und verpackt die entsprechenden Angaben im \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
+
+
+\subsubsection{\texttt{@movie}}
+\label{sec:@movie}
+Dieser Eintragstyp ist für Filme reserviert. 
+Hier wird von vornherein \emph{kein} Autor angegeben, weil dieser bei 
+einer Filmproduktion \ia\ nicht eindeutig zu benennen ist. 
+Im folgenden Beispiel (\sa\ \cite{Psycho1960}) sind die betreffenden Daten 
+im \texttt{note}-Feld angegeben:%
+\footnote{Übrigens achtet \texttt{biblatex} netterweise darauf, dass der  
+Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
+%
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@movie{Nosferatu1922,
+    title={Nosferatu -- A Symphony of Horrors},
+    howpublished={Film},
+    year={1922},
+    note={Drehbuch/Regie: F. W. Murnau. Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.},
+    hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{Nosferatu1922}]
+\textit{Nosferatu -- A Symphony of Horrors}. Film. 
+Drehbuch/Regie:\ F.\ W.\ Murnau. 
+Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.
+1922.
+\end{itemize}
+%\printbibliography[keyword=movieexample1,heading=noheader]\nocite{Nosferatu22}
+%
+Die Angabe \verb!howpublished={Film}! ist hier sinnvoll, um die Verwechslung
+mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
+
+
+
+\subsubsection{\texttt{@software}}
+\label{sec:@software}
+Dieser Eintragstyp ist insbesondere für Computerspiele geeignet (in Ermangelung
+eines eigenen Eintragstyps). Hier ein konkretes Beispiel \cite{LegendOfZelda1998}:
+%
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@software{LegendOfZelda1998,
+   author={Miyamoto, Shigeru and Aonuma, Eiji and Koizumi, Yoshiaki},
+   title={The Legend of Zelda: Ocarina of Time},
+   howpublished={N64-Spielmodul},
+   publisher={Nintendo},
+   year={1998},
+   hyphenation={english}
+}
+\end{GenericCode}
+\end{itemize}
+
+
+
+\subsubsection{Zeitangaben zu Musikaufnahmen und Filmen} 
+
+Einen Verweis auf eine bestimmten Stelle in einem Musikstück oder Film kann man 
+ähnlich ausführen wie die Seitenangabe in einem Druckwerk.
+Besonders legendär (und häufig parodiert) ist beispielsweise die Duschszene
+in \emph{Psycho} \cite[T=00:32:10]{Psycho1960}.
+Alternativ zur simplen Zeitangabe "`T=\emph{hh}:\emph{mm}:\emph{ss}"' 
+könnte man eine bestimmte Stelle auch auf den Frame genau durch 
+den zugehörigen \emph{Timecode} "`TC=\emph{hh:mm:ss:ff}"' angeben, 
+\zB\ \cite[TC=00:32:10:12]{Psycho1960} für Frame \emph{ff}=12.
+
+
+
+\subsection{Online-Quellen (\emph{online})}
+\label{sec:KategorieOnline}
+
+Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterscheiden:
+%
+\begin{itemize}
+\item[A.] Man möchte allgemein auf eine Webseite verweisen, etwa auf die 
+	"`Panasonic products for business"' Seite.%
+	\footnote{\url{http://business.panasonic.co.uk/}}
+	In diesem Fall wird nicht auf ein konkretes "`Werk"' verwiesen und daher
+	erfolgt \emph{keine} Aufnahme ins Quellenverzeichnis. Stattdessen
+	genügt eine einfache Fußnote mit \verb!\footnote{\url{..}}!, wie im vorigen
+	Satz gezeigt.
+\item[B.] Ein gedrucktes oder audio-visuelles Werk 
+	(s.\ Abschnitte \ref{sec:KategorieLiterature}--\ref{sec:KategorieAvmedia})
+	ist \emph{zusätzlich} auch online verfügbar. In diesem Fall ist die Primär\-publikation 
+	aber \emph{nicht} "`online"' und es genügt, ggfs.\ den zugehörigen Link im 
+	\texttt{url}-Feld anzugeben, das bei jedem Eintragstyp zulässig ist.
+\item[C.] Es handelt sich im weitesten Sinn um ein Werk, das aber 
+	\emph{ausschließlich} online verfügbar ist, wie \zB\ ein Wiki-Eintrag, 
+	ein digitales Bild,	eine Software, ein YouTube-Video oder ein Blog-Eintrag.
+	Die Kategorie \emph{online} ist genau (und \emph{nur}) für diese 
+	Art von Quellen vorgesehen.
+\end{itemize}
+
+
+
+
+\subsubsection{Beispiel: Wiki-Eintrag}
+\label{sec:@online-www}
+Durch den Umfang und die steigende Qualität dieser Einträge erscheint
+die Aufnahme in das Quellenverzeichnis durchaus berechtigt.
+Beispielsweise bezeichnet man als "`Reliquienschrein"'
+einen Schrein, in dem die Reliquien eines oder 
+mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2015}.
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@online{WikiReliquienschrein2015,
+	url={http://de.wikipedia.org/wiki/Reliquienschrein},
+	urldate={2015-12-09}
+}
+\end{GenericCode}
+\item[\cite{WikiReliquienschrein2015}]
+\textsc{url}: \url{http://de.wikipedia.org/wiki/Reliquienschrein}
+(besucht am 20.11.{\hskip0pt}2014).
+\end{itemize}
+%\printbibliography[keyword=onlineexample2,heading=noheader]\nocite{WikiReliquienschrein2015}
+%
+In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL.
+Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch die Information eingefügt, wann das Online-Dokument eingesehen wurde.
+
+
+\subsubsection{Beispiel: online Video} 
+\label{sec:@online-video}
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@online{HistoryOfComputers2008,
+    title={History of Computers},
+    year={2008},
+		month={9},
+    url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
+    hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{HistoryOfComputers2008}]
+\textit{History of Computers}. Sep. 2008. 
+\textsc{url}: \url{http://www.youtube.com/watch?v=LvKxJ3bQRKE}.
+\end{itemize}
+%\printbibliography[keyword=onlineexample1,heading=noheader]\nocite{HistoryOfComputers2008}
+%
+Bis auf das Feld \texttt{url} können alle Angaben weggelassen werden. Die Angabe von 
+weiteren Details (\zB\ \texttt{author}) ist natürlich ebenso möglich.
+
+\subsubsection{Beispiel: Bildquelle}
+
+In Abbildungen wird sehr häufig fremdes Bildmaterial verwendet, dessen Herkunft natürlich 
+in jedem Fall angegeben werden sollte. Die Angabe von URLs unmittelbar in den Captions von Abbildungen
+ist problematisch, weil sie meistens für das Schriftbild ziemlich störend sind.
+Einfacher ist es, auch einzelne Bilder und Grafiken ins Quellenverzeichnis aufzunehmen und
+wie üblich mit dem \verb!\cite{..}! Kommando darauf zu verweisen.
+Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@online{IBM360,
+	url={http://www.plyojump.com/classes/mainframe_era.php}
+}
+\end{GenericCode}
+\item[\cite{IBM360}]
+\textsc{url}: \url{http://www.plyojump.com/classes/mainframe_era.php}.
+\end{itemize}
+%\printbibliography[keyword=onlineexample3,heading=noheader]\nocite{IBM360}
+%
+
+\subsection{Elektronische Datenträger als Ergänzung zur Arbeit}
+
+Wird der Abschlussarbeit ein elektronischer Datenträger (CD-ROM, DVD
+etc.) beigelegt, empfiehlt sich die angeführten Webseiten in
+elektronischer Form (vorzugsweise als PDF-Da\-tei\-en) abzulegen
+und die zugehörige Quelle im Quellenverzeichnis mit einem 
+entsprechenden Verweis im \texttt{note}-Feld -- \zB\
+"`Kopie auf CD-ROM (Datei \nolinkurl{xyz.pdf})"' --
+zu versehen.
+Für die Angabe von solchen Dateinamen, die nicht als Online-Link
+zu öffnen sind, ist übrigens die Verwendung von 
+\verb!\nolinkurl{...}! anstelle von \verb!\url{...}! zu empfehlen.
+
+
+\subsection{Tipps zur Erstellung von BibTeX-Dateien}
+\label{sec:TippsZuBibtex}
+
+Die folgenden Dinge sollten bei der Erstellung korrekter BibTeX-Dateien beachtet werden.
+
+\subsubsection{\texttt{month}-Attribut}
+
+Das \texttt{month}-Attribut ist in \texttt{biblatex} (im Unterschied zu BibTeX) numerisch
+und wird beispielsweise einfach in der Form \verb!month={8}! (für den Monat August)
+angegeben.
+
+\subsubsection{\texttt{language}/\texttt{hyphenation}-Attribut}
+
+Das \texttt{language} Attribut ermöglichte im Zusammenhang mit dem \texttt{babelbib}-Paket 
+den korrekten Satz mehrsprachiger Quellenverzeichnisse. \texttt{babelbib} wird in 
+dieser Vorlage \emph{nicht} mehr verwendet, sondern durch \texttt{biblatex} \cite{Lehman2015} ersetzt.
+Hier wird allerdings das \texttt{language}-Feld anders interpretiert und
+stattdessen das \texttt{hyphenation}-Feld verwendet, das nach Möglichkeit 
+bei jedem Quelleneintrag angegeben werden sollte, also beispielsweise
+\begin{quote}
+\verb!hyphenation={german}! \quad oder \quad \verb!hyphenation={english}!
+\end{quote}
+für ein deutsch- \bzw\ englischsprachiges Dokument.
+
+\subsubsection{\texttt{edition}-Attribut}
+
+Im Unterschied zu BibTeX ist mit \texttt{biblatex} auch das \texttt{edition}-Feld numerisch.
+Es ist lediglich die Nummer selbst anzugeben, also etwa
+\verb!edition={3}!
+bei einer dritten Auflage. Die richtige Interpunktion in der Quellenangabe wird in Abhängigkeit von der Spracheinstellung automatisch hinzugefügt 
+("`3.\ Auflage"' \bzw\ "`3rd edition"').
+
+Wie bereits auf Seite \pageref{sec:@book} angemerkt, sollte im Fall einer
+\textbf{1.~Auflage} das \texttt{edition}-Feld \textbf{nicht} verwendet werden,
+wenn es ohnehin keine andere Auflage gibt!
+
+
+\subsubsection{Übernahme von fertigen BibTeX-Einträgen}
+
+Viele Verlage und Literatur-Broker bieten fertige BibTeX-Einträge zum Herunterladen an.
+Dabei ist jedoch größte Vorsicht geboten, denn diese Einträge sind häufig
+unvollständig oder syntaktisch fehlerhaft!
+Sie sollten bei der Übernahme \emph{immer} auf Korrektheit überprüft werden!
+Besonders sollte dabei auf die korrekte Angabe der Namen, also 
+\texttt{author=\{\textit{Nachname1}, \textit{Vorname1a} \emph{Vorname1b} 
+and \textit{Nachname2}, \textit{Vorname2a} \ldots \}}%
+\footnote{Das ist \va\ bei mehrteiligen Nachnamen wichtig, weil in diesem Fall
+Vor- und Nachnamen nicht korrekt zugeordnet werden können, \zB\ 
+\texttt{author=\{van Beethoven, Ludwig and ter Linden, Jaap\}}
+für ein hypothetisches Werk von Ludwig van Beethoven und Jaap ter Linden.}
+geachtet werden, sowie die Angabe von \texttt{volume}, \texttt{number} und \texttt{pages}.
+Die Namen von Konferenzen sind oft völlig falsch (auch bei ACM und IEEE).
+ISBN- und ISSN-Nummern sind entbehrlich und können getrost weggelassen werden.
+Gleiches gilt für DOI-Nummern -- aber das möge der Betreuer entscheiden.
+ 
+
+\subsubsection{Listing aller Quellen}
+
+Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
+
+
+\subsubsection{Ergänzungen zu \texttt{biblatex}}
+
+\texttt{biblatex} gibt bei der Verarbeitung dieses Dokuments einige Warnungen aus ("`Package biblatex Warning"'), 
+die in der Regel ignoriert werden können:
+%\begin{small}
+%\begin{verbatim}
+  %Package biblatex Warning: Data encoding is 'latin1'.
+  %(biblatex)                Use backend=bibtex8 or backend=biber.
+%\end{verbatim}
+%\end{small}
+%Das ist ein Hinweis auf die neueren Bib-Prozessoren \texttt{bibtex8} \bzw\ \texttt{biber}, die
+%mit Nicht-ASCII-Dateien besser umgehen können als das klassische \texttt{bibtex}-Programm.
+\begin{small}
+\begin{verbatim}
+  Package biblatex Warning: No driver for entry type 'video'.
+  (biblatex)                Using fallback driver ...
+\end{verbatim}
+\end{small}
+Für die neuen Eintragstypen \texttt{audio}, \texttt{video} und \texttt{movie} sind derzeit 
+noch keine eigenen "`driver"' hinterlegt. Stattdessen wird im Hintergrund der \texttt{misc}-Typ 
+als "`fallback"' verwendet.
+
+Wenn eine der drei Kategorien des Quellenverzeichnisses (s.~Abschnitt \ref{sec:BibKategorien})
+ohne Eintrag ist, wird eine Warnung "`\texttt{Empty bibliography on input line \ldots}"' ausgegeben, die auch getrost ignoriert werden können.
+
+
+
+
+\section{Plagiarismus}
+\label{sec:Plagiarismus}
+
+Als "`Plagiat"' bezeichnet man die Darstellung eines fremden Werks als eigene Schöpfung, 
+in Teilen oder als Ganzes, egal ob bewusst oder unbewusst.
+Plagiarismus ist kein neues Problem im Hochschulwesen, hat sich aber durch die 
+breite Verfügbarkeit elektronischer Quellen in den letzten Jahren dramatisch 
+verstärkt und wird keineswegs als Kavaliersdelikt betrachtet.
+Viele Hochschulen bedienen sich als Gegenmaßnahme heute ebenfalls elektronischer Hilfsmittel 
+(die den Studierenden zum Teil nicht zugänglich sind), und man sollte daher bei jeder 
+abgegebenen Arbeit damit rechnen, dass sie routinemäßig auf Plagiatsstellen untersucht wird!
+Werden solche erst zu einem späteren Zeitpunkt entdeckt, kann das im schlimmsten Fall sogar 
+zur nachträglichen (und endgültigen) Aberkennung des akademischen Grades führen.
+
+Um derartige Probleme zu vermeiden, sollte eher übervorsichtig agiert und zumindest folgende Regeln beachtet werden:
+%
+\begin{itemize}
+\item
+Die Übernahme kurzer Textpassagen ist nur unter korrekter Quellenangabe zulässig, wobei der Umfang (Beginn und Ende) des Textzitats in jedem einzelnen Fall klar erkenntlich gemacht werden muss. 
+\item
+Insbesondere ist es nicht zulässig, eine Quelle nur eingangs zu erwähnen und nachfolgend wiederholt nicht-ausgezeichnete Textpassagen als eigene Wortschöpfung zu übernehmen. 
+\item
+Auf gar keinen Fall tolerierbar ist die direkte oder paraphrasierte Übernahme längerer Textpassagen, ob mit oder ohne Quellenangabe. Auch indirekt übernommene oder aus einer anderen Sprache übersetzte Passagen müssen mit entsprechenden Quellenangaben gekennzeichnet sein! 
+\end{itemize}
+%
+Im Zweifelsfall finden sich detailliertere Regeln in jedem guten Buch über wissenschaftliches Arbeiten oder man fragt sicherheitshalber den Betreuer der Arbeit.
+
+

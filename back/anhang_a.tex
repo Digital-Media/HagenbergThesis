@@ -1,0 +1,331 @@
+\chapter{Technische Informationen}
+\label{ch:TechnischeInfos}
+
+\newcommand*{\checkbox}{{\fboxsep 1pt%
+\framebox[1.30\height]{\vphantom{M}\checkmark}}}
+
+\section{Aktuelle Dateiversionen}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Datum & Datei \\
+\hline\hline
+\hgbthesisDate & \texttt{hgbthesis.cls} \\
+\hline
+\hgbDate       & \texttt{hgb.sty} \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+
+\section{Details zur aktuellen Version}
+
+
+Das ist eine völlig überarbeitete Version der DA/BA-Vorlage, die
+\mbox{UTF-8} kodierten Dateien vorsieht und ausschließlich im PDF-Modus arbeitet.
+Der "`klassische"' DVI-PS-PDF-Modus wird somit nicht mehr unterstützt! 
+
+\subsection{Allgemeine technische Voraussetzungen}
+
+Eine aktuelle \latex-Installation mit
+\begin{itemize}
+	
+		\item Texteditor für \mbox{UTF-8} kodierte (Unicode) Dateien,
+		\item \texttt{biber}-Programm (BibTeX-Ersatz, Version $\geq 1.5$),
+		\item \texttt{biblatex}-Paket (Version $\geq 2.5$, 2013/01/10),
+		\item Latin Modern Schriften (Paket \texttt{lmodern}).%
+			\footnote{\url{http://www.ctan.org/pkg/lm}, \url{http://www.tug.dk/FontCatalogue/lmodern}}
+\end{itemize}
+
+
+\subsection{Verwendung unter Windows}
+
+Eine typische Installation unter Windows sieht folgendermaßen aus
+(s.\ auch Abschnitt \ref{sec:Windows}):
+%
+\begin{enumerate}
+\item \textbf{MikTeX 2.9}%
+	\footnote{\url{http://www.miktex.org/} -- \textbf{Achtung:} 
+	Generell wird die \textbf{Komplett\-installation} von MikTeX ("`Complete MiKTeX"') empfohlen, 
+	da diese bereits alle notwendigen Zusatzpakete und Schriftdateien enthält! 
+	Bei der Installation ist darauf zu achten, 
+	dass die automatische Installation erforderlicher Packages 
+	durch "`\emph{Install missing packages on-the-fly: = Yes}"' ermöglicht wird (NICHT "`\emph{Ask me first}"')!
+	Außerdem ist zu empfehlen, unmittelbar nach der Installation von MikTeX mit dem Programm
+	\texttt{MikTeX} $\to$ \texttt{Maintenance} $\to$ \texttt{Update} und \texttt{Package Manager} 
+	ein Update der installierten Pakete durchzuführen.}
+	(zurzeit am einfachsten die 32-Bit Version, da nur diese das Programm \texttt{biber.exe} 
+	bereits enthält),
+\item \textbf{TeXnicCenter 2.0}%
+	\footnote{\url{http://www.texniccenter.org/}}
+	(Editor-Umgebung, unterstützt UTF-8),
+\item \textbf{SumatraPDF}%
+	\footnote{\url{http://blog.kowalczyk.info/software/sumatrapdf/}} 
+	(PDF-Viewer),
+\end{enumerate}
+%
+Ein passendes TeXnicCenter-Profil für MikTeX, Biber und Sumatra ist in diesem Paket enhalten
+(Datei \verb!_tc_output_profile_sumatra_utf8.tco!). Dieses sollte man zuerst
+über \texttt{Build} $\to$ \texttt{Define Output Profiles} in TeXnicCenter importieren.
+\textbf{Achtung}: Alle neu angelegten \texttt{.tex}-Dateien sollten in UTF-8 Kodierung gespeichert werden!
+
+
+
+
+\subsection{Verwendung unter Mac~OS}
+
+
+Diese Version sollte insbesondere mit \emph{MacTeX} problemlos laufen (s.\ auch Abschnitt \ref{sec:MacOs}):
+\begin{enumerate}
+\item 
+	\emph{MacTex} (2012 oder höher).
+\item 
+	Die Zeichenkodierung des Editors sollte auf UTF-8 eingestellt sein.
+\item 
+	Als Engine (vergleichbar mit den Ausgabeprofilen in TeXnicCenter) sollte \emph{LaTeXMk} verwendet werden. 
+	Dieses Perl-Skript erkennt automatisch, wie viele Aufrufe von \emph{pdfLaTeX} und \emph{Biber} nötig sind. 
+	Die Ausgabeprofile \emph{LaTeX} oder \emph{pdfLaTeX} hingegen müssen mehrmals aufgerufen werden, 
+	zudem werden hierbei auch die Literaturdaten nicht verarbeitet. Dazu müsste extra die \emph{Biber}-Engine 
+	aufgerufen werden, 	die jedoch noch nicht in allen Editoren vorhanden ist.
+\end{enumerate}
+
+
+\begin{comment}
+\subsection{Vorteile}
+\begin{itemize}
+\item PDF wird direkt erzeugt ohne DVI und PS; damit ist angeblich auch die "`Feintypographie"' besser.
+\item Die Verwendung von \texttt{SumatraPDF} erlaubt funktionierende Forward- und Inverse-Suche, womit erstmals ein effektiver PDF-Workflow möglich ist.
+\item Preview der vollständigen Manuskripts (inklusive Grafiken) ist in PDF viel schneller
+als in DVI (mit YAP und Ghostscript für die Grafiken).
+\item Grafiken können auch als PDF, PNG oder JPEG direkt eingebunden werden. Bestehende EPS-Grafiken werden automatisch in PDF konvertiert. 
+\item Bei eingebundenen Rasterbildern werden (im Unterschied zu \texttt{ps2pdf} in der Default-Einstellung) keine zusätzlichen JPEG-Artefakte erzeugt. 
+(Anmerkung: im TC-Ausgabeprofil für \texttt{ps2pdf} ist dafür jetzt die
+Option \verb!-dPDFSETTINGS=/prepress! eingestellt -- \verb!=/printer! ist nicht ausreichend!)
+\item Die Erzeugung von aktiven Verweisen mit \texttt{hyperref} funktioniert problemlos, mit allen Vorteilen (einschließlich der Zeilenumbrüche in URLs).
+\item PDF-Metadaten (zur verbesserten Suche) werden direkt aus den Dokumentendaten durch LaTeX generiert.
+\end{itemize}
+
+\subsection{Weitere Neuerungen}
+%
+\begin{sloppypar}
+\begin{itemize}
+\item Verwendung des \texttt{epstopdf}-Pakets, wodurch vorhandene EPS-Grafiken (mit denen \texttt{pdflatex} nicht umgehen kann) automatisch in PDF-Dateien konvertiert werden, unter der Annahme, dass \texttt{epstopdf.exe} vorhanden ist. Das ist bei Rasterbildern allerdings nicht zu enpfehlen, weil mit \texttt{epstopdf} die Kompressionsqualität nicht gesteuert erden kann. In diesem Fall ist es besser, die EPS-Dateien (\zB\ mit PhotoShop) direkt in PDFs zu konvertieren oder (noch besser) die Original JPEG- oder PNG-Dateien zu verwenden.
+%
+\item Unter \texttt{pdflatex} können nun (mit \verb!\includegraphics{}!) neben PDFs auch Bilder im JPEG- oder PNG-Format direkt eingebunden werden. Alle Datei-Extensions der Grafikdateien wurden im Quelltext entfernt.
+%
+\item 
+Verwendung des \textbf{SumatraPDF}-Viewers anstelle von Adobe Acrobat, da Acrobat das Überschreiben der Ausgabedatei blockiert (unter Windows) und forward/inverse Suche schlecht \bzw\ gar nicht unterstützt.
+Anweisungen zur Einstellung findet man unter \url{http://www.hehn.biz/Mar/How_to_Sumatra.pdf} -- diese sind auch im beiliegenden TC-Aus\-gabe\-profil implementiert.
+%
+\item Verwendung des \texttt{pdfsync}-Pakets zur Unterstützung der inversen Suche aus PDF-Dateien.
+%
+\item Verwendung des \texttt{hyperref}-Pakets zur Aktivierung von Links (Web, Inhaltsverzeichnis, Querverweise, Literatur etc.). Erzeugt auch eine Navigation-Pane.
+%
+\item PDF-Metadaten werden automatisch aus den Dokumentendaten generiert (durch \texttt{hyperref} möglich).
+%
+\item Verwendung des \texttt{breakurl}-Pakets, mit dem Zeilenumbrüche trotz \texttt{hy\-per\-ref} auch bei DVI-PS-PDF-Generierung durchgeführt werden. Dadurch sind jetzt auch URLs in Captions und Fußnoten problemlos möglich und auch \verb!\urldef{}! ist nicht mehr erforderlich (entspr.\ Textpassagen in \ref{sec:QuellenangabenInCaptions} entfernen!). 
+%
+\item Alle bestehenden EPS-Dateien mit Rasterbildern wurden auf Binärkodierung umgestellt, da dies mit der aktuellen MikTeX-Version keine Probleme mehr verursacht. Zusätzlich wurden PNG-Versionen für \texttt{pdflatex} angelegt, sodass keine automatische Umwandlung mit \texttt{epstopdf} erfolgt.
+%
+\item
+Das lästige Problem des übermäßigen vertikalen Abstände in LaTeX-Aufzählungslisten wurde mit dem \texttt{enumitem}-Paket behoben. Alle \verb!\itemsep0pt! Anweisungen im Text wurden entfernt.
+%
+\item Einbindung des \texttt{cite}-Pakets mit \texttt{noadjust}-Option, womit kein zusätzliches Spacing erzeugt wird.
+\end{itemize}
+\end{sloppypar}
+\end{comment}
+
+
+\begin{comment}
+\section{Einstellungen unter Windows} 
+\label{sec:EinstellungAusgabeprofile}
+
+Die folgenden Angaben beziehen sich auf eine bewährte Arbeitsumgebung unter Windows (XP, Win7) mit MikTeX, Sumatra-PDF und TeXnicCenter, mit folgenden Installationspfaden:
+%
+\begin{quote}
+\verb!C:\Program Files (x86)\MiKTeX 2.9\! \\
+\verb!C:\Program Files (x86)\SumatraPDF\! \\
+\verb!C:\Program Files (x86)\TeXnicCenter\! 
+\end{quote}
+%
+Unter Windows XP liegen die Programme in \verb!C:\Program Files\!.
+Falls neuere Versionen dieser Komponenten installiert sind, müssen natürlich die nachfolgend angegebenen Pfade entsprechend modifiziert werden.
+
+\begin{quote}
+\textbf{Achtung:} Für MikTeX immer die \textbf{komplette Version} installieren! Das entsprechende Installationsverzeichnis hat aktuell einen Umfang von ca.\ 1.2 GB und enthält etwa 53.200 Dateien 
+(typischerweise in \nolinkurl{C:\\Program Files (x86)\\MiKTeX...}).
+\end{quote}
+\end{comment}
+
+\begin{comment}
+\subsection{TeXnicCenter-Ausgabeprofile}
+\label{sec:TeXnicCenterUndMikTeX}
+
+TeXnicCenter definiert den Verarbeitungsablauf des LaTeX-Dokuments anhand von Ausgabeprofilen, wobei die oben genannten Komponenten als externe Programme mit entsprechenden Argumenten aufgerufen werden.
+Die Einstellung der Ausgabeprofile erfolgt in TeXnicCenter über das Menü
+\textsf{Ausgabe}$\rightarrow$\textsf{Ausgabeprofile definieren...} (Abb.\ \ref{fig:techniccenter-profile-latex}). 
+Die Profile werden (abhängig von der installierten Software) üblicherweise beim ersten Start von TeXnicCenter durch den zugehörigen "`Wizard"' voreingestellt. 
+
+\begin{figure}
+\centering\small
+\setlength{\tabcolsep}{0pt}%
+\begin{tabular}{c@{~}c}
+\includegraphics[width=0.49\textwidth]{techniccenter-profile-dvi-26} &
+\includegraphics[width=0.49\textwidth]{techniccenter-profile-dvips-26} \\[4pt]
+(a) & (b)
+\end{tabular}
+\caption{Spezifikation der Ausgabeprofile in TeXnicCenter.}
+\label{fig:techniccenter-profile-latex}
+\end{figure}
+
+In der Datei \verb!tc_output_profiles_sumatra.tco! sind  folgende beiden "`maßgeschneiderten"' Ausgabeprofile für TexNicCenter angelegt (Import über \textsf{Build} $\rightarrow$ \textsf{Define Output Profiles ...}):
+\begin{itemize}
+	\item \verb!LaTeX => PDF (Sumatra)! -- Standard, direkte Erzeugung von PDF,
+	\item \verb!LaTeX => PS => PDF (Sumatra)! -- PDF "`klassisch"' via DVI und PS.
+\end{itemize}
+
+\subsubsection{Profil "`\texttt{LaTeX => PDF (Sumatra)}"'}
+
+Das ist das mit diesem Setup normalerweise verwendete Standardprofil.
+
+\paragraph{(La)Tex:}
+\begin{itemize}
+  \item Path to the (La)TeX compiler: \\
+        \begin{small} \verb!C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\pdflatex.exe!\end{small}
+  \item Command line arguments to pass to the compiler:\\
+\begin{small}
+   \verb!-synctex=-1 -interaction=nonstopmode "%pm"!
+\end{small}
+\end{itemize}
+
+\paragraph{Postprocessor:} 
+leer, kein Postprocessor notwendig.
+
+\paragraph{Viewer:}
+\begin{itemize}
+\item Path of executable: \\
+\begin{small}
+    \verb!C:\Program Files (x86)\SumatraPDF\SumatraPDF.exe ! \\ 
+    \verb!-inverse-search "\"C:\Program Files\TeXnicCenter\TEXCNTR.EXE\" !\\
+    \verb!/ddecmd \"[goto('%f','%l')]\""!
+\end{small}
+%
+\item View project's output: \\
+\begin{small}
+    \checkbox\ Command line argument \\\
+    Command: \verb!"%bm.pdf"!
+\end{small}
+%
+\item Forward search:\\
+\begin{small}
+    \checkbox\ DDE command \\\
+    Command: \verb![ForwardSearch("%bm.pdf","%Wc",%l,0)]! \\
+    Server: \verb!SUMATRA! \\
+    Topic: \verb!Control!
+\end{small}
+\item Close document before running (La)TeX:\\
+\begin{small}
+    \checkbox\ Do not close
+\end{small}
+\end{itemize}
+
+
+\subsubsection{Profil "`\texttt{LaTeX => PS => PDF (Sumatra)}"'}
+
+Profil ausschließlich für den DVI-PS-Workflow (über DVI und PostScript).
+
+\paragraph{(La)Tex:}
+\begin{itemize}
+  \item Path to the (La)TeX compiler: \\
+        \begin{small} \verb!C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\latex.exe!\end{small}
+  \item Command line arguments to pass to the compiler:\\
+\begin{small}
+   \verb!-synctex=-1 -interaction=nonstopmode "%pm"!
+\end{small}
+\end{itemize}
+
+\paragraph{Postprocessor:}
+\begin{itemize}
+  \item DviPS (PDF): \\
+        \begin{small} 
+        Executable: \verb!C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\dvips.exe! \\
+        Arguments: \verb!-ta4 -P pdf -R0 "%Bm.dvi"!
+        \end{small}
+  \item Ghostscript (ps2pdf):\\
+  		\begin{small} 
+        Executable: \verb!C:\Program Files (x86)\gs\gs9.04\bin\gswin32c.exe! \\
+        Arguments: \verb!-q -dPDFSETTINGS=/prepress -sPAPERSIZE=a4 -dSAFER! \\
+         \verb!-dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile="%bm.pdf"! \\
+         \verb!-c save pop -f "%bm.ps"!
+      \end{small}
+\end{itemize}
+
+\paragraph{Viewer:}
+wie in Profil A. (\texttt{LaTeX => PDF (Sumatra)}).
+
+\section{Tipps und offene Probleme:}
+
+\begin{itemize}
+\item \texttt{psfrag} funktioniert nicht mit \texttt{pdflatex} und es gibt auch leider keine Ersatzlösung. 
+Wenn man \texttt{psfrag} braucht, dann muss man weiterhin über PostScript 
+(\verb!LaTeX => PS => PDF!) arbeiten (was allerdings nunmehr auch mit \texttt{hyperref} kein Problem mehr ist).
+%
+\item Bei Verwendung des TexWorks-Editors (wird mit MikTeX ausgeliefert) sollte man die Standard-Zeichenkodierung von \emph{Unicode} (utf8) auf \emph{Latin-1} (ISO 8859-1) umstellen.
+%
+\item Adobe Illustrator kann beim Speichern als PDF die Bounding Box nicht setzen. 
+Eine Möglichkeit ist, die Grafik zuerst als EPS zu exportieren und dann mit Acrobat in ein PDF zu konvertieren. 
+%
+\end{itemize}
+\end{comment}
+
+
+
+\begin{comment}
+\section{Einstellungen für YAP (DVI-Viewer) im DVI-PS-Workflow}
+\label{sec:YapEinstellung}
+
+Im Standard-DVI-Viewer YAP lässt sich durch Mausklick auf das DVI-Dokument sehr leicht die zugehörige Stelle im Quelltext finden. Im Normalfall öffnet dann TeXnicCenter das zugehörige \latex-Dokument automatisch an der richtigen Stelle.
+Das zugehörige "`Inverse DVI Search"' Kommando sollte sich bereits bei der Installation richtig einstellen.
+
+Falls dies \emph{nicht} funktioniert, kann man in YAP diese Einstellung auch manuell über das Menü \textsf{View}\thinspace$\rightarrow$\thinspace\textsf{Options...} vornehmen, wie in Abb.\ \ref{fig:yap-inverse-search} gezeigt.
+In diesem Fall lautet die vollständige Anweisung in "`Command Line"' folgendermaßen:
+\begin{center}\footnotesize
+\verb!"C:\Program Files (x86)\TeXnicCenter\TEXCNTR.EXE" /ddecmd "[goto('%f', '%l')]"!
+\end{center}
+
+
+\begin{figure}
+\centering\small
+\includegraphics[width=1.0\textwidth]{yap-inverse-search-settings}
+\caption{"`Inverse DVI Search"' Einstellung in YAP (über das Menü \textsf{View}\thinspace$\rightarrow$\thinspace\textsf{Options...}).}
+\label{fig:yap-inverse-search}
+\end{figure}
+
+Latex
+C:\Program Files\MiKTeX 2.6\miktex\bin\latex.exe
+--src -interaction=nonstopmode "%Wm"
+
+Bibtex
+C:\Program Files\MiKTeX 2.6\miktex\bin\bibtex.exe
+"%bm"
+
+---
+
+DviPs (PDF)
+C:\Program Files\MiKTeX 2.6\miktex\bin\dvips.exe
+-ta4 -Ppdf  -R0 "%Bm.dvi"
+
+Ghostscript (ps2pdf)
+C:\Program Files\gs\gs8.61\bin\gswin32c.exe
+-sPAPERSIZE=a4 -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile="%bm.pdf" -c save pop -f "%bm.ps"
+
+
+YAP 
+Options -> Inverse Search
+"C:\Program Files\TeXnicCenter\TEXCNTR.EXE" /ddecmd "[goto('%f', '%l')]"
+
+\end{comment}
+

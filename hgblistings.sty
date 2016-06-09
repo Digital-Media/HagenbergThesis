@@ -1,0 +1,167 @@
+%% File encoding: UTF-8
+\ProvidesPackage{hgblistings}
+
+\RequirePackage{ifthen}
+%\RequirePackage{upquote} % Setzt "richtige" Quotes in verbatim-Umgebung
+%\RequirePackage{textcomp}
+
+\RequirePackage{xcolor}
+\definecolor{ListingsBackgroundColor}{gray}{0.95}
+
+%\RequirePackage{listings}			% utf8-change
+\RequirePackage{listingsutf8} 	% utf8-change
+\lstset{
+%language=Java,%
+inputencoding=utf8,	% utf8-change
+extendedchars=true,	% utf8-change
+basicstyle=\ttfamily\footnotesize,%
+keywordstyle=,%\ttfamily,%\bfseries,
+identifierstyle=,%\sffamily, %\bfseries
+commentstyle=\normalfont\itshape,%
+stringstyle=\ttfamily,%
+showstringspaces=false,%
+columns = flexible,% fixed, 
+breaklines=true,%
+tabsize=2, %
+backgroundcolor=\color{ListingsBackgroundColor},
+xleftmargin=6mm,%
+frame=none,
+framexleftmargin=6mm,
+numbers=left,%
+numbersep=5pt,%
+numberstyle=\normalfont\scriptsize,%
+stepnumber=1,%
+numberfirstline=true,%
+numberblanklines=true,%
+texcl=true,%		%important: read program comments as Latex content
+mathescape=false,	%no mathescape by default
+upquote=true,%
+keepspaces=true,%
+}
+
+\RequirePackage[utf8]{inputenc}
+\lstset{literate=% to allow Umlauts etc. in listed code % utf8-change
+{Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+{ß}{{\ss}}2
+}
+
+\lstnewenvironment{JavaCode}[1][]	% code environment for Java 
+{\lstset{%
+	language=Java,
+	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}
+{}
+
+\lstnewenvironment{CCode}[1][]	% code environment for C (ANSI)
+{\lstset{%
+	language=[ANSI]C,
+	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}
+{}
+
+\lstnewenvironment{CppCode}[1][]	% code environment for C++ (ISO)
+{\lstset{%
+	language=[ISO]C++,
+	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}
+{}
+
+\lstnewenvironment{CsCode}[1][]	% code environment for C#
+{\lstset{%
+	language=[Sharp]C,
+	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}
+{}
+
+\lstnewenvironment{ObjCCode}[1][]	% code environment for Objective-C
+{\lstset{%
+	language=[Objective]C,
+	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}
+{}
+
+\lstnewenvironment{PhpCode}[1][]
+{\lstset{%
+  language=PHP,
+%  mathescape=false,
+  escapeinside={/+}{+/},
+  #1}}%
+{}
+
+\lstnewenvironment{HtmlCode}[1][]
+{\lstset{%
+  language=HTML,
+%  mathescape=false,
+  escapeinside={/+}{+/},
+  #1}}%
+{}
+
+\lstdefinelanguage{CSS}
+{	morekeywords={color,background,margin,padding,font,weight,display,position,top,%
+			left,right,bottom,list,style,border,size,white,space,min,width},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]"
+}
+
+\lstnewenvironment{CssCode}[1][]
+{\lstset{%
+  language=CSS,
+%  mathescape=false,
+  escapeinside={/+}{+/},
+  #1}}%
+{}
+
+\lstnewenvironment{XmlCode}[1][]
+{\lstset{%
+  language=XML,
+%  mathescape=false,
+  escapeinside={/+}{+/},
+  #1}}%
+{}
+
+\lstdefinelanguage{JavaScript}
+{	keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function,% 
+			functionend, if, implements, in, inherit, inout, not, of, operations, out, 
+			return, set, then, types, while, use},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/}
+}
+
+\lstnewenvironment{JsCode}[1][]
+{\lstset{%
+  language=JavaScript,
+  mathescape=false,
+  escapeinside={/+}{+/},
+  #1}}%
+{}
+
+\lstnewenvironment{LaTeXCode}[1][]	% code environment for Latex
+{\lstset{%
+	language=[LaTeX]TeX,
+	commentstyle={},
+	texcl=false,
+	escapechar={},
+	%	mathescape=false,
+	escapeinside={/+}{+/},
+	#1}}%
+{}
+
+\lstnewenvironment{GenericCode}[1][]	% generic code environment
+{\lstset{%
+	language={},
+	keepspaces=true,
+	commentstyle={},
+	texcl=false,
+	escapechar={},
+	escapeinside={},
+%	mathescape=false,
+	#1}}
+{}

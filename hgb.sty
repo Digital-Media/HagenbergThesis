@@ -1,0 +1,329 @@
+%% File encoding: ASCII
+%% Autor: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% Diese Datei ist Teil des hagenberg-Package zur Erstellung von 
+%% Bachelor- und Diplomarbeiten.
+
+\NeedsTeXFormat{LaTeX2e}
+\newcommand{\hgbDate}{2015/11/04}	%Versionsdatum
+\ProvidesPackage{hgb}[\hgbDate]
+
+% options german/english are passed from the class file
+\DeclareOption{english}{\providecommand{\hgb@MainLanguage}{english}}
+\DeclareOption{german}{\providecommand{\hgb@MainLanguage}{german}}
+\ProcessOptions\relax
+
+%% ------------------ Required Packages ----------------------
+
+\RequirePackage{lmodern}	   			% use Latin Modern Fonts
+\RequirePackage{cmap}	       			% make generated PDF files "searchable and copyable"
+\RequirePackage[T1]{fontenc}   		% T1 font encoding for improved hyphenation
+
+\RequirePackage{ifthen}
+
+\RequirePackage[english,german,ngerman]{babel}
+\@ifundefined{hgb@MainLanguage}%
+   {\newcommand*{\hgb@MainLanguage}{german}}%
+	 {}
+
+% Hauptsprache einstellen (babel):
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	{\main@language{ngerman}}{}
+\ifthenelse{\equal{\hgb@MainLanguage}{english}}%
+	{\main@language{english}}{}
+
+
+\RequirePackage{datetime}
+\RequirePackage{upquote} % Setzt "richtige" Quotes in verbatim-Umgebung
+\RequirePackage{eurosym} % provides \euro - conflict with marvosym on \EUR!
+
+\RequirePackage{graphicx}
+\RequirePackage[percent]{overpic} % to allow text/graphics overlays on pictures
+\RequirePackage{pict2e}           % extends the LaTeX 'picture' environment		
+
+\RequirePackage{xcolor}
+\newcommand{\@MissingArg}[1]{\textcolor{red}{#1}}
+
+\RequirePackage[T1,hyphens,obeyspaces,spaces,lowtilde]{url}
+\urlstyle{sf}
+
+\RequirePackage{verbatim}
+\RequirePackage{moreverb}
+\def\verbatimtabsize{2\relax}
+
+%\RequirePackage[noadjust]{cite} % vermeidet zusaetzliches Spacing vor [..]
+
+\RequirePackage{ifpdf}
+\ifpdf % LaTeX is in native PDF mode (pdflatex) 
+  \RequirePackage{epstopdf}		% zur automatischen Konvertierung von EPS-Dateien nach PDF fuer pdflatex
+%  \pdfcompresslevel=0			  % 0 = keine Kompression, 9 = max. Kompression
+%  \pdfimageresolution=300
+\else % LaTeX is in emulation mode (DVI-PS-PDF)
+  \RequirePackage[hyphenbreaks]{breakurl}	% erlaubt Zeilenumbruch von URLs auch ohne pdflatex (DIV, PS, PDF)
+\fi	
+
+
+%% -----------  hyperref setup ------------------------
+
+\RequirePackage[unicode]{hyperref}	% utf8-change
+\hypersetup{
+	linktocpage = true,						% make page number, not text, be link on TOC, LOF and LOT 
+  colorlinks = false,						% don't uses colored links (because this shows up in printing!) 
+	pdfborder = {0 0 0.5},				% use a thinner (0.5pt) border around all PDF links
+	allbordercolors = {0 0 0.8},	% dark blue border for all types of links
+	breaklinks = true							% allow links to break over lines by making links over multiple lines
+}	%see https://www.tug.org/applications/hyperref/manual.html
+
+
+%\RequirePackage[all]{hypcap} % fixes hyperref problem with references to float captions
+\RequirePackage[figure,table,table*]{hypcap}	% do not redefine figure* for use in article (without captions)
+%\RequirePackage[novbox]{pdfsync} % ersetzt durch -synctex=-1 option
+%\RequirePackage[noadjust]{cite} % vermeidet zusaetzliches Spacing vor [..] % entfernt wegen biblatex
+
+
+%% ------------- Math Stuff --------------
+
+\RequirePackage{amsmath,amsfonts,amssymb,amsbsy}
+\RequirePackage{subdepth} % zur Positionierung von Sub-/Superscripts
+\RequirePackage{exscale} % Skaliert Mathe-Modus Ausgaben in allen Umgebungen richtig.
+
+%Zeichen fuer die reellen, komplexen ... Zahlen (AMS Blackboard)
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+%\newcommand{\C}{\mathbb{C}} % utf8-change (problem with T1 encoding)
+\newcommand{\Cpx}{\ensuremath{\mathbb{C}}}	% utf8-change
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+
+
+%% ---------------------- Language environments -------------------------
+
+% Umschalten von Deutsch auf Englisch (babel)
+\newenvironment{english}%
+{\begin{otherlanguage}{english}}%
+{\end{otherlanguage}}
+
+\newenvironment{german}%
+{\begin{otherlanguage}{ngerman}}%
+{\end{otherlanguage}}
+
+
+%% --------------------- Div. Utility Makros --------------------------------
+
+\newcommand\trennstrich{%
+  \nopagebreak[4]
+  \vskip 1.5ex %
+%  \nopagebreak[4]
+  \noindent\makebox[\textwidth]{\rule{4cm}{0.4pt}}
+  \vskip 2.5ex}
+
+
+% Erzeugt einen neuen, nicht eingerückten Absatz mit zusaetzlichem Abstand:
+\newcommand{\SuperPar}[0]{% 
+\par\bigskip\noindent%
+}
+
+%Messbox zur Druckkontrolle:
+\newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
+\setlength{\unitlength}{1.0mm}%
+\begin{picture}(#1,#2)%
+\linethickness{0.05mm}%
+\put(0,0){\dashbox{0.2}(#1,#2)%
+{\parbox{#1mm}{%
+\centering\footnotesize 
+%{\bf MESSBOX}\\ 
+Breite $ = #1 {\rm\ mm}$\\
+H\"ohe $ = #2 {\rm\ mm}$
+}}}\end{picture}
+}
+
+%\newcommand{\ShowParameter}[1]{\relax\the#1\showthe#1} % to display TeX parameters
+\newcommand{\ShowParameter}[1]{\the#1\showthe#1} % to display TeX parameters
+%Beispiel: clubpenalty = \ShowParameter{\clubpenalty}
+
+
+%% ------------- Einstellungen fuer's Layout --------------
+
+\frenchspacing     	  % erzeugt normale Abstaende zwischen Saetzen
+\setlength{\parskip}{0pt plus 0.1pt}
+\raggedbottom					%\flushbottom
+
+%\pagestyle{headings}  % Normale Kopfzeilen
+
+%% div. Parameter: nur dann aendern, wenn man genau weiss was man tut!
+%\setlength{\hoffset}{-1in}
+%\setlength{\voffset}{-1in}
+%\setlength{\oddsidemargin}{3cm}
+%\setlength{\evensidemargin}{2.5cm}
+%\setlength{\textwidth}{15.5cm}
+%\setlength{\textheight}{22.8cm}
+%\setlength{\topmargin}{2.54cm}
+%\setlength{\headheight}{1ex}
+%\setlength{\headsep}{1cm}
+%\parindent0pt
+%\parskip1.5ex plus0.5ex minus0.5ex % flexibler Absatzabstand
+
+\RequirePackage{float}
+%\floatplacement{figure}{tbp}
+%\floatplacement{table}{tbp}
+\floatstyle{plain}
+
+% Captions mit Fontgroesse "small" und Abstand vom Seitenrand
+\RequirePackage[small,bf]{caption}
+\setlength{\captionmargin}{5mm}
+\setlength{\abovecaptionskip}{10pt}
+\setlength{\belowcaptionskip}{10pt}
+
+% Make float placement easier    
+\renewcommand{\floatpagefraction}{.9}  % vorher: .5
+\renewcommand{\textfraction}{.1}      % vorher: .2
+\renewcommand{\topfraction}{.9}        % vorher: .7
+\renewcommand{\bottomfraction}{.7}     % vorher: .3
+\setcounter{topnumber}{3}              % vorher: 2
+\setcounter{bottomnumber}{2}           % vorher: 1
+\setcounter{totalnumber}{5}            % vorher: 3
+
+
+%\RequirePackage[small,rm,loose]{subfigure}
+%\setlength{\subfigtopskip}{7pt}
+%\setlength{\subfigcapskip}{7pt}
+%\setlength{\subfigcaptopadj}{0pt} 
+%\setlength{\subfigbottomskip}{-3pt}
+%\setlength{\subfigcapmargin}{0pt} 
+%\setlength{\subfiglabelskip}{0.33em plus 0.07em minus 0.03em}
+
+\RequirePackage{enumitem}	% fix excessive vertical spacing in lists
+\setlist{%
+	partopsep = .0ex plus .1ex, 
+	topsep = .6ex plus .3ex, 
+	itemsep = .0ex plus .1ex, 
+	parsep = .4ex plus .2ex
+}
+%\setlist{nolistsep}	% kein Spacing zwischen items
+%\setlist{noitemsep}  % überhaupt kein vertik. Spacing
+
+
+\newenvironment{nowidows}%
+	{\clubpenalty=10000%
+	\widowpenalty=10000%
+	\displaywidowpenalty=10000}%
+	{}
+%Beispiel:
+% \begin{nowidows}
+% Beliebiger Text, in dem absolut keine Hurenkinder zugelassen werden.
+% \end{nowidows}
+
+
+%% ------------- Definitions for Algorithms ---------
+
+% 'algorithm' liefert die Float-Umgebung für Algorithmen (\begin{algorithm}...)
+\@ifundefined{chapter}%
+  {\RequirePackage[ruled]{algorithm}}%
+	{\RequirePackage[ruled,chapter]{algorithm}}
+
+%\floatname{algorithm}{Algorithmus}
+%\DeclareCaptionLabelSeparator{colon}{: } % Anpassung an den standard caption style
+\DeclareCaptionStyle{ruled}{labelfont=bf,labelsep=colon} 
+
+% 'algorithmicx' liefert das Innere der Algorithmen (\begin{algorithmic}[1]...)
+\RequirePackage{algorithmicx}
+\RequirePackage{algpseudocode}
+\algsetlanguage{pseudocode}
+\renewcommand{\algorithmicprocedure}{} % use no 'Procedure' keyword
+
+
+%% ------------- program and algorithm environments  --------------
+
+% define the program float environment:
+\@ifundefined{chapter}%
+   {\newfloat{program}{tbp}{lop}}%
+	 {\newfloat{program}{tbp}{lop}[chapter]}
+%\floatname{program}{Programm}
+%\floatname{program}{\@ProgramName}
+\floatstyle{plain}
+\restylefloat*{program}
+	
+\ifthenelse{\equal{\bbl@main@language}{german} \or \equal{\bbl@main@language}{ngerman}}%
+{	\floatname{program}{Programm}
+  \floatname{algorithm}{Algorithmus}
+}{}
+
+\ifthenelse{\equal{\bbl@main@language}{english}}%
+{	\floatname{program}{Program}
+  \floatname{algorithm}{Algorithm}
+}{}
+
+
+%% ------ Date-related commands ----------------------------------
+
+\RequirePackage{datetime}
+\showdowfalse	% do not show day of week
+
+% adapted from \newdate in datetime.sty
+\newcommand*{\@modifydate}[4]{%
+\@namedef{date@#1@d}{#2}%
+\@namedef{date@#1@m}{#3}%
+\@namedef{date@#1@y}{#4}%
+}
+
+\newdate{hgb@date}{\the\day}{\the\month}{\the\year}
+\newcommand{\Date}[3]{%	example for use: \Date{16}{5}{2008}
+  \@modifydate{hgb@date}{#1}{#2}{#3}
+}
+
+\newcommand{\hgb@GetDateDay}{\getdateday{hgb@date}}
+\newcommand{\hgb@GetDateMonth}{\getdatemonth{hgb@date}}
+\newcommand{\hgb@GetDateYear}{\getdateyear{hgb@date}}
+\newcommand{\hgb@DisplayDate}{\displaydate{hgb@date}}
+
+%% ------------- Experimental items --------------
+
+\newenvironment{NarrowList}%
+{\begin{list}{}%
+{\setlength{\leftmargin}{2.5em}
+ \setlength{\labelwidth}{1em}
+ \setlength{\labelsep}{0.5em}
+ \setlength{\itemsep}{0.5ex}
+ \setlength{\parsep}{0ex}
+ \setlength{\topsep}{0ex}
+\raggedright
+}}%
+{\end{list}}
+
+\newenvironment{FileList}[1]%
+{\paragraph{Pfad:} \url{#1}
+ \begin{list}{}%
+{\setlength{\leftmargin}{5cm}
+ \setlength{\labelwidth}{4cm}
+ \setlength{\labelsep}{0.25cm}
+ \setlength{\rightmargin}{0cm}
+ \setlength{\itemindent}{0cm}
+ \setlength{\itemsep}{0.5ex}
+ \setlength{\parsep}{0ex}
+ \setlength{\topsep}{1ex}
+\raggedright
+}}%
+{\end{list}}
+
+\def\widedotfill{\leaders\hbox to 8pt{\hfil.\hfil}\hfill}
+
+\newcommand{\fitem}[1]{%
+%\item[\url{#1}\hfill]
+%\item[\url{#1}\dotfill]
+\item[\url{#1}\widedotfill]
+}
+
+\newcommand{\Frametext}[1]{%
+\setlength{\fboxrule}{0.05mm}%
+\setlength{\fboxsep}{0.5mm}%
+\fbox{\vphantom{Ag}#1}%
+}
+
+\newcommand{\FramePic}[1]{%
+\setlength{\fboxrule}{0.1mm}%
+\setlength{\fboxsep}{0mm}%
+\fbox{#1}%
+}
+
+%% -------------------------------------------------------
+
+
