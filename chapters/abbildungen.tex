@@ -597,18 +597,19 @@ realisiert.
 \centering
 \begin{tabular}{llll}
 	\hline
-	C (ANSI):   & \verb!\begin{CCode}! & \verb!...! \verb!\end{CCode}! \\
-	C++ (ISO):  & \verb!\begin{CppCode}! & \verb!...! \verb!\end{CppCode}! \\
-	C\#:   & \verb!\begin{CsCode}! & \verb!...! \verb!\end{CsCode}! \\
-	Objective-C:   & \verb!\begin{ObjCCode}! & \verb!...! \verb!\end{ObjCCode}! \\
-	Java:       & \verb!\begin{JavaCode}! & \verb!...! \verb!\end{JavaCode}! \\
-	JavaScript:  			& \verb!\begin{JsCode}! & \verb!...! \verb!\end{JsCode}! \\
-	PHP:  			& \verb!\begin{PhpCode}! & \verb!...! \verb!\end{PhpCode}! \\
-	HTML:  			& \verb!\begin{HtmlCode}! & \verb!...! \verb!\end{HtmlCode}! \\
-	CSS:  			& \verb!\begin{CssCode}! & \verb!...! \verb!\end{CssCode}! \\
-	XML:  			& \verb!\begin{XmlCode}! & \verb!...! \verb!\end{XmlCode}! \\
-	\latex:     & \verb!\begin{LaTeXCode}! & \verb!...! \verb!\end{LaTeXCode}! \\
-	Generisch:  & \verb!\begin{GenericCode}! & \verb!...! \verb!\end{GenericCode}! \\
+	C (ANSI): & \verb!\begin{CCode}! & \verb!...! \verb!\end{CCode}! \\
+	C++ (ISO): & \verb!\begin{CppCode}! & \verb!...! \verb!\end{CppCode}! \\
+	C\#: & \verb!\begin{CsCode}! & \verb!...! \verb!\end{CsCode}! \\
+	CSS: & \verb!\begin{CssCode}! & \verb!...! \verb!\end{CssCode}! \\
+	HTML: & \verb!\begin{HtmlCode}! & \verb!...! \verb!\end{HtmlCode}! \\
+	Java: & \verb!\begin{JavaCode}! & \verb!...! \verb!\end{JavaCode}! \\
+	JavaScript: & \verb!\begin{JsCode}! & \verb!...! \verb!\end{JsCode}! \\
+	\latex: & \verb!\begin{LaTeXCode}! & \verb!...! \verb!\end{LaTeXCode}! \\
+	Objective-C: & \verb!\begin{ObjCCode}! & \verb!...! \verb!\end{ObjCCode}! \\
+	PHP: & \verb!\begin{PhpCode}! & \verb!...! \verb!\end{PhpCode}! \\
+	Swift: & \verb!\begin{SwiftCode}! & \verb!...! \verb!\end{SwiftCode}! \\
+	XML: & \verb!\begin{XmlCode}! & \verb!...! \verb!\end{XmlCode}! \\
+	Generisch: & \verb!\begin{GenericCode}! & \verb!...! \verb!\end{GenericCode}! \\
 	\hline
 \end{tabular}
 \end{table}
@@ -630,7 +631,8 @@ Der Quellcode innerhalb dieser Umgebungen wird in der jeweiligen Programmierspra
 \end{quote}
 %
 Ein Beispiel mit Java ist in Prog.~\ref{prog:CodeExample} gezeigt, wobei der oben angeführte Label in Zeile \ref{ExampleCodeLabel} steht.
-Man beachte, dass innerhalb der Kommentare auch mathematischer Text (wie etwa in Zeile \ref{MathInCode} von Prog.~\ref{prog:CodeExample}) stehen kann.
+Man beachte, dass innerhalb der Kommentare auch mathematischer Text 
+(wie etwa in Zeile \ref{MathInCode} von Prog.~\ref{prog:CodeExample}) stehen kann.
 
 
 \subsubsection{Nummerierung der Code-Zeilen}
@@ -666,7 +668,6 @@ des optionalen Arguments
 %
 In diesem Fall ist natürlich die Verwendung von Zeilenlabels im Code nicht
 sinnvoll.
-
 
 
 \subsection{Platzierung von Programmcode}
@@ -765,7 +766,7 @@ public class My_Inverter implements PlugInFilter {
   String title = ""; // just to test printing of double quotes
 
 	public int setup (String arg, ImagePlus im) {
-		return DOES_8G;	// this plugin accepts 8-bit grayscale images \label{pr:IjSamplePlugin10}
+		return DOES_8G;	// this plugin accepts 8-bit grayscale images /+\label{pr:IjSamplePlugin10}+/
 	}
 
 	public void run (ImageProcessor ip) {
@@ -776,11 +777,11 @@ public class My_Inverter implements PlugInFilter {
 		for (int u = 0; u < w; u++) { 
 			for (int v = 0; v < h; v++) {
 				int p = ip.getPixel(u, v); 
-				ip.putPixel(u, v, 255-p); // invert: $I'(u,v) \leftarrow 255 - I(u,v)$\label{MathInCode}
+				ip.putPixel(u, v, 255-p); // invert: /+$I'(u,v) \leftarrow 255 - I(u,v)$\label{MathInCode}+/
 			}
 		}
 	}		
-} // end of class {\tt My\_Inverter}
+} // end of class My_Inverter
 \end{JavaCode}
 %
 \end{program}

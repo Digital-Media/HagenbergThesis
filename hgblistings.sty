@@ -33,7 +33,7 @@ numberstyle=\normalfont\scriptsize,%
 stepnumber=1,%
 numberfirstline=true,%
 numberblanklines=true,%
-texcl=true,%		%important: read program comments as Latex content
+texcl=false,%		%important: read program comments as Latex content
 mathescape=false,	%no mathescape by default
 upquote=true,%
 keepspaces=true,%
@@ -50,60 +50,39 @@ keepspaces=true,%
 {ß}{{\ss}}2
 }
 
-\lstnewenvironment{JavaCode}[1][]	% code environment for Java 
-{\lstset{%
-	language=Java,
-	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
-	#1}}
-{}
+% --- Code Environments
 
-\lstnewenvironment{CCode}[1][]	% code environment for C (ANSI)
+% Code Environment for C (ANSI)
+\lstnewenvironment{CCode}[1][]
 {\lstset{%
 	language=[ANSI]C,
-	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
-	#1}}
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
 {}
 
-\lstnewenvironment{CppCode}[1][]	% code environment for C++ (ISO)
+
+% Code Environment for C++ (ISO)
+\lstnewenvironment{CppCode}[1][]
 {\lstset{%
 	language=[ISO]C++,
-	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
-	#1}}
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
 {}
 
-\lstnewenvironment{CsCode}[1][]	% code environment for C#
+
+% Code Environment for C#
+\lstnewenvironment{CsCode}[1][]
 {\lstset{%
 	language=[Sharp]C,
-	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
-	#1}}
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
 {}
 
-\lstnewenvironment{ObjCCode}[1][]	% code environment for Objective-C
-{\lstset{%
-	language=[Objective]C,
-	escapeinside={/+}{+/},% makes "/+" and "+/" available for Latex escapes (labels etc.)
-	#1}}
-{}
 
-\lstnewenvironment{PhpCode}[1][]
-{\lstset{%
-  language=PHP,
-%  mathescape=false,
-  escapeinside={/+}{+/},
-  #1}}%
-{}
-
-\lstnewenvironment{HtmlCode}[1][]
-{\lstset{%
-  language=HTML,
-%  mathescape=false,
-  escapeinside={/+}{+/},
-  #1}}%
-{}
-
+% Language Definition and Code Environment for CSS
 \lstdefinelanguage{CSS}
 {	morekeywords={color,background,margin,padding,font,weight,display,position,top,%
-			left,right,bottom,list,style,border,size,white,space,min,width},
+		left,right,bottom,list,style,border,size,white,space,min,width},
 	sensitive=false,
 	morecomment=[l]{//},
 	morecomment=[s]{/*}{*/},
@@ -112,49 +91,14 @@ keepspaces=true,%
 
 \lstnewenvironment{CssCode}[1][]
 {\lstset{%
-  language=CSS,
-%  mathescape=false,
-  escapeinside={/+}{+/},
-  #1}}%
-{}
-
-\lstnewenvironment{XmlCode}[1][]
-{\lstset{%
-  language=XML,
-%  mathescape=false,
-  escapeinside={/+}{+/},
-  #1}}%
-{}
-
-\lstdefinelanguage{JavaScript}
-{	keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function,% 
-			functionend, if, implements, in, inherit, inout, not, of, operations, out, 
-			return, set, then, types, while, use},
-	sensitive=false,
-	morecomment=[l]{//},
-	morecomment=[s]{/*}{*/}
-}
-
-\lstnewenvironment{JsCode}[1][]
-{\lstset{%
-  language=JavaScript,
-  mathescape=false,
-  escapeinside={/+}{+/},
-  #1}}%
-{}
-
-\lstnewenvironment{LaTeXCode}[1][]	% code environment for Latex
-{\lstset{%
-	language=[LaTeX]TeX,
-	commentstyle={},
-	texcl=false,
-	escapechar={},
-	%	mathescape=false,
-	escapeinside={/+}{+/},
+	language=CSS,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
 	#1}}%
 {}
 
-\lstnewenvironment{GenericCode}[1][]	% generic code environment
+
+% Code Enivornmente for Generic Code
+\lstnewenvironment{GenericCode}[1][]
 {\lstset{%
 	language={},
 	keepspaces=true,
@@ -162,6 +106,98 @@ keepspaces=true,%
 	texcl=false,
 	escapechar={},
 	escapeinside={},
-%	mathescape=false,
 	#1}}
+{}
+
+
+% Code Enivornmente for HTML
+\lstnewenvironment{HtmlCode}[1][]
+{\lstset{%
+	language=HTML,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Enivornmente for Java
+\lstnewenvironment{JavaCode}[1][]
+{\lstset{%
+	language=Java,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Language Definition and Code Environment for JavaScript
+\lstdefinelanguage{JavaScript}
+{	keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function,% 
+		functionend, if, implements, in, inherit, inout, not, of, operations, out,% 
+		return, set, then, types, while, use},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/}
+}
+
+\lstnewenvironment{JsCode}[1][]
+{\lstset{%
+	language=JavaScript,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for LaTeX
+\lstnewenvironment{LaTeXCode}[1][]	% code environment for Latex
+{\lstset{%
+	language=[LaTeX]TeX,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for Objective-C
+\lstnewenvironment{ObjCCode}[1][]
+{\lstset{%
+	language=[Objective]C,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for PHP
+\lstnewenvironment{PhpCode}[1][]
+{\lstset{%
+	language=PHP,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Language Definition and Code Environment for Swift
+\lstdefinelanguage{Swift}
+{	keywords=[1]{typealias,true, false,catch,private,internal,public,func,protocol,%
+		optional,return,nil,catch,switch,let,as,var,if,in,for,while,where,do,else,case,%
+		break,import,class,struct,enum,override,super,required,designated,convenience},
+	keywords=[2]{String,Int,Double,Float},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstnewenvironment{SwiftCode}[1][]
+{\lstset{%
+	language=Swift,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for XML
+\lstnewenvironment{XmlCode}[1][]
+{\lstset{%
+	language=XML,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
 {}
