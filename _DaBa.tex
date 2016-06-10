@@ -1,63 +1,56 @@
-%% File encoding: UTF-8
-%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
+%%% File encoding: UTF-8
+%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 \documentclass[master,german]{hgbthesis}
 % Zulässige Class Options: 
 %   Typ der Arbeit: diplom, master (default), bachelor, praktikum 
 %   Hauptsprache: german (default), english
-%%------------------------------------------------------------
+%%%----------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
+\RequirePackage[utf8]{inputenc}		% Bei der Verw. von lualatex oder xelatex entfernen!
 
-\graphicspath{{images/}}    % name of directory containing the images
-\logofile{logo}							% name of logo-PDF in images/ (or use \logofile{} for no logo)
-\bibliography{literatur}  	% name of the BibTeX (.bib) file
+\graphicspath{{images/}}    % Abbildungsverzeichnis
+\logofile{logo}				% Name des Logo-PDFs in images/ (\logofile{}, wenn kein Logo gewünscht)
+\bibliography{literatur}  	% Name der Biblatex-Literaturdatei (.bib)
 
+%%%----------------------------------------------------------
+% Angaben für die Titelei (Titelseite, Erklärung etc.)
+%%%----------------------------------------------------------
+
+%%% Einträge für ALLE Arbeiten: -----------------------------
+\title{Partielle Lösungen zur allgemeinen Problematik}
+\author{Peter A.\ Schlaumeier}
+\studiengang{Universal Computing}
+\studienort{Hagenberg}
+\abgabedatum{2017}{02}{03}	% {YYYY}{MM}{DD}
+
+%%% Zusätzlich für eine Bachelorarbeit: ---------------------
+\nummer{XXXXXXXXXX-A}   % Stud-ID, z.B. 1310238045-A  
+% (A = 1. Bachelorarbeit)
+\semester{Sommersemester 2016} 
+\gegenstand{Einführung in die Tiefere Problematik 1} 
+\betreuer{Alois B.~Treuer, Päd.\ Phil.} % oder \betreuerin{..}
+
+%%% Restriktive Lizenformel anstatt CC (nur für Typ master) -
+%\strictlicense
 
 %%%----------------------------------------------------------
 \begin{document}
 %%%----------------------------------------------------------
 
-% Einträge für ALLE Arbeiten: --------------------------------
-\title{Partielle Lösungen zur allgemeinen Problematik}
-\author{Peter A.\ Schlaumeier}
-\studiengang{Universal Computing}
-\studienort{Hagenberg}
-\abgabedatum{2015}{07}{14}	% {YYYY}{MM}{DD}
-
-%%% zusätzlich für eine Bachelorarbeit: ---------------------
-\nummer{XXXXXXXXXX-A}   % Stud-ID, z.B. 0310238045-A  
-                        % (A = 1. Bachelorarbeit)
-\semester{Sommersemester 2015} 
-\gegenstand{Einführung in die Tiefere Problematik 1} 
-\betreuer{Alois B.~Treuer, Päd.\ Phil.} % oder \betreuerin{..}
-
-%%% zusätzlich für einen Praktikumsbericht: -----------------
-\nummer{XXXXXXXXXX-B}   % Stud-ID, z.B. 0310238045-B  
-                        % (B = 2. Bachelorarbeit)
-\betreuer{Mag.~Pjotr I.~Czar\\Creative Director}  % \betreuerin{..}
-\firma{%
-   Oligarchic Media International GmbH\\
-   Online Division\\
-   1020 Wien, Hubertusgasse 3a
-}
-\firmenTel{1-234-5678-100}
-\firmenUrl{www.mogul.at}
-
-%\strictlicense  % erzeugt restriktive Lizenzformel
-
 %%%----------------------------------------------------------
-\frontmatter
+\frontmatter                    % Titelei (röm. Seitenzahlen)
+%%%----------------------------------------------------------
+
 \maketitle
 \tableofcontents
-%%%----------------------------------------------------------
 
-\include{front/vorwort}		% ggfs. weglassen
+\include{front/vorwort} % Optional. Ggf. weglassen
 \include{front/kurzfassung}		
 \include{front/abstract}			
 
 %%%----------------------------------------------------------
-\mainmatter         % Hauptteil (ab hier arab. Seitenzahlen)
+\mainmatter          % Hauptteil (ab hier arab. Seitenzahlen)
 %%%----------------------------------------------------------
 
 \include{chapters/einleitung}
@@ -70,19 +63,21 @@
 \include{chapters/schluss}
 
 %%%----------------------------------------------------------
-%%%Anhang
-\appendix
+\appendix                                            % Anhang 
+%%%----------------------------------------------------------
+
 \include{back/anhang_a}	% Technische Ergänzungen
 \include{back/anhang_b}	% Inhalt der CD-ROM/DVD
 \include{back/anhang_c}	% Chronologische Liste der Änderungen
 \include{back/anhang_d}	% Quelltext dieses Dokuments
 
-
 %%%----------------------------------------------------------
-\MakeBibliography
+\MakeBibliography                        % Quellenverzeichnis
 %%%----------------------------------------------------------
 
-%%%Messbox zur Druckkontrolle
+%%% Messbox zur Druckkontrolle ------------------------------
 \include{back/messbox}
 
+%%%----------------------------------------------------------
 \end{document}
+%%%----------------------------------------------------------
