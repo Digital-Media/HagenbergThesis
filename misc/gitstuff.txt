@@ -1,0 +1,11 @@
+List current remotes (origin + github):
+git remote -v
+
+Add a new remote
+git remote add <name> <url>
+
+Push to remote
+git push origin
+git push github
+
+
