@@ -13,3 +13,5 @@ Push to remote(s):
 	git push overleaf
 	git push --all
 
+Pull from alternate remote:
+	git pull --rebase overleaf master
