@@ -16,8 +16,10 @@ Die Vorlage basiert auf einer eigenen LaTeX-Dokumentenklasse (hgbthesis.cls) und
 ### Online-Modus (experimentell):
 
 Die Vorlage kann auch im Online-Modus verwendet werden, mit dem Vorteil, dass keine LaTeX-Installation am eigenen Computer erforderlich ist:
-* Vorlage auf Overleaf: **https://www.overleaf.com/latex/templates/hagenberg-thesis-template/mrpbhfwzyvsq**
-* Personal Account anlegen (gratis).
-* Vorlage übernehmen
-* Hauptdatei auswählen (z.B. **_thesis.tex**, **_praktikum.tex**, ...) und editieren.
-* Über GIT synchronisieren (falls gewünscht).
+* Vorlage auf **Overleaf**: **https://www.overleaf.com/latex/templates/hagenberg-thesis-template/mrpbhfwzyvsq**
+
+Zur Verwendung sind folgende Schritte erforderlich:
+* Personal Account anlegen (gratis),
+* Vorlage übernehmen (s. oben),
+* Hauptdatei auswählen (z.B. **_thesis.tex**, **_praktikum.tex**, ...) und editieren,
+* Dateien über GIT synchronisieren (falls gewünscht).
