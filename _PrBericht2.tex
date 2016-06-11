@@ -1,0 +1,101 @@
+%% A simple template for a lab or course report using the Hagenberg setup
+%% with the standard LaTeX 'report' class
+%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
+
+\documentclass[a4paper,english,11pt]{report}		
+%\documentclass[a4paper,ngerman,11pt]{report}
+
+\usepackage{hgb}
+\usepackage{hgbabbrev}
+\usepackage{hgblistings}
+\usepackage{hgbbib}
+\usepackage{hgbheadings}
+
+\RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
+
+\graphicspath{{images/}}  % where are the images?
+\bibliography{literatur}  % requires file 'literatur.bib'
+
+\author{Peter A.\ Wiseguy}
+\title{IM520/MC505 Computer Vision\\ Term Report}
+\date{June 2015}
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+\maketitle
+\tableofcontents
+%%%----------------------------------------------------------
+
+\chapter*{Preface} % Vorwort
+
+This document is a simple template for a typical term or semester paper (lab/course report, 
+``Übungsbericht'' etc.) based on the \texttt{hagenberg} \latex package.%
+\footnote{See \url{http://sourceforge.net/projects/hgbthesis/} for the most current version.}
+It is based on \latex's standard \texttt{report} document class with \texttt{chapter} as the top 
+structuring element.
+If you wish to write this report in German you should substitute the line
+\begin{quote}
+ \verb!\documentclass[a4paper,english,11pt]{report}! 
+\end{quote}
+at the top of this document by
+\begin{quote}
+ \verb!\documentclass[a4paper,ngerman,11pt]{report}!.
+\end{quote}
+Also, you may want to place the text of the individual chapters in separate files and 
+include them using \verb!\include{..}! 
+(see file \verb!_DaBa.tex!).
+
+Simply omit this chapter (which could also be called ``Abstract'') if you do not want to provide this kind of summary.
+
+
+%%%----------------------------------------------------------
+\chapter{Guidelines}
+%%%----------------------------------------------------------
+
+Here are a few guidelines for the reports expected to be turned in for this course.
+
+One chapter should be provided for each assignment.
+Describe the given task in your own words (do not replicate the assignment 1:1). 
+Then describe your approach, explain the main difficulties, clearly outline your solution, finally provide illustrative and meaningful results. 
+
+Use mathematical and algorithmic notation wherever appropriate (usually this is not done enough). Try to go beyond the material you find elsewhere and to use and extend formal descriptions in a creative way. Also, try to keep your notation simple and consistent, which is not always easy to do. Look at good examples and consider this part of the learning process. Do not, on the other hand, explain details that are common knowledge (such as, for example, Pythagoras' law). Get used to work with formal and concise descriptions and train yourself in ``getting the notation right''.
+Be creative when it comes to designing tests and selecting good examples.
+%
+\begin{center}
+\textbf{Don't just show your program code!} 
+\end{center}
+%
+By the way, all you ever need to know about image processing (and more) can be 
+found in \cite{BurgerBurge2008}.%
+\footnote{This ridiculous statement should only produce a citation so the 
+bibliography is not empty.} 
+
+
+%%%----------------------------------------------------------
+\chapter{Texture Segmentation}
+%%%----------------------------------------------------------
+
+Description of this task follows here.
+
+
+
+%%%----------------------------------------------------------     
+\chapter{Camera Calibration}
+%%%----------------------------------------------------------
+
+More chapters will follow.
+
+
+
+\chapter{Summary and comments}
+
+This could be a good place to describe how you experienced this course, what you liked or didn't, and to provide suggestions for improvement.
+
+
+
+%%%----------------------------------------------------------
+\MakeBibliography[nosplit]
+%%%----------------------------------------------------------
+
+\end{document}
