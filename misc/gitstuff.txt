@@ -6,9 +6,9 @@ List current remotes:
 
 Add a new remote:
 	git remote add <name> <url>
-	git remote add overleaf https://www.overleaf.com/5430778jcfjpz
+	git remote add overleaf https://git.overleaf.com/5430778jcfjpz
 
-Push to remote:
+Push to remote(s):
 	git push origin
 	git push overleaf
 	git push --all
