@@ -1,4 +1,4 @@
-# Hagenberg LaTeX Thesis Template
+﻿# Hagenberg LaTeX Thesis Template
 **LaTeX-Vorlage für Bachelor- und Masterarbeiten**
 
 Moderne LaTeX-Vorlage für Abschlussarbeiten an der Universität oder Fachhochschule (Bachelorarbeit, Master, Diplom). 
@@ -16,7 +16,7 @@ Die Vorlage basiert auf einer eigenen LaTeX-Dokumentenklasse (hgbthesis.cls) und
 ### Online-Modus (experimentell):
 
 Die Vorlage kann auch im Online-Modus verwendet werden, mit dem Vorteil, dass keine LaTeX-Installation am eigenen Computer erforderlich ist:
-* Vorlage auf **Overleaf**: **https://www.overleaf.com/latex/templates/hagenberg-thesis-template/mrpbhfwzyvsq**
+* Vorlage auf **Overleaf**: **https://www.overleaf.com/read/hdtrcxvzgchh**
 
 Zur Verwendung sind folgende Schritte erforderlich:
 * Personal Account anlegen (gratis),
