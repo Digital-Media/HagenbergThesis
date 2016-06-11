@@ -13,6 +13,16 @@ Diese Vorlage dient gleichzeitig als Anleitung und Vorlage für die Erstellung e
 
 Die Vorlage basiert auf einer eigenen LaTeX-Dokumentenklasse (hgbthesis.cls) und mehreren Style-Dateien (hgb.sty, ...), die unabhängig auch für andere Arten von Dokumenten verwendet werden können.
 
+
+### Checkout:
+
+Um die Vorlage auf dem eigenen Computer zu bearbeiten, gibt es 2 Möglichkeiten:
+
+1. Als ZIP-Datei downloaden und an passender Stelle expandieren.
+2. ALs GIT Repository klonen.
+
+
+
 ### Online-Modus (experimentell):
 
 Die Vorlage kann auch im Online-Modus verwendet werden, mit dem Vorteil, dass keine LaTeX-Installation am eigenen Computer erforderlich ist:
