@@ -11,7 +11,7 @@ Add a new remote:
 Push to remote(s):
 	git push origin
 	git push overleaf
-	git push --all
+	git.exe push --progress "origin" master:master
 
 Pull from alternate remote:
 	git pull --rebase overleaf master
