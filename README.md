@@ -16,10 +16,11 @@ Die Vorlage basiert auf einer eigenen LaTeX-Dokumentenklasse (hgbthesis.cls) und
 
 ### Checkout:
 
-Um die Vorlage auf dem eigenen Computer zu bearbeiten, gibt es 2 Möglichkeiten:
+Um die Vorlage auf dem eigenen Computer zu bearbeiten, gibt es 2 Möglichkeiten
+("**Clone or download**"):
 
-1. Als ZIP-Datei downloaden und an passender Stelle expandieren.
-2. ALs GIT Repository klonen.
+1. **Download**: als ZIP-Datei downloaden und an passender Stelle expandieren.
+2. **Clone**: als GIT Repository klonen.
 
 
 
