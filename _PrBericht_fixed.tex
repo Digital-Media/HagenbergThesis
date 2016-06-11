@@ -1,0 +1,80 @@
+%%% Einfaches Template für den Praktikumsbericht (2. Bachelorarbeit)
+%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
+
+\documentclass[praktikum,german]{hgbthesis}
+
+\RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
+
+\graphicspath{{images/}}  % where are the images?
+\logofile{logo}		% name of PDF, remove or use \logofile{} for no logo
+%\bibliography{literatur}  	% Angabe der BibTeX-Datei (bei Bedarf)
+
+\author{Peter A.\ Schlaumeier}
+\studiengang{Medientechnik und -design}
+\studienort{Hagenberg}
+\abgabedatum{2016}{08}{07}
+\nummer{XXXXXXXXXX-B}    % Stud-ID, z.B. 0310238045-B  (B = 2. Bachelorarbeit)
+\betreuer{Mag.~Pjotr I.~Czar\\Creative Director} % oder \betreuerin{...}
+\firma{%
+   Mogulovich International Media GmbH\\
+   Online Division\\
+   1020 Wien, Hubertusgasse 3a
+}
+\firmenTel{1-234-5678-100}
+\firmenUrl{www.mogul.at}
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+\frontmatter
+\maketitle
+\tableofcontents
+%%%----------------------------------------------------------
+
+\chapter{Kurzfassung}
+Umfang der Kurzfassung: ca.\ 200 Worte.
+
+Zum allgemeinen Inhalt des Berichts: Dieser Bericht beschreibt den Ablauf des Praktikums, die Aufgaben und durchgeführten Projekte und Erfahrungen. Die eigenen Aktivitäten (Projekte) stehen dabei natürlich im Mittelpunkt und bilden den Hauptteil des Berichts. Wenn viele Kleinprojekte bearbeitet wurden, sollten einige davon exemplarisch
+genauer beschrieben werden. Neben der eigentlichen Arbeit sollten aber auch folgende weitere Aspekte berücksichtigt werden:
+%
+\begin{itemize}
+\item Abläufe (Workflows) innerhalb des Unternehmens \bzw\ in Projekten (grafische Darstellungen
+können dabei nützlich sein)
+\item Arbeits- und Führungsstil, Kommunikation innerhalb des Unternehmens
+\item Kommunikation nach außen (Kunden, Partner)
+\item Zeitsituation, Terminprobleme
+\item Einbettung in das Team, soziale Erfahrungen
+\item Einsatz von speziellen Techniken, Methoden und Werkzeugen.
+\item Wichtige Herausforderungen oder Schwierigkeiten
+\item Anforderungen in Bezug auf die Ausbildung im Studium (gut einsetzbare Kenntnisse, Defizite)
+\end{itemize}
+%
+Die nachfolgenden Kapitelüberschriften sollen nur zur Orientierung für die Struktur des Berichts dienen, über die konkrete Einteilung und den Wortlaut kann man natürlich selbst entscheiden.
+
+%%%----------------------------------------------------------
+\mainmatter           %Hauptteil (ab hier arab. Seitenzahlen)
+%%%----------------------------------------------------------
+
+\chapter{Das Unternehmen}
+Umfang: 1--2 Seiten
+
+\chapter{Projekte und Tätigkeiten während des Praktikums}
+Umfang: 2--3 Seiten (Projektziel(e), Projektumfeld)
+      
+\chapter{Projektbeispiele}
+Umfang: 5--6 Seiten (Umsetzung, grober Terminplan, Ergebnisse, Qualitätssicherungsmaßnahmen)
+   
+   
+\chapter{Erfahrungen und Zusammenfassung}
+Umfang: 1--2 Seiten
+
+Zum allgemeinen Inhalt des Berichts: Dieser Bericht beschreibt den Ablauf des Praktikums, die Aufgaben und durchgeführten Projekte und Erfahrungen. Die eigenen Aktivitäten (Projekte) stehen dabei natürlich im Mittelpunkt und bilden den Hauptteil des Berichts. Wenn viele Kleinprojekte bearbeitet wurden, sollten einige davon exemplarisch und im Detail beschrieben werden.
+
+%%%----------------------------------------------------------
+%\MakeBibliography	% Quellenverzeichnis (sofern notwendig, sonst weglassen)
+%%%----------------------------------------------------------
+
+%%% Messbox zur Druckkontrolle
+%\input{back/messbox}
+
+\end{document}
