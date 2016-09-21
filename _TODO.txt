@@ -2,3 +2,5 @@ fboxsep global auf 0 setzen
 bib-Einträge für Masterarbeiten checken (und Beschreibung dazu)
 @software bibtex Tag überdenken
 Zeilenumbrüche in urls erleichtern (Quellenverzeichnis)
+Hinweis auf subfig Package entfernen
+
