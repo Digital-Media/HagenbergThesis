@@ -36,7 +36,9 @@ Zeichen vergessen, wie etwa in "`X-Achse"' anstelle von "`$X$-Achse"' (\verb!$X$
 \paragraph{Zeilenumbrüche:}
 Bei längeren mathematischen Elementen im Fließtext sind Probleme mit Zeilenumbrüchen
 vorprogrammiert. In der Regel ermöglicht \latex nur am "`="' einen Zeilenumbruch,
-an anderer Stelle kann man Umbrüche mit \verb!\allowbreak! ermöglichen. Hier ein kleines Beispiel:
+an anderer Stelle kann man Umbrüche mit \texttt{\\allowbreak} ermöglichen. 
+Hier ein kleines Beispiel:
+%
 \begin{itemize}
 \item[a)] Einen einfachen Zeilenvektor definiert man in der Form 
 		$\boldsymbol{x} = (x_0, x_1, \ldots, x_{n-1})$.
@@ -44,17 +46,19 @@ an anderer Stelle kann man Umbrüche mit \verb!\allowbreak! ermöglichen. Hier e
 	$\boldsymbol{x} = (x_0,\allowbreak x_1,\allowbreak\ldots,\allowbreak x_{n-1})$.
 \end{itemize}
 Die Zeile in a) sollte über den Seitenrand hinauslaufen, b) hingegen enthält
-\verb!\allowbreak! an mehreren Stellen und sollte sauber umbrechen.
+\texttt{\\allowbreak} an mehreren Stellen und sollte daher sauber umbrechen.
+
 
 \section{Freigestellte Ausdrücke}
 
 Freigestellte mathematische Ausdrücke können in \latex\ im einfachsten Fall durch paarweise 
 \verb!$$! \ldots \verb!$$! erzeugt werden. Das Ergebnis wird zentriert, erhält jedoch keine 
-Numerierung. So ist \zB\ $$ y = 4 x^2 $$ das Ergebnis von \verb!$$ y = 4 x^2 $$!.
+Nummerierung. So ist \zB\ $$ y = 4 x^2 $$ das Ergebnis von \verb!$$ y = 4 x^2 $$!.
+
 
 \subsection{Einfache Gleichungen} 
 
-Meistens wird in solchen Fällen jedoch die \texttt{equation}-Umgebung zur Herstellung numerierter 
+Meistens wird in solchen Fällen jedoch die \texttt{equation}-Umgebung zur Herstellung nummerierter 
 Gleichungen verwendet, auf die im Text jederzeit verwiesen werden kann. Zum Beispiel erzeugt
 %
 \begin{LaTeXCode}[numbers=none]
@@ -72,7 +76,7 @@ die Gleichung
 \end{equation}
 %
 Mit \verb!\ref{eq:MyFirstEquation}! erhält man wie üblich die Nummer (\ref{eq:MyFirstEquation}) dieser Gleichung (siehe dazu auch Abschn.\ \ref{sec:VerweiseAufGleichungen}). 
-Dieselbe Gleichung \emph{ohne} Numerierung kann übrigens mit der \texttt{equation*}-Umgebung erzeugt werden.
+Dieselbe Gleichung \emph{ohne} Nummerierung kann übrigens mit der \texttt{equation*}-Umgebung erzeugt werden.
 
 
 
