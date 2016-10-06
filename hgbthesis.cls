@@ -36,7 +36,7 @@
 \ProcessOptions
 %% end class options ---------------------------------------------
  
-\LoadClass[a4paper,11pt,oneside]{book}
+\LoadClass[a4paper,11pt,oneside]{scrbook}
  
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
@@ -162,11 +162,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
     \setlength{\baselineskip}{25pt}%
     \@title}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
@@ -195,11 +195,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%%
     \setlength{\baselineskip}{25pt}%
     \@title}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
@@ -226,11 +226,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
     \setlength{\baselineskip}{25pt}%
     \@title}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
@@ -257,11 +257,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
     \setlength{\baselineskip}{25pt}%
     Endbericht zum Berufspraktikum}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
