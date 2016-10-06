@@ -312,17 +312,21 @@ H\"ohe $ = #2 {\rm\ mm}$
 \item[\url{#1}\widedotfill]
 }
 
-\newcommand{\Frametext}[1]{%
-\setlength{\fboxrule}{0.05mm}%
-\setlength{\fboxsep}{0.5mm}%
-\fbox{\vphantom{Ag}#1}%
-}
+% obsolete (2016-20-06)
+%\newcommand{\Frametext}[1]{%
+%\setlength{\fboxrule}{0.1mm}%
+%\setlength{\fboxsep}{0.5mm}%
+%\fbox{\vphantom{Ag}#1}%
+%}
 
-\newcommand{\FramePic}[1]{%
-\setlength{\fboxrule}{0.1mm}%
-\setlength{\fboxsep}{0mm}%
-\fbox{#1}%
-}
+% obsolete (2016-20-06)
+%\newcommand{\FramePic}[1]{%
+%\setlength{\fboxrule}{0.1mm}%
+%\setlength{\fboxsep}{0mm}%
+%\fbox{#1}%
+%}
+
+\setlength{\fboxsep}{0mm}		%globally zero fbox separator
 
 %% -------------------------------------------------------
 

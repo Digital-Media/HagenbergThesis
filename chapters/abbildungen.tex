@@ -94,7 +94,8 @@ spielt es jedenfalls keine Rolle.}
 
 \begin{figure}
 \centering
-\FramePic{\includegraphics[width=.85\textwidth]{ibm-360-color}}  %{CS1065}}
+\fbox{\includegraphics[width=.85\textwidth]{ibm-360-color}}  %{CS1065}}
+%\FramePic{\includegraphics[width=.85\textwidth]{ibm-360-color}} 
 \caption{Beispiel für einen langen Caption-Text. \textsc{Univac}
 brachte 1961 mit dem Modell 751 den ersten Hochleistungsrechner
 mit Halbleiterspeicher auf den Markt. Von diesem Computer wurden
@@ -163,11 +164,14 @@ unterschiedlichen Dateitypen verwendet werden.
 
 \subsection{Grafiken einrahmen} 
 
-Mit dem Makro \verb!\FramePic{}! (definiert in \texttt{hgb.sty}) kann optional ein dünner 
+%Mit dem Makro \verb!\FramePic{}! (definiert in \texttt{hgb.sty}) kann optional ein dünner 
+%Rahmen rund um die Grafik erzeugt werden, \zB:
+Mit dem Makro \verb!\fbox{...}! kann optional ein dünner 
 Rahmen rund um die Grafik erzeugt werden, \zB:
 %
 \begin{quote}
-\verb!\FramePic{\includegraphics[height=50mm]{ibm-360-color}}!
+%\verb!\FramePic{\includegraphics[height=50mm]{ibm-360-color}}!
+\verb!\fbox{\includegraphics[height=50mm]{ibm-360-color}}!
 \end{quote}
 %
 Das wird üblicherweise nur bei Rasterbildern nötig sein, insbesondere wenn sie zum Rand hin sehr hell sind
@@ -214,8 +218,10 @@ unterzogen, obwohl deren verheerende Folgen auch für jeden Laien sichtbar sein 
 \begin{figure}
 \centering\small
 \begin{tabular}{cc}
-\FramePic{\includegraphics[width=0.45\textwidth]{screenshot-dirty}} &		% JPEG file
-\FramePic{\includegraphics[width=0.45\textwidth]{screenshot-clean}} \\	% PNG file
+%\FramePic{\includegraphics[width=0.45\textwidth]{screenshot-dirty}} &		% JPEG file
+%\FramePic{\includegraphics[width=0.45\textwidth]{screenshot-clean}} \\	% PNG file
+\fbox{\includegraphics[width=0.45\textwidth]{screenshot-dirty}} &		% JPEG file
+\fbox{\includegraphics[width=0.45\textwidth]{screenshot-clean}} \\	% PNG file
 (a) & (b) 
 \end{tabular}
 \caption{Typischer JPEG-Pfusch. Screenshots und ähnliche im Original
