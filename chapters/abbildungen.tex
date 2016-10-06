@@ -394,14 +394,11 @@ Weitere Details finden sich im Quelltext.
 Werden mehrere Bilder oder Grafiken zu einer Abbildung zusammengefasst, 
 wird üblicherweise eine gemeinsame Caption verwendet, wie in Abb.~\ref{fig:Bearings}
 dargestellt. Im Text könnte ein Verweis auf einen einzelnen Teil der Abbildung, etwa das 
-einreihige Rollenlager in Abb.~\ref{fig:Bearings}\,(c), so aussehen:
+einreihige Rollenlager in Abb.~\ref{fig:Bearings}(c), so aussehen:
 %
-\begin{itemize}
-\item[] \verb!Abb.~\ref{fig:Bearings}\,(c)! 
-\end{itemize}
-%
-Für kompliziertere Abbildungen sollte die Verwendung des 
-\texttt{subfig}-Pakets \cite{Cochran2005} in Betracht gezogen werden.
+\begin{LaTeXCode}[numbers=none]
+    ... Abb.~\ref{fig:Bearings}(c) ... 
+\end{LaTeXCode}
 
 
 \subsection{Quellenangaben in Captions}
@@ -422,23 +419,23 @@ Kap.\ \ref{cha:Literatur} (insbes.\ Abschnitt \ref{sec:KategorieOnline}).
 \setlength{\tabcolsep}{0mm}	% alle Spaltenränder auf 0mm
 \begin{tabular}{c@{\hspace{12mm}}c} % mittlerer Abstand = 12mm
   \includegraphics[width=.45\textwidth]{overhang-mounting} &
-  \includegraphics[width=.45\textwidth]{straddle-mounting} \\
+  \includegraphics[width=.45\textwidth]{straddle-mounting} 
+\\
   (a) & (b)
 \\[4pt]	%vertical extra spacing (4 points)
   \includegraphics[width=.45\textwidth]{ball-bearing-1} &
-  \includegraphics[width=.45\textwidth]{ball-bearing-2} \\
+  \includegraphics[width=.45\textwidth]{ball-bearing-2} 
+\\
   (c) & (d)
 \end{tabular}
 %
 \caption{Diverse Maschinenelemente als Beispiel für eine
 Abbildung mit mehreren Elementen.
-Overhang Mounting (a), Straddle Mounting (b),
-einreihiges Rollenlager (c), Schmierung von Rollenlagern (d).
-Die Abbildung verwendet im oberen Teile eine $2 \times 2$
-Tabelle (\texttt{tabular}), in der die Breite der Spaltenränder 
-gesondert spezifiziert ist (Details finden sich im Quelltext).
-Bildquelle~\cite{Faires1934}.
-}
+\emph{Overhang Mounting}~(a), \emph{Straddle Mounting}~(b),
+einreihiges Rollenlager~(c), Schmierung von Rollenlagern~(d).
+Diese Abbildung verwendet eine gewöhnliche Tabelle (\texttt{tabular}) mit
+2 Spalten und 4 Zeilen (Details finden sich im Quelltext).
+Bildquelle~\cite{Faires1934}.}
 \label{fig:Bearings}
 \end{figure}
 
