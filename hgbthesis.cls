@@ -36,7 +36,7 @@
 \ProcessOptions
 %% end class options ---------------------------------------------
  
-\LoadClass[a4paper,11pt,oneside]{scrbook}
+\LoadClass[a4paper,11pt,oneside]{book}
  
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
