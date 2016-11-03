@@ -111,7 +111,12 @@
 	 \tolerance=9999%			(default 200)
 	 \exhyphenpenalty=2%	(default 50)
 	 \linepenalty=1%			(default 10)
-	 \setlength{\emergencystretch}{3em}}%
+	 \setlength{\emergencystretch}{3em}%
+	 % allow URL hyphenation at any character (definitions in biblatex.def)
+	 \setcounter{biburlnumpenalty}{1}%
+	 \setcounter{biburlucpenalty}{1}%
+	 \setcounter{biburllcpenalty}{1}%
+	 \biburlsetup}%
 	{}
 
 % Currently the only public macro:
