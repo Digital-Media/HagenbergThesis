@@ -162,11 +162,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
     \setlength{\baselineskip}{25pt}%
     \@title}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
@@ -195,11 +195,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%%
     \setlength{\baselineskip}{25pt}%
     \@title}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
@@ -226,11 +226,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
     \setlength{\baselineskip}{25pt}%
     \@title}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
@@ -257,11 +257,11 @@
 \begin{center}%
 	\normalfont
   \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bf%
+	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
     \setlength{\baselineskip}{25pt}%
     Endbericht zum Berufspraktikum}
 	\vskip 15mm%
-	{\large\sc\@author}%
+	{\large\scshape\@author}%
 	\vskip 15mm%
 	\makelogo%
 	\vskip 15mm%
