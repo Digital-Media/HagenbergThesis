@@ -41,28 +41,38 @@
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
 
-%-------------- Setup fuer Seiten im Front-Teil --------------------
+%-------------- Setup for pages in the front matter --------------------
 
-\newcommand{\@studiengang}{\@MissingArg{Studiengang??}}
+\newcommand{\@studiengang}{\@MissingArg{Degree program not specified!}}
 \newcommand{\studiengang}[1]{%
+	\renewcommand{\@studiengang}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated. Use '\string\degreeprogram' instead.}
+}
+\newcommand{\degreeprogram}[1]{%
 	\renewcommand{\@studiengang}{#1}
 }
 
-\newcommand{\@studienort}{\@MissingArg{Studienort??}}
+\newcommand{\@studienort}{\@MissingArg{Place of study not specified!}}
 \newcommand{\studienort}[1]{%
+	\renewcommand{\@studienort}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated. Use '\string\placeofstudy' instead.}
+}
+\newcommand{\placeofstudy}[1]{%
 	\renewcommand{\@studienort}{#1}
 }
 
-\newcommand{\@betreuerBez}{????}
-\newcommand{\@betreuerName}{\@MissingArg{Betreuer??}}
+\newcommand{\@betreuerName}{\@MissingArg{Advisor not specified!}}
 
 \newcommand{\betreuer}[1]{%
-  \renewcommand{\@betreuerBez}{Betreuer}
-	\renewcommand{\@betreuerName}{#1}
+  \renewcommand{\@betreuerName}{#1}
+  \ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated. Use '\string\advisor' instead.}
 }
 \newcommand{\betreuerin}[1]{%
-  \renewcommand{\@betreuerBez}{Betreuerin}
-	\renewcommand{\@betreuerName}{#1}
+  \renewcommand{\@betreuerName}{#1}
+  \ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated. Use '\string\advisor' instead.}
+}
+\newcommand{\advisor}[1]{%
+  \renewcommand{\@betreuerName}{#1}
 }
 
 \newcommand{\@nummer}{\@MissingArg{Arbeit Nummer??}}
@@ -365,7 +375,7 @@ This work is published under the conditions of the
 
 %------------------ Betreuer-Seite -------------------
 
-\newcommand{\@babetreuerseite}{%
+\newcommand{\@babetreuerseiteDe}{%
 \newpage
 \setcounter{page}{2}
 \thispagestyle{plain}
@@ -382,11 +392,39 @@ im\\
 {\@semester}\\
 %
 \vspace{45mm} 
-%{Betreuer:}\\
-{\@betreuerBez:}\\
+{Betreut durch:}\\
 \vspace{3mm} 
 {\Large\sf \@betreuerName\\ \mbox{}}
 \end{center}
+}
+
+\newcommand{\@babetreuerseiteEn}{%
+\newpage
+\setcounter{page}{2}
+\thispagestyle{plain}
+\rule{0mm}{1mm}
+\begin{center}
+%
+\vspace{40mm} 
+{This thesis was created as part of the course}\\
+\vspace{6mm} 
+{\Large\sf \@gegenstand\\ \mbox{}}\\
+\medskip
+during\\
+\bigskip
+{\@semester}\\
+%
+\vspace{45mm} 
+{Advisor:}\\
+\vspace{3mm} 
+{\Large\sf \@betreuerName\\ \mbox{}}
+\end{center}
+}
+
+\newcommand{\@babetreuerseite}{%
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	{\@babetreuerseiteDe}%
+	{\@babetreuerseiteEn}
 }
 
 %% -------------- Erklaerung / Declaration ---------
