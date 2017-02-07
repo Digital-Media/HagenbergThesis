@@ -1,10 +1,11 @@
+%% hgb.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
-%% Autor: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
-%% Diese Datei ist Teil des hagenberg-Package zur Erstellung von 
-%% Bachelor- und Diplomarbeiten.
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbDate}{2015/11/04}	%Versionsdatum
+\newcommand{\hgbDate}{2017/02/28}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
 
 % options german/english are passed from the class file
@@ -12,11 +13,12 @@
 \DeclareOption{german}{\providecommand{\hgb@MainLanguage}{german}}
 \ProcessOptions\relax
 
-%% ------------------ Required Packages ----------------------
 
-\RequirePackage{lmodern}	   			% use Latin Modern Fonts
-\RequirePackage{cmap}	       			% make generated PDF files "searchable and copyable"
-\RequirePackage[T1]{fontenc}   		% T1 font encoding for improved hyphenation
+%% Required Packages ----------------------------------------------------------
+
+\RequirePackage{lmodern}			% use Latin Modern Fonts
+\RequirePackage{cmap}				% make generated PDF files "searchable and copyable"
+\RequirePackage[T1]{fontenc}		% T1 font encoding for improved hyphenation
 
 \RequirePackage{ifthen}
 
@@ -25,7 +27,7 @@
    {\newcommand*{\hgb@MainLanguage}{german}}%
 	 {}
 
-% Hauptsprache einstellen (babel):
+% Set main language (babel):
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
 	{\main@language{ngerman}}{}
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}%
@@ -33,12 +35,12 @@
 
 
 \RequirePackage{datetime}
-\RequirePackage{upquote} % Setzt "richtige" Quotes in verbatim-Umgebung
-\RequirePackage{eurosym} % provides \euro - conflict with marvosym on \EUR!
+\RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
+\RequirePackage{eurosym}			% provides \euro - conflict with marvosym on \EUR!
 
 \RequirePackage{graphicx}
-\RequirePackage[percent]{overpic} % to allow text/graphics overlays on pictures
-\RequirePackage{pict2e}           % extends the LaTeX 'picture' environment		
+\RequirePackage[percent]{overpic}	% to allow text/graphics overlays on pictures
+\RequirePackage{pict2e}				% extends the LaTeX 'picture' environment		
 
 \RequirePackage{xcolor}
 \newcommand{\@MissingArg}[1]{\textcolor{red}{#1}}
@@ -50,43 +52,43 @@
 \RequirePackage{moreverb}
 \def\verbatimtabsize{2\relax}
 
-%\RequirePackage[noadjust]{cite} % vermeidet zusaetzliches Spacing vor [..]
+%\RequirePackage[noadjust]{cite} % avoid additional spacing before [..]
 
 \RequirePackage{ifpdf}
 \ifpdf % LaTeX is in native PDF mode (pdflatex) 
-  \RequirePackage{epstopdf}		% zur automatischen Konvertierung von EPS-Dateien nach PDF fuer pdflatex
-%  \pdfcompresslevel=0			  % 0 = keine Kompression, 9 = max. Kompression
+  \RequirePackage{epstopdf}			% converting EPS to PDF for pdflatex
+%  \pdfcompresslevel=0				% 0 = no compression, 9 = max. compression
 %  \pdfimageresolution=300
-\else % LaTeX is in emulation mode (DVI-PS-PDF)
-  \RequirePackage[hyphenbreaks]{breakurl}	% erlaubt Zeilenumbruch von URLs auch ohne pdflatex (DIV, PS, PDF)
+\else								% LaTeX is in emulation mode (DVI-PS-PDF)
+  \RequirePackage[hyphenbreaks]{breakurl} % allows line breaks in URLs without pdflatex (DIV, PS, PDF)
 \fi	
 
 
-%% -----------  hyperref setup ------------------------
+%% hyperref Setup -------------------------------------------------------------
 
 \RequirePackage[unicode]{hyperref}	% utf8-change
 \hypersetup{
-	linktocpage = true,						% make page number, not text, be link on TOC, LOF and LOT 
-  colorlinks = false,						% don't uses colored links (because this shows up in printing!) 
-	pdfborder = {0 0 0.5},				% use a thinner (0.5pt) border around all PDF links
+	linktocpage = true,				% make page number, not text, be link on TOC, LOF and LOT 
+  colorlinks = false,				% don't uses colored links (because this shows up in printing!) 
+	pdfborder = {0 0 0.5},			% use a thinner (0.5pt) border around all PDF links
 	allbordercolors = {0 0 0.8},	% dark blue border for all types of links
-	breaklinks = true							% allow links to break over lines by making links over multiple lines
+	breaklinks = true				% allow links to break over lines by making links over multiple lines
 }	%see https://www.tug.org/applications/hyperref/manual.html
 
 
 %\RequirePackage[all]{hypcap} % fixes hyperref problem with references to float captions
 \RequirePackage[figure,table,table*]{hypcap}	% do not redefine figure* for use in article (without captions)
-%\RequirePackage[novbox]{pdfsync} % ersetzt durch -synctex=-1 option
-%\RequirePackage[noadjust]{cite} % vermeidet zusaetzliches Spacing vor [..] % entfernt wegen biblatex
+%\RequirePackage[novbox]{pdfsync}	% replaced by -synctex=-1 option
+%\RequirePackage[noadjust]{cite}	% avoids additional spacing before [..] - removed for biblatex
 
 
-%% ------------- Math Stuff --------------
+%% Math Stuff -----------------------------------------------------------------
 
 \RequirePackage{amsmath,amsfonts,amssymb,amsbsy}
-\RequirePackage{subdepth} % zur Positionierung von Sub-/Superscripts
-\RequirePackage{exscale} % Skaliert Mathe-Modus Ausgaben in allen Umgebungen richtig.
+\RequirePackage{subdepth}			% for positioning of sub and super scripts
+\RequirePackage{exscale}			% correct scaling of math mode output in every environment
 
-%Zeichen fuer die reellen, komplexen ... Zahlen (AMS Blackboard)
+% Commands for real, complex, etc. numbers (AMS Blackboard)
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
@@ -95,19 +97,20 @@
 \newcommand{\Q}{\ensuremath{\mathbb{Q}}}
 
 
-%% ---------------------- Language environments -------------------------
+%% Language environments ------------------------------------------------------
 
-% Umschalten von Deutsch auf Englisch (babel)
+% Switch from German to English (babel)
 \newenvironment{english}%
 {\begin{otherlanguage}{english}}%
 {\end{otherlanguage}}
 
+% Switch from English to German (babel)
 \newenvironment{german}%
 {\begin{otherlanguage}{ngerman}}%
 {\end{otherlanguage}}
 
 
-%% --------------------- Div. Utility Makros --------------------------------
+%% Miscellaneous Utility Commands ---------------------------------------------
 
 \newcommand\trennstrich{%
   \nopagebreak[4]
@@ -116,24 +119,23 @@
   \noindent\makebox[\textwidth]{\rule{4cm}{0.4pt}}
   \vskip 2.5ex}
 
-
-% Erzeugt einen neuen, nicht eingerückten Absatz mit zusaetzlichem Abstand:
+% Creates a new and non-indented paragraph with additional spacing
 \newcommand{\SuperPar}[0]{% 
 \par\bigskip\noindent%
 }
 
-%Messbox zur Druckkontrolle:
-\newcommand{\Messbox}[2]{% Parameters: #1=Breite, #2=Hoehe
-\setlength{\unitlength}{1.0mm}%
-\begin{picture}(#1,#2)%
-\linethickness{0.05mm}%
-\put(0,0){\dashbox{0.2}(#1,#2)%
-{\parbox{#1mm}{%
-\centering\footnotesize 
-%{\bf MESSBOX}\\ 
-Breite $ = #1 \textrm{mm}$\\
-H\"ohe $ = #2 \textrm{mm}$
-}}}\end{picture}
+% Test box for print proofing
+\newcommand{\Messbox}[2]{% Parameters: #1=width, #2=height
+	\setlength{\unitlength}{1.0mm}%
+	\begin{picture}(#1,#2)%
+	\linethickness{0.05mm}%
+	\put(0,0){\dashbox{0.2}(#1,#2)%
+	{\parbox{#1mm}{%
+	\centering\footnotesize 
+	%{\bf MESSBOX}\\ 
+	Breite $ = #1 \textrm{mm}$\\
+	H\"ohe $ = #2 \textrm{mm}$
+	}}}\end{picture}
 }
 
 %\newcommand{\ShowParameter}[1]{\relax\the#1\showthe#1} % to display TeX parameters
@@ -141,15 +143,15 @@ H\"ohe $ = #2 \textrm{mm}$
 %Beispiel: clubpenalty = \ShowParameter{\clubpenalty}
 
 
-%% ------------- Einstellungen fuer's Layout --------------
+%% Layout Settings ------------------------------------------------------------
 
-\frenchspacing     	  % erzeugt normale Abstaende zwischen Saetzen
+\frenchspacing						% creates normal spacing between sentences
 \setlength{\parskip}{0pt plus 0.1pt}
-\raggedbottom					%\flushbottom
+\raggedbottom						%\flushbottom
 
-%\pagestyle{headings}  % Normale Kopfzeilen
+%\pagestyle{headings}				% regular headers
 
-%% div. Parameter: nur dann aendern, wenn man genau weiss was man tut!
+% Miscellaneous layout parameters: change only when you know what you're doing!
 %\setlength{\hoffset}{-1in}
 %\setlength{\voffset}{-1in}
 %\setlength{\oddsidemargin}{3cm}
@@ -160,37 +162,37 @@ H\"ohe $ = #2 \textrm{mm}$
 %\setlength{\headheight}{1ex}
 %\setlength{\headsep}{1cm}
 %\parindent0pt
-%\parskip1.5ex plus0.5ex minus0.5ex % flexibler Absatzabstand
+%\parskip1.5ex plus0.5ex minus0.5ex	% flexible paragraph spacing
 
 \RequirePackage{float}
 %\floatplacement{figure}{tbp}
 %\floatplacement{table}{tbp}
 \floatstyle{plain}
 
-% Captions mit Fontgroesse "small" und Abstand vom Seitenrand
+% Captions with font size "small" and additional margin spacing
 \RequirePackage[small,bf]{caption}
 \setlength{\captionmargin}{5mm}
 \setlength{\abovecaptionskip}{10pt}
 \setlength{\belowcaptionskip}{10pt}
 
 % Make float placement easier    
-\renewcommand{\floatpagefraction}{.9}  % vorher: .5
-\renewcommand{\textfraction}{.1}      % vorher: .2
-\renewcommand{\topfraction}{.9}        % vorher: .7
-\renewcommand{\bottomfraction}{.7}     % vorher: .3
-\setcounter{topnumber}{3}              % vorher: 2
-\setcounter{bottomnumber}{2}           % vorher: 1
-\setcounter{totalnumber}{5}            % vorher: 3
+\renewcommand{\floatpagefraction}{.9}	% previously: .5
+\renewcommand{\textfraction}{.1}		% previously: .2
+\renewcommand{\topfraction}{.9}			% previously: .7
+\renewcommand{\bottomfraction}{.7}		% previously: .3
+\setcounter{topnumber}{3}				% previously: 2
+\setcounter{bottomnumber}{2}			% previously: 1
+\setcounter{totalnumber}{5}				% previously: 3
 
-\RequirePackage{enumitem}	% fix excessive vertical spacing in lists
+\RequirePackage{enumitem}				% fix excessive vertical spacing in lists
 \setlist{%
 	partopsep = .0ex plus .1ex, 
 	topsep = .6ex plus .3ex, 
 	itemsep = .0ex plus .1ex, 
 	parsep = .4ex plus .2ex
 }
-%\setlist{nolistsep}	% kein Spacing zwischen items
-%\setlist{noitemsep}  % überhaupt kein vertik. Spacing
+%\setlist{nolistsep}					% no spacing between items
+%\setlist{noitemsep}					% no vertical spacing at all
 
 
 \newenvironment{nowidows}%
@@ -198,33 +200,33 @@ H\"ohe $ = #2 \textrm{mm}$
 	\widowpenalty=10000%
 	\displaywidowpenalty=10000}%
 	{}
-%Beispiel:
+%Example:
 % \begin{nowidows}
-% Beliebiger Text, in dem absolut keine Hurenkinder zugelassen werden.
+% Any text where no widows are allowed
 % \end{nowidows}
 
 
-%% ------------- Definitions for Algorithms ---------
+%% Definitions for Algorithms -------------------------------------------------
 
-% 'algorithm' liefert die Float-Umgebung für Algorithmen (\begin{algorithm}...)
+% 'algorithm' creates a floating environment for algorithms (\begin{algorithm}...)
 \@ifundefined{chapter}%
   {\RequirePackage[ruled]{algorithm}}%
 	{\RequirePackage[ruled,chapter]{algorithm}}
 
 %\floatname{algorithm}{Algorithmus}
-%\DeclareCaptionLabelSeparator{colon}{: } % Anpassung an den standard caption style
+%\DeclareCaptionLabelSeparator{colon}{: } % Adaption for the standard caption style
 \DeclareCaptionStyle{ruled}{labelfont=bf,labelsep=colon} 
 
-% 'algorithmicx' liefert das Innere der Algorithmen (\begin{algorithmic}[1]...)
+% 'algorithmicx' returns the inner content of algorithms (\begin{algorithmic}[1]...)
 \RequirePackage{algorithmicx}
 \RequirePackage{algpseudocode}
 \algsetlanguage{pseudocode}
 \renewcommand{\algorithmicprocedure}{} % use no 'Procedure' keyword
 
 
-%% ------------- program and algorithm environments  --------------
+%% Program and Algorithm Environments  ----------------------------------------
 
-% define the program float environment:
+% Define the program float environment:
 \@ifundefined{chapter}%
    {\newfloat{program}{tbp}{lop}}%
 	 {\newfloat{program}{tbp}{lop}[chapter]}
@@ -244,10 +246,10 @@ H\"ohe $ = #2 \textrm{mm}$
 }{}
 
 
-%% ------ Date-related commands ----------------------------------
+%% Date-related commands ------------------------------------------------------
 
 \RequirePackage{datetime}
-\showdowfalse	% do not show day of week
+\showdowfalse						% do not show day of week
 
 % adapted from \newdate in datetime.sty
 \newcommand*{\@modifydate}[4]{%
@@ -266,7 +268,7 @@ H\"ohe $ = #2 \textrm{mm}$
 \newcommand{\hgb@GetDateYear}{\getdateyear{hgb@date}}
 \newcommand{\hgb@DisplayDate}{\displaydate{hgb@date}}
 
-%% ------------- Experimental items --------------
+%% Experimental items ---------------------------------------------------------
 
 \newenvironment{NarrowList}%
 {\begin{list}{}%
@@ -317,8 +319,4 @@ H\"ohe $ = #2 \textrm{mm}$
 %\fbox{#1}%
 %}
 
-\setlength{\fboxsep}{0mm}		%globally zero fbox separator
-
-%% -------------------------------------------------------
-
-
+\setlength{\fboxsep}{0mm}			%globally zero fbox separator
