@@ -1,13 +1,12 @@
-%% File encoding: ASCII
 %% hgbthesis.cls
-%% Autor: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
-%% Diese Datei ist Teil des hagenberg-Package zur Erstellung von 
-%% Bachelor- und Diplomarbeiten.
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbthesisDate}{2015/09/19} %Versionsdatum
-\ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX-Vorlage fuer Diplomarbeiten, Masterarbeiten, Bachelorarbeiten etc.]
-
+\newcommand{\hgbthesisDate}{2017/02/28} %version string
+\ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
 
 
 \RequirePackage{ifthen}
@@ -18,23 +17,54 @@
 \fi
 
 \newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
-\newcommand{\@matitelseiten}{}
-\newcommand{\@datitelseiten}{}
-\newcommand{\@batitelseiten}{}
-\newcommand{\@prtitelseiten}{}
-\newcommand{\@maketitlepages}{\@matitelseiten}  %default: Masterarbeit
+\newcommand{\@mastertitlepages}{}
+\newcommand{\@diplomatitlepages}{}
+\newcommand{\@bachelortitlepages}{}
+\newcommand{\@internshiptitlepages}{}
+\newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
 
 
-%% begin class options ---------------------------------------------
-\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@matitelseiten}}
-\DeclareOption{diplom}{\renewcommand{\@maketitlepages}{\@datitelseiten}}
-\DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@batitelseiten}}
-\DeclareOption{praktikum}{\renewcommand{\@maketitlepages}{\@prtitelseiten}}
-\DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
-\DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
-\DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option "\CurrentOption"}}
+%% Begin class options ---------------------------------------------
+\DeclareOption{master}{
+	\renewcommand{\@maketitlepages}{\@mastertitlepages}
+}
+
+\DeclareOption{diplom}{%
+	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
+	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated. Use Use 'diploma' instead.}
+}
+
+\DeclareOption{diploma}{%
+	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
+}
+
+\DeclareOption{bachelor}{%
+	\renewcommand{\@maketitlepages}{\@bachelortitlepages}
+}
+
+\DeclareOption{praktikum}{%
+	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
+	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated. Use Use 'internship' instead.}
+}
+
+\DeclareOption{internship}{%
+	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
+}
+
+\DeclareOption{english}{%
+	\renewcommand{\hgb@MainLanguage}{english}
+}
+
+\DeclareOption{german}{%
+	\renewcommand{\hgb@MainLanguage}{german}
+}
+
+\DeclareOption*{%
+	\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}
+}
+
 \ProcessOptions
-%% end class options ---------------------------------------------
+%% End class options ---------------------------------------------
  
 \LoadClass[a4paper,11pt,oneside]{book}
  
@@ -123,38 +153,54 @@
 	\setcounter{@abgabejahr}{#1}
 	\setcounter{@abgabemonat}{#2}
 	\setcounter{@abgabetag}{#3}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabedatum' is deprecated. Use '\string\dateofsubmission' instead.}
+}
+\newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
+	\setcounter{@abgabejahr}{#1}
+	\setcounter{@abgabemonat}{#2}
+	\setcounter{@abgabetag}{#3}
 }
 
 \newcommand{\abgabemonat}[1]{%
-	\ClassWarning{hgbthesis}{\noexpand\abgabemonat is deprecated - 
-	use \noexpand\abgabedatum instead!}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabemonat' is deprecated. Use '\string\dateofsubmission' instead.}
 }
 
 \newcommand{\abgabejahr}[1]{%
-	\ClassWarning{hgbthesis}{\noexpand\abgabejahr is deprecated - 
-	use \noexpand\abgabedatum instead!}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabejahr' is deprecated. Use '\string\dateofsubmission' instead.}
 }
 
 %% ----------------------------------------------------------
 
-\newcommand{\@firma}{\@MissingArg{Firma??}}
+\newcommand{\@firma}{\@MissingArg{Company not specified!}}
 \newcommand{\firma}[1]{%
-\renewcommand{\@firma}{#1}
+	\renewcommand{\@firma}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated. Use '\string\company' instead.}
+}
+\newcommand{\company}[1]{%
+	\renewcommand{\@firma}{#1}
 }
 
-\newcommand{\@firmenUrl}{\@MissingArg{www.???}}
+\newcommand{\@firmenUrl}{\@MissingArg{Company URL not specified!}}
 \newcommand{\firmenUrl}[1]{%
-\renewcommand{\@firmenUrl}{#1}
+	\renewcommand{\@firmenUrl}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated. Use '\string\companyUrl' instead.}
+}
+\newcommand{\companyUrl}[1]{%
+	\renewcommand{\@firmenUrl}{#1}
 }
 
-\newcommand{\@firmenTel}{\@MissingArg{Tel??}}
+\newcommand{\@firmenTel}{\@MissingArg{Company phone number not specified!}}
 \newcommand{\firmenTel}[1]{%
-\renewcommand{\@firmenTel}{#1}
+	\renewcommand{\@firmenTel}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated. Use '\string\companyPhone' instead.}
+}
+\newcommand{\companyPhone}[1]{%
+	\renewcommand{\@firmenTel}{#1}
 }
 
-\newcommand{\@license}{\@MissingArg{Lizenztext??}}
+\newcommand{\@license}{\@MissingArg{License information is missing!}}
 \newcommand{\license}[1]{%
-\renewcommand{\@license}{#1}
+	\renewcommand{\@license}{#1}
 }
 
 %------------------ Titelseiten -------------------
@@ -487,25 +533,25 @@ acknowledged. I further declare that this or similar work has not been submitted
 
 %------------ Struktur der Frontseiten -------------------
 
-\renewcommand{\@matitelseiten}{
+\renewcommand{\@mastertitlepages}{
 \@matitel
 \@copyrightseite
 \@erklaerungsseite
 }
      
-\renewcommand{\@datitelseiten}{
+\renewcommand{\@diplomatitlepages}{
 \@datitel
 \@copyrightseite
 \@erklaerungsseite
 }
 
-\renewcommand{\@batitelseiten}{
+\renewcommand{\@bachelortitlepages}{
 \@batitel
 \@babetreuerseite
 \@erklaerungsseite
 }
 
-\renewcommand{\@prtitelseiten}{
+\renewcommand{\@internshiptitlepages}{
 \@prtitel
 \@firmenseite
 \@erklaerungsseite
