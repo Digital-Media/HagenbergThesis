@@ -75,17 +75,25 @@
   \renewcommand{\@betreuerName}{#1}
 }
 
-\newcommand{\@nummer}{\@MissingArg{Arbeit Nummer??}}
+\newcommand{\@nummer}{\@MissingArg{Thesis number not specified!}}
 \newcommand{\nummer}[1]{%
+	\renewcommand{\@nummer}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated. Use '\string\thesisnumber' instead.}
+}
+\newcommand{\thesisnumber}[1]{%
 	\renewcommand{\@nummer}{#1}
 }
 
-\newcommand{\@gegenstand}{\@MissingArg{Gegenstand??}}
+\newcommand{\@gegenstand}{\@MissingArg{Course not specified!}}
 \newcommand{\gegenstand}[1]{%
+	\renewcommand{\@gegenstand}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated. Use '\string\course' instead.}
+}
+\newcommand{\course}[1]{%
 	\renewcommand{\@gegenstand}{#1}
 }
 
-\newcommand{\@semester}{\@MissingArg{Semester??}}
+\newcommand{\@semester}{\@MissingArg{Semester not specified!}}
 \newcommand{\semester}[1]{%
 	\renewcommand{\@semester}{#1}
 }
