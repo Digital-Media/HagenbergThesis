@@ -10,7 +10,7 @@
 \newcommand{\hgbthesisDate}{2017/02/28} %version string
 \ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
 
-\RequirePackage{ifthen}
+\RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
 \ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
@@ -88,7 +88,7 @@
 	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated. Use '\string\degreeprogram' instead.}
 }
 \newcommand{\degreeprogram}[1]{%
-	\renewcommand{\@degreeprogram}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@degreeprogram}{#1}}
 }
 
 \newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
@@ -97,20 +97,20 @@
 	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated. Use '\string\placeofstudy' instead.}
 }
 \newcommand{\placeofstudy}[1]{%
-	\renewcommand{\@placeofstudy}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
 }
 
 \newcommand{\@advisor}{\@MissingArg{Advisor not specified!}}
 \newcommand{\betreuer}[1]{%
-  \renewcommand{\@advisor}{#1}
-  \ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated. Use '\string\advisor' instead.}
+	\renewcommand{\@advisor}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated. Use '\string\advisor' instead.}
 }
 \newcommand{\betreuerin}[1]{%
-  \renewcommand{\@advisor}{#1}
-  \ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated. Use '\string\advisor' instead.}
+	\renewcommand{\@advisor}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated. Use '\string\advisor' instead.}
 }
 \newcommand{\advisor}[1]{%
-  \renewcommand{\@advisor}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@advisor}{#1}}
 }
 
 \newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
@@ -119,7 +119,7 @@
 	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated. Use '\string\thesisnumber' instead.}
 }
 \newcommand{\thesisnumber}[1]{%
-	\renewcommand{\@thesisnumber}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
 }
 
 \newcommand{\@course}{\@MissingArg{Course not specified!}}
@@ -128,12 +128,12 @@
 	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated. Use '\string\course' instead.}
 }
 \newcommand{\course}[1]{%
-	\renewcommand{\@course}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@course}{#1}}
 }
 
 \newcommand{\@semester}{\@MissingArg{Semester not specified!}}
 \newcommand{\semester}[1]{%
-	\renewcommand{\@semester}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@semester}{#1}}
 }
 
 \newcommand{\@logofile}[0]{}
@@ -185,7 +185,7 @@
 	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated. Use '\string\company' instead.}
 }
 \newcommand{\company}[1]{%
-	\renewcommand{\@company}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@company}{#1}}
 }
 
 \newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
@@ -194,7 +194,7 @@
 	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated. Use '\string\companyUrl' instead.}
 }
 \newcommand{\companyUrl}[1]{%
-	\renewcommand{\@companyUrl}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
 }
 
 \newcommand{\@companyPhone}{\@MissingArg{Company phone number not specified!}}
@@ -203,6 +203,7 @@
 	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated. Use '\string\companyPhone' instead.}
 }
 \newcommand{\companyPhone}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyPhone}{#1}}
 	\renewcommand{\@companyPhone}{#1}
 }
 
