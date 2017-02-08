@@ -8,10 +8,14 @@
 \newcommand{\hgbDate}{2017/02/28}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
 
-% options german/english are passed from the class file
-\DeclareOption{english}{\providecommand{\hgb@MainLanguage}{english}}
-\DeclareOption{german}{\providecommand{\hgb@MainLanguage}{german}}
-\ProcessOptions\relax
+% Create a default/fallback main language so it is set no matter what
+\providecommand{\hgb@MainLanguage}{german}
+
+% Then pass the language options (german/ngerman/english) from the class file
+\DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
+\DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
+\DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
+\ProcessOptions*
 
 
 %% Required Packages ----------------------------------------------------------
@@ -21,11 +25,6 @@
 \RequirePackage[T1]{fontenc}		% T1 font encoding for improved hyphenation
 
 \RequirePackage{ifthen}
-
-%\RequirePackage[english,german,ngerman]{babel}
-\@ifundefined{hgb@MainLanguage}%
-   {\newcommand*{\hgb@MainLanguage}{german}}%
-	 {}
 
 % Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
