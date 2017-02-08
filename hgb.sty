@@ -22,16 +22,16 @@
 
 \RequirePackage{ifthen}
 
-\RequirePackage[english,german,ngerman]{babel}
+%\RequirePackage[english,german,ngerman]{babel}
 \@ifundefined{hgb@MainLanguage}%
    {\newcommand*{\hgb@MainLanguage}{german}}%
 	 {}
 
-% Set main language (babel):
+% Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\main@language{ngerman}}{}
+	{\RequirePackage[english,main=ngerman]{babel}}{}
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}%
-	{\main@language{english}}{}
+	{\RequirePackage[main=english,ngerman]{babel}}{}
 
 
 \RequirePackage{datetime}
