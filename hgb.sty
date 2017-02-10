@@ -51,8 +51,6 @@
 \RequirePackage{moreverb}
 \def\verbatimtabsize{2\relax}
 
-%\RequirePackage[noadjust]{cite} % avoid additional spacing before [..]
-
 \RequirePackage{ifpdf}
 \ifpdf % LaTeX is in native PDF mode (pdflatex) 
   \RequirePackage{epstopdf}			% converting EPS to PDF for pdflatex
@@ -74,12 +72,7 @@
 	breaklinks = true				% allow links to break over lines by making links over multiple lines
 }	%see https://www.tug.org/applications/hyperref/manual.html
 
-
-%\RequirePackage[all]{hypcap} % fixes hyperref problem with references to float captions
 \RequirePackage[figure,table,table*]{hypcap}	% do not redefine figure* for use in article (without captions)
-%\RequirePackage[novbox]{pdfsync}	% replaced by -synctex=-1 option
-%\RequirePackage[noadjust]{cite}	% avoids additional spacing before [..] - removed for biblatex
-
 
 %% Math Stuff -----------------------------------------------------------------
 
@@ -131,13 +124,11 @@
 	\put(0,0){\dashbox{0.2}(#1,#2)%
 	{\parbox{#1mm}{%
 	\centering\footnotesize 
-	%{\bf MESSBOX}\\ 
-	Breite $ = #1 \textrm{mm}$\\
-	H\"ohe $ = #2 \textrm{mm}$
+	width $ = #1 \textrm{mm}$\\
+	height $ = #2 \textrm{mm}$
 	}}}\end{picture}
 }
 
-%\newcommand{\ShowParameter}[1]{\relax\the#1\showthe#1} % to display TeX parameters
 \newcommand{\ShowParameter}[1]{\the#1\showthe#1} % to display TeX parameters
 %Beispiel: clubpenalty = \ShowParameter{\clubpenalty}
 
@@ -148,24 +139,7 @@
 \setlength{\parskip}{0pt plus 0.1pt}
 \raggedbottom						%\flushbottom
 
-%\pagestyle{headings}				% regular headers
-
-% Miscellaneous layout parameters: change only when you know what you're doing!
-%\setlength{\hoffset}{-1in}
-%\setlength{\voffset}{-1in}
-%\setlength{\oddsidemargin}{3cm}
-%\setlength{\evensidemargin}{2.5cm}
-%\setlength{\textwidth}{15.5cm}
-%\setlength{\textheight}{22.8cm}
-%\setlength{\topmargin}{2.54cm}
-%\setlength{\headheight}{1ex}
-%\setlength{\headsep}{1cm}
-%\parindent0pt
-%\parskip1.5ex plus0.5ex minus0.5ex	% flexible paragraph spacing
-
 \RequirePackage{float}
-%\floatplacement{figure}{tbp}
-%\floatplacement{table}{tbp}
 \floatstyle{plain}
 
 % Captions with font size "small" and additional margin spacing
@@ -190,9 +164,6 @@
 	itemsep = .0ex plus .1ex, 
 	parsep = .4ex plus .2ex
 }
-%\setlist{nolistsep}					% no spacing between items
-%\setlist{noitemsep}					% no vertical spacing at all
-
 
 \newenvironment{nowidows}%
 	{\clubpenalty=10000%
@@ -212,8 +183,6 @@
   {\RequirePackage[ruled]{algorithm}}%
 	{\RequirePackage[ruled,chapter]{algorithm}}
 
-%\floatname{algorithm}{Algorithmus}
-%\DeclareCaptionLabelSeparator{colon}{: } % Adaption for the standard caption style
 \DeclareCaptionStyle{ruled}{labelfont=bf,labelsep=colon} 
 
 % 'algorithmicx' returns the inner content of algorithms (\begin{algorithmic}[1]...)
@@ -229,8 +198,7 @@
 \@ifundefined{chapter}%
    {\newfloat{program}{tbp}{lop}}%
 	 {\newfloat{program}{tbp}{lop}[chapter]}
-%\floatname{program}{Programm}
-%\floatname{program}{\@ProgramName}
+
 \floatstyle{plain}
 \restylefloat*{program}
 	
@@ -299,23 +267,7 @@
 \def\widedotfill{\leaders\hbox to 8pt{\hfil.\hfil}\hfill}
 
 \newcommand{\fitem}[1]{%
-%\item[\url{#1}\hfill]
-%\item[\url{#1}\dotfill]
 \item[\url{#1}\widedotfill]
 }
-
-% obsolete (2016-20-06)
-%\newcommand{\Frametext}[1]{%
-%\setlength{\fboxrule}{0.1mm}%
-%\setlength{\fboxsep}{0.5mm}%
-%\fbox{\vphantom{Ag}#1}%
-%}
-
-% obsolete (2016-20-06)
-%\newcommand{\FramePic}[1]{%
-%\setlength{\fboxrule}{0.1mm}%
-%\setlength{\fboxsep}{0mm}%
-%\fbox{#1}%
-%}
 
 \setlength{\fboxsep}{0mm}			%globally zero fbox separator
