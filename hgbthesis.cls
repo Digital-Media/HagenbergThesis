@@ -36,7 +36,7 @@
 
 \DeclareOption{diplom}{%
 	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
-	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated. Use Use 'diploma' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'diploma' instead.}
 }
 
 \DeclareOption{diploma}{%
@@ -49,7 +49,7 @@
 
 \DeclareOption{praktikum}{%
 	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
-	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated. Use Use 'internship' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'internship' instead.}
 }
 
 \DeclareOption{internship}{%
@@ -82,19 +82,19 @@
 
 % General Commands
 
-\newcommand{\@degreeprogram}{\@MissingArg{Degree program not specified!}}
+\newcommand{\@programname}{\@MissingArg{Degree program not specified!}}
 \newcommand{\studiengang}[1]{%
-	\renewcommand{\@degreeprogram}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated. Use '\string\degreeprogram' instead.}
+	\renewcommand{\@programname}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated, use '\string\programname' instead.}
 }
-\newcommand{\degreeprogram}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@degreeprogram}{#1}}
+\newcommand{\programname}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
 }
 
 \newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
 \newcommand{\studienort}[1]{%
 	\renewcommand{\@placeofstudy}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated. Use '\string\placeofstudy' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated, use '\string\placeofstudy' instead.}
 }
 \newcommand{\placeofstudy}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
@@ -103,11 +103,11 @@
 \newcommand{\@advisor}{\@MissingArg{Advisor not specified!}}
 \newcommand{\betreuer}[1]{%
 	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated. Use '\string\advisor' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated, use '\string\advisor' instead.}
 }
 \newcommand{\betreuerin}[1]{%
 	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated. Use '\string\advisor' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated, use '\string\advisor' instead.}
 }
 \newcommand{\advisor}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@advisor}{#1}}
@@ -116,19 +116,19 @@
 \newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
 \newcommand{\nummer}[1]{%
 	\renewcommand{\@thesisnumber}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated. Use '\string\thesisnumber' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated, use '\string\thesisnumber' instead.}
 }
 \newcommand{\thesisnumber}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
 }
 
-\newcommand{\@course}{\@MissingArg{Course not specified!}}
+\newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
 \newcommand{\gegenstand}[1]{%
-	\renewcommand{\@course}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated. Use '\string\course' instead.}
+	\renewcommand{\@coursetitle}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated, use '\string\coursetitle' instead.}
 }
-\newcommand{\course}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@course}{#1}}
+\newcommand{\coursetitle}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
 }
 
 \newcommand{\@semester}{\@MissingArg{Semester not specified!}}
@@ -161,7 +161,7 @@
 	\setcounter{@yearofsubmission}{#1}
 	\setcounter{@monthofsubmission}{#2}
 	\setcounter{@dayofsubmission}{#3}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabedatum' is deprecated. Use '\string\dateofsubmission' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabedatum' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
 }
 \newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
 	\setcounter{@yearofsubmission}{#1}
@@ -170,28 +170,28 @@
 }
 
 \newcommand{\abgabemonat}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabemonat' is deprecated. Use '\string\dateofsubmission' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabemonat' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
 }
 
 \newcommand{\abgabejahr}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabejahr' is deprecated. Use '\string\dateofsubmission' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabejahr' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
 }
 
 % Internship Report Commands
 
-\newcommand{\@company}{\@MissingArg{Company not specified!}}
+\newcommand{\@companyName}{\@MissingArg{Company not specified!}}
 \newcommand{\firma}[1]{%
-	\renewcommand{\@company}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated. Use '\string\company' instead.}
+	\renewcommand{\@companyName}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated, use '\string\companyName' instead.}
 }
-\newcommand{\company}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@company}{#1}}
+\newcommand{\companyName}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
 }
 
 \newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
 \newcommand{\firmenUrl}[1]{%
 	\renewcommand{\@companyUrl}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated. Use '\string\companyUrl' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated, use '\string\companyUrl' instead.}
 }
 \newcommand{\companyUrl}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
@@ -200,7 +200,7 @@
 \newcommand{\@companyPhone}{\@MissingArg{Company phone number not specified!}}
 \newcommand{\firmenTel}[1]{%
 	\renewcommand{\@companyPhone}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated. Use '\string\companyPhone' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated, use '\string\companyPhone' instead.}
 }
 \newcommand{\companyPhone}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyPhone}{#1}}
@@ -217,7 +217,7 @@
 
 \newcommand{\titelseite}{%
 	\maketitle
-	\ClassWarning{hgbthesis}{Deprecated: '\string\titelseite' is deprecated. Use '\string\maketitle' instead.}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\titelseite' is deprecated, use '\string\maketitle' instead.}
 }
 
 %% adds blank space after each letter (http://stackoverflow.com/a/3951837)
@@ -251,7 +251,7 @@
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
 			\vskip 4mm%
-			{\large\@degreeprogram}%
+			{\large\@programname}%
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
@@ -284,7 +284,7 @@
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Masterstudiengang}%
 			\vskip 4mm%
-			{\large\@degreeprogram}%
+			{\large\@programname}%
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
@@ -317,7 +317,7 @@
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Diplomstudiengang}%
 			\vskip 4mm%
-			{\large\@degreeprogram}%
+			{\large\@programname}%
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
@@ -352,7 +352,7 @@
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
 			\vskip 4mm%
-			{\large\@degreeprogram}%
+			{\large\@programname}%
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
@@ -431,7 +431,7 @@ This work is published under the conditions of the
 {Praktikumsstelle:}
 \\
 \vspace{3mm}
-{\Large\sf\@company\\ \mbox{}}
+{\Large\sf\@companyName\\ \mbox{}}
 \\
 {\sf \@companyPhone}
 \\
@@ -460,7 +460,7 @@ This work is published under the conditions of the
 		\vspace{40mm} 
 		{Diese Arbeit entstand im Rahmen des Gegenstands}\\
 		\vspace{6mm} 
-		{\Large\sf \@course\\ \mbox{}}\\
+		{\Large\sf \@coursetitle\\ \mbox{}}\\
 		\medskip
 		im\\
 		\bigskip
@@ -485,7 +485,7 @@ This work is published under the conditions of the
 		\vspace{40mm} 
 		{This thesis was created as part of the course}\\
 		\vspace{6mm} 
-		{\Large\sf \@course\\ \mbox{}}\\
+		{\Large\sf \@coursetitle\\ \mbox{}}\\
 		\medskip
 		during\\
 		\bigskip
@@ -559,7 +559,7 @@ This work is published under the conditions of the
 }
 
 
-%% Assembly of Title Pages ----------------------------------------------------
+%% Assembly of title pages ----------------------------------------------------
 
 \renewcommand{\@mastertitlepages}{
 	\@mastertitle
@@ -586,13 +586,13 @@ This work is published under the conditions of the
 }
 
 
-% Add PDF Meta Data and Create Title Pages
+% Add PDF meta data and create title pages
 
 \renewcommand{\maketitle}{	%replace standard LaTeX-command
 	\hypersetup{
 			pdftitle={\@title},
 			pdfauthor={\@author},
-			pdfsubject={\@degreeprogram, \@placeofstudy},
+			pdfsubject={\@programname, \@placeofstudy},
 			pdfcreator={LaTeX using class hgbthesis},
 			pdfproducer={},
 			pdfkeywords={}
@@ -601,7 +601,7 @@ This work is published under the conditions of the
 	\@maketitlepages
 }
 
-%% Additional Hagenberg Packages ----------------------------------------------
+%% Additional Hagenberg packages ----------------------------------------------
 
 \usepackage{hgbheadings}
 \usepackage{hgbabbrev}
