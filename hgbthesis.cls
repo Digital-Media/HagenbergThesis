@@ -1,83 +1,139 @@
-%% File encoding: ASCII
 %% hgbthesis.cls
-%% Autor: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
-%% Diese Datei ist Teil des hagenberg-Package zur Erstellung von 
-%% Bachelor- und Diplomarbeiten.
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+%% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbthesisDate}{2015/09/19} %Versionsdatum
-\ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX-Vorlage fuer Diplomarbeiten, Masterarbeiten, Bachelorarbeiten etc.]
+\newcommand{\hgbthesisDate}{2017/02/28} %version string
+\ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
 
-
-
-\RequirePackage{ifthen}
+\RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
 \ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
+
+%% Commands for Title Pages (used in class options) ---------------------------
+
 \newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
-\newcommand{\@matitelseiten}{}
-\newcommand{\@datitelseiten}{}
-\newcommand{\@batitelseiten}{}
-\newcommand{\@prtitelseiten}{}
-\newcommand{\@maketitlepages}{\@matitelseiten}  %default: Masterarbeit
+\newcommand{\@mastertitlepages}{}
+\newcommand{\@diplomatitlepages}{}
+\newcommand{\@bachelortitlepages}{}
+\newcommand{\@internshiptitlepages}{}
+\newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
 
 
-%% begin class options ---------------------------------------------
-\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@matitelseiten}}
-\DeclareOption{diplom}{\renewcommand{\@maketitlepages}{\@datitelseiten}}
-\DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@batitelseiten}}
-\DeclareOption{praktikum}{\renewcommand{\@maketitlepages}{\@prtitelseiten}}
-\DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
-\DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
-\DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option "\CurrentOption"}}
+%% Class options --------------------------------------------------------------
+
+\DeclareOption{master}{
+	\renewcommand{\@maketitlepages}{\@mastertitlepages}
+}
+
+\DeclareOption{diplom}{%
+	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
+	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'diploma' instead.}
+}
+
+\DeclareOption{diploma}{%
+	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
+}
+
+\DeclareOption{bachelor}{%
+	\renewcommand{\@maketitlepages}{\@bachelortitlepages}
+}
+
+\DeclareOption{praktikum}{%
+	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
+	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'internship' instead.}
+}
+
+\DeclareOption{internship}{%
+	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
+}
+
+\DeclareOption{english}{%
+	\renewcommand{\hgb@MainLanguage}{english}
+}
+
+\DeclareOption{german}{%
+	\renewcommand{\hgb@MainLanguage}{german}
+}
+
+\DeclareOption*{%
+	\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}
+}
+
 \ProcessOptions
-%% end class options ---------------------------------------------
- 
+
+
+%% Paper Options and Style File -----------------------------------------------
+
 \LoadClass[a4paper,11pt,oneside]{book}
  
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
 
-%-------------- Setup fuer Seiten im Front-Teil --------------------
+%% Setup for Pages in the Front Matter ----------------------------------------
 
-\newcommand{\@studiengang}{\@MissingArg{Studiengang??}}
+% General Commands
+
+\newcommand{\@programname}{\@MissingArg{Degree program not specified!}}
 \newcommand{\studiengang}[1]{%
-	\renewcommand{\@studiengang}{#1}
+	\renewcommand{\@programname}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated, use '\string\programname' instead.}
+}
+\newcommand{\programname}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
 }
 
-\newcommand{\@studienort}{\@MissingArg{Studienort??}}
+\newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
 \newcommand{\studienort}[1]{%
-	\renewcommand{\@studienort}{#1}
+	\renewcommand{\@placeofstudy}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated, use '\string\placeofstudy' instead.}
+}
+\newcommand{\placeofstudy}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
 }
 
-\newcommand{\@betreuerBez}{????}
-\newcommand{\@betreuerName}{\@MissingArg{Betreuer??}}
-
+\newcommand{\@advisor}{\@MissingArg{Advisor not specified!}}
 \newcommand{\betreuer}[1]{%
-  \renewcommand{\@betreuerBez}{Betreuer}
-	\renewcommand{\@betreuerName}{#1}
+	\renewcommand{\@advisor}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated, use '\string\advisor' instead.}
 }
 \newcommand{\betreuerin}[1]{%
-  \renewcommand{\@betreuerBez}{Betreuerin}
-	\renewcommand{\@betreuerName}{#1}
+	\renewcommand{\@advisor}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated, use '\string\advisor' instead.}
+}
+\newcommand{\advisor}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@advisor}{#1}}
 }
 
-\newcommand{\@nummer}{\@MissingArg{Arbeit Nummer??}}
+\newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
 \newcommand{\nummer}[1]{%
-	\renewcommand{\@nummer}{#1}
+	\renewcommand{\@thesisnumber}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated, use '\string\thesisnumber' instead.}
+}
+\newcommand{\thesisnumber}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
 }
 
-\newcommand{\@gegenstand}{\@MissingArg{Gegenstand??}}
+\newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
 \newcommand{\gegenstand}[1]{%
-	\renewcommand{\@gegenstand}{#1}
+	\renewcommand{\@coursetitle}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated, use '\string\coursetitle' instead.}
+}
+\newcommand{\coursetitle}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
 }
 
-\newcommand{\@semester}{\@MissingArg{Semester??}}
+\newcommand{\@semester}{\@MissingArg{Semester not specified!}}
 \newcommand{\semester}[1]{%
-	\renewcommand{\@semester}{#1}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@semester}{#1}}
 }
 
 \newcommand{\@logofile}[0]{}
@@ -91,60 +147,77 @@
 	{\includegraphics[height=30mm]{\@logofile}}%
 }
 
-%% -------------------------------------------------
+% Submission Commands
 
-\newcounter{@abgabetag}
-\newcounter{@abgabemonat}
-\newcounter{@abgabejahr}
+\newcounter{@dayofsubmission}
+\newcounter{@monthofsubmission}
+\newcounter{@yearofsubmission}
 
-\setcounter{@abgabetag}{\the\day}
-\setcounter{@abgabemonat}{\the\month}
-\setcounter{@abgabejahr}{\the\year}
+\setcounter{@dayofsubmission}{\the\day}
+\setcounter{@monthofsubmission}{\the\month}
+\setcounter{@yearofsubmission}{\the\year}
 
 \newcommand{\abgabedatum}[3]{%	%\abgabedatum{yyyy}{mm}{dd}
-	\setcounter{@abgabejahr}{#1}
-	\setcounter{@abgabemonat}{#2}
-	\setcounter{@abgabetag}{#3}
+	\setcounter{@yearofsubmission}{#1}
+	\setcounter{@monthofsubmission}{#2}
+	\setcounter{@dayofsubmission}{#3}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabedatum' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
+}
+\newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
+	\setcounter{@yearofsubmission}{#1}
+	\setcounter{@monthofsubmission}{#2}
+	\setcounter{@dayofsubmission}{#3}
 }
 
 \newcommand{\abgabemonat}[1]{%
-	\ClassWarning{hgbthesis}{\noexpand\abgabemonat is deprecated - 
-	use \noexpand\abgabedatum instead!}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabemonat' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
 }
 
 \newcommand{\abgabejahr}[1]{%
-	\ClassWarning{hgbthesis}{\noexpand\abgabejahr is deprecated - 
-	use \noexpand\abgabedatum instead!}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabejahr' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
 }
 
-%% ----------------------------------------------------------
+% Internship Report Commands
 
-\newcommand{\@firma}{\@MissingArg{Firma??}}
+\newcommand{\@companyName}{\@MissingArg{Company not specified!}}
 \newcommand{\firma}[1]{%
-\renewcommand{\@firma}{#1}
+	\renewcommand{\@companyName}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated, use '\string\companyName' instead.}
+}
+\newcommand{\companyName}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
 }
 
-\newcommand{\@firmenUrl}{\@MissingArg{www.???}}
+\newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
 \newcommand{\firmenUrl}[1]{%
-\renewcommand{\@firmenUrl}{#1}
+	\renewcommand{\@companyUrl}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated, use '\string\companyUrl' instead.}
+}
+\newcommand{\companyUrl}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
 }
 
-\newcommand{\@firmenTel}{\@MissingArg{Tel??}}
+\newcommand{\@companyPhone}{\@MissingArg{Company phone number not specified!}}
 \newcommand{\firmenTel}[1]{%
-\renewcommand{\@firmenTel}{#1}
+	\renewcommand{\@companyPhone}{#1}
+	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated, use '\string\companyPhone' instead.}
+}
+\newcommand{\companyPhone}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyPhone}{#1}}
+	\renewcommand{\@companyPhone}{#1}
 }
 
-\newcommand{\@license}{\@MissingArg{Lizenztext??}}
+\newcommand{\@license}{\@MissingArg{License information is missing!}}
 \newcommand{\license}[1]{%
-\renewcommand{\@license}{#1}
+	\renewcommand{\@license}{#1}
 }
 
-%------------------ Titelseiten -------------------
 
-%% deprecated - use \maketitle instead!
-\newcommand{\titelseite}{ 
-  \ClassWarning{hgbthesis}{\noexpand\titelseite is deprecated - use \noexpand\maketitle instead}
-  \maketitle
+%% Commands for Creating the Title Pages --------------------------------------
+
+\newcommand{\titelseite}{%
+	\maketitle
+	\ClassWarning{hgbthesis}{Deprecated: '\string\titelseite' is deprecated, use '\string\maketitle' instead.}
 }
 
 %% adds blank space after each letter (http://stackoverflow.com/a/3951837)
@@ -154,136 +227,144 @@
   }%
 }
 
-\newcommand{\@batitel}{%
+\newcommand{\@bachelortitle}{%
 \begin{titlepage}%
-\begin{german}
-\rule{0mm}{1mm}
-\vspace*{0mm}
-\begin{center}%
-	\normalfont
-  \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
-    \setlength{\baselineskip}{25pt}%
-    \@title}
-	\vskip 15mm%
-	{\large\scshape\@author}%
-	\vskip 15mm%
-	\makelogo%
-	\vskip 15mm%
-	{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
-	\vskip 4mm%
-  {\large Nr.~\@nummer}
-	\vskip 4mm%
-	{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
-	\vskip 4mm%
-	{\large\@studiengang}%
-	\vskip 4mm%
-	{\large in \@studienort}%
-	\vskip 16mm%
-	{\large im \monthname[\value{@abgabemonat}] \arabic{@abgabejahr}}%
-\end{center}%
-  \vfil%
-\end{german}
+	\begin{german}
+		\rule{0mm}{1mm}
+		\vspace*{0mm}
+		\begin{center}%
+			\normalfont
+			\setlength{\unitlength}{1cm}
+			\parbox[c][5cm][c]{12cm}{%
+				\centering\LARGE\bfseries%
+				\setlength{\baselineskip}{25pt}%
+				\@title%
+			}
+			\vskip 15mm%
+			{\large\scshape\@author}%
+			\vskip 15mm%
+			\makelogo%
+			\vskip 15mm%
+			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
+			\vskip 4mm%
+			{\large Nr.~\@thesisnumber}
+			\vskip 4mm%
+			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
+			\vskip 4mm%
+			{\large\@programname}%
+			\vskip 4mm%
+			{\large in \@placeofstudy}%
+			\vskip 16mm%
+			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+		\end{center}%
+		\vfil%
+	\end{german}
 \end{titlepage}%
 }
 
-\newcommand{\@matitel}{%
+\newcommand{\@mastertitle}{%
 \begin{titlepage}%
-\begin{german}
-\rule{0mm}{1mm}
-\vspace*{0mm}
-\begin{center}%
-	\normalfont
-  \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%%
-    \setlength{\baselineskip}{25pt}%
-    \@title}
-	\vskip 15mm%
-	{\large\scshape\@author}%
-	\vskip 15mm%
-	\makelogo%
-	\vskip 15mm%
-	{\Large\uppercase{\@addspaces{Masterarbeit}}}%
-	\vskip 4mm%
-	{\large eingereicht am} \vskip 1mm {Fachhochschul-Masterstudiengang}%
-	\vskip 4mm%
-	{\large\@studiengang}%
-	\vskip 4mm%
-	{\large in \@studienort}%
-	\vskip 16mm%
-	{\large im \monthname[\value{@abgabemonat}] \arabic{@abgabejahr}}%
-\end{center}%
-  \vfil%
-\end{german}
+	\begin{german}
+		\rule{0mm}{1mm}
+		\vspace*{0mm}
+		\begin{center}%
+			\normalfont
+			\setlength{\unitlength}{1cm}
+			\parbox[c][5cm][c]{12cm}{%
+				\centering\LARGE\bfseries%%
+				\setlength{\baselineskip}{25pt}%
+				\@title%
+			}
+			\vskip 15mm%
+			{\large\scshape\@author}%
+			\vskip 15mm%
+			\makelogo%
+			\vskip 15mm%
+			{\Large\uppercase{\@addspaces{Masterarbeit}}}%
+			\vskip 4mm%
+			{\large eingereicht am} \vskip 1mm {Fachhochschul-Masterstudiengang}%
+			\vskip 4mm%
+			{\large\@programname}%
+			\vskip 4mm%
+			{\large in \@placeofstudy}%
+			\vskip 16mm%
+			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+		\end{center}%
+		\vfil%
+	\end{german}
 \end{titlepage}%
 }
 
-\newcommand{\@datitel}{%
+\newcommand{\@diplomatitle}{%
 \begin{titlepage}%
-\begin{german}
-\rule{0mm}{1mm}
-\vspace*{0mm}
-\begin{center}%
-	\normalfont
-  \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
-    \setlength{\baselineskip}{25pt}%
-    \@title}
-	\vskip 15mm%
-	{\large\scshape\@author}%
-	\vskip 15mm%
-	\makelogo%
-	\vskip 15mm%
-	{\Large\uppercase{\@addspaces{Diplomarbeit}}}%
-	\vskip 4mm%
-	{\large eingereicht am} \vskip 1mm {Fachhochschul-Diplomstudiengang}%
-	\vskip 4mm%
-	{\large\@studiengang}%
-	\vskip 4mm%
-	{\large in \@studienort}%
-	\vskip 16mm%
-	{\large im \monthname[\value{@abgabemonat}] \arabic{@abgabejahr}}%
-\end{center}%
-  \vfil%
-\end{german}
+	\begin{german}
+		\rule{0mm}{1mm}
+		\vspace*{0mm}
+		\begin{center}%
+			\normalfont
+			\setlength{\unitlength}{1cm}
+			\parbox[c][5cm][c]{12cm}{%
+				\centering\LARGE\bfseries%
+				\setlength{\baselineskip}{25pt}%
+				\@title%
+			}
+			\vskip 15mm%
+			{\large\scshape\@author}%
+			\vskip 15mm%
+			\makelogo%
+			\vskip 15mm%
+			{\Large\uppercase{\@addspaces{Diplomarbeit}}}%
+			\vskip 4mm%
+			{\large eingereicht am} \vskip 1mm {Fachhochschul-Diplomstudiengang}%
+			\vskip 4mm%
+			{\large\@programname}%
+			\vskip 4mm%
+			{\large in \@placeofstudy}%
+			\vskip 16mm%
+			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+		\end{center}%
+		\vfil%
+	\end{german}
 \end{titlepage}%
 }
 
-\newcommand{\@prtitel}{%
+\newcommand{\@internshiptitle}{%
 \begin{titlepage}%
-\begin{german}
-\rule{0mm}{1mm}
-\vspace*{0mm}
-\begin{center}%
-	\normalfont
-  \setlength{\unitlength}{1cm}
-	\parbox[c][5cm][c]{12cm}{\centering\LARGE\bfseries%
-    \setlength{\baselineskip}{25pt}%
-    Endbericht zum Berufspraktikum}
-	\vskip 15mm%
-	{\large\scshape\@author}%
-	\vskip 15mm%
-	\makelogo%
-	\vskip 15mm%
-	{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
-	\vskip 4mm%
-  {\large Nr.~\@nummer}
-	\vskip 4mm%
-	{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
-	\vskip 4mm%
-	{\large\@studiengang}%
-	\vskip 4mm%
-	{\large in \@studienort}%
-	\vskip 16mm%
-	{\large im \monthname[\value{@abgabemonat}] \arabic{@abgabejahr}}%
-\end{center}%
-  \vfil%
-\end{german}
+	\begin{german}
+		\rule{0mm}{1mm}
+		\vspace*{0mm}
+		\begin{center}%
+			\normalfont
+			\setlength{\unitlength}{1cm}
+			\parbox[c][5cm][c]{12cm}{%
+				\centering\LARGE\bfseries%
+				\setlength{\baselineskip}{25pt}%
+				Endbericht zum Berufspraktikum%
+			}
+			\vskip 15mm%
+			{\large\scshape\@author}%
+			\vskip 15mm%
+			\makelogo%
+			\vskip 15mm%
+			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
+			\vskip 4mm%
+			{\large Nr.~\@thesisnumber}
+			\vskip 4mm%
+			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
+			\vskip 4mm%
+			{\large\@programname}%
+			\vskip 4mm%
+			{\large in \@placeofstudy}%
+			\vskip 16mm%
+			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+		\end{center}%
+		\vfil%
+	\end{german}
 \end{titlepage}%
 }
 
 
-%------------------ Copyright-Seite -------------------
+% Copyright and License Page --------------------------------------------------
 
 \newcommand{\strictlicense}{%
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
@@ -295,41 +376,40 @@
 Diese Arbeit wird unter den Bedingungen der \textsl{Creative Commons Lizenz} 
 \emph{Namens\-nennung--NichtKommerziell--Keine\-Bearbeitung \"Osterreich} 
 (CC BY-NC-ND) ver\"offentlicht --
-siehe \url{http://creativecommons.org/licenses/by-nc-nd/3.0/at/}.}
+siehe \url{https://creativecommons.org/licenses/by-nc-nd/3.0/at/}.}
 
 \newcommand{\@ccLicenseEn}{%
 This work is published under the conditions of the 
 \textsl{Creative Commons License Attribution--Non\-Commercial--No\-Derivatives} 
 (CC BY-NC-ND)---see
-\url{http://creativecommons.org/licenses/by-nc-nd/3.0/}.}
+\url{https://creativecommons.org/licenses/by-nc-nd/3.0/}.}
 
 \newcommand{\cclicense}{%
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-{\license{\@ccLicenseAt}} % german CC license text
-{\license{\@ccLicenseEn}} % english CC license text (default)
+	{\license{\@ccLicenseAt}} % german CC license text
+	{\license{\@ccLicenseEn}} % english CC license text (default)
 }
 	
-%\strictlicense
 \cclicense	% Creative Commons License (default)
 
 \newcommand{\@makelicense}{ 
-  \sbox\@tempboxa{\@license}%
-  \ifdim \wd\@tempboxa >\hsize
-    \begin{sloppypar}\noindent\@license\end{sloppypar}
-  \else
-    \global \@minipagefalse
-    \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-  \fi
-} 
+	\sbox\@tempboxa{\@license}%
+	\ifdim \wd\@tempboxa >\hsize
+		\begin{sloppypar}\noindent\@license\end{sloppypar}
+	\else
+		\global \@minipagefalse
+		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+	\fi
+}
 
-\newcommand{\@copyrightseite}{%
+\newcommand{\@copyrightpage}{%
 \newpage
 \setcounter{page}{2}
 \thispagestyle{plain}
 \rule{0mm}{1mm}
 \vspace*{75mm}
 \begin{center}
-\copyright\ Copyright\ \arabic{@abgabejahr}\ \@author
+\copyright\ Copyright\ \arabic{@yearofsubmission}\ \@author
 \end{center}
 \vspace{8mm}
 \@makelicense
@@ -338,8 +418,10 @@ This work is published under the conditions of the
 %\end{center}
 }
 
-%------------------ Firmen-Seite -------------------
-\newcommand{\@firmenseite}{%
+
+%% Company Page for Internship Report -----------------------------------------
+
+\newcommand{\@companypage}{%
 \newpage
 \setcounter{page}{2}
 \thispagestyle{plain}
@@ -349,144 +431,181 @@ This work is published under the conditions of the
 {Praktikumsstelle:}
 \\
 \vspace{3mm}
-{\Large\sf\@firma\\ \mbox{}}
+{\Large\sf\@companyName\\ \mbox{}}
 \\
-{\sf \@firmenTel}
+{\sf \@companyPhone}
 \\
-{\sf \@firmenUrl}
+{\sf \@companyUrl}
 \\
 \vspace{45mm} 
 {Kontaktperson:}
 \\
 \vspace{3mm} 
-{\Large\sf\@betreuerName\\ \mbox{}}
+{\Large\sf\@advisor\\ \mbox{}}
 \end{center}
 }
 
-%------------------ Betreuer-Seite -------------------
 
-\newcommand{\@babetreuerseite}{%
-\newpage
-\setcounter{page}{2}
-\thispagestyle{plain}
-\rule{0mm}{1mm}
-\begin{center}
-%
-\vspace{40mm} 
-{Diese Arbeit entstand im Rahmen des Gegenstands}\\
-\vspace{6mm} 
-{\Large\sf \@gegenstand\\ \mbox{}}\\
-\medskip
-im\\
-\bigskip
-{\@semester}\\
-%
-\vspace{45mm} 
-%{Betreuer:}\\
-{\@betreuerBez:}\\
-\vspace{3mm} 
-{\Large\sf \@betreuerName\\ \mbox{}}
-\end{center}
+%% Advisor Pages in German and English ----------------------------------------
+
+% German
+
+\newcommand{\@advisorpageDe}{%
+	\newpage
+	\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		%
+		\vspace{40mm} 
+		{Diese Arbeit entstand im Rahmen des Gegenstands}\\
+		\vspace{6mm} 
+		{\Large\sf \@coursetitle\\ \mbox{}}\\
+		\medskip
+		im\\
+		\bigskip
+		{\@semester}\\
+		%
+		\vspace{45mm} 
+		{Betreuung:}\\
+		\vspace{3mm} 
+		{\Large\sf \@advisor\\ \mbox{}}
+	\end{center}
 }
 
-%% -------------- Erklaerung / Declaration ---------
+% English
 
-\newcommand{\@erklaerungsseiteDe}{%
-\begin{german}
-\chapter{Erkl\"arung}
-\noindent
-%Standardfassung der FH-OOe ab 04.04.2012:
-Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
-andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
-solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen 
-Pr\"ufungsbeh\"orde vorgelegt.
-\par
-\vspace{10mm}
-\noindent
-\@studienort, am \formatdate{\value{@abgabetag}}{\value{@abgabemonat}}{\value{@abgabejahr}}
-\par
-\vspace{12mm}
-\noindent
-\@author
-\end{german}
+\newcommand{\@advisorpageEn}{%
+	\newpage
+	\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		%
+		\vspace{40mm} 
+		{This thesis was created as part of the course}\\
+		\vspace{6mm} 
+		{\Large\sf \@coursetitle\\ \mbox{}}\\
+		\medskip
+		during\\
+		\bigskip
+		{\@semester}\\
+		%
+		\vspace{45mm} 
+		{Advisor:}\\
+		\vspace{3mm} 
+		{\Large\sf \@advisor\\ \mbox{}}
+	\end{center}
 }
+
+\newcommand{\@advisorpage}{%
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	{\@advisorpageDe}%
+	{\@advisorpageEn}
+}
+
+
+%% Declaration Pages in German and English ------------------------------------
+
+% German
+
+\newcommand{\@declarationpageDe}{%
+	\begin{german}
+		\chapter{Erkl\"arung}
+		\noindent
+		%Standardfassung der FH-OOe ab 04.04.2012:
+		Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
+		andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
+		solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen 
+		Pr\"ufungsbeh\"orde vorgelegt.
+		\par
+		\vspace{10mm}
+		\noindent
+		\@placeofstudy, am \formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}
+		\par
+		\vspace{12mm}
+		\noindent
+		\@author
+	\end{german}
+}
+
+% English
 
 \newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
 
-\newcommand{\@erklaerungsseiteEn}{%
-\begin{english}
-\chapter{Declaration}
-\noindent
-I hereby declare and confirm that this thesis is entirely the result of my own original work. 
-Where other sources of information have been used, they have been indicated as such and properly 
-acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
-\par
-\vspace{10mm}
-\noindent
-%\@studienort, \the\year-\leadingzero{\month}-\leadingzero{\day} %http://de.wikibooks.org/wiki/LaTeX-W%F6rterbuch:_today 
-\@studienort, {\usdate\formatdate{\value{@abgabetag}}{\value{@abgabemonat}}{\value{@abgabejahr}}}
-\par
-\vspace{12mm}
-\noindent
-\@author
-\end{english}
+\newcommand{\@declarationpageEn}{%
+	\begin{english}
+		\chapter{Declaration}
+		\noindent
+		I hereby declare and confirm that this thesis is entirely the result of my own original work. 
+		Where other sources of information have been used, they have been indicated as such and properly 
+		acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
+		\par
+		\vspace{10mm}
+		\noindent
+		%\@placeofstudy, \the\year-\leadingzero{\month}-\leadingzero{\day} %http://de.wikibooks.org/wiki/LaTeX-W%F6rterbuch:_today 
+		\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
+		\par
+		\vspace{12mm}
+		\noindent
+		\@author
+	\end{english}
 }
 
-\newcommand{\@erklaerungsseite}{%
+\newcommand{\@declarationpage}{%
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\@erklaerungsseiteDe}%
-	{\@erklaerungsseiteEn}
+	{\@declarationpageDe}%
+	{\@declarationpageEn}
 }
 
 
-%------------ Struktur der Frontseiten -------------------
+%% Assembly of title pages ----------------------------------------------------
 
-\renewcommand{\@matitelseiten}{
-\@matitel
-\@copyrightseite
-\@erklaerungsseite
+\renewcommand{\@mastertitlepages}{
+	\@mastertitle
+	\@copyrightpage
+	\@declarationpage
 }
      
-\renewcommand{\@datitelseiten}{
-\@datitel
-\@copyrightseite
-\@erklaerungsseite
+\renewcommand{\@diplomatitlepages}{
+	\@diplomatitle
+	\@copyrightpage
+	\@declarationpage
 }
 
-\renewcommand{\@batitelseiten}{
-\@batitel
-\@babetreuerseite
-\@erklaerungsseite
+\renewcommand{\@bachelortitlepages}{
+	\@bachelortitle
+	\@advisorpage
+	\@declarationpage
 }
 
-\renewcommand{\@prtitelseiten}{
-\@prtitel
-\@firmenseite
-\@erklaerungsseite
+\renewcommand{\@internshiptitlepages}{
+	\@internshiptitle
+	\@companypage
+	\@declarationpage
 }
 
-%------------ Automatischer Eintrag der PDF Metadaten ------------
+
+% Add PDF meta data and create title pages
 
 \renewcommand{\maketitle}{	%replace standard LaTeX-command
-\hypersetup{
-		pdftitle={\@title},
-		pdfauthor={\@author},
-		pdfsubject={\@studiengang, \@studienort},
-		pdfcreator={LaTeX using class hgbthesis},
-		pdfproducer={},
-		pdfkeywords={}
-}%
-\@maketitlepages
+	\hypersetup{
+			pdftitle={\@title},
+			pdfauthor={\@author},
+			pdfsubject={\@programname, \@placeofstudy},
+			pdfcreator={LaTeX using class hgbthesis},
+			pdfproducer={},
+			pdfkeywords={}
+	}%
+
+	\@maketitlepages
 }
 
-%%-------------------------------------------------------------
+%% Additional Hagenberg packages ----------------------------------------------
 
 \usepackage{hgbheadings}
 \usepackage{hgbabbrev}
 \usepackage{hgblistings}
 \usepackage{hgbbib}
 
-%%-------------------------------------------------------------
-
 \endinput
-

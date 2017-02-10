@@ -1,9 +1,16 @@
+%% hgbbib.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
-%% --------------- Bibliography setup ---------------------------------------
+
+
+%% Bibliography Setup ---------------------------------------------------------
+
 \ProvidesPackage{hgbbib}
 
-\usepackage{csquotes}	% recommended for biblatex
-%\usepackage[babel,german=quotes]{csquotes}	% utf8-change ??
+\usepackage{csquotes}				% recommended for biblatex
+%\usepackage[babel,german=quotes]{csquotes} % utf8-change ??
 
 %utf8-change
 %Note: biblatex with bibtex backend is frozen at version 1.7.
@@ -35,7 +42,7 @@
 	( type=online or type=electronic or type=www )}
 
 
-\defbibheading{noheader}[]{}	% 'none' should be defined but isn't
+\defbibheading{noheader}[]{}		% 'none' should be defined but isn't
 
 % utf8-change (deactivated):
 % German format in biblatex is flawed: it adds wrong spaces and prohibits
