@@ -413,9 +413,6 @@ This work is published under the conditions of the
 \end{center}
 \vspace{8mm}
 \@makelicense
-%\begin{center}
-%\includegraphics[width=2.0cm]{images/by-nc-nd-eu}
-%\end{center}
 }
 
 
