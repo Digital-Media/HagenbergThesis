@@ -373,16 +373,18 @@
 }
 
 \newcommand{\@ccLicenseAt}{%
-Diese Arbeit wird unter den Bedingungen der \textsl{Creative Commons Lizenz} 
-\emph{Namens\-nennung--NichtKommerziell--Keine\-Bearbeitung \"Osterreich} 
-(CC BY-NC-ND) ver\"offentlicht --
-siehe \url{https://creativecommons.org/licenses/by-nc-nd/3.0/at/}.}
+Diese Arbeit wird unter den Bedingungen der 
+\textsf{Creative Commons Lizenz} 
+\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
+(CC BY-NC-ND 4.0) ver\"offentlicht --
+siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.}
 
 \newcommand{\@ccLicenseEn}{%
 This work is published under the conditions of the 
-\textsl{Creative Commons License Attribution--Non\-Commercial--No\-Derivatives} 
-(CC BY-NC-ND)---see
-\url{https://creativecommons.org/licenses/by-nc-nd/3.0/}.}
+\textsf{Creative Commons License} 
+\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
+(CC BY-NC-ND 4.0)---see
+\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.}
 
 \newcommand{\cclicense}{%
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
