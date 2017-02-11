@@ -187,7 +187,7 @@ flexibler.
 BibTeX ist ein eigenständiges Programm, das aus einer "`Literaturdatenbank"' (eine oder mehrere
 Textdateien mit vorgegebener Struktur) ein für \latex geeignetes Quellenverzeichnis
 erzeugt. Literatur zur Verwendung von BibTeX findet sich online, \zB \cite{Feder2006, Patashnik1988}.
-Die BibTeX-Datei zu dieser Vorlage ist \nolinkurl{literatur.bib} (im Hauptverzeichnis).
+Die BibTeX-Datei zu dieser Vorlage ist \nolinkurl{references.bib} (im Hauptverzeichnis).
 
 BibTeX-Dateien können natürlich mit einem Texteditor manuell erstellt werden und für
 viele Literaturquellen sind bereits fertige BibTeX-Einträge online verfügbar.
@@ -215,7 +215,7 @@ In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der
 \begin{LaTeXCode}[numbers=none]
 \documentclass[master,german]{hgbthesis}
    ...
-\bibliography{literatur} /+\label{tex:literatur1}+/
+\bibliography{references} /+\label{tex:literatur1}+/
    ...
 \begin{document}
    ...
@@ -223,8 +223,8 @@ In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der
 \end{document}
 \end{LaTeXCode}
 %
-In der "`Präambel"' (Zeile \ref{tex:literatur1}) wird mit \verb!\bibliography{literatur}! 
-auf eine (modifizierte) BibTex-Datei \nolinkurl{literatur.bib} verwiesen.%
+In der "`Präambel"' (Zeile \ref{tex:literatur1}) wird mit \verb!\bibliography{references}! 
+auf eine (modifizierte) BibTex-Datei \nolinkurl{references.bib} verwiesen.%
 \footnote{Das Makro 
 \texttt{{\bs}bibliography} ist eigentlich ein Relikt aus BibTeX
 und wird in \texttt{biblatex} durch die Anweisung \texttt{{\bs}addbibresource} 
@@ -340,7 +340,7 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 
 Diese Kategorie umfasst alle Werke, die in gedruckter Form publiziert wurden,
 also beispielsweise in Büchern, Konferenzbänden, Zeitschriftenartikeln, Diplomarbeiten \usw
-In den folgenden Beispielen ist jeweils der BibTeX-Eintrag in der Datei \nolinkurl{literatur.bib}
+In den folgenden Beispielen ist jeweils der BibTeX-Eintrag in der Datei \nolinkurl{references.bib}
 angegeben, gefolgt vom zugehörigen Ergebnis im Quellenverzeichnis.
 
 

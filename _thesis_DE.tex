@@ -2,16 +2,16 @@
 %%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 \documentclass[master,german]{hgbthesis}
-% Zulässige Class Options: 
+% Zulässige Optionen in [..]: 
 %   Typ der Arbeit: diplom, master (default), bachelor, praktikum 
 %   Hauptsprache: german (default), english
 %%%----------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}		% Bei der Verw. von lualatex oder xelatex entfernen!
+\RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
 
-\graphicspath{{images/}}    % Abbildungsverzeichnis
-\logofile{logo}				% Name des Logo-PDFs in images/ (\logofile{}, wenn kein Logo gewünscht)
-\bibliography{literatur}  	% Name der Biblatex-Literaturdatei (.bib)
+\graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
+\logofile{logo}							% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
+\bibliography{references}  	% Biblatex-Literaturdatei (references.bib)
 
 %%%----------------------------------------------------------
 % Angaben für die Titelei (Titelseite, Erklärung etc.)
