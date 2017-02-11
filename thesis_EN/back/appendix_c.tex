@@ -1,0 +1,380 @@
+\chapter{Chronologische Liste der Änderungen}
+
+
+\begin{sloppypar}
+\begin{description}
+%
+\item[2002/01/07]
+\verb!\newfloat{program}! repariert (auch ohne Chapter). Dank an Werner Bailer!
+%
+\item[2002/03/06]
+Copyright-Notice an internat.\ Standard angepasst. Dank an Karin Kosina!
+%
+\item[2002/07/28]
+"`Studiengang"' $\rightarrow$ "`Diplomstudiengang"'
+%
+\item[2003/08/24]
+Neues Macro: \verb!\Messbox{breite}{hoehe}! -- zur Kontrolle der 
+Druckgröße ohne PS-Datei. Erweiterungen für Bakkalaureatsarbeiten
+%
+\item[2005/04/09]
+Diverse Korrekturen: Captions von Tabellen nach oben gesetzt. 
+\texttt{caption} auf neue Versionen adaptiert.
+\texttt{subfig} wird nicht mehr verwendet
+%
+\item[2006/01/20]
+Adaptiert zur Verwendung als Praktikumsbericht 
+(2.\ Bakk.-Arbeit)
+%
+\item[2006/03/24]
+Fehler in \verb!\erklaerung! beseitigt (Dank an David Schwingenschlögl)
+%
+\item[2006/04/06]
+Verwendung von T1-Fontencoding zur besseren Silbentrennung bei 
+Umlauten etc.
+%
+\item[2006/06/21]
+Neu: Bachelorstudiengang / Masterstudiengang.
+Literaturverweise auf Bakk-Arbeiten.
+\texttt{upquote.sty} eliminiert (Problem mit TS1-Kodierung).
+Verwende Komma (statt Punkt) als Trennzeichen in Dezimalzahlen.
+%
+\item[2006/09/14]
+Anmerkungen zum Thema Plagiarismus.
+%
+\item[2007/07/16]
+Ergänzungen für Code-Listings (listings) und Algorithmen 
+(\texttt{algorithmicx}).
+BiBTeX-Datei aufgeräumt, Verwendung der Literaturformate 
+verbessert.
+Komma (statt Punkt) als Trennzeichen in Dezimalzahlen wieder 
+entfernt.
+Verwendung der \texttt{ae}-Fonts eliminiert (\texttt{cm-super} Fonts müssen 
+installiert sein, ab MikTeX 2.5). 
+Beispiel für Ersetzung in EPS-Dateien mit \texttt{psfrag}.
+%
+\item[2007/10/04]
+Version 5.90: Das Laden der Pakete \verb!inputenc! (Option \texttt{latin}) und 
+\verb!graphicx! (Option \texttt{dvips})
+aus der Hauptdatei in die \texttt{sty}-Datei übertragen; \texttt{upquote} funktioniert nun.
+Paket \texttt{eurosym} ergänzt für Euro-Symbol (Anregung von Andreas 
+Doubrava).
+Problem mit \texttt{color}-package repariert (gerasterter PDF-Ausdruck).
+Hinweise bzgl.\ Literatur ergänzt (\texttt{month}, \texttt{edition}),
+BibTeX-Datei gesäubert.
+Hinweis zum Einfügen von vertikalem Abstand zwischen Absätzen.
+Mathematik aufgeräumt, Verwendung von \texttt{amsmath}, 
+Fallunterscheidungen.
+Diverse Änderungen bei Tabellen und Programmkode.
+Beispiele für BibTeX-Angaben von Spezialquellen: Audio-CDs, 
+Videos, Filme. Einbinden von Dateien mit \verb!\include{..}!
+Neue Datei: \verb!_SimpleReport.tex! für kurze Reports (Projekte etc.).
+%
+\item[2007/11/11]
+Version 5.91: Hinweise zur Einstellung der Output-Profile in
+TexNicCenter, Inverse Search Einstellung in YAP im Anhang.
+%
+\item[2008/04/01]
+Version 6.00beta -- kompletter Umbau!
+Auslagerung der Doku\-menten-relevanten Teile in eine eigene 
+\emph{class}-Datei (\texttt{hgbthesis.cls}) mit Optionen.
+Die neue Style-Datei \texttt{hgb.sty} ist nun unabhängig vom 
+Dokumententyp und nicht mehr kompatibel mit älteren Versionen!
+Die Liste der Änderungen ist jetzt in der Datei \verb!_ChangeLog.tex!
+(DIESE Datei) und diese wird im Anhang eingebunden.
+Heading-Style auf Sans Serif geändert (ohne grausliche "`Caps"').
+%
+\item[2008/05/22]
+Neue Vorlage für Technical Reports (Klasse \texttt{hgbreport.cls}).
+Spracheinstellung nunmehr mit \texttt{babel}-Paket, Hauptsprache
+des Dokuments kann als Option der Klasse angegeben werden.
+Sprachumschaltung innerhalb des Dokuments funktioniert nun
+richtig. Mit der Sprachoption \texttt{german} wird automatisch die neue deutsche 
+Orthographie (\texttt{ngerman}) verwendet.
+\texttt{babelbib} wird zur Formatierung des Literaturverzeichnisses
+verwendet (neue BibTeX-Style-Optionen!).
+Header werden nunmehr mit \texttt{fancyhdr}-Paket erzeugt.
+Versionsnummerierung von \texttt{.cls} und \texttt{.sty} Files wird beendet 
+(ab jetzt gilt: \emph{Datum} = \emph{Version}). 
+%
+\item[2008/06/10]
+Neues Listing-Environment \texttt{PhpCode}; bei allen Listing-Eviron\-ments ist nun 
+\texttt{mathescape=false} (kein Math-Mode nach \verb!$!). 
+Bug bei Sprachumschaltung auf \texttt{ngerman} beseitigt.
+%
+\item[2008/08/15]
+Diverse Kleinigkeiten in Literaturangaben überarbeitet (Dank an Norbert Wenzel), Spracheinstellung vereinheitlicht, Umlaute in \texttt{.bib}-Datei ersetzt.
+%
+\item[2008/10/15] 
+Zusätzliche Hinweise zur MikTeX-Installation (Windows) sowie LaTeX unter Mac OS~X und Linux.
+Liste der Abkürzungen ergänzt.%
+\item[2008/11/15] 
+Diverse Schreibfehler korrigiert (Dank an Silvia Fuchshuber). Hinweis auf 
+\texttt{sloppypar}-Umgebung.
+%
+\item[2008/12/09] 
+BibTeX-Tools: neuer Hinweis auf JabRef ergänzt, BibEdit entfernt (ist nicht mehr auffindbar).
+%
+\item[2009/02/09]
+\texttt{hgb.sty}: Option "`\texttt{spaces}"' zu \texttt{url}-Package ergänzt (ermöglicht gezielten Zeilenumbruch in URLs). 
+Im allgemeinen Setup für \texttt{listings}: \texttt{keepspaces=true};
+Obsoletes Environment \texttt{sourcecode} deaktiviert.
+Escape-Mode für \texttt{LaTeXCode}-Umgebung geändert.
+\verb!_DaBa.tex!: Hinweis auf die Verwendung von \verb!\urldef! für die Angabe von URLs in Captions. \texttt{diplom} (statt \texttt{master}) als Standard-Dokumententyp in \verb!_DaBa.tex! ("`Diplomarbeit"'). Neuer Abschnitt zum Umgang mit ``Quellenangaben in Captions''.
+\texttt{literatur.bib}: alle URLs (bisher in \texttt{note}-Einträgen) auf \verb!url={..}! geändert.
+%
+\item[2009/04/14]
+Hinweis zum Einfügen einfacher Anführungszeichen ergänzt.
+%
+\item[2009/07/18]
+Literaturangaben korrigiert und ergänzt.
+%
+\item[2009/11/27]
+Experimentelle Version: Massive Änderungen, Umstieg auf \texttt{pdflatex}.
+%
+\item[2010/06/15]
+Erstes Release der neuen Version mit \texttt{pdflatex}.
+\item[2010/06/23]
+Konflikt zwischen \texttt{pdfsync}-Package und \texttt{array}-Package (wird relativ häufig benutzt) durch \verb!\RequirePackage[novbox]{pdfsync}! behoben.
+Seitenunterkante durch \verb!\flushbottom! fixiert,
+variablen Absatzzwischenraum reduziert.
+\item[2010/07/27]
+Sprache der Erklärungsseite auf "`\texttt{german}"' fixiert (auch wenn die Hauptsprache des Dokuments  Englisch ist). %Datumsproblem - Hinweis von Philipp Winter
+\item[2010/12/03]
+Anmerkungen und Beispiele zum Zitieren von Gesetzestexten und Videos (Zeitangabe) ergänzt.
+Hinweis auf \verb!\nolinkurl{..}! zur Angabe von Dateinamen.
+\item[2011/01/29]
+Einbau der Creative Commons Lizenz und entsprechender Hinweis in 
+Abschnitt \ref{sec:HagenbergEinstellungen}. Neue Makros
+\verb!\strictlicense!,
+\verb!\cclicense! und
+\verb!\license{...}!.
+BibTeX-Einträge für Audio-CDs und Filme korrigiert, Beispiel für Online-Video ergänzt.
+\item[2011/02/01]
+Neues Makro \verb!\betreuerin{..}! zur Angabe einer (weiblichen) Betreuerin. 
+%
+\item[2011/06/26]
+Umstellung der gesamten Literaturverwaltung auf \texttt{biblatex} mit dem Ziel, 
+getrennte Abschnitte für verschiedene Kategorien von Einträgen im Quellenverzeichnis
+zu ermöglichen. Die Wahl fiel auf \texttt{biblatex} (es gäbe andere Optionen), weil
+damit BibTeX weiterhin nur einmal aufgerufen werden muss (und nicht für
+mehrere Dateien). Damit verbunden sind allerdings massive Änderungen bei der
+Syntax der BibTeX-Felder und es gibt auch mehrere neue Felder.
+Aktuell sind 3 Kategorien von Quellen vorgesehen, entsprechende Änderungen in 
+\nolinkurl{hgbthesis.cls}. Der klassische BibTeX-Workflow wird aktuell nicht
+mehr unterstützt, die Möglichkeit einer künftigen Dok-Option ist aber 
+vorgesehen. Das Literatur-Kapitel ist komplett überarbeitet, die .bib-Datei
+wurde ausgemistet. Neu ist die Empfehlung zur Aufnahme von Bildquellen
+in das Quellenverzeichnis, womit lange URLs in Captions (dort sind keine
+Fußnoten möglich) nicht mehr notwendig sind. 
+"`Persönliche Kommunikation"' als Literaturquelle entfernt (den Inhalt
+von Interviews sollte man direkt im Anhang wiedergeben).
+Das verwendete Bildmaterial wurde
+erneuert, aktuell werden nur mehr Public Domain Bilder verwendet. 
+Das Kapitel "`Hinweise für Word-Benutzer"' wurde endgültig entfernt.
+\verb!\flushbottom! wieder auf \verb!\raggedbottom! geändert, um übermäßige 
+Abstände zwischen Absätzen zu vermeiden.
+%
+\item[2012/05/10]
+Hinweis auf die in Österreich bislang nicht zulässige Verwendung von "`Masterarbeit"'
+entfernt, \texttt{master} ist nunmehr die Default-Dokumentenoption.
+Anmerkungen zu lästigen \texttt{biblatex}-Warnungen ergänzt.
+Angaben für Windows-Programmpfade auf Win7 angepasst, 
+MikTeX 2.9 als Minimalerfordernis.\newline
+Überflüssige Makros \verb!\damonat! und \verb!\dajahr! endgültig entfernt, statt
+\verb!\abgabemonat! und \verb!\abgabejahr! ist nun das neue Makro
+\verb!\abgabedatum{yyyy}{mm}{dd}! vorgesehen (unter Verwendung von internen Zählern).
+Zur Formatierung von Datumsangaben wir das \texttt{datetime}-Paket verwendet.
+\newline
+Neue Fassung der eidesstattlichen Erklärung (inkl.\ englischer Version).\newline
+PDF-Suche auf \texttt{synctex} umgestellt (\texttt{pdfsync}-Paket ist veraltet und
+wird nun nicht mehr verwendet).
+\newline
+Die älteren Dateiversionen von \texttt{algorithmicx.sty} und \texttt{alg\-pseudo\-code.sty}
+(bisher explizit beigefügt) wurden weggelassen.
+\newline
+Hinweis auf die \emph{Latin Modern Roman} OTF-Schriften ergänzt.
+%
+\item[2012/07/21]
+Quellenverzeichnis: sprachabhängige Einstellung der Überschriften eingerichtet.
+Titel des Quellenverzeichnisses auf "`Quellenverzeichnis"' (DE) \bzw\ "`References"' (EN) 
+fixiert. Makro \verb!\MakeBibliography! hat damit keinen erforderlichen Parameter mehr.
+%
+\item[2012/09/17]
+Wegen Änderungen im \texttt{biblatex}-package (Version 1.7, 2011/11/13) die Verwendung von
+BibTeX als backend eingestellt (\texttt{backend=bibtex8}).
+%
+\item[2012/10/13]
+Option \texttt{lowtilde} beim URL-package eingestellt (erzeugt \url{~} statt \verb!~!).
+%
+\item[2012/12/01]
+In Abschnitt \ref{sec:FormatierungVonProgrammcode} zusätzliche Code-Umgebungen ergänzt:
+\texttt{JsCode},
+\texttt{PhpCode},
+\texttt{HtmlCode},
+\texttt{CssCode},
+\texttt{XmlCode}.
+%
+\item[2012/12/08]
+Die Code-Umgebungen in Abschn.\ \ref{sec:FormatierungVonProgrammcode} ergänzt und 
+zur Verwendung von optionalen Argumenten erweitert (Hinweise in Abschnitt 
+\ref{sec:FormatierungVonProgrammcode} auf die Argumente
+\texttt{firstnumber=last} und \texttt{numbers=none}).
+Quellenverzeichnis: den Eintragstyp \texttt{@software} für Games empfohlen und im Verzeichnis
+der Kategorie \emph{avmedia} zugeordnet (Tab.~\ref{tab:BibKategorien} ergänzt). 
+Game-Beispiel (von Manuel Wieser) und zusätzliche Tabelle \ref{tab:QuellenUndEintragstypen}
+zur besseren Übersicht eingefügt.
+%
+\item[2013/05/17]
+Wichtigste Änderung ist die vollständige Umstellung auf \textbf{UTF-8} unter Beibehaltung des 
+\texttt{pdflatex}-Workflows. 
+Damit sind zahlreiche weitere Modifikationen verbunden:
+\newline
+Alle Dateien (auch \texttt{.cls}, \texttt{.sty} und \texttt{.bib}) wurden auf UTF-8 konvertiert.
+Damit sollte es auch keine Probleme mehr mit Umlauten und Sonderzeichen unter MacOS geben.
+\newline
+Die verwendete Standard-Schriftfamilie ist nun "`Latin Modern"' (\texttt{lmodern}). 
+Sie ersetzt die "`CM-Super"' Schriften, mit denen es immer wieder Installationsprobleme gab.
+Weiters wird jetzt das \texttt{cmap}-Paket zur besseren Such- und Kopierbarkeit von PDFs verwendet.
+\newline
+Das \texttt{listings}-Paket wurde durch \texttt{listingsutf8} ersetzt und für Umlaute im Quellcode adaptiert.
+Eventuell sind weitere Adaptierungen notwendig.
+\newline
+\texttt{biber} (min.\ Version 1.5!) wird nun anstatt \texttt{bibtex} (unterstützt keine UTF-8 Dateien) verwendet,
+zusammen mit \texttt{biblatex} (Version 2.5).
+Die Anweisung \verb!\bibliography! wird (wieder) verwendet, allerdings nun in der Präambel,
+um die \texttt{.bib}-Datei im Fileverzeichnis anzuzeigen.
+\newline
+Das Makro \verb!\C! (für die Menge der komplexen Zahlen \Cpx) musste wegen Problemen in der T1-Kodierung
+ersetzt werden und heißt nun \verb!\Cpx!. Die Makros 
+\verb!\R!, \verb!\Z!, \verb!\N!, \verb!\Q! und \verb!\Cpx! können nun auch außerhalb des Mathematik-Modus verwendet werden.
+\newline
+Der DVI-PS-PDF Workflow wird ab dieser Version überhaupt nicht mehr unterstützt. 
+Damit ist auch das \texttt{psfrag}-Paket nicht mehr verwendbar. Entspechende Hinweise 
+wurden aus dem Text entfernt.
+\newline
+\texttt{hyperref} wurde auf UTF-8 umgestellt.
+Die grässlichen Standard-Rahmen und Farben der automatischen \texttt{hyperref}-Links wurden entfernt \bzw\ durch 
+dezentere Farben ersetzt. Dadurch wird auch die Screen-Version der PDFs wieder lesbar.
+\newline
+Im Quellenverzeichnis wurde versuchsweise die \texttt{backref}-Option aktiviert. 
+Damit werden bei allen Einträgen auch die zugehörigen Zitierstellen angegeben
+(erscheint durchaus sinnvoll).
+\newline
+Die bisherigen Korrekturen zur \texttt{biblatex}-Formatierung wurden entfernt, 
+alles arbeitet nun mit Standard-Einstellungen. Die ursächlichen Probleme in \texttt{biblatex}
+scheinen in der aktuellen Version behoben zu sein.
+\newline
+Das Output-Profil für TeXnicCenter wurde für den neuen Workflow mit \texttt{biber} adaptiert und liegt nun in
+\nolinkurl{_tc_output_profile_sumatra_utf8.tco}.
+\newline
+Das Windows-Script \verb!_clean.bat! wurde entfernt, da TeXnicCenter nun ein eigenes "`Clean Project"'-Kommando aufweist (in "`Build"').
+\newline
+Allgemeine Einstellungen zu \emph{headings} und \emph{biblatex} wurden aus der Datei \texttt{hgbthesis.cls} entfernt und in 
+\texttt{hgbheadings.sty} \bzw\ \texttt{hgbbib.sty} verlagert. Diese können nun unabhängig verwendet werden (s.\ Beispiel in 
+\texttt{\_TermReport.tex}).
+\newline
+Die Klassen-Datei \texttt{hgbtermreport.cls} wurde eliminiert, das Dokument \texttt{\_TermReport.tex} basiert nunmehr
+auf der generischen LaTeX-Klasse \texttt{report}  und verwendet keine eigene \texttt{.cls} Datei mehr.
+%
+\item[2014/11/05]
+Neu: Logo auf der Frontseite bei allen Dokumententypen. Dazu gibt es ein neues Kommando
+\verb!\logofile{pic}!, wobei \verb!pic! der Name eine PDF-Datei im
+Verzeichnis \verb!images/! ist. Falls \emph{kein} Logo erwünscht ist, 
+kann man die Zeile einfach weglassen oder durch \verb!\logofile{}! ersetzen.
+\newline
+\texttt{hyperref}-Einstellungen: Einfärbung der Links wieder entfernt (\texttt{colorlinks = false}), weil beim Druck
+nicht abschaltbar. Stattdessen einheitliche (dezente) Rahmen für alle Linkarten.
+Zahlreiche Tippfehler eliminiert (Dank an Daniel Karzel).
+\newline
+Wegen eines Bugs in \texttt{biblatex 1.9} wurden die expliziten Abteilungen (\verb!\-!) in \texttt{literatur.bib}
+vorübergehend entfernt (mit entsprechenden Folgen im Ergebnis). Der Bug soll in \texttt{biblatex 2.0} (derzeit noch
+nicht verfügbar) behoben sein.
+\newline
+Package \texttt{color} auf \texttt{xcolor} geändert. In \texttt{hgb.sty} neues "`Convenience-Makro"' \verb!\etc! ergänzt.
+Output-Profil für TeXnicCenter/SumatraPDF (Windows) repariert, forward/inverse Search funktioniert nun
+(Datei \verb!_tc_output_profile_sumatra_utf8.tco!).
+%
+\item[2015/04/28]
+Paket \texttt{subdepth} (zur verbesserten Platzierung von Sub- und Superscripts) 
+in hgb.sty ergänzt.
+%
+\item[2015/07/14]
+Hinweis und Abhilfe für die (nicht automatische) Silbentrennung in zusammengesetzten Wörtern.
+Neu in \texttt{hgbheadings.sty}: \verb!\RequirePackage[raggedright]{titlesec}! verhindert Blocksatz
+in Section-Überschriften (sehr unschön bei längeren Überschriften). 
+Neu (in Abschn.~\ref{sec:GraphicOverlays}): Beispiel für die Verwendung des \texttt{overpic}-Pakets
+zur Annotierung von importierten Grafiken (verwendet zudem das \texttt{pict2e}-Paket).
+%
+\item[2015/08/03]
+Logo-Datei auf \texttt{logo.pdf} umbenannt.
+\item[2015/09/17]
+Anweisung \verb!\RequirePackage[utf8]{inputenc}! in die Doku\-menten\-dateien (\texttt{\_xxx.tex})
+verschoben (auf Anregung von Markus Kohm: "`\ldots für die Verwendung von lualatex oder xelatex 
+ist die Anweisung in hgb.sty störend, da bei diesen beiden aufgrund der nativen utf8-Unterstützung 
+\texttt{inputenc} keinesfalls verwendet werden darf"').
+\item[2015/09/19]
+\texttt{hgb.sty} aufgeräumt.
+Makros \verb!\@savesymbol! und \verb!\@restoresymbol! aus \texttt{hgb.sty} entfernt
+(wurden nicht mehr verwendet; ggfs.\ Paket \texttt{savesym} als Ersatz).
+Makro \verb!\optbreaknh! (optional break with no hyphen) auf \verb!\obnh! umbenannt.
+Teile von \texttt{hgb.sty} in neue Dateien \texttt{hgbabbrev.sty} (div.\ Abkürzungen)
+und \texttt{hgblistings.sty} (Code-Listings) verschoben.
+Hintergrundtönung der Code-Listings heller (auf 5\% Grau) eingestellt.
+Layout: \verb!\textfraction! auf 0.1 (statt fehlhafterweise 0.01) eingestellt.
+\texttt{hgbbib.sty}: \verb!\clearpage! am Beginn des Quellenverzeichnisses entfernt
+(für \texttt{article}-Template).
+\item[2015/09/19]
+Alle \texttt{.cls} und \texttt{.sty} Dateien sind jetzt ANSI-codiert (Header eingefügt), wie
+laut CTAN-Richtlinien vorgesehen. Umlautzeichen wurden durch Makros ersetzt.
+Nur \texttt{hgblistings.sty} ist weiterhin UTF-8 (wegen notwendiger literaler Umlaute).
+\verb!\RequirePackage[utf8]{inputenc}! steht sonst nur mehr am Beginn
+der jeweiligen (\texttt{.tex}) Haupttextdatei.
+\item[2015/10/29]
+Verwendung von "`In:"' im Quellenverzeichnis vor \texttt{article}-Einträgen
+(Eigenart von biblatex) durch passendes Makro in \texttt{hgbbib.sty} unterbunden 
+(Dank an S.\ Dreiseitl).
+\item[2015/11/04]
+Hinweise in Abschnitt \ref{sec:Software} auf TeXstudio unter Windows, Mac OS und Linux.
+Release-Ausgabe.
+\item[2015/12/08]
+Source Directories neu strukturiert in \texttt{frontmatter}, \texttt{chapters}, 
+\texttt{appendix}.
+\item[2016/06/09]
+Bibliography-Aliases für die Quellentypen
+\texttt{video}, \texttt{movie}, \texttt{audio} und \texttt{software}
+eingefügt (in \texttt{hgbbib.sty}) -- unterbindet Warnungen wegen
+fehlender biblatex-Driver.
+\item[2016/06/11]
+Repository portiert auf GitHub (SourceForge eingefroren).  
+Overleaf als experimentelle online LaTeX-Umgebung.
+Hauptdateien umbenannt (auf \texttt{\_thesis}, \texttt{\_praktikum}, etc.).
+\item[2016/09/28]
+"`Numerierung"' auf "`Nummerierung"' geändert.
+Code-Einbindung im Anhang repariert.
+\item[2016/10/06]
+In \texttt{hgb.sty}: Makros \verb!\Frametext! und \verb!\FramePic! eliminiert (ersetzt durch \verb!\fbox{...}!),
+dazu \verb!\fboxsep! global auf Null gesetzt.
+Hinweise auf \texttt{subfig}-Paket entfernt.
+\item[2016/10/07]
+In \texttt{hgbbib.sty}: Zeilenumbrüche bei URLs im Quellenverzeichnis werden an beliebigen Zeichen ermöglicht.
+\end{description}
+\end{sloppypar}
+
+
+
+
+%\section*{To Do} 
+%\begin{itemize}
+%\item Anhang B (CD-ROM Inhalt) überarbeiten -- ist nicht aktuell!
+%\item Inkscape
+%\item biblatex Bib-Driver für audio, video etc. ergänzen.
+%\item Mathematik umbauen, typische Fehler stärker berücksichtigen (ua. Leerzeilen vor/nach Gleichungen).
+%\item Literaturempfehlungen zum Schreiben von Diplomarbeiten
+%\item Hinweise für Literatursuche (Bibliotheksverbund, CiteSeer,...)
+%\end{itemize}
+
+
+
+
+
