@@ -27,7 +27,7 @@ Um die Vorlage auf dem eigenen Computer zu bearbeiten, gibt es 2 Möglichkeiten
 ### Online-Modus (experimentell):
 
 Die Vorlage kann auch im Online-Modus verwendet werden, mit dem Vorteil, dass keine LaTeX-Installation am eigenen Computer erforderlich ist:
-* Vorlage auf **Overleaf**: **https://www.overleaf.com/read/mrpbhfwzyvsq**
+* Vorlage auf **Overleaf** (derzeit **NICHT** aktualisiert): **https://www.overleaf.com/read/mrpbhfwzyvsq**
 
 Zur Verwendung sind folgende Schritte erforderlich:
 * Personal Account anlegen (gratis),
