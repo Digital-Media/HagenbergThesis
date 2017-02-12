@@ -25,7 +25,7 @@ Technisch basiert dieser Teil auf \texttt{BibTeX} \cite{Patashnik1988}
 \bzw\ \texttt{Biber}%
 \footnote{Wird seit Version 2013/02/19 anstelle von \texttt{bibtex} verwendet 
 	(s.\ \url{http://biblatex-biber.sourceforge.net/}),}
-in Kombination mit dem Paket \texttt{biblatex} \cite{Lehman2015}.
+in Kombination mit dem Paket \texttt{biblatex} \cite{Lehman2016}.
 
 
 Die Verwaltung von Quellen besteht grundsätzlich aus zwei Elementen: 
@@ -351,23 +351,23 @@ Ein einbändiges Buch (Monographie), das von einem Autor oder mehreren Autoren z
 \begin{itemize}
 \item[] 
 \begin{GenericCode}[numbers=none]
-@book{BurgerBurge2006,
-    author={Burger, Wilhelm and Burge, Mark},
+@book{BurgerBurge2015,
+    author={Burger, Wilhelm and Burge, Mark James},
     title={Digitale Bildverarbeitung},
-	  subtitle={Eine Einführung mit Java und ImageJ},
+    subtitle={Eine algorithmische Einführung mit Java},
     publisher={Springer-Verlag},
     location={Heidelberg},
-    edition={2},
-    year={2005},
+    edition={3},
+    year={2015},
     hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{BurgerBurge2006}]
-Wilhelm Burger und Mark Burge. \textit{Digitale Bildverarbeitung. Eine
-Einführung mit Java und ImageJ}. 2.\ Aufl.\ Heidelberg: Springer-Verlag,
-2006.
+\item[\cite{BurgerBurge2015}]
+Wilhelm Burger und Mark James Burge. \textit{Digitale Bildverarbeitung. Eine
+algorithmische Einführung mit Java}. 3.\ Aufl.\ Heidelberg: Springer-Verlag,
+2015.
 \end{itemize}
-%\printbibliography[keyword=bookexample1,heading=noheader]\nocite{BurgerBurge2006}
+%\printbibliography[keyword=bookexample1,heading=noheader]\nocite{BurgerBurge2015}
 %
 \emph{Hinweis:} Die Auflagennummer (\texttt{edition}) wird üblicherweise nur angegeben, 
 wenn es \emph{mehr} als eine Ausgabe gibt -- also insbesondere \textbf{nicht für die 1.\ Auflage}, 
@@ -612,30 +612,30 @@ Jan. 1948. \textsc{url}:\ \url{http://www.nasa.gov/centers/dryden/pdf/87528main_
 
 \subsubsection{\texttt{@manual}}
 \label{sec:@manual}
-Dieser Publikationstyp bietet sich für Dokumente an, bei denen üblicherweise kein Autor genannt ist, wie etwa bei Produktbeschreibungen von Herstellern, Anleitungen, Präsentationen, Normen, White Papers \usw
+Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen von Herstellern, Anleitungen, Präsentationen, Normen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{AMS2002,
-	author={{American Mathematical Society}},
-	title={User's Guide for the \texttt{amsmath} Package},
-	year={2002},
-	month={2},
-	version={2.0},
-	url={ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf},
-	hyphenation={english}
+@manual{Mittelbach2016,
+	author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
+	title={The \texttt{amsmath} package},
+	year={2016},
+	month={11},
+	version={2.16a},
+	url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
+	hyphenation={english},
+	keywords={manualexample1}
 }
 \end{GenericCode}
-\item[\cite{AMS2002}]
-American Mathematical Society. 
-\textit{User's Guide for the \texttt{amsmath} Package}. 
-Version 2.0. Feb. 2002. \textsc{url}: \url{ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf}.
+\item[\cite{Mittelbach2016}]
+Frank Mittelbach u. a.
+The \texttt{amsmath} package.
+Version 2.16a. Nov. 2016. \textsc{url}: \url{http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf}.
 \end{itemize}
-%\printbibliography[keyword=manualexample1,heading=noheader]\nocite{AMS2002}
+%\printbibliography[keyword=manualexample1,heading=noheader]\nocite{Mittelbach2016}
 %
-In obigem Beispiel gilt zu beachten: 
-Da kein Autor bekannt ist, wird hier der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vorname}+\emph{Nachname} interpretiert wird.%
+Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vorname}+\emph{Nachname} interpretiert wird.%
 \footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz für \texttt{author} akzeptiert.}
 
 
@@ -644,7 +644,7 @@ Da kein Autor bekannt ist, wird hier der Name des \emph{Unternehmens} oder der \
 \label{sec:@misc}
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
 nicht das Auslangen gefunden werden, sollte man sich zunächst die weiteren (hier nicht näher beschriebenen) 
-Typen im \texttt{biblatex}-Handbuch \cite{Lehman2015} ansehen, beispielsweise
+Typen im \texttt{biblatex}-Handbuch \cite{Lehman2016} ansehen, beispielsweise
 \texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin)
 oder \texttt{@patent} für ein Patent oder eine Patentanmeldung.
 
@@ -846,23 +846,25 @@ Durch den Umfang und die steigende Qualität dieser Einträge erscheint
 die Aufnahme in das Quellenverzeichnis durchaus berechtigt.
 Beispielsweise bezeichnet man als "`Reliquienschrein"'
 einen Schrein, in dem die Reliquien eines oder 
-mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2015}.
+mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2016}.
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@online{WikiReliquienschrein2015,
-	url={http://de.wikipedia.org/wiki/Reliquienschrein},
-	urldate={2015-12-09}
+@online{WikiReliquienschrein2016,
+	url={https://de.wikipedia.org/wiki/Reliquienschrein},
+	year={2016},
+	month={8},
+	urldate={2017-02-28}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2015}]
-\textsc{url}: \url{http://de.wikipedia.org/wiki/Reliquienschrein}
-(besucht am 20.11.{\hskip0pt}2014).
+\item[\cite{WikiReliquienschrein2016}]
+Aug. 2016. \textsc{url}: \url{https://de.wikipedia.org/wiki/Reliquienschrein}
+(besucht am 28.02.{\hskip0pt}2017).
 \end{itemize}
 %\printbibliography[keyword=onlineexample2,heading=noheader]\nocite{WikiReliquienschrein2015}
 %
-In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL.
+In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL, Jahr und Monat können die Version näher spezifizieren, die zum gegebenen Zeitpunkt aktuell war.
 Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch die Information eingefügt, wann das Online-Dokument eingesehen wurde.
 
 
@@ -940,7 +942,7 @@ angegeben.
 
 Das \texttt{language} Attribut ermöglichte im Zusammenhang mit dem \texttt{babelbib}-Paket 
 den korrekten Satz mehrsprachiger Quellenverzeichnisse. \texttt{babelbib} wird in 
-dieser Vorlage \emph{nicht} mehr verwendet, sondern durch \texttt{biblatex} \cite{Lehman2015} ersetzt.
+dieser Vorlage \emph{nicht} mehr verwendet, sondern durch \texttt{biblatex} \cite{Lehman2016} ersetzt.
 Hier wird allerdings das \texttt{language}-Feld anders interpretiert und
 stattdessen das \texttt{hyphenation}-Feld verwendet, das nach Möglichkeit 
 bei jedem Quelleneintrag angegeben werden sollte, also beispielsweise
