@@ -2,16 +2,16 @@
 %%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 \documentclass[master,german]{hgbthesis}
-% Zulässige Class Options: 
-%   Typ der Arbeit: diplom, master (default), bachelor, praktikum 
+% Zulässige Optionen in [..]: 
+%   Typ der Arbeit: diploma, master (default), bachelor, internship 
 %   Hauptsprache: german (default), english
 %%%----------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}		% Bei der Verw. von lualatex oder xelatex entfernen!
+\RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
 
-\graphicspath{{images/}}    % Abbildungsverzeichnis
-\logofile{logo}				% Name des Logo-PDFs in images/ (\logofile{}, wenn kein Logo gewünscht)
-\bibliography{literatur}  	% Name der Biblatex-Literaturdatei (.bib)
+\graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
+\logofile{logo}				% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
+\bibliography{references}  	% Biblatex-Literaturdatei (references.bib)
 
 %%%----------------------------------------------------------
 % Angaben für die Titelei (Titelseite, Erklärung etc.)
@@ -45,38 +45,38 @@
 \maketitle
 \tableofcontents
 
-\include{front/vorwort} % Optional. Ggf. weglassen
-\include{front/kurzfassung}		
-\include{front/abstract}			
+\include{thesis_DE/front/vorwort} % Optional. Ggf. weglassen
+\include{thesis_DE/front/kurzfassung}		
+\include{thesis_DE/front/abstract}			
 
 %%%----------------------------------------------------------
 \mainmatter          % Hauptteil (ab hier arab. Seitenzahlen)
 %%%----------------------------------------------------------
 
-\include{chapters/einleitung}
-\include{chapters/abschlussarbeit}
-\include{chapters/latex}
-\include{chapters/abbildungen}
-\include{chapters/mathematik}
-\include{chapters/literatur}
-\include{chapters/drucken}
-\include{chapters/schluss}
+\include{thesis_DE/chapters/einleitung}
+\include{thesis_DE/chapters/abschlussarbeit}
+\include{thesis_DE/chapters/latex}
+\include{thesis_DE/chapters/abbildungen}
+\include{thesis_DE/chapters/mathematik}
+\include{thesis_DE/chapters/literatur}
+\include{thesis_DE/chapters/drucken}
+\include{thesis_DE/chapters/schluss}
 
 %%%----------------------------------------------------------
 \appendix                                            % Anhang 
 %%%----------------------------------------------------------
 
-\include{back/anhang_a}	% Technische Ergänzungen
-\include{back/anhang_b}	% Inhalt der CD-ROM/DVD
-\include{back/anhang_c}	% Chronologische Liste der Änderungen
-\include{back/anhang_d}	% Quelltext dieses Dokuments
+\include{thesis_DE/back/anhang_a}	% Technische Ergänzungen
+\include{thesis_DE/back/anhang_b}	% Inhalt der CD-ROM/DVD
+\include{thesis_DE/back/anhang_c}	% Chronologische Liste der Änderungen
+\include{thesis_DE/back/anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
 \MakeBibliography                        % Quellenverzeichnis
 %%%----------------------------------------------------------
 
 %%% Messbox zur Druckkontrolle ------------------------------
-\include{back/messbox}
+\include{thesis_DE/back/messbox}
 
 %%%----------------------------------------------------------
 \end{document}

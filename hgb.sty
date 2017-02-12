@@ -117,7 +117,7 @@
 }
 
 % Test box for print proofing
-\newcommand{\Messbox}[2]{% Parameters: #1=width, #2=height
+\newcommand{\calibrationbox}[2]{% parameters: #1=width, #2=height
 	\setlength{\unitlength}{1.0mm}%
 	\begin{picture}(#1,#2)%
 	\linethickness{0.05mm}%
@@ -127,6 +127,11 @@
 	width $ = #1 \textrm{mm}$\\
 	height $ = #2 \textrm{mm}$
 	}}}\end{picture}
+}
+
+% Test box for print proofing (obsolete - use \calibrationbox)
+\newcommand{\Messbox}[2]{
+	\calibrationbox{#1}{#2}
 }
 
 \newcommand{\ShowParameter}[1]{\the#1\showthe#1} % to display TeX parameters
