@@ -6,7 +6,7 @@ Version=4
 MainFile=_thesis_EN.tex
 UseBibTeX=1
 UseMakeIndex=0
-ActiveProfile=LaTeX(utf8) ⇨ PDF
+ActiveProfile=LaTeX(utf8) ⇨ PDF(Sumatra)
 ProjectLanguage=en
 ProjectDialect=US
 

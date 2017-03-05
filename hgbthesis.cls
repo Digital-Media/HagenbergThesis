@@ -28,6 +28,8 @@
 \newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
 
 
+\newcommand{\@titlepagefont}{\sffamily}
+
 %% Class options --------------------------------------------------------------
 
 \DeclareOption{master}{
@@ -233,7 +235,7 @@
 		\rule{0mm}{1mm}
 		\vspace*{0mm}
 		\begin{center}%
-			\normalfont
+			\@titlepagefont %\normalfont
 			\setlength{\unitlength}{1cm}
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
@@ -241,7 +243,7 @@
 				\@title%
 			}
 			\vskip 15mm%
-			{\large\scshape\@author}%
+			{\large\@author}%{\large\scshape\@author}%
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
@@ -268,7 +270,7 @@
 		\rule{0mm}{1mm}
 		\vspace*{0mm}
 		\begin{center}%
-			\normalfont
+			\@titlepagefont %\normalfont
 			\setlength{\unitlength}{1cm}
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%%
@@ -276,7 +278,7 @@
 				\@title%
 			}
 			\vskip 15mm%
-			{\large\scshape\@author}%
+			{\large\@author}%{\large\scshape\@author}%
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
@@ -301,7 +303,7 @@
 		\rule{0mm}{1mm}
 		\vspace*{0mm}
 		\begin{center}%
-			\normalfont
+			\@titlepagefont %\normalfont
 			\setlength{\unitlength}{1cm}
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
@@ -309,7 +311,7 @@
 				\@title%
 			}
 			\vskip 15mm%
-			{\large\scshape\@author}%
+			{\large\@author}%{\large\scshape\@author}%
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
@@ -334,7 +336,7 @@
 		\rule{0mm}{1mm}
 		\vspace*{0mm}
 		\begin{center}%
-			\normalfont
+			\@titlepagefont %\normalfont
 			\setlength{\unitlength}{1cm}
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
@@ -342,7 +344,7 @@
 				Endbericht zum Berufspraktikum%
 			}
 			\vskip 15mm%
-			{\large\scshape\@author}%
+			{\large\@author}%{\large\scshape\@author}%
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
@@ -411,7 +413,7 @@ This work is published under the conditions of the
 \rule{0mm}{1mm}
 \vspace*{75mm}
 \begin{center}
-\copyright\ Copyright\ \arabic{@yearofsubmission}\ \@author
+\textsf{\copyright\ Copyright\ \arabic{@yearofsubmission}\ \@author}
 \end{center}
 \vspace{8mm}
 \@makelicense
