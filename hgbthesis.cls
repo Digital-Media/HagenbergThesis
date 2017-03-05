@@ -413,7 +413,7 @@ This work is published under the conditions of the
 \rule{0mm}{1mm}
 \vspace*{75mm}
 \begin{center}
-\copyright\ Copyright\ \arabic{@yearofsubmission}\ \@author
+\textsf{\copyright\ Copyright\ \arabic{@yearofsubmission}\ \@author}
 \end{center}
 \vspace{8mm}
 \@makelicense
