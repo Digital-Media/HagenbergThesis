@@ -3,7 +3,7 @@ Type=TeXnicCenterProjectInformation
 Version=4
 
 [ProjectInfo]
-MainFile=_termreport.tex
+MainFile=_termreport_EN.tex
 UseBibTeX=1
 UseMakeIndex=0
 ActiveProfile=LaTeX(utf8) ⇨ PDF(Sumatra)
