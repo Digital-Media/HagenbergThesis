@@ -31,7 +31,7 @@ Zur Verwendung sind folgende Schritte erforderlich:
 
 * Personal Account anlegen (gratis),
 * Vorlage übernehmen (s. oben),
-* Hauptdatei auswählen (z.B. **_thesis_DE.tex**, **_praktikum.tex**, ...) und editieren,
+* Hauptdatei auswählen (z.B. **_thesis_DE.tex**, **_termreport_DE.tex**, ...) und editieren,
 * Dateien über Git synchronisieren (falls gewünscht).
 
 
@@ -42,9 +42,9 @@ A modern LaTeX template for university theses (bachelor, master or diploma progr
 This template serves as an introduction for creating a bachelor's, master's or diploma thesis using LaTeX. It is the common standard for theses at the University of Applied Sciences Upper Austria - School of Informatics, Communication and Media and also in use at other (mostly German-speaking) universities. The template is plain, immediately usable and easy to adapt. It should work in any LaTeX environment. The following templates are currently available:
 
 * **_thesis_EN.tex**: bachelor's, master's or diploma thesis,
-* **_internship.tex**: internship report (shortened thesis variant),
-* **_termreport.tex**: term report,
-* **_lab_report.tex**: lab report,
+* **_internship_DE.tex**: internship report (shortened thesis variant),
+* **_lab_report_EN.tex**: lab report,
+* **_termreport_EN.tex**: term report,
 * **_article.tex**: generic article.
 
 The template is based on a custom LaTeX document class (*hgbthesis.cls*) and multiplay style files  (*hgb.sty*, ...). These can also be used independently for other kinds of documents.
@@ -66,5 +66,5 @@ The following steps are necessary for using the online template:
 
 * Create a (free) personal account,
 * Open the template (see URL above),
-* Select the main file (e.g. **_thesis_EN.tex**, **internship.tex**, ...) and edit,
+* Select the main file (e.g. **_thesis_EN.tex**, **_termreport_EN.tex**, ...) and edit,
 * (Optionally) sync your files via Git.
