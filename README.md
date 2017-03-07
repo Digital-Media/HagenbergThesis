@@ -19,7 +19,8 @@ Die Vorlage basiert auf einer eigenen LaTeX-Dokumentenklasse (*hgbthesis.cls*) u
 Um die Vorlage auf dem eigenen Computer zu bearbeiten, gibt es 2 Möglichkeiten (Button "Clone or download"):
 
 1. **Download**: als ZIP-Datei downloaden und an passender Stelle expandieren.
-2. **Clone**: als Git-Repository klonen.
+2. **Clone**: als Git-Repository auf den (lokalen) Rechner klonen.
+3. **Fork**: in ein eigenes (remote) Github-Repo kopieren und anschließend klonen.
 
 ### Online-Modus (experimentell):
 
@@ -54,7 +55,8 @@ The template is based on a custom LaTeX document class (*hgbthesis.cls*) and mul
 To use the template on your own computer you can choose between the following two options (button "Clone or download"):
 
 1. **Download**: download as a ZIP file and extract at a location of your choice.
-2. **Clone**: clone as a Git repository.
+2. **Clone**: clone as a Git repository to your (local) computer.
+3. **Fork**: copy to your own (remote) Github repository and clone afterwards.
 
 ### Online Mode (experimental):
 
