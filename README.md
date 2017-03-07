@@ -7,7 +7,7 @@ Moderne LaTeX-Vorlage für Abschlussarbeiten an der Universität oder Fachhochsc
 Diese Vorlage dient gleichzeitig als Anleitung und Vorlage für die Erstellung einer Bachelor-, Master- oder Diplomarbeit mit LaTeX. Sie wird als allgemeiner Standard für derartige Arbeiten an der Fakultät für Informatik, Kommunikation und Medien der FH Oberösterreich empfohlen und wird mittlerweile auch an zahlreichen anderen Hochschulen im deutschsprachigen Raum verwendet. Die Vorlage ist leicht verständlich, sofort einsetzbar, einfach zu adaptieren und sollte in jeder LaTeX-Umgebung problemlos laufen. Folgende Vorlagen sind aktuell verfügbar:
 
 * **_thesis_DE.tex**, **_thesis_EN.tex**: Bachelor-, Master- oder Diplomarbeit (deutsch/englisch),
-* **_internship.tex**: Praktikumsbericht (gekürzte Variante der Bachelorarbeit),
+* **_internship_DE.tex**: Praktikumsbericht (gekürzte Variante der Bachelorarbeit),
 * **_lab_report_DE.tex**, **_lab_report_EN.tex**: Übungsprotokoll (für wöchentliche Übungsabgaben),
 * **_termreport_EN.tex**: Semesterbericht,
 * **_article.tex**: generischer Zeitschriftenartikel.
