@@ -3,10 +3,10 @@ Type=TeXnicCenterProjectInformation
 Version=4
 
 [ProjectInfo]
-MainFile=_lab_report.tex
+MainFile=_lab_report_EN.tex
 UseBibTeX=1
 UseMakeIndex=0
 ActiveProfile=LaTeX(utf8) ⇨ PDF(Sumatra)
 ProjectLanguage=en
-ProjectDialect=GB
+ProjectDialect=US
 
