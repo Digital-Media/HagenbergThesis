@@ -156,7 +156,7 @@ Nur wenn man die Quelle wirklich \textbf{nicht} beschaffen kann, ist ein Verweis
 zulässig. In diesem Fall sollten korrekterweise Pri\-mär- und Sekundärquelle \emph{gemeinsam} 
 angegeben werden, wie im nachfolgenden Beispiel gezeigt.
 \item
-\textbf{Wichtig:} In das Quellenverzeichnis wird \textbf{nur die tatsächlich vorliegende Quelle} 
+\textbf{Wichtig:} Ins Quellenverzeichnis wird \textbf{nur die tatsächlich vorliegende Quelle} 
 (\textbf{B}) und nicht die Originalarbeit aufgenommen!
 \end{itemize}
 %
@@ -210,7 +210,7 @@ Allerdings sind die in \texttt{biblatex} verwendeten Literaturdaten nicht mehr v
 rückwärts-kompatibel zu BibTeX. Es ist daher in der Regel notwendig, bestehende oder aus
 Online-Quellen übernommene BibTeX-Daten manuell zu überarbeiten (\sa\ Abschnitt~\ref{sec:TippsZuBibtex}).
 
-In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der Datei \nolinkurl{hgbthesis.cls} verpackt. Die typische Verwendung in der \latex-Haupt\-datei sieht folgendermaßen aus:
+In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der Klassen-Datei \nolinkurl{hgbthesis.cls} verpackt. Die typische Verwendung in der \latex-Haupt\-datei sieht folgendermaßen aus:
 %
 \begin{LaTeXCode}[numbers=none]
 \documentclass[master,german]{hgbthesis}
@@ -362,13 +362,9 @@ Ein einbändiges Buch (Monographie), das von einem Autor oder mehreren Autoren z
     hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{BurgerBurge2015}]
-Wilhelm Burger und Mark James Burge. \textit{Digitale Bildverarbeitung. Eine
-algorithmische Einführung mit Java}. 3.\ Aufl.\ Heidelberg: Springer-Verlag,
-2015.
+\item[\cite{BurgerBurge2015}] \fullcite{BurgerBurge2015}
 \end{itemize}
-%\printbibliography[keyword=bookexample1,heading=noheader]\nocite{BurgerBurge2015}
-%
+
 \emph{Hinweis:} Die Auflagennummer (\texttt{edition}) wird üblicherweise nur angegeben, 
 wenn es \emph{mehr} als eine Ausgabe gibt -- also insbesondere \textbf{nicht für die 1.\ Auflage}, 
 wenn diese die einzige ist!
@@ -399,13 +395,9 @@ Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel de
   hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{BurgeBurger1999}]
-Mark Burge und Wilhelm Burger. "`Ear Biometrics"'. In:\ \textit{Biometrics:
-Personal Identification in Networked Society}. Hrsg.\ von Anil K.\ Jain,
-Bolle Ruud und Pankanti Sharath. Boston:\ Kluwer Academic Publis-
-hers, 1999. Kap.\ 13, S.\ 273--285.
+\item[\cite{BurgeBurger1999}] \fullcite{BurgeBurger1999}
 \end{itemize}
-%\printbibliography[keyword=incollectionexample1,heading=noheader]\nocite{BurgeBurger1999}
+
 
 %%------------------------------------------------------
 
@@ -433,13 +425,8 @@ zur Angabe des Tagungsorts und
 	hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Burger1987}]
-Wilhelm Burger und Bir Bhanu. "`Qualitative Motion Understanding"'.
-In:\ \textit{Proceedings of the Intl.\ Joint Conference on Artificial Intelligence}.
-(Mailand). Hrsg.\ von John P.\ McDermott. San Francisco:\ Morgan
-Kaufmann Publishers, Mai 1987, S.\ 819--821.
+\item[\cite{Burger1987}] \fullcite{Burger1987}
 \end{itemize}
-%\printbibliography[keyword=inproceedingsexample1,heading=noheader]\nocite{Burger1987}
 
 %%------------------------------------------------------
 
@@ -465,12 +452,9 @@ zu vermeiden.
 	hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Mermin1989}]
-Nathaniel David Mermin. "`What's wrong with these equations?"' In:\ \textit{Physics
-Today} 42.10 (1989), S. 9--11.
+\item[\cite{Mermin1989}] \fullcite{Mermin1989}
 \end{itemize}
-%\printbibliography[keyword=articleexample1,heading=noheader]\nocite{Mermin1989}
-%
+
 \emph{Hinweis:} Die Angabe einer Ausgabe für \emph{mehrere} Monate ist in \texttt{biblatex} nicht mehr
 über das Feld \texttt{month} möglich, denn dieses darf nur mehr \emph{einen} Wert enthalten.
 In diesem Fall kann jedoch einfach das \texttt{issue}-Feld verwendet (\zB\ \verb!issue={Mai/Juni}!
@@ -501,18 +485,11 @@ insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertati
 	hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{Eberl1987}]
-Gerhard Eberl. "`Automatischer Landeanflug durch Rechnersehen"'.
-Diss.\ München:\ Universität der Bundeswehr, Fakultät für Raum- und
-Luftfahrttechnik, Aug.\ 1987.
+\item[\cite{Eberl1987}] \fullcite{Eberl1987}
 \end{itemize}
-%\printbibliography[keyword=phdthesisexample1,heading=noheader]\nocite{Eberl1987}
 
 \paragraph{Magister- oder Masterarbeit:} ~ \newline
 Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\{mathesis\}}.%
-%\footnote{Man beachte dabei, dass offiziell (zumindest in Österreich) auch die 
-%Abschlussarbeiten von \emph{Master}studiengängen weiterhin als "`Diplomarbeiten"' 
-%bezeichnet werden.} % ab März 2012 gilt das nicht mehr
 
 %%------------------------------------------------------
 
@@ -534,14 +511,9 @@ Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\obnh\{Diplomarb
   hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{Artner2007}]
-Nicole Maria Artner. "`Analyse und Reimplementierung des Mean-Shift
-Tracking-Verfahrens"'. Diplomarbeit. Hagenberg, Austria:\ Upper 
-Austria University of Applied Sciences, Digitale Medien, Juli 2007. 
-\textsc{url}:\ \url{http://theses.fh-hagenberg.at/thesis/Artner07}.
+\item[\cite{Artner2007}] \fullcite{Artner2007}
 \end{itemize}
-%\printbibliography[keyword=diplomarbeitexample1,heading=noheader]\nocite{Artner2007}
-%
+
 Der Inhalt des Felds \verb!url={..}! wird dabei automatisch und ohne zusätzliche
 Kennzeichnung als URL gesetzt (mit dem \verb!\url{..}! Makro).
 
@@ -561,19 +533,11 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "`richtige"' Publikationen, 
 	month={6},
 	institution={Upper Austria University of Applied Sciences, Medientechnik und {-design}},
 	location={Hagenberg, Austria},
-	hyphenation={german},
-	keywords={bachelorarbeitexample1} 
+	hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{Bacher2004}]
-Florian Bacher. "`Interaktionsmöglichkeiten mit Bildschirmen und groß-
-flächigen Projektionen"'. Bachelorarbeit. Hagenberg, Austria:\ Upper
-Austria University of Applied Sciences, Medientechnik und {-design},
-Juni 2004.
+\item[\cite{Bacher2004}] \fullcite{Bacher2004}
 \end{itemize}
-%\printbibliography[keyword=bachelorarbeitexample1,heading=noheader]\nocite{Bacher2004}
-%
-
 
 %%------------------------------------------------------
 
@@ -599,14 +563,8 @@ Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben,
   hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Drake1948}]
-Huber M.\ Drake, Milton D.\ McLaughlin und Harold R.\ Goodman.
-\textit{Results obtained during accelerated transonic tests of the Bell XS-1
-airplane in flights to a MACH number of 0.92}. Techn.\ Ber.\ NACA-
-RM-L8A05A. Edwards, CA:\ NASA Dryden Flight Research Center,
-Jan. 1948. \textsc{url}:\ \url{http://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf}.
+\item[\cite{Drake1948}] \fullcite{Drake1948}
 \end{itemize}
-%\printbibliography[keyword=techreportexample1,heading=noheader]\nocite{Drake1948}
 
 %%------------------------------------------------------
 
@@ -624,17 +582,12 @@ Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dok
 	month={11},
 	version={2.16a},
 	url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
-	hyphenation={english},
-	keywords={manualexample1}
+	hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2016}]
-Frank Mittelbach u. a.
-The \texttt{amsmath} package.
-Version 2.16a. Nov. 2016. \textsc{url}: \url{http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf}.
+\item[\cite{Mittelbach2016}] \fullcite{Mittelbach2016}
 \end{itemize}
-%\printbibliography[keyword=manualexample1,heading=noheader]\nocite{Mittelbach2016}
-%
+
 Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vorname}+\emph{Nachname} interpretiert wird.%
 \footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz für \texttt{author} akzeptiert.}
 
@@ -663,13 +616,8 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 	hyphenation={german}
 }
 \end{GenericCode}
-\item[\cite{OoeRaumordnungsgesetz1994}]
-\textit{Oberösterreichisches Raumordnungsgesetz 1994}. LGBl 1994/114 idF
-1995/93. \textsc{url}: \url{http://www.ris.bka.gv.at/Dokumente/LrOO/LOO40007538/LOO40007538.pdf}.
+\item[\cite{OoeRaumordnungsgesetz1994}] \fullcite{OoeRaumordnungsgesetz1994}
 \end{itemize}
-%\printbibliography[keyword=miscexample1,heading=noheader]\nocite{OoeRaumordnungsgesetz1994}
-%
-
 
 
 \subsection{Filme und audio-visuelle Medien (\emph{avmedia})}
@@ -684,7 +632,7 @@ die ausschließlich online verfügbar sind -- diese sollten mit einem Elementtyp
 \texttt{@online} (s.\ Tabelle~\ref{tab:BibKategorien} und Abschnitt~\ref{sec:KategorieOnline}) ausgezeichnet werden.
 
 Die nachfolgend beschriebenen Typen \texttt{@audio}, \texttt{@video} und \texttt{@movie} 
-sind \emph{keine} BibTeX-Standardtypen. Sie sind aber in \texttt{biblatex} vorgesehen
+sind \emph{keine} Bib\-TeX-Standardtypen. Sie sind aber in \texttt{biblatex} vorgesehen
 (und implizit durch \texttt{@misc} ersetzt) und werden hier empfohlen, um die automatische 
 Gliederung des Quellenverzeichnisses zu ermöglichen.
 
@@ -702,17 +650,13 @@ Hier ein Beispiel für die Spezifikation einer Audio-CD:
   year={1995},
   month={5},
   note={Rykodisc, New York},
-  hyphenation={english},
-  keywords={audioexample1}
+  hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Zappa1995}]
-Frank Zappa. \textit{Freak Out}. Audio-CD. Rykodisc, New York. Mai 1995.
+\item[\cite{Zappa1995}] \fullcite{Zappa1995}
 \end{itemize}
-%\printbibliography[keyword=audioexample1,heading=noheader]\nocite{Zappa1995}
-%
-Anstelle von \verb!howpublished={Audio-CD}! könnte auch 
-\verb!type={audiocd}! verwendet werden.
+
+Anstelle von \verb!howpublished={Audio-CD}! könnte auch \verb!type={audiocd}! verwendet werden.
 
 
 \subsubsection{\texttt{@video}}
@@ -733,12 +677,9 @@ Hier ein Beispiel für die Spezifikation einer DVD-Edition:
   hyphenation={english}
  }
 \end{GenericCode}
-\item[\cite{Futurama1999}]
-Matt Groening. \textit{Futurama}. Season 1 Collection. DVD. 
-Twentieth Century Fox Home Entertainment. Feb.\ 2002.
+\item[\cite{Futurama1999}] \fullcite{Futurama1999}
 \end{itemize}
-%\printbibliography[keyword=videoexample1,heading=noheader]\nocite{Futurama1999}
-%
+
 In diesem Fall ist das angegebene Datum der \emph{Erscheinungstermin}. 
 Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
 \texttt{author}-Feld weg und verpackt die entsprechenden Angaben im \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
@@ -765,23 +706,17 @@ Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
     hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Nosferatu1922}]
-\textit{Nosferatu -- A Symphony of Horrors}. Film. 
-Drehbuch/Regie:\ F.\ W.\ Murnau. 
-Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.
-1922.
+\item[\cite{Nosferatu1922}] \fullcite{Nosferatu1922}
 \end{itemize}
-%\printbibliography[keyword=movieexample1,heading=noheader]\nocite{Nosferatu22}
-%
+
 Die Angabe \verb!howpublished={Film}! ist hier sinnvoll, um die Verwechslung
 mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
-
 
 
 \subsubsection{\texttt{@software}}
 \label{sec:@software}
 Dieser Eintragstyp ist insbesondere für Computerspiele geeignet (in Ermangelung
-eines eigenen Eintragstyps). Hier ein konkretes Beispiel \cite{LegendOfZelda1998}:
+eines eigenen Eintragstyps).
 %
 \begin{itemize}
 \item[] 
@@ -795,6 +730,7 @@ eines eigenen Eintragstyps). Hier ein konkretes Beispiel \cite{LegendOfZelda1998
    hyphenation={english}
 }
 \end{GenericCode}
+\item[\cite{LegendOfZelda1998}] \fullcite{LegendOfZelda1998}
 \end{itemize}
 
 
@@ -858,12 +794,9 @@ mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2016}.
 	urldate={2017-02-28}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2016}]
-Aug. 2016. \textsc{url}: \url{https://de.wikipedia.org/wiki/Reliquienschrein}
-(besucht am 28.02.{\hskip0pt}2017).
+\item[\cite{WikiReliquienschrein2016}] \fullcite{WikiReliquienschrein2016}
 \end{itemize}
-%\printbibliography[keyword=onlineexample2,heading=noheader]\nocite{WikiReliquienschrein2015}
-%
+
 In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL, Jahr und Monat können die Version näher spezifizieren, die zum gegebenen Zeitpunkt aktuell war.
 Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch die Information eingefügt, wann das Online-Dokument eingesehen wurde.
 
@@ -882,9 +815,7 @@ Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format
     hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{HistoryOfComputers2008}]
-\textit{History of Computers}. Sep. 2008. 
-\textsc{url}: \url{http://www.youtube.com/watch?v=LvKxJ3bQRKE}.
+\item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
 \end{itemize}
 %\printbibliography[keyword=onlineexample1,heading=noheader]\nocite{HistoryOfComputers2008}
 %
@@ -907,20 +838,17 @@ Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
 	url={http://www.plyojump.com/classes/mainframe_era.php}
 }
 \end{GenericCode}
-\item[\cite{IBM360}]
-\textsc{url}: \url{http://www.plyojump.com/classes/mainframe_era.php}.
+\item[\cite{IBM360}] \fullcite{IBM360}
 \end{itemize}
-%\printbibliography[keyword=onlineexample3,heading=noheader]\nocite{IBM360}
-%
 
 \subsection{Elektronische Datenträger als Ergänzung zur Arbeit}
 
-Wird der Abschlussarbeit ein elektronischer Datenträger (CD-ROM, DVD
+Wird der Abschlussarbeit ein elektronischer Datenträger (CD-ROM, DVD, USB-Stick
 etc.) beigelegt, empfiehlt sich die angeführten Webseiten in
 elektronischer Form (vorzugsweise als PDF-Da\-tei\-en) abzulegen
 und die zugehörige Quelle im Quellenverzeichnis mit einem 
 entsprechenden Verweis im \texttt{note}-Feld -- \zB\
-"`Kopie auf CD-ROM (Datei \nolinkurl{xyz.pdf})"' --
+"`Kopie auf USB-Stick (Datei \nolinkurl{xyz.pdf})"' --
 zu versehen.
 Für die Angabe von solchen Dateinamen, die nicht als Online-Link
 zu öffnen sind, ist übrigens die Verwendung von 

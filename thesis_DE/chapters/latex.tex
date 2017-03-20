@@ -157,14 +157,10 @@ und die Beschreibungen wichtiger \latex-Pakete, wie
 %
 \begin{quote}
   \texttt{babel} \cite{Bezos2016},\newline
-% \texttt{german}, \texttt{ngerman} \cite{Raichle1998},\newline
   \texttt{grahics}, \texttt{graphicx} \cite{Carlisle2016},\newline
   \texttt{fancyhdr} \cite{Oostrum2016},\newline
-  \texttt{caption} \cite{Sommerfeldt2011},\newline
+  \texttt{caption} \cite{Sommerfeldt2011}.
 \end{quote}
-
-
-
 
 
 \section{Schrift}
@@ -235,7 +231,7 @@ zum Vergleich:
 %
 \item \emph{Emphasize} (\verb!\emph!) %
 ist normalerweise gleichbedeutend mit \verb!\textit!, wobei
-\verb!\emph{..}! allerdings auch bei geschachtelten
+\verb!\emph! allerdings auch bei geschachtelten
 Hervorhebungen und im Bereich anderer Schriftschnitte das
 "`Richtige"' tut: 
 %
@@ -372,7 +368,7 @@ geordnete Auflistung (Aufzählung) und Beschreibungsliste
     \begin{description} ... \end{description}
 \end{verbatim}
 %
-Listeneinträge werden jeweils mit \verb!\item! markiert, bei \texttt{description}-Listen mit \verb!\item[!\texttt{\em titel}\verb!]!. Listen
+Listeneinträge werden mit \verb!\item! markiert, bei \texttt{description}-Listen mit \verb!\item[!\texttt{\em titel}\verb!]!. Listen
 können ineinander verschachtelt werden, wobei sich bei \texttt{itemize}- und \texttt{enumerate}-Listen die Aufzählungszeichen mit
 der Schachtelungstiefe ändern (Details dazu in der
 \latex-Dokumentation).
@@ -766,9 +762,9 @@ Dabei sind die möglichen Optionen für \texttt{\emph{type}}
 %
 \begin{itemize}
 \item[] \verb!master! (Masterarbeit = \emph{default})
-\item[] \verb!diplom! (Diplomarbeit)
+\item[] \verb!diploma! (Diplomarbeit)
 \item[] \verb!bachelor! (Bachelorarbeit)
-\item[] \verb!praktikum! (Praktikumsbericht)
+\item[] \verb!internship! (Praktikumsbericht)
 \end{itemize}
 %
 Mit der Option \texttt{\emph{language}} kann die Hauptsprache des Dokuments spezifiziert werden, 
@@ -779,9 +775,7 @@ die möglichen Werte dafür sind
 \item[] \verb!english!
 \end{itemize}
 %
-Wird überhaupt keine Option angegeben, dann wird als Default-Einstellung 
-\texttt{[master,german]}
-verwendet.
+Wird keine Option angegeben, lautet die Standardeinstellung \texttt{[master,german]}.
 Der vollständige Quelltext für eine entsprechende \verb!.tex! Hauptdatei ist in Anhang \ref{app:latex} 
 gelistet.
 
@@ -798,25 +792,22 @@ erforderlich:
 \item[] %
 \verb!\title{!\texttt{\em Titel der Arbeit}\verb!}! \newline%
 \verb!\author{!\texttt{\em Autor}\verb!}! \newline%
-\verb!\studiengang{!\texttt{\em Studiengang}\verb!}! \newline%
-\verb!\studienort{!\texttt{\em Studienort}\verb!}! \newline%
-%\verb!\abgabemonat{!\texttt{\em Monat der Abgabe}\verb!}! \newline%
-%\verb!\abgabejahr{!\texttt{\em Jahr der Abgabe}\verb!}! \newline%
-\verb!\abgabedatum{!\texttt{\em yyyy}\verb!}{!\texttt{\em mm}\verb!}{!\texttt{\em dd}\verb!}!
+\verb!\programname{!\texttt{\em Studiengang}\verb!}! \newline%
+\verb!\placeofstudy{!\texttt{\em Studienort}\verb!}! \newline%
+\verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em mm}\verb!}{!\texttt{\em dd}\verb!}!
 \end{itemize}
 %
 \noindent Für \textbf{Bachelorarbeiten} werden zusätzlich zu den Basisangaben folgende Elemente verwendet (bei Diplom- und Masterarbeiten nicht relevant):
 %
 \begin{itemize}
-\item[] \verb!\nummer{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
+\item[] \verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
 \footnote{Wird normalerweise von der Institution vergeben. An der
 Fakultät Hagenberg ist dies bei einer Bachelorarbeit die (10-stellige) Studenten-ID 
 des Autors oder der Autorin,
 \zB\ \textsf{0310238045-A} für die erste Bachelorarbeit.} \newline%
-\verb!\gegenstand{!\texttt{\em Gegenstand oder Projektlehrveranstaltung}\verb!}! \newline%
+\verb!\coursetitle{!\texttt{\em Gegenstand oder Projektlehrveranstaltung}\verb!}! \newline%
 \verb!\semester{!\texttt{\em Semester der Lehrveranstaltung}\verb!}! \newline%
-\verb!\betreuer{!\texttt{\em Name}\verb!}! \textbf{oder}
-\verb!\betreuerin{..}!
+\verb!\advisor{!\texttt{\em Name des Betreuers/der Betreuerin}\verb!}!
 \end{itemize}
 
 \noindent Für \textbf{Praktikumsberichte} werden zusätzlich zu den Basisangaben folgende
@@ -824,7 +815,7 @@ Elemente berücksichtigt:
 %
 \begin{itemize}
 \item[] %
-\verb!\nummer{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
+\verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
 %\footnote{Wird normalerweise von der Institution vergeben. An der
 %FH-Hagenberg ist dies bei einer Bachelorarbeit üblicherweise die Matrikelnummer 
 %des Autors,
@@ -832,12 +823,10 @@ Elemente berücksichtigt:
 %oder \textbf{B} (Praktikumsbericht),
 %\zB\ \textsf{238-003-045}.} 
 \newline%
-\verb!\betreuer{!\texttt{\em Betreuer im Unternehmen}\verb!}! 
-\textbf{oder}
-\verb!\betreuerin{..}! \newline%
-\verb!\firma{!\texttt{\em name und Adresse der Firma}\verb!}! \newline%
-\verb!\firmenTel{!\texttt{\em Telefonnummer der Firma}\verb!}! \newline%
-\verb!\firmenUrl{!\texttt{\em Web-Site der Firma}\verb!}!
+\verb!\advisor{!\texttt{\em Betreuer oder Betreuerin im Unternehmen}\verb!}! \newline%
+\verb!\companyName{!\texttt{\em Name und Adresse der Firma}\verb!}! \newline%
+\verb!\companyPhone{!\texttt{\em Telefonnummer der Firma}\verb!}! \newline%
+\verb!\companyUrl{!\texttt{\em Website der Firma}\verb!}!
 \end{itemize}
 
 \begin{table}
@@ -846,25 +835,23 @@ Elemente berücksichtigt:
 \centering\small
 \begin{tabular}{lcccc}
 \emph{Element} & 
-\texttt{diplom} &
+\texttt{diploma} &
 \texttt{master} &
 \texttt{bachelor} & 
-\texttt{praktikum} 
+\texttt{internship} 
 \\
 \hline
 \verb!\title! 			& $+$ & $+$ & $+$ & $+$ \\
 \verb!\author! 			& $+$ & $+$ & $+$ & $+$ \\
-\verb!\studiengang! & $+$ & $+$ & $+$ & $+$ \\
-\verb!\studienort! 	& $+$ & $+$ & $+$ & $+$ \\
-%\verb!\abgabemonat! & $+$ & $+$ & $+$ & $+$ \\
-%\verb!\abgabejahr! 	& $+$ & $+$ & $+$ & $+$ \\
-\verb!\abgabedatum! 	& $+$ & $+$ & $+$ & $+$ \\
-\verb!\nummer! 			& $-$ & $-$ & $+$ & $+$ \\
-\verb!\gegenstand! 	& $-$ & $-$ & $+$ & $-$ \\
-\verb!\betreuer! 		& $-$ & $-$ & $+$ & $+$ \\
-\verb!\firma! 			& $-$ & $-$ & $-$ & $+$ \\
-\verb!\firmenTel! 	& $-$ & $-$ & $-$ & $+$ \\
-\verb!\firmenUrl! 	& $-$ & $-$ & $-$ & $+$ \\
+\verb!\programname! & $+$ & $+$ & $+$ & $+$ \\
+\verb!\placeofstudy! 	& $+$ & $+$ & $+$ & $+$ \\
+\verb!\dateofsubmission! 	& $+$ & $+$ & $+$ & $+$ \\
+\verb!\thesisnumber! 			& $-$ & $-$ & $+$ & $+$ \\
+\verb!\coursetitle! 	& $-$ & $-$ & $+$ & $-$ \\
+\verb!\advisor! 		& $-$ & $-$ & $+$ & $+$ \\
+\verb!\companyName! 			& $-$ & $-$ & $-$ & $+$ \\
+\verb!\companyPhone! 	& $-$ & $-$ & $-$ & $+$ \\
+\verb!\companyUrl! 	& $-$ & $-$ & $-$ & $+$ \\
 \hline
 \end{tabular}
 \end{table}
@@ -988,7 +975,7 @@ spezielle \emph{Environments} vorgesehen:
 \verb!\end{german}!
 \end{itemize}
 %
-Zur Kontrolle lässt sich aktuelle Spracheinstellung übrigens mit dem Makro \verb!\languagename!
+Zur Kontrolle lässt sich die aktuelle Spracheinstellung mit dem Makro \verb!\languagename!
 anzeigen. An dieser Stelle ergibt das etwa "`\texttt{\languagename}"' (\emph{new german}, \dah\ neue deutsche Rechtschreibung).
 
 
