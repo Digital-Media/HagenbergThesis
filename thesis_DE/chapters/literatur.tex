@@ -352,19 +352,19 @@ Ein einbändiges Buch (Monographie), das von einem Autor oder mehreren Autoren z
 \item[] 
 \begin{GenericCode}[numbers=none]
 @book{BurgerBurge2015,
-    author={Burger, Wilhelm and Burge, Mark James},
-    title={Digitale Bildverarbeitung},
-    subtitle={Eine algorithmische Einführung mit Java},
-    publisher={Springer-Verlag},
-    location={Heidelberg},
-    edition={3},
-    year={2015},
-    hyphenation={german}
+  author={Burger, Wilhelm and Burge, Mark James},
+  title={Digitale Bildverarbeitung},
+  subtitle={Eine algorithmische Einführung mit Java},
+  publisher={Springer-Verlag},
+  location={Heidelberg},
+  edition={3},
+  year={2015},
+  hyphenation={german}
 }
 \end{GenericCode}
 \item[\cite{BurgerBurge2015}] \fullcite{BurgerBurge2015}
 \end{itemize}
-
+%
 \emph{Hinweis:} Die Auflagennummer (\texttt{edition}) wird üblicherweise nur angegeben, 
 wenn es \emph{mehr} als eine Ausgabe gibt -- also insbesondere \textbf{nicht für die 1.\ Auflage}, 
 wenn diese die einzige ist!
@@ -407,22 +407,22 @@ Konferenzbeitrag, individueller Beitrag in einem Tagungsband.
 Man beachte die Verwendung des neuen Felds \texttt{venue}
 zur Angabe des Tagungsorts und 
 \texttt{location} für den Ort der Publikation (des Verlags).
-
+%
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
 @inproceedings{Burger1987,
-	author={Burger, Wilhelm and Bhanu, Bir},
-	title={Qualitative Motion Understanding},
-	booktitle={Proceedings of the Intl.\ Joint Conference on Artificial Intelligence},
-	year={1987},
-	month={5},
-	editor={McDermott, John P.},
-	venue={Mailand},
-	publisher={Morgan Kaufmann Publishers},
-	location={San Francisco},
-	pages={819-821},
-	hyphenation={english}
+  author={Burger, Wilhelm and Bhanu, Bir},
+  title={Qualitative Motion Understanding},
+  booktitle={Proceedings of the Intl.\ Joint Conference on Artificial Intelligence},
+  year={1987},
+  month={5},
+  editor={McDermott, John P.},
+  venue={Mailand},
+  publisher={Morgan Kaufmann Publishers},
+  location={San Francisco},
+  pages={819-821},
+  hyphenation={english}
 }
 \end{GenericCode}
 \item[\cite{Burger1987}] \fullcite{Burger1987}
@@ -442,24 +442,23 @@ zu vermeiden.
 \item[]
 \begin{GenericCode}[numbers=none]
 @article{Mermin1989,
-	author={Mermin, Nathaniel David},
-	title={What's wrong with these equations?},
-	journal={Physics Today},
-	volume={42},
-	number={10},
-	year={1989},
-	pages={9-11},
-	hyphenation={english}
+  author={Mermin, Nathaniel David},
+  title={What's wrong with these equations?},
+  journal={Physics Today},
+  volume={42},
+  number={10},
+  year={1989},
+  pages={9-11},
+  hyphenation={english}
 }
 \end{GenericCode}
 \item[\cite{Mermin1989}] \fullcite{Mermin1989}
 \end{itemize}
-
+%
 \emph{Hinweis:} Die Angabe einer Ausgabe für \emph{mehrere} Monate ist in \texttt{biblatex} nicht mehr
 über das Feld \texttt{month} möglich, denn dieses darf nur mehr \emph{einen} Wert enthalten.
 In diesem Fall kann jedoch einfach das \texttt{issue}-Feld verwendet (\zB\ \verb!issue={Mai/Juni}!
 im BibTeX-Eintrag zu \cite{Guttman2001}) und das \texttt{number}-Feld weggelassen werden.
-
 
 %%------------------------------------------------------
 
@@ -469,20 +468,20 @@ Dieser (neue) Eintragstyp kann allgemein für akademische Abschlussarbeiten verw
 insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertationen) sowie
 \texttt{@mastersthesis} (für Di\-plom- und Masterarbeiten), die allerdings weiterhin verwendet werden können. Zusätzlich ist damit etwa auch die Angabe von Bachelorarbeiten möglich.
 
-\bigskip % kludge to force heading to next page
 \paragraph{Dissertation (Doktorarbeit):}
+%
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
 @thesis{Eberl1987,
-	author={Eberl, Gerhard},
-	title={Automatischer Landeanflug durch Rechnersehen},
-	type={phdthesis},
-	year={1987},
-	month={8},
-	institution={Universität der Bundeswehr, Fakultät für Raum- und Luftfahrttechnik},
-	location={München},
-	hyphenation={german}
+  author={Eberl, Gerhard},
+  title={Automatischer Landeanflug durch Rechnersehen},
+  type={phdthesis},
+  year={1987},
+  month={8},
+  institution={Universität der Bundeswehr, Fakultät für Raum- und Luftfahrttechnik},
+  location={München},
+  hyphenation={german}
 }
 \end{GenericCode}
 \item[\cite{Eberl1987}] \fullcite{Eberl1987}
@@ -500,20 +499,20 @@ Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\obnh\{Diplomarb
 \item[]
 \begin{GenericCode}[numbers=none]
 @thesis{Artner2007,
-	author={Artner, Nicole Maria},
-	title={Analyse und Reimplementierung des Mean-Shift Tracking-Verfahrens},
-	type={Diplomarbeit},
-	year={2007},
-	month={7},
-	institution={University of Applied Sciences Upper Austria, Digitale Medien},
-	location={Hagenberg, Austria},
-	url={http://theses.fh-hagenberg.at/thesis/Artner07},
+  author={Artner, Nicole Maria},
+  title={Analyse und Reimplementierung des Mean-Shift Tracking-Verfahrens},
+  type={Diplomarbeit},
+  year={2007},
+  month={7},
+  institution={University of Applied Sciences Upper Austria, Digitale Medien},
+  location={Hagenberg, Austria},
+  url={http://theses.fh-hagenberg.at/thesis/Artner07},
   hyphenation={german}
 }
 \end{GenericCode}
 \item[\cite{Artner2007}] \fullcite{Artner2007}
 \end{itemize}
-
+%
 Der Inhalt des Felds \verb!url={..}! wird dabei automatisch und ohne zusätzliche
 Kennzeichnung als URL gesetzt (mit dem \verb!\url{..}! Makro).
 
@@ -526,14 +525,14 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "`richtige"' Publikationen, 
 \item[]
 \begin{GenericCode}[numbers=none]
 @thesis{Bacher2004,
-	author={Bacher, Florian},
-	title={Interaktionsmöglichkeiten mit Bildschirmen und großflächigen Projektionen},
-	type={Bachelorarbeit},
-	year={2004},
-	month={6},
-	institution={Upper Austria University of Applied Sciences, Medientechnik und {-design}},
-	location={Hagenberg, Austria},
-	hyphenation={german}
+  author={Bacher, Florian},
+  title={Interaktionsmöglichkeiten mit Bildschirmen und großflächigen Projektionen},
+  type={Bachelorarbeit},
+  year={2004},
+  month={6},
+  institution={Upper Austria University of Applied Sciences, Medientechnik und {-design}},
+  location={Hagenberg, Austria},
+  hyphenation={german}
 }
 \end{GenericCode}
 \item[\cite{Bacher2004}] \fullcite{Bacher2004}
@@ -576,23 +575,23 @@ Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dok
 \item[]
 \begin{GenericCode}[numbers=none]
 @manual{Mittelbach2016,
-	author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
-	title={The \texttt{amsmath} package},
-	year={2016},
-	month={11},
-	version={2.16a},
-	url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
-	hyphenation={english}
+  author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
+  title={The \texttt{amsmath} package},
+  year={2016},
+  month={11},
+  version={2.16a},
+  url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
+  hyphenation={english}
 }
 \end{GenericCode}
 \item[\cite{Mittelbach2016}] \fullcite{Mittelbach2016}
 \end{itemize}
-
+%
 Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vorname}+\emph{Nachname} interpretiert wird.%
 \footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz für \texttt{author} akzeptiert.}
 
-
 %%------------------------------------------------------
+
 \subsubsection{\texttt{@misc}}
 \label{sec:@misc}
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
@@ -610,10 +609,10 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 \item[]
 \begin{GenericCode}[numbers=none]
 @misc{OoeRaumordnungsgesetz1994,
-	title={Oberösterreichisches Raumordnungsgesetz 1994},
-	howpublished={LGBl 1994/114 idF 1995/93},
-	url={http://www.ris.bka.gv.at/Dokumente/LrOO/...538.pdf},
-	hyphenation={german}
+  title={Oberösterreichisches Raumordnungsgesetz 1994},
+  howpublished={LGBl 1994/114 idF 1995/93},
+  url={http://www.ris.bka.gv.at/Dokumente/LrOO/...538.pdf},
+  hyphenation={german}
 }
 \end{GenericCode}
 \item[\cite{OoeRaumordnungsgesetz1994}] \fullcite{OoeRaumordnungsgesetz1994}
@@ -622,7 +621,6 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 
 \subsection{Filme und audio-visuelle Medien (\emph{avmedia})}
 \label{sec:KategorieAvmedia}
-
 Diese Kategorie ist dazu vorgesehen, audio-visuelle Produktionen wie Filme, 
 Tonaufzeichnungen, Audio-CDs, DVDs, VHS-Kassetten \usw\ zu erfassen.
 Damit gemeint sind Werke, die in physischer (jedoch nicht in gedruckter) Form
@@ -635,6 +633,7 @@ Die nachfolgend beschriebenen Typen \texttt{@audio}, \texttt{@video} und \texttt
 sind \emph{keine} Bib\-TeX-Standardtypen. Sie sind aber in \texttt{biblatex} vorgesehen
 (und implizit durch \texttt{@misc} ersetzt) und werden hier empfohlen, um die automatische 
 Gliederung des Quellenverzeichnisses zu ermöglichen.
+
 
 \subsubsection{\texttt{@audio}}
 \label{sec:@audio}
@@ -669,7 +668,7 @@ Hier ein Beispiel für die Spezifikation einer DVD-Edition:
 @video{Futurama1999,
   author={Groening, Matt},
   title={Futurama},
-	titleaddon={Season 1 Collection},
+  titleaddon={Season 1 Collection},
   howpublished={DVD},
   year={2002},
   month={2},
@@ -679,7 +678,7 @@ Hier ein Beispiel für die Spezifikation einer DVD-Edition:
 \end{GenericCode}
 \item[\cite{Futurama1999}] \fullcite{Futurama1999}
 \end{itemize}
-
+%
 In diesem Fall ist das angegebene Datum der \emph{Erscheinungstermin}. 
 Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
 \texttt{author}-Feld weg und verpackt die entsprechenden Angaben im \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
@@ -699,16 +698,16 @@ Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
 \item[] 
 \begin{GenericCode}[numbers=none]
 @movie{Nosferatu1922,
-    title={Nosferatu -- A Symphony of Horrors},
-    howpublished={Film},
-    year={1922},
-    note={Drehbuch/Regie: F. W. Murnau. Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.},
-    hyphenation={english}
+  title={Nosferatu -- A Symphony of Horrors},
+  howpublished={Film},
+  year={1922},
+  note={Drehbuch/Regie: F. W. Murnau. Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.},
+  hyphenation={english}
 }
 \end{GenericCode}
 \item[\cite{Nosferatu1922}] \fullcite{Nosferatu1922}
 \end{itemize}
-
+%
 Die Angabe \verb!howpublished={Film}! ist hier sinnvoll, um die Verwechslung
 mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
 
@@ -722,12 +721,12 @@ eines eigenen Eintragstyps).
 \item[] 
 \begin{GenericCode}[numbers=none]
 @software{LegendOfZelda1998,
-   author={Miyamoto, Shigeru and Aonuma, Eiji and Koizumi, Yoshiaki},
-   title={The Legend of Zelda: Ocarina of Time},
-   howpublished={N64-Spielmodul},
-   publisher={Nintendo},
-   year={1998},
-   hyphenation={english}
+  author={Miyamoto, Shigeru and Aonuma, Eiji and Koizumi, Yoshiaki},
+  title={The Legend of Zelda: Ocarina of Time},
+  howpublished={N64-Spielmodul},
+  publisher={Nintendo},
+  year={1998},
+  hyphenation={english}
 }
 \end{GenericCode}
 \item[\cite{LegendOfZelda1998}] \fullcite{LegendOfZelda1998}
@@ -788,15 +787,15 @@ mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2016}.
 \item[]
 \begin{GenericCode}[numbers=none]
 @online{WikiReliquienschrein2016,
-	url={https://de.wikipedia.org/wiki/Reliquienschrein},
-	year={2016},
-	month={8},
-	urldate={2017-02-28}
+  url={https://de.wikipedia.org/wiki/Reliquienschrein},
+  year={2016},
+  month={8},
+  urldate={2017-02-28}
 }
 \end{GenericCode}
 \item[\cite{WikiReliquienschrein2016}] \fullcite{WikiReliquienschrein2016}
 \end{itemize}
-
+%
 In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL, Jahr und Monat können die Version näher spezifizieren, die zum gegebenen Zeitpunkt aktuell war.
 Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch die Information eingefügt, wann das Online-Dokument eingesehen wurde.
 
@@ -808,16 +807,15 @@ Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format
 \item[]
 \begin{GenericCode}[numbers=none]
 @online{HistoryOfComputers2008,
-    title={History of Computers},
-    year={2008},
-		month={9},
-    url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
-    hyphenation={english}
+  title={History of Computers},
+  year={2008},
+  month={9},
+  url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
+  hyphenation={english}
 }
 \end{GenericCode}
 \item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
 \end{itemize}
-%\printbibliography[keyword=onlineexample1,heading=noheader]\nocite{HistoryOfComputers2008}
 %
 Bis auf das Feld \texttt{url} können alle Angaben weggelassen werden. Die Angabe von 
 weiteren Details (\zB\ \texttt{author}) ist natürlich ebenso möglich.
@@ -835,7 +833,7 @@ Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
 \item[]
 \begin{GenericCode}[numbers=none]
 @online{IBM360,
-	url={http://www.plyojump.com/classes/mainframe_era.php}
+  url={http://www.plyojump.com/classes/mainframe_era.php}
 }
 \end{GenericCode}
 \item[\cite{IBM360}] \fullcite{IBM360}
@@ -920,20 +918,14 @@ Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platzi
 
 \texttt{biblatex} gibt bei der Verarbeitung dieses Dokuments einige Warnungen aus ("`Package biblatex Warning"'), 
 die in der Regel ignoriert werden können:
-%\begin{small}
-%\begin{verbatim}
-  %Package biblatex Warning: Data encoding is 'latin1'.
-  %(biblatex)                Use backend=bibtex8 or backend=biber.
-%\end{verbatim}
-%\end{small}
-%Das ist ein Hinweis auf die neueren Bib-Prozessoren \texttt{bibtex8} \bzw\ \texttt{biber}, die
-%mit Nicht-ASCII-Dateien besser umgehen können als das klassische \texttt{bibtex}-Programm.
+%
 \begin{small}
 \begin{verbatim}
   Package biblatex Warning: No driver for entry type 'video'.
   (biblatex)                Using fallback driver ...
 \end{verbatim}
 \end{small}
+%
 Für die neuen Eintragstypen \texttt{audio}, \texttt{video} und \texttt{movie} sind derzeit 
 noch keine eigenen "`driver"' hinterlegt. Stattdessen wird im Hintergrund der \texttt{misc}-Typ 
 als "`fallback"' verwendet.
@@ -970,5 +962,3 @@ Auf gar keinen Fall tolerierbar ist die direkte oder paraphrasierte Übernahme l
 \end{itemize}
 %
 Im Zweifelsfall finden sich detailliertere Regeln in jedem guten Buch über wissenschaftliches Arbeiten oder man fragt sicherheitshalber den Betreuer der Arbeit.
-
-
