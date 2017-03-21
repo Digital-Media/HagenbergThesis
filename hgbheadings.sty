@@ -36,6 +36,11 @@
 	\renewcommand{\footrulewidth}{0pt}
 }
 
-%% Setup for headings in table of contents ------------------------------------
-\RequirePackage[titles]{tocloft}
-\renewcommand{\cftchapfont}{\bfseries\sffamily}
+%% Setup for headings in table of contents for hgbthesis only -----------------
+
+\makeatletter%
+\@ifclassloaded{hgbthesis}{%
+	\RequirePackage[titles]{tocloft}%
+	\renewcommand{\cftchapfont}{\bfseries\sffamily}
+}{}%
+\makeatother%
