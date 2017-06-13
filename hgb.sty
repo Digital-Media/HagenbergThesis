@@ -238,9 +238,15 @@
 }}%
 {\end{list}}
 
+\providecommand{\hgb@PathName}{Pfad}
+
 \newenvironment{FileList}[1]%
-{\paragraph{Pfad:} \url{#1}
- \begin{list}{}%
+{%\paragraph{Pfad:} \url{#1}
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}
+	{\renewcommand{\hgb@PathName}{Pfad}}%
+	{\renewcommand{\hgb@PathName}{Path}}%
+\paragraph{\hgb@PathName: \nolinkurl{#1}}
+\begin{list}{}%
 {\setlength{\leftmargin}{5cm}
  \setlength{\labelwidth}{4cm}
  \setlength{\labelsep}{0.25cm}
@@ -256,7 +262,7 @@
 \def\widedotfill{\leaders\hbox to 8pt{\hfil.\hfil}\hfill}
 
 \newcommand{\fitem}[1]{%
-\item[\url{#1}\widedotfill]
+\item[\nolinkurl{#1}\widedotfill]
 }
 
 \setlength{\fboxsep}{0mm}			%globally zero fbox separator
