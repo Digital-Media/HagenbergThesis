@@ -78,8 +78,11 @@
 		{% split the bibliography using the predefined categories:
 			\printbibheading[heading=bibintoc,title={\@bibtitle}]
 			\begin{bibhyphenation}
+			\phantomsection
 			\printbibliography[filter=literature,heading=subbibintoc,title={\@bibtitleLiteratur}]
+			\phantomsection
 			\printbibliography[filter=avmedia,heading=subbibintoc,title={\@bibtitleAvmedia}]
+			\phantomsection
 			\printbibliography[filter=online,heading=subbibintoc,title={\@bibtitleOnline}]
 			\end{bibhyphenation}
 		}%
