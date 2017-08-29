@@ -5,6 +5,17 @@
 %% File encoding: ASCII
 
 
+%% Utility Commands -----------------------------------------------------------
+
+\newcommand\ifmember[2]{%
+	\in@{#1}{#2}%
+	\ifin@
+		\expandafter\@firstoftwo
+	\else
+		\expandafter\@secondoftwo
+	\fi
+}
+
 %% Bibliography Setup ---------------------------------------------------------
 
 \ProvidesPackage{hgbbib}
@@ -68,7 +79,7 @@
 \newcommand{\MakeBibliography}[1][]{
 	% opt. arg (#1): optional argument "nosplit" to get a 1-piece bibliography
 	%\clearpage
-	\ifthenelse{\equal{#1}{nosplit}}%
+	\ifmember{nosplit}{#1}%
 		{% create a single bibliography with all entries:
 			\printbibheading[heading=bibintoc,title={\@bibtitle}]
 			\begin{bibhyphenation}	
@@ -78,12 +89,18 @@
 		{% split the bibliography using the predefined categories:
 			\printbibheading[heading=bibintoc,title={\@bibtitle}]
 			\begin{bibhyphenation}
-			\phantomsection
-			\printbibliography[filter=literature,heading=subbibintoc,title={\@bibtitleLiteratur}]
-			\phantomsection
-			\printbibliography[filter=avmedia,heading=subbibintoc,title={\@bibtitleAvmedia}]
-			\phantomsection
-			\printbibliography[filter=online,heading=subbibintoc,title={\@bibtitleOnline}]
+			\ifmember{noliterature}{#1}{}{%
+				\phantomsection
+				\printbibliography[filter=literature,heading=subbibintoc,title={\@bibtitleLiteratur}]
+			}
+			\ifmember{nomedia}{#1}{}{%
+				\phantomsection
+				\printbibliography[filter=avmedia,heading=subbibintoc,title={\@bibtitleAvmedia}]
+			}
+			\ifmember{noonline}{#1}{}{%
+				\phantomsection
+				\printbibliography[filter=online,heading=subbibintoc,title={\@bibtitleOnline}]
+			}
 			\end{bibhyphenation}
 		}%
 }
