@@ -5,18 +5,6 @@
 %% File encoding: ASCII
 
 
-%% Utility Commands -----------------------------------------------------------
-
-%See: https://tex.stackexchange.com/a/260921/122215
-\newcommand\ifmember[2]{%
-	\in@{#1}{#2}%
-	\ifin@
-		\expandafter\@firstoftwo
-	\else
-		\expandafter\@secondoftwo
-	\fi
-}
-
 %% Bibliography Setup ---------------------------------------------------------
 
 \ProvidesPackage{hgbbib}
