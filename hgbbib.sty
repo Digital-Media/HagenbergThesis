@@ -65,15 +65,14 @@
 % Currently the only public macro:
 % \MakeBibliography ... creates a reference section split subsections (default)
 % \MakeBibliography[nosplit] ... creates a one-piece reference section
+% \MakeBibliography[noliterature] ... excludes literature subsection
+% \MakeBibliography[nomedia] ... excludes media subsection
+% \MakeBibliography[noonline] ... excludes online subsection
+% \MakeBibliography[nomedia,noonline] ... combinations can not be used with "nosplit"
 \newcommand{\MakeBibliography}[1][]{
 	% opt. arg (#1): optional argument "nosplit" to get a 1-piece bibliography,
-	% or "noliterature", "nomedia" and "noonline" to exclude a given filter.
-	% usage:
-	% \MakeBibliography %default behavior
-	% \MakeBibliography[nomedia] %excludes media filter
-	% \MakeBibliography[nomedia,noonline] %excludes media and online filter
-	% \MakeBibliography[noliterature,nomedia,noonline] %excludes all filters
-	% \MakeBibliography[nosplit] %excluding filters with nosplit is not possible
+	% or "noliterature", "nomedia" and "noonline" to exclude a given subsection,
+	% or multiple if comma separated, e.g. "nomedia,noonline".
 	%\clearpage
 	\ifmember{nosplit}{#1}%
 		{% create a single bibliography with all entries:
