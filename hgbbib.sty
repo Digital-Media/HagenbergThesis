@@ -22,26 +22,26 @@
 \newbool{citedliterature}
 
 %% hook to determine which bibliography category is used
-\AtEveryCitekey{
-	\ifthenelse{
+\AtEveryCitekey{%
+	\ifthenelse{%
 		\ifentrytype{online}\OR
 		\ifentrytype{electronic}\OR
 		\ifentrytype{www}
-	}{% online
-		\ifbool{citedonline}{}{\global\booltrue{citedonline}}
-	}{
-		\ifthenelse{
+	}{%online
+		\ifbool{citedonline}{}{\global\booltrue{citedonline}}%
+	}{%
+		\ifthenelse{%
 			\ifentrytype{movie}\OR
 			\ifentrytype{video}\OR
 			\ifentrytype{music}\OR
 			\ifentrytype{audio}\OR
 			\ifentrytype{software}
-		}{% media
-			\ifbool{citedmedia}{}{\global\booltrue{citedmedia}}
-		}{% literature
-			\ifbool{citedliterature}{}{\global\booltrue{citedliterature}}
-		}
-	}
+		}{%media
+			\ifbool{citedmedia}{}{\global\booltrue{citedmedia}}%
+		}{%literature
+			\ifbool{citedliterature}{}{\global\booltrue{citedliterature}}%
+		}%
+	}%
 }
 
 %% titles of reference section + 3 categories of references:
