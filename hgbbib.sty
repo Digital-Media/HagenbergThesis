@@ -16,6 +16,34 @@
 
 \ExecuteBibliographyOptions{bibwarn=true,sortcites=true,defernumbers=true,isbn=false,doi=false,backref=true}
 
+%% values indicating if a given bibliography category is not empty
+\newbool{citedonline}
+\newbool{citedmedia}
+\newbool{citedliterature}
+
+%% hook to determine which bibliography category is used
+\AtEveryCitekey{
+	\ifthenelse{
+		\ifentrytype{online}\OR
+		\ifentrytype{electronic}\OR
+		\ifentrytype{www}
+	}{% online
+		\ifbool{citedonline}{}{\global\booltrue{citedonline}}
+	}{
+		\ifthenelse{
+			\ifentrytype{movie}\OR
+			\ifentrytype{video}\OR
+			\ifentrytype{music}\OR
+			\ifentrytype{audio}\OR
+			\ifentrytype{software}
+		}{% media
+			\ifbool{citedmedia}{}{\global\booltrue{citedmedia}}
+		}{% literature
+			\ifbool{citedliterature}{}{\global\booltrue{citedliterature}}
+		}
+	}
+}
+
 %% titles of reference section + 3 categories of references:
 \newcommand{\@bibtitle}{Quellenverzeichnis}
 \newcommand{\@bibtitleLiteratur}{Literatur}
@@ -65,16 +93,10 @@
 % Currently the only public macro:
 % \MakeBibliography ... creates a reference section split subsections (default)
 % \MakeBibliography[nosplit] ... creates a one-piece reference section
-% \MakeBibliography[noliterature] ... excludes literature subsection
-% \MakeBibliography[nomedia] ... excludes media subsection
-% \MakeBibliography[noonline] ... excludes online subsection
-% \MakeBibliography[nomedia,noonline] ... combinations can not be used with "nosplit"
 \newcommand{\MakeBibliography}[1][]{
 	% opt. arg (#1): optional argument "nosplit" to get a 1-piece bibliography,
-	% or "noliterature", "nomedia" and "noonline" to exclude a given subsection,
-	% or multiple if comma separated, e.g. "nomedia,noonline".
 	%\clearpage
-	\ifmember{nosplit}{#1}%
+	\ifthenelse{\equal{#1}{nosplit}}%
 		{% create a single bibliography with all entries:
 			\printbibheading[heading=bibintoc,title={\@bibtitle}]
 			\begin{bibhyphenation}	
@@ -84,18 +106,22 @@
 		{% split the bibliography using the predefined categories:
 			\printbibheading[heading=bibintoc,title={\@bibtitle}]
 			\begin{bibhyphenation}
-			\ifmember{noliterature}{#1}{}{%
-				\phantomsection
-				\printbibliography[filter=literature,heading=subbibintoc,title={\@bibtitleLiteratur}]
-			}
-			\ifmember{nomedia}{#1}{}{%
-				\phantomsection
-				\printbibliography[filter=avmedia,heading=subbibintoc,title={\@bibtitleAvmedia}]
-			}
-			\ifmember{noonline}{#1}{}{%
-				\phantomsection
-				\printbibliography[filter=online,heading=subbibintoc,title={\@bibtitleOnline}]
-			}
+			
+				\ifbool{citedliterature}{%
+					\phantomsection
+					\printbibliography[filter=literature,heading=subbibintoc,title={\@bibtitleLiteratur}]
+				}{}
+				
+				\ifbool{citedmedia}{%
+					\phantomsection
+					\printbibliography[filter=avmedia,heading=subbibintoc,title={\@bibtitleAvmedia}]
+				}{}
+
+				\ifbool{citedonline}{%
+					\phantomsection
+					\printbibliography[filter=online,heading=subbibintoc,title={\@bibtitleOnline}]
+				}{}
+
 			\end{bibhyphenation}
 		}%
 }
