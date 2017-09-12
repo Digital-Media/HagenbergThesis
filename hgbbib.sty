@@ -29,18 +29,54 @@
 	\renewcommand{\@bibtitleOnline}{Online sources}	
 }{}
 
-\defbibfilter{literature}{
-	not ( type=movie or type=video or type=music or type=audio or 
-				type=online or type=electronic or type=www or type=software )}
+%% categories for a split bibliography
+\DeclareBibliographyCategory{literature}
+\DeclareBibliographyCategory{avmedia}
+\DeclareBibliographyCategory{online}
 
-\defbibfilter{avmedia}{%
-	( type=movie or type=video or type=music or type=audio or type=software )}
+%% headings for the bibliography categories
+\defbibheading{literature}{%
+	\phantomsection%
+	\section*{\@bibtitleLiteratur}%
+	\addcontentsline{toc}{section}{\@bibtitleLiteratur}%
+}
 
-\defbibfilter{online}{%
-	( type=online or type=electronic or type=www )}
+\defbibheading{avmedia}{%
+	\phantomsection%
+	\section*{\@bibtitleAvmedia}%
+	\addcontentsline{toc}{section}{\@bibtitleAvmedia}%
+}
+
+\defbibheading{online}{%
+	\phantomsection%
+	\section*{\@bibtitleOnline}%
+	\addcontentsline{toc}{section}{\@bibtitleOnline}%
+}
 
 \defbibheading{noheader}[]{}		% 'none' should be defined but isn't
 
+%% hook to add a given reference to its bibliography category
+\AtEveryCitekey{%
+	\ifthenelse{%
+		\ifentrytype{online}\OR
+		\ifentrytype{electronic}\OR
+		\ifentrytype{www}
+	}{%online
+		\addtocategory{online}{\thefield{entrykey}}%
+	}{%
+		\ifthenelse{%
+			\ifentrytype{movie}\OR
+			\ifentrytype{video}\OR
+			\ifentrytype{music}\OR
+			\ifentrytype{audio}\OR
+			\ifentrytype{software}
+		}{%media
+			\addtocategory{avmedia}{\thefield{entrykey}}%
+		}{%literature
+			\addtocategory{literature}{\thefield{entrykey}}%
+		}%
+	}%
+}
 
 %This is only a wrapper to \addbibresource to allow the use
 %of the classic bibtex-workflow in the future.
@@ -78,9 +114,7 @@
 		{% split the bibliography using the predefined categories:
 			\printbibheading[heading=bibintoc,title={\@bibtitle}]
 			\begin{bibhyphenation}
-			\printbibliography[filter=literature,heading=subbibintoc,title={\@bibtitleLiteratur}]
-			\printbibliography[filter=avmedia,heading=subbibintoc,title={\@bibtitleAvmedia}]
-			\printbibliography[filter=online,heading=subbibintoc,title={\@bibtitleOnline}]
+			\bibbycategory
 			\end{bibhyphenation}
 		}%
 }
