@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<txcop:outputProfiles version="2" xmlns:txcop="http://schemas.ToolsCenter.org/TeXnicCenter/OutputProfiles.xsd">
+	<outputProfileList>
+		<outputProfile name="LaTeX(utf8) &#8680; PDF" stopOnLatexError="false">
+			<texCommand execute="true" path="pdflatex.exe" arguments="-synctex=-1 -max-print-line=120 -interaction=nonstopmode &quot;%wm&quot;"/>
+			<bibTexCommand execute="true" path="biber.exe" arguments="&quot;%tm&quot;"/>
+			<makeIndexCommand execute="false" path="makeindex.exe" arguments="&quot;%tm.idx&quot; -t &quot;%tm.ilg&quot; -o &quot;%tm.ind&quot;"/>
+			<preProcessors/>
+			<postProcessors/>
+			<viewer path="SumatraPDF.exe" closeBeforeCompilation="false">
+				<viewProjectCommand type="commandLine">
+					<commandLineCommand path="SumatraPDF.exe" arguments="&quot;%bm.pdf&quot;"/>
+					<ddeCommand path="" server="" topic="System" command=""/>
+				</viewProjectCommand>
+				<viewCurrentFileCommand type="dde">
+					<commandLineCommand path="" arguments=""/>
+					<ddeCommand path="SumatraPDF.exe" server="sumatra" topic="control" command="[ForwardSearch(&quot;%bm.pdf&quot;,&quot;%Wc&quot;,%l,0,0,1)]"/>
+				</viewCurrentFileCommand>
+				<viewCloseCommand type="commandLine">
+					<commandLineCommand path="" arguments=""/>
+					<ddeCommand path="" server="" topic="System" command=""/>
+				</viewCloseCommand>
+			</viewer>
+		</outputProfile>
+	</outputProfileList>
+</txcop:outputProfiles>
