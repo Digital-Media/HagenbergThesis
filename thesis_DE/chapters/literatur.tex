@@ -169,27 +169,12 @@ S.~314 (1632). Zitiert nach \cite[S.~59]{Hemleben1969}.} % Alle Seitennummern si
 
 \section{Quellenverzeichnis}
 
-%Für die Erstellung des Quellenverzeichnisses gibt es in \latex zwei
-%Möglichkeiten:
-%\begin{enumerate}
-%\item Das Quellenverzeichnis manuell zu formatieren (nicht zu empfehlen, 
-%s.\ \cite[Abschn.\ 11.3]{Kopka2003}).
-%\item Die Verwendung von \texttt{BibTeX}/\texttt{Biber} und einer zugehörigen 
-%"`Literaturdatenbank"' (s.\ \cite[Kap.\ 12]{Kopka2003}).
-%\end{enumerate}
-%Tatsächlich ist die erste Variante nur bei sehr wenigen Literaturangaben interessant.
-%Die Arbeit mit \texttt{BibTeX}/\texttt{biber} macht sich hingegen schnell bezahlt und ist zudem wesentlich
-%flexibler.
-
 
 Für die Erstellung des Quellenverzeichnisses gibt es in \latex grundsätzlich 
 mehrere Möglichkeiten.
-Die gängigste Methode ist die Verwendung von \texttt{BibTeX} \cite{Patashnik1988} 
-%\cite[Kap.\ 12]{Kopka2003} 
-\bzw 
+Die gängigste Methode ist die Verwendung von \texttt{BibTeX} \cite{Patashnik1988} \bzw 
 \texttt{biber}\footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}, 
 wie im Folgenden beschrieben.
-
 
 
 \subsection{Literaturdaten in BibTeX}
@@ -221,7 +206,9 @@ Allerdings sind die in \texttt{biblatex} verwendeten Literaturdaten nicht mehr v
 rückwärts-kompatibel zu BibTeX. Es ist daher in der Regel notwendig, bestehende oder aus
 Online-Quellen übernommene BibTeX-Daten manuell zu überarbeiten (\sa\ Abschnitt~\ref{sec:TippsZuBibtex}).
 
-In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der Klassen-Datei \nolinkurl{hgbthesis.cls} verpackt. Die typische Verwendung in der \latex-Haupt\-datei sieht folgendermaßen aus:
+In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der Style-Datei 
+\nolinkurl{hgbbib.sty} verpackt. Die typische Verwendung in der \latex-Haupt\-datei sieht 
+folgendermaßen aus:
 %
 \begin{LaTeXCode}[numbers=left]
 \documentclass[master,german]{hgbthesis}
@@ -239,8 +226,9 @@ auf eine (modifizierte) BibTex-Datei \nolinkurl{references.bib} verwiesen.%
 \footnote{Das Makro 
 \texttt{{\bs}bibliography} ist eigentlich ein Relikt aus BibTeX
 und wird in \texttt{biblatex} durch die Anweisung \texttt{{\bs}addbibresource} 
-ersetzt. Beide Anweisungen sind gleichwertig, allerdings wird nur mit 
-\texttt{{\bs}bibliography} die zugehörige \texttt{.bib}-Datei im Fileverzeichnis von TeXnicCenter angezeigt.}
+ersetzt. Beide Anweisungen sind gleichwertig, allerdings wird oft nur mit 
+\texttt{{\bs}bibliography} die zugehörige \texttt{.bib}-Datei im File-Verzeichnis 
+der Editor-Umgebung sichtbar.}
 Falls mehrere BibTeX-Dateien verwendet werden, können sie in der gleichen Form angegeben werden.
 
 Die Anweisung \verb!\MakeBibliography{..}! am Ende des Dokuments (Zeile~\ref{tex:literatur2})
@@ -248,15 +236,15 @@ besorgt die Ausgabe des Quellenverzeichnisses, hier mit dem Titel "`Quellenverze
 Dabei sind zwei Varianten möglich:
 %
 \begin{description}
-\item[\texttt{{\bs}MakeBibliography\{title\}}] ~ \newline
+\item[\texttt{{\bs}MakeBibliography\{\emph{title}\}}] ~ \newline
    Erzeugt ein in mehrere \emph{Kategorien} (s.\ Abschnitt \ref{sec:BibKategorien}) geteiltes Quellenverzeichnis 
    mit der Hauptüberschrift \texttt{title}. Diese Variante wird im vorliegenden Dokument verwendet.
-\item[\texttt{{\bs}MakeBibliography[nosplit]\{title\}}] ~ \newline
+\item[\texttt{{\bs}MakeBibliography[nosplit]\{\emph{title}\}}] ~ \newline
    Erzeugt ein traditionelles \emph{einteiliges} Quellenverzeichnis mit der
    Überschrift \texttt{title}. 
 \end{description}
 %
-Die Überschrift \texttt{title} scheint in beiden Fällen ohne Nummerierung 
+Die Überschrift \texttt{\emph{title}} scheint in beiden Fällen ohne Nummerierung 
 im Inhaltsverzeichnis auf (auf \texttt{chapter}-Ebene).
 Bei geteiltem Quellenverzeichnis werden die Überschriften der einzelnen Abschnitte auf 
 \texttt{section}-Ebene eingetragen.
@@ -830,10 +818,9 @@ die Information eingefügt, wann das Online-Dokument tatsächlich eingesehen wur
 \item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
 \end{itemize}
 
-
-\paragraph{Hinweis:}
+\noindent\textbf{Hinweis:}
 Technisch ist bei Online-Quellen nur das Feld \texttt{url} erforderlich,
-die Angabe von weiteren Details (\zB\ \texttt{author} oder \texttt{institution}) ist aber natürlich möglich.
+die Angabe von weiteren Details (\zB\ \texttt{author}) ist aber natürlich möglich.
 Liegt aber \emph{kein} Autor vor, dann sollte man -- wie in den obigen Beispielen gezeigt --
 zumindest einen sinnvollen \emph{Titel} (\texttt{title}) angeben, 
 der für die Sortierung im Quellenverzeichnis verwendet wird.
@@ -888,7 +875,7 @@ angegeben.
 \subsubsection{\texttt{hyphenation}-Attribut}
 
 Das \texttt{hyphenation} Attribut ermöglicht den korrekten Satz mehrsprachiger Quellenverzeichnisse. 
-Es solltenach Möglichkeit bei jedem Quelleneintrag angegeben werden, also beispielsweise
+Es sollte nach Möglichkeit bei jedem Quelleneintrag angegeben werden, also beispielsweise
 \begin{quote}
 \verb!hyphenation={german}! \quad oder \quad \verb!hyphenation={english}!
 \end{quote}
@@ -900,20 +887,20 @@ für eine deutsch- \bzw\ englischsprachige Quelle.
 Mit dem numerischen \texttt{edition}-Feld wird die Auflage eines Werks spezifiziert.
 Es ist lediglich die Nummer selbst anzugeben, also etwa
 \verb!edition={3}!
-bei einer dritten Auflage. Die richtige Interpunktion in der Quellenangabe wird 
+bei einer dritten Auflage. Das richtige "`Rundherum"' in der Quellenangabe wird 
 in Abhängigkeit von der Spracheinstellung automatisch hinzugefügt 
-("`3.\ Auflage"' \bzw\ "`3rd edition"').
+(\zB\ "`3.\ Auflage"' oder "`3rd edition"').
 %
 Wie bereits auf Seite \pageref{sec:@book} (unter \texttt{@book}) angemerkt, sollte im Fall einer
-\textbf{1.~Auflage} das \texttt{edition}-Feld \textbf{nicht} verwendet werden,
-wenn es keine andere Auflage gibt!
+\textbf{1.~Auflage} (sofern es keine andere Auflage gibt) das \texttt{edition}-Feld \textbf{nicht} 
+angegeben werden!
 
 
 \subsubsection{Vorsicht bei der Übernahme von fertigen BibTeX-Einträgen}
 
 Viele Verlage und Literatur-Broker bieten fertige BibTeX-Einträge zum Herunterladen an.
 Dabei ist jedoch größte Vorsicht geboten, denn diese Einträge sind häufig
-unvollständig oder syntaktisch fehlerhaft!
+unvollständig, inkonsistent oder syntaktisch fehlerhaft!
 Sie sollten bei der Übernahme \emph{immer} auf Korrektheit überprüft werden!
 Besonders sollte dabei auf die richtige Angabe der Vornamen (VN) und Nachnamen (NN) geachtet werden,
 nämlich in der Form%
@@ -930,9 +917,8 @@ Vor- und Nachnamen nicht korrekt zugeordnet werden können, \zB
 \end{itemize}
 für ein (hypothetisches) Werk der Herren \emph{Ludwig van Beethoven} und \emph{Jaap ter Linden}.
 sowie die Angabe von \texttt{volume}, \texttt{number} und \texttt{pages}.
-Die Namen von Konferenzen sind oft völlig falsch (auch bei ACM und IEEE).
-ISBN- und ISSN-Nummern sind entbehrlich und können getrost weggelassen werden.
-Gleiches gilt für DOI-Nummern -- aber das möge der Betreuer entscheiden.
+Die Namen von Konferenzen sind sehr oft falsch (auch bei ACM und IEEE).
+ISBN-, DOI- und ISSN-Nummern sind entbehrlich und können getrost weggelassen werden.
 
 
 \subsubsection{Häufige Fehler bei Quellenangaben}
@@ -973,27 +959,6 @@ angegeben sein!
 \subsubsection{Listing aller Quellen}
 
 Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
-
-\begin{comment} %obsolete
-\subsubsection{Ergänzungen zu \texttt{biblatex}}
-
-\texttt{biblatex} gibt bei der Verarbeitung dieses Dokuments einige Warnungen aus ("`Package biblatex Warning"'), 
-die in der Regel ignoriert werden können:
-%
-\begin{small}
-\begin{verbatim}
-  Package biblatex Warning: No driver for entry type 'video'.
-  (biblatex)                Using fallback driver ...
-\end{verbatim}
-\end{small}
-%
-Für die neuen Eintragstypen \texttt{audio}, \texttt{video} und \texttt{movie} sind derzeit 
-noch keine eigenen "`driver"' hinterlegt. Stattdessen wird im Hintergrund der \texttt{misc}-Typ 
-als "`fallback"' verwendet.
-
-Wenn eine der drei Kategorien des Quellenverzeichnisses (s.~Abschnitt \ref{sec:BibKategorien})
-ohne Eintrag ist, wird eine Warnung "`\texttt{Empty bibliography on input line \ldots}"' ausgegeben, die auch getrost ignoriert werden können.
-\end{comment}
 
 
 
