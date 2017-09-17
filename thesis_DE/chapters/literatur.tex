@@ -169,17 +169,28 @@ S.~314 (1632). Zitiert nach \cite[S.~59]{Hemleben1969}.} % Alle Seitennummern si
 
 \section{Quellenverzeichnis}
 
-Für die Erstellung des Quellenverzeichnisses gibt es in \latex zwei
-Möglichkeiten:
-\begin{enumerate}
-\item Das Quellenverzeichnis manuell zu formatieren (nicht zu empfehlen, 
-s.\ \cite[Abschn.\ 11.3]{Kopka2003}).
-\item Die Verwendung von \texttt{BibTeX}/\texttt{Biber} und einer zugehörigen 
-"`Literaturdatenbank"' (s.\ \cite[Kap.\ 12]{Kopka2003}).
-\end{enumerate}
-Tatsächlich ist die erste Variante nur bei sehr wenigen Literaturangaben interessant.
-Die Arbeit mit \texttt{BibTeX}/\texttt{biber} macht sich hingegen schnell bezahlt und ist zudem wesentlich
-flexibler.
+%Für die Erstellung des Quellenverzeichnisses gibt es in \latex zwei
+%Möglichkeiten:
+%\begin{enumerate}
+%\item Das Quellenverzeichnis manuell zu formatieren (nicht zu empfehlen, 
+%s.\ \cite[Abschn.\ 11.3]{Kopka2003}).
+%\item Die Verwendung von \texttt{BibTeX}/\texttt{Biber} und einer zugehörigen 
+%"`Literaturdatenbank"' (s.\ \cite[Kap.\ 12]{Kopka2003}).
+%\end{enumerate}
+%Tatsächlich ist die erste Variante nur bei sehr wenigen Literaturangaben interessant.
+%Die Arbeit mit \texttt{BibTeX}/\texttt{biber} macht sich hingegen schnell bezahlt und ist zudem wesentlich
+%flexibler.
+
+
+Für die Erstellung des Quellenverzeichnisses gibt es in \latex grundsätzlich 
+mehrere Möglichkeiten.
+Die gängigste Methode ist die Verwendung von \texttt{BibTeX} \cite{Patashnik1988} 
+%\cite[Kap.\ 12]{Kopka2003} 
+\bzw 
+\texttt{biber}\footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}, 
+wie im Folgenden beschrieben.
+
+
 
 \subsection{Literaturdaten in BibTeX}
 \label{sec:bibtex}
@@ -212,7 +223,7 @@ Online-Quellen übernommene BibTeX-Daten manuell zu überarbeiten (\sa\ Abschnit
 
 In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der Klassen-Datei \nolinkurl{hgbthesis.cls} verpackt. Die typische Verwendung in der \latex-Haupt\-datei sieht folgendermaßen aus:
 %
-\begin{LaTeXCode}[numbers=none]
+\begin{LaTeXCode}[numbers=left]
 \documentclass[master,german]{hgbthesis}
    ...
 \bibliography{references} /+\label{tex:literatur1}+/
@@ -761,7 +772,7 @@ Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterschei
 	genügt eine einfache Fußnote mit \verb!\footnote{\url{..}}!, wie im vorigen
 	Satz gezeigt.
 \item[B.] Ein gedrucktes oder audio-visuelles Werk 
-	(s.\ Abschnitte \ref{sec:KategorieLiterature}--\ref{sec:KategorieAvmedia})
+	(s.\ Abschnitte \ref{sec:KategorieLiterature} und \ref{sec:KategorieAvmedia})
 	ist \emph{zusätzlich} auch online verfügbar. In diesem Fall ist die Primär\-publikation 
 	aber \emph{nicht} "`online"' und es genügt, ggfs.\ den zugehörigen Link im 
 	\texttt{url}-Feld anzugeben, das bei jedem Eintragstyp zulässig ist.
@@ -771,8 +782,6 @@ Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterschei
 	Die Kategorie \emph{online} ist genau (und \emph{nur}) für diese 
 	Art von Quellen vorgesehen.
 \end{itemize}
-
-
 
 
 \subsubsection{Beispiel: Wiki-Eintrag}
@@ -787,7 +796,8 @@ mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2016}.
 \item[]
 \begin{GenericCode}[numbers=none]
 @online{WikiReliquienschrein2016,
-  url={https://de.wikipedia.org/wiki/Reliquienschrein},
+	title={Reliquienschrein},
+	url={https://de.wikipedia.org/wiki/Reliquienschrein},
   year={2016},
   month={8},
   urldate={2017-02-28}
@@ -796,8 +806,11 @@ mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2016}.
 \item[\cite{WikiReliquienschrein2016}] \fullcite{WikiReliquienschrein2016}
 \end{itemize}
 %
-In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL, Jahr und Monat können die Version näher spezifizieren, die zum gegebenen Zeitpunkt aktuell war.
-Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch die Information eingefügt, wann das Online-Dokument eingesehen wurde.
+In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL.
+Mit \texttt{year} und \texttt{month} kann man die Version näher spezifizieren, 
+die zum gegebenen Zeitpunkt aktuell war.
+Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch 
+die Information eingefügt, wann das Online-Dokument tatsächlich eingesehen wurde.
 
 
 \subsubsection{Beispiel: online Video} 
@@ -808,17 +821,23 @@ Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format
 \begin{GenericCode}[numbers=none]
 @online{HistoryOfComputers2008,
   title={History of Computers},
+	url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
   year={2008},
   month={9},
-  url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
   hyphenation={english}
 }
 \end{GenericCode}
 \item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
 \end{itemize}
-%
-Bis auf das Feld \texttt{url} können alle Angaben weggelassen werden. Die Angabe von 
-weiteren Details (\zB\ \texttt{author}) ist natürlich ebenso möglich.
+
+
+\paragraph{Hinweis:}
+Technisch ist bei Online-Quellen nur das Feld \texttt{url} erforderlich,
+die Angabe von weiteren Details (\zB\ \texttt{author} oder \texttt{institution}) ist aber natürlich möglich.
+Liegt aber \emph{kein} Autor vor, dann sollte man -- wie in den obigen Beispielen gezeigt --
+zumindest einen sinnvollen \emph{Titel} (\texttt{title}) angeben, 
+der für die Sortierung im Quellenverzeichnis verwendet wird.
+
 
 \subsubsection{Beispiel: Bildquelle}
 
@@ -833,6 +852,7 @@ Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
 \item[]
 \begin{GenericCode}[numbers=none]
 @online{IBM360,
+	title={Mainframes},
   url={http://www.plyojump.com/classes/mainframe_era.php}
 }
 \end{GenericCode}
@@ -864,56 +884,97 @@ Das \texttt{month}-Attribut ist in \texttt{biblatex} (im Unterschied zu BibTeX) 
 und wird beispielsweise einfach in der Form \verb!month={8}! (für den Monat August)
 angegeben.
 
-\subsubsection{\texttt{language}/\texttt{hyphenation}-Attribut}
 
-Das \texttt{language} Attribut ermöglichte im Zusammenhang mit dem \texttt{babelbib}-Paket 
-den korrekten Satz mehrsprachiger Quellenverzeichnisse. \texttt{babelbib} wird in 
-dieser Vorlage \emph{nicht} mehr verwendet, sondern durch \texttt{biblatex} \cite{Lehman2016} ersetzt.
-Hier wird allerdings das \texttt{language}-Feld anders interpretiert und
-stattdessen das \texttt{hyphenation}-Feld verwendet, das nach Möglichkeit 
-bei jedem Quelleneintrag angegeben werden sollte, also beispielsweise
+\subsubsection{\texttt{hyphenation}-Attribut}
+
+Das \texttt{hyphenation} Attribut ermöglicht den korrekten Satz mehrsprachiger Quellenverzeichnisse. 
+Es solltenach Möglichkeit bei jedem Quelleneintrag angegeben werden, also beispielsweise
 \begin{quote}
 \verb!hyphenation={german}! \quad oder \quad \verb!hyphenation={english}!
 \end{quote}
-für ein deutsch- \bzw\ englischsprachiges Dokument.
+für eine deutsch- \bzw\ englischsprachige Quelle.
+
 
 \subsubsection{\texttt{edition}-Attribut}
 
-Im Unterschied zu BibTeX ist mit \texttt{biblatex} auch das \texttt{edition}-Feld numerisch.
+Mit dem numerischen \texttt{edition}-Feld wird die Auflage eines Werks spezifiziert.
 Es ist lediglich die Nummer selbst anzugeben, also etwa
 \verb!edition={3}!
-bei einer dritten Auflage. Die richtige Interpunktion in der Quellenangabe wird in Abhängigkeit von der Spracheinstellung automatisch hinzugefügt 
+bei einer dritten Auflage. Die richtige Interpunktion in der Quellenangabe wird 
+in Abhängigkeit von der Spracheinstellung automatisch hinzugefügt 
 ("`3.\ Auflage"' \bzw\ "`3rd edition"').
-
-Wie bereits auf Seite \pageref{sec:@book} angemerkt, sollte im Fall einer
+%
+Wie bereits auf Seite \pageref{sec:@book} (unter \texttt{@book}) angemerkt, sollte im Fall einer
 \textbf{1.~Auflage} das \texttt{edition}-Feld \textbf{nicht} verwendet werden,
-wenn es ohnehin keine andere Auflage gibt!
+wenn es keine andere Auflage gibt!
 
 
-\subsubsection{Übernahme von fertigen BibTeX-Einträgen}
+\subsubsection{Vorsicht bei der Übernahme von fertigen BibTeX-Einträgen}
 
 Viele Verlage und Literatur-Broker bieten fertige BibTeX-Einträge zum Herunterladen an.
 Dabei ist jedoch größte Vorsicht geboten, denn diese Einträge sind häufig
 unvollständig oder syntaktisch fehlerhaft!
 Sie sollten bei der Übernahme \emph{immer} auf Korrektheit überprüft werden!
-Besonders sollte dabei auf die korrekte Angabe der Namen, also 
-\texttt{author=\{\textit{Nachname1}, \textit{Vorname1a} \emph{Vorname1b} 
-and \textit{Nachname2}, \textit{Vorname2a} \ldots \}}%
-\footnote{Das ist \va\ bei mehrteiligen Nachnamen wichtig, weil in diesem Fall
-Vor- und Nachnamen nicht korrekt zugeordnet werden können, \zB\ 
+Besonders sollte dabei auf die richtige Angabe der Vornamen (VN) und Nachnamen (NN) geachtet werden,
+nämlich in der Form%
+\footnote{\texttt{and} ist hier ein fixes Trennwort zwischen den Namen der einzelnen Autoren.}
+\begin{itemize}
+\item[]
+\texttt{author=\{\textit{NN1}, \textit{VN1a} \emph{VN1b} and \textit{NN2}, \textit{VN2a} \ldots \}}.
+\end{itemize}
+Das ist \va\ bei mehrteiligen Nachnamen wichtig, weil sonst
+Vor- und Nachnamen nicht korrekt zugeordnet werden können, \zB
+\begin{itemize}
+\item[]
 \texttt{author=\{van Beethoven, Ludwig and ter Linden, Jaap\}}
-für ein hypothetisches Werk von Ludwig van Beethoven und Jaap ter Linden.}
-geachtet werden, sowie die Angabe von \texttt{volume}, \texttt{number} und \texttt{pages}.
+\end{itemize}
+für ein (hypothetisches) Werk der Herren \emph{Ludwig van Beethoven} und \emph{Jaap ter Linden}.
+sowie die Angabe von \texttt{volume}, \texttt{number} und \texttt{pages}.
 Die Namen von Konferenzen sind oft völlig falsch (auch bei ACM und IEEE).
 ISBN- und ISSN-Nummern sind entbehrlich und können getrost weggelassen werden.
 Gleiches gilt für DOI-Nummern -- aber das möge der Betreuer entscheiden.
+
+
+\subsubsection{Häufige Fehler bei Quellenangaben}
+
+Überprüfen Sie das fertige Quellenverzeichnis sorgfältig auf \emph{Vollständigkeit} und \emph{Konsistenz}. 
+Ist bei jeder Quelle klar, wie und wo sie publiziert wurde? 
+Sind die Angaben ausreichend, um die Quelle aufzufinden?
+
+Hier ist eine Liste der häufigsten Fehler im Zusammenhang mit dem Quellenverzeichnis:
+%
+\begin{itemize}
+\item
+Alle Einträge auf fehlende oder falsch interpretierte Elemente überprüfen!
+\item
+Alle Namen und Vornamen der Autoren überprüfen, sind die Abkürzungen (der Vornamen) konsistent?
+\item
+Groß-/Kleinschreibung und Satzzeichen in allen  Einträgen überprüfen und ggfs.\ korrigieren.
+\item
+Bücher: Verlagsnamen und Verlagsort auf Vollständigkeit, Konsistenz und allfällige
+Redundanzen überprüfen.
+\item
+Alle URLs und DOIs etc.\ \emph{weglassen}, sofern sie nicht essentiell sind! Das gilt insbesondere
+für Bücher und Konferenzbeiträge.
+\item
+Journal-Beiträge: Den Namen des Journals immer vollständig ausschreiben, \zB\
+"`ACM Transactions on Computer-Human Interaction"' anstelle von 
+"`ACM Trans.\ Comput.-Hum.\ Interact."'! Seitenangaben nicht vergessen!
+\item
+Konferenzbände: 
+Tagungsbände einheitlich in der Form "'Proceedings of the \emph{XY Conference on Something} \ldots"'
+bezeichnen. Tagungsort angeben, Seitenangaben nicht vergessen!
+\item
+Bei Techn.\ Berichten, Masterarbeiten und Dissertationen muss die Institution (Department)
+angegeben sein!
+\end{itemize}
  
 
 \subsubsection{Listing aller Quellen}
 
 Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
 
-
+\begin{comment} %obsolete
 \subsubsection{Ergänzungen zu \texttt{biblatex}}
 
 \texttt{biblatex} gibt bei der Verarbeitung dieses Dokuments einige Warnungen aus ("`Package biblatex Warning"'), 
@@ -932,14 +993,14 @@ als "`fallback"' verwendet.
 
 Wenn eine der drei Kategorien des Quellenverzeichnisses (s.~Abschnitt \ref{sec:BibKategorien})
 ohne Eintrag ist, wird eine Warnung "`\texttt{Empty bibliography on input line \ldots}"' ausgegeben, die auch getrost ignoriert werden können.
+\end{comment}
 
 
 
-
-\section{Plagiarismus}
+\section{Plagiat und Paraphrase}
 \label{sec:Plagiarismus}
 
-Als "`Plagiat"' bezeichnet man die Darstellung eines fremden Werks als eigene Schöpfung, 
+Als \emph{Plagiat} bezeichnet man die Darstellung eines fremden Werks als eigene Schöpfung, 
 in Teilen oder als Ganzes, egal ob bewusst oder unbewusst.
 Plagiarismus ist kein neues Problem im Hochschulwesen, hat sich aber durch die 
 breite Verfügbarkeit elektronischer Quellen in den letzten Jahren dramatisch 
@@ -949,8 +1010,7 @@ Viele Hochschulen bedienen sich als Gegenmaßnahme heute ebenfalls elektronische
 abgegebenen Arbeit damit rechnen, dass sie routinemäßig auf Plagiatsstellen untersucht wird!
 Werden solche erst zu einem späteren Zeitpunkt entdeckt, kann das im schlimmsten Fall sogar 
 zur nachträglichen (und endgültigen) Aberkennung des akademischen Grades führen.
-
-Um derartige Probleme zu vermeiden, sollte eher übervorsichtig agiert und zumindest folgende Regeln beachtet werden:
+Um derartige Probleme zu vermeiden, sollte man eher übervorsichtig agieren und zumindest folgende Regeln beachten:
 %
 \begin{itemize}
 \item
@@ -958,7 +1018,7 @@ Die Übernahme kurzer Textpassagen ist nur unter korrekter Quellenangabe zuläss
 \item
 Insbesondere ist es nicht zulässig, eine Quelle nur eingangs zu erwähnen und nachfolgend wiederholt nicht-ausgezeichnete Textpassagen als eigene Wortschöpfung zu übernehmen. 
 \item
-Auf gar keinen Fall tolerierbar ist die direkte oder paraphrasierte Übernahme längerer Textpassagen, ob mit oder ohne Quellenangabe. Auch indirekt übernommene oder aus einer anderen Sprache übersetzte Passagen müssen mit entsprechenden Quellenangaben gekennzeichnet sein! 
+Auf gar keinen Fall tolerierbar ist die direkte Übernahme oder \emph{Paraphrase} längerer Textpassagen, egal ob mit oder ohne Quellenangabe. Auch indirekt übernommene oder aus einer anderen Sprache übersetzte Passagen müssen mit entsprechenden Quellenangaben gekennzeichnet sein! 
 \end{itemize}
 %
 Im Zweifelsfall finden sich detailliertere Regeln in jedem guten Buch über wissenschaftliches Arbeiten oder man fragt sicherheitshalber den Betreuer der Arbeit.
