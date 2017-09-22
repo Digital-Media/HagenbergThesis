@@ -1,4 +1,4 @@
-%% A simple template for a lab or course report using the Hagenberg setup
+%% A simple template for \right) a lab or course report using the Hagenberg setup
 %% with the standard LaTeX 'report' class
 %% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
@@ -8,15 +8,7 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
-\documentclass[a4paper,onecolumn,notitlepage,english,11pt]{report}		
-%\documentclass[a4paper,onecolumn,notitlepage,ngerman,11pt]{report}
-
-\usepackage{hgb}
-\usepackage{hgbmath}
-\usepackage{hgbabbrev}
-\usepackage{hgblistings}
-\usepackage{hgbbib}
-\usepackage{hgbheadings}
+\documentclass[english,notitlepage]{hgbreport}
 
 \RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
 \renewcommand{\chapter}[1]{}	% \chapter is deactivated
@@ -49,7 +41,7 @@ This lab unit deals with various interesting problems  \ldots
 (give a short summary of the specific topics addressed).
 If you decide to write your report in German, make sure to
 change the \verb!\documentclass! parameter from \texttt{english}
-to \texttt{ngerman}.
+to \texttt{german}.
 If you write in MS Word (and such), try to use a similar structure.
 \end{abstract}
 
@@ -76,7 +68,8 @@ This \latex document is based on the \texttt{HagenbergThesis}
 template, whose most recent version can be found on GitHub.%
 \footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
 
-The document uses the \texttt{report} class and each lab unit 
+The document uses the custom class \textsf{hgbreport} which is based
+on \latex's standard \texttt{report} document class. Each lab unit 
 (weekly assignment) corresponds to one \texttt{chapter}.
 Use \verb!\setcounter{chapter}{n}! in the document's preamble
 to set the \emph{lab unit number} to \texttt{n}.
