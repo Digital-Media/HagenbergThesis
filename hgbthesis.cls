@@ -595,8 +595,8 @@ This work is published under the conditions of the
 			pdftitle={\@title},
 			pdfauthor={\@author},
 			pdfsubject={\@programname, \@placeofstudy},
-			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
-			pdfproducer={},
+			pdfcreator={LaTeX using class hgbthesis [\hgbthesisDate]},
+			pdfproducer={pdflatex},
 			pdfkeywords={}
 	}%
 
