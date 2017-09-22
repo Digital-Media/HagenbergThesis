@@ -1,6 +1,6 @@
-%% A simple template for a lab or course report using the Hagenberg setup
-%% with the standard LaTeX 'report' class
-%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
+%% A simple template for a scientific article using the Hagenberg setup
+%% based on the standard LaTeX 'report' class
+%% äöüÄÖÜß  <-- no German Umlauts here? Use an UTF-8 compatible editor!
 
 %%% Magic comments for setting the correct parameters in compatible IDEs
 % !TeX encoding = utf8
@@ -8,16 +8,7 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
-\documentclass[a4paper,twocolumn,english,11pt]{article}		
-%\documentclass[a4paper,ngerman,11pt]{article}
-
-\usepackage{hgb}
-\usepackage{hgbmath}
-\usepackage{hgbabbrev}
-\usepackage{hgblistings}
-\usepackage{hgbbib}
-\usepackage{hgbheadings}
-
+\documentclass[english,twocolumn]{hgbarticle}
 
 \RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
 
@@ -35,8 +26,7 @@ Peter A.\ Wiseguy\\
 George Spongehead\\
 \texttt{spongehead@gmx.net}}
 
-
-\title{Reasoning about the unreasonable}
+\title{Reasoning About the Unreasonable}
 \date{}
 
 %%%----------------------------------------------------------
@@ -46,8 +36,8 @@ George Spongehead\\
 %%%----------------------------------------------------------
 
 \begin{abstract}
-This document shows how to use the standard LaTeX \texttt{article} class in conjunction with the \texttt{hgb.sty}
-(Hagenberg) thesis styles. This may be useful, for example, in the case that you wish to publish
+This document shows how to use the \textsf{hgbarticle} class, which combines the standard \latex \textsf{article} class
+with the \texttt{hgb.sty} (Hagenberg) thesis styles. This may be useful, for example, in the case that you wish to publish
 part of your thesis as a journal article without major changes.
 \end{abstract}
 
@@ -57,15 +47,17 @@ part of your thesis as a journal article without major changes.
 If you wish to write this report in German
 you should replace the specification
 \begin{verbatim}
-\documentclass[a4paper,twocolumn,
-                   english]{article}
+\documentclass[english,
+               twocolumn]{hgbarticle}
 \end{verbatim}
 at the top of this document by
 \begin{verbatim}
-\documentclass[a4paper,twocolumn,
-                   ngerman]{article}
+\documentclass[german,
+               twocolumn]{hgbarticle}
 \end{verbatim}
 %
+Remove the \texttt{twocolumn} option for a single-column layout.
+
 Also note that the top sectioning command available in the \texttt{article} class
 is \verb!\section{}!, i.e., there are \textbf{no chapters}!
 When converting a thesis you thus need to \emph{demote} all chapter commands to
