@@ -18,11 +18,10 @@
 \fi
 
 
-%% Commands for Title Pages (used in class options) ---------------------------
+%% Commands for language and title fonts ---------------------------------------
 
 \newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
 
-\newcommand{\@titlepagefont}{\sffamily}
 
 %% Class options --------------------------------------------------------------
 
@@ -49,16 +48,17 @@
 
 \LoadClass[a4paper,11pt,onecolumn]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
- 
+
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
-% Add PDF meta data and create title pages
+
+% Add PDF meta data
 
 \AtBeginDocument{%
 	\hypersetup{
 		pdftitle={\@title},
 		pdfauthor={\@author},
-		pdfsubject={Report dated \@date},
+		pdfsubject={},
 		pdfcreator={LaTeX using class hgbreport [\hgbreportDate]},
 		pdfproducer={pdflatex},
 		pdfkeywords={}
