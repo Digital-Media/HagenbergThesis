@@ -51,4 +51,13 @@
 	\RequirePackage{abstract}%
 	\renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
 }{}%
+\@ifclassloaded{hgbarticle}{%
+	\RequirePackage{titling}
+	\renewcommand{\maketitlehooka}{\sffamily}
+	\if@twocolumn%
+    \else%
+	  \RequirePackage{abstract}
+      \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
+    \fi%
+}{}%
 \makeatother%
