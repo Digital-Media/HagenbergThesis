@@ -18,7 +18,7 @@
 \fi
 
 
-%% Commands for language and title fonts ---------------------------------------
+%% Command for language defintion ---------------------------------------------
 
 \newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
 
@@ -44,7 +44,7 @@
 \ProcessOptions
 
 
-%% Paper Options and Style File -----------------------------------------------
+%% Paper options and style file -----------------------------------------------
 
 \LoadClass[a4paper,11pt,onecolumn]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
