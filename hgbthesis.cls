@@ -2,7 +2,7 @@
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
-%% File encoding: ASCII
+%% File encoding: UTF-8
 
 %% Package Information --------------------------------------------------------
 
@@ -76,9 +76,9 @@
 %% Paper Options and Style File -----------------------------------------------
 
 \LoadClass[a4paper,11pt,oneside]{book}
-\usepackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
+\RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
  
-\usepackage{hgb}	% load associated style file hgb.sty
+\RequirePackage{hgb}	% load associated style file hgb.sty
 
 
 %% Setup for Pages in the Front Matter ----------------------------------------
@@ -605,10 +605,10 @@ This work is published under the conditions of the
 
 %% Additional Hagenberg packages ----------------------------------------------
 
-\usepackage{hgbmath}
-\usepackage{hgbheadings}
-\usepackage{hgbabbrev}
-\usepackage{hgblistings}
-\usepackage{hgbbib}
+\RequirePackage{hgbmath}
+\RequirePackage{hgbheadings}
+\RequirePackage{hgbabbrev}
+\RequirePackage{hgblistings}
+\RequirePackage{hgbbib}
 
 \endinput
