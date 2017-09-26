@@ -66,11 +66,19 @@
 \RequirePackage[unicode]{hyperref}	% utf8-change
 \hypersetup{
 	linktocpage = true,				% make page number, not text, be link on TOC, LOF and LOT 
-  colorlinks = false,				% don't uses colored links (because this shows up in printing!) 
+	colorlinks = false,				% don't uses colored links (because this shows up in printing!) 
 	pdfborder = {0 0 0.5},			% use a thinner (0.5pt) border around all PDF links
 	allbordercolors = {0 0 0.8},	% dark blue border for all types of links
 	breaklinks = true				% allow links to break over lines by making links over multiple lines
 }	%see https://www.tug.org/applications/hyperref/manual.html
+
+% Redefine certain commands for bookmarks and meta-data
+\let\oldand\and
+\pdfstringdefDisableCommands{%
+	\def\\{}%
+	\def\url#1{<#1>}%
+	\def\and{\texorpdfstring{\oldand}{, }}%
+}
 
 \RequirePackage[figure,table,table*]{hypcap}	% do not redefine figure* for use in article (without captions)
 

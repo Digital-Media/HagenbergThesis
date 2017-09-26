@@ -59,10 +59,6 @@
 
 % Add PDF meta data
 
-% Redefine \and macro to avoid problems with hyperref for the author
-\let\oldand\and
-\renewcommand\and{\texorpdfstring{\oldand}{, }}
-
 \AtBeginDocument{%
 	\hypersetup{
 		pdftitle={\@title},
