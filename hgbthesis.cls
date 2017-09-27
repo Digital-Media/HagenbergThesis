@@ -2,7 +2,7 @@
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
-%% File encoding: UTF-8
+%% File encoding: ASCII
 
 %% Package Information --------------------------------------------------------
 
