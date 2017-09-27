@@ -76,9 +76,9 @@
 %% Paper Options and Style File -----------------------------------------------
 
 \LoadClass[a4paper,11pt,oneside]{book}
-\usepackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
+\RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
  
-\usepackage{hgb}	% load associated style file hgb.sty
+\RequirePackage{hgb}	% load associated style file hgb.sty
 
 
 %% Setup for Pages in the Front Matter ----------------------------------------
@@ -595,8 +595,8 @@ This work is published under the conditions of the
 			pdftitle={\@title},
 			pdfauthor={\@author},
 			pdfsubject={\@programname, \@placeofstudy},
-			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
-			pdfproducer={},
+			pdfcreator={LaTeX using class hgbthesis [\hgbthesisDate]},
+			pdfproducer={pdflatex},
 			pdfkeywords={}
 	}%
 
@@ -605,10 +605,10 @@ This work is published under the conditions of the
 
 %% Additional Hagenberg packages ----------------------------------------------
 
-\usepackage{hgbmath}
-\usepackage{hgbheadings}
-\usepackage{hgbabbrev}
-\usepackage{hgblistings}
-\usepackage{hgbbib}
+\RequirePackage{hgbmath}
+\RequirePackage{hgbheadings}
+\RequirePackage{hgbabbrev}
+\RequirePackage{hgblistings}
+\RequirePackage{hgbbib}
 
 \endinput
