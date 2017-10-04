@@ -253,15 +253,16 @@ Bei geteiltem Quellenverzeichnis werden die Überschriften der einzelnen Abschni
 \subsection{Kategorien von Quellenangaben}
 \label{sec:BibKategorien}
 
-Für geteilte Quellenverzeichnisse sind in dieser Vorlage folgende drei Kategorien vorgesehen
+Für geteilte Quellenverzeichnisse sind in dieser Vorlage folgende Kategorien vorgesehen
 (s.\ Tabelle \ref{tab:QuellenUndEintragstypen}):%
-\footnote{Diese sind in der Datei \nolinkurl{hgbthesis.cls} definiert.
+\footnote{Diese sind in der Datei \nolinkurl{hgbbib.sty} definiert.
 Allfällige Änderungen sowie die Definition zusätzlicher Kategorien sind 
 bei Bedarf relativ leicht möglich.}
 %
 \begin{description}
 	\item[\texttt{literature}] -- für alle Quellen, die in gedruckter Form vorliegen;
 	\item[\texttt{avmedia}] -- für Filme, audio-visuelle Medien und Computer Games (auf DVD, CD, \usw);
+	\item[\texttt{software}] -- für Softwareprodukte, APIs, Computer Games;
 	\item[\texttt{online}] -- für Werke, die \emph{ausschließlich} online verfügbar sind.
 \end{description}
 %
@@ -279,7 +280,7 @@ ausgegeben.
 \centering
 \begin{tabular}{llc}
 	\hline
-	Kategorie \emph{literature} & \texttt{@\emph{type}} & Seite\\
+	Kategorie \textbf{literature} & \texttt{@\emph{type}} & Seite\\
 	\hline
 	Buch (Textbuch, Monographie) & \texttt{@book} & \pageref{sec:@book}\\
 	Sammelband (Hrsg.\ + mehrere Autoren) & \texttt{@incollection} & \pageref{sec:@incollection} \\
@@ -291,18 +292,22 @@ ausgegeben.
 	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
 %
 	\hline
-	Kategorie \emph{avmedia} & \\
+	Kategorie \textbf{avmedia} & \\
 	\hline
 	Audio (CD) & \texttt{@audio} & \pageref{sec:@audio}\\
-	Video (auf VHS, DVD, Blu-ray Disk) & \texttt{@video} & \pageref{sec:@video}\\
+	Bild, Foto, Grafik & \texttt{@image} & \pageref{sec:@image}\\
+	Video (auf DVD, Blu-ray Disk, online) & \texttt{@video} & \pageref{sec:@video}\\
 	Film (Kino) & \texttt{@movie} & \pageref{sec:@movie}\\
-	Computer Game, Softwareprodukt & \texttt{@software} & \pageref{sec:@software}\\
 %
 	\hline
-	Kategorie \emph{online} & \\
+	Kategorie \textbf{software} & \\
 	\hline
-	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www}\\
-	Online-Video, Bild, Grafik & \texttt{@online} & \pageref{sec:@online-video}\\
+	Softwareprodukt oder -projekt, Computer Game & \texttt{@software} & \pageref{sec:@software}\\
+%
+	\hline
+	Kategorie \textbf{online} & \\
+	\hline
+	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www}
 \end{tabular}
 \end{table}
 
@@ -653,13 +658,57 @@ Hier ein Beispiel für die Spezifikation einer Audio-CD:
 \end{GenericCode}
 \item[\cite{Zappa1995}] \fullcite{Zappa1995}
 \end{itemize}
-
+%
 Anstelle von \verb!howpublished={Audio-CD}! könnte auch \verb!type={audiocd}! verwendet werden.
+
+
+\subsubsection{\texttt{@image}}
+\label{sec:@image}
+
+Das nachfolgende Beispiel zeigt den Verweis auf ein digital verfügbares Foto,
+das auch in Abb.\ \ref{fig:CocaCola} verwendet wird:
+%
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@image{CocaCola1940,
+  author={Wolcott, Marion Post},
+	title={Natchez, Miss.},
+	note={Library of Congress Prints and Photographs Division Washington, Farm Security Administration/Office of War Information Color Photographs},
+	year={1940},
+	month={8},
+	url={http://www.loc.gov/pictures/item/fsa1992000140/PP/},
+  hyphenation={english}
+ }
+\end{GenericCode}
+\item[\cite{CocaCola1940}] \fullcite{CocaCola1940}
+\end{itemize}
+
+
+
 
 
 \subsubsection{\texttt{@video}}
 \label{sec:@video}
-Hier ein Beispiel für die Spezifikation einer DVD-Edition:
+
+Das nachfolgende Beispiel zeigt den Verweis auf ein YouTube-Video:
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@video{HistoryOfComputers2008,
+  title={History of Computers},
+	url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
+  year={2008},
+  month={9},
+  hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
+\end{itemize}
+
+\noindent
+Hier ein Beispiel für den Verweis auf eine DVD-Edition:
 %
 \begin{itemize}
 \item[] 
@@ -683,22 +732,6 @@ Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
 \texttt{author}-Feld weg und verpackt die entsprechenden Angaben im \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
 
 
-\paragraph{Beispiel: YouTube-Video} 
-%\label{sec:@online-video}
-%
-\begin{itemize}
-\item[]
-\begin{GenericCode}[numbers=none]
-@video{HistoryOfComputers2008,
-  title={History of Computers},
-	url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
-  year={2008},
-  month={9},
-  hyphenation={english}
-}
-\end{GenericCode}
-\item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
-\end{itemize}
 
 
 \subsubsection{\texttt{@movie}}
@@ -729,8 +762,26 @@ Die Angabe \verb!howpublished={Film}! ist hier sinnvoll, um die Verwechslung
 mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
 
 
-\subsubsection{\texttt{@software}}
-\label{sec:@software}
+
+\subsubsection{Zeitangaben zu Musikaufnahmen und Filmen} 
+
+Einen Verweis auf eine bestimmten Stelle in einem Musikstück oder Film kann man 
+ähnlich ausführen wie die Seitenangabe in einem Druckwerk.
+Besonders legendär (und häufig parodiert) ist beispielsweise die Duschszene
+in \emph{Psycho} \cite[T=00:32:10]{Psycho1960}.
+Alternativ zur simplen Zeitangabe "`T=\emph{hh}:\emph{mm}:\emph{ss}"' 
+könnte man eine bestimmte Stelle auch auf den Frame genau durch 
+den zugehörigen \emph{Timecode} "`TC=\emph{hh:mm:ss:ff}"' angeben, 
+\zB\ \cite[TC=00:32:10:12]{Psycho1960} für Frame \emph{ff}=12.
+
+
+
+\subsection{Software (\texttt{@software})}
+\label{sec:KategorieSoftware}
+
+%\subsubsection{\texttt{@software}}
+%\label{sec:@software}
+
 Dieser Eintragstyp ist insbesondere für Computerspiele geeignet (in Ermangelung
 eines eigenen Eintragstyps).
 %
@@ -749,20 +800,20 @@ eines eigenen Eintragstyps).
 \item[\cite{LegendOfZelda1998}] \fullcite{LegendOfZelda1998}
 \end{itemize}
 
-
-Spring Framework: \cite{SpringFramework}
-
-
-\subsubsection{Zeitangaben zu Musikaufnahmen und Filmen} 
-
-Einen Verweis auf eine bestimmten Stelle in einem Musikstück oder Film kann man 
-ähnlich ausführen wie die Seitenangabe in einem Druckwerk.
-Besonders legendär (und häufig parodiert) ist beispielsweise die Duschszene
-in \emph{Psycho} \cite[T=00:32:10]{Psycho1960}.
-Alternativ zur simplen Zeitangabe "`T=\emph{hh}:\emph{mm}:\emph{ss}"' 
-könnte man eine bestimmte Stelle auch auf den Frame genau durch 
-den zugehörigen \emph{Timecode} "`TC=\emph{hh:mm:ss:ff}"' angeben, 
-\zB\ \cite[TC=00:32:10:12]{Psycho1960} für Frame \emph{ff}=12.
+\noindent
+Nachfolgend ein Beispiel für den Verweis auf ein typisches Software-Projekt:
+%
+\begin{itemize}
+\item[] 
+\begin{GenericCode}[numbers=none]
+@software{SpringFramework,
+	title={Spring Framework},
+	url={https://github.com/spring-projects/spring-framework},
+	hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{SpringFramework}] \fullcite{SpringFramework}
+\end{itemize}
 
 
 
@@ -785,8 +836,7 @@ Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterschei
 	aber \emph{nicht} "`online"' und es genügt, ggfs.\ den zugehörigen Link im 
 	\texttt{url}-Feld anzugeben, das bei jedem Eintragstyp zulässig ist.
 \item[C.] Es handelt sich im weitesten Sinn um ein Werk, das aber 
-	\emph{ausschließlich} online verfügbar ist, wie \zB\ ein Wiki-Eintrag, 
-	ein digitales Bild,	eine Software, ein YouTube-Video oder ein Blog-Eintrag.
+	\emph{ausschließlich} online verfügbar ist, wie \zB\ ein Wiki oder Blog-Eintrag.
 	Die Kategorie \emph{online} ist genau (und \emph{nur}) für diese 
 	Art von Quellen vorgesehen.
 \end{itemize}
@@ -831,38 +881,38 @@ zumindest einen sinnvollen \emph{Titel} (\texttt{title}) angeben,
 der für die Sortierung im Quellenverzeichnis verwendet wird.
 
 
-\subsubsection{Beispiel: Bildquelle}
-
-In Abbildungen wird sehr häufig fremdes Bildmaterial verwendet, dessen Herkunft natürlich 
-in jedem Fall angegeben werden sollte. Die Angabe von URLs unmittelbar in den Captions von Abbildungen
-ist problematisch, weil sie meistens für das Schriftbild ziemlich störend sind.
-Einfacher ist es, auch einzelne Bilder und Grafiken ins Quellenverzeichnis aufzunehmen und
-wie üblich mit dem \verb!\cite{..}! Kommando darauf zu verweisen.
-Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
+%\subsubsection{Beispiel: Bildquelle}
 %
-\begin{itemize}
-\item[]
-\begin{GenericCode}[numbers=none]
-@online{IBM360,
-	title={Mainframes},
-  url={http://www.plyojump.com/classes/mainframe_era.php}
-}
-\end{GenericCode}
-\item[\cite{IBM360}] \fullcite{IBM360}
-\end{itemize}
+%In Abbildungen wird sehr häufig fremdes Bildmaterial verwendet, dessen Herkunft natürlich 
+%in jedem Fall angegeben werden sollte. Die Angabe von URLs unmittelbar in den Captions von Abbildungen
+%ist problematisch, weil sie meistens für das Schriftbild ziemlich störend sind.
+%Einfacher ist es, auch einzelne Bilder und Grafiken ins Quellenverzeichnis aufzunehmen und
+%wie üblich mit dem \verb!\cite{..}! Kommando darauf zu verweisen.
+%Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
+%%
+%\begin{itemize}
+%\item[]
+%\begin{GenericCode}[numbers=none]
+%@online{IBM360,
+	%title={Mainframes},
+  %url={http://www.plyojump.com/classes/mainframe_era.php}
+%}
+%\end{GenericCode}
+%\item[\cite{IBM360}] \fullcite{IBM360}
+%\end{itemize}
 
-\subsection{Elektronische Datenträger als Ergänzung zur Arbeit}
-
-Wird der Abschlussarbeit ein elektronischer Datenträger (CD-ROM, DVD, USB-Stick
-etc.) beigelegt, empfiehlt sich die angeführten Webseiten in
-elektronischer Form (vorzugsweise als PDF-Da\-tei\-en) abzulegen
-und die zugehörige Quelle im Quellenverzeichnis mit einem 
-entsprechenden Verweis im \texttt{note}-Feld -- \zB\
-"`Kopie auf USB-Stick (Datei \nolinkurl{xyz.pdf})"' --
-zu versehen.
-Für die Angabe von solchen Dateinamen, die nicht als Online-Link
-zu öffnen sind, ist übrigens die Verwendung von 
-\verb!\nolinkurl{...}! anstelle von \verb!\url{...}! zu empfehlen.
+%\subsection{Elektronische Datenträger als Ergänzung zur Arbeit}
+%
+%Wird der Abschlussarbeit ein elektronischer Datenträger (CD-ROM, DVD, USB-Stick
+%etc.) beigelegt, empfiehlt sich die angeführten Webseiten in
+%elektronischer Form (vorzugsweise als PDF-Da\-tei\-en) abzulegen
+%und die zugehörige Quelle im Quellenverzeichnis mit einem 
+%entsprechenden Verweis im \texttt{note}-Feld -- \zB\
+%"`Kopie auf USB-Stick (Datei \nolinkurl{xyz.pdf})"' --
+%zu versehen.
+%Für die Angabe von solchen Dateinamen, die nicht als Online-Link
+%zu öffnen sind, ist übrigens die Verwendung von 
+%\verb!\nolinkurl{...}! anstelle von \verb!\url{...}! zu empfehlen.
 
 
 \subsection{Tipps zur Erstellung von BibTeX-Dateien}

@@ -67,33 +67,10 @@
 
 \defbibheading{noheader}[]{}		% 'none' should be defined but isn't
 
-%% hook to add a given reference to its bibliography category
-%\AtEveryCitekey{%
-	%\ifthenelse{%
-		%\ifentrytype{online}\OR
-		%\ifentrytype{electronic}\OR
-		%\ifentrytype{www}
-	%}{%online
-		%\addtocategory{online}{\thefield{entrykey}}%
-	%}{%
-		%\ifthenelse{%
-			%\ifentrytype{movie}\OR
-			%\ifentrytype{video}\OR
-			%\ifentrytype{music}\OR
-			%\ifentrytype{audio}\OR
-			%\ifentrytype{software}
-		%}{%media
-			%\addtocategory{avmedia}{\thefield{entrykey}}%
-		%}{%literature
-			%\addtocategory{literature}{\thefield{entrykey}}%
-		%}%
-	%}%
-%}
 
 \AtEveryCitekey{%
 	\ifthenelse{%
 		\ifentrytype{online}\OR
-		\ifentrytype{electronic}\OR
 		\ifentrytype{www}
 	}{%online
 		\addtocategory{online}{\thefield{entrykey}}%
@@ -102,12 +79,14 @@
 			\ifentrytype{movie}\OR
 			\ifentrytype{video}\OR
 			\ifentrytype{music}\OR
-			\ifentrytype{audio}
+			\ifentrytype{audio}\OR
+			\ifentrytype{image}
 		}{%media
 			\addtocategory{avmedia}{\thefield{entrykey}}%
 		}{%
 		\ifthenelse{%
-		  \ifentrytype{software}
+		  \ifentrytype{software}\OR
+			\ifentrytype{electronic}
 		}{%software
 			\addtocategory{software}{\thefield{entrykey}}
 		}{%literature
@@ -169,3 +148,5 @@
 \DeclareBibliographyAlias{movie}{misc}
 \DeclareBibliographyAlias{audio}{misc}
 \DeclareBibliographyAlias{software}{misc}
+\DeclareBibliographyAlias{electronic}{misc}
+\DeclareBibliographyAlias{image}{misc}
