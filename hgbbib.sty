@@ -20,18 +20,21 @@
 \newcommand{\@bibtitle}{Quellenverzeichnis}
 \newcommand{\@bibtitleLiteratur}{Literatur}
 \newcommand{\@bibtitleAvmedia}{Filme und audiovisuelle Medien}
-\newcommand{\@bibtitleOnline}{Online-Quellen}	
+\newcommand{\@bibtitleOnline}{Online-Quellen}
+\newcommand{\@bibtitleSoftware}{Software}	
 
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}{%
 	\renewcommand{\@bibtitle}{References}
 	\renewcommand{\@bibtitleLiteratur}{Literature}
 	\renewcommand{\@bibtitleAvmedia}{Films and audio-visual media}
 	\renewcommand{\@bibtitleOnline}{Online sources}	
+	\renewcommand{\@bibtitleSoftware}{Software}
 }{}
 
-%% categories for a split bibliography
+%% categories for a split bibliography (order of declaration is important!)
 \DeclareBibliographyCategory{literature}
 \DeclareBibliographyCategory{avmedia}
+\DeclareBibliographyCategory{software}
 \DeclareBibliographyCategory{online}
 
 %% headings for the bibliography categories
@@ -55,9 +58,38 @@
 	\addcontentsline{toc}{section}{\@bibtitleOnline}%
 }
 
+\defbibheading{software}{%
+	\pagebreak[3]%
+	\phantomsection%
+	\section*{\@bibtitleSoftware}%
+	\addcontentsline{toc}{section}{\@bibtitleSoftware}%
+}
+
 \defbibheading{noheader}[]{}		% 'none' should be defined but isn't
 
 %% hook to add a given reference to its bibliography category
+%\AtEveryCitekey{%
+	%\ifthenelse{%
+		%\ifentrytype{online}\OR
+		%\ifentrytype{electronic}\OR
+		%\ifentrytype{www}
+	%}{%online
+		%\addtocategory{online}{\thefield{entrykey}}%
+	%}{%
+		%\ifthenelse{%
+			%\ifentrytype{movie}\OR
+			%\ifentrytype{video}\OR
+			%\ifentrytype{music}\OR
+			%\ifentrytype{audio}\OR
+			%\ifentrytype{software}
+		%}{%media
+			%\addtocategory{avmedia}{\thefield{entrykey}}%
+		%}{%literature
+			%\addtocategory{literature}{\thefield{entrykey}}%
+		%}%
+	%}%
+%}
+
 \AtEveryCitekey{%
 	\ifthenelse{%
 		\ifentrytype{online}\OR
@@ -70,13 +102,17 @@
 			\ifentrytype{movie}\OR
 			\ifentrytype{video}\OR
 			\ifentrytype{music}\OR
-			\ifentrytype{audio}\OR
-			\ifentrytype{software}
+			\ifentrytype{audio}
 		}{%media
 			\addtocategory{avmedia}{\thefield{entrykey}}%
+		}{%
+		\ifthenelse{%
+		  \ifentrytype{software}
+		}{%software
+			\addtocategory{software}{\thefield{entrykey}}
 		}{%literature
 			\addtocategory{literature}{\thefield{entrykey}}%
-		}%
+		}}%
 	}%
 }
 
