@@ -683,6 +683,24 @@ Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
 \texttt{author}-Feld weg und verpackt die entsprechenden Angaben im \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
 
 
+\paragraph{Beispiel: YouTube-Video} 
+%\label{sec:@online-video}
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@video{HistoryOfComputers2008,
+  title={History of Computers},
+	url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
+  year={2008},
+  month={9},
+  hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
+\end{itemize}
+
+
 \subsubsection{\texttt{@movie}}
 \label{sec:@movie}
 Dieser Eintragstyp ist für Filme reserviert. 
@@ -731,6 +749,8 @@ eines eigenen Eintragstyps).
 \item[\cite{LegendOfZelda1998}] \fullcite{LegendOfZelda1998}
 \end{itemize}
 
+
+Spring Framework: \cite{SpringFramework}
 
 
 \subsubsection{Zeitangaben zu Musikaufnahmen und Filmen} 
@@ -801,22 +821,7 @@ Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format
 die Information eingefügt, wann das Online-Dokument tatsächlich eingesehen wurde.
 
 
-\subsubsection{Beispiel: online Video} 
-\label{sec:@online-video}
-%
-\begin{itemize}
-\item[]
-\begin{GenericCode}[numbers=none]
-@online{HistoryOfComputers2008,
-  title={History of Computers},
-	url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
-  year={2008},
-  month={9},
-  hyphenation={english}
-}
-\end{GenericCode}
-\item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
-\end{itemize}
+
 
 \noindent\textbf{Hinweis:}
 Technisch ist bei Online-Quellen nur das Feld \texttt{url} erforderlich,
