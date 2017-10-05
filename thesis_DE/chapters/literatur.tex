@@ -236,12 +236,11 @@ besorgt die Ausgabe des Quellenverzeichnisses, hier mit dem Titel "`Quellenverze
 Dabei sind zwei Varianten möglich:
 %
 \begin{description}
-\item[\texttt{{\bs}MakeBibliography\{\emph{title}\}}] ~ \newline
-   Erzeugt ein in mehrere \emph{Kategorien} (s.\ Abschnitt \ref{sec:BibKategorien}) geteiltes Quellenverzeichnis 
-   mit der Hauptüberschrift \texttt{title}. Diese Variante wird im vorliegenden Dokument verwendet.
-\item[\texttt{{\bs}MakeBibliography[nosplit]\{\emph{title}\}}] ~ \newline
-   Erzeugt ein traditionelles \emph{einteiliges} Quellenverzeichnis mit der
-   Überschrift \texttt{title}. 
+\item[\texttt{{\bs}MakeBibliography}] ~ \newline
+   Erzeugt ein in mehrere \emph{Kategorien} (s.\ Abschnitt \ref{sec:BibKategorien}) geteiltes Quellenverzeichnis. 
+	 Diese Variante wird im vorliegenden Dokument verwendet.
+\item[\texttt{{\bs}MakeBibliography[nosplit]}] ~ \newline
+   Erzeugt ein traditionelles \emph{einteiliges} Quellenverzeichnis. 
 \end{description}
 %
 Die Überschrift \texttt{\emph{title}} scheint in beiden Fällen ohne Nummerierung 
@@ -777,10 +776,9 @@ den zugehörigen \emph{Timecode} "`TC=\emph{hh:mm:ss:ff}"' angeben,
 
 
 \subsection{Software (\texttt{@software})}
-\label{sec:KategorieSoftware}
+\label{sec:@software}
 
-%\subsubsection{\texttt{@software}}
-%\label{sec:@software}
+
 
 Dieser Eintragstyp ist insbesondere für Computerspiele geeignet (in Ermangelung
 eines eigenen Eintragstyps).
