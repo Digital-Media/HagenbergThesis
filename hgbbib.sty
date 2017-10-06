@@ -68,12 +68,38 @@
 \defbibheading{noheader}[]{}		% 'none' should be defined but isn't
 
 
-%% hook to add a given reference to its bibliography category
-\AtEveryCitekey{%
-	\ifthenelse{%
+
+
+% hook to add a given reference to its bibliography category
+%\AtEveryCitekey{%
+	%\ifthenelse{%
+		%\ifentrytype{online}\OR
+		%\ifentrytype{www}
+	%}{\addtocategory{online}{\thefield{entrykey}}}%
+	%{%
+	%\ifthenelse{%
+		%\ifentrytype{movie}\OR
+		%\ifentrytype{video}\OR
+		%\ifentrytype{music}\OR
+		%\ifentrytype{audio}\OR
+		%\ifentrytype{image}
+	%}{\addtocategory{avmedia}{\thefield{entrykey}}}%
+	%{%
+	%\ifthenelse{%
+		%\ifentrytype{software}\OR
+		%\ifentrytype{electronic}
+	%}{\addtocategory{software}{\thefield{entrykey}}}%
+	%{% else (default)
+		%\addtocategory{literature}{\thefield{entrykey}}}%
+%}}}
+
+
+
+\newcommand{\AssignBibCategory}[1]{y% argument 1: \thefield{entrykey} 
+\ifthenelse{%
 		\ifentrytype{online}\OR
 		\ifentrytype{www}
-	}{\addtocategory{online}{\thefield{entrykey}}}%
+	}{\addtocategory{online}{#1}}%
 	{%
 	\ifthenelse{%
 		\ifentrytype{movie}\OR
@@ -81,16 +107,19 @@
 		\ifentrytype{music}\OR
 		\ifentrytype{audio}\OR
 		\ifentrytype{image}
-	}{\addtocategory{avmedia}{\thefield{entrykey}}}%
+	}{\addtocategory{avmedia}{#1}}%
 	{%
 	\ifthenelse{%
 		\ifentrytype{software}\OR
 		\ifentrytype{electronic}
-	}{\addtocategory{software}{\thefield{entrykey}}}%
+	}{\addtocategory{software}{#1}}%
 	{% else (default)
-		\addtocategory{literature}{\thefield{entrykey}}}%
-}}}
+		\addtocategory{literature}{#1}}%
+}}
+}
 
+\newcommand{\nop}[1]{x}
+\AtEveryCitekey{\expandafter\nop\AssignBibCategory{\thefield{entrykey}}}
 
 %This is only a wrapper to \addbibresource to allow the use
 %of the classic bibtex-workflow in the future.
