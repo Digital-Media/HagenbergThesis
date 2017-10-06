@@ -259,27 +259,27 @@ Allfällige Änderungen sowie die Definition zusätzlicher Kategorien sind
 bei Bedarf relativ leicht möglich.}
 %
 \begin{description}
-	\item[\texttt{literature}] -- für alle Quellen, die in gedruckter Form vorliegen;
-	\item[\texttt{avmedia}] -- für Filme, audio-visuelle Medien und Computer Games (auf DVD, CD, \usw);
-	\item[\texttt{software}] -- für Softwareprodukte, APIs, Computer Games;
-	\item[\texttt{online}] -- für Werke, die \emph{ausschließlich} online verfügbar sind.
+	\item[\textsf{literature}] -- für alle Quellen, die in gedruckter Form vorliegen;
+	\item[\textsf{avmedia}] -- für Filme, audio-visuelle Medien (auf DVD, CD, \usw);
+	\item[\textsf{software}] -- für Softwareprodukte, APIs, Computer Games;
+	\item[\textsf{online}] -- für Werke, die \emph{ausschließlich} online verfügbar sind.
 \end{description}
 %
 Jedes Quellenobjekt wird aufgrund des angegebenen BibTeX-Eintragtyps 
-\texttt{@\emph{type}} automatisch einer dieser Kategorien 
+(\texttt{@\emph{type}}) automatisch einer dieser Kategorien 
 zugeordnet (s.\ Tabelle~\ref{tab:BibKategorien}).
 Angeführt sind hier nur die wichtigsten Eintragstypen, die allerdings die meisten
 Fälle in der Praxis abdecken sollten und nachfolgend durch Beispiele erläutert sind.
-Alle nicht explizit angegebenen Einträge werden grundsätzlich in der Kategorie \emph{literature} 
+Alle nicht explizit angegebenen Einträge werden grundsätzlich in der Kategorie \textsf{literature} 
 ausgegeben.
 
 \begin{table}
-\caption{Quellenarten und empfohlene BibTeX-Eintragstypen.}
+\caption{Definierte Kategorien von Quellen und empfohlene BibTeX-Eintragstypen.}
 \label{tab:QuellenUndEintragstypen}
 \centering
 \begin{tabular}{llc}
 	\hline
-	Kat.\ \textbf{literature} & Typ & Seite\\
+	\emph{Literatur} (\textsf{literature}) & Typ & Seite\\
 	\hline
 	Buch (Textbuch, Monographie) & \texttt{@book} & \pageref{sec:@book}\\
 	Sammelband (Hrsg.\ + mehrere Autoren) & \texttt{@incollection} & \pageref{sec:@incollection} \\
@@ -291,7 +291,7 @@ ausgegeben.
 	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
 %
 	\hline
-	Kategorie \textbf{avmedia} & \\
+	\emph{Audiovisuelle Medien} (\textsf{avmedia}) & \\
 	\hline
 	Audio (CD) & \texttt{@audio} & \pageref{sec:@audio}\\
 	Bild, Foto, Grafik & \texttt{@image} & \pageref{sec:@image}\\
@@ -299,12 +299,13 @@ ausgegeben.
 	Film (Kino) & \texttt{@movie} & \pageref{sec:@movie}\\
 %
 	\hline
-	Kategorie \textbf{software} & \\
+	\emph{Software} (\textsf{software}) & \\
 	\hline
-	Softwareprodukt oder -projekt, Computer Game & \texttt{@software} & \pageref{sec:@software}\\
+	Softwareprodukt oder -projekt & \texttt{@software} & \pageref{sec:@software}\\
+	Computer Game & \texttt{@software} & \pageref{sec:@software}\\
 %
 	\hline
-	Kategorie \textbf{online} & \\
+	\emph{Online-Quellen} (\textsf{online}) & \\
 	\hline
 	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www}
 \end{tabular}
@@ -319,26 +320,26 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 \label{tab:BibKategorien}
 \centering
 \definecolor{midgray}{gray}{0.5}
-\setlength{\tabcolsep}{6mm}
-\begin{tabular}{lll}
-	\emph{literature} & \emph{avmedia} & \emph{online} \\
+\setlength{\tabcolsep}{4mm}
+\begin{tabular}{llll}
+	\textsf{literature} & \textsf{avmedia} & \textsf{software} & \textsf{online} \\
 	\hline
-	\texttt{@book}          & \texttt{@audio}                & \texttt{@online} \\
-	\texttt{@incollection}  & \texttt{\color{midgray}@music} & \texttt{\color{midgray}@electronic} \\
-	\texttt{@inproceedings} & \texttt{@video}                & \texttt{\color{midgray}@www} \\
-	\texttt{@article}       & \texttt{@movie}                &  \\
-	\texttt{@thesis}        & \texttt{@software}             &  \\
-	\texttt{@techreport}    &  &  \\
-	\texttt{@manual}        &  &  \\
-	\texttt{@misc}          &  &  \\
-	\ldots                  &  &  \\
+	\texttt{@book}          & \texttt{@audio}                & \texttt{@software} & \texttt{@online} \\
+	\texttt{@incollection}  & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
+	\texttt{@inproceedings} & \texttt{@video}                & & \texttt{\color{midgray}@www} \\
+	\texttt{@article}       & \texttt{@movie}                & &  \\
+	\texttt{@thesis}        & \texttt{@software}             & &  \\
+	\texttt{@techreport}    &  & &  \\
+	\texttt{@manual}        &  & &  \\
+	\texttt{@misc}          &  & &  \\
+	\ldots                  &  & &  \\
 	\hline
 \end{tabular}
 \end{table}
 
 %%------------------------------------------------------
 
-\subsection{Gedruckte Quellen (\emph{literature})}
+\subsection{Gedruckte Quellen (\textsf{literature})}
 \label{sec:KategorieLiterature}
 
 Diese Kategorie umfasst alle Werke, die in gedruckter Form publiziert wurden,
@@ -460,7 +461,7 @@ zu vermeiden.
 %
 \emph{Hinweis:} Die Angabe einer Ausgabe für \emph{mehrere} Monate ist in \texttt{biblatex} nicht mehr
 über das Feld \texttt{month} möglich, denn dieses darf nur mehr \emph{einen} Wert enthalten.
-In diesem Fall kann jedoch einfach das \texttt{issue}-Feld verwendet (\zB\ \verb!issue={Mai/Juni}!
+In diesem Fall kann jedoch einfach das \texttt{issue}-Feld verwendet (\zB\ \texttt{issue=\{5/6\}}
 im BibTeX-Eintrag zu \cite{Guttman2001}) und das \texttt{number}-Feld weggelassen werden.
 
 %%------------------------------------------------------
@@ -622,7 +623,7 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 \end{itemize}
 
 
-\subsection{Filme und audio-visuelle Medien (\emph{avmedia})}
+\subsection{Filme und audio-visuelle Medien (\textsf{avmedia})}
 \label{sec:KategorieAvmedia}
 Diese Kategorie ist dazu vorgesehen, audio-visuelle Produktionen wie Filme, 
 Tonaufzeichnungen, Audio-CDs, DVDs, VHS-Kassetten \usw\ zu erfassen.
@@ -775,7 +776,7 @@ den zugehörigen \emph{Timecode} "`TC=\emph{hh:mm:ss:ff}"' angeben,
 
 
 
-\subsection{Software (\texttt{@software})}
+\subsection{Software (\textsf{software})}
 \label{sec:@software}
 
 
@@ -815,7 +816,7 @@ Nachfolgend ein Beispiel für den Verweis auf ein typisches Software-Projekt:
 
 
 
-\subsection{Online-Quellen (\emph{online})}
+\subsection{Online-Quellen (\textsf{online})}
 \label{sec:KategorieOnline}
 
 Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterscheiden:
