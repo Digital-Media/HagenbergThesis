@@ -19,19 +19,22 @@
 %% titles of reference section + 3 categories of references:
 \newcommand{\@bibtitle}{Quellenverzeichnis}
 \newcommand{\@bibtitleLiteratur}{Literatur}
-\newcommand{\@bibtitleAvmedia}{Filme und audiovisuelle Medien}
-\newcommand{\@bibtitleOnline}{Online-Quellen}	
+\newcommand{\@bibtitleAvmedia}{Audiovisuelle Medien}
+\newcommand{\@bibtitleOnline}{Online-Quellen}
+\newcommand{\@bibtitleSoftware}{Software}	
 
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}{%
 	\renewcommand{\@bibtitle}{References}
 	\renewcommand{\@bibtitleLiteratur}{Literature}
-	\renewcommand{\@bibtitleAvmedia}{Films and audio-visual media}
+	\renewcommand{\@bibtitleAvmedia}{Audio-visual media}
 	\renewcommand{\@bibtitleOnline}{Online sources}	
+	\renewcommand{\@bibtitleSoftware}{Software}
 }{}
 
-%% categories for a split bibliography
+%% categories for a split bibliography (order of declaration is important!)
 \DeclareBibliographyCategory{literature}
 \DeclareBibliographyCategory{avmedia}
+\DeclareBibliographyCategory{software}
 \DeclareBibliographyCategory{online}
 
 %% headings for the bibliography categories
@@ -55,30 +58,37 @@
 	\addcontentsline{toc}{section}{\@bibtitleOnline}%
 }
 
+\defbibheading{software}{%
+	\pagebreak[3]%
+	\phantomsection%
+	\section*{\@bibtitleSoftware}%
+	\addcontentsline{toc}{section}{\@bibtitleSoftware}%
+}
+
 \defbibheading{noheader}[]{}		% 'none' should be defined but isn't
 
-%% hook to add a given reference to its bibliography category
-\AtEveryCitekey{%
-	\ifthenelse{%
+%Assign a given bibliography entry to one of the defined categories.
+\newcommand{\@AssignToBibCategory}[1]% argument 1: entry key 
+{\ifthenelse{%
 		\ifentrytype{online}\OR
-		\ifentrytype{electronic}\OR
-		\ifentrytype{www}
-	}{%online
-		\addtocategory{online}{\thefield{entrykey}}%
-	}{%
-		\ifthenelse{%
-			\ifentrytype{movie}\OR
-			\ifentrytype{video}\OR
-			\ifentrytype{music}\OR
-			\ifentrytype{audio}\OR
-			\ifentrytype{software}
-		}{%media
-			\addtocategory{avmedia}{\thefield{entrykey}}%
-		}{%literature
-			\addtocategory{literature}{\thefield{entrykey}}%
-		}%
-	}%
-}
+		\ifentrytype{www}}
+	{\addtocategory{online}{#1}}%
+{\ifthenelse{%
+		\ifentrytype{movie}\OR
+		\ifentrytype{video}\OR
+		\ifentrytype{music}\OR
+		\ifentrytype{audio}\OR
+		\ifentrytype{image}}
+	{\addtocategory{avmedia}{#1}}%
+{\ifthenelse{%
+		\ifentrytype{software}\OR
+		\ifentrytype{electronic}}
+	{\addtocategory{software}{#1}}%
+	{\addtocategory{literature}{#1}}% else (default)
+}}}
+
+%Hook provided by biblatex.
+\AtEveryCitekey{\@AssignToBibCategory{\thefield{entrykey}}}
 
 %This is only a wrapper to \addbibresource to allow the use
 %of the classic bibtex-workflow in the future.
@@ -133,3 +143,6 @@
 \DeclareBibliographyAlias{movie}{misc}
 \DeclareBibliographyAlias{audio}{misc}
 \DeclareBibliographyAlias{software}{misc}
+\DeclareBibliographyAlias{electronic}{misc}
+\DeclareBibliographyAlias{image}{misc}
+\DeclareBibliographyAlias{standard}{misc}
