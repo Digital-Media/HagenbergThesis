@@ -242,11 +242,6 @@ Dabei sind zwei Varianten möglich:
 \item[\texttt{{\bs}MakeBibliography[nosplit]}] ~ \newline
    Erzeugt ein traditionelles \emph{einteiliges} Quellenverzeichnis. 
 \end{description}
-%
-Die Überschrift \texttt{\emph{title}} scheint in beiden Fällen ohne Nummerierung 
-im Inhaltsverzeichnis auf (auf \texttt{chapter}-Ebene).
-Bei geteiltem Quellenverzeichnis werden die Überschriften der einzelnen Abschnitte auf 
-\texttt{section}-Ebene eingetragen.
 
 
 \subsection{Kategorien von Quellenangaben}
@@ -258,20 +253,20 @@ Für geteilte Quellenverzeichnisse sind in dieser Vorlage folgende Kategorien vo
 Allfällige Änderungen sowie die Definition zusätzlicher Kategorien sind 
 bei Bedarf relativ leicht möglich.}
 %
-\begin{description}
-	\item[\textsf{literature}] -- für alle Quellen, die in gedruckter Form vorliegen;
-	\item[\textsf{avmedia}] -- für Filme, audio-visuelle Medien (auf DVD, CD, \usw);
-	\item[\textsf{software}] -- für Softwareprodukte, APIs, Computer Games;
-	\item[\textsf{online}] -- für Werke, die \emph{ausschließlich} online verfügbar sind.
-\end{description}
+\begin{itemize}
+	\item[] \textsf{literature} -- für klassische Publikationen, die gedruckt oder online vorliegen;
+	\item[] \textsf{avmedia} -- für Filme, audio-visuelle Medien (auf DVD, CD, \usw);
+	\item[] \textsf{software} -- für Softwareprodukte, APIs, Computer Games;
+	\item[] \textsf{online} -- für Artefakte, die \emph{ausschließlich} online verfügbar sind.
+\end{itemize}
 %
 Jedes Quellenobjekt wird aufgrund des angegebenen BibTeX-Eintragtyps 
 (\texttt{@\emph{type}}) automatisch einer dieser Kategorien 
 zugeordnet (s.\ Tabelle~\ref{tab:BibKategorien}).
 Angeführt sind hier nur die wichtigsten Eintragstypen, die allerdings die meisten
 Fälle in der Praxis abdecken sollten und nachfolgend durch Beispiele erläutert sind.
-Alle nicht explizit angegebenen Einträge werden grundsätzlich in der Kategorie \textsf{literature} 
-ausgegeben.
+Alle nicht explizit angegebenen Einträge werden grundsätzlich der Kategorie \textsf{literature} 
+zugeordnet.
 
 \begin{table}
 \caption{Definierte Kategorien von Quellen und empfohlene BibTeX-Eintragstypen.}
@@ -287,7 +282,8 @@ ausgegeben.
 	Beitrag in Zeitschrift, Journal & \texttt{@article} & \pageref{sec:@article}\\
 	Bachelor-, Master-, Diplomarbeit, Dissertation & \texttt{@thesis} & \pageref{sec:@thesis}\\
 	Technischer Bericht, Laborbericht & \texttt{@techreport} & \pageref{sec:@techreport}\\
-	Handbuch, Produktbeschreibung, Norm & \texttt{@manual} & \pageref{sec:@manual}\\
+	Handbuch, Produktbeschreibung & \texttt{@manual} & \pageref{sec:@manual}\\
+	Norm & \texttt{@standard} & \pageref{sec:@standard}\\
 	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
 %
 	\hline
@@ -331,6 +327,7 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 	\texttt{@thesis}        & \texttt{@software}             & &  \\
 	\texttt{@techreport}    &  & &  \\
 	\texttt{@manual}        &  & &  \\
+	\texttt{@standard}        &  & &  \\
 	\texttt{@misc}          &  & &  \\
 	\ldots                  &  & &  \\
 	\hline
@@ -573,7 +570,7 @@ Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben,
 
 \subsubsection{\texttt{@manual}}
 \label{sec:@manual}
-Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen von Herstellern, Anleitungen, Präsentationen, Normen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
+Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen von Herstellern, Anleitungen, Präsentationen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
 %
 \begin{itemize}
 \item[]
@@ -591,8 +588,37 @@ Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dok
 \item[\cite{Mittelbach2016}] \fullcite{Mittelbach2016}
 \end{itemize}
 %
-Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vorname}+\emph{Nachname} interpretiert wird.%
+Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vornamen} + \emph{Nachname} interpretiert wird.%
 \footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz für \texttt{author} akzeptiert.}
+Dieser Trick wird \ua\ im nächsten Beispiel verwendet.
+
+
+%%------------------------------------------------------
+
+\subsubsection{\texttt{@standard}}
+\label{sec:@standard}
+
+
+Verweise auf Normen (\emph{standards}) werden in \texttt{biblatex} durch den Typ \texttt{@standard}
+unterstützt. Hier ein typisches Beispiel:
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@standard{W3C2017HTML52,
+  author={{World Wide Web Consortium}},
+  title={HTML 5.2},
+  titleaddon={W3C Candidate Recommendation},
+	date={2017-08-08},
+  url={https://www.w3.org/TR/html52/},
+	hyphenation={english}
+}
+\end{GenericCode}
+\item[\cite{W3C2017HTML52}] \fullcite{W3C2017HTML52}
+\end{itemize}
+%
+
+
 
 %%------------------------------------------------------
 
@@ -994,7 +1020,7 @@ Groß-/Kleinschreibung und Satzzeichen in allen  Einträgen überprüfen und ggf
 Bücher: Verlagsnamen und Verlagsort auf Vollständigkeit, Konsistenz und allfällige
 Redundanzen überprüfen.
 \item
-Alle URLs und DOIs etc.\ \emph{weglassen}, sofern sie nicht essentiell sind! Das gilt insbesondere
+Alle URLs und DOIs etc.\ \emph{weglassen}, wenn sie nicht unbedingt notwendig sind! Das gilt insbesondere
 für Bücher und Konferenzbeiträge.
 \item
 Journal-Beiträge: Den Namen des Journals immer vollständig ausschreiben, \zB\
