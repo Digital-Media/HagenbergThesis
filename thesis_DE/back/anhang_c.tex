@@ -2,7 +2,7 @@
 
 
 Dieser Abschnitt demonstriert -- als Beispiel -- die Einbindung eines externen PDF-Dokuments
-in das eigene LaTeX-Manuskript.
+in das eigene \latex-Manuskript.
 Dieses Problem stellt sich relativ häufig im Zusammenhang mit Fragebögen, die
 man für seine Arbeit erstellt und/oder verwendet hat, daher ist genau dieser Fall hier gezeigt.%
 \footnote{Mit einem schönen Fragebogen des OÖ Energiesparverbands (\url{http://www.energiesparverband.at}).}
@@ -11,7 +11,7 @@ und die fortlaufende \emph{Seitennummerierung} die eingefügten Fremdseiten korr
 
 \section{Das \texttt{pdfpages}-Paket}
 
-Das LaTeX-Paket \texttt{pdfpages}\footnote{\url{https://ctan.org/pkg/pdfpages}}
+Das \latex-Paket \texttt{pdfpages}\footnote{\url{https://ctan.org/pkg/pdfpages}}
 ist dafür die (zurzeit) einzige Wahl und es wird mit 
 %
 \begin{LaTeXCode}[numbers=none]
@@ -29,14 +29,14 @@ verwenden wir die Anweisung
 \end{LaTeXCode}
 %
 Die eingebundenen Seiten werden durch \verb!width=\textwidth! automatisch auf die Textbreite
-des LaTeX-Dokuments skaliert und durch \verb!frame=true! mit einer Umrandung versehen.
+des \latex-Dokuments skaliert und durch \verb!frame=true! mit einer Umrandung versehen.
 
 Dieses Beispiel geht davon aus, dass das externe PDF-Dokument im A4-Seitenformat ist.
 Bei anderen Formaten muss man die Skalierung möglicherweise "`händisch"' einstellen,
 falls die Seiten zu hoch werden (\zB\ mit \verb!width=0.9\textwidth!).
 
 Wichtig ist auch, dass bei dem externen PDF-Dokument alle verwendeten \emph{Schriften}
-(Fonts) korrekt und vollständig \emph{eingebettet} sind, da ansonsten das von LaTeX erzeugte 
+(Fonts) korrekt und vollständig \emph{eingebettet} sind, da ansonsten das von \latex erzeugte 
 PDF-Dokument nicht unabhängig von der Systemumgebung ist!
 
 
