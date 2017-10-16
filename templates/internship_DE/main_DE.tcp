@@ -3,7 +3,7 @@ Type=TeXnicCenterProjectInformation
 Version=4
 
 [ProjectInfo]
-MainFile=main.tex
+MainFile=main_DE.tex
 UseBibTeX=1
 UseMakeIndex=0
 ActiveProfile=LaTeX(utf8) ⇨ PDF(Sumatra)
