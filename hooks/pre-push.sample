@@ -1,3 +1,5 @@
 #!/bin/sh
 echo "Running pre-push GIT hook ..."
 
+exit 0
+
