@@ -1,0 +1,203 @@
+%% hgblistings.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\ProvidesPackage{hgblistings}
+
+\RequirePackage{ifthen}
+
+\RequirePackage{xcolor}
+\definecolor{ListingsBackgroundColor}{gray}{0.95}
+
+\RequirePackage{listingsutf8}
+\lstset{
+inputencoding=utf8,
+extendedchars=true,
+basicstyle=\ttfamily\footnotesize,%
+keywordstyle=,%\ttfamily,%\bfseries,
+identifierstyle=,%\sffamily, %\bfseries
+commentstyle=\normalfont\itshape,%
+stringstyle=\ttfamily,%
+showstringspaces=false,%
+columns = flexible,% fixed, 
+breaklines=true,%
+tabsize=2, %
+backgroundcolor=\color{ListingsBackgroundColor},
+xleftmargin=6mm,%
+frame=none,
+framexleftmargin=6mm,
+numbers=left,%
+numbersep=5pt,%
+numberstyle=\normalfont\scriptsize,%
+stepnumber=1,%
+numberfirstline=true,%
+numberblanklines=true,%
+texcl=false,%						%important: read program comments as Latex content
+mathescape=false,					%no mathescape by default
+upquote=true,%
+keepspaces=true,%
+}
+
+\RequirePackage[utf8]{inputenc}
+\lstset{literate=% to allow Umlauts etc. in listed code % utf8-change
+{Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+{ß}{{\ss}}2
+}
+
+%% Code Environments ----------------------------------------------------------
+
+% Code Environment for C (ANSI)
+\lstnewenvironment{CCode}[1][]
+{\lstset{%
+	language=[ANSI]C,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for C++ (ISO)
+\lstnewenvironment{CppCode}[1][]
+{\lstset{%
+	language=[ISO]C++,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for C#
+\lstnewenvironment{CsCode}[1][]
+{\lstset{%
+	language=[Sharp]C,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+% Language Definition and Code Environment for CSS
+\lstdefinelanguage{CSS}
+{	morekeywords={color,background,margin,padding,font,weight,display,position,top,%
+		left,right,bottom,list,style,border,size,white,space,min,width},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]"
+}
+
+\lstnewenvironment{CssCode}[1][]
+{\lstset{%
+	language=CSS,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Enivornmente for Generic Code
+\lstnewenvironment{GenericCode}[1][]
+{\lstset{%
+	language={},
+	keepspaces=true,
+	commentstyle={},
+	texcl=false,
+	escapechar={},
+	escapeinside={},
+	#1}}
+{}
+
+
+% Code Enivornmente for HTML
+\lstnewenvironment{HtmlCode}[1][]
+{\lstset{%
+	language=HTML,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Enivornmente for Java
+\lstnewenvironment{JavaCode}[1][]
+{\lstset{%
+	language=Java,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Language Definition and Code Environment for JavaScript
+\lstdefinelanguage{JavaScript}
+{	keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function,% 
+		functionend, if, implements, in, inherit, inout, not, of, operations, out,% 
+		return, set, then, types, while, use},
+	sensitive=false,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/}
+}
+
+\lstnewenvironment{JsCode}[1][]
+{\lstset{%
+	language=JavaScript,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for LaTeX
+\lstnewenvironment{LaTeXCode}[1][]	% code environment for Latex
+{\lstset{%
+	language=[LaTeX]TeX,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for Objective-C
+\lstnewenvironment{ObjCCode}[1][]
+{\lstset{%
+	language=[Objective]C,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for PHP
+\lstnewenvironment{PhpCode}[1][]
+{\lstset{%
+	language=PHP,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Language Definition and Code Environment for Swift
+\lstdefinelanguage{Swift}
+{	keywords=[1]{typealias,true, false,catch,private,internal,public,func,protocol,%
+		optional,return,nil,catch,switch,let,as,var,if,in,for,while,where,do,else,case,%
+		break,import,class,struct,enum,override,super,required,designated,convenience},
+	keywords=[2]{String,Int,Double,Float},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstnewenvironment{SwiftCode}[1][]
+{\lstset{%
+	language=Swift,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for XML
+\lstnewenvironment{XmlCode}[1][]
+{\lstset{%
+	language=XML,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
