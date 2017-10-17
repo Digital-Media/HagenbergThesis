@@ -23,7 +23,7 @@ all: $(JOB).pdf
 .PHONY : all clean listfiles
 
 $(JOB).pdf: $(CLASSES) $(STYLES) $(TEXS) $(PICS) $(BIBS)
-	@echo **** Processing $(JOB).tex ****
+	@echo Running LaTeX on $(JOB).tex
 	-$(PDFLATEX) $(LATEXFLAGS) $(JOB)
 	-$(BIBTEX) $(JOB)
 	-$(PDFLATEX) $(LATEXFLAGS) $(JOB)
