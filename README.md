@@ -11,12 +11,25 @@ This template serves as an introduction for creating a bachelor's, master's or d
 * ``HgbThesisDE``, ``HgbThesisEN``: bachelor's, master's or diploma thesis (German/English),
 * ``HgbInternshipReport``: internship report, a shortened thesis variant (German),
 * ``HgbLabReportDE``, ``HgbLabReportEN``: lab report (German/English),
-* ``HgbTermReport``, ``HgbLabReportEN``: term report (English),
-* ``HgbArticle``: generic article (English).
+* ``HgbTermReport``: term report (English),
+* ``HgbArticle``: generic journal article (English).
 
 Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and multiplay style files  (``hgb.sty``, ...). These can also be used independently for other kinds of documents.
 
+
 ## Checkout
+
+This repository contains a set of **sub-modules**, one for each of the above-listed document types.
+Most users will only want to check out the relevant submodules.
+
+* ``HgbThesisDE``
+* ``HgbThesisEN``
+* ``HgbInternshipReport``
+* ``HgbLabReportDE``
+* ``HgbLabReportEN``
+* ``HgbTermReport``
+* ``HgbArticle``
+
 
 To use the template on your own computer you can choose between the following two options (button "Clone or download"):
 
