@@ -2,10 +2,10 @@ SHELL = /bin/sh
 
 COMMONDIR = common
 #TEMPLATEDIR = templates
-TEMPLATEDIR = ./
+TEMPLATEDIR = .
 
-#TEMPLATES = article internship labreport thesis_DE thesis_EN
-TEMPLATES = HgbLatex-Article HgbLatex-InternshipReport HgbLatex-LabReport HgbLatex-ThesisDE HgbLatex-ThesisEN
+TEMPLATES = article internship labreport thesis_DE thesis_EN
+#TEMPLATES = HgbLatex-Article HgbLatex-InternshipReport HgbLatex-LabReport HgbLatex-ThesisDE HgbLatex-ThesisEN
 
 #all : $(TEMPLATES) gitaddcommit
 all : $(TEMPLATES) gitaddcommit
@@ -22,28 +22,33 @@ all : $(TEMPLATES) gitaddcommit
 
 article :
 	@echo Making $@
-	cp -u $(COMMONDIR)/*.sty $(TEMPLATEDIR)/$@;
-	cp -u $(COMMONDIR)/hgbarticle.cls $(TEMPLATEDIR)/$@
+	$(eval dir=HgbLatex-Article)
+	cp -u $(COMMONDIR)/*.sty $(dir);
+	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
 
 internship :
 	@echo Making $@
-	cp -u $(COMMONDIR)/*.sty $(TEMPLATEDIR)/$@;
-	cp -u $(COMMONDIR)/hgbthesis.cls $(TEMPLATEDIR)/$@
+	$(eval dir=HgbLatex-InternshipReport)
+	cp -u $(COMMONDIR)/*.sty $(dir);
+	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
 
 labreport :
 	@echo Making $@
-	cp -u $(COMMONDIR)/*.sty $(TEMPLATEDIR)/$@;
-	cp -u $(COMMONDIR)/hgbreport.cls $(TEMPLATEDIR)/$@
+	$(eval dir=HgbLatex-LabReport)
+	cp -u $(COMMONDIR)/*.sty $(dir);
+	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
 
 thesis_DE :
 	@echo Making $@
-	cp -u $(COMMONDIR)/*.sty $(TEMPLATEDIR)/$@;
-	cp -u $(COMMONDIR)/hgbthesis.cls $(TEMPLATEDIR)/$@
+	$(eval dir=HgbLatex-ThesisDE)
+	cp -u $(COMMONDIR)/*.sty $(dir);
+	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
 
 thesis_EN :
 	@echo Making $@
-	cp -u $(COMMONDIR)/*.sty $(TEMPLATEDIR)/$@;
-	cp -u $(COMMONDIR)/hgbthesis.cls $(TEMPLATEDIR)/$@
+	$(eval dir=HgbLatex-ThesisEN)
+	cp -u $(COMMONDIR)/*.sty $(dir);
+	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
 
 # ------------------------------------------------------------
 
