@@ -3,51 +3,54 @@ SHELL = /bin/sh
 COMMONDIR = common
 BUILDDIR = .
 
-BUILDS = article internship labreportDE labreportEN thesisDE thesisEN
-#BUILDS = HgbLatex-Article HgbLatex-InternshipReport HgbLatex-LabReport HgbLatex-ThesisDE HgbLatex-ThesisEN
+MKFILESUBDIR = $(realpath makefile-subdir)
 
 
-all : $(BUILDS) gitaddcommit
-.PHONY : all dummy
+#BUILDS = article internship labreportDE labreportEN thesisDE thesisEN
+BUILDS = HgbLatex_Article HgbLatex-InternshipReport HgbLatex-LabReportDE HgbLatex-LabReportEN HgbLatex-ThesisDE HgbLatex-ThesisEN
+
+
+all : $(BUILDS) commit
+.PHONY : all commit
 
 # ------------------------------------------------------------
 
-article :
+HgbLatex_Article :
 	@echo Making $@
-	$(eval dir=HgbLatex-Article)
-	cp -u $(COMMONDIR)/*.sty $(dir)
-	cp -u $(COMMONDIR)/hgbarticle.cls $(dir)
-	make -C $(dir)
+	$(eval dir = HgbLatex-Article)
+	$(eval class = hgbarticle.cls)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(dir)
+	make -C $(dir) -f $(MKFILESUBDIR)
 
-internship :
+HgbLatex-InternshipReport :
 	@echo Making $@
 	$(eval dir=HgbLatex-InternshipReport)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
 	make -C $(dir)
 
-labreportDE :
+HgbLatex-LabReportDE :
 	@echo Making $@
 	$(eval dir=HgbLatex-LabReportDE)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbreport.cls $(dir)
 	make -C $(dir)
 
-labreportEN :
+HgbLatex-LabReportEN :
 	@echo Making $@
 	$(eval dir=HgbLatex-LabReportEN)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbreport.cls $(dir)
 	make -C $(dir)
 
-thesisDE :
+HgbLatex-ThesisDE :
 	@echo Making $@
 	$(eval dir=HgbLatex-ThesisDE)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
 	make -C $(dir)
 
-thesisEN :
+HgbLatex-ThesisEN :
 	@echo Making $@
 	$(eval dir=HgbLatex-ThesisEN)
 	cp -u $(COMMONDIR)/*.sty $(dir)
@@ -56,7 +59,7 @@ thesisEN :
 
 # ------------------------------------------------------------
 
-gitaddcommit :
+commit :
 	@echo "Performing GIT add/commit"
 	-git add -v $(BUILDDIR)/
 	-git commit -m "LaTeX style and class files updated" -v $(BUILDDIR)/
