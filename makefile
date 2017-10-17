@@ -16,37 +16,37 @@ all : $(BUILDS) commit
 # ------------------------------------------------------------
 
 HgbArticle :
-#	@echo Making $@
+	@echo "***** Making $@ *****"
 	$(eval class = hgbarticle.cls)
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
 	make -C $@ -f $(MKFILESUBDIR)
 
 HgbInternshipReport :
-#	@echo Making $@
+	@echo "***** Making $@ *****"
 	$(eval class = hgbthesis.cls)
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
 	make -C $@ -f $(MKFILESUBDIR)
 
 HgbLabReportDE :
-#	@echo Making $@
+	@echo "***** Making $@ *****"
 	$(eval class = hgbreport.cls)
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
 	make -C $@ -f $(MKFILESUBDIR)
 
 HgbLabReportEN :
-#	@echo Making $@
+	@echo "***** Making $@ *****"
 	$(eval class = hgbreport.cls)
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
 	make -C $@ -f $(MKFILESUBDIR)
 
 HgbThesisDE :
-#	@echo Making $@
+	@echo "***** Making $@ *****"
 	$(eval class = hgbthesis.cls)
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
 	make -C $@ -f $(MKFILESUBDIR)
 
 HgbThesisEN :
-#	@echo Making $@
+	@echo "***** Making $@ *****"
 	$(eval class = hgbthesis.cls)
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
 	make -C $@ -f $(MKFILESUBDIR)
