@@ -22,13 +22,13 @@ Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``
 This repository contains a set of **sub-modules**, one for each of the above-listed document types.
 Most users will only want to check out the relevant submodules.
 
-* ``HgbThesisDE``
-* ``HgbThesisEN``
-* ``HgbInternshipReport``
-* ``HgbLabReportDE``
-* ``HgbLabReportEN``
-* ``HgbTermReport``
-* ``HgbArticle``
+* ``HgbThesisDE``: https://github.com/Digital-Media/HgbThesisDE
+* ``HgbThesisEN``: https://github.com/Digital-Media/HgbThesisEN
+* ``HgbInternshipReport``: https://github.com/Digital-Media/HgbInternshipReport
+* ``HgbLabReportDE``: https://github.com/Digital-Media/HgbLabReportDE
+* ``HgbLabReportEN``: https://github.com/Digital-Media/HgbLabReportEN
+* ``HgbTermReport``: https://github.com/Digital-Media/HgbTermReport
+* ``HgbArticle``: https://github.com/Digital-Media/HgbArticle
 
 
 To use the template on your own computer you can choose between the following two options (button "Clone or download"):
