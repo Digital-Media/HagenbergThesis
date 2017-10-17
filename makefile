@@ -31,21 +31,21 @@ labreport :
 	$(eval dir=HgbLatex-LabReport)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbreport.cls $(dir)
-#	make -C $(dir)
+	make -C $(dir)
 
 thesisDE :
 	@echo Making $@
 	$(eval dir=HgbLatex-ThesisDE)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
-#	make -C $(dir)
+	make -C $(dir)
 
 thesisEN :
 	@echo Making $@
 	$(eval dir=HgbLatex-ThesisEN)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
-#	make -C $(dir)
+	make -C $(dir)
 
 # ------------------------------------------------------------
 
