@@ -1,1 +1,1 @@
-* Add makefile to automatically build distribution templates.
+* Reduce to single makefile and clean up
