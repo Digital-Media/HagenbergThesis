@@ -1,0 +1,10 @@
+Installing'make' for Windows
+
+This applies to GNU Make for Windows (version 3.81):
+
+1) Download package from http://gnuwin32.sourceforge.net/downlinks/make.php and install, typically in C:\Program Files (x86)\GnuWin32\bin\make.exe
+	
+2) Add 'C:\Program Files (x86)\GnuWin32\bin' to PATH using Control Panel -> System -> Advanced system settings -> Environment variables
+
+3) To test, open the Windows 'CommandPrompt and type 'make'. It should find the make executable (but will complain about missing targes).
+Alternatively, start the 'GitBash' shell (part of the Windows GIT installation) and run 'which make'. This should show the location of the make executable.
