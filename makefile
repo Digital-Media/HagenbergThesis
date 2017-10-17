@@ -30,25 +30,25 @@ internship :
 	@echo Making $@
 	$(eval dir=HgbLatex-InternshipReport)
 	cp -u $(COMMONDIR)/*.sty $(dir);
-	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
+	cp -u $(COMMONDIR)/hgbthesis.cls $(dir);
 
 labreport :
 	@echo Making $@
 	$(eval dir=HgbLatex-LabReport)
 	cp -u $(COMMONDIR)/*.sty $(dir);
-	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
+	cp -u $(COMMONDIR)/hgbreport.cls $(dir);
 
 thesis_DE :
 	@echo Making $@
 	$(eval dir=HgbLatex-ThesisDE)
 	cp -u $(COMMONDIR)/*.sty $(dir);
-	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
+	cp -u $(COMMONDIR)/hgbthesis.cls $(dir);
 
 thesis_EN :
 	@echo Making $@
 	$(eval dir=HgbLatex-ThesisEN)
 	cp -u $(COMMONDIR)/*.sty $(dir);
-	cp -u $(COMMONDIR)/hgbarticle.cls $(dir);
+	cp -u $(COMMONDIR)/hgbthesis.cls $(dir);
 
 # ------------------------------------------------------------
 
