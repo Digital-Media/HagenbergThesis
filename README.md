@@ -56,4 +56,4 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use one of
 * [HgbTermReport](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip)
 * [HgbArticle](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip)
 
-To load templates with more than 40 files users should create a (free) personal account before getting started.
+To load templates with more than 40 files users should create a (free) personal Overleaf account before getting started.
