@@ -3,7 +3,7 @@ SHELL = /bin/sh
 COMMONDIR = common
 BUILDDIR = .
 
-BUILDS = article internship labreport thesisDE thesisEN
+BUILDS = article internship labreportDE labreportEN thesisDE thesisEN
 #BUILDS = HgbLatex-Article HgbLatex-InternshipReport HgbLatex-LabReport HgbLatex-ThesisDE HgbLatex-ThesisEN
 
 
@@ -26,9 +26,16 @@ internship :
 	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
 	make -C $(dir)
 
-labreport :
+labreportDE :
 	@echo Making $@
-	$(eval dir=HgbLatex-LabReport)
+	$(eval dir=HgbLatex-LabReportDE)
+	cp -u $(COMMONDIR)/*.sty $(dir)
+	cp -u $(COMMONDIR)/hgbreport.cls $(dir)
+	make -C $(dir)
+
+labreportEN :
+	@echo Making $@
+	$(eval dir=HgbLatex-LabReportEN)
 	cp -u $(COMMONDIR)/*.sty $(dir)
 	cp -u $(COMMONDIR)/hgbreport.cls $(dir)
 	make -C $(dir)
