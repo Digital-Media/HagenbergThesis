@@ -16,3 +16,6 @@
 [submodule "HgbArticle"]
 	path = HgbArticle
 	url = https://github.com/Digital-Media/HgbArticle.git
+[submodule "HgbTermReport"]
+	path = HgbTermReport
+	url = https://github.com/Digital-Media/HgbTermReport.git
