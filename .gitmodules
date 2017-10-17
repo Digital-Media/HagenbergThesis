@@ -13,3 +13,9 @@
 [submodule "HgbLatex-Article"]
 	path = HgbLatex-Article
 	url = https://github.com/Digital-Media/HgbLatex-Article.git
+[submodule "HgbLatex-LabReportEN"]
+	path = HgbLatex-LabReportEN
+	url = https://github.com/Digital-Media/HgbLatex-LabReportEN.git
+[submodule "HgbLatex-LabReportDE"]
+	path = HgbLatex-LabReportDE
+	url = https://github.com/Digital-Media/HgbLatex-LabReportDE.git
