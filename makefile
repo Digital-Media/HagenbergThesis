@@ -7,55 +7,49 @@ MKFILESUBDIR = $(realpath makefile-subdir)
 
 
 #BUILDS = article internship labreportDE labreportEN thesisDE thesisEN
-BUILDS = HgbLatex_Article HgbLatex-InternshipReport HgbLatex-LabReportDE HgbLatex-LabReportEN HgbLatex-ThesisDE HgbLatex-ThesisEN
+BUILDS = HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbThesisDE HgbThesisEN
 
 
 all : $(BUILDS) commit
-.PHONY : all commit
+.PHONY : all $(BUILDS) commit
 
 # ------------------------------------------------------------
 
-HgbLatex_Article :
-	@echo Making $@
-	$(eval dir = HgbLatex-Article)
+HgbArticle :
+#	@echo Making $@
 	$(eval class = hgbarticle.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(dir)
-	make -C $(dir) -f $(MKFILESUBDIR)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
+	make -C $@ -f $(MKFILESUBDIR)
 
-HgbLatex-InternshipReport :
-	@echo Making $@
-	$(eval dir=HgbLatex-InternshipReport)
-	cp -u $(COMMONDIR)/*.sty $(dir)
-	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
-	make -C $(dir)
+HgbInternshipReport :
+#	@echo Making $@
+	$(eval class = hgbthesis.cls)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
+	make -C $@ -f $(MKFILESUBDIR)
 
-HgbLatex-LabReportDE :
-	@echo Making $@
-	$(eval dir=HgbLatex-LabReportDE)
-	cp -u $(COMMONDIR)/*.sty $(dir)
-	cp -u $(COMMONDIR)/hgbreport.cls $(dir)
-	make -C $(dir)
+HgbLabReportDE :
+#	@echo Making $@
+	$(eval class = hgbreport.cls)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
+	make -C $@ -f $(MKFILESUBDIR)
 
-HgbLatex-LabReportEN :
-	@echo Making $@
-	$(eval dir=HgbLatex-LabReportEN)
-	cp -u $(COMMONDIR)/*.sty $(dir)
-	cp -u $(COMMONDIR)/hgbreport.cls $(dir)
-	make -C $(dir)
+HgbLabReportEN :
+#	@echo Making $@
+	$(eval class = hgbreport.cls)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
+	make -C $@ -f $(MKFILESUBDIR)
 
-HgbLatex-ThesisDE :
-	@echo Making $@
-	$(eval dir=HgbLatex-ThesisDE)
-	cp -u $(COMMONDIR)/*.sty $(dir)
-	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
-	make -C $(dir)
+HgbThesisDE :
+#	@echo Making $@
+	$(eval class = hgbthesis.cls)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
+	make -C $@ -f $(MKFILESUBDIR)
 
-HgbLatex-ThesisEN :
-	@echo Making $@
-	$(eval dir=HgbLatex-ThesisEN)
-	cp -u $(COMMONDIR)/*.sty $(dir)
-	cp -u $(COMMONDIR)/hgbthesis.cls $(dir)
-	make -C $(dir)
+HgbThesisEN :
+#	@echo Making $@
+	$(eval class = hgbthesis.cls)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
+	make -C $@ -f $(MKFILESUBDIR)
 
 # ------------------------------------------------------------
 
