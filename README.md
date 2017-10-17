@@ -20,7 +20,10 @@ Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``
 ## Checkout
 
 This repository contains a set of **sub-modules**, one for each of the above-listed document types.
-Most users will only want to check out the relevant submodules.
+Checking out **this** repository returns the complete collection of templates and the associated devvelopment resources.
+
+
+Most users will want to **check out only the sub-repository** for a specific document type:
 
 * ``HgbThesisDE``: https://github.com/Digital-Media/HgbThesisDE
 * ``HgbThesisEN``: https://github.com/Digital-Media/HgbThesisEN
@@ -30,22 +33,26 @@ Most users will only want to check out the relevant submodules.
 * ``HgbTermReport``: https://github.com/Digital-Media/HgbTermReport
 * ``HgbArticle``: https://github.com/Digital-Media/HgbArticle
 
-
-To use the template on your own computer you can choose between the following two options (button "Clone or download"):
+To use a template on your own computer you can choose between the following two options (button "Clone or download"):
 
 1. **Download**: download as a ZIP file and extract at a location of your choice.
 2. **Clone**: clone as a Git repository to your (local) computer.
 3. **Fork**: copy to your own (remote) Github repository and clone afterwards.
 
-## Online Mode (experimental):
+To edit and process the templates requires a recent LaTeX environment to be installed on your computer.
 
-The template can also be used in online mode without having to maintain a LaTeX installation on your own computer:
 
-* Template on **Overleaf** (currently **NOT** updated): **https://www.overleaf.com/read/mrpbhfwzyvsq**
+## Online usage (Overleaf)
 
-The following steps are necessary for using the online template:
+The templates can also be used in online mode without having to install LaTeX on your own computer. 
+To process the templates on [Overleaf](https://www.overleaf.com/), create a (free) personal account
+and then use one of the following links to automatically import a specific template:
 
-* Create a (free) personal account,
-* Open the template (see URL above),
-* Select the main file (e.g. ``_thesis_EN.tex``, ``_termreport_EN.tex``, ...) and edit,
-* (Optionally) sync your files via Git.
+* [HgbThesisDE](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip)
+* [HgbThesisEN](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip)
+* [HgbInternshipReport](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip)
+* [HgbLabReportDE](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip)
+* [HgbLabReportEN](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip)
+* [HgbTermReport](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip)
+* [HgbArticle](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip)
+
