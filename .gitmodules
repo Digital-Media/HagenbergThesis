@@ -13,3 +13,21 @@
 [submodule "HgbLatex-LabReportDE"]
 	path = HgbLatex-LabReportDE
 	url = https://github.com/Digital-Media/HgbLatex-LabReportDE.git
+[submodule "HgbThesisEN"]
+	path = HgbThesisEN
+	url = https://github.com/Digital-Media/HgbThesisEN.git
+[submodule "HgbThesisDE"]
+	path = HgbThesisDE
+	url = https://github.com/Digital-Media/HgbThesisDE.git
+[submodule "HgbLabReportEN"]
+	path = HgbLabReportEN
+	url = https://github.com/Digital-Media/HgbLabReportEN.git
+[submodule "HgbLabReportDE"]
+	path = HgbLabReportDE
+	url = https://github.com/Digital-Media/HgbLabReportDE.git
+[submodule "HgbInternshipReport"]
+	path = HgbInternshipReport
+	url = https://github.com/Digital-Media/HgbInternshipReport.git
+[submodule "HgbArticle"]
+	path = HgbArticle
+	url = https://github.com/Digital-Media/HgbArticle.git
