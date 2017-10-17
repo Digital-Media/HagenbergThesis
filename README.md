@@ -45,7 +45,7 @@ To edit and process the templates requires a recent LaTeX environment to be inst
 ## Online usage (Overleaf)
 
 The templates can also be used in online mode without having to install LaTeX on your own computer. 
-To process the templates on [Overleaf](https://www.overleaf.com/), create a (free) personal account
+To process the templates on **[Overleaf](https://www.overleaf.com/)**, create a (free) personal account
 and then use one of the following links to automatically import a specific template:
 
 * [HgbThesisDE](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip)
