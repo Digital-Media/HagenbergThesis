@@ -20,7 +20,7 @@ Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``
 ## Checkout
 
 This repository contains a set of GIT **sub-modules**, one for each of the above-listed document types.
-Checking out **this** repository (recursively) yields the complete collection of templates and the 
+Checking out **this** repository (recursively) yields the **complete collection** of templates and the 
 associated development resources.
 
 
