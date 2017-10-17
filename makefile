@@ -1,11 +1,13 @@
 SHELL = /bin/sh
 
 COMMONDIR = common
-TEMPLATEDIR = templates
+#TEMPLATEDIR = templates
+TEMPLATEDIR = ./
 
 #TEMPLATES = article internship labreport thesis_DE thesis_EN
-TEMPLATES = HgbLatex-Article
+TEMPLATES = HgbLatex-Article HgbLatex-InternshipReport HgbLatex-LabReport HgbLatex-ThesisDE HgbLatex-ThesisEN
 
+#all : $(TEMPLATES) gitaddcommit
 all : $(TEMPLATES) gitaddcommit
 .PHONY : all
 
