@@ -14,13 +14,13 @@ This template serves as an introduction for creating a bachelor's, master's or d
 * ``HgbTermReport``: term report (English),
 * ``HgbArticle``: generic journal article (English).
 
-Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and multiplay style files  (``hgb.sty``, ...). These can also be used independently for other kinds of documents.
+Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and multiple style files  (``hgb.sty``, ...). These can also be used independently for other kinds of documents.
 
 
 ## Checkout
 
-This repository contains a set of **sub-modules**, one for each of the above-listed document types.
-Checking out **this** repository returns the complete collection of templates and the associated devvelopment resources.
+This repository contains a set of GIT **sub-modules**, one for each of the above-listed document types.
+Checking out **this** repository (recursively) yields the complete collection of templates and the associated development resources.
 
 
 Most users will want to **check out only the sub-repository** for a specific document type:
@@ -39,14 +39,14 @@ To use a template on your own computer you can choose between the following two 
 2. **Clone**: clone as a Git repository to your (local) computer.
 3. **Fork**: copy to your own (remote) Github repository and clone afterwards.
 
-To edit and process the templates requires a recent LaTeX environment to be installed on your computer.
+To edit and process any of the templates requires a recent LaTeX environment to be installed on your computer.
 
 
 ## Online usage (Overleaf)
 
 The templates can also be used in online mode without having to install LaTeX on your own computer. 
-To process the templates on **[Overleaf](https://www.overleaf.com/)**, create a (free) personal account
-and then use one of the following links to automatically import a specific template:
+To process the templates on **[Overleaf](https://www.overleaf.com/)** use one of the following links to 
+**automatically import** the associated template:
 
 * [HgbThesisDE](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip)
 * [HgbThesisEN](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip)
@@ -56,3 +56,4 @@ and then use one of the following links to automatically import a specific templ
 * [HgbTermReport](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip)
 * [HgbArticle](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip)
 
+To load templates with more than 40 files users should create a (free) personal account before getting started.
