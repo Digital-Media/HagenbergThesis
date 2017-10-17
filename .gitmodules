@@ -1,18 +1,3 @@
-[submodule "HgbLatex-ThesisEN"]
-	path = HgbLatex-ThesisEN
-	url = https://github.com/Digital-Media/HgbLatex-ThesisEN.git
-[submodule "HgbLatex-ThesisDE"]
-	path = HgbLatex-ThesisDE
-	url = https://github.com/Digital-Media/HgbLatex-ThesisDE.git
-[submodule "HgbLatex-InternshipReport"]
-	path = HgbLatex-InternshipReport
-	url = https://github.com/Digital-Media/HgbLatex-InternshipReport.git
-[submodule "HgbLatex-LabReportEN"]
-	path = HgbLatex-LabReportEN
-	url = https://github.com/Digital-Media/HgbLatex-LabReportEN.git
-[submodule "HgbLatex-LabReportDE"]
-	path = HgbLatex-LabReportDE
-	url = https://github.com/Digital-Media/HgbLatex-LabReportDE.git
 [submodule "HgbThesisEN"]
 	path = HgbThesisEN
 	url = https://github.com/Digital-Media/HgbThesisEN.git
