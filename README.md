@@ -15,7 +15,7 @@ To use a template on your own computer use the download links in the table below
 You can choose between the following two options (button "Clone or download"):
 
 1. **Clone**: open the associated Git repository and clone it to your (local) computer.
-1. **Download**: download the ZIP file and extract at a location of your choice.
+2. **Download**: download the ZIP file and extract at a location of your choice.
 3. **Fork**: open the associated Git repository, copy (fork) it to your own (remote) Github repository and clone afterwards.
 
 To edit and process any of the templates requires a recent LaTeX environment to be installed on your computer.
@@ -47,10 +47,9 @@ The following templates are currently available:
 \*Note: To open templates with more than 40 files users should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
 
 
+## Additional information
 
-
-
-
+* [Web page for this repository](https://Digital-Media.github.io/)
 
 
 
