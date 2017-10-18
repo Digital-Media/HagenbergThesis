@@ -60,15 +60,12 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use one of
 To load templates with more than 40 files users should create a (free) personal Overleaf account before getting started.
 
 
-| Document | GIT Repo | ZIP | Overleaf |
+| GIT Repo | Document Type | ZIP | Overleaf |
 | --- | --- | --- | --- |
-| ``HgbThesisDE`` | [open](https://github.com/Digital-Media/HgbThesisDE) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
-| ``HgbThesisEN`` | [open](https://github.com/Digital-Media/HgbThesisEN) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
-
-
-| GIT Repo | Document | ZIP | Overleaf |
-| --- | --- | --- | --- |
-| [HgbThesisDE](https://github.com/Digital-Media/HgbThesisDE) | bachelor/master/diploma thesis (German) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
-| [HgbThesisEN](https://github.com/Digital-Media/HgbThesisEN) | bachelor/master/diploma thesis (English) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
+| [HgbThesisDE](https://github.com/Digital-Media/HgbThesisDE) 
+	| Bachelor, Master, Diploma thesis (German) 
+	| [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) 
+	| [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
+| [HgbThesisEN](https://github.com/Digital-Media/HgbThesisEN) | Bachelor, Master, Diploma thesi (English) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
 
 
