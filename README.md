@@ -60,12 +60,14 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use one of
 To load templates with more than 40 files users should create a (free) personal Overleaf account before getting started.
 
 
+## Repositories and Downloads
+
 | GIT Repo | Document Type | ZIP | Overleaf |
-| --- | --- | --- | --- |
-| [HgbThesisDE](https://github.com/Digital-Media/HgbThesisDE) 
-	| Bachelor, Master, Diploma thesis (German) 
-	| [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) 
-	| [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
-| [HgbThesisEN](https://github.com/Digital-Media/HgbThesisEN) | Bachelor, Master, Diploma thesi (English) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
-
-
+| :--- | :--- | :--- | :--- |
+| [HgbThesisDE](https://github.com/Digital-Media/HgbThesisDE) | Bachelor, Master, Diploma thesis (German) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
+| [HgbThesisEN](https://github.com/Digital-Media/HgbThesisEN) | Bachelor, Master, Diploma thesis (English) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
+| [HgbInternshipReport](https://github.com/Digital-Media/HgbInternshipReport) | Internship Report (German) | [download](https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) |
+| [HgbLabReportDE](https://github.com/Digital-Media/HgbLabReportDE) | lab report (German) | [download](https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) |
+| [HgbLabReportEN](https://github.com/Digital-Media/HgbLabReportEN) | lab report (English) | [download](https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) |
+| [HgbTermReport](https://github.com/Digital-Media/HgbTermReport) | term report (English) | [download](https://github.com/Digital-Media/HgbTermReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip) |
+| [HgbArticle](https://github.com/Digital-Media/HgbArticle) | Journal article (English) | [download](https://github.com/Digital-Media/HgbArticle/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip) |
