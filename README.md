@@ -49,7 +49,7 @@ The following templates are currently available:
 
 ## Additional information
 
-* [Web page for this repository](https://Digital-Media.github.io/)
+* [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/)
 
 
 
