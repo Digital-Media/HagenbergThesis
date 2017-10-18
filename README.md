@@ -64,15 +64,5 @@ To load templates with more than 40 files users should create a (free) personal 
 | --- | --- | --- | --- |
 | ``HgbThesisDE`` | [open](https://github.com/Digital-Media/HgbThesisDE) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
 | ``HgbThesisEN`` | [open](https://github.com/Digital-Media/HgbThesisEN) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
-<<<<<<< HEAD
-=======
-=======
-| Document | GIT Repository | ZIP | Overleaf |
-| --- | --- | --- | --- |
-| ``HgbThesisDE`` | https://github.com/Digital-Media/HgbThesisDE | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [open](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
-| ``HgbThesisEN`` | https://github.com/Digital-Media/HgbThesisEN | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [open](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
->>>>>>> 88cacb17adea56db414fa6b8f8f0bb0ff2b6e277
-
-
 
 
