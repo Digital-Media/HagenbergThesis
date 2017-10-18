@@ -59,10 +59,10 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use one of
 
 To load templates with more than 40 files users should create a (free) personal Overleaf account before getting started.
 
-| Document | Repository | ZIP |
-| --- | --- | --- |
-| HgbThesisDE | https://github.com/Digital-Media/HgbThesisDE | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
-| ``HgbThesisEN`` | https://github.com/Digital-Media/HgbThesisEN | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
+| Document | GIT Repository | ZIP | Overleaf |
+| --- | --- | --- | --- |
+| ``HgbThesisDE`` | https://github.com/Digital-Media/HgbThesisDE | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [open](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
+| ``HgbThesisEN`` | https://github.com/Digital-Media/HgbThesisEN | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [open](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
 
 
 
