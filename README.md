@@ -59,10 +59,10 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use one of
 
 To load templates with more than 40 files users should create a (free) personal Overleaf account before getting started.
 
-| Command | Description |
+| Document | Repository |
 | --- | --- |
-| git status | List all new or modified files |
-| git diff | Show file differences that haven't been staged |
+| HgbThesisDE | https://github.com/Digital-Media/HgbThesisDE |
+| ``HgbThesisEN`` | https://github.com/Digital-Media/HgbThesisEN |
 
 
 
