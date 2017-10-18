@@ -49,8 +49,9 @@ The following templates are currently available:
 
 ## Additional information
 
+* [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
 * [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
-* [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki) (currently empty)
+
 
 
 
