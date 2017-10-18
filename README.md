@@ -9,6 +9,24 @@ The main (thesis) template serves as an introduction for creating a bachelor's, 
 Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and multiple style files  (``hgb.sty``, ...). These can also be used independently for other kinds of documents.
 
 
+## Checkout
+
+To use a template on your own computer use the download links in the table below. 
+You can choose between the following two options (button "Clone or download"):
+
+1. **Clone**: open the associated Git repository and clone it to your (local) computer.
+1. **Download**: download the ZIP file and extract at a location of your choice.
+3. **Fork**: open the associated Git repository, copy (fork) it to your own (remote) Github repository and clone afterwards.
+
+To edit and process any of the templates requires a recent LaTeX environment to be installed on your computer.
+
+
+## Online usage (Overleaf)
+
+The templates can also be used in online mode without having to install LaTeX on your own computer. 
+To process the templates on **[Overleaf](https://www.overleaf.com/)** use the links in the table below to 
+**automatically import** the associated template.
+
 
 ## Document templates
 
@@ -24,26 +42,7 @@ The following templates are currently available:
 | `HgbTermReport` | Term Teport (English) | [open](https://github.com/Digital-Media/HgbTermReport) | [download](https://github.com/Digital-Media/HgbTermReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip) |
 | `HgbArticle` | Journal Article (English) | [open](https://github.com/Digital-Media/HgbArticle) | [download](https://github.com/Digital-Media/HgbArticle/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip) |
 
-\*Note: To open templates with more than 40 files users should create a (free) personal Overleaf account before getting started.
-
-
-## Checkout
-
-To use a template on your own computer use the download links in the table above. 
-You can choose between the following two options (button "Clone or download"):
-
-1. **Clone**: open the associated Git repository and clone it to your (local) computer.
-1. **Download**: download the ZIP file and extract at a location of your choice.
-3. **Fork**: open the associated Git repository, copy (fork) it to your own (remote) Github repository and clone afterwards.
-
-To edit and process any of the templates requires a recent LaTeX environment to be installed on your computer.
-
-
-## Online usage (Overleaf)
-
-The templates can also be used in online mode without having to install LaTeX on your own computer. 
-To process the templates on **[Overleaf](https://www.overleaf.com/)** use the links in the table above to 
-**automatically import** the associated template.
+\*Note: To open templates with more than 40 files users should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
 
 
 
