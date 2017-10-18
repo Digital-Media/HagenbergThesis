@@ -41,7 +41,7 @@ The following templates are currently available:
 | `HgbInternshipReport` | Internship Report (German) | [open](https://github.com/Digital-Media/HgbInternshipReport) | [download](https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) |
 | `HgbLabReportDE` | Lab Report (German) | [open](https://github.com/Digital-Media/HgbLabReportDE) | [download](https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) |
 | `HgbLabReportEN` | Lab Report (English) | [open](https://github.com/Digital-Media/HgbLabReportEN) | [download](https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) |
-| `HgbTermReport` | Term Teport (English) | [open](https://github.com/Digital-Media/HgbTermReport) | [download](https://github.com/Digital-Media/HgbTermReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip) |
+| `HgbTermReport` | Term Report (English) | [open](https://github.com/Digital-Media/HgbTermReport) | [download](https://github.com/Digital-Media/HgbTermReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip) |
 | `HgbArticle` | Journal Article (English) | [open](https://github.com/Digital-Media/HgbArticle) | [download](https://github.com/Digital-Media/HgbArticle/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip) |
 
 \*Note: To open templates with more than 40 files users should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
@@ -51,6 +51,8 @@ The following templates are currently available:
 
 * [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
 * [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
+* [Recent changes](CHANGES.md)
+* [License](LICENSE.md)
 
 
 
