@@ -1,0 +1,5 @@
+
+https://www.overleaf.com/docs?snip_uri=https://github.com/user/project/archive/master.zip
+
+You must sign in to Overleaf to import this project (due to the large number of files):
+https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLatex-ThesisDE/archive/master.zip

@@ -1,73 +1,66 @@
-# Hagenberg LaTeX Thesis Template
+# Hagenberg LaTeX Templates
 
-## LaTeX-Vorlage für Bachelor- und Masterarbeiten
+## What you find here
 
-Moderne LaTeX-Vorlage für Abschlussarbeiten an der Universität oder Fachhochschule (Bachelor, Master, oder Diplom). Voreingestellt für Arbeiten in Deutsch oder Englisch, auch für LaTeX-Einsteiger einfach zu verwenden unter Windows, Mac OS und Linux.
+This is a collection of modern LaTeX templates for university theses (bachelor, master or diploma programs) and related documents. Pre-configured templates for English and German are available, easy to use even for LaTeX beginners, compatible with LaTeX distributions for Windows, Mac OS and Linux.
 
-Diese Vorlage dient gleichzeitig als Anleitung und Vorlage für die Erstellung einer Bachelor-, Master- oder Diplomarbeit mit LaTeX. Sie wird als allgemeiner Standard für derartige Arbeiten an der Fakultät für Informatik, Kommunikation und Medien der FH Oberösterreich empfohlen und wird mittlerweile auch an zahlreichen anderen Hochschulen im deutschsprachigen Raum verwendet. Die Vorlage ist leicht verständlich, sofort einsetzbar, einfach zu adaptieren und sollte in jeder LaTeX-Umgebung problemlos laufen. Folgende Vorlagen sind aktuell verfügbar:
+The main (thesis) template serves as an introduction for creating a bachelor's, master's or diploma thesis using LaTeX. It is the common standard for theses at the University of Applied Sciences Upper Austria - School of Informatics, Communication and Media and also in use at other (mostly German-speaking) universities. The template is plain, immediately usable and easy to adapt. It should work in any LaTeX environment.
 
-* ``_thesis_DE.tex``, ``_thesis_EN.tex``: Bachelor-, Master- oder Diplomarbeit (deutsch/englisch),
-* ``_internship_DE.tex``: Praktikumsbericht (gekürzte Variante der Bachelorarbeit),
-* ``_lab_report_DE.tex``, ``_lab_report_EN.tex``: Übungsprotokoll (für wöchentliche Übungsabgaben),
-* ``_termreport_EN.tex``: Semesterbericht,
-* ``_article.tex``: generischer Zeitschriftenartikel.
+Each template is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and multiple style files  (``hgb.sty``, ...). These can also be used independently for other kinds of documents.
 
 
-Die Vorlage basiert auf einer eigenen LaTeX-Dokumentenklasse (``hgbthesis.cls``) und mehreren Style-Dateien (``hgb.sty``, ...), die unabhängig auch für andere Arten von Dokumenten verwendet werden können.
+## Checkout
 
-### Checkout:
+To use a template on your own computer use the download links in the table below. 
+You can choose between the following two options (button "Clone or download"):
 
-Um die Vorlage auf dem eigenen Computer zu bearbeiten, gibt es 2 Möglichkeiten (Button "Clone or download"):
+1. **Clone**: open the associated Git repository and clone it to your (local) computer.
+2. **Download**: download the ZIP file and extract at a location of your choice.
+3. **Fork**: open the associated Git repository, copy (fork) it to your own (remote) Github repository and clone afterwards.
 
-1. **Download**: als ZIP-Datei downloaden und an passender Stelle expandieren.
-2. **Clone**: als Git-Repository auf den (lokalen) Rechner klonen.
-3. **Fork**: in ein eigenes (remote) Github-Repo kopieren und anschließend klonen.
+To edit and process any of the templates requires a recent LaTeX environment to be installed on your computer.
 
-### Online-Modus (experimentell):
-
-Die Vorlage kann auch im Online-Modus verwendet werden, mit dem Vorteil, dass keine LaTeX-Installation am eigenen Computer erforderlich ist:
-
-* Vorlage auf **Overleaf** (derzeit **NICHT** aktualisiert): **https://www.overleaf.com/read/mrpbhfwzyvsq**
-
-Zur Verwendung sind folgende Schritte erforderlich:
-
-* Personal Account anlegen (gratis),
-* Vorlage übernehmen (s. oben),
-* Hauptdatei auswählen (z.B. ``_thesis_DE.tex``, ``_termreport_DE.tex``, ...) und editieren,
-* Dateien über Git synchronisieren (falls gewünscht).
+**NOTE:** Regular users should **NOT clone THIS REPOSITORY** -- it is used for development only!
 
 
-## LaTeX Template for bachelor's and masters's theses
+## Online usage (Overleaf)
 
-A modern LaTeX template for university theses (bachelor, master or diploma programs). Pre-configured templates for English and German are available, easy to use even for LaTeX beginners, compatible with LaTeX distributions for Windows, Mac OS and Linux.
+The templates can also be used in online mode without having to install LaTeX on your own computer. 
+To process the templates on **[Overleaf](https://www.overleaf.com/)** use the links in the table below to 
+**automatically import** the associated template.
 
-This template serves as an introduction for creating a bachelor's, master's or diploma thesis using LaTeX. It is the common standard for theses at the University of Applied Sciences Upper Austria - School of Informatics, Communication and Media and also in use at other (mostly German-speaking) universities. The template is plain, immediately usable and easy to adapt. It should work in any LaTeX environment. The following templates are currently available:
 
-* ``_thesis_EN.tex``: bachelor's, master's or diploma thesis,
-* ``_internship_DE.tex``: internship report (shortened thesis variant),
-* ``_lab_report_EN.tex``: lab report,
-* ``_termreport_EN.tex``: term report,
-* ``_article.tex``: generic article.
+## Document templates
 
-The template is based on a custom LaTeX document class (``hgbthesis.cls``) and multiplay style files  (``hgb.sty``, ...). These can also be used independently for other kinds of documents.
+The following templates are currently available:
 
-### Checkout:
+| Name | Document Type | GIT Repo | ZIP | Overleaf |
+| :--- | :--- | :--- | :--- | :--- |
+| `HgbThesisDE` | Bachelor, Master, Diploma Thesis (German) | [open](https://github.com/Digital-Media/HgbThesisDE) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
+| `HgbThesisEN` | Bachelor, Master, Diploma Thesis (English) | [open](https://github.com/Digital-Media/HgbThesisEN) |[download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
+| `HgbInternshipReport` | Internship Report (German) | [open](https://github.com/Digital-Media/HgbInternshipReport) | [download](https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) |
+| `HgbLabReportDE` | Lab Report (German) | [open](https://github.com/Digital-Media/HgbLabReportDE) | [download](https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) |
+| `HgbLabReportEN` | Lab Report (English) | [open](https://github.com/Digital-Media/HgbLabReportEN) | [download](https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) |
+| `HgbTermReport` | Term Report (English) | [open](https://github.com/Digital-Media/HgbTermReport) | [download](https://github.com/Digital-Media/HgbTermReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip) |
+| `HgbArticle` | Journal Article (English) | [open](https://github.com/Digital-Media/HgbArticle) | [download](https://github.com/Digital-Media/HgbArticle/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip) |
 
-To use the template on your own computer you can choose between the following two options (button "Clone or download"):
+\*Note: To open templates with more than 40 files users should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
 
-1. **Download**: download as a ZIP file and extract at a location of your choice.
-2. **Clone**: clone as a Git repository to your (local) computer.
-3. **Fork**: copy to your own (remote) Github repository and clone afterwards.
 
-### Online Mode (experimental):
+## Additional information
 
-The template can also be used in online mode without having to maintain a LaTeX installation on your own computer:
+* [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
+* [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
+* [Recent changes](CHANGES.md)
+* [License](LICENSE.md)
 
-* Template on **Overleaf** (currently **NOT** updated): **https://www.overleaf.com/read/mrpbhfwzyvsq**
 
-The following steps are necessary for using the online template:
 
-* Create a (free) personal account,
-* Open the template (see URL above),
-* Select the main file (e.g. ``_thesis_EN.tex``, ``_termreport_EN.tex``, ...) and edit,
-* (Optionally) sync your files via Git.
+
+
+
+
+
+
+
+
