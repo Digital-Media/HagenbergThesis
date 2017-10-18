@@ -20,6 +20,8 @@ You can choose between the following two options (button "Clone or download"):
 
 To edit and process any of the templates requires a recent LaTeX environment to be installed on your computer.
 
+**NOTE:** Regular users should **NOT clone THIS REPOSITORY** -- it is used for development only!
+
 
 ## Online usage (Overleaf)
 
