@@ -1,1 +1,0 @@
-* Reduce to single makefile and clean up
