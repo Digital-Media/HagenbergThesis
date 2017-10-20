@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 
 COMMONDIR = common
-BUILDDIR = .
+BUILDDIR = subdirs
 MKFILESUB = $(realpath makefile-subdir)
 
 BUILDS = HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN
@@ -14,44 +14,44 @@ all : $(BUILDS) commit
 HgbArticle :
 	@echo "***** Making $@ *****"
 	$(eval class = hgbarticle.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
-	make -C $@ -f $(MKFILESUB)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
 HgbInternshipReport :
 	@echo "***** Making $@ *****"
 	$(eval class = hgbthesis.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
-	make -C $@ -f $(MKFILESUB)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
 HgbLabReportDE :
 	@echo "***** Making $@ *****"
 	$(eval class = hgbreport.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
-	make -C $@ -f $(MKFILESUB)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
 HgbLabReportEN :
 	@echo "***** Making $@ *****"
 	$(eval class = hgbreport.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
-	make -C $@ -f $(MKFILESUB)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
 HgbTermReport :
 	@echo "***** Making $@ *****"
 	$(eval class = hgbreport.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
-	make -C $@ -f $(MKFILESUB)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
 HgbThesisDE :
 	@echo "***** Making $@ *****"
 	$(eval class = hgbthesis.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
-	make -C $@ -f $(MKFILESUB)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
 HgbThesisEN :
 	@echo "***** Making $@ *****"
 	$(eval class = hgbthesis.cls)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $@
-	make -C $@ -f $(MKFILESUB)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
 # ------------------------------------------------------------
 
