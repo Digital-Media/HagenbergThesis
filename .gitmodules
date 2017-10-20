@@ -19,3 +19,6 @@
 [submodule "subrepos/HgbInternshipReport"]
 	path = subrepos/HgbInternshipReport
 	url = https://github.com/Digital-Media/HgbInternshipReport.git
+[submodule "subrepos/HgbThesisTutorial"]
+	path = subrepos/HgbThesisTutorial
+	url = https://github.com/Digital-Media/HgbThesisTutorial.git
