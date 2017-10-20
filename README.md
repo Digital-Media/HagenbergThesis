@@ -36,7 +36,7 @@ The following templates are currently available:
 
 | Name | Document Type | GIT Repo | ZIP | Overleaf |
 | :--- | :--- | :--- | :--- | :--- |
-| `HgbThesisTutorial` | Thesis Template and Tutorial (German) | [open](https://github.com/Digital-Media/HgbThesisTutorial) | [download](https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) |
+| `HgbThesisTutorial` | **Thesis Template and Tutorial** (German) | [open](https://github.com/Digital-Media/HgbThesisTutorial) | [download](https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) |
 | `HgbThesisDE` | Minimal Thesis  Template (German) | [open](https://github.com/Digital-Media/HgbThesisDE) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
 | `HgbThesisEN` | Minimal Thesis  Template (English) | [open](https://github.com/Digital-Media/HgbThesisEN) |[download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
 | `HgbInternshipReport` | Internship Report (German) | [open](https://github.com/Digital-Media/HgbInternshipReport) | [download](https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) |
