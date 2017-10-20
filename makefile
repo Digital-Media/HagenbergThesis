@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 
 COMMONDIR = common
-BUILDDIR = subdirs
+BUILDDIR = subrepos
 MKFILESUB = $(realpath makefile-subdir)
 
 BUILDS = HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN
