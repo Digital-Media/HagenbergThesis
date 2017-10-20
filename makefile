@@ -4,7 +4,7 @@ COMMONDIR = common
 BUILDDIR = subrepos
 MKFILESUB = $(realpath makefile-subdir)
 
-BUILDS = HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN
+BUILDS = HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial
 
 all : $(BUILDS) commit
 .PHONY : all $(BUILDS) commit
@@ -53,6 +53,13 @@ HgbThesisEN :
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
 	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
+HgbThesisTutorial :
+	@echo "***** Making $@ *****"
+	$(eval class = hgbthesis.cls)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
+	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
+
+	
 # ------------------------------------------------------------
 
 commit :
