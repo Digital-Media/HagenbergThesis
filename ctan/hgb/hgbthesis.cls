@@ -7,7 +7,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbthesisDate}{2017/02/28} %version string
+\newcommand{\hgbthesisDate}{2017/10/22} %version string
 \ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
 
 \RequirePackage{xifthen}
