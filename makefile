@@ -9,7 +9,7 @@ CTANDIR = ctan/hgb
 
 BUILDS = HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial
 
-all : $(BUILDS) commit
+all : $(BUILDS) ctan commit
 .PHONY : all $(BUILDS) ctan commit
 
 # ------------------------------------------------------------
