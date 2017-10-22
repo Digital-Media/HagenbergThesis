@@ -8,7 +8,7 @@ SUBMKFILE=$(realpath makefile-subdir)
 LATEXJOB=main
 export LATEXJOB
 
-CTANDIR=ctan/hgb
+CTANDIR=ctan
 
 BUILDS=HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial
 
@@ -67,10 +67,12 @@ HgbThesisTutorial :
 
 ctan :
 	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(CTANDIR)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(CTANDIR)/hgb
 	$(eval LATEXJOB=hgb)
-	make -C $(CTANDIR) -f $(SUBMKFILE)
-	
+	make -C $(CTANDIR)/hgb -f $(SUBMKFILE)
+	cd $(CTANDIR); rm -f hgb.zip; ./zip -r hgb.zip hgb -i *.tex *.sty *.cls *.pdf *.md
+# http://stahlworks.com/dev/?tool=zipunzip#zipexamp
+
 # ------------------------------------------------------------
 
 commit :
