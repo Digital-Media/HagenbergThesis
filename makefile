@@ -4,10 +4,13 @@ COMMONDIR = common
 BUILDDIR = subrepos
 MKFILESUB = $(realpath makefile-subdir)
 
+CTANDIR = ctan/hgb
+
+
 BUILDS = HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial
 
 all : $(BUILDS) commit
-.PHONY : all $(BUILDS) commit
+.PHONY : all $(BUILDS) ctan commit
 
 # ------------------------------------------------------------
 
@@ -59,6 +62,10 @@ HgbThesisTutorial :
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.bib $(COMMONDIR)/$(class) $(BUILDDIR)/$@
 	make -C $(BUILDDIR)/$@ -f $(MKFILESUB)
 
+ctan :
+	@echo "***** Making $@ *****"
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(CTANDIR)
+#	make -C $(CTANDIR) -f $(MKFILESUB)
 	
 # ------------------------------------------------------------
 
