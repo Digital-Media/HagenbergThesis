@@ -65,6 +65,7 @@ HgbThesisTutorial :
 ctan :
 	@echo "***** Making $@ *****"
 	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(CTANDIR)
+#	make -C $(CTANDIR) -f $(MKFILESUB)
 	
 # ------------------------------------------------------------
 
