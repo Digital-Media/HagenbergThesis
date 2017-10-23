@@ -7,8 +7,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbthesisDate}{2017/10/22} %version string
-\ProvidesClass{hgbthesis}[\hgbthesisDate\space LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
+\ProvidesClass{hgbthesis}[LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
 
 \RequirePackage{xifthen}
 
@@ -595,7 +594,7 @@ This work is published under the conditions of the
 			pdftitle={\@title},
 			pdfauthor={\@author},
 			pdfsubject={\@programname, \@placeofstudy},
-			pdfcreator={LaTeX using class hgbthesis [\hgbthesisDate]},
+			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
 			pdfkeywords={}
 	}%
