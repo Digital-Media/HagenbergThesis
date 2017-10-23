@@ -13,7 +13,7 @@ Authors:
 	W. Burger, W. Hochleitner
 
 License:
-	Creative Commons Attribution 4.0 International Public License
+	Creative Commons Attribution 4.0 International Public License (CC BY 4.0)
 	(https://creativecommons.org/licenses/by/4.0/legalcode)
 	
 URL:
