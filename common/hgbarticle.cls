@@ -7,8 +7,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbarticleDate}{2017/10/01} %version string
-\ProvidesClass{hgbarticle}[\hgbarticleDate\space LaTeX template for creating lab and term reports as well as other forms of academic documentation.]
+\ProvidesClass{hgbarticle} %[LaTeX template for creating lab and term reports as well as other forms of academic documentation.]
 
 \RequirePackage{xifthen}
 
@@ -64,7 +63,7 @@
 		pdftitle={\@title},
 		pdfauthor={\@author},
 		pdfsubject={},
-		pdfcreator={LaTeX using class hgbarticle [\hgbarticleDate]},
+		pdfcreator={LaTeX using class hgbarticle [\hgbDate]},
 		pdfproducer={pdflatex},
 		pdfkeywords={}
 	}%
