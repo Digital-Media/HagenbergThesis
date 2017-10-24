@@ -15,10 +15,13 @@ SUBREPOS=subrepos
 
 BUILDS=HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial Manual
 
+DUMMYDATE := 9999\/01\/01
+TODAY := $(shell date +"%Y\/%m\/%d")
+
 #all : $(BUILDS) ctan
-all : examples ctan subrepos
+all : examples ctan setdates subrepos
 examples : $(BUILDS)
-.PHONY : all examples $(BUILDS) ctan subrepos commit
+.PHONY : all examples $(BUILDS) ctan setdates subrepos
 
 # ------------------------------------------------------------
 
@@ -104,15 +107,25 @@ ctan :
 #	cd $(CTANDIR); rm -f $(hagenberg-thesis).zip; ./zip -r $(hagenberg-thesis).zip $(hagenberg-thesis) -i *.tex *.sty *.cls *.pdf *.md
 # http://stahlworks.com/dev/?tool=zipunzip#zipexamp
 
+setdates :
+#	$(eval LTXFILES := $(wildcard $(CTANDIR)/$(CTANPKG)/latex/*.cls) $(wildcard $(CTANDIR)/$(CTANPKG)/latex/*.sty))
+#	Replace the dummy date '9999/01/01' in all ctan/hagenberg-thesis/latex/*.cls and *.sty files
+	$(eval LTXFILES := $(shell find $(CTANDIR)/$(CTANPKG)/latex -name "*.sty" -or -name "*.cls" -type f))
+	$(foreach FILE, $(LTXFILES), $(shell sed -i 's/$(DUMMYDATE)/$(TODAY)/' $(FILE)))
+#	Replace the dummy date '9999/01/01' in all subrepo *.cls and *.sty files
+	$(eval LTXFILES := $(shell find $(SUBREPOS) -name "*.sty" -or -name "*.cls" -type f))
+	$(foreach FILE, $(LTXFILES), $(shell sed -i 's/$(DUMMYDATE)/$(TODAY)/' $(FILE)))
+#	echo "LTXFILES = "$(LTXFILES)
+	
 subrepos :
 #	for later: copy contents of $(CTANDIR)/$(CTANPKG)/examples/* to $(SUBREPOS)/* (clean)
 
 # ------------------------------------------------------------
 
-commit :
-	@echo "Performing GIT add/commit"
-	-git add -v $(BUILDDIR)/
-	-git commit -m "LaTeX style and class files updated" -v $(BUILDDIR)/
-	@echo GIT note: Commits need to be pushed to remote!
+#commit :
+#	@echo "Performing GIT add/commit"
+#	-git add -v $(BUILDDIR)/
+#	-git commit -m "LaTeX style and class files updated" -v $(BUILDDIR)/
+#	@echo GIT note: Commits need to be pushed to remote!
 
 
