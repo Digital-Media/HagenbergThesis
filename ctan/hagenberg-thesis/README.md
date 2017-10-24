@@ -1,7 +1,7 @@
-# The `hgb` Thesis Package
+# The `hagenberg-thesis` Package
 
-The **hgb** ("Hagenberg") package is a collection of modern LaTeX templates for
-university theses (bachelor, master or diploma programs) and related documents.
+This package is a collection of modern LaTeX templates for university theses (bachelor, 
+master or diploma programs) and related documents.
 This manual describes the main features of this package. Pre-configured document
 templates for English and German manuscripts and a complete tutorial are available
 on the package’s home repository.
