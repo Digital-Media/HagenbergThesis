@@ -12,11 +12,11 @@ in the package's home repository.
 ### Version: 2017/10/27
 
 ### Authors: 
-	W. Burger, W. Hochleitner
+W. Burger, W. Hochleitner
 
 ### License:
-	Creative Commons Attribution 4.0 International Public License (CC BY 4.0, see https://creativecommons.org/licenses/by/4.0/legalcode)
+Creative Commons Attribution 4.0 International Public License (CC BY 4.0, see https://creativecommons.org/licenses/by/4.0/legalcode)
 	
 ### Main repository: 
-	https://github.com/Digital-Media/HagenbergThesis
+https://github.com/Digital-Media/HagenbergThesis
 
