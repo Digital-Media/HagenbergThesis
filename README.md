@@ -32,7 +32,7 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use the li
 
 ## Document templates
 
-The following templates are currently available:
+The following example documents are currently available:
 
 | Name | Document Type | ZIP | Overleaf |
 | :--- | :--- | --- | --- |
