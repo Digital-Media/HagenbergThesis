@@ -9,8 +9,7 @@ in the package's home repository.
 
 ## Package information
 
-### 
-Version: 2017/10/27
+### Version: 2017/10/27
 
 ### Authors: 
 W. Burger, W. Hochleitner

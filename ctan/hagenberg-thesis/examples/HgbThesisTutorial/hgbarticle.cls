@@ -1,4 +1,5 @@
 %% hgbarticle.cls
+%% LaTeX class for creating lab and term reports as well as other forms of academic documentation.
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wolfgang Hochleitner (wolfgang.hochleitner@fh-hagenberg.at)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
@@ -7,8 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2017/10/27] 
-% LaTeX class for creating lab and term reports as well as other forms of academic documentation.
+\ProvidesClass{hgbarticle}[2017/10/27]
 
 \RequirePackage{xifthen}
 
