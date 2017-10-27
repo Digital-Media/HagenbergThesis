@@ -54,9 +54,9 @@ ctan :
 	cp -u $(TMPDIR)/*.sty $(TMPDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
 	cp -u $(EXAMPLESDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
 	cp -u $(EXAMPLESDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
-#	Copy the entire examples/ directory to ctan/hagenberg-thesis/, then remove all ZIP files
+#	Copy the entire examples/ directory to ctan/hagenberg-thesis/, then remove all top-level ZIP files
 	cp -u -R $(EXAMPLESDIR) $(CTANDIR)/$(CTANPKG)
-	find $(CTANDIR)/$(CTANPKG) -name "*.zip" -type f -delete
+	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR) -maxdepth 1 -name "*.zip" -type f -delete
 #	Make a ZIP of the complete ctan bundle:
 	cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXEPATH) -r $(CTANPKG).zip $(CTANPKG)
 
