@@ -1,5 +1,12 @@
 # Local makefile to buld LaTeX examples in subdirectories.
 
+# Usage (assuming a Linux-type shell, e.g. Git Bash on Windows):
+# 'make' or 'make all' -> to rebuild everything
+# 'make prepare' -> to copy *.sty and *.cls files to a tmp directory and set versiondates
+# 'make build' -> to buld all example documents
+# 'make <example>' -> to buld a specific example document, e.g. 'make HgbArticle'
+# 'make ctan' -> to assemble the complete CTAN package bundle
+
 SHELL = /bin/sh
 
 MKFILELATEX=$(realpath makefile-latex)
@@ -12,14 +19,12 @@ ZIPEXEPATH := $(realpath bin/zip.exe)
 DUMMYDATE := 9999\/01\/01
 TODAY := $(shell date +"%Y\/%m\/%d")
 
-
-# sed -i 's/9999\/01\/01/AbraKadabra/' hgb.sty
-
 CTANDIR = ctan
 CTANPKG = hagenberg-thesis
+READMEVERSIONTAG=\#\#\# Version:
 
 all : prepare build ctan
-.PHONY : all prepare copytex setdates build ctan $(EXAMPLES) listexamples
+.PHONY : all prepare copytex setdates build ctan $(EXAMPLES)
 
 prepare : copytex setdates
 
@@ -46,19 +51,21 @@ $(EXAMPLES) :
 #	Make a ZIP for importing to Overleaf:
 	cd $(EXAMPLESDIR)/; rm -f $@.zip; $(ZIPEXEPATH) -r $@.zip $@
 
-listexamples:
-	@echo "EXAMPLES = " $(EXAMPLES)
-
 ctan :
 	@echo "***** Making $@ *****"
 	cp -u $(TMPDIR)/*.sty $(TMPDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
 	cp -u $(EXAMPLESDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
 	cp -u $(EXAMPLESDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
-#	Copy the entire examples/ directory to ctan/hagenberg-thesis/, then remove all top-level ZIP files
+#	Copy the entire examples/ directory to ctan/hagenberg-thesis/
 	cp -u -R $(EXAMPLESDIR) $(CTANDIR)/$(CTANPKG)
+#	Remove all top-level ZIP files:
 	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR) -maxdepth 1 -name "*.zip" -type f -delete
+#	Update version number in package README file:
+	$(shell sed -i 's/$(READMEVERSIONTAG).*/$(READMEVERSIONTAG) $(TODAY)/' $(CTANDIR)/$(CTANPKG)/README.md)
 #	Make a ZIP of the complete ctan bundle:
 	cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXEPATH) -r $(CTANPKG).zip $(CTANPKG)
+
+
 
 	
 	
