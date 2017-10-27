@@ -1,0 +1,89 @@
+\chapter{Technische Informationen}
+\label{app:TechnischeInfos}
+
+\newcommand*{\checkbox}{{\fboxsep 1pt%
+\framebox[1.30\height]{\vphantom{M}\checkmark}}}
+
+\section{Aktuelle Dateiversionen}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+Datum & Datei \\
+\hline\hline
+\hgbDate       & \texttt{hgb.sty} \\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+
+\section{Details zur aktuellen Version}
+
+
+Das ist eine völlig überarbeitete Version der DA/BA-Vorlage, die
+\mbox{UTF-8} kodierten Dateien vorsieht und ausschließlich im PDF-Modus arbeitet.
+Der "`klassische"' DVI-PS-PDF-Modus wird somit nicht mehr unterstützt! 
+
+\subsection{Allgemeine technische Voraussetzungen}
+
+Eine aktuelle \latex-Installation mit
+\begin{itemize}
+	
+		\item Texteditor für \mbox{UTF-8} kodierte (Unicode) Dateien,
+		\item \texttt{biber}-Programm (BibTeX-Ersatz, Version $\geq 1.5$),
+		\item \texttt{biblatex}-Paket (Version $\geq 2.5$, 2013/01/10),
+		\item Latin Modern Schriften (Paket \texttt{lmodern}).%
+			\footnote{\url{http://www.ctan.org/pkg/lm}, \url{http://www.tug.dk/FontCatalogue/lmodern}}
+\end{itemize}
+
+
+\subsection{Verwendung unter Windows}
+\label{sec:VerwendungUnterWindows}
+
+Eine typische Installation unter Windows sieht folgendermaßen aus
+(s.\ auch Abschnitt \ref{sec:Windows}):
+%
+\begin{enumerate}
+\item \textbf{MikTeX 2.9}%
+	\footnote{\url{http://www.miktex.org/} -- \textbf{Achtung:} 
+	Generell wird die \textbf{Komplett\-installation} von MikTeX ("`Complete MiKTeX"') empfohlen, 
+	da diese bereits alle notwendigen Zusatzpakete und Schriftdateien enthält! 
+	Bei der Installation ist darauf zu achten, 
+	dass die automatische Installation erforderlicher Packages 
+	durch "`\emph{Install missing packages on-the-fly: = Yes}"' ermöglicht wird (NICHT "`\emph{Ask me first}"')!
+	Außerdem ist zu empfehlen, unmittelbar nach der Installation von MikTeX mit dem Programm
+	\texttt{MikTeX} $\to$ \texttt{Maintenance} $\to$ \texttt{Update} und \texttt{Package Manager} 
+	ein Update der installierten Pakete durchzuführen.}
+	(LaTeX-Basisumgebung),
+\item \textbf{TeXnicCenter 2.0}%
+	\footnote{\url{http://www.texniccenter.org/}}
+	(Editor, unterstützt UTF-8),
+\item \textbf{SumatraPDF}%
+	\footnote{\url{http://blog.kowalczyk.info/software/sumatrapdf/}} 
+	(PDF-Viewer).
+\end{enumerate}
+%
+Ein passendes TeXnicCenter-Outputprofil für MikTeX, Biber und Sumatra ist in diesem Paket enthalten.%
+\footnote{Datei \nolinkurl{_setup/texniccenter/tc_output_profile_sumatra_utf8.tco}} 
+Dieses sollte man zuerst
+über \texttt{Build} $\to$ \texttt{Define Output Profiles...} in TeXnicCenter importieren.
+\textbf{Achtung}: Alle neu angelegten \texttt{.tex}-Dateien sollten grundsätzlich in UTF-8 Kodierung gespeichert werden!
+
+
+\subsection{Verwendung unter Mac~OS}
+
+Diese Version sollte insbesondere mit \emph{MacTeX} problemlos laufen (s.\ auch Abschnitt \ref{sec:MacOs}):
+\begin{enumerate}
+\item 
+	\emph{MacTex} (2012 oder höher).
+\item 
+	Die Zeichenkodierung des Editors sollte auf UTF-8 eingestellt sein.
+\item 
+	Als Engine (vergleichbar mit den Ausgabeprofilen in TeXnicCenter) sollte \emph{LaTeXMk} verwendet werden. 
+	Dieses Perl-Skript erkennt automatisch, wie viele Aufrufe von \emph{pdfLaTeX} und \emph{Biber} nötig sind. 
+	Die Ausgabeprofile \emph{LaTeX} oder \emph{pdfLaTeX} hingegen müssen mehrmals aufgerufen werden, 
+	zudem werden hierbei auch die Literaturdaten nicht verarbeitet. Dazu müsste extra die \emph{Biber}-Engine 
+	aufgerufen werden, 	die jedoch noch nicht in allen Editoren vorhanden ist.
+\end{enumerate}

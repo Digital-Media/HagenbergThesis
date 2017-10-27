@@ -1,0 +1,118 @@
+%% A simple template for a term report using the Hagenberg setup
+%% based on the standard LaTeX 'report' class
+%% äöüÄÖÜß  <-- no German Umlauts here? Use an UTF-8 compatible editor!
+
+%%% Magic comments for setting the correct parameters in compatible IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = en_US
+% !BIB program = biber
+
+\documentclass[notitlepage,english]{hgbreport}
+
+\RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
+
+\graphicspath{{images/}}  % where are the images?
+\bibliography{references}  % requires file 'references.bib'
+
+%%%----------------------------------------------------------
+\author{Peter A.\ Wiseguy}
+\title{CS799 Ridiculously Advanced Systems\\ % the name of the course or project
+			Project Report}	% or "Term Report"
+\date{\today}
+%%%----------------------------------------------------------
+
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+
+\maketitle
+
+\begin{abstract}\noindent
+This document is a simple template for a typical term or semester paper (lab/course report, 
+``Übungsbericht'', \etc) based on the \textsf{HagenbergThesis} \latex package.%
+\footnote{See \url{https://github.com/Digital-Media/HagenbergThesis} for the most current version.
+This repository also provides a good introduction and useful hints for authoring academic texts with LaTeX.}
+The structure and chapter titles have been formulated to provide a good starting point
+for a typical \emph{project report}.
+This document uses the custom class \textsf{hgbreport} which is based on \latex's standard \textsf{report} 
+document class with \texttt{chapter} as the top structuring element. 
+If you wish to write this report in German you should substitute the line
+\begin{quote}
+ \verb!\documentclass[english]{hgbreport}! 
+\end{quote}
+at the top of this document by
+\begin{quote}
+ \verb!\documentclass[german]{hgbreport}!.
+\end{quote}
+Also, you may want to place the text of the individual chapters in separate files and 
+include them using \verb!\include{..}!.
+
+\bigskip
+\noindent
+Use the abstract to provide a short summary of the contents in the document.
+\end{abstract}
+
+
+%%%----------------------------------------------------------
+\tableofcontents
+%%%----------------------------------------------------------
+
+
+
+%%%----------------------------------------------------------
+\chapter{Aims and Context}
+%%%----------------------------------------------------------
+
+Describe the initial goals and situation that lead to this project, requirements, as well as
+references to related work (e.g., \cite{Higham1998}).
+
+
+
+%%%----------------------------------------------------------
+\chapter{Project Details}
+%%%----------------------------------------------------------
+
+Describe important project steps, e.g., rationale of the chosen architecture or technology stack, 
+design decisions, algorithms used, interesting challenges faced on the way, lessons 
+learned \etc
+
+
+
+
+%%%----------------------------------------------------------     
+\chapter{System Documentation}
+%%%----------------------------------------------------------
+
+Give a well-structured description of the architecture and the technical design
+o your implementation,
+with sufficient granularity to enable an external person to
+continue working on the project.
+
+
+%%%----------------------------------------------------------
+\chapter{Summary}
+%%%----------------------------------------------------------
+
+Give a concise (and honest) summary of what has been accomplished and what not. 
+Point out issues that may warrant further investigation.
+
+
+\appendix %%%-----------------------------------------------
+
+
+%%%----------------------------------------------------------
+\chapter{Supplementary Materials}
+%%%----------------------------------------------------------
+
+The appendix is a good place to attach a user guide, screenshots, installation instructions etc.
+Add a separate chapter for each major item.
+
+
+%%%----------------------------------------------------------
+\MakeBibliography[nosplit]
+%%%----------------------------------------------------------
+
+
+\end{document}

@@ -1,0 +1,38 @@
+https://ctan.org/upload
+
+Name of your contribution* 
+	hagenberg-thesis
+	
+Version number*
+	2017-10-27
+	
+Maintainer*
+	Wilhelm Burger
+
+Your email*
+	wilhelm.burger@fh-hagenberg.at
+	
+Summary description*
+	Collection of LaTeX templates for Bachelor/Master theses and related documents.
+
+Suggested CTAN directory*	
+	macros/latex/contrib
+
+Type of Upload*
+	New package
+
+Announcement (features, changes,...) *
+	A collection of modern LaTeX templates for university theses (bachelor, master or diploma programs) and related documents. This manual describes the main features of this package. Pre-configured document templates for English and German manuscripts and a complete tutorial are available on the package's home repository.
+	
+Administrative notes (to the CTAN maintainers)
+	
+	
+License type*
+	CC BY 4.0
+
+Repository: (only)
+	https://github.com/Digital-Media/HagenbergThesis
+
+	
+
+Infos: http://mirror.easyname.at/ctan/help/ctan/CTAN-upload-addendum.html
