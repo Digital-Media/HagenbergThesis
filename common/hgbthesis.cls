@@ -1,4 +1,5 @@
 %% hgbthesis.cls
+%% LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
@@ -7,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[9999/01/01] %[LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
+\ProvidesClass{hgbthesis}[9999/01/01]
 
 \RequirePackage{xifthen}
 
