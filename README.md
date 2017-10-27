@@ -34,16 +34,16 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use the li
 
 The following templates are currently available:
 
-| Name | Document Type | GIT Repo | ZIP | Overleaf |
+| Name | Document Type | ZIP | Overleaf |
 | :--- | :--- | :--- | :--- | :--- |
-| `HgbThesisTutorial` | **Thesis Template and Tutorial** (German) | [open](https://github.com/Digital-Media/HgbThesisTutorial) | [download](https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) |
-| `HgbThesisDE` | Minimal Thesis  Template (German) | [open](https://github.com/Digital-Media/HgbThesisDE) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
-| `HgbThesisEN` | Minimal Thesis  Template (English) | [open](https://github.com/Digital-Media/HgbThesisEN) |[download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
-| `HgbInternshipReport` | Internship Report (German) | [open](https://github.com/Digital-Media/HgbInternshipReport) | [download](https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) |
-| `HgbLabReportDE` | Lab Report (German) | [open](https://github.com/Digital-Media/HgbLabReportDE) | [download](https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) |
-| `HgbLabReportEN` | Lab Report (English) | [open](https://github.com/Digital-Media/HgbLabReportEN) | [download](https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) |
-| `HgbTermReport` | Term Report (English) | [open](https://github.com/Digital-Media/HgbTermReport) | [download](https://github.com/Digital-Media/HgbTermReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip) |
-| `HgbArticle` | Journal Article (English) | [open](https://github.com/Digital-Media/HgbArticle) | [download](https://github.com/Digital-Media/HgbArticle/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip) |
+| `HgbThesisTutorial` | **Thesis Template and Tutorial** (German) | [download](https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) |
+| `HgbThesisDE` | Minimal Thesis  Template (German) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
+| `HgbThesisEN` | Minimal Thesis  Template (English) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
+| `HgbInternshipReport` | Internship Report (German) | [download](https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbInternshipReport/archive/master.zip) |
+| `HgbLabReportDE` | Lab Report (German) | [download](https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportDE/archive/master.zip) |
+| `HgbLabReportEN` | Lab Report (English) | [download](https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbLabReportEN/archive/master.zip) |
+| `HgbTermReport` | Term Report (English) | [download](https://github.com/Digital-Media/HgbTermReport/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbTermReport/archive/master.zip) |
+| `HgbArticle` | Journal Article (English) | [download](https://github.com/Digital-Media/HgbArticle/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbArticle/archive/master.zip) |
 
 \*Note: To open templates with more than 40 files users should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
 
