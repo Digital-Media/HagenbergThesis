@@ -9,14 +9,14 @@ in the package's home repository.
 
 ## Package information
 
-###Version: 2017/10/27
+### Version: 2017/10/27
 
-###Authors: 
+### Authors: 
 	W. Burger, W. Hochleitner
 
-###License:
+### License:
 	Creative Commons Attribution 4.0 International Public License (CC BY 4.0, see https://creativecommons.org/licenses/by/4.0/legalcode)
 	
-###Main repository: 
+### Main repository: 
 	https://github.com/Digital-Media/HagenbergThesis
 
