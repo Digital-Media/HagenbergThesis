@@ -1,12 +1,15 @@
+# Local makefile to buld LaTeX examples in subdirectories.
+
+
 SHELL = /bin/sh
 
 PDFLATEX=pdflatex
-LATEXFLAGS?=-interaction=nonstopmode -file-line-error
+LATEXFLAGS=-interaction=nonstopmode -file-line-error
 BIBTEX=biber
 #IMAGEDIR=images
 IMAGEDIR=.
 
-#LATEXJOB=main
+LATEXJOB=main
 
 # Make does not offer a recursive wildcard function, so here's one (https://stackoverflow.com/a/12959694):
 #rwildcard=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
@@ -23,14 +26,19 @@ BIBS := $(shell find . -name "*.bib")
 PICS := $(shell find $(IMAGEDIR) -name "*.png" -or -name "*.pdf" -or -name "*.jpg")
 
 
-all: HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial Manual
-.PHONY : all HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial Manual clean listfiles
+#all: HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial Manual
+all : $(JOBS)
+#.PHONY : all HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial Manual clean listfiles
+.PHONY : all $(JOBS) clean listfiles
 
-	
+.ONESHELL:
 $(JOBS) : 
 	@echo Running LaTeX on $@
-	cd $@; 
-	ls -l *.tex
+	cd $@; \
+	pwd; \
+	ls -l *.tex ; \
+	$(PDFLATEX) $(LATEXFLAGS) main ;
+	$(BIBTEX) main
 	
 #$(LATEXJOB).pdf: $(CLASSES) $(STYLES) $(TEXS) $(PICS) $(BIBS)
 #	@echo Running LaTeX on $(LATEXJOB).tex
