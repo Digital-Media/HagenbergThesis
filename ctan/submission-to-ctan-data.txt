@@ -13,7 +13,7 @@ Your email*
 	wilhelm.burger@fh-hagenberg.at
 	
 Summary description*
-	Collection of LaTeX templates for Bachelor/Master theses and related documents.
+	Collection of LaTeX templates for Bachelor/Master theses and related documents
 
 Suggested CTAN directory*	
 	macros/latex/contrib
