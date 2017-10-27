@@ -35,7 +35,7 @@ To process the templates on **[Overleaf](https://www.overleaf.com/)** use the li
 The following templates are currently available:
 
 | Name | Document Type | ZIP | Overleaf |
-| :--- | :--- | :--- | :--- | :--- |
+| :--- | :--- | :--- | :--- |
 | `HgbThesisTutorial` | **Thesis Template and Tutorial** (German) | [download](https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisTutorial/archive/master.zip) |
 | `HgbThesisDE` | Minimal Thesis  Template (German) | [download](https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisDE/archive/master.zip) |
 | `HgbThesisEN` | Minimal Thesis  Template (English) | [download](https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HgbThesisEN/archive/master.zip) |
