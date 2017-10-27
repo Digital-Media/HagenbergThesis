@@ -7,7 +7,8 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle} %[LaTeX template for creating lab and term reports as well as other forms of academic documentation.]
+\ProvidesClass{hgbarticle}[2017/10/27] 
+% LaTeX class for creating lab and term reports as well as other forms of academic documentation.
 
 \RequirePackage{xifthen}
 

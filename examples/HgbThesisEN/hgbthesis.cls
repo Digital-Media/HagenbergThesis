@@ -7,7 +7,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[9999/01/01] %[LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
+\ProvidesClass{hgbthesis}[2017/10/27] %[LaTeX template for creating diploma theses, masters's theses, bachelor's theses and other term papers.]
 
 \RequirePackage{xifthen}
 
