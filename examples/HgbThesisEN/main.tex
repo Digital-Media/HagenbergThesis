@@ -1,0 +1,89 @@
+%%% File encoding: UTF-8
+%% äöüÄÖÜß  <-- no German Umlauts here? Use an UTF-8 compatible editor!
+
+%%% Magic comments for setting the correct parameters in compatible IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = en_US
+% !BIB program = biber
+
+\documentclass[master,english]{hgbthesis}
+% Permissible options in [..]: 
+%   Type of work: diploma, master (default), bachelor, internship 
+%   Main language: german, english (default)
+%%%----------------------------------------------------------
+
+\RequirePackage[utf8]{inputenc}		% Remove when using lualatex or xelatex entfernen!
+
+\graphicspath{{images/}}    % location of images and graphics
+\logofile{logo}				% logo file = images/logo.pdf (use \logofile{} for no logo)
+\bibliography{references}  	% name of bibliography file (references.bib)
+
+%%%----------------------------------------------------------
+% Title page entries
+%%%----------------------------------------------------------
+
+%%% Entries for ALL types of work: --------------------------
+\title{Partial Solutions to Universal Problems}
+\author{Peter A.\ Wiseguy}
+\programname{Universal Computing}
+\placeofstudy{Hagenberg}
+\dateofsubmission{2017}{02}{28}	% {YYYY}{MM}{DD}
+
+%%% Entries for Bachelor theses only: -----------------------
+\thesisnumber{XXXXXXXXXX-A}   %e.g. 1310238045-A  
+% (Stud-ID, A = 1st Bachelor thesis)
+\semester{Fall Semester 2017} 	% Fall/Spring Semester YYYY
+\coursetitle{Introduction to Trivial Problems 1} 
+\advisor{Roger K.~Putnik, M.Sc.}
+
+%%% Restricted publication license instead of CC (master only):
+%\strictlicense
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+
+%%%----------------------------------------------------------
+\frontmatter							% title part (roman page numbers)
+%%%----------------------------------------------------------
+
+\maketitle
+\tableofcontents
+
+\include{front/preface} 	% preface is optional
+\include{front/abstract}
+\include{front/kurzfassung}
+
+%%%----------------------------------------------------------
+\mainmatter          			% main part (arabic page numbers)
+%%%----------------------------------------------------------
+
+\include{chapters/introduction}
+\include{chapters/thethesis}
+\include{chapters/latex}
+\include{chapters/figures}
+\include{chapters/mathematics}
+\include{chapters/literature}
+\include{chapters/printing}
+\include{chapters/closing}
+
+%%%----------------------------------------------------------
+\appendix                                         % appendix 
+%%%----------------------------------------------------------
+
+\include{back/appendix_a}	% technical supplements
+\include{back/appendix_b}	% contents of the CD-ROM/DVD
+\include{back/appendix_c}	% chronological list of changes
+\include{back/appendix_d}	% source text of this document
+
+%%%----------------------------------------------------------
+\MakeBibliography                        				% references
+%%%----------------------------------------------------------
+
+%%% special page for checking print size --------------------
+\include{back/printbox}
+
+%%%----------------------------------------------------------
+\end{document}
+%%%----------------------------------------------------------

@@ -1,4 +1,5 @@
 %% hgbreport.cls
+%% LaTeX template for creating lab and term reports as well as other forms of academic documentation
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wolfgang Hochleitner (wolfgang.hochleitner@fh-hagenberg.at)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
@@ -7,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbreport} %[LaTeX template for creating lab and term reports as well as other forms of academic documentation.]
+\ProvidesClass{hgbreport}[9999/01/01]
 
 \RequirePackage{xifthen}
 
