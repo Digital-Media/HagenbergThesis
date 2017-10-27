@@ -1,142 +1,65 @@
-# This makefile controls the build process and perfoms
-# the following steps:
-# 1) All .cls, .sty and .bib files in common/ are copied to
-# the document directories in examples/ (inserting the current date).
-# 2) Sample LaTeX documents in examples/ are built and individually
-# ZIPed for use with Overleaf.
-# 3) The ctan/ release is assembled by (a) copying all .cls and .sty
-# files to ctan/latex/, (b) ...
+# Local makefile to buld LaTeX examples in subdirectories.
 
+SHELL = /bin/sh
 
-SHELL=/bin/sh
-
-
+MKFILELATEX=$(realpath makefile-latex)
+EXAMPLES := $(shell cd examples; find * -maxdepth 0 -type d)
 COMMONDIR=common
-BUILDDIR=examples
-SUBMKFILE=$(realpath makefile-subdir)
-
-# LATEXJOB refers to the TEX file to compile (used by the sub-makefile)
-LATEXJOB=main
-export LATEXJOB
-
-CTANDIR=ctan
-CTANPKG=hagenberg-thesis
-
-SUBREPOS=subrepos
-
-BUILDS=HgbArticle HgbInternshipReport HgbLabReportDE HgbLabReportEN HgbTermReport HgbThesisDE HgbThesisEN HgbThesisTutorial Manual
+EXAMPLESDIR=examples
+TMPDIR=tmpltx
+ZIPEXEPATH := $(realpath bin/zip.exe)
 
 DUMMYDATE := 9999\/01\/01
 TODAY := $(shell date +"%Y\/%m\/%d")
 
-#all : $(BUILDS) ctan
-all : examples ctan setdates subrepos
-examples : $(BUILDS)
-.PHONY : all examples $(BUILDS) ctan setdates subrepos
 
-# ------------------------------------------------------------
+# sed -i 's/9999\/01\/01/AbraKadabra/' hgb.sty
 
-HgbArticle :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
+CTANDIR = ctan
+CTANPKG = hagenberg-thesis
 
-HgbInternshipReport :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
+all : prepare build ctan
+.PHONY : all prepare copytex setdates build ctan $(EXAMPLES) listexamples
 
-HgbLabReportDE :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
+prepare : copytex setdates
 
-HgbLabReportEN :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
-
-HgbTermReport :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
-
-HgbThesisDE :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
-
-HgbThesisEN :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
-
-HgbThesisTutorial :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-	cp -u -R $(BUILDDIR)/$@ $(SUBREPOS)/$@
-
-# ------------------------------------------------------------
-
-Manual :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(BUILDDIR)/$@
-	make -C $(BUILDDIR)/$@ -f $(SUBMKFILE)
-
-# ------------------------------------------------------------
-	
-ctan :
-	@echo "***** Making $@ *****"
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
-	cp -u $(BUILDDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
-	cp -u $(BUILDDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
-#
-	cp -u -R $(BUILDDIR) $(CTANDIR)/$(CTANPKG)
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.sty" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.cls" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.aux" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.bbl" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.bcf" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.blg" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.log" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.out" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.run.xml" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.synctex" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.toc" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.tcp" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/examples -name "*.tps" -type f -delete
-#
-	cd $(CTANDIR); rm -f $(CTANPKG).zip; ./zip -r $(CTANPKG).zip $(CTANPKG)
-#	cd $(CTANDIR); rm -f $(hagenberg-thesis).zip; ./zip -r $(hagenberg-thesis).zip $(hagenberg-thesis) -i *.tex *.sty *.cls *.pdf *.md
-# http://stahlworks.com/dev/?tool=zipunzip#zipexamp
+copytex :
+	@echo Copying sty/cls files to $(TMPDIR)/
+	mkdir -p $(TMPDIR)
+	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(TMPDIR)
 
 setdates :
-#	$(eval LTXFILES := $(wildcard $(CTANDIR)/$(CTANPKG)/latex/*.cls) $(wildcard $(CTANDIR)/$(CTANPKG)/latex/*.sty))
-#	Replace the dummy date '9999/01/01' in all ctan/hagenberg-thesis/latex/*.cls and *.sty files
-	$(eval LTXFILES := $(shell find $(CTANDIR)/$(CTANPKG)/latex -name "*.sty" -or -name "*.cls" -type f))
+	@echo Replacing date entries in sty/cls files
+	$(eval LTXFILES := $(shell find $(TMPDIR)/ -name "*.sty" -or -name "*.cls" -type f))
+#	@echo "LTXFILES: " $(LTXFILES)
+#	Replace the dummy date '9999/01/01' in all examples/ *.cls and *.sty files#
 	$(foreach FILE, $(LTXFILES), $(shell sed -i 's/$(DUMMYDATE)/$(TODAY)/' $(FILE)))
-#	Replace the dummy date '9999/01/01' in all subrepo *.cls and *.sty files
-	$(eval LTXFILES := $(shell find $(SUBREPOS) -name "*.sty" -or -name "*.cls" -type f))
-	$(foreach FILE, $(LTXFILES), $(shell sed -i 's/$(DUMMYDATE)/$(TODAY)/' $(FILE)))
-#	echo "LTXFILES = "$(LTXFILES)
+
 	
-subrepos :
-#	for later: copy contents of $(CTANDIR)/$(CTANPKG)/examples/* to $(SUBREPOS)/* (clean)
+build : $(EXAMPLES)
 
-# ------------------------------------------------------------
+$(EXAMPLES) : 
+	@echo Running LaTeX on $@
+	cp -u $(TMPDIR)/*.* $(EXAMPLESDIR)/$@
+#	Run the LaTeX build in a sub-makefile:
+	make -C $(EXAMPLESDIR)/$@ -f $(MKFILELATEX)
+#	Make a ZIP for importing to Overleaf:
+	cd $(EXAMPLESDIR)/; rm -f $@.zip; $(ZIPEXEPATH) -r $@.zip $@
 
-#commit :
-#	@echo "Performing GIT add/commit"
-#	-git add -v $(BUILDDIR)/
-#	-git commit -m "LaTeX style and class files updated" -v $(BUILDDIR)/
-#	@echo GIT note: Commits need to be pushed to remote!
+listexamples:
+	@echo "EXAMPLES = " $(EXAMPLES)
 
+ctan :
+	@echo "***** Making $@ *****"
+	cp -u $(TMPDIR)/*.sty $(TMPDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
+	cp -u $(EXAMPLESDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
+	cp -u $(EXAMPLESDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
+#	Copy the entire examples/ directory to ctan/hagenberg-thesis/, then remove all ZIP files
+	cp -u -R $(EXAMPLESDIR) $(CTANDIR)/$(CTANPKG)
+	find $(CTANDIR)/$(CTANPKG) -name "*.zip" -type f -delete
+#	Make a ZIP of the complete ctan bundle:
+	cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXEPATH) -r $(CTANPKG).zip $(CTANPKG)
 
+	
+	
+	

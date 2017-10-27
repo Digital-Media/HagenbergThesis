@@ -7,7 +7,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[9999/01/01] 
+\ProvidesClass{hgbarticle}[2017/10/27] 
 % LaTeX class for creating lab and term reports as well as other forms of academic documentation.
 
 \RequirePackage{xifthen}
