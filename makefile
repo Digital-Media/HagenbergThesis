@@ -58,8 +58,11 @@ ctan :
 	cp -u $(EXAMPLESDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
 #	Copy the entire examples/ directory to ctan/hagenberg-thesis/
 	cp -u -R $(EXAMPLESDIR) $(CTANDIR)/$(CTANPKG)
+#	Remove all .sty and .cls files:
+	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/ -name "*.sty" -type f -delete
+	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/ -name "*.cls" -type f -delete
 #	Remove all top-level ZIP files:
-	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR) -maxdepth 1 -name "*.zip" -type f -delete
+	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/ -maxdepth 1 -name "*.zip" -type f -delete
 #	Update version number in package README file:
 	$(shell sed -i 's/$(READMEVERSIONTAG).*/$(READMEVERSIONTAG) $(TODAY)/' $(CTANDIR)/$(CTANPKG)/README.md)
 #	Make a ZIP of the complete ctan bundle:
