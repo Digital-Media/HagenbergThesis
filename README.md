@@ -54,6 +54,7 @@ The following example documents are currently available:
 * [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
 * [Recent changes](CHANGES.md)
 * [License](LICENSE.md)
+* [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/Manual/main.zip)
 
 
 
