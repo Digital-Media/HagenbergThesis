@@ -212,7 +212,7 @@ PNG verwendet werden.
 Besonders gerne werden farbige \textbf{Screenshots} einer JPEG-Kompression%
 \footnote{Das JPEG-Verfahren ist für natürliche Fotos konzipiert und dafür auch gut geeignet,
 seine undifferenzierte Verwendung ist aber zu einer globalen Plage geworden.}
-unterzogen, obwohl deren verheerende Folgen für jeden Laien sichtbar sein sollten
+unter\-zogen, obwohl deren verheerende Folgen für jeden Laien sichtbar sein sollten
 (Abb.~\ref{fig:jpeg-pfusch}).
 
 \begin{figure}
@@ -278,10 +278,10 @@ Abbildung \ref{fig:InkscapeExample} zeigt ein Beispiel dazu:
 \item
 Die ursprüngliche Inkscape-Grafik \nolinkurl{images/inkscape-template.svg}  enthält
 Texte, die nachträglich von \latex\ ersetzt werden sollen 
-(siehe Abb.~\ref{fig:InkscapeExample} (a)).
+(siehe Abb.~\ref{fig:InkscapeExample}\,(a)).
 \item
 Durch \textsf{Save a Copy...} (als PDF) in Inkscape, mit den Einstellungen wie in 
-Abb.~\ref{fig:InkscapeExample} (c), werden folgende zwei Files erzeugt:
+Abb.~\ref{fig:InkscapeExample}\,(c), werden folgende zwei Files erzeugt:
 \begin{itemize}
 \item[] \nolinkurl{inkscape-template.pdf}: eine PDF-Datei der Grafik ohne Texte, 
 \item[] \nolinkurl{inkscape-template.pdf_tex}: eine \latex-Datei mit allen relevanten Informationen.
@@ -292,7 +292,7 @@ Die Einbindung der Grafik in das Dokument erfolgt schließlich durch
 \begin{itemize}
 \item[] \verb!\input{images/inkscape-template.pdf_tex}!,
 \end{itemize}
-mit dem in Abb.~\ref{fig:InkscapeExample} (b) gezeigten Ergebnis.
+mit dem in Abb.~\ref{fig:InkscapeExample}\,(b) gezeigten Ergebnis.
 
 
 
@@ -361,18 +361,13 @@ innerhalb von eingebetteten Grafiken einzusetzen.
 Glücklicherweise stehen einige Portierungen von CM als {\em
 TrueType}-Schriften zur Verfügung, die auch in herkömmlichen
 DTP-Anwendungen unter \emph{Windows} und \emph{Mac~OS} verwendet werden
-können. Empfehlenswert ist \zB\ die \emph{BaKoMa Fonts
-Collection}\footnote{Von Basil K.\ Malyshev -- die BaKoMa-Fonts
-liegen dieser Vorlage bei, ansonsten finden sie sich \zB\ unter
-\url{www.ctan.org/tex-archive/fonts/cm/ps-type1/bakoma/}.}, die
-neben den CM-Standardschriften auch die mathematischen Schriften
+können. Empfehlenswert ist \zB\ die \emph{BaKoMa Fonts Collection},%
+\footnote{\url{http://ctan.org/pkg/bakoma-fonts}}
+die neben den CM-Standardschriften auch die mathematischen Schriften
 der AMS-Familie ent\-hält und zudem kostenfrei ist. Natürlich
 müssen die TrueType Schriften vor der Verwendung zunächst auf dem
 eigenen PC installiert werden. 
-%Ein Beispiel für eine in {\em
-%Freehand} erzeugte Grafik mit CM-Schriften findet sich in
-%Abb.~\ref{fig:latex-pdf-workflow} (Seite
-%\pageref{fig:latex-pdf-workflow}).
+
 
 \subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
 
@@ -381,8 +376,8 @@ Eine Alternative dazu sind die "`LM-Roman"'%
  Open-Type Schriften, die speziell für die Verwendung im Umfeld von \latex\ entwickelt wurden.
 Sie sind auch Teil der MikTeX-Installation.%
 \footnote{\zB unter \url{C:/Program Files (x86)/MikTeX 2.9/fonts/opentype/public/lm/}}
-Diese Schriften enthalten \ua\ Zeichen mit Umlauten und sind daher auch für deutsche Texte recht
-bequem zu verwenden.
+Diese Schriften enthalten \ua\ Zeichen mit Umlauten und sind daher auch für 
+deutsche Texte recht bequem zu verwenden.
 
 
 
@@ -421,7 +416,8 @@ Darunter liegt die Vektor\-grafik \texttt{mathematica-example.pdf}.}
 
 
 
-Dazu wird das \texttt{overpic}-Paket\footnote{\url{https://www.ctan.org/pkg/overpic}}
+Dazu wird das \texttt{overpic}-Paket%
+\footnote{\url{https://www.ctan.org/pkg/overpic}}
 verwendet und zum Importieren der Grafik anstelle von \verb!\includegraphics!
 die Umgebung \verb!\begin{overpic}! \ldots \verb!\end{overpic}! verwendet 
 (mit ähnlicher Syntax):
@@ -452,7 +448,7 @@ Weitere Details finden sich im Quelltext.
 Werden mehrere Bilder oder Grafiken zu einer Abbildung zusammengefasst, 
 wird üblicherweise eine gemeinsame Caption verwendet, wie in Abb.~\ref{fig:Bearings}
 dargestellt. Im Text könnte ein Verweis auf einen einzelnen Teil der Abbildung, etwa das 
-einreihige Rollenlager in Abb.~\ref{fig:Bearings} (c), so aussehen:
+einreihige Rollenlager in Abb.~\ref{fig:Bearings}\,(c), so aussehen:
 %
 \begin{LaTeXCode}[numbers=none]
     ... Abb.~\ref{fig:Bearings} (c) ... 
@@ -644,13 +640,16 @@ gesetzt (im "`Flattersatz"').}
 Die Einbindung von Programmtexten (source code) ist eine häufige Notwendigkeit,
 \va natürlich bei Arbeiten im Bereich der Informatik.
 
+
 \subsection{Formatierung von Programmcode}
 \label{sec:FormatierungVonProgrammcode}
 
-Es gibt für \latex\ spezielle Pakete zur Darstellung von Programmen, die \ua\ auch die automatische Nummerierung der Zeilen vornehmen, insbesondere das \texttt{listings}-Package.%
-\footnote{\url{http://www.ctan.org/tex-archive/macros/latex/contrib/listings/}}
-Damit sind auch die in Tabelle~\ref{tab:CodeUmgebungen} aufgelisteten Code-Umgebungen 
-realisiert.
+Es gibt für \latex\ spezielle Pakete zur Darstellung von Programmen, die \ua\ auch die automatische
+Nummerierung der Zeilen vornehmen, insbesondere die Pakete \texttt{listings}%
+\footnote{\url{https://ctan.org/pkg/listings}}
+und \texttt{listingsutf8}.%
+\footnote{\url{https://ctan.org/pkg/listingsutf8}}
+Damit sind auch die in Tabelle~\ref{tab:CodeUmgebungen} aufgelisteten Code-Umgebungen realisiert.
 %
 \begin{table}
 \caption{In \nolinkurl{hgb.sty} vordefinierte Code-Umgebungen.}
