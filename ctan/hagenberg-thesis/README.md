@@ -1,17 +1,13 @@
 # The `hagenberg-thesis` Package
 
-This bundle contains a collection of modern LaTeX templates for university theses (bachelor, 
-master or diploma programs) and related documents.
-This manual describes the main features of this package. Pre-configured examples
-for English and German manuscripts and a complete tutorial are available
-in the package's home repository.
+A collection of modern LaTeX classes, style files and example documents for authoring Bachelor, Master or Diploma theses and related academic manuscripts in English and German. This includes a comprehensive tutorial with detailed instructions and guidelines. 
 
 
 ## Package information
 
 ### Version: 2017/10/27
 
-### Authors: 
+### Authors:
 W. Burger, W. Hochleitner
 
 ### License:
