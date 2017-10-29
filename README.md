@@ -54,6 +54,7 @@ The following example documents are currently available:
 * [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
 * [Recent changes](CHANGES.md)
 * [License](LICENSE.md)
+* [Package on CTAN](https://ctan.org/pkg/hagenberg-thesis)
 * [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/Manual/main.pdf)
 
 
