@@ -4,7 +4,7 @@
 
 This is a collection of modern LaTeX classes, style files and example documents for authoring Bachelor, Master or Diploma theses and related academic manuscripts in English and German. Pre-configured documents for English and German are available, easy to use even for LaTeX beginners and compatible with LaTeX distributions for Windows, Mac OS and Linux.
 
-The [main (thesis) document](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip)
+The [main (thesis) document](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf)
 serves as an introduction for creating a bachelor's, master's or diploma thesis using LaTeX. It is the common standard for theses at the University of Applied Sciences Upper Austria - School of Informatics, Communication and Media and also in use at other (mostly German-speaking) universities. The document classes are immediately usable and easy to adapt. They should work in any modern LaTeX environment.
 
 Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
