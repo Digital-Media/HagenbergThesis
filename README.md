@@ -12,13 +12,15 @@ Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesi
 **NOTE:** Typical users should **NOT clone THIS REPOSITORY** -- it is used for development only!
 
 
-## Checkout
+## How to use
+
+### Checkout 
 
 To open a sample document on your own computer use the appropriate **download** (ZIP) link in the table below. 
 Make sure you have a recent LaTeX environment installed locally.
-Unzip the downloaded archive and open the `main.tex` file in your TeX editor.
+Unzip the downloaded archive to a suitable location and open the `main.tex` file in your TeX editor.
 
-## Online usage (Overleaf)
+### Online usage (Overleaf)
 
 The sample documents can also be used in online mode without having to install LaTeX on your own computer.
 Use the **create** links in the table below to open the document on **[Overleaf](https://www.overleaf.com/)**.
