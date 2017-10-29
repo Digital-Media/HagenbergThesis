@@ -53,20 +53,23 @@ $(EXAMPLES) :
 
 ctan :
 	@echo "***** Making $@ *****"
+#	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
 	cp -u $(TMPDIR)/*.sty $(TMPDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
-#	Copy manual source and PDF to doc/
-	cp -u $(EXAMPLESDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
-	cp -u $(EXAMPLESDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
-#	Copy tutorial PDF (only) to doc/
-#	cp -u $(EXAMPLESDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
 #	Copy the entire examples/ directory to ctan/hagenberg-thesis/
 	cp -u -R $(EXAMPLESDIR) $(CTANDIR)/$(CTANPKG)
-	rm -rf $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/Manual
-#	Remove all .sty and .cls files:
+#	Remove all .sty and .cls files in ctan/examples/ (recursively):
 	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/ -name "*.sty" -type f -delete
 	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/ -name "*.cls" -type f -delete
-#	Remove all top-level ZIP files:
+#	Remove all top-level ZIP files in ctan/examples/:
 	find $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/ -maxdepth 1 -name "*.zip" -type f -delete
+#	Copy manual source and PDF to ctan/hagenberg-thesis/doc/
+#	cp -u $(EXAMPLESDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
+#	cp -u $(EXAMPLESDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
+#	Create symbolic links to manual and tutorial in ctan/hagenberg-thesis/doc/:
+	cd $(CTANDIR)/$(CTANPKG)/doc; \
+		ln -sf ../$(EXAMPLESDIR)/Manual/main.pdf $(CTANPKG).pdf; \
+		ln -sf ../$(EXAMPLESDIR)/Manual/main.tex $(CTANPKG).tex; \
+		ln -sf ../$(EXAMPLESDIR)/HgbThesisTutorial/main.pdf $(CTANPKG)-tutorial.pdf
 #	Update version number in package README file:
 	$(shell sed -i 's/$(READMEVERSIONTAG).*/$(READMEVERSIONTAG) $(TODAY)/' $(CTANDIR)/$(CTANPKG)/README.md)
 #	Make a ZIP of the complete ctan bundle:

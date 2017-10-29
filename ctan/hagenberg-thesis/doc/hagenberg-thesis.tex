@@ -3,13 +3,12 @@
 \RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
 
 
-\title{The \texttt{hagenberg-thesis} Bundle}
+\title{The \textsf{hagenberg-thesis} Package}
 \date{\hgbDate}
 
 \author{W.\ Burger and W.\ Hochleitner\\[10pt]
 University of Applied Sciences Upper Austria\\
-Department of Digital Media\\
-Hagenberg, Austria}
+Department of Digital Media, Hagenberg (Austria)}
 
 %\author{
 %Wilhelm Burger, Wolfgang Hochleitner\\ 
@@ -26,7 +25,7 @@ Hagenberg, Austria}
 %%%----------------------------------------------------------
 
 \begin{abstract}\noindent
-The \texttt{hagenberg-thesis} bundle is a collection of modern LaTeX templates for university theses (bachelor, 
+The \textsf{hagenberg-thesis} package is a collection of modern LaTeX templates for university theses (bachelor, 
 master or diploma programs) and related documents.
 This manual describes the main features of this package.
 Pre-configured document templates for English and German manuscripts and a complete
@@ -37,14 +36,11 @@ tutorial are available on the package's home repository.
 
 \section{Introduction}
 
-The complete source of this package and additional materials are hosted in this 
-repository:
-%
-\begin{center}
-\url{https://github.com/Digital-Media/HagenbergThesis}
-\end{center}
-This package is made available under the terms of the
-\emph{Creative Commons Attribution 4.0 International Public License}.%
+The complete source of this package and auxiliary materials are available on
+CTAN\footnote{\url{https://ctan.org/pkg/hagenberg-thesis}}
+and its development repository.\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
+The package is made available under the terms of the
+Creative Commons Attribution 4.0 International Public License.%
 \footnote{\url{https://creativecommons.org/licenses/by/4.0/legalcode}}
 
 
@@ -116,7 +112,7 @@ The following parameters must be specified for \emph{all} types:
 
 \section{Style files and user commands}
 
-The \texttt{hgb} package comes with a set of style (\texttt{*.sty}) files that can be used
+The package comes with a set of style (\texttt{*.sty}) files that can be used
 independently of the document classes listed above:
 \texttt{hgb.sty},
 \texttt{hgbabbrev.sty},
@@ -130,7 +126,7 @@ independently of the document classes listed above:
 
 
 \begin{itemize}
-\item \textbf{\texttt{{\bs}hgbDate}}: Outputs the \texttt{hgb} package version, 
+\item \textbf{\texttt{{\bs}hgbDate}}: Outputs the package version date, 
 		\eg, ``\texttt{\hgbDate}''.
 \item \textbf{\texttt{{\bs}calibrationbox}}: Inserts a test box for checking the final print size.
 \end{itemize}
@@ -223,8 +219,11 @@ The following types of code environments are defined:%
 \item \textbf{\texttt{XmlCode}}: for XML.
 \end{itemize}
 %
-\texttt{hgblistings} is based on the \texttt{listingsutf8} package,
-thus any valid \texttt{listings} option may be used; for example, 
+\texttt{hgblistings} is based on the \texttt{listingsutf8}%
+\footnote{\url{https://ctan.org/pkg/listingsutf8}}
+package, thus any valid \texttt{listings}%
+\footnote{\url{https://ctan.org/pkg/listings}}
+option may be used; for example, 
 the option \texttt{numbers=none} to suppress line numbers:
 \begin{LaTeXCode}[numbers=none]
     \begin{JavaCode}[numbers=none]
@@ -236,7 +235,9 @@ the option \texttt{numbers=none} to suppress line numbers:
 
 \subsection{Mathematical commands (\texttt{hgbmath.sty})}
 
-\texttt{hgbmath} requires (and automatically loads) the \texttt{amsmath} package, thus all
+\texttt{hgbmath} requires (and automatically loads) the \texttt{amsmath}%
+\footnote{\url{https://ctan.org/pkg/amsmath}}
+package, thus all
 commands and symbols of \texttt{amsmath} are available by default.
 The following \emph{additional} commands can only be used in math mode:
 %

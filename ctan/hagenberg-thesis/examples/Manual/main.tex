@@ -1,0 +1,307 @@
+\documentclass[english]{hgbarticle}
+
+\RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
+
+
+\title{The \textsf{hagenberg-thesis} Package}
+\date{\hgbDate}
+
+\author{W.\ Burger and W.\ Hochleitner\\[10pt]
+University of Applied Sciences Upper Austria\\
+Department of Digital Media, Hagenberg (Austria)}
+
+%\author{
+%Wilhelm Burger, Wolfgang Hochleitner\\ 
+%\texttt{wilhelm.burger@fh-ooe.at}
+%\and
+%Wolfgang Hochleitner\\
+%\texttt{wolfgang.hochleitner@fh-ooe.at}}
+
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+\maketitle
+%%%----------------------------------------------------------
+
+\begin{abstract}\noindent
+The \textsf{hagenberg-thesis} package is a collection of modern LaTeX templates for university theses (bachelor, 
+master or diploma programs) and related documents.
+This manual describes the main features of this package.
+Pre-configured document templates for English and German manuscripts and a complete
+tutorial are available on the package's home repository.
+\end{abstract}
+
+
+
+\section{Introduction}
+
+The complete source of this package and auxiliary materials are available on
+CTAN\footnote{\url{https://ctan.org/pkg/hagenberg-thesis}}
+and its development repository.\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
+The package is made available under the terms of the
+Creative Commons Attribution 4.0 International Public License.%
+\footnote{\url{https://creativecommons.org/licenses/by/4.0/legalcode}}
+
+
+\section{Document classes}
+
+The \texttt{hgb} package provides the following document classes,
+which are based on the standard \latex\ classes
+\texttt{book}, \texttt{report} and \texttt{article}, respectively:
+%
+\begin{itemize}
+\item \textbf{\texttt{hgbthesis}} (\texttt{book}): 
+for Bachelor, Master and Diploma theses;
+\item \textbf{\texttt{hgbreport}} (\texttt{report}):
+for project and term reports;
+\item \textbf{\texttt{hgbarticle}} (\texttt{article}):
+for drafting journal articles.
+\end{itemize}
+
+
+
+\subsection{Class options} 
+The above document classes accept the following options:
+%
+\begin{raggedright}
+\begin{itemize}
+\item \textbf{\texttt{hgbthesis}}: 
+	\texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{praktikum}, 
+	\texttt{internship}, \texttt{english}, \texttt{german};
+\item \textbf{\texttt{hgbreport}}: \texttt{notitlepage}, \texttt{english}, \texttt{german};
+\item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}, \texttt{english}, \texttt{german}.
+\end{itemize}
+\end{raggedright}
+%
+For example, to start a Master thesis in German
+one would simply simply place
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[master,german]{hgbthesis}
+\end{LaTeXCode}
+%
+at the beginning of the document.
+
+
+
+\subsection{Thesis parameters (class \texttt{hgbthesis})}
+
+\texttt{hgbthesis} supports several types of thesis documents.
+The following parameters must be specified for \emph{all} types:
+%
+\begin{itemize}
+\item \verb!\title{...}!,
+\item \verb!\author{...}!,
+\item \verb!\programname{...}!,
+\item \verb!\placeofstudy{...}!,
+\item \verb!\dateofsubmission{yyyy}{mm}{dd}!.
+\end{itemize}
+%
+\noindent A \emph{Bachelor} thesis requires the following, additional items 
+(not relevant for Diploma and Master theses):
+%
+\begin{itemize}
+\item \verb!\thesisnumber{...}!,
+\item \verb!\coursetitle{...}!,
+\item \verb!\semester{...}!,
+\item \verb!\advisor{...}!.
+\end{itemize}
+
+
+
+\section{Style files and user commands}
+
+The package comes with a set of style (\texttt{*.sty}) files that can be used
+independently of the document classes listed above:
+\texttt{hgb.sty},
+\texttt{hgbabbrev.sty},
+\texttt{hgbbib.sty},
+\texttt{hgbheadings.sty},
+\texttt{hgblistings.sty},
+\texttt{hgbmath.sty}.
+
+
+\subsection{General user commands (\texttt{hgb.sty})}
+
+
+\begin{itemize}
+\item \textbf{\texttt{{\bs}hgbDate}}: Outputs the package version date, 
+		\eg, ``\texttt{\hgbDate}''.
+\item \textbf{\texttt{{\bs}calibrationbox}}: Inserts a test box for checking the final print size.
+\end{itemize}
+
+
+
+\subsection{Text commands (\texttt{hgbabbrev.sty})}
+
+\subsubsection*{Special characters:}
+
+\begin{itemize}
+\item \textbf{\texttt{{\bs}bs}}: Inserts a backslash character (short for \verb!\textbackslash!).
+\item \textbf{\texttt{{\bs}obnh}}: Inserts an optional break with no hyphen (\eg, \verb!PlugIn{\obnh}Filter!).
+\end{itemize}
+
+
+
+\subsubsection*{German abbreviations:}
+
+\begin{itemize}
+\item \textbf{\texttt{{\bs}bzgl}}: bzgl.
+\item \textbf{\texttt{{\bs}bzw}}: bzw.
+\item \textbf{\texttt{{\bs}ca}}: ca.
+\item \textbf{\texttt{{\bs}dah}}: d.\thinspace{}h.
+\item \textbf{\texttt{{\bs}Dah}}: D.\thinspace{}h.
+\item \textbf{\texttt{{\bs}ds}}: d.\thinspace{}sind
+\item \textbf{\texttt{{\bs}etc}}: etc.
+\item \textbf{\texttt{{\bs}evtl}}: evtl.
+\item \textbf{\texttt{{\bs}ia}}: i.\thinspace{}Allg.
+\item \textbf{\texttt{{\bs}sa}}: s.\ auch
+\item \textbf{\texttt{{\bs}so}}: s.\ oben
+\item \textbf{\texttt{{\bs}su}}: s.\ unten
+\item \textbf{\texttt{{\bs}ua}}: u.\thinspace{}a.
+\item \textbf{\texttt{{\bs}Ua}}: U.\thinspace{}a.
+\item \textbf{\texttt{{\bs}uae}}: u.\thinspace{}\"A.
+\item \textbf{\texttt{{\bs}usw}}: usw.
+\item \textbf{\texttt{{\bs}uva}}: u.\thinspace{}v.\thinspace{}a.
+\item \textbf{\texttt{{\bs}uvm}}: u.\thinspace{}v.\thinspace{}m.
+\item \textbf{\texttt{{\bs}va}}: vor allem
+\item \textbf{\texttt{{\bs}vgl}}: vgl.
+\item \textbf{\texttt{{\bs}zB}}: z.\thinspace{}B.
+\item \textbf{\texttt{{\bs}ZB}}: Zum Beispiel
+\end{itemize}
+
+\subsubsection*{English abbreviations:}
+
+\begin{itemize}
+\item \textbf{\texttt{{\bs}ie}}: \ie
+\item \textbf{\texttt{{\bs}eg}}: \eg
+\item \textbf{\texttt{{\bs}etc}}: etc.
+\item \textbf{\texttt{{\bs}Eg}}: \Eg
+\item \textbf{\texttt{{\bs}wrt}}: \wrt
+\end{itemize}
+
+
+\subsection{Bibliography commands (\texttt{hgbbib.sty})}
+
+
+
+\begin{itemize}
+\item \textbf{\texttt{{\bs}AddBibFile}}: A wrapper to \texttt{biblatex}'s \verb!\addbibresource! macro
+(for backward compatibility only).
+\item \textbf{\texttt{{\bs}MakeBibliography[\emph{options}]}}: Inserts the reference section or chapter.
+By default, references are automatically split into category subsections.%
+\footnote{Predefined reference categories are \texttt{literature}, \texttt{avmedia}, \texttt{online} and \texttt{software}.}
+Use the option \texttt{nosplit} to produce a traditional (\ie, contiguous) list of references.
+\end{itemize}
+
+% \MakeBibliography ... creates a reference section split subsections (default)
+% \MakeBibliography[nosplit] ... creates a one-piece reference section
+
+
+\subsection{Code environments (\texttt{hgblistings.sty})}
+
+The following types of code environments are defined:%
+%
+\begin{itemize}
+\item \textbf{\texttt{CCode}}: for C (ANSI),
+\item \textbf{\texttt{CppCode}}: for C++ (ISO),
+\item \textbf{\texttt{CsCode}}: for C\#,
+\item \textbf{\texttt{CssCode}}: for CSS,
+\item \textbf{\texttt{GenericCode}}: for generic code,
+\item \textbf{\texttt{HtmlCode}}: for HTML,
+\item \textbf{\texttt{JavaCode}}: for Java,
+\item \textbf{\texttt{JsCode}}: for JavaScript,
+\item \textbf{\texttt{LaTeXCode}}: for \latex,
+\item \textbf{\texttt{ObjCCode}}: for ObjectiveC,
+\item \textbf{\texttt{PhpCode}}: for PHP,
+\item \textbf{\texttt{Swift}}: for Swift,
+\item \textbf{\texttt{XmlCode}}: for XML.
+\end{itemize}
+%
+\texttt{hgblistings} is based on the \texttt{listingsutf8}%
+\footnote{\url{https://ctan.org/pkg/listingsutf8}}
+package, thus any valid \texttt{listings}%
+\footnote{\url{https://ctan.org/pkg/listings}}
+option may be used; for example, 
+the option \texttt{numbers=none} to suppress line numbers:
+\begin{LaTeXCode}[numbers=none]
+    \begin{JavaCode}[numbers=none]
+    ... // Java code comes here
+    \end{JavaCode}
+\end{LaTeXCode}
+
+
+
+\subsection{Mathematical commands (\texttt{hgbmath.sty})}
+
+\texttt{hgbmath} requires (and automatically loads) the \texttt{amsmath}%
+\footnote{\url{https://ctan.org/pkg/amsmath}}
+package, thus all
+commands and symbols of \texttt{amsmath} are available by default.
+The following \emph{additional} commands can only be used in math mode:
+%
+\begin{itemize}
+\item \textbf{\texttt{{\bs}Cpx}}: $\Cpx$ (complex numbers),
+\item \textbf{\texttt{{\bs}N}}: $\N$ (natural numbers),
+\item \textbf{\texttt{{\bs}R}}: $\R$ (real numbers),
+\item \textbf{\texttt{{\bs}Q}}: $\Q$ (rational numbers),
+\item \textbf{\texttt{{\bs}Z}}: $\Z$ (integer numbers).
+\end{itemize}
+
+
+\section{Package dependencies}
+
+
+%
+\begin{sloppypar}
+The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\newline
+\texttt{abstract}, 
+\texttt{algorithm}, 
+\texttt{algorithmicx}, 
+\texttt{algpseudocode}, 
+\texttt{amsbsy}, 
+\texttt{amsfonts}, 
+\texttt{amsmath}, 
+\texttt{amssymb}, 
+\texttt{babel}, 
+\texttt{biblatex}, 
+\texttt{breakurl}, 
+\texttt{caption}, 
+\texttt{cmap}, 
+\texttt{csquotes}, 
+\texttt{datetime}, 
+\texttt{enumitem}, 
+\texttt{epstopdf}, 
+\texttt{eurosym}, 
+\texttt{exscale}, 
+\texttt{fancyhdr}, 
+\texttt{float}, 
+\texttt{fontenc}, 
+\texttt{geometry}, 
+\texttt{graphicx}, 
+\texttt{hypcap}, 
+\texttt{hyperref}, 
+\texttt{ifpdf}, 
+\texttt{ifthen}, 
+\texttt{inputenc}, 
+\texttt{listingsutf8}, 
+\texttt{lmodern}, 
+\texttt{moreverb}, 
+\texttt{overpic}, 
+\texttt{pdfpages}, 
+\texttt{pict2e}, 
+\texttt{subdepth}, 
+\texttt{titlesec}, 
+\texttt{titling}, 
+\texttt{tocloft}, 
+\texttt{url}, 
+\texttt{upquote}, 
+\texttt{verbatim}, 
+\texttt{xcolor}, 
+\texttt{xifthen}, 
+\texttt{xspace}.
+\end{sloppypar}
+
+
+\end{document}
