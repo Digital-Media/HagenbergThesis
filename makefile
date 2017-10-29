@@ -58,7 +58,7 @@ ctan :
 	cp -u $(EXAMPLESDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
 	cp -u $(EXAMPLESDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
 #	Copy tutorial PDF (only) to doc/
-	cp -u $(EXAMPLESDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
+#	cp -u $(EXAMPLESDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
 #	Copy the entire examples/ directory to ctan/hagenberg-thesis/
 	cp -u -R $(EXAMPLESDIR) $(CTANDIR)/$(CTANPKG)
 	rm -rf $(CTANDIR)/$(CTANPKG)/$(EXAMPLESDIR)/Manual
