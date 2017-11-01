@@ -18,10 +18,24 @@ Pull from alternate remote:
 
 -----------------------------------------------------------
 
-Cleaning GIT history:
+Cleaning GIT history / removing older binary files from repository history (tested):
+Following instructions on https://rtyley.github.io/bfg-repo-cleaner/
 
-https://rtyley.github.io/bfg-repo-cleaner/
-https://www.tikalk.com/devops/deleteBinariesFromGit/
-https://superuser.com/questions/1191186/remove-large-file-from-several-commits-ago-in-git
-https://gist.github.com/nottrobin/5758221
-https://help.github.com/articles/removing-sensitive-data-from-a-repository/
+1) Download bfg.jar from https://rtyley.github.io/bfg-repo-cleaner (https://github.com/rtyley/bfg-repo-cleaner)
+
+2) Start Git Bash and create a bare clone of the repo:
+$ git clone --mirror git://https://github.com/Digital-Media/HagenbergThesis.git
+(This creates the directory `HagenbergThesis.git`)
+
+3) Run the bfg-repo-cleaner:
+$ java -jar bfg.jar --delete-files "{*.pdf,*.zip}" HagenbergThesis.git
+
+4) Let Git collect garbage:
+$ cd HagenbergThesis.git
+$ git reflog expire --expire=now --all && git gc --prune=now --aggressive
+
+5) Push to remote:
+$ git push
+
+___
+NOTE: The repo's history is fully preserved. The remote repo will not get smaller immediately. Github allegedly runs gc periodically on repositories (triggered by a push), there is no way to trigger this process from outside.
