@@ -35,16 +35,16 @@ Use the **create** links in the table below to open the document on **[Overleaf]
 Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
 The following sample documents are currently available:
 
-| Name | Document Type | ZIP | Overleaf |
-| :--- | :--- | --- | --- |
-| `HgbThesisTutorial` | **Thesis Template and Tutorial** (German) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) |
-| `HgbThesisDE` | Minimal Thesis  Template (German) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) |
-| `HgbThesisEN` | Minimal Thesis  Template (English) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) |
-| `HgbInternshipReport` | Internship Report (German) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) |
-| `HgbLabReportDE` | Lab Report (German) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportDE.zip) |
-| `HgbLabReportEN` | Lab Report (English) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportEN.zip) |
-| `HgbTermReport` | Term Report (English) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) |
-| `HgbArticle` | Journal Article (English) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) |
+| Name | Document Type | Language | ZIP | Overleaf |
+| :--- | :--- | --- | --- | --- |
+| `HgbThesisTutorial` | **Thesis Template and Tutorial** | German | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) |
+| `HgbThesisDE` | Minimal Thesis  Template | German | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) |
+| `HgbThesisEN` | Minimal Thesis  Template | English | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) |
+| `HgbInternshipReport` | Internship Report | German | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) |
+| `HgbLabReportDE` | Lab Report | German | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportDE.zip) |
+| `HgbLabReportEN` | Lab Report | English | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbLabReportEN.zip) |
+| `HgbTermReport` | Term Report | English | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) |
+| `HgbArticle` | Journal Article | English | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) |
 
 \*Note: To open documents with **more than 40 files** you should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
 
