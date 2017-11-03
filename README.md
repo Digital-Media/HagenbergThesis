@@ -1,4 +1,4 @@
-# **hagenberg-thesis** LaTeX Document Collection
+# **hagenberg-thesis** Document Collection (LaTeX)
 
 ## What you find here
 
@@ -10,7 +10,7 @@ It is the common standard for theses at the University of Applied Sciences Upper
 The document classes are immediately usable and easy to adapt. They should work in any modern LaTeX environment.
 
 This is the main repository for the **hagenberg-thesis** package, which is also available
-on [CTAN](https://ctan.org/pkg/hagenberg-thesis) and popular package repositories
+on [CTAN](https://ctan.org/pkg/hagenberg-thesis) and shared by popular package repositories
 such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texlive/).
 
 **NOTE:** Typical users should **NOT clone THIS REPOSITORY** -- it is used for development only!
@@ -46,7 +46,7 @@ The following sample documents are currently available:
 | `HgbTermReport` | Term Report (English) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) |
 | `HgbArticle` | Journal Article (English) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) |
 
-\*Note: To open documents with more than 40 files users should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
+\*Note: To open documents with **more than 40 files** you should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
 
 
 ## Additional information
@@ -54,9 +54,9 @@ The following sample documents are currently available:
 * [Package on CTAN](https://ctan.org/pkg/hagenberg-thesis)
 * [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/Manual/main.pdf)
 * [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
-* [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
 * [Recent changes](CHANGES.md)
 * [License](LICENSE.md)
+* [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
 
 
 
