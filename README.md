@@ -1,13 +1,15 @@
-# Hagenberg LaTeX Document Collection
+# hagenberg-thesis LaTeX Document Collection
 
 ## What you find here
 
 This is a collection of modern LaTeX classes, style files and example documents for authoring Bachelor, Master or Diploma theses and related academic manuscripts in English and German. Pre-configured documents for English and German are available, easy to use even for LaTeX beginners and compatible with LaTeX distributions for Windows, Mac OS and Linux.
 
-The [main (thesis) document](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf)
-serves as an introduction for creating a bachelor's, master's or diploma thesis using LaTeX. It is the common standard for theses at the University of Applied Sciences Upper Austria - School of Informatics, Communication and Media and also in use at other (mostly German-speaking) universities. The document classes are immediately usable and easy to adapt. They should work in any modern LaTeX environment.
+The [main document](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf)
+serves as a tutorial on authoring a Bachelor, Master or Diploma thesis using LaTeX. It is the common standard for theses at the University of Applied Sciences Upper Austria - School of Informatics, Communication and Media and also in use at other (mostly German-speaking) universities. The document classes are immediately usable and easy to adapt. They should work in any modern LaTeX environment.
 
-Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
+This is the main repository for the `hagenberg-thesis` package, which is also available
+on [CTAN](https://ctan.org/pkg/hagenberg-thesis) and popular package repositories
+such as *MikTeX* and *TexLive*.
 
 **NOTE:** Typical users should **NOT clone THIS REPOSITORY** -- it is used for development only!
 
@@ -17,10 +19,10 @@ Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesi
 ### Checkout 
 
 To open a sample document on your own computer use the appropriate **download** (ZIP) link in the table below. 
-Make sure you have a recent LaTeX environment installed locally.
 Unzip the downloaded archive to a suitable location and open the `main.tex` file in your TeX editor.
+Make sure you have a recent LaTeX environment installed.
 
-### Online usage (Overleaf)
+### Online usage (single-click authoring)
 
 The sample documents can also be used in online mode without having to install LaTeX on your own computer.
 Use the **create** links in the table below to open the document on **[Overleaf](https://www.overleaf.com/)**.
@@ -28,6 +30,7 @@ Use the **create** links in the table below to open the document on **[Overleaf]
 
 ## Sample documents
 
+Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
 The following sample documents are currently available:
 
 | Name | Document Type | ZIP | Overleaf |
