@@ -53,7 +53,7 @@ The following sample documents are currently available:
 
 ## Additional information
 
-* [hagenberg-thesis Package on CTAN](https://ctan.org/pkg/hagenberg-thesis)
+* [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
 * [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/Manual/main.pdf)
 * [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
 * [Recent changes](CHANGES.md)
