@@ -17,13 +17,12 @@ COMMONDIR=common
 EXAMPLESDIR=examples
 EXAMPLES := $(shell cd $(EXAMPLESDIR); find * -maxdepth 0 -type d)
 
-
-
 DUMMYDATE := 9999\/01\/01
 TODAY := $(shell date +"%Y\/%m\/%d")
 
 CTANDIR = ctan
 CTANPKG = hagenberg-thesis
+# Dummy date line in ctan/hagenberg-thesis/README.md starts with "### Version:"
 READMEVERSIONTAG=\#\#\# Version:
 
 all : prepare build ctan
@@ -34,10 +33,10 @@ prepare : copytex setdates
 copytex :
 	@echo Copying sty/cls files to $(TMPDIR)/
 	mkdir -p $(TMPDIR)
-	cp -u $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(TMPDIR)
+	cp -f $(COMMONDIR)/*.sty $(COMMONDIR)/*.cls $(COMMONDIR)/*.bib $(TMPDIR)
 
 setdates :
-	@echo Replacing date entries in sty/cls files
+	@echo Replacing date entries in sty/cls files: $(TODAY)
 	$(eval LTXFILES := $(shell find $(TMPDIR)/ -name "*.sty" -or -name "*.cls" -type f))
 #	@echo "LTXFILES: " $(LTXFILES)
 #	Replace the dummy date '9999/01/01' in all examples/ *.cls and *.sty files#
