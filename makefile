@@ -9,12 +9,15 @@
 
 SHELL = /bin/sh
 
+TMPDIR=tmpltx
+ZIPEXE := zip
+
 MKFILELATEX=$(realpath makefile-latex)
-EXAMPLES := $(shell cd examples; find * -maxdepth 0 -type d)
 COMMONDIR=common
 EXAMPLESDIR=examples
-TMPDIR=tmpltx
-ZIPEXEPATH := $(realpath bin/zip.exe)
+EXAMPLES := $(shell cd $(EXAMPLESDIR); find * -maxdepth 0 -type d)
+
+
 
 DUMMYDATE := 9999\/01\/01
 TODAY := $(shell date +"%Y\/%m\/%d")
@@ -49,7 +52,7 @@ $(EXAMPLES) :
 #	Run the LaTeX build in a sub-makefile:
 	make -C $(EXAMPLESDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
-	cd $(EXAMPLESDIR)/; rm -f $@.zip; $(ZIPEXEPATH) -r $@.zip $@
+	cd $(EXAMPLESDIR)/; rm -f $@.zip; $(ZIPEXE) -r $@.zip $@
 
 ctan :
 	@echo "***** Making $@ *****"
@@ -74,7 +77,7 @@ ctan :
 #	Update version number in package README file:
 	$(shell sed -i 's/$(READMEVERSIONTAG).*/$(READMEVERSIONTAG) $(TODAY)/' $(CTANDIR)/$(CTANPKG)/README.md)
 #	Make a ZIP of the complete ctan bundle:
-	cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXEPATH) -r $(CTANPKG).zip $(CTANPKG)
+	cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXE) -r $(CTANPKG).zip $(CTANPKG)
 
 
 
