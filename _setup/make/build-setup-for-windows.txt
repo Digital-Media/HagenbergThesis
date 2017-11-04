@@ -1,0 +1,17 @@
+Build setup for Windows
+
+This requires 'make' and 'zip' to be installed. This setup uses the GNU Win32 implementations:
+
+1) Download and run make-3.81.exe (http://gnuwin32.sourceforge.net/downlinks/make.php). This installs make.exe in "C:\Program Files (x86)\GnuWin32\bin"
+
+2) Download and run zip-3.0-setup.exe (http://gnuwin32.sourceforge.net/downlinks/zip.php). This installs zip.exe in "C:\Program Files (x86)\GnuWin32\bin"
+	
+3) Add "C:\Program Files (x86)\GnuWin32\bin" to the Windows PATH using Control Panel -> System -> Advanced system settings -> Environment variables
+
+4) To verify, start the 'GitBash' shell (part of the Windows GIT installation) and run 'which make' and 'which zip'. This should show the location of the make executable:
+	$ which make
+	/c/Program Files (x86)/GnuWin32/bin/make
+	$ which zip
+	/c/Program Files (x86)/GnuWin32/bin/zip
+
+
