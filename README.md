@@ -1,4 +1,4 @@
-# **hagenberg-thesis** Document Collection (LaTeX)
+# Hagenberg Thesis Document Collection (LaTeX)
 
 ## What you find here
 
