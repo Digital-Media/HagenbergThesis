@@ -86,28 +86,16 @@
 % General Commands
 
 \newcommand{\@programname}{\@MissingArg{Degree program not specified!}}
-\newcommand{\studiengang}[1]{%
-	\renewcommand{\@programname}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated, use '\string\programname' instead.}
-}
 \newcommand{\programname}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
 }
 
 \newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
-\newcommand{\studienort}[1]{%
-	\renewcommand{\@placeofstudy}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated, use '\string\placeofstudy' instead.}
-}
 \newcommand{\placeofstudy}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
 }
 
 \newcommand{\@advisor}{\@MissingArg{Advisor not specified!}}
-\newcommand{\betreuer}[1]{%
-	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated, use '\string\advisor' instead.}
-}
 \newcommand{\betreuerin}[1]{%
 	\renewcommand{\@advisor}{#1}
 	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated, use '\string\advisor' instead.}
@@ -116,20 +104,17 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@advisor}{#1}}
 }
 
-\newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
-\newcommand{\nummer}[1]{%
-	\renewcommand{\@thesisnumber}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated, use '\string\thesisnumber' instead.}
-}
+%\newcommand{\@thesisnumber}{}
+%\newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
+%\newcommand{\nummer}[1]{%
+	%\renewcommand{\@thesisnumber}{#1}
+	%\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated, use '\string\thesisnumber' instead.}
+%}
 \newcommand{\thesisnumber}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
+	\ifthenelse{\isempty{#1}}{}{\newcommand{\@thesisnumber}{#1}}
 }
 
 \newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
-\newcommand{\gegenstand}[1]{%
-	\renewcommand{\@coursetitle}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated, use '\string\coursetitle' instead.}
-}
 \newcommand{\coursetitle}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
 }
@@ -160,51 +145,25 @@
 \setcounter{@monthofsubmission}{\the\month}
 \setcounter{@yearofsubmission}{\the\year}
 
-\newcommand{\abgabedatum}[3]{%	%\abgabedatum{yyyy}{mm}{dd}
-	\setcounter{@yearofsubmission}{#1}
-	\setcounter{@monthofsubmission}{#2}
-	\setcounter{@dayofsubmission}{#3}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabedatum' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
 \newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
 	\setcounter{@yearofsubmission}{#1}
 	\setcounter{@monthofsubmission}{#2}
 	\setcounter{@dayofsubmission}{#3}
 }
 
-\newcommand{\abgabemonat}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabemonat' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
-
-\newcommand{\abgabejahr}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabejahr' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
-
 % Internship Report Commands
 
 \newcommand{\@companyName}{\@MissingArg{Company not specified!}}
-\newcommand{\firma}[1]{%
-	\renewcommand{\@companyName}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated, use '\string\companyName' instead.}
-}
 \newcommand{\companyName}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
 }
 
 \newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
-\newcommand{\firmenUrl}[1]{%
-	\renewcommand{\@companyUrl}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated, use '\string\companyUrl' instead.}
-}
 \newcommand{\companyUrl}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
 }
 
 \newcommand{\@companyPhone}{\@MissingArg{Company phone number not specified!}}
-\newcommand{\firmenTel}[1]{%
-	\renewcommand{\@companyPhone}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated, use '\string\companyPhone' instead.}
-}
 \newcommand{\companyPhone}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyPhone}{#1}}
 	\renewcommand{\@companyPhone}{#1}
@@ -218,17 +177,14 @@
 
 %% Commands for Creating the Title Pages --------------------------------------
 
-\newcommand{\titelseite}{%
-	\maketitle
-	\ClassWarning{hgbthesis}{Deprecated: '\string\titelseite' is deprecated, use '\string\maketitle' instead.}
-}
-
 %% adds blank space after each letter (http://stackoverflow.com/a/3951837)
 \newcommand{\@addspaces}[1]{%  
   \@tfor\letter:=#1\do{%
     \letter\thinspace%	%\space
   }%
 }
+
+\def\abra{}
 
 \newcommand{\@bachelortitle}{%
 \begin{titlepage}%
@@ -250,7 +206,8 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
 			\vskip 4mm%
-			{\large Nr.~\@thesisnumber}
+			%{\large Nr.~\@thesisnumber}
+			{\large \ifthenelse{\isundefined{\@thesisnumber}}{~~~}{Nr.~\@thesisnumber}}
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
 			\vskip 4mm%
