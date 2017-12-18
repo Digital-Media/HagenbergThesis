@@ -105,7 +105,7 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
 }
 
-\newcommand{\@coursetitle}{}
+\newcommand{\@coursetitle}{}		% optional
 \newcommand{\coursetitle}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
 }
