@@ -85,7 +85,7 @@
 
 % General Commands
 
-\newcommand{\@programname}{\@MissingArg{Degree program not specified!}}
+\newcommand{\@programname}{\@MissingArg{Program name not specified!}}
 \newcommand{\programname}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
 }
@@ -96,25 +96,16 @@
 }
 
 \newcommand{\@advisor}{\@MissingArg{Advisor not specified!}}
-\newcommand{\betreuerin}[1]{%
-	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated, use '\string\advisor' instead.}
-}
 \newcommand{\advisor}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@advisor}{#1}}
 }
 
-%\newcommand{\@thesisnumber}{}
-%\newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
-%\newcommand{\nummer}[1]{%
-	%\renewcommand{\@thesisnumber}{#1}
-	%\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated, use '\string\thesisnumber' instead.}
-%}
+\newcommand{\@thesisnumber}{}		% optional
 \newcommand{\thesisnumber}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\newcommand{\@thesisnumber}{#1}}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
 }
 
-\newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
+\newcommand{\@coursetitle}{}
 \newcommand{\coursetitle}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
 }
@@ -184,7 +175,8 @@
   }%
 }
 
-\def\abra{}
+\def\@testmacro{}
+
 
 \newcommand{\@bachelortitle}{%
 \begin{titlepage}%
@@ -206,8 +198,7 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
 			\vskip 4mm%
-			%{\large Nr.~\@thesisnumber}
-			{\large \ifthenelse{\isundefined{\@thesisnumber}}{~~~}{Nr.~\@thesisnumber}}
+			{\large \ifthenelse{\equal{\@thesisnumber}{}}{~~~}{Nr.~\@thesisnumber}}
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
 			\vskip 4mm%
@@ -415,15 +406,18 @@ This work is published under the conditions of the
 	\thispagestyle{plain}
 	\rule{0mm}{1mm}
 	\begin{center}
-		%
-		\vspace{40mm} 
-		{Diese Arbeit entstand im Rahmen des Gegenstands}\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		im\\
-		\bigskip
-		{\@semester}\\
+		\vspace{40mm}
+		\ifthenelse{\equal{\@coursetitle}{}}%
+			{~~~}%
+			{Diese Arbeit entstand im Rahmen des Gegenstands\\
+				\vspace{6mm} 
+				{\Large\sf \@coursetitle\\ \mbox{}}\\
+				\medskip
+				im\\
+				\bigskip
+				{\@semester}%
+			}
+		\\
 		%
 		\vspace{45mm} 
 		{Betreuung:}\\
@@ -440,15 +434,18 @@ This work is published under the conditions of the
 	\thispagestyle{plain}
 	\rule{0mm}{1mm}
 	\begin{center}
-		%
-		\vspace{40mm} 
-		{This thesis was created as part of the course}\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		during\\
-		\bigskip
-		{\@semester}\\
+		\vspace{40mm}
+		\ifthenelse{\equal{\@coursetitle}{}}%
+			{~~~}%
+			{This thesis was created as part of the course\\
+				\vspace{6mm} 
+				{\Large\sf \@coursetitle\\ \mbox{}}\\
+				\medskip
+				during\\
+				\bigskip
+				{\@semester}%
+			}
+		\\
 		%
 		\vspace{45mm} 
 		{Advisor:}\\
