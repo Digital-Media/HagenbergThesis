@@ -587,7 +587,6 @@ This work is published under the conditions of the
 	\@declarationpage
 }
 
-
 % Add PDF meta data and create title pages
 
 \renewcommand{\maketitle}{	%replace standard LaTeX-command
@@ -597,10 +596,11 @@ This work is published under the conditions of the
 			pdfsubject={\@programname, \@placeofstudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
-			pdfkeywords={}
+			pdfkeywords={},
+			pageanchor=false	% disable hyperref page anchors in frontmatter pages
 	}%
-
 	\@maketitlepages
+	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
 }
 
 %% Additional Hagenberg packages ----------------------------------------------
