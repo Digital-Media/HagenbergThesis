@@ -38,7 +38,7 @@ Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesi
 The following sample documents are currently available:
 
 | Name | Document Type | Language | PDF | ZIP | Overleaf |
-| :--- | :--- | --- | --- | --- |
+| :--- | :--- | --- | --- | --- | --- |
 | `HgbThesisTutorial` | **Thesis Template and Tutorial** | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) |
 | `HgbThesisDE` | Minimal Thesis  Template | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) |
 | `HgbThesisEN` | Minimal Thesis  Template | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) |
