@@ -32,7 +32,8 @@
 \begin{abstract}\noindent
 This document is a simple template for a typical term or semester paper (lab/course report, 
 ``Übungsbericht'', \etc) based on the \textsf{HagenbergThesis} \latex package.%
-\footnote{See \url{https://github.com/Digital-Media/HagenbergThesis} for the most current version.
+\footnote{See \url{https://github.com/Digital-Media/HagenbergThesis} for the most current version
+and additional examples.
 This repository also provides a good introduction and useful hints for authoring academic texts with LaTeX.}
 The structure and chapter titles have been formulated to provide a good starting point
 for a typical \emph{project report}.
@@ -40,11 +41,15 @@ This document uses the custom class \textsf{hgbreport} which is based on \latex'
 document class with \texttt{chapter} as the top structuring element. 
 If you wish to write this report in German you should substitute the line
 \begin{quote}
- \verb!\documentclass[english]{hgbreport}! 
+	\verb!\documentclass[english]{hgbreport}! 
 \end{quote}
 at the top of this document by
 \begin{quote}
- \verb!\documentclass[german]{hgbreport}!.
+	\verb!\documentclass[german]{hgbreport}!.
+\end{quote}
+To omit the default \textbf{title page} (as in this document) use the \texttt{notitlepage} option, \eg,
+\begin{quote}
+	\verb!\documentclass[notitlepage,english]{hgbreport}!.
 \end{quote}
 Also, you may want to place the text of the individual chapters in separate files and 
 include them using \verb!\include{..}!.
@@ -66,7 +71,7 @@ Use the abstract to provide a short summary of the contents in the document.
 %%%----------------------------------------------------------
 
 Describe the initial goals and situation that lead to this project, requirements, as well as
-references to related work (e.g., \cite{Higham1998}).
+references to related work (\eg, \cite{Higham1998}).
 
 
 
@@ -74,11 +79,9 @@ references to related work (e.g., \cite{Higham1998}).
 \chapter{Project Details}
 %%%----------------------------------------------------------
 
-Describe important project steps, e.g., rationale of the chosen architecture or technology stack, 
+Describe important project steps, \eg, the rationale of the chosen architecture or technology stack, 
 design decisions, algorithms used, interesting challenges faced on the way, lessons 
 learned \etc
-
-
 
 
 %%%----------------------------------------------------------     

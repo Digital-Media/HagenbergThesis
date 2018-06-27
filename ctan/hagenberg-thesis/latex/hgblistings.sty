@@ -4,7 +4,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-\ProvidesPackage{hgblistings}[2018/06/17]
+\ProvidesPackage{hgblistings}[2018/06/27]
 
 \RequirePackage{ifthen}
 
@@ -201,3 +201,19 @@ keepspaces=true,%
 	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
 	#1}}%
 {}
+
+
+% Disable the lstlisting environment (due to popular abuse)
+\newcommand{\@WarnLstlisting}{
+\GenericError{}{Package hgblistings Error: The 'lstlisting' environment is disabled}%
+{See the error note inserted in the document output for details.}{}%
+\begin{quote}
+\color{red}\textbf{NOTE:} The \texttt{lstlisting} environment has been deliberately disabled in this setup.
+Use \emph{inline code} (breakable and \emph{without} a caption) or create a \emph{float container} with 
+\texttt{{\textbackslash}begin\{program\} \ldots {\textbackslash}end\{program\}} instead!
+See the \texttt{hgbthesis} tutorial for examples.
+\end{quote}%
+}
+\renewenvironment{lstlisting}[0]%
+{\@WarnLstlisting\expandafter\comment}%
+{\expandafter\endcomment}%
