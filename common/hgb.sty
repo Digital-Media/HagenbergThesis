@@ -286,6 +286,16 @@
 
 \newcommand{\subfigure}{\PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}}
 
+
+%% Disable \footnote in captions -------------------------------
+
+\newcommand{\@WarnFootnoteInCaption}{%
+\GenericError{}{Package hgb Error: footnotes in captions are disabled}%
+{How to fix: do not place footnotes in captions!}{}}%
+\let\@oldcaption\caption
+\renewcommand{\caption}[1]{%
+\renewcommand{\footnote}[1]{\@WarnFootnoteInCaption\relax}\@oldcaption{#1}}
+
 %% ----------------------------------------------------------------------------
 
 \setlength{\fboxsep}{0mm}			%globally zero fbox separator
