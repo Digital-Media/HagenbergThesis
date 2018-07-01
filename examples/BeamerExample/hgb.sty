@@ -5,7 +5,7 @@
 %% File encoding: ASCII
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbDate}{2018/06/27}	% version string
+\newcommand{\hgbDate}{2018/07/01}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
 
 % Create a default/fallback main language so it is set no matter what
@@ -285,6 +285,16 @@
 % by default. We recommend to use the 'tabular' environment instead.
 
 \newcommand{\subfigure}{\PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}}
+
+
+%% Disable \footnote in captions -------------------------------
+
+\newcommand{\@WarnFootnoteInCaption}{%
+\GenericError{}{Package hgb Error: footnotes in captions are disabled}%
+{How to fix: do not place footnotes in captions!}{}}%
+\let\@oldcaption\caption
+\renewcommand{\caption}[1]{%
+\renewcommand{\footnote}[1]{\@WarnFootnoteInCaption\relax}\@oldcaption{#1}}
 
 %% ----------------------------------------------------------------------------
 
