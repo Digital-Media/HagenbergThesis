@@ -145,6 +145,15 @@
 \setlength{\abovecaptionskip}{10pt}
 \setlength{\belowcaptionskip}{10pt}
 
+%% Disable \footnote in captions:
+\newcommand{\@WarnFootnoteInCaption}{%
+\GenericError{}{Package hgb Error: footnotes in captions are disabled}%
+{How to fix: do not place footnotes in captions!}{}}%
+\DeclareCaptionTextFormat{nofootnotes}{%
+	\renewcommand{\footnote}[1]{\@WarnFootnoteInCaption\relax}#1}
+\captionsetup{textformat=nofootnotes}
+
+
 % Make float placement easier    
 \renewcommand{\floatpagefraction}{.9}	% previously: .5
 \renewcommand{\textfraction}{.1}		% previously: .2
@@ -285,16 +294,6 @@
 % by default. We recommend to use the 'tabular' environment instead.
 
 \newcommand{\subfigure}{\PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}}
-
-
-%% Disable \footnote in captions -------------------------------
-
-\newcommand{\@WarnFootnoteInCaption}{%
-\GenericError{}{Package hgb Error: footnotes in captions are disabled}%
-{How to fix: do not place footnotes in captions!}{}}%
-\let\@oldcaption\caption
-\renewcommand{\caption}[1]{%
-\renewcommand{\footnote}[1]{\@WarnFootnoteInCaption\relax}\@oldcaption{#1}}
 
 %% ----------------------------------------------------------------------------
 
