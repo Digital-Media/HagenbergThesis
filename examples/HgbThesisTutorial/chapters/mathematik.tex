@@ -368,10 +368,10 @@ und dem \texttt{algorithmicx}-Paket ausgeführt
 
 %%--------------------------------------------------------------------
 
-\begin{algorithm}[tbp]
+\begin{algorithm}
 \caption{Bikubische Interpolation in 2D.
-	$w_{\mathrm{cub}}()$ in Zeile \ref{alg:wcub} bezeichnet die 
-	eindimensionale kubische Interpolationsfunktion.}
+	Die Funktion $w_{\mathrm{cub}}()$ steht für die 
+	eindimensionale kubische Interpolationsfunktion (Zeile~\ref{alg:wcub}).}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
@@ -399,6 +399,63 @@ und dem \texttt{algorithmicx}-Paket ausgeführt
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
+
+%%--------------------------------------------------------------------
+
+\show\State
+
+\begin{algorithm}	 %%% Preindl
+\caption{Finds a minimum makespan role assignment. This function is the MMDR $O(n^5)$ polynomial time implementation, as described by McAlpine et al. It rearranges target positions $T$ so that their index corresponds with the indices of their assigned agents.}
+\label{alg:mmdr}
+\begin{algorithmic}[1]% [1] = all lines are numbered
+\Procedure{RoleAssignment}{$A,T$}
+
+\StatexIndent[1] StatexIndent
+\State State
+\Statex Statex
+\StateY StateY
+\StateZ StateZ
+\item[] item[]
+\LineComment{no need to explore more. we just want to stop over here.}
+
+\Statex{\textbf{Input:} 
+	$A = (\mathbf{a}_0, \dots, \mathbf{a}_{n-1})$, 
+	$T = (\mathbf{t}_0, \dots, \mathbf{t}_{n-1})$,
+	where $\mathbf{a}_i = (x_i, y_i)$, $\mathbf{t}_j = (x_j, y_j)$.}
+\Statex{\textbf{Output:} $T' = (\mathbf{t}'_0, \dots, \mathbf{t}'_{n-1})$, a permutation of $T$.}
+
+\State $\mathit{edgesSorted} \gets \Call{SortAscendingDist}{\mathit{Edges}}$
+\State $\mathit{lastDistance} \gets -1$
+\State $\mathit{rank} \gets 0$
+\State$\mathit{currentIndex} \gets 0$
+
+
+\Statex Process sorted edges (INDENTATION PROBLEM):
+\For{$e \in \mathit{edgesSorted}$}
+	\LineComment{no need to explore more. we just want to stop over here.}
+	\If{$||e|| > \mathit{lastDistance}$}
+		\StateAAA{StateAAA}
+		\State sdfasfsdfads
+		\LineComment{no need to explore more. we just want to stop over here.}
+		\StatexIndent[3] StatexIndent
+		\State State
+		\StateY StateY
+		\StateZ StateZ
+		\Statex Statex
+		\item[] item[]
+		
+		
+		\State$\mathit{rank} \gets \mathit{currentIndex}$
+	\EndIf
+	\State$\mathit{lastDistance} \gets ||e||$
+	\State$||e|| \gets 2^{\mathit{rank}}$
+	\State$\mathit{currentIndex} \gets \mathit{currentIndex} + 1$
+\EndFor
+
+\State $\mathit{perfectMatching} \gets \Call{HungarianAlg}{\mathit{edgesSorted}}$ \Comment{returns a set of edges}
+\EndProcedure
+\end{algorithmic}
+ \end{algorithm}
 
 %%--------------------------------------------------------------------
 
