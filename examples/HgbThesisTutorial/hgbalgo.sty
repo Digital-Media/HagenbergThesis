@@ -1,0 +1,53 @@
+%% hgbalgo.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+\ProvidesPackage{hgbalgo}[9999/01/01]
+
+\RequirePackage{algorithmicx}
+\RequirePackage{algpseudocode}
+\algsetlanguage{pseudocode}
+\renewcommand{\algorithmicprocedure}{} % use no 'Procedure' keyword
+
+%%% from https://tex.stackexchange.com/questions/153120/properly-indent-comments-with-no-line-numbering-in-algorithmicx
+
+\algnewcommand{\LineComment}[1]{\Statex \hskip\ALG@thistlm \(\triangleright\) #1}
+
+
+%%% from https://tex.stackexchange.com/questions/368905/indentation-in-algorithmic-package
+
+\def\ALG@special@indent{%
+    \ifdim\ALG@thistlm=0pt\relax
+        \hskip-\leftmargin
+    \else
+        \hskip\ALG@thistlm
+    \fi
+}
+
+\newcommand{\Launch}[1]{\item[]\noindent\ALG@special@indent \textbf{Launch:}\ #1}
+\newcommand{\StateY}[0]{\item[]\noindent\ALG@special@indent}
+\newcommand{\StateZ}[0]{\item[]\noindent\hspace*{\algorithmicindent}}
+
+
+%%% from https://tex.stackexchange.com/questions/33979/include-a-line-break-in-algorithmic-while-maintaining-indentation
+
+\newcommand{\StatexIndent}[1][3]{%
+  \setlength\@tempdima{\algorithmicindent}%
+  \Statex\hskip\dimexpr#1\@tempdima\relax}
+
+
+%%% from https://tex.stackexchange.com/questions/333905/algorithmicx-indentation-problem-when-using-skipnumber-to-suppress-line-numbe
+
+\let\oldState\State
+\newcommand*{\stopnumbering}{%
+  \let\olditem\item
+  \renewcommand{\item}[1][]{\olditem[]}%
+  \let\State\Statex}
+\newcommand*{\resumenumbering}{%
+  \let\item\olditem
+  \let\State\oldState}
+	
+\newcommand{\StateAAA}[1]{\stopnumbering\State #1\resumenumbering}
+
