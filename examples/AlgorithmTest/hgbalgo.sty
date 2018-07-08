@@ -1,0 +1,97 @@
+%% hgbalgo.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+
+%% TODO: font used for procedure names/calls
+
+\ProvidesPackage{hgbalgo}[9999/01/01]
+
+\RequirePackage{algorithmicx}
+\RequirePackage{algpseudocode}
+\algsetlanguage{pseudocode}
+
+%\renewcommand{\algorithmicprocedure}{\ignorespaces} % use no 'Procedure' keyword
+
+%% Redefine \Procedure{<procname>}{<parameters>} macro: 
+%% no "procedure", spacing fixed (adapted from algpseudocode.sty)
+\algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}%
+   [2]{\textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+   {\algorithmicend}%
+
+%% new public macros
+\newlength{\@tmpIndent}
+\newcommand{\StateNN}[1][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
+  \setlength\@tmpIndent{\algorithmicindent}%
+  \Statex\hskip\dimexpr#1\@tmpIndent\relax}
+
+\algnewcommand\Input{\Statex\textbf{Input:} }%  %%TODO: Handle multi-line descriptions
+\algnewcommand\Output{\Statex\textbf{Output:} }%
+
+%\newcommand{\StateNN}[0]{\item[]\noindent\hskip\ALG@thistlm}
+
+
+
+
+
+%% https://tex.stackexchange.com/questions/294840/indent-algorithmic-outside-of-a-block
+%\usepackage{xpatch}
+%\xpatchcmd{\algorithmic}{\ALG@tlm\z@}{\ALG@tlm\z@\leftmargin 0pt}{}{}
+
+
+%%% from https://tex.stackexchange.com/questions/153120/properly-indent-comments-with-no-line-numbering-in-algorithmicx
+
+\algnewcommand{\LineComment}[1]{\Statex \hskip\ALG@thistlm \(\triangleright\) #1}
+
+
+%%% from https://tex.stackexchange.com/questions/368905/indentation-in-algorithmic-package
+
+\def\ALG@special@indent{%
+    \ifdim\ALG@thistlm=0pt\relax
+        \hskip-\leftmargin
+    \else
+        \hskip\ALG@thistlm
+    \fi
+}
+
+%\newcommand{\Launch}[1]{\item[]\noindent\ALG@special@indent \textbf{Launch:}\ #1}
+\newcommand{\StateY}[0]{\item[]\noindent\ALG@special@indent}
+%\newcommand{\StateZ}[0]{\item[]\noindent\hspace*{\algorithmicindent}}
+
+
+
+%%% from https://tex.stackexchange.com/questions/33979/include-a-line-break-in-algorithmic-while-maintaining-indentation
+
+\newcommand{\StatexIndent}[1][3]{%
+  \setlength\@tempdima{\algorithmicindent}%
+  \Statex\hskip\dimexpr#1\@tempdima\relax}
+
+
+
+
+
+
+
+%%% from https://tex.stackexchange.com/questions/333905/algorithmicx-indentation-problem-when-using-skipnumber-to-suppress-line-numbe
+
+%\let\oldState\State
+%\newcommand*{\stopnumbering}{%
+  %\let\olditem\item
+  %\renewcommand{\item}[1][]{\olditem[]}%
+  %\let\State\Statex}
+%\newcommand*{\resumenumbering}{%
+  %\let\item\olditem
+  %\let\State\oldState}
+	%
+%\newcommand{\StateAAA}[1]{\stopnumbering\State #1\resumenumbering}
+
+\newcommand{\SHOWthistlm}[0]{\the\ALG@thistlm}
+\newcommand{\SHOWblocknr}[0]{\theALG@blocknr}
+\newcommand{\SHOWstorecount}[0]{\theALG@storecount}
+\newcommand{\SHOWnested}[0]{\theALG@nested}
+
+
+
+
