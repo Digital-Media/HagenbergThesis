@@ -21,14 +21,22 @@
    [2]{\textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
    {\algorithmicend}%
 
-%% new public macros
-\newlength{\@tmpIndent}
-\newcommand{\StateNN}[1][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
-  \setlength\@tmpIndent{\algorithmicindent}%
-  \Statex\hskip\dimexpr#1\@tmpIndent\relax}
+%% new public macros:
 
 \algnewcommand\Input{\Statex\textbf{Input:} }%  %%TODO: Handle multi-line descriptions
 \algnewcommand\Output{\Statex\textbf{Output:} }%
+\algnewcommand\Returns{\Statex\textbf{Returns} }%
+
+\newlength{\@tmpIndent}
+\newcommand{\StateNN}[1][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
+  \setlength\@tmpIndent{\algorithmicindent}%
+  \Statex\hskip\dimexpr#1\@tmpIndent\relax}%
+
+
+\newcommand{\StateXX}[1][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
+  \setlength\@tmpIndent{\algorithmicindent}%
+	{\setlength\itemindent{\dimexpr#1\@tmpIndent}%
+  \item[]\relax}}%
 
 %\newcommand{\StateNN}[0]{\item[]\noindent\hskip\ALG@thistlm}
 
