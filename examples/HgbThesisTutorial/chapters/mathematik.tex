@@ -363,104 +363,68 @@ Dazu gibt es jedoch eine Reihe von \latex-Paketen (\zB\ \texttt{algorithms},
 \texttt{algorithmicx}, \texttt{algorithm2e}).
 Das Beispiel in Alg.~\ref{alg:Example} wurde mit der Float-Umgebung \texttt{algorithm} 
 und dem \texttt{algorithmicx}-Paket ausgeführt
-(Quellcode in Prog.~\ref{prog:AlgExample}).
+(s.\ Quellcode in Prog.~\ref{prog:AlgExample}).
 
 
 %%--------------------------------------------------------------------
 
 \begin{algorithm}
-\caption{Bikubische Interpolation in 2D.
-	Die Funktion $w_{\mathrm{cub}}()$ steht für die 
-	eindimensionale kubische Interpolationsfunktion (Zeile~\ref{alg:wcub}).}
+\caption{Bikubische Interpolation in 2D. Die in den Zeilen \ref{alg:wcub1} und
+\ref{alg:wcub2} verwendete Funktion $\Call{Cubic1D}{x}$ berechnet die Gewichtung
+des Werts für die eindimensionale Position $x$.}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
-\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
-	\Statex Returns the interpolated value of the image $I$ 
-					at the continuous position $(x, y)$.
+\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{two-dimensional interpolation}
+	\Input{$I$, original image; $x,y \in \R$, continuous position; 	$a$, control para\-meter.}
+	\Returns{the interpolated pixel value at the continuous position $(x,y)$.}
 	
+	\smallskip 
 	\State $\mathit{val} \gets 0$
 	
 	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
 		\State $v \gets \lfloor y \rfloor - 1 + j$
 		\State $p \gets 0$
-		
 		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
 			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot w_{\mathrm{cub}}(x - u )$
-					\label{alg:wcub}
-		\EndFor
+			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$ % w_{\mathrm{cub}}(x - u )$
+					\label{alg:wcub1}
+		\EndFor		
+		\StateNN[2]{Sometimes it is useful to insert a longer, \emph{unnumbered} explanation that wraps 
+		over multiple lines with proper indentation. This can be done with the (non-standard) command 
+		\texttt{{\bs}StateNN[]\{..\}}. There is also a \texttt{{\bs}StateL\{..\}} command for regular 
+		(i.e., \emph{numbered}) multi-line statements.}
 		
-		\State $\mathit{val} \gets \mathit{val} + p \cdot w_{\mathrm{cub}}(y - v)$
+		\State $\mathit{val} \gets \mathit{val} + p \cdot \Call{Cubic1D}{y - v}$
+				\label{alg:wcub2}
 	\EndFor
-	
 	\State\Return $\mathit{val}$
-	
 \EndProcedure
+
+\medskip
+\hrule
+\medskip
+
+\Procedure{Cubic1D}{$x$} \Comment{piecewise cubic polynomial}
+	\State $z \gets 0$
+		\If{$|x| < 1$}
+			\State $z \gets |x|^3 - 2 \cdot |x|^2 + 1$
+		\Else\If{$|x| < 2$}
+			\State $z \gets -|x|^3 + 5 \cdot |x|^2 - 8 \cdot |x| + 4$
+			\EndIf
+		\EndIf
+		\State\Return{$z$}
+\EndProcedure
+
 \end{algorithmic}
 \end{algorithm}
 
 %%--------------------------------------------------------------------
 
-\show\State
-
-\begin{algorithm}	 %%% Preindl
-\caption{Finds a minimum makespan role assignment. This function is the MMDR $O(n^5)$ polynomial time implementation, as described by McAlpine et al. It rearranges target positions $T$ so that their index corresponds with the indices of their assigned agents.}
-\label{alg:mmdr}
-\begin{algorithmic}[1]% [1] = all lines are numbered
-\Procedure{RoleAssignment}{$A,T$}
-
-\StatexIndent[1] StatexIndent
-\State State
-\Statex Statex
-\StateY StateY
-\StateZ StateZ
-\item[] item[]
-\LineComment{no need to explore more. we just want to stop over here.}
-
-\Statex{\textbf{Input:} 
-	$A = (\mathbf{a}_0, \dots, \mathbf{a}_{n-1})$, 
-	$T = (\mathbf{t}_0, \dots, \mathbf{t}_{n-1})$,
-	where $\mathbf{a}_i = (x_i, y_i)$, $\mathbf{t}_j = (x_j, y_j)$.}
-\Statex{\textbf{Output:} $T' = (\mathbf{t}'_0, \dots, \mathbf{t}'_{n-1})$, a permutation of $T$.}
-
-\State $\mathit{edgesSorted} \gets \Call{SortAscendingDist}{\mathit{Edges}}$
-\State $\mathit{lastDistance} \gets -1$
-\State $\mathit{rank} \gets 0$
-\State$\mathit{currentIndex} \gets 0$
-
-
-\Statex Process sorted edges (INDENTATION PROBLEM):
-\For{$e \in \mathit{edgesSorted}$}
-	\LineComment{no need to explore more. we just want to stop over here.}
-	\If{$||e|| > \mathit{lastDistance}$}
-		\StateAAA{StateAAA}
-		\State sdfasfsdfads
-		\LineComment{no need to explore more. we just want to stop over here.}
-		\StatexIndent[3] StatexIndent
-		\State State
-		\StateY StateY
-		\StateZ StateZ
-		\Statex Statex
-		\item[] item[]
-		
-		
-		\State$\mathit{rank} \gets \mathit{currentIndex}$
-	\EndIf
-	\State$\mathit{lastDistance} \gets ||e||$
-	\State$||e|| \gets 2^{\mathit{rank}}$
-	\State$\mathit{currentIndex} \gets \mathit{currentIndex} + 1$
-\EndFor
-
-\State $\mathit{perfectMatching} \gets \Call{HungarianAlg}{\mathit{edgesSorted}}$ \Comment{returns a set of edges}
-\EndProcedure
-\end{algorithmic}
- \end{algorithm}
-
-%%--------------------------------------------------------------------
-
 Weitere Details finden sich im Quelltext und natürlich in der Dokumentation der verwendeten Pakete.
 Umfangreichere Beispiele für Algorithmen mit diesem Setup finden sich \ua\ in \cite{BurgerBurge2015}.
+
+TODO: ÜBERARBEITEN!
 
 \begin{program}
 \caption{Quellcode zu Algorithmus \ref{alg:Example} (mit \texttt{algorithmicx}).
@@ -469,35 +433,48 @@ Lesbarkeit deutlich verbessert.}
 \label{prog:AlgExample}
 \begin{LaTeXCode}[numbers=none]
 \begin{algorithm}
-\caption{Bikubische Interpolation in 2D.
-	$w_{\mathrm{cub}}()$ in Zeile \ref{alg:wcub} bezeichnet die 
-	eindimensionale kubische Interpolationsfunktion.}
+\caption{Bikubische Interpolation in 2D...}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
-\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
-	\Statex Returns the interpolated value of the image $I$ 
-					at the continuous position $(x, y)$.
+\Procedure{BicubicInterpolation}{$I, x, y$} 
+	\Comment{two-dimensional interpolation}
+	\Input{$I$, original image; $x,y \in \R$, continuous position; 	
+				 $a$, control para\-meter.}
+	\Returns{the interpolated pixel value at the continuous position $(x,y)$.}
 	
+	\smallskip 
 	\State $\mathit{val} \gets 0$
-	
 	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
 		\State $v \gets \lfloor y \rfloor - 1 + j$
 		\State $p \gets 0$
-		
 		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
 			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot w_{\mathrm{cub}}(x - u )$
-					\label{alg:wcub}
+			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$
+			\label{alg:wcub1}
 		\EndFor
 		
-		\State $\mathit{val} \gets 
-								\mathit{val} + p \cdot w_{\mathrm{cub}}(y - v)$
+		\StateNN[2]{Sometimes it is useful to insert a longer, ...}
+		
+		\State $\mathit{val} \gets \mathit{val} + p \cdot \Call{Cubic1D}{y - v}$
+		\label{alg:wcub2}
 	\EndFor
-	
 	\State\Return $\mathit{val}$
-	
 \EndProcedure
+
+\medskip\hrule\medskip
+
+\Procedure{Cubic1D}{$x$} \Comment{piecewise cubic polynomial}
+	\State $z \gets 0$
+		\If{$|x| < 1$}
+			\State $z \gets |x|^3 - 2 \cdot |x|^2 + 1$
+		\Else\If{$|x| < 2$}
+			\State $z \gets -|x|^3 + 5 \cdot |x|^2 - 8 \cdot |x| + 4$
+			\EndIf
+		\EndIf
+		\State\Return{$z$}
+\EndProcedure
+
 \end{algorithmic}
 \end{algorithm}
 \end{LaTeXCode}
