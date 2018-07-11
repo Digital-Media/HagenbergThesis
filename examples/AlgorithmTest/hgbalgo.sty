@@ -4,101 +4,92 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
+%% This package imports and pre-configures the 'algorithmicx'/'algorithmicpseudocode' packages
+%% (see https://ctan.org/pkg/algorithmicx), fixes some problems and adds new functionality
+%% and colors. It relies on the 'algorithm' package for typesetting float-type algorithms
+%% with captions.
 
-%% TODO: font used for procedure names/calls
 
 \ProvidesPackage{hgbalgo}[9999/01/01]
 
-\RequirePackage{algorithmicx}
-\RequirePackage{algpseudocode}
-\algsetlanguage{pseudocode}
+\RequirePackage{algpseudocode}	% automatically imports algorithmicx
+\RequirePackage{calc}						% for numeric calculations
+\RequirePackage{xcolor}
 
-%\renewcommand{\algorithmicprocedure}{\ignorespaces} % use no 'Procedure' keyword
+% Colors to be used in algorithms
+\definecolor{AlgKeywordColor}{rgb}{0.00, 0.00, 0.666}			% = DarkerBlue
+\definecolor{AlgProcedureColor}{rgb}{0.00, 0.5, 0.20}			% = Dark Green
+\definecolor{AlgCommentColor}{gray}{0.40} 								% = Gray (40% black)
 
-%% Redefine \Procedure{<procname>}{<parameters>} macro: 
-%% no "procedure", spacing fixed (adapted from algpseudocode.sty)
-\algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}%
-   [2]{\textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
-   {\algorithmicend}%
+\algrenewcommand\algorithmicend{\textbf{\color{AlgKeywordColor}end}}
+\algrenewcommand\algorithmicdo{\textbf{\color{AlgKeywordColor}do}}
+\algrenewcommand\algorithmicwhile{\textbf{\color{AlgKeywordColor}while}}
+\algrenewcommand\algorithmicfor{\textbf{\color{AlgKeywordColor}for}}
+\algrenewcommand\algorithmicforall{\textbf{\color{AlgKeywordColor}for all}}
+\algrenewcommand\algorithmicloop{\textbf{\color{AlgKeywordColor}loop}}
+\algrenewcommand\algorithmicrepeat{\textbf{\color{AlgKeywordColor}repeat}}
+\algrenewcommand\algorithmicuntil{\textbf{\color{AlgKeywordColor}until}}
+\algrenewcommand\algorithmicprocedure{\textbf{\color{AlgKeywordColor}procedure}}
+\algrenewcommand\algorithmicfunction{\textbf{\color{AlgKeywordColor}function}}
+\algrenewcommand\algorithmicif{\textbf{\color{AlgKeywordColor}if}}
+\algrenewcommand\algorithmicthen{\textbf{\color{AlgKeywordColor}then}}
+\algrenewcommand\algorithmicelse{\textbf{\color{AlgKeywordColor}else}}
+\algrenewcommand\algorithmicrequire{\textbf{\color{AlgKeywordColor}Require:}}
+\algrenewcommand\algorithmicensure{\textbf{\color{AlgKeywordColor}Ensure:}}
+\algrenewcommand\algorithmicreturn{\textbf{\color{AlgKeywordColor}return}}
+
+
+\algrenewcommand\algorithmicprocedure{}	% no 'procedure' keyword
+\algrenewcommand\algorithmicfunction{}	% no 'function' keyword
+
+\newcommand{\@textProc}[1]{\textcolor{AlgProcedureColor}{\textbf{\textsf{#1}}}}
+\algrenewcommand\textproc{\@textProc}			% use SF font for procedure and function names
+
+\algrenewcommand\algorithmiccomment[1]{\hfill{\color{AlgCommentColor}\(\triangleright\) #1}}%
+
+\newlength{\@AlgTmpIndent}
+
+% Redefinitions to remove wrong space when \algorithmicprocedure is empty.
+% Also add an empty () parameter list when no parameters are supplied.
+\algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}[2]{%
+	\ifthenelse{\equal{\algorithmicprocedure}{}}%
+		{\textproc{#1}}%
+		{\algorithmicprocedure\ \textproc{#1}}%
+		\hskip0.75pt(#2)}%
+   {\algorithmicend\ \algorithmicprocedure}%
+
+\algdef{SE}[FUNCTION]{Function}{EndFunction}[2]{%
+	\ifthenelse{\equal{\algorithmicfunction}{}}%
+		{\textproc{#1}}%
+		{\algorithmicfunction\ \textproc{#1}}%
+		\hskip0.75pt(#2)}%
+   {\algorithmicend\ \algorithmicfunction}%
+
+
+%\algrenewcommand\Call[2]{\textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+\algrenewcommand\Call[2]{\textproc{#1}\hskip0.75pt(#2)}%
 
 %% new public macros:
 
-\algnewcommand\Input{\Statex\textbf{Input:} }%  %%TODO: Handle multi-line descriptions
-\algnewcommand\Output{\Statex\textbf{Output:} }%
-\algnewcommand\Returns{\Statex\textbf{Returns} }%
+% \StateLong{<text>} creates numbered statements like algorithmicx's \State command but
+% provides consistent intentation on multi-line statements.
+% Note that the statement text must be passed as an argument in {...} brackets
+\newcommand*{\StateL}[1]{\State \parbox[t]{\linewidth-\ALG@thistlm}{#1\strut}}%
 
-\newlength{\@tmpIndent}
-\newcommand{\StateNN}[1][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
-  \setlength\@tmpIndent{\algorithmicindent}%
-  \Statex\hskip\dimexpr#1\@tmpIndent\relax}%
+% \StateNN[<nesting>]{<text>} creates non-numbered statements like algorithmicx's \Statex 
+% command but provides consistent indentation inside nested constructs and over multiple lines.
+% The optional integer argument [<nesting>] can be used to specify the nesting depth
+% to counteract a bug in algorithmicx (nesting level is not set properly before the first \State
+% command inside a nested construct.
+\newcommand{\StateNN}[2][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
+  \setlength\@AlgTmpIndent{\algorithmicindent*#1}% requires calc package
+	\Statex\hskip\@AlgTmpIndent\parbox[t]{\linewidth-\@AlgTmpIndent}{#2\strut}%
+}%
 
-
-\newcommand{\StateXX}[1][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
-  \setlength\@tmpIndent{\algorithmicindent}%
-	{\setlength\itemindent{\dimexpr#1\@tmpIndent}%
-  \item[]\relax}}%
-
-%\newcommand{\StateNN}[0]{\item[]\noindent\hskip\ALG@thistlm}
-
-
-
-
-
-%% https://tex.stackexchange.com/questions/294840/indent-algorithmic-outside-of-a-block
-%\usepackage{xpatch}
-%\xpatchcmd{\algorithmic}{\ALG@tlm\z@}{\ALG@tlm\z@\leftmargin 0pt}{}{}
-
-
-%%% from https://tex.stackexchange.com/questions/153120/properly-indent-comments-with-no-line-numbering-in-algorithmicx
-
-\algnewcommand{\LineComment}[1]{\Statex \hskip\ALG@thistlm \(\triangleright\) #1}
-
-
-%%% from https://tex.stackexchange.com/questions/368905/indentation-in-algorithmic-package
-
-\def\ALG@special@indent{%
-    \ifdim\ALG@thistlm=0pt\relax
-        \hskip-\leftmargin
-    \else
-        \hskip\ALG@thistlm
-    \fi
-}
-
-%\newcommand{\Launch}[1]{\item[]\noindent\ALG@special@indent \textbf{Launch:}\ #1}
-\newcommand{\StateY}[0]{\item[]\noindent\ALG@special@indent}
-%\newcommand{\StateZ}[0]{\item[]\noindent\hspace*{\algorithmicindent}}
-
-
-
-%%% from https://tex.stackexchange.com/questions/33979/include-a-line-break-in-algorithmic-while-maintaining-indentation
-
-\newcommand{\StatexIndent}[1][3]{%
-  \setlength\@tempdima{\algorithmicindent}%
-  \Statex\hskip\dimexpr#1\@tempdima\relax}
-
-
-
-
-
-
-
-%%% from https://tex.stackexchange.com/questions/333905/algorithmicx-indentation-problem-when-using-skipnumber-to-suppress-line-numbe
-
-%\let\oldState\State
-%\newcommand*{\stopnumbering}{%
-  %\let\olditem\item
-  %\renewcommand{\item}[1][]{\olditem[]}%
-  %\let\State\Statex}
-%\newcommand*{\resumenumbering}{%
-  %\let\item\olditem
-  %\let\State\oldState}
-	%
-%\newcommand{\StateAAA}[1]{\stopnumbering\State #1\resumenumbering}
-
-\newcommand{\SHOWthistlm}[0]{\the\ALG@thistlm}
-\newcommand{\SHOWblocknr}[0]{\theALG@blocknr}
-\newcommand{\SHOWstorecount}[0]{\theALG@storecount}
-\newcommand{\SHOWnested}[0]{\theALG@nested}
+% Macros for describing input and output of procedures and functions:
+\algnewcommand\Input[1]{\StateNN[1]{\textbf{Input:} #1}}%			use to describe input parameters: \Input{<description}
+\algnewcommand\Output[1]{\StateNN[1]{\textbf{Output:} #1}}%		use to describe output values: \Output{<description}
+\algnewcommand\Returns[1]{\StateNN[1]{\textbf{Returns} #1}}%	use to describe what a procedure/function returns: \Returns{<description}
 
 
 

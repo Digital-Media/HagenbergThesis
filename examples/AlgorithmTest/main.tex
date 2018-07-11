@@ -83,18 +83,31 @@ Use the abstract to provide a short summary of the contents in the document.
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
+%\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
 \Procedure{BicubicInterpolation}{$I, x, y$} \Comment{$x,y \in \R$}
 	\Statex \textbf{Input:} 
 	\Statex Returns the interpolated value of the image $I$ at the continuous position $(x, y)$.
 	
-	\State $\mathit{val} \gets 0$
+	\State $\mathit{val} \gets 0$ Very long texts should have the same indentation should have the same indentation 
+should have the same indentation should have the same indentation should have the same indentation 
+should have the same indentation.
+
+\StateL{Very long texts should have the same indentation should have the same indentation 
+should have the same indentation should have the same indentation should have the same indentation 
+should have the same indentation.}
 	
 	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
 		\State $v \gets \lfloor y \rfloor - 1 + j$
 		\State $p \gets 0$
 		
 		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
+		\StateL{Very long texts should have the same indentation should have the same indentation 
+	should have the same indentation should have the same indentation should have the same indentation 
+	should have the same indentation.}
 			\State $u \gets \lfloor x \rfloor - 1 + i$
+			\StateL{Very long texts should have the same indentation should have the same indentation 
+	should have the same indentation should have the same indentation should have the same indentation 
+	should have the same indentation.}
 			\State $p \gets p + I(u,v) \cdot w_{\mathrm{cub}}(x - u )$
 					\label{alg:wcub}
 		\EndFor
@@ -105,6 +118,7 @@ Use the abstract to provide a short summary of the contents in the document.
 	\State\Return $\mathit{val}$
 	
 \EndProcedure
+
 \end{algorithmic}
 \end{algorithm}
 
@@ -118,31 +132,33 @@ Use the abstract to provide a short summary of the contents in the document.
 \begin{algorithmic}[1]% [1] = all lines are numbered
 \Procedure{RoleAssignment}{$A,T$}
 %
-\Input $A = (\mathbf{a}_0, \dots, \mathbf{a}_{n-1})$, 
+\Input{$A = (\mathbf{a}_0, \dots, \mathbf{a}_{n-1})$, 
 	$T = (\mathbf{t}_0, \dots, \mathbf{t}_{n-1})$,
-	where $\mathbf{a}_i = (x_i, y_i)$, $\mathbf{t}_j = (x_j, y_j)$. 
-\Returns $T' = (\mathbf{t}'_0, \dots, \mathbf{t}'_{n-1})$, a permutation of $T$.
+	where $\mathbf{a}_i = (x_i, y_i)$, $\mathbf{t}_j = (x_j, y_j)$.}
+\Returns{$T' = (\mathbf{t}'_0, \dots, \mathbf{t}'_{n-1})$, a permutation of $T$.}
 %
-\StateNN[1] StateNN[1]: Very long texts should have the same indentation should have the same indentation 
+\StateNN[1]{StateNN[1]: Very long texts should have the same indentation should have the same indentation 
+should have the same indentation should have the same indentation should have the same indentation 
+should have the same indentation.}
+\State State Very long texts should have the same indentation should have the same indentation 
 should have the same indentation should have the same indentation should have the same indentation 
 should have the same indentation.
-\State State
-\StateNN StateNN (no arg): leftmargin = \the\leftmargin, listparindent = \the\listparindent,
-														labelwidth = \the\labelwidth
-\StateNN[1] StateNN[1]
-\StateXX[1] StateXX[2] leftmargin = \the\leftmargin, listparindent = \the\listparindent,
-						labelwidth = \the\labelwidth Very long texts should have the same indentation 
-						should have the same indentation 
-	should have the same indentation should have the same indentation should have the same indentation 
-	should have the same indentation.
-\StatexIndent[1] StatexIndent
-\State State
+\StateNN{StateNN (no arg): leftmargin = \the\leftmargin, listparindent = \the\listparindent,
+														labelwidth = \the\labelwidth}
+\StateNN[1]{StateNN[1]}
+%\StateXX[1] StateXX[2] leftmargin = \the\leftmargin, listparindent = \the\listparindent,
+						%labelwidth = \the\labelwidth Very long texts should have the same indentation 
+						%should have the same indentation 
+	%should have the same indentation should have the same indentation should have the same indentation 
+	%should have the same indentation.
+%\StatexIndent[1] StatexIndent Very long texts should have the same indentation should have the same indentation 
+%should have the same indentation should have the same indentation should have the same indentation 
+%should have the same indentation.
+\State State \Comment{another comment}
 \Statex Statex
-\StateY StateY
+
 %\StateZ StateZ
 \item[] item[]
-\LineComment{no need to explore more. we just want to stop over here.}
-
 
 \State $\mathit{edgesSorted} \gets \Call{SortAscendingDist}{\mathit{Edges}}$
 \State $\mathit{lastDistance} \gets -1$
@@ -150,28 +166,20 @@ should have the same indentation.
 \State$\mathit{currentIndex} \gets 0$
 
 
-\Statex Process sorted edges (INDENTATION PROBLEM): \SHOWnested
+\Statex Process sorted edges (INDENTATION PROBLEM)
 \For{$e \in \mathit{edgesSorted}$}
-	\LineComment{no need to explore more. we just want to stop over here. \SHOWnested}
-	\If{$||e|| > \mathit{lastDistance}$} \SHOWthistlm\ \SHOWnested
-		\State State \SHOWthistlm\ \SHOWnested
-		\LineComment{no need to explore more \SHOWthistlm}
-		\StateY StateY
-		%\StateZ StateZ
-		\StateNN StateNN
+	\StateNN[2]{no need to explore more. we just want to stop over here.}
+	\If{$||e|| > \mathit{lastDistance}$}
+		\State State
+		\StateNN{StateNN}
+		\Statex Statex 
 		
-		\StatexIndent[3] StatexIndent
-		
-		%\StateAAA{StateAAA}
-		\Statex Statex \SHOWnested
-		\item[] item[] \SHOWnested
-		
-		\State$\mathit{rank} \gets \mathit{currentIndex}$ \SHOWnested
+		\State$\mathit{rank} \gets \mathit{currentIndex}$ 
 	\EndIf
-	\State$\mathit{lastDistance} \gets ||e||$ \SHOWnested
+	\State$\mathit{lastDistance} \gets ||e||$ 
 	\State$||e|| \gets 2^{\mathit{rank}}$
 	\State$\mathit{currentIndex} \gets \mathit{currentIndex} + 1$
-	\State finally \SHOWnested
+	\State finally
 \EndFor
 
 \State $\mathit{perfectMatching} \gets \Call{HungarianAlg}{\mathit{edgesSorted}}$ \Comment{returns a set of edges}
