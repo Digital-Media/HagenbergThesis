@@ -5,3 +5,4 @@
 * [2018/06/17] Discontinued support for the ``subfigure`` package (obsolete).
 * [2018/06/28] Disabled ``lstlisting`` environment (due to frequent abuse).
 * [2018/07/01] Disabled the use of ``\footnote`` in captions.
+* [2018/07/12] Revised setup for algorithms (all contained in new file ``hgbalgo.sty``): bug fixes, new commands, color.
