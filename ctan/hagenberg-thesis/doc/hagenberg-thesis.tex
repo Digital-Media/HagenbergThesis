@@ -250,10 +250,60 @@ The following \emph{additional} commands can only be used in math mode:
 \end{itemize}
 
 
+
+\subsection{Algorithms (\texttt{hgbalgo.sty})}
+
+\texttt{hgbalgo} is a stand-alone package that is based on -- and extends -- the \texttt{algorithmicx} and 
+\texttt{algpseudocode} packages.%
+\footnote{\url{https://ctan.org/pkg/algorithmicx}}
+It fixes some (mostly indentation-related) problems, adds color and provides some additional
+commands. It also loads the \texttt{algorithm}%
+\footnote{\url{https://ctan.org/pkg/algorithms}}
+package which defines a compatible float container for algorithms:
+\verb!\begin{algorithm}! \verb!...! \verb!\end{algorithm}!.
+
+
+\paragraph{Additional user commands:}
+\begin{itemize}
+\item 
+\textbf{\texttt{{\bs}StateL\{<text>\}}}: Creates a \emph{numbered} statement like \texttt{algorithmicx}'s 
+\verb!\State! command but provides consistent indentation on multi-line statements.
+Note that the statement \texttt{<text>} must be passed as a single argument in \verb!{...}! brackets.
+\item
+\textbf{\texttt{{\bs}StateNN[<nesting>]\{<text>\}}}: 
+Creates a \emph{non-numbered} statement like \texttt{algorith\-micx}'s \verb!\State! 
+command but provides consistent indentation inside nested constructs and over multiple lines.
+The optional integer argument \verb!<nesting>! can be used to specify the \emph{nesting depth}
+to compensate for a bug in \texttt{algorithmicx} (the nesting level inside a block is not set properly before 
+the first \verb!\State!). Omitting the optional argument should give correct indentation in most
+cases.
+\item
+\textbf{\texttt{{\bs}Input\{<text>\}}}:
+For describing the input parameters in a procedure's preamble. %Usage: \verb!\Input{<description>}!
+\item
+\textbf{\texttt{{\bs}Output\{<text>\}}}:
+For describing the output values in a procedure's preamble. %Usage: \verb!\Output{<description>}!
+\item
+\textbf{\texttt{{\bs}Returns\{<text>\}}}:
+For describing the return values in a procedure's preamble. %Usage: \verb!\Returns{<description>}!
+\end{itemize}
+
+\paragraph{Defined algorithm colors:}
+\begin{itemize}
+\item[] \textbf{\texttt{AlgKeywordColor}} (for algorithm keywords),
+\item[] \textbf{\texttt{AlgProcedureColor}} (for procedure and function names),
+\item[] \textbf{\texttt{AlgCommentColor}} (for comments).
+\end{itemize}
+The above colors can be redefined at any time (see the \texttt{xcolor}%
+\footnote{\url{https://ctan.org/pkg/xcolor}} package), \eg, by
+\begin{LaTeXCode}[numbers=none]
+    \definecolor{AlgKeywordColor}{named}{black}
+    \definecolor{AlgProcedureColor}{rgb}{0.0, 0.5, 0.0}     % dark green
+\end{LaTeXCode}
+
+
 \section{Package dependencies}
 
-
-%
 \begin{sloppypar}
 The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\newline
 \texttt{abstract}, 
