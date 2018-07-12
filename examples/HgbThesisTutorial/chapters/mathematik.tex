@@ -357,19 +357,61 @@ manueller Nacharbeit) in das eigene \latex-Dokument übernommen werden.
 
 \section{Algorithmen}
 
-Für die Beschreibung von Algorithmen in mathematischer Form oder auch für
+Die algorithmische Darstellung ist ein wichtiges Mittel zur präzisen Beschreibung von 
+Berechnungsabläufen. Durch die Verwendung von \emph{mathematischer Notation} (Symbolen und Operatoren) 
+einerseits und den aus der Programmierung gewohnten \emph{Ablaufstrukturen} (Entscheidungen, Schleifen,
+Prozeduren \etc) sind Algorithmen ein bewährtes Bindeglied zwischen der mathematischen Formulierung
+und dem zugehörigen Programmcode.
+
+Ein wesentlicher Aspekt der algorithmischen Beschreibung -- die idealerweise der Implementierung 
+zumindest strukturell möglichst ähnlich sein sollte -- ist die weitgehende
+\emph{Unabhängigkeit} von einer spezifischen Programmiersprache.
+Dadurch ergibt sich eine bessere Lesbarkeit, breitere Anwendbarkeit und erhöhte Nachhaltigkeit
+(möglicherweise über die Lebensdauer einer Programmiersprache hinaus).
+Bei der Formulierung von Algorithmen sollte man \ua\ folgendes beachten:%
+\footnote{Siehe auch \url{http://mirror.easyname.at/ctan/macros/latex/contrib/algorithms/algorithms.pdf}
+(Abschnitt~7).}
+%%
+\begin{itemize}
+\item
+Verwende in Algorithmen die gleichen kurze Symbole (wie $a, i, x, S, \alpha \ldots$), wie man sie auch in mathematischen Definitionen und Gleichungen verwendet.
+\item
+Verwende nach Möglichkeit mathematische Operatoren, wie \zB\
+$=$	 (\verb!$=$!) statt \texttt{==},
+$\leq$ (\verb!$\leq$!) statt \texttt{<=},
+$\cdot$ (\verb!$\cdot$!) statt \texttt{*},
+$\wedge$ (\verb!$\wedge$!) statt \texttt{\&\&},
+\usw
+\item
+Verwende keine Elemente oder Syntax einer spezifischen Programmiersprache
+(\zB\ ist ein "`\texttt{;}"' am Ende einer Anweisung unnötig).
+\item
+Wenn ein Algorithmus für eine Seite zu lang wird, überlege, wie man ihn
+sinnvoll auf kleinere Module aufteilen kann (meist ist dann auch die zugehörige
+Programmstruktur nicht optimal).
+\end{itemize}
+
+
+Für die Notation von Algorithmen in mathematischer Form oder auch für
 Pseudo\-code ist in \latex selbst keine spezielle Unterstützung vorgesehen.
 Dazu gibt es jedoch eine Reihe von \latex-Paketen (\zB\ \texttt{algorithms}, 
-\texttt{algorithmicx}, \texttt{algorithm2e}).
+\texttt{algorithm2e} und \texttt{algorithmicx}).
+Letzteres wird wegen seiner einfachen Syntax auch in dieser Vorlage verwendet, 
+allerdings mit einigen Erweiterungen.%
+\footnote{Die Datei \nolinkurl{hgbalgo.sty} des Hagenberg-Pakets erweitert die Pakete
+\texttt{algorithmicx} und \texttt{algpseudocode} (s.\ \url{https://ctan.org/pkg/algorithmicx})
+durch verbesserte Einrückung, Farben \etc  Weitere Details finden sich in 
+\url{http://mirrors.ctan.org/macros/latex/contrib/hagenberg-thesis/doc/hagenberg-thesis.pdf}.}
 Das Beispiel in Alg.~\ref{alg:Example} wurde mit der Float-Umgebung \texttt{algorithm} 
-und dem \texttt{algorithmicx}-Paket ausgeführt
-(s.\ Quellcode in Prog.~\ref{prog:AlgExample}).
-
+und dem \texttt{algpseudocode}-Paket ausgeführt (s.\ Quellcode in Prog.\ \ref{prog:AlgExample}).
+Umfangreichere Beispiele für Algorithmen mit einem ähnlichen Setup finden sich \zB\ in 
+\cite{BurgerBurge2015}.
 
 %%--------------------------------------------------------------------
 
 \begin{algorithm}
-\caption{Bikubische Interpolation in 2D. Die in den Zeilen \ref{alg:wcub1} und
+\caption{Beispiel für einen mit \texttt{algorithmicx} (\texttt{algpseudocode} + \texttt{hgbalgo})
+gesetzten Algorithmus zur bikubischen Interpolation in 2D. Die in den Zeilen \ref{alg:wcub1} und
 \ref{alg:wcub2} verwendete Funktion $\Call{Cubic1D}{x}$ berechnet die Gewichtung
 des Werts für die eindimensionale Position $x$.}
 \label{alg:Example}
@@ -390,10 +432,10 @@ des Werts für die eindimensionale Position $x$.}
 			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$ % w_{\mathrm{cub}}(x - u )$
 					\label{alg:wcub1}
 		\EndFor		
-		\StateNN[2]{Sometimes it is useful to insert a longer, \emph{unnumbered} explanation that wraps 
+		\StateNN[2]{Sometimes it is useful to insert a longer, \emph{unnumbered} explanation extending
 		over multiple lines with proper indentation. This can be done with the (non-standard) command 
-		\texttt{{\bs}StateNN[]\{..\}}. There is also a \texttt{{\bs}StateL\{..\}} command for regular 
-		(i.e., \emph{numbered}) multi-line statements.}
+		\texttt{{\bs}StateNN[]\{..\}}. There is also a \texttt{{\bs}StateL\{..\}} command for long 
+		\emph{numbered} (multi-line) statements.}
 		
 		\State $\mathit{val} \gets \mathit{val} + p \cdot \Call{Cubic1D}{y - v}$
 				\label{alg:wcub2}
@@ -405,35 +447,29 @@ des Werts für die eindimensionale Position $x$.}
 \hrule
 \medskip
 
-\Procedure{Cubic1D}{$x$} \Comment{piecewise cubic polynomial}
+\Function{Cubic1D}{$x$} \Comment{piecewise cubic polynomial (1D)}
 	\State $z \gets 0$
 		\If{$|x| < 1$}
 			\State $z \gets |x|^3 - 2 \cdot |x|^2 + 1$
-		\Else\If{$|x| < 2$}
+		\ElsIf{$|x| < 2$}
 			\State $z \gets -|x|^3 + 5 \cdot |x|^2 - 8 \cdot |x| + 4$
-			\EndIf
 		\EndIf
 		\State\Return{$z$}
-\EndProcedure
+\EndFunction
 
 \end{algorithmic}
 \end{algorithm}
 
 %%--------------------------------------------------------------------
 
-Weitere Details finden sich im Quelltext und natürlich in der Dokumentation der verwendeten Pakete.
-Umfangreichere Beispiele für Algorithmen mit diesem Setup finden sich \ua\ in \cite{BurgerBurge2015}.
-
-TODO: ÜBERARBEITEN!
-
 \begin{program}
-\caption{Quellcode zu Algorithmus \ref{alg:Example} (mit \texttt{algorithmicx}).
+\caption{Quellcode zu Algorithmus \ref{alg:Example}.
 Wie ersichtlich, können hier auch beliebig Leerzeilen verwendet werden, was die
 Lesbarkeit deutlich verbessert.}
 \label{prog:AlgExample}
 \begin{LaTeXCode}[numbers=none]
 \begin{algorithm}
-\caption{Bikubische Interpolation in 2D...}
+\caption{Beispiel für einen mit \texttt{algorithmicx} ... }
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
@@ -464,19 +500,24 @@ Lesbarkeit deutlich verbessert.}
 
 \medskip\hrule\medskip
 
-\Procedure{Cubic1D}{$x$} \Comment{piecewise cubic polynomial}
+\Function{Cubic1D}{$x$} \Comment{piecewise cubic polynomial (1D)}
 	\State $z \gets 0$
 		\If{$|x| < 1$}
 			\State $z \gets |x|^3 - 2 \cdot |x|^2 + 1$
-		\Else\If{$|x| < 2$}
+		\ElsIf{$|x| < 2$}
 			\State $z \gets -|x|^3 + 5 \cdot |x|^2 - 8 \cdot |x| + 4$
-			\EndIf
 		\EndIf
 		\State\Return{$z$}
-\EndProcedure
+\EndFunction
 
 \end{algorithmic}
 \end{algorithm}
 \end{LaTeXCode}
 \end{program}
+
+%%--------------------------------------------------------------------
+
+ 
+
+
 
