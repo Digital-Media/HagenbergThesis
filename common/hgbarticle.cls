@@ -74,6 +74,7 @@
 %% Additional Hagenberg packages ----------------------------------------------
 
 \RequirePackage{hgbmath}
+\RequirePackage{hgbalgo}
 \RequirePackage{hgbheadings}
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
