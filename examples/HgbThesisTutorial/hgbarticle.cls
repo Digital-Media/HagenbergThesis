@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2018/07/01]
+\ProvidesClass{hgbarticle}[9999/01/01]
 
 \RequirePackage{xifthen}
 
@@ -74,6 +74,7 @@
 %% Additional Hagenberg packages ----------------------------------------------
 
 \RequirePackage{hgbmath}
+\RequirePackage{hgbalgo}
 \RequirePackage{hgbheadings}
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}

@@ -1,13 +1,17 @@
 %% hgbalgo.sty
+
+%% Toward better looking algorithms ...
+%% This package imports and pre-configures the 'algorithmicx'/'algorithmicpseudocode' packages
+%% (see https://ctan.org/pkg/algorithmicx), fixes some problems and adds new functionality
+%% and colors. It relies on the 'algorithm' package for typesetting float-type algorithms
+%% with captions.
+
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-%% This package imports and pre-configures the 'algorithmicx'/'algorithmicpseudocode' packages
-%% (see https://ctan.org/pkg/algorithmicx), fixes some problems and adds new functionality
-%% and colors. It relies on the 'algorithm' package for typesetting float-type algorithms
-%% with captions.
+
 
 
 \ProvidesPackage{hgbalgo}[9999/01/01]
@@ -17,13 +21,13 @@
 \RequirePackage{xcolor}
 
 % Colors to be used in algorithms (can be redefined locally if desired)
-\definecolor{AlgKeywordColor}{named}{black}
-\definecolor{AlgProcedureColor}{named}{black}
-\definecolor{AlgCommentColor}{named}{black}
+%\definecolor{AlgKeywordColor}{named}{black}
+%\definecolor{AlgProcedureColor}{named}{black}
+%\definecolor{AlgCommentColor}{named}{black}
 
-\definecolor{AlgKeywordColor}{rgb}{0.00, 0.00, 0.666}			% = Dark Blue
-\definecolor{AlgProcedureColor}{rgb}{0.00, 0.5, 0.20}			% = Dark Green
-\definecolor{AlgCommentColor}{gray}{0.40} 								% = Gray (40% black)
+\definecolor{AlgKeywordColor}{rgb}{0.00, 0.00, 0.666}	% = Dark Blue
+\definecolor{AlgProcedureColor}{rgb}{0.00, 0.5, 0.20}	% = Dark Green
+\definecolor{AlgCommentColor}{gray}{0.40} 				% = Gray (40% black)
 
 \algrenewcommand\algorithmicend{\textbf{\color{AlgKeywordColor}end}}
 \algrenewcommand\algorithmicdo{\textbf{\color{AlgKeywordColor}do}}
@@ -49,8 +53,8 @@
 %\algrenewcommand\algorithmicfunction{}	% no 'function' keyword
 
 % Use SF font and color for procedure and function names:
-\newcommand{\@textProc}[1]{\textcolor{AlgProcedureColor}{\textsf{#1}}}
-\algrenewcommand\textproc{\@textProc}			
+\newcommand{\@AlgTextProc}[1]{\textcolor{AlgProcedureColor}{\textsf{#1}}}
+\algrenewcommand\textproc{\@AlgTextProc}			
 
 % Redefinitions to remove wrong space when \algorithmicprocedure is empty.
 % Inserts an empty () parameter list when no parameters are supplied:
@@ -76,7 +80,7 @@
 %% New public macros:
 
 % \StateLong{<text>} creates numbered statements like algorithmicx's \State command but
-% provides consistent intentation on multi-line statements.
+% provides consistent indentation on multi-line statements.
 % Note that the statement text must be passed as an argument in {...} brackets
 \newcommand*{\StateL}[1]{\State \parbox[t]{\linewidth-\ALG@thistlm}{#1\strut}}%
 
@@ -91,8 +95,8 @@
 }%
 
 % Macros for describing input and output of procedures and functions:
-\algnewcommand\Input[1]{\StateNN[1]{\textbf{Input:} #1}}%			use to describe input parameters: \Input{<description}
-\algnewcommand\Output[1]{\StateNN[1]{\textbf{Output:} #1}}%		use to describe output values: \Output{<description}
+\algnewcommand\Input[1]{\StateNN[1]{\textbf{Input:} #1}}%			use to describe input parameters: \Input{<description>}
+\algnewcommand\Output[1]{\StateNN[1]{\textbf{Output:} #1}}%		use to describe output values: \Output{<description>}
 \algnewcommand\Returns[1]{\StateNN[1]{\textbf{Returns} #1}}%	use to describe what a procedure/function returns: \Returns{<description}
 
 
