@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2018/07/01]
+\ProvidesClass{hgbthesis}[2018/07/12]
 
 \RequirePackage{xifthen}
 
@@ -606,6 +606,7 @@ This work is published under the conditions of the
 %% Additional Hagenberg packages ----------------------------------------------
 
 \RequirePackage{hgbmath}
+\RequirePackage{hgbalgo}
 \RequirePackage{hgbheadings}
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}

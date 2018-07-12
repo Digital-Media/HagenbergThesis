@@ -141,6 +141,7 @@
 
 % Captions with font size "small" and additional margin spacing
 \RequirePackage[small,bf]{caption}
+\DeclareCaptionStyle{ruled}{labelfont=bf,labelsep=colon} 
 \setlength{\captionmargin}{5mm}
 \setlength{\abovecaptionskip}{10pt}
 \setlength{\belowcaptionskip}{10pt}
@@ -182,23 +183,8 @@
 % \end{nowidows}
 
 
-%% Definitions for Algorithms -------------------------------------------------
 
-% 'algorithm' creates a floating environment for algorithms (\begin{algorithm}...)
-\@ifundefined{chapter}%
-  {\RequirePackage[ruled]{algorithm}}%
-	{\RequirePackage[ruled,chapter]{algorithm}}
-
-\DeclareCaptionStyle{ruled}{labelfont=bf,labelsep=colon} 
-
-% 'algorithmicx' returns the inner content of algorithms (\begin{algorithmic}[1]...)
-\RequirePackage{algorithmicx}
-\RequirePackage{algpseudocode}
-\algsetlanguage{pseudocode}
-\renewcommand{\algorithmicprocedure}{} % use no 'Procedure' keyword
-
-
-%% Program and Algorithm Environments  ----------------------------------------
+%% Program environments  ----------------------------------------
 
 % Define the program float environment:
 \@ifundefined{chapter}%
@@ -209,14 +195,10 @@
 \restylefloat*{program}
 	
 \ifthenelse{\equal{\bbl@main@language}{german} \or \equal{\bbl@main@language}{ngerman}}%
-{	\floatname{program}{Programm}
-  \floatname{algorithm}{Algorithmus}
-}{}
+	{\floatname{program}{Programm}}{}%
 
 \ifthenelse{\equal{\bbl@main@language}{english}}%
-{	\floatname{program}{Program}
-  \floatname{algorithm}{Algorithm}
-}{}
+	{\floatname{program}{Program}}{}%
 
 
 %% Date-related commands ------------------------------------------------------
@@ -293,7 +275,8 @@
 % compatible with our quality standards. Loading this package is therefore blocked
 % by default. We recommend to use the 'tabular' environment instead.
 
-\newcommand{\subfigure}{\PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}}
+\newcommand{\subfigure}{%
+\PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}}
 
 %% ----------------------------------------------------------------------------
 
