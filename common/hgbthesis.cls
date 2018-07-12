@@ -606,6 +606,7 @@ This work is published under the conditions of the
 %% Additional Hagenberg packages ----------------------------------------------
 
 \RequirePackage{hgbmath}
+\RequirePackage{hgbalgo}
 \RequirePackage{hgbheadings}
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
