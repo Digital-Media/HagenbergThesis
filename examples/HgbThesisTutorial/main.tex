@@ -14,7 +14,6 @@
 %%%----------------------------------------------------------
 
 \RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
-\RequirePackage{hgbalgo}
 
 \graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
 \logofile{logo}				% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
@@ -53,21 +52,21 @@
 \tableofcontents
 
 \include{front/vorwort} % Optional. Ggf. weglassen
-%\include{front/kurzfassung}		
-%\include{front/abstract}			
+\include{front/kurzfassung}		
+\include{front/abstract}			
 
 %%%----------------------------------------------------------
 \mainmatter          % Hauptteil (ab hier arab. Seitenzahlen)
 %%%----------------------------------------------------------
 
-%\include{chapters/einleitung}
-%\include{chapters/abschlussarbeit}
-%\include{chapters/latex}
-%\include{chapters/abbildungen}
+\include{chapters/einleitung}
+\include{chapters/abschlussarbeit}
+\include{chapters/latex}
+\include{chapters/abbildungen}
 \include{chapters/mathematik}
-%\include{chapters/literatur}
-%\include{chapters/drucken}
-%\include{chapters/schluss}
+\include{chapters/literatur}
+\include{chapters/drucken}
+\include{chapters/schluss}
 
 %%%----------------------------------------------------------
 \appendix                                            % Anhang 
