@@ -47,40 +47,82 @@ Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu verwei
 
 Für Quellenverweise im laufenden Text verwendet man die Anweisung
 \begin{itemize}
-\item[] \verb!\cite{!\textit{Verweise}\verb!}! 
+\item[] \verb!\cite{!\textit{keys}\verb!}! 
 				\quad oder \quad
-        \verb!\cite[!\textit{Zusatztext}\verb!]{!\textit{Verweise}\verb!}!.
+        \verb!\cite[!\textit{text}\verb!]{!\textit{keys}\verb!}!.
 \end{itemize}
 
 \noindent%
-\textit{Verweise} ist eine durch Kommas getrennte Auflistung von $1$--$n$ Quellen-\emph{Schlüsseln}
+\textit{keys} ist eine durch Kommas getrennte Auflistung von $1$--$n$ Quellen-\emph{Schlüsseln}
 zur Identifikation der entsprechenden Einträge im Quellenverzeichnis.
-Mit \textit{Zusatztext} können Ergänzungstexte zum aktuellen Quellenverweis angegeben
+Mit \textit{text} können Ergänzungstexte zum aktuellen Quellenverweis angegeben
 werden, wie \zB Kapitel- oder Seitenangaben bei Büchern.
-Einige Beispiele dazu:
-
+Nachfolgend einige Beispiele dazu:
+%
+\begin{itemize}
+\item
+%$\rightarrow$ 
+Mehr dazu findet sich in \cite{Kopka2003}. %\newline
 \begin{LaTeXCode}[numbers=none]
 Mehr dazu findet sich in \cite{Kopka2003}.
 \end{LaTeXCode}
-$\rightarrow$ Mehr dazu findet sich in \cite{Kopka2003}.
 
+\item
+Mehr zu diesem Thema in \cite[Kap.~3]{Kopka2003}.
 \begin{LaTeXCode}[numbers=none]
-Mehr über \emph{Styles} in \cite[Kap.\ 3]{Kopka2003}.
+Mehr zu diesem Thema in \cite[Kap.~3]{Kopka2003}.
 \end{LaTeXCode}
-$\rightarrow$ Mehr über \emph{Styles} in \cite[Kap.\ 3]{Kopka2003}.
 
+\item
+Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} erscheinen überholt.
 \begin{LaTeXCode}[numbers=none]
-Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} sind falsch.
+Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} erscheinen überholt.
 \end{LaTeXCode}
-$\rightarrow$ Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} sind falsch.
 
+\item
+Interessant sind auch \cite{BurgeBurger1999,Patashnik1988,Duden1997}.
 \begin{LaTeXCode}[numbers=none]
-Überholt sind auch \cite{BurgeBurger1999, Patashnik1988, Duden1997}.
+Interessant sind auch \cite{BurgeBurger1999,Patashnik1988,Duden1997}.
 \end{LaTeXCode}
-$\rightarrow$ Überholt sind auch \cite{BurgeBurger1999, Patashnik1988, Duden1997}.
+In diesem Beispiel sind mehrere Quellen in einem einzigen 
+\texttt{\textbackslash cite}-Befehl angeführt. 
+Man beachte, dass dabei die Einträge automatisch (numerisch \bzw\ 
+alphabetisch) sortiert werden.
+Mehrere aufeinanderfolgende \texttt{\textbackslash cite}-Befehle sollte man 
+dafür nicht verwenden.
+\end{itemize}
 
-Die Sortierung der Angaben im letzten Beispiel erfolgt automatisch.
+\subsection{Mehrfache Quellenangaben mit Zusatztexten}
 
+Nicht ganz so einfach ist es, wenn man bei mehreren Quellenangaben gleichzeitig
+auch Texte anbringen möchte, etwa zur Angabe der jeweiligen Seitennummern.
+Dazu bietet \texttt{biblatex} das zusätzliche Makro%
+\footnote{Siehe \url{http://mirrors.ctan.org/info/translations/biblatex/de/biblatex-de-Benutzerhandbuch.pdf}
+für weitere Details.}
+%
+\begin{itemize}
+\item[] 
+\verb!\cites[!\textit{text1}\verb!]{!\textit{key1}\verb!}!%
+      \verb![!\textit{text2}\verb!]{!\textit{key2}\verb!}!\ldots%
+			\verb![!\textit{textN}\verb!]{!\textit{keyN}\verb!}!,
+\end{itemize}
+bei dem man zu jedem angeführten Quellenschlüssel (\textit{key}) auch einen zugehörigen \textit{text}
+angeben kann, zum Beispiel:%
+\footnote{Zur besseren Lesbarkeit ist in dieser Vorlage ein Strichpunkt (semicolon) als Trennzeichen zwischen
+den Einträgen in \texttt{\textbackslash cites} eingestellt.}
+% durch \renewcommand*{\multicitedelim}{\addsemicolon\space}
+%
+\begin{itemize}
+\item
+Ähnliches findet sich auch in 
+\cites[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+\begin{LaTeXCode}[numbers=none]
+Ähnliches findet sich auch in
+\cites[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+\end{LaTeXCode}
+In diesem Fall muss man sich allerdings (sofern gewünscht) selbst um die Sortierung der Einträge kümmern,
+sie erfolgt nicht automatisch.
+\end{itemize}
 
 
 \subsection{Häufige Fehler}
@@ -91,8 +133,8 @@ dem Punkt) stehen, nicht \emph{außerhalb}:
 %
 \begin{center}
 \begin{tabular}{rl}
- \textbf{Falsch:}  & \ldots hier ist der Satz aus. \cite{Oetiker2015} Und jetzt geht es weiter \ldots \\
- \textbf{Richtig:} & \ldots hier ist der Satz aus \cite{Oetiker2015}. Und jetzt geht es weiter \ldots
+ \textbf{Falsch:}  & \ldots hier ist der Satz zu Ende. \cite{Oetiker2015} Und jetzt geht es weiter \ldots \\
+ \textbf{Richtig:} & \ldots hier ist der Satz zu Ende \cite{Oetiker2015}. Und jetzt geht es weiter \ldots
 \end{tabular}
 \end{center}
 
@@ -112,26 +154,29 @@ Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird,
 sollte der Verweis im vorlaufenden Text und nicht
 \emph{innerhalb} des Zitats selbst platziert werden. Als Beispiel die folgende Passage
 aus \cite{Oetiker2015}:
-\begin{quote}
+%
+\begin{quote}\begin{english}
 Typographical design is a craft. Unskilled authors often commit
 serious formatting errors by assuming that book design is mostly a
 question of aesthetics---``If a document looks good artistically,
 it is well designed.'' But as a document has to be read and not
 hung up in a picture gallery, the readability and
 understandability is of much greater importance than the beautiful
-look of it.%
-\footnote{Man beachte die Verwendung von englischen Hochkommas innerhalb dieses
-Zitats.}
-\end{quote}
-Für das Zitat selbst sollte übrigens die dafür vorgesehene Umgebung
+look of it.
+\end{english}\end{quote}
 %
-\begin{itemize}
- \item[] \verb!\begin{quote}! \emph{Zitierter Text ...} \verb!\end{quote}!
-\end{itemize}
-%
+Für das Zitat selbst sollte übrigens die dafür vorgesehene \texttt{quote}-Umgebung
 verwendet werden, die durch beidseitige Einrückungen das
 Zitat vom eigenen Text klar abgrenzt und damit die Gefahr von
 Unklarheiten (wo ist das Ende des Zitats?) mindert.
+In obigem Beispiel wird zudem auch auf Englisch umgeschalten
+(siehe Abschn.\ \ref{sec:sprachumschaltung}):%
+\footnote{Man beachte auch die Verwendung von englischen Hochkommas innerhalb des Zitats.}
+%
+\begin{itemize}
+ \item[] \verb!\begin{quote}\begin{english}! \emph{Zitierter Text} \verb!\end{english}\end{quote}!
+\end{itemize}
+%
 Wenn gewünscht, kann das Innere des Zitats auch in Hochkommas verpackt 
 \emph{oder} kursiv gesetzt werden -- aber nicht beides!
 
