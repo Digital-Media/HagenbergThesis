@@ -6,3 +6,4 @@
 * [2018/06/28] Disabled ``lstlisting`` environment (due to frequent abuse).
 * [2018/07/01] Disabled the use of ``\footnote`` in captions.
 * [2018/07/12] Revised setup for algorithms (all contained in new file ``hgbalgo.sty``): bug fixes, new commands, color.
+* [2018/08/23] Added setup for biblatex's ``\cites`` command (for multiple citations with supplementary texts).
