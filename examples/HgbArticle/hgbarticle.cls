@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2018/08/23]
+\ProvidesClass{hgbarticle}[2018/08/30]
 
 \RequirePackage{xifthen}
 
@@ -56,6 +56,18 @@
 
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
+
+%% Set title font to SF
+\RequirePackage{titling}
+\renewcommand{\maketitlehooka}{\sffamily}
+
+%% Set abstract name to bold (single column format only)
+\if@twocolumn%
+    \else%
+	  \RequirePackage{abstract}
+      \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
+    \fi%
+}{}%
 
 % Add PDF meta data
 
