@@ -34,28 +34,3 @@
 	\renewcommand{\footrulewidth}{0pt}
 }
 
-%% Setup for headings (title, toc, abstract) for hgb* classes only ------------
-
-\makeatletter%
-\@ifclassloaded{hgbthesis}{%
-	\RequirePackage[titles]{tocloft}%
-	\renewcommand{\cftchapfont}{\bfseries\sffamily}
-}{}%
-\@ifclassloaded{hgbreport}{%
-	\RequirePackage{titling}
-	\renewcommand{\maketitlehooka}{\sffamily}
-	\RequirePackage[titles]{tocloft}%
-	\renewcommand{\cftchapfont}{\bfseries\sffamily}
-	\RequirePackage{abstract}%
-	\renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
-}{}%
-\@ifclassloaded{hgbarticle}{%
-	\RequirePackage{titling}
-	\renewcommand{\maketitlehooka}{\sffamily}
-	\if@twocolumn%
-    \else%
-	  \RequirePackage{abstract}
-      \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
-    \fi%
-}{}%
-\makeatother%
