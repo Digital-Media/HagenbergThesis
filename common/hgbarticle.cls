@@ -57,6 +57,18 @@
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
 
+%% Set title font to SF
+\RequirePackage{titling}
+\renewcommand{\maketitlehooka}{\sffamily}
+
+%% Set abstract name to bold (single column format only)
+\if@twocolumn%
+    \else%
+	  \RequirePackage{abstract}
+      \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
+    \fi%
+}{}%
+
 % Add PDF meta data
 
 \AtBeginDocument{%
