@@ -52,6 +52,15 @@
 \RequirePackage{hgb}	% load associated style file hgb.sty
 
 
+%% Set title font to SF
+\RequirePackage{titling}
+\renewcommand{\maketitlehooka}{\sffamily}
+
+%% Set abstract name to bold
+\RequirePackage{abstract}%
+\renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
+
+
 % Add PDF meta data
 
 \AtBeginDocument{%
