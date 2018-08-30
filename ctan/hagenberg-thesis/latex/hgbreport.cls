@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbreport}[2018/08/23]
+\ProvidesClass{hgbreport}[2018/08/30]
 
 \RequirePackage{xifthen}
 
@@ -50,6 +50,15 @@
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 
 \RequirePackage{hgb}	% load associated style file hgb.sty
+
+
+%% Set title font to SF
+\RequirePackage{titling}
+\renewcommand{\maketitlehooka}{\sffamily}
+
+%% Set abstract name to bold
+\RequirePackage{abstract}%
+\renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
 
 
 % Add PDF meta data
