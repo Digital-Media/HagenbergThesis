@@ -184,8 +184,12 @@
 
 
 % Setup for Table of Contents (ToC)
-\usepackage[tocgraduated,tocbreaksstrict]{tocstyle}
-\usetocstyle{classic}
+
+%\RequirePackage[tocgraduated,tocbreaksstrict]{tocstyle}%		%% Note: tocstyle is unsupported!
+%\usetocstyle{classic}%
+
+\RequirePackage{tocbasic}%				%% tocbasic is part of koma script
+\DeclareTOCStyleEntry[entryformat=\bfseries\textsf]{tocline}{chapter}%
 
 %% Program environments  ----------------------------------------
 
