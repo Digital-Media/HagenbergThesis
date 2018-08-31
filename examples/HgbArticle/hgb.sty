@@ -5,7 +5,7 @@
 %% File encoding: ASCII
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbDate}{2018/08/30}	% version string
+\newcommand{\hgbDate}{2018/08/31}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
 
 % Create a default/fallback main language so it is set no matter what
@@ -184,8 +184,12 @@
 
 
 % Setup for Table of Contents (ToC)
-\usepackage[tocgraduated,tocbreaksstrict]{tocstyle}
-\usetocstyle{classic}
+
+%\RequirePackage[tocgraduated,tocbreaksstrict]{tocstyle}%		%% Note: tocstyle is unsupported!
+%\usetocstyle{classic}%
+
+\RequirePackage{tocbasic}%				%% tocbasic is part of koma script
+\DeclareTOCStyleEntry[entryformat=\bfseries\textsf]{tocline}{chapter}%
 
 %% Program environments  ----------------------------------------
 
