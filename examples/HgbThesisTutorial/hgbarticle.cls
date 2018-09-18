@@ -63,11 +63,10 @@
 
 %% Set abstract name to bold (single column format only)
 \if@twocolumn%
-    \else%
-	  \RequirePackage{abstract}
-      \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
-    \fi%
-}{}%
+\else%
+\RequirePackage{abstract}
+\renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
+\fi%
 
 % Add PDF meta data
 

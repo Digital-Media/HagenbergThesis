@@ -187,12 +187,17 @@ independently of the document classes listed above:
 
 
 \begin{itemize}
-\item \textbf{\texttt{{\bs}AddBibFile}}: A wrapper to \texttt{biblatex}'s \verb!\addbibresource! macro
+\item
+\textbf{\texttt{{\bs}AddBibFile}}: A wrapper to \texttt{biblatex}'s \verb!\addbibresource! macro
 (for backward compatibility only).
-\item \textbf{\texttt{{\bs}MakeBibliography[\emph{options}]}}: Inserts the reference section or chapter.
+\item
+\textbf{\texttt{{\bs}MakeBibliography[\emph{options}]}}: Inserts the reference section or chapter.
 By default, references are automatically split into category subsections.%
-\footnote{Predefined reference categories are \texttt{literature}, \texttt{avmedia}, \texttt{online} and \texttt{software}.}
+\footnote{Predefined reference categories are \texttt{literature}, \texttt{avmedia}, \texttt{online}
+and \texttt{software}.}
 Use the option \texttt{nosplit} to produce a traditional (\ie, contiguous) list of references.
+\item
+\textbf{\texttt{{\bs}citenobr\{\emph{keys}\}}}: Analogous to the standard \texttt{{\bs}cite\{\emph{keys}\}} command, but inserts no ``backref'' page numbers in the bibliography.
 \end{itemize}
 
 % \MakeBibliography ... creates a reference section split subsections (default)
