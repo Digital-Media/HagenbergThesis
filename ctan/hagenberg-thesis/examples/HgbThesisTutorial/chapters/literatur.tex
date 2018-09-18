@@ -125,6 +125,22 @@ sie erfolgt nicht automatisch.
 \end{itemize}
 
 
+\subsection{Unterdrückung der Rückverweise mit \texttt{\textbackslash citenobr}}
+
+Mit dem vorliegenden Setup wird zu jedem Eintrag im Quellenverzeichnis automatisch 
+eine Liste der Textseiten angefügt, auf denen die Quelle zitiert wurde.
+In seltenen Fällen (\zB\ bei der Auflistung der auf die CD/DVD kopierten Quellen im Anhang)
+ist es sinnvoll, diese \texttt{backref}-Verweise wegzulassen. Dazu ist das spezielle Makro
+\texttt{\textbackslash citenobr}%
+\footnote{\emph{Cite with no back reference} (definiert in \texttt{hgbbib.sty}).}
+vorgesehen:
+%
+\begin{itemize}
+\item[] \verb!\citenobr{!\textit{keys}\verb!}! 
+\end{itemize}
+
+
+
 \subsection{Häufige Fehler}
 
 \subsubsection{Verweise außerhalb des Satzes}
