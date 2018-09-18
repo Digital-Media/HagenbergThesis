@@ -8,3 +8,4 @@
 * [2018/07/12] Revised setup for algorithms (all contained in new file ``hgbalgo.sty``): bug fixes, new commands, color.
 * [2018/08/23] Added setup for biblatex's ``\cites`` command (for multiple citations with supplementary texts).
 * [2018/08/31] Fixed ToC page breaking problems using the `tocbasic` package (replacing the `tocloft` package).
+* [2018/09/18] Added a new macro ``\citenobr`` (in ``hgbbib.sty``) to create citations with no "backref" entry in the bibliography.
