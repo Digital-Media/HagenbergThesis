@@ -679,17 +679,47 @@ unterstützt. Hier ein typisches Beispiel:
 \end{itemize}
 %
 
+%%------------------------------------------------------
 
+\subsubsection{\texttt{@patent}}
+\label{sec:@patent}
+
+Für Patente gibt es den speziellen Eintragstyp \texttt{@patent},
+wie das nachfolgende Beispiel zeigt. 
+\texttt{year} und \texttt{month} beziehen sich dabei auf das Datum der
+Patenterteilung, die Angabe von \texttt{holder} ist optional:
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@patent{Pike2008,
+	author={Pike, Dion},
+  title={Master-slave communications system and method for a network element},
+	type={US Patent},
+	holder={Alcatel-Lucent SAS},
+	number={7,460,482},
+	year={2008},
+	month={12},
+	url={https://patents.google.com/patent/US7460482}
+}
+\end{GenericCode}
+\item[\cite{Pike2008}] \fullcite{Pike2008}
+\end{itemize}
+%
+\texttt{@patent} ist allerdings kein Standardtyp und daher wird nicht
+von allen BibTex-Imple\-mentier\-ungen unterstützt.
+Alternativ kann man für Patente auch den \texttt{@misc}-Typ verwenden,
+wie im nächsten Abschnitt gezeigt \cite{Hough62}.
 
 %%------------------------------------------------------
 
 \subsubsection{\texttt{@misc}}
 \label{sec:@misc}
+
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
 nicht das Auslangen gefunden werden, sollte man sich zunächst die weiteren (hier nicht näher beschriebenen) 
 Typen im \texttt{biblatex}-Handbuch \cite{Lehman2016} ansehen, beispielsweise
-\texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin)
-oder \texttt{@patent} für ein Patent oder eine Patentanmeldung.
+\texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin).
 
 Wenn nichts davon passt, dann kann auf den Typ \texttt{@misc} zurückgegriffen werden, der ein
 Textfeld \texttt{howpublished} vorsieht, in dem die Art der Publikation individuell 
@@ -708,6 +738,26 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 \end{GenericCode}
 \item[\cite{OoeRaumordnungsgesetz1994}] \fullcite{OoeRaumordnungsgesetz1994}
 \end{itemize}
+%
+Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein Patent (als Alternative zu \texttt{@patent}, \so):
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@misc{Hough62,
+	author={Hough, Paul V. C.},
+	title={Method and means for recognizing complex patterns},
+	howpublished={US Patent 3,069,654},
+	year={1962},
+	month={12},
+	url={https://patents.google.com/patent/US3069654}
+}
+\end{GenericCode}
+\item[\cite{Hough62}] \fullcite{Hough62}
+\end{itemize}
+
+
+
 
 
 \subsection{Filme und audio-visuelle Medien (\textsf{avmedia})}
