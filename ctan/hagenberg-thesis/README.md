@@ -5,7 +5,7 @@ A collection of modern LaTeX classes, style files and example documents for auth
 
 ## Package information
 
-### Version: 2018/09/18
+### Version: 2018/10/09
 
 ### Authors:
 W. Burger, W. Hochleitner
