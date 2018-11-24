@@ -96,33 +96,37 @@ dafür nicht verwenden.
 
 Nicht ganz so einfach ist es, wenn man bei mehreren Quellenangaben gleichzeitig
 auch Texte anbringen möchte, etwa zur Angabe der jeweiligen Seitennummern.
-Dazu bietet \texttt{biblatex} das zusätzliche Makro%
-\footnote{Siehe \url{http://mirrors.ctan.org/info/translations/biblatex/de/biblatex-de-Benutzerhandbuch.pdf}
-für weitere Details.}
+Dafür bietet das \texttt{hagenberg}-Paket das zusätzliche Makro%
+\footnote{\texttt{\textbackslash mcite} funktioniert ähnlich dem \texttt{{\bs}cites}-Kommando
+von \texttt{biblatex} 
+(s.\ \url{http://mirrors.ctan.org/info/translations/biblatex/de/biblatex-de-Benutzerhandbuch.pdf})
+und ist in \texttt{hgbbib.sty} definiert.}
 %
 \begin{itemize}
 \item[] 
-\verb!\cites[!\textit{text1}\verb!]{!\textit{key1}\verb!}!%
+\verb!\mcite[!\textit{text1}\verb!]{!\textit{key1}\verb!}!%
       \verb![!\textit{text2}\verb!]{!\textit{key2}\verb!}!\ldots%
 			\verb![!\textit{textN}\verb!]{!\textit{keyN}\verb!}!,
 \end{itemize}
 bei dem man zu jedem angeführten Quellenschlüssel (\textit{key}) auch einen zugehörigen \textit{text}
-angeben kann, zum Beispiel:%
-\footnote{Zur besseren Lesbarkeit ist in dieser Vorlage ein Strichpunkt (semicolon) als Trennzeichen zwischen
-den Einträgen in \texttt{\textbackslash cites} eingestellt.}
-% durch \renewcommand*{\multicitedelim}{\addsemicolon\space}
+angeben kann, zum Beispiel:
 %
 \begin{itemize}
 \item
 Ähnliches findet sich auch in 
-\cites[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+\mcite[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+%
 \begin{LaTeXCode}[numbers=none]
 Ähnliches findet sich auch in
-\cites[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+\mcite[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
 \end{LaTeXCode}
-In diesem Fall muss man sich allerdings (sofern gewünscht) selbst um die Sortierung der Einträge kümmern,
-sie erfolgt nicht automatisch.
 \end{itemize}
+%
+Zur besseren Lesbarkeit wird hier -- anders als beim gewöhnlichen \texttt{\textbackslash cite} --
+ein \emph{Strichpunkt} (;) als Trennzeichen zwischen den Einträgen eingefügt.
+Bei der Verwendung von \texttt{\textbackslash mcite} muss man sich allerdings (sofern gewünscht) selbst 
+um die Sortierung der Einträge kümmern, sie erfolgt nicht automatisch.
+
 
 
 \subsection{Unterdrückung der Rückverweise mit \texttt{\textbackslash citenobr}}

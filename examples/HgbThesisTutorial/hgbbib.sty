@@ -5,7 +5,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2018/11/04]
+\ProvidesPackage{hgbbib}[2018/11/24]
 
 \usepackage{csquotes}				% recommended for biblatex
 
@@ -153,7 +153,13 @@
 
 
 % Use a semicolon between multiple entries in \cites
-\renewcommand*{\multicitedelim}{\addsemicolon\space}
+%\renewcommand*{\multicitedelim}{\addsemicolon\space}		%% abandoned, affects regular \cite{a,b,c,..} entries too
+
+% New command for multiple citations with supplementary texts
+% usage: \mcite[text1]{key1}[text2]{key2}...[textN]{keyN}
+% see https://tex.stackexchange.com/a/132981
+\DeclareMultiCiteCommand{\mcite}[\mkbibbrackets]{\cite}{\addsemicolon\space}
+
 
 % Macro to produce cites with no backref entries
 % Modified from http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex-contrib/biblatex-ieee/ieee.cbx
