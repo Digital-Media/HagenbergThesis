@@ -10,3 +10,4 @@
 * [2018/08/31] Fixed ToC page breaking problems using the `tocbasic` package (replacing the `tocloft` package).
 * [2018/09/18] Added a new macro ``\citenobr`` (in ``hgbbib.sty``) to create citations with no "backref" entry in the bibliography.
 * [2018/10/09] Added examples for patent references to thesis tutorial.
+* [2018/11/24] Added new macro ``\mcite`` for multiple citations with description texts (replacement for biblatex's ``\cites`` macro).
