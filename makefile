@@ -22,7 +22,7 @@ DUMMYDATE := 9999\/01\/01
 TODAY := $(shell date +"%Y\/%m\/%d")
 RELEASEDATE := $(TODAY)
 # Specify a specific release date as 'yyyy\/mm\/dd' (default is TODAY):
-#RELEASEDATE := 2017\/11\/28
+# RELEASEDATE := 2018\/11\/28
 
 CTANDIR = ctan
 CTANPKG = hagenberg-thesis

@@ -198,6 +198,16 @@ and \texttt{software}.}
 Use the option \texttt{nosplit} to produce a traditional (\ie, contiguous) list of references.
 \item
 \textbf{\texttt{{\bs}citenobr\{\emph{keys}\}}}: Analogous to the standard \texttt{{\bs}cite\{\emph{keys}\}} command, but inserts no ``backref'' page numbers in the bibliography.
+\item
+\textbf{\texttt{{\bs}mcite%
+[\emph{text1}]\{\emph{key1}\}%
+[\emph{text2}]\{\emph{key2}\}%
+\ldots
+[\emph{textN}]\{\emph{keyN}\}%
+}}:
+Analogous to \texttt{bib\-la\-tex}'s \texttt{{\bs}cites} command,%
+\footnote{\url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf} (see Sec.~3.8.3)}
+but inserts semicolons between reference entries for better readability.
 \end{itemize}
 
 % \MakeBibliography ... creates a reference section split subsections (default)
