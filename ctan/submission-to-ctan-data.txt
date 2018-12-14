@@ -8,7 +8,7 @@ Version number*
 2018-11-28
 	
 Maintainer*
-Wilhelm Burger
+Wilhelm Burger, Wolfgang Hochleitner
 
 Your email*
 wilhelm.burger@fh-hagenberg.at
@@ -22,7 +22,7 @@ macros/latex/contrib
 Type of Upload*
 New package
 
-
+Description
 A collection of modern LaTeX classes, style files and example documents for authoring Bachelor, Master or Diploma theses and related academic manuscripts in English and German. Includes a comprehensive tutorial (in German) with detailed instructions and authoring guidelines.
 	
 Administrative notes (to the CTAN maintainers)
