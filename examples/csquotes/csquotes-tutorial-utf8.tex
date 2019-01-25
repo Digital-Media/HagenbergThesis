@@ -1,3 +1,12 @@
+
+%% LINKS
+
+% https://tex.stackexchange.com/questions/150945/automatic-german-quotation-marks
+% https://tex.stackexchange.com/questions/152694/multilingual-document-problem-between-babel-and-csquotes-makeouterquote
+% https://tex.stackexchange.com/questions/28522/disable-babels-shorthands/451173#451173
+
+
+
 % This tutorial will give you an introduction to the csquotes package by way of
 % example. All the instructions are included as comments in this file. There is
 % nothing fancy to see in the typeset version of this file but you should
@@ -16,22 +25,26 @@
 \RequirePackage[utf8]{inputenc}
 \usepackage{pdfsync}	% for Sumatra inverse search
 
-
-\usepackage[english]{hgb}
+%\usepackage{hgb}	%% does NOT work (defaults to german?)
+%\usepackage[english]{hgb}	%% works!
+%\usepackage[german]{hgb}	%% does NOT work
 
 
 % In order to demonstrate babel support we load the babel package:
 %\usepackage[french,german,polish,american]{babel}
 %% wilbur: must load a specific language like american, UKenglish or USenglish to get proper outer quotes!?
-%\usepackage[ngerman,english,UKenglish]{babel}			%% wilbur: WORKS fine
-%\usepackage[main=english,ngerman]{babel}	%% wilbur: WORKS fine
+\usepackage[main=english,ngerman]{babel}			%% wilbur: WORKS fine
+%\usepackage[english,main=ngerman]{babel}			%% wilbur: does NOT work!
 
 
 % We load csquotes with the 'babel' option. The csquotes package works just
 % fine without babel, but it will support multilingual typesetting if babel
 % has been loaded.
 %\usepackage[babel=true]{csquotes}
-\usepackage[autostyle=true]{csquotes}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+%\usepackage[german=quotes]{csquotes}
+
+
 
 
 % In this tutorial, we'll make use of a few active quotes. They will be
