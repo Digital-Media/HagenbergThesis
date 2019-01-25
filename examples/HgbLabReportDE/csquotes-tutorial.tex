@@ -847,10 +847,10 @@ paragraph indentation.
 % the quotation and placed after the whole unit formed by quotation and
 % citation. This can be automated as follows:
 
-\renewcommand*{\mkmidblockpunct}[1]{%
+\newcommand*{\mkmidblockpunct}[1]{%
   \ifblockquote{.}{}}
 
-\renewcommand*{\mkfinblockpunct}[1]{%
+\newcommand*{\mkfinblockpunct}[1]{%
   \ifblockquote{}{.}}
 
 % Note that both \mkmidblockpunct and \mkfinblockpunct must take one mandatory
