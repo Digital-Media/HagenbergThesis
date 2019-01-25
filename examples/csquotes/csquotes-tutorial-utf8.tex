@@ -8,7 +8,7 @@
 % Please adjust your text editor as required.
 % Both ISO-8859-15 (Latin 9) and ISO-8859-1 (Latin 1) will work.
 
-\documentclass[a4paper,english]{article}
+\documentclass[a4paper]{article}
 
 % We're using 8-bit input and T1 encoded fonts for proper output:
 %\usepackage[latin9]{inputenc}
@@ -17,12 +17,15 @@
 \usepackage{pdfsync}	% for Sumatra inverse search
 
 
-%\usepackage{hgb}
+\usepackage[english]{hgb}
 
 
 % In order to demonstrate babel support we load the babel package:
 %\usepackage[french,german,polish,american]{babel}
-\usepackage[ngerman,english,american]{babel}
+%% wilbur: must load a specific language like american, UKenglish or USenglish to get proper outer quotes!?
+%\usepackage[ngerman,english,UKenglish]{babel}			%% wilbur: WORKS fine
+%\usepackage[main=english,ngerman]{babel}	%% wilbur: WORKS fine
+
 
 % We load csquotes with the 'babel' option. The csquotes package works just
 % fine without babel, but it will support multilingual typesetting if babel
@@ -81,7 +84,7 @@
 % Let's go
 
 \title{\texttt{csquotes} Tutorial}
-
+\author{Benno Klabuster}
 
 \begin{document}
 
