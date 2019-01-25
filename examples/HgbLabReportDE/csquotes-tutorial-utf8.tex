@@ -8,15 +8,21 @@
 % Please adjust your text editor as required.
 % Both ISO-8859-15 (Latin 9) and ISO-8859-1 (Latin 1) will work.
 
-\documentclass[a4paper]{article}
+\documentclass[a4paper,english]{article}
 
 % We're using 8-bit input and T1 encoded fonts for proper output:
 %\usepackage[latin9]{inputenc}
 %\usepackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}	
+\RequirePackage[utf8]{inputenc}
+\usepackage{pdfsync}	% for Sumatra inverse search
+
+
+%\usepackage{hgb}
+
 
 % In order to demonstrate babel support we load the babel package:
-\usepackage[french,german,polish,american]{babel}
+%\usepackage[french,german,polish,american]{babel}
+\usepackage[ngerman,english,american]{babel}
 
 % We load csquotes with the 'babel' option. The csquotes package works just
 % fine without babel, but it will support multilingual typesetting if babel
@@ -50,21 +56,21 @@
 % issue an error message.
 
 % Some additional packages used or discussed in this tutorial:
-\usepackage[noadjust]{cite}
-\usepackage{relsize}
+%\usepackage[noadjust]{cite}
+%\usepackage{relsize}
 
 % Some generic settings:
-\setcounter{secnumdepth}{1}
-\pagestyle{empty}
-\frenchspacing
-\raggedbottom
+%\setcounter{secnumdepth}{1}
+%\pagestyle{empty}
+%\frenchspacing
+%\raggedbottom
 
-\makeatletter
-\renewcommand{\@makefntext}[1]{%
-  \@hangfrom{\makebox[0.5em][r]{\@thefnmark}%
-             \hspace{1em}}%
-  #1}
-\makeatother
+%\makeatletter
+%\renewcommand{\@makefntext}[1]{%
+  %\@hangfrom{\makebox[0.5em][r]{\@thefnmark}%
+             %\hspace{1em}}%
+  %#1}
+%\makeatother
 
 \newcommand*{\example}[1]{%
   \addvspace{\baselineskip}%
@@ -73,17 +79,19 @@
   \hspace{1em}\ignorespaces}
 
 % Let's go
+
+\title{\texttt{csquotes} Tutorial}
+
+
 \begin{document}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
 
-% We include a short note to anyone looking at the typeset file first:
-
-\noindent This is the typeset version of \texttt{\jobname.tex}. There is
+\begin{abstract}\noindent
+This is the typeset version of \texttt{\jobname.tex}. There is
 nothing fancy to see here. The tutorial you are looking for consists of a
 series of comments which are included in the source.
-
-\clearpage
+\end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -95,7 +103,7 @@ series of comments which are included in the source.
 % we will occasionally change the document language. We start off with American
 % English:
 
-\selectlanguage{american}
+\selectlanguage{english}
 
 \subsection{\languagename}
 
@@ -161,35 +169,7 @@ series of comments which are included in the source.
 
 % We're switching languages:
 
-\selectlanguage{french}
-
-\subsection{\languagename}
-
-% Csquotes will detect the change and adjust the quotation marks to the new
-% language automatically:
-
-\example{1} les guillemets \enquote{à la française}
-
-% Of course the active quotes will obey the language change as well:
-
-\example{2} les guillemets «à la française»
-
-% A note about French: when using \enquote or active quotes, don't add any
-% nonbreakable spaces. Csquotes will space out the guillemets automatically as
-% is custom in French. The spacing is similar to what you get when using the
-% commands \og and \fg provided by the French extension of the babel package.
-% This feature is not hard-coded, it is part of the quote styles for French and
-% could be modified if desired.
-
-\example{3} les guillemets \og à la française\fg
-
-\example{4} les guillemets "à la française"
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% We're switching languages once again:
-
-\selectlanguage{german}
+\selectlanguage{ngerman}
 
 \subsection{\languagename}
 
@@ -216,7 +196,7 @@ series of comments which are included in the source.
 % "` and "', TeX will happily typeset the wrong quotation marks without giving
 % any warning:
 
-\example{3} "'Zitat"`
+\example{3} "'Zitat"` (wrong quotes!)
 
 % If you get the active quotes of csquotes wrong, TeX will bail out with an
 % error message drawing you attention to the problem. This package tracks the
@@ -247,7 +227,7 @@ series of comments which are included in the source.
 % command/environment activating babel's specials locally), babel will
 % overwrite the definitions set up by csquotes:
 
-\selectlanguage{german}
+\selectlanguage{ngerman}
 
 \example{4} "a "o "u "i
 
@@ -280,32 +260,13 @@ series of comments which are included in the source.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\selectlanguage{polish}
-
-\subsection{\languagename}
-
-% Quote styles for some of the languages covered by babel are still missing
-% simply because I'm not familiar with the respective language and nobody has
-% contributed a suitable style yet. In this case, csquotes will typeset bold
-% question marks and issue a warning:
-
-\example{1} «unknown»
-
-% You can easily add support for your language or change a predefined style.
-% All you need to do is add a declaration to the configuration file,
-% csquotes.cfg. Detailed instructions concerning this are included in the
-% manual. The configuration file also includes some example styles.
-
-\selectlanguage{american}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Foreign language quotations}
 
 % In the following, we will have a closer look at the multilingual capabilities
 % of csquotes. First of all, we're changing the default language:
 
-\selectlanguage{german}
+\selectlanguage{ngerman}
 
 \example{1} «Zitat in der Standardsprache.» % "quote in the default language"
 
@@ -374,616 +335,9 @@ series of comments which are included in the source.
 % «Voici une citation en français.»
 
 \EnableQuotes % because \selectlanguage{german} overwrites the " special
-\selectlanguage{american}
+\selectlanguage{english}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Formal quotations}
-
-% A common requirement in academic writing demands that quotations be embedded
-% in the flow of text if they are short but set off as an indented paragraph, a
-% so-called block quotation, if they are longer than a certain number of lines.
-% This package provides commands which will determine the number of lines
-% required to typeset the quotation and then decide on the format
-% automatically.
-
-\example{1}
-This is some filler text demonstrating how the quotation is integrated with
-the running text. \blockquote{This is a short quotation. Since it's shorter
-than three lines it will be embedded in the running text.} This is some filler
-text demonstrating how the quotation is integrated with the running text.
-\blockquote{This is a long quotation. Since it's longer than three lines it
-will be presented as an indented paragraph. By default, the csquotes package
-will use the \texttt{quote} environment for block quotations. Both the line
-threshold and the block quotation environment may be adapted to your
-requirements.} This is some filler text demonstrating how the quotation is
-integrated with the running text.
-
-% Formal quotations are always accompanied by a citation indicating the source
-% of the quoted text. The citation will usually have a specific format which is
-% used consistently throughout the entire text. For example, it might be
-% enclosed in parentheses or put in a footnote. Therefore, the block quotation
-% facilities take the citation as an optional argument and pass it to an
-% auxiliary command called \mkcitation. This command may be redefined to format
-% the citation. Here is an example:
-
-\renewcommand{\mkcitation}[1]{ (#1)} % this is the default
-
-\example{2}
-This is some filler text demonstrating how the quotation is integrated with
-the running text. \blockquote[Citation]{This is a short quotation. Since it's
-shorter than three lines it will be embedded in the running text.} This is
-some filler text demonstrating how the quotation is integrated with the
-running text. \blockquote[Citation]{This is a long quotation. Since it's
-longer than three lines it will be presented as an indented paragraph. By
-default, the csquotes package will use the \texttt{quote} environment for
-block quotations. Both the line threshold and the block quotation environment
-may be adapted to your requirements.} This is some filler text demonstrating
-how the quotation is integrated with the running text.
-
-% There is another useful command called \ifblockquote which you may use in the
-% definition of \mkcitation to present the citation in a way that depends on
-% the format of the corresponding quotation:
-
-\renewcommand{\mkcitation}[1]{%
-  \ifblockquote{\footnote{#1.}}{ (#1)}}
-
-% If the quotation is embedded in the running text, this definition will behave
-% like the one discussed above. If the quotation is presented as a block
-% quotation, however, the citation will be given in a footnote.
-
-\example{3}
-This is some filler text demonstrating how the quotation is integrated with
-the running text. \blockquote[Citation]{This is a short quotation. Since it's
-shorter than three lines it will be embedded in the running text.} This is
-some filler text demonstrating how the quotation is integrated with the
-running text. \blockquote[Citation]{This is a long quotation. Since it's
-longer than three lines it will be presented as an indented paragraph. By
-default, the csquotes package will use the \texttt{quote} environment for
-block quotations. Both the line threshold and the block quotation environment
-may be adapted to your requirements.} This is some filler text demonstrating
-how the quotation is integrated with the running text.
-
-% You may also want to present a quotation in inline or in display style,
-% regardless of its length. That's what the text and display quotation
-% facilities are for. Quotations typeset with the text quotation facilities
-% look like a 'short' quotation, those typeset by means of the display
-% quotation facilities look like a 'long' quotation. Citations are supported
-% as well and will be formated consistently with \mkcitation. \ifblockquote
-% will also work as expected in this context.
-%
-% This is the current definition of \mkcitation:
-%
-%    \renewcommand{\mkcitation}[1]{%
-%      \ifblockquote{\footnote{#1.}}{ (#1)}}
-%
-% That's what a text quotation ...
-
-\example{4}
-This is some filler text demonstrating how the quotation is integrated with
-the running text.
-\textquote[Citation]{This is a short quotation typeset with a text quotation
-command. It would be presented in inline style even if it were longer than
-three lines.}
-This is some filler text demonstrating how the quotation is integrated with
-the running text. 
-
-% ... and a display quotation looks like:
-
-\example{5}
-This is some filler text demonstrating how the quotation is integrated with
-the running text.
-\begin{displayquote}[Citation]
-This is a fairly short quotation. Since it is enclosed in a
-\texttt{displayquote} environment, however, it is typeset just like a long
-one.
-\end{displayquote}
-This is some filler text demonstrating how the quotation is integrated with
-the running text. 
-
-% See the sections entitled "Fine-tuning block/display quotations" and
-% "Fine-tuning terminal punctuation" for additional hints.
-
-% For the remaining examples, we restore the default definition:
-
-\renewcommand{\mkcitation}[1]{ (#1)}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% If you prefer using active quotes, you may do so with block quotations as
-% well. In the preamble we already defined some active quotes including the
-% following:
-%
-% \MakeBlockQuote{<}{|}{>}
-%
-% These active quotes are used as follows:
-
-\example{5} <quotation>
-
-\example{6} <quotation|citation>
-
-% This is equivalent to:
-%
-%    \blockquote{quotation}
-%    \blockquote[citation]{quotation}
-%
-% The delimiter | separates the quotation from the citation. If the delimiter
-% is not used, the entire piece of text between the opening and the closing
-% mark will be treated as quotation text. Note that the marks and the delimiter
-% must not be included in the quoted piece of text and the citation. See the
-% section entitled "Controlling active quotes" on how to work around this
-% limitation.
-
-% Let's go over our verbose example once again, using active quotes this time:
-
-\example{7}
-This is some filler text demonstrating how the quotation is integrated with
-the running text. <This is a short quotation. Since it's shorter than three
-lines it will be embedded in the running text.|Citation> This is some filler
-text demonstrating how the quotation is integrated with the running text.
-<This is a long quotation. Since it's longer than three lines it will be
-presented as an indented paragraph. By default, the csquotes package will use
-the \texttt{quote} environment for block quotations. Both the line threshold
-and the block quotation environment may be adapted to your
-requirements.|Citation> This is some filler text demonstrating how the
-quotation is integrated with the running text.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Integrated quotations}
-
-% For every quotation command/environment which takes a citation as an
-% argument, there is also a corresponding 'integrated' command/environment with
-% the letter 'c' for 'cite' in its name:
-%
-%    \textquote            \textcquote
-%    \foreigntextquote     \foreigntextcquote
-%    \hyphentextquote      \hyphentextcquote
-%
-%    \blockquote           \blockcquote
-%    \foreignblockquote    \foreignblockcquote
-%    \hyphenblockquote     \hyphenblockcquote
-%
-%    displayquote          displaycquote
-%    foreigndisplayquote   foreigndisplaycquote
-%    hyphendisplayquote    hyphendisplaycquote
-%
-% The integrated quotation facilities differ from their regular counterparts in
-% that they integrate automated citations into their syntax. Instead of adding
-% \cite manually, you pass the arguments for \cite to the respective quotation
-% command. You would normally give a citation like that:
-
-\example{1} \enquote{This is the quotation.} \cite[174]{citekey}
-
-% The commands for formal quotations already take the citation as an argument,
-% but using \cite in an optional argument may lead to some rather convoluted
-% constructs with multiple nested pairs of brackets and braces:
-%
-%    \textquote[{\cite[174]{citekey}}]{This is the quotation.}
-%
-% The integrated quotation facilities allow you to write that in a much more
-% readable, sequential way:
-
-\example{2} \textcquote[174]{citekey}{This is the quotation.}
-
-% This works with block quotations as well:
-
-\example{3} \blockcquote[174]{citekey}{This is the quotation.}
-
-% The \cite command will format the citation in a certain way (it is enclosed
-% in square brackets by default). Since csquotes' \mkcitation would interfere
-% with \cite's formatting, all integrated quotation facilities use \mkccitation
-% instead of \mkcitation. The citation arguments are handed over to \cite and
-% this entire unit is passed to \mkccitation.
-%
-% When using citation packages such as cite, natbib, jurabib, or biblatex, you
-% might want to put the format of the citation completely under the control of
-% the respective package and have \mkccitation do nothing at all:
-%
-%    \renewcommand*{\mkccitation}[1]{#1}
-%
-% Obviously, anything inserted by \cite cannot be removed by \mkccitation.
-% Hence you might need additional packages which redefine \cite in order to
-% adjust the format of the automated citations. Here's an example using the
-% cite package to present the citation in a way that is better suited for the
-% author-year citation format:
-
-\renewcommand*{\mkccitation}[1]{ #1} % this is the default (note the space)
-\renewcommand*{\citeleft}{(}    % -> cite.sty
-\renewcommand*{\citeright}{)}   % -> cite.sty
-\renewcommand*{\citemid}{, p.~} % -> cite.sty
-
-\example{4} \textcquote[174]{doe96}{This is the quotation.}
-
-% Of course you may also combine \mkccitation and the features of additional
-% citation packages. Depending on the citation package, there may be more than
-% one way to achieve a certain result.
-%
-% Suppose that we wanted to put all citations in a footnote. The jurabib and
-% biblatex packages offers a \footcite command which does just that. In this
-% case, \mkccitation need not do anything:
-%
-%    \renewcommand*{\mkccitation}[1]{#1}
-%    \SetCiteCommand{\footcite}
-%
-% With natbib, \mkccitation may take care of the footnote but we still need to
-% use an alternative \cite command to get a suitable citation format:
-%
-%    \renewcommand*{\mkccitation}[1]{\footnote{#1}}
-%    \SetCiteCommand{\citealp}
-%
-% Here's one last example combining \mkccitation with the features of the cite
-% package to achieve a similar result. \mkccitation will put the citation in a
-% footnote while the cite package is used to format the citation:
-
-\renewcommand*{\mkccitation}[1]{\footnote{#1}}
-\SetCiteCommand{\cite}
-
-\renewcommand*{\citeleft}{}
-\renewcommand*{\citeright}{.}
-\renewcommand*{\citemid}{, p.~}
-
-\example{5} \blockcquote[174]{doe96}{This is the quotation.}
-
-% All of this also works with the text...
-
-\example{6} \textcquote[174]{doe96}{This is the quotation.}
-
-% ...and the display quotation facilities:
-
-\example{7}
-This is some filler text.
-\begin{displaycquote}[174]{doe96}
-This is the quotation.
-\end{displaycquote}
-This is some filler text.
-
-% The natbib, jurabib, and biblatex packages redefine \cite so that it takes
-% two optional arguments. If one of these packages is loaded, all integrated
-% quotation facilities will automatically accept this additional argument
-% as well:
-%
-%    \usepackage{natbib}
-%    ...
-%    \textcquote[See][174]{doe96}{...}
-%
-% The citation arguments are handed over to \cite in the order in which they
-% were given. How they are interpreted is at the discretion of \cite. With the
-% natbib and biblatex packages, the first optional argument is a prenote.
-% With jurabib, it has a different function by default.
-
-% See the section entitled "Fine-tuning terminal punctuation" for additional
-% hints.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Miscellaneous hints}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Fine-tuning block/display quotations}
-
-% The most frequent complaint about the traditional 'quote' and 'quotation'
-% environments is that they do not adjust the font size of the quoted text. It
-% is very common to set block quotations slightly smaller than the surrounding
-% text. This problem is easily remedied:
-%
-%    \newenvironment{smallquote}
-%      {\begin{quote}\small}
-%      {\end{quote}}
-%
-% Because of the way environments are implemented in LaTeX, it is better to
-% avoid nesting \begin and \end when including an environment in the definition
-% of another one. Another problem with this definition is that \small will
-% effectively hard-code the font size. It is advisable to use the \smaller
-% command from the relsize package. \smaller will decrease the font size by one
-% step (from \normalsize to \small or from \footnotesize to \scriptsize) so
-% that this environment will also work as expected when used in a footnote.
-%
-% Hence our final definition is written as follows:
-
-\newenvironment*{smallquote}
-  {\quote\smaller}
-  {\endquote}
-
-% Now we instruct csquotes to use the new environment:
-
-\SetBlockEnvironment{smallquote}
-
-\example{1}
-This is some filler text. \blockquote{This is a quotation typeset with one of
-the block quotation commands of the \texttt{csquotes} package. The block
-quotation environment has been modified so that the font size of the quotation
-is decreased by one step with respect to the size of the surrounding text.}
-This is some filler text.
-
-% All adjustments made by means of \SetBlockEnvironment will automatically
-% apply to the 'display' environments as well:
-
-\example{2}
-This is some filler text.
-\begin{displayquote}
-This is a quotation typeset with one of the quotation environments of the
-\texttt{csquotes} package. Quotations typeset by way of these environments
-will behave exactely like a long quotation set with the block quotation
-commands.
-\end{displayquote}
-This is some filler text.
-
-% If you want to use this setup by default, add the following to csquotes.cfg:
-%
-%    \RequirePackage{relsize}
-%
-%    \newenvironment{smallquote}
-%      {\quote\smaller}
-%      {\endquote}
-%
-%    \SetBlockEnvironment{smallquote}
-%
-% Of course you could also redefine the original 'quote' environment, but keep
-% in mind that the 'quote' and 'quotation' environments are not part of the
-% LaTeX kernel. They are defined in the document class. Since any definition
-% given in csquotes.cfg should be independent of the document class, it's
-% better to build a new environment on top of 'quote'.
-
-% For the next examples, we'll switch back to the default:
-
-\SetBlockEnvironment{quote}
-
-% You may have noticed that the first line of text after the quotation is not
-% indented in the example above. This is possibly not what you would expect.
-% However, this is in fact a feature of the standard 'quote' environment which
-% is used for long quotations by default. Strictly speaking, it is a feature of
-% LaTeX's list environments and both 'quote' and 'quotation' are implemented as
-% lists. If they are part of a paragraph, the first line after the environment
-% will not be indented:
-
-\example{3}
-This is some filler text.
-\begin{quote}
-This is a quotation typeset with the standard \texttt{quote} environment. In
-the source of this example the environment is part of a paragraph, hence the
-first line after the environment is not indented.
-\end{quote}
-This line is not indented.
-
-% If the environment is separated from the surrounding text by \par or by a
-% blank line, the first line after the environment will get regular paragraph
-% indentation:
-
-\example{4}
-This is some filler text.
-
-\begin{quote}
-This is a quotation typeset with the standard \texttt{quote} environment. In
-the source of this example the environment is separated from the surrounding
-text by blank lines, hence the first line after the environment gets regular
-paragraph indentation.
-\end{quote}
-
-This line gets regular paragraph indentation.
-
-% Block quotation commands such as \blockquote will usually be integrated in
-% the text in the document source since \blockquote may decide to typeset its
-% argument inline. When using the 'quote' environment for long quotations, this
-% implies that the first line after the environment will not get regular
-% paragraph indentation:
-
-\example{5}
-This is some filler text. \blockquote{This is a quotation typeset with one of
-the block quotation commands of the \texttt{csquotes} package. In the source
-of this example the quotation is part of a paragraph. By default, the block
-quote commands will use the standard \texttt{quote} environment for long
-quotations. Therefore, the first line after the block quotation is not
-indented.} This line is not indented.
-
-% This behavior is perfectly in line with LaTeX's list environments, but it can
-% lead to inconsistencies in the layout. The csquotes package will not insert
-% an explicit \par before and after block quotations automatically since you
-% might prefer it the other way and suppressing the indentation later on is a
-% somewhat tricky thing to do. It is much easier to force indentation after
-% paragraph quotations automatically. If you want to force indentation in all
-% cases, a suitable environment is easily defined:
-%
-%    \newenvironment*{paraquote}
-%      {\par\begin{quote}}
-%      {\end{quote}\par}
-%
-% As mentioned above, it is better to avoid nesting \begin and \end:
-
-\newenvironment*{paraquote}
-  {\begingroup\quote}
-  {\endquote\endgroup}
-
-% We instruct csquotes to use the new environment:
-
-\SetBlockEnvironment{paraquote}
-
-% Now all long quotes will be treated as separate paragraphs:
-
-\example{6}
-This is some filler text. \blockquote{This is a quotation typeset with one of
-the block quotation commands of the \texttt{csquotes} package. In the source
-of this example the quotation is also part of a larger paragraph. However, the
-block quotation environment has been redefined so that the first line after
-the quotation gets regular paragraph indentation.} This line gets regular
-paragraph indentation.
-
-% Our 'paraquote' environment may also be merged with the 'smallquote'
-% environment discussed above:
-%
-%    \newenvironment*{smallparaquote}
-%      {\begingroup\quote\smaller}
-%      {\endquote\endgroup}
-%
-%    \SetBlockEnvironment{smallparaquote}
-
-\subsection{Fine-tuning terminal punctuation}
-
-% Style guides often include subtleties such as detailed provisions concerning
-% the placement of terminal punctuation. With \blockquote, such provisions can
-% complicate matters quite a bit since you don't know in advance how the
-% quotation is going to be typeset.
-% 
-% The csquotes package is designed to cope with as many of these provisions as
-% possible. The facilities for formal quotations provide a combination of
-% 'hooks' and tests which may be used to deal with them automatically. We'll
-% consider MLA-style quotations as an example. The APA style uses a different
-% citation format (author-year) but is very similar in concept otherwise.
-
-% The MLA style guide demands that quotations of up to four lines be set inline
-% and quotations of five or more lines be presented as an indented paragraph.
-% The \blockquote command and its various companions can deal with this task
-% automatically. The required settings are obvious:
-
-\SetBlockThreshold{4} % the default is 3 lines
-\SetBlockEnvironment{quote} % this is the default
-
-% The source of the quotation is indicated in the body by a short citation in
-% parentheses. This is what the default definition of \mkcitation already does:
-
-\renewcommand*{\mkcitation}[1]{ (#1)} % this is the default
-
-% What complicates this further is the placement of the terminal punctuation.
-% With long quotations, the period is simply placed at the end of the
-% quotation. With short quotations, however, the final period is omitted from
-% the quotation and placed after the whole unit formed by quotation and
-% citation. This can be automated as follows:
-
-\newcommand*{\mkmidblockpunct}[1]{%	%% wilbur changed
-  \ifblockquote{.}{}}
-
-\newcommand*{\mkfinblockpunct}[1]{% %% wilbur changed
-  \ifblockquote{}{.}}
-
-% Note that both \mkmidblockpunct and \mkfinblockpunct must take one mandatory
-% argument, even if it is not used in their definition. We will use it further
-% down, though.
-%
-% Now, when quoting, we simply omit the terminal period:
-
-\example{1}
-\blockquote[Doe 174]{This is a short quotation. The terminal period is omitted
-from the quotation and inserted automatically}
-
-\blockquote[Doe 174]{This is a long quotation. Apart from this absolutely
-pointless filler text (which serves no purpose whatsoever besides making the
-quotation exceed the block threshold so that the command used to typeset the
-quotation will finally have mercy and present it as an indented paragraph) it
-is similar to the short quotation above. The terminal period is also omitted
-from the quotation and inserted automatically}
-
-% But what if the quotation ends with a question mark? With short quotations
-% there is no problem because the whole unit including the citation should
-% still be closed with a terminal period. Therefore, our definition of
-% \mkfinblockpunct does not require any adjustments. With long quotations,
-% however, this would result in '?.' at the end of the quotation. We need an
-% additional test in the definition of \mkmidblockpunct: \ifquotepunct tells
-% us if the quotation ends with a punctuation mark. If so, we don't add a
-% terminal period to the block quotations:
-
-\renewcommand*{\mkmidblockpunct}[1]{%
-  \ifblockquote
-    {\ifquotepunct{}{.}}
-    {}}
-
-\example{2}
-\blockquote[Doe 174]{This is a short quotation ending with a question
-mark. You see?}
-
-\blockquote[Doe 174]{This is a long quotation. Apart from this absolutely
-pointless filler text (which serves no purpose whatsoever besides making the
-quotation exceed the block threshold so that the command used to typeset the
-quotation will finally have mercy and present it as an indented paragraph) it
-is similar to the short quotation above. It also ends with a question mark.
-You see?}
-
-% But it gets even more complicated. What about inline quotations with a
-% terminal question mark which is not part of the quotation? For example,
-% consider something like the following:
-%
-%    Is it true, as Epimenides claims, that "all Cretans are liars"?
-%
-% This might be given as follows in the source document:
-%
-%    Is it true, as Epimenides claims, that
-%    \blockquote[][?]{all Cretans are liars}
-%
-% Note that the 'punctuation' argument is passed to both \mkmidblockpunct and
-% \mkfinblockpunct. (But only on of them should actually insert it!) In the
-% above definitions of these commands, the argument was simply discarded. Our
-% final definitions will subject #1 to an \ifstringblank test to find out if
-% the 'punctuation' argument is used and handle it in an appropriate way:
-
-\renewcommand*{\mkmidblockpunct}[1]{%
-  \ifblockquote
-    {\ifstringblank{#1}
-       {\ifquotepunct{}{.}}
-       {}}
-    {}}
-
-\renewcommand*{\mkfinblockpunct}[1]{%
-  \ifblockquote
-    {\ifstringblank{#1}{}{#1}}
-    {\ifstringblank{#1}{.}{#1}}}
-
-\example{3}
-\blockquote[Doe 174][?]{This is a short quotation closed with a question mark
-which is not part of the quotation itself}
-
-\blockquote[Doe 174][?]{This is a long quotation. Apart from this absolutely
-pointless filler text (which serves no purpose whatsoever besides making the
-quotation exceed the block threshold so that the command used to typeset the
-quotation will finally have mercy and present it as an indented paragraph) it
-is similar to the short quotation above. It is closed with a question mark
-which is not part of the quotation itself}
-
-% Setting the long quotation this way is not a good idea because it's still
-% somewhat ambiguous. Let's make that more explicit:
-
-\renewcommand*{\mkmidblockpunct}[1]{%
-  \ifblockquote
-    {\ifstringblank{#1}
-       {\ifquotepunct{}{.}}
-       { [\dots\unkern]\,[#1]}}
-    {}}
-
-\renewcommand*{\mkfinblockpunct}[1]{%
-  \ifblockquote
-    {}
-    {\ifstringblank{#1}{.}{#1}}}
-
-\example{4}
-\blockquote[Doe 174][?]{This is a short quotation closed with a question mark
-which is not part of the quotation itself}
-
-\blockquote[Doe 174][?]{This is a long quotation. Apart from this absolutely
-pointless filler text (which serves no purpose whatsoever besides making the
-quotation exceed the block threshold so that the command used to typeset the
-quotation will finally have mercy and present it as an indented paragraph) it
-is similar to the short quotation above. It is closed with a question mark
-which is not part of the quotation itself}
-
-% There's an additional benefit to this last solution: if you quote a partial
-% sentence, that is, if the end of the quotation is not the end of the quoted
-% sentence, you can have csquotes mark the omission automatically be passing
-% a period as the optional 'punctuation' argument:
-
-\blockquote[Doe 174][.]{This is a long quotation. Apart from this absolutely
-pointless filler text (which serves no purpose whatsoever besides making the
-quotation exceed the block threshold so that the command used to typeset the
-quotation will finally have mercy and present it as an indented paragraph) it
-is similar to the quotation above. In this case, however, the end of the
-quotation is not the end of the quoted sentence%, which goes on like this.
-}
-
-% For the remaining examples, we restore the defaults:
-
-\SetBlockThreshold{3}
-\SetBlockEnvironment{quote}
-\renewcommand*{\mkcitation}[1]{ (#1)}
-\renewcommand*{\mkmidblockpunct}[1]{}
-\renewcommand*{\mkfinblockpunct}[1]{#1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -996,7 +350,7 @@ quotation is not the end of the quoted sentence%, which goes on like this.
 % reset strings like \chaptername and the date as printed by \today to the
 % defaults:
 
-\selectlanguage{american}
+\selectlanguage{english}
 
 \example{1} \chaptername: \today
 
@@ -1009,55 +363,55 @@ quotation is not the end of the quoted sentence%, which goes on like this.
 % We'll use French as an example here because the language specific adjustments
 % are obvious in this case (note the spaced out colon):
 
-{\begin{otherlanguage}{french}
-
-\example{2} \chaptername: \today
-
-\end{otherlanguage}}
-
-% Note that the extra set of braces in the example above was merely added to
-% work around a bug in older versions of the babel package. They are not
-% related to csquotes in any way and should not be required with a recent
-% version of babel.
-
-% The starred version of this environment switches hyphenation patterns and
-% activates the language specific adjustments without modifying the strings:
-
-\begin{otherlanguage*}{french}
-
-\example{3} \chaptername: \today
-
-\end{otherlanguage*}
-
-% Babel's \foreignlanguage command is an inline version of the 'otherlanguage*'
-% environment:
-
-\example{4} \foreignlanguage{french}{\chaptername: \today}
-
-% Csquotes' \foreignquote command and all active quotes defined with
-% \MakeForeignQuote behave the same as \foreignlanguage. The quotation mark
-% style will be adapted to the language of the quotation:
-
-\example{5} \foreignquote{french}{\chaptername: \today}
-
-% Babel's 'hyphenrules' environment switches hyphenation patterns without
-% making any further adjustments. You won't see it in the typeset version of
-% the example below, but inside the environment the active hyphenation patterns
-% are actually the French ones while everything else adheres to the standards
-% of the main document language ('american' here):
-
-\begin{hyphenrules}{french}
-
-\example{6} \chaptername: \today
-
-\end{hyphenrules}
-
-% The \hyphenquote command and all active quotes defined with \MakeHyphenQuote
-% are inline versions of babel's 'hyphenrules' environment plus quotation
-% marks. They will switch hyphenation patterns without making any further
-% adjustments. The quotation marks match the text surrounding the quotation:
-
-\example{7} \hyphenquote{french}{\chaptername: \today}
+%{\begin{otherlanguage}{french}
+%
+%\example{2} \chaptername: \today
+%
+%\end{otherlanguage}}
+%
+%% Note that the extra set of braces in the example above was merely added to
+%% work around a bug in older versions of the babel package. They are not
+%% related to csquotes in any way and should not be required with a recent
+%% version of babel.
+%
+%% The starred version of this environment switches hyphenation patterns and
+%% activates the language specific adjustments without modifying the strings:
+%
+%\begin{otherlanguage*}{french}
+%
+%\example{3} \chaptername: \today
+%
+%\end{otherlanguage*}
+%
+%% Babel's \foreignlanguage command is an inline version of the 'otherlanguage*'
+%% environment:
+%
+%\example{4} \foreignlanguage{french}{\chaptername: \today}
+%
+%% Csquotes' \foreignquote command and all active quotes defined with
+%% \MakeForeignQuote behave the same as \foreignlanguage. The quotation mark
+%% style will be adapted to the language of the quotation:
+%
+%\example{5} \foreignquote{french}{\chaptername: \today}
+%
+%% Babel's 'hyphenrules' environment switches hyphenation patterns without
+%% making any further adjustments. You won't see it in the typeset version of
+%% the example below, but inside the environment the active hyphenation patterns
+%% are actually the French ones while everything else adheres to the standards
+%% of the main document language ('american' here):
+%
+%\begin{hyphenrules}{french}
+%
+%\example{6} \chaptername: \today
+%
+%\end{hyphenrules}
+%
+%% The \hyphenquote command and all active quotes defined with \MakeHyphenQuote
+%% are inline versions of babel's 'hyphenrules' environment plus quotation
+%% marks. They will switch hyphenation patterns without making any further
+%% adjustments. The quotation marks match the text surrounding the quotation:
+%
+%\example{7} \hyphenquote{french}{\chaptername: \today}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
