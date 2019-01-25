@@ -1,0 +1,177 @@
+%% hgbbib.sty
+%% Bibliography Setup
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+\ProvidesPackage{hgbbib}[2018/11/28]
+
+\usepackage{csquotes}				% recommended for biblatex
+
+%Note: biblatex with bibtex backend is frozen at version 1.7.
+\usepackage[style=numeric-comp,backend=biber,bibencoding=auto]{biblatex}
+\ExecuteBibliographyOptions{
+	bibwarn=true,
+	sortcites=true,
+	defernumbers=true,
+	isbn=false,
+	doi=false,
+	backref=true,
+	backrefstyle=three}
+
+%% titles of reference section + 3 categories of references:
+\newcommand{\@bibtitle}{Quellenverzeichnis}
+\newcommand{\@bibtitleLiteratur}{Literatur}
+\newcommand{\@bibtitleAvmedia}{Audiovisuelle Medien}
+\newcommand{\@bibtitleOnline}{Online-Quellen}
+\newcommand{\@bibtitleSoftware}{Software}	
+
+\ifthenelse{\equal{\hgb@MainLanguage}{english}}{%
+	\renewcommand{\@bibtitle}{References}
+	\renewcommand{\@bibtitleLiteratur}{Literature}
+	\renewcommand{\@bibtitleAvmedia}{Audio-visual media}
+	\renewcommand{\@bibtitleOnline}{Online sources}	
+	\renewcommand{\@bibtitleSoftware}{Software}
+}{}
+
+%% categories for a split bibliography (order of declaration is important!)
+\DeclareBibliographyCategory{literature}
+\DeclareBibliographyCategory{avmedia}
+\DeclareBibliographyCategory{software}
+\DeclareBibliographyCategory{online}
+
+%% headings for the bibliography categories
+\defbibheading{literature}{%
+	\phantomsection%
+	\section*{\@bibtitleLiteratur}%
+	\addcontentsline{toc}{section}{\@bibtitleLiteratur}%
+}
+
+\defbibheading{avmedia}{%
+	\pagebreak[3]%
+	\phantomsection%
+	\section*{\@bibtitleAvmedia}%
+	\addcontentsline{toc}{section}{\@bibtitleAvmedia}%
+}
+
+\defbibheading{online}{%
+	\pagebreak[3]%
+	\phantomsection%
+	\section*{\@bibtitleOnline}%
+	\addcontentsline{toc}{section}{\@bibtitleOnline}%
+}
+
+\defbibheading{software}{%
+	\pagebreak[3]%
+	\phantomsection%
+	\section*{\@bibtitleSoftware}%
+	\addcontentsline{toc}{section}{\@bibtitleSoftware}%
+}
+
+\defbibheading{noheader}[]{}		% 'none' should be defined but isn't
+
+%Assign a given bibliography entry to one of the defined categories.
+\newcommand{\@AssignToBibCategory}[1]% argument 1: entry key 
+{\ifthenelse{%
+		\ifentrytype{online}\OR
+		\ifentrytype{www}}
+	{\addtocategory{online}{#1}}%
+{\ifthenelse{%
+		\ifentrytype{movie}\OR
+		\ifentrytype{video}\OR
+		\ifentrytype{music}\OR
+		\ifentrytype{audio}\OR
+		\ifentrytype{image}}
+	{\addtocategory{avmedia}{#1}}%
+{\ifthenelse{%
+		\ifentrytype{software}\OR
+		\ifentrytype{electronic}}
+	{\addtocategory{software}{#1}}%
+	{\addtocategory{literature}{#1}}% else (default)
+}}}
+
+%Hook provided by biblatex.
+\AtEveryCitekey{\@AssignToBibCategory{\thefield{entrykey}}}
+
+%This is only a wrapper to \addbibresource to allow the use
+%of the classic bibtex-workflow in the future.
+\newcommand{\AddBibFile}[1]{
+	\addbibresource{#1}%
+}
+
+%See http://www.jr-x.de/publikationen/latex/tipps/zeilenumbruch.html
+\newenvironment{bibhyphenation}% 
+	{\hyphenpenalty=2%		(default 50)
+	 \tolerance=9999%			(default 200)
+	 \exhyphenpenalty=2%	(default 50)
+	 \linepenalty=1%			(default 10)
+	 \setlength{\emergencystretch}{3em}%
+	 % allow URL hyphenation at any character (definitions in biblatex.def)
+	 \setcounter{biburlnumpenalty}{1}%
+	 \setcounter{biburlucpenalty}{1}%
+	 \setcounter{biburllcpenalty}{1}%
+	 \biburlsetup}%
+	{}
+
+% Currently the only public macro:
+% \MakeBibliography ... creates a reference section split subsections (default)
+% \MakeBibliography[nosplit] ... creates a one-piece reference section
+\newcommand{\MakeBibliography}[1][]{
+	% opt. arg (#1): optional argument "nosplit" to get a 1-piece bibliography
+	%\clearpage
+	\ifthenelse{\equal{#1}{nosplit}}%
+		{% create a single bibliography with all entries:
+			\printbibheading[heading=bibintoc,title={\@bibtitle}]
+			\begin{bibhyphenation}	
+			\printbibliography[heading=noheader]
+			\end{bibhyphenation}
+		}
+		{% split the bibliography using the predefined categories:
+			\printbibheading[heading=bibintoc,title={\@bibtitle}]
+			\begin{bibhyphenation}
+			\bibbycategory
+			\end{bibhyphenation}
+		}%
+}
+
+% Suppress unusual "In:" within journal article references. 
+% see http://tex.stackexchange.com/questions/10682/suppress-in-biblatex
+\renewbibmacro{in:}{%
+	\ifentrytype{article}{}{%
+	\printtext{\bibstring{in}\intitlepunct}}}
+
+
+% To suppress warnings related to missing biblatex "drivers":
+\DeclareBibliographyAlias{video}{misc}
+\DeclareBibliographyAlias{movie}{misc}
+\DeclareBibliographyAlias{audio}{misc}
+\DeclareBibliographyAlias{software}{misc}
+\DeclareBibliographyAlias{electronic}{misc}
+\DeclareBibliographyAlias{image}{misc}
+\DeclareBibliographyAlias{standard}{misc}
+
+
+% Use a semicolon between multiple entries in \cites
+%\renewcommand*{\multicitedelim}{\addsemicolon\space}		%% abandoned, affects regular \cite{a,b,c,..} entries too
+
+% New command for multiple citations with supplementary texts
+% usage: \mcite[text1]{key1}[text2]{key2}...[textN]{keyN}
+% see https://tex.stackexchange.com/a/132981
+\DeclareMultiCiteCommand{\mcite}[\mkbibbrackets]{\cite}{\addsemicolon\space}
+
+
+% Macro to produce cites with no backref entries
+% Modified from http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex-contrib/biblatex-ieee/ieee.cbx
+% See also https://tex.stackexchange.com/questions/344861/biblatex-backref-option-per-entry
+\DeclareCiteCommand{\citenobr}%
+  {\usebibmacro{cite:init}%
+   \bibopenbracket
+	 \backtrackerfalse\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:comp}}
+  {}
+  {\usebibmacro{cite:dump}%
+   \usebibmacro{postnote}%
+   \bibclosebracket
+  }

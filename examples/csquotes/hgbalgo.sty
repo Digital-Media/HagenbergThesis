@@ -1,0 +1,109 @@
+%% hgbalgo.sty
+
+%% Toward better looking algorithms ...
+%% This package imports and pre-configures the 'algorithmicx'/'algorithmicpseudocode' packages
+%% (see https://ctan.org/pkg/algorithmicx), fixes some problems and adds new functionality
+%% and colors. It relies on the 'algorithm' package for typesetting float-type algorithms
+%% with captions.
+
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+\ProvidesPackage{hgbalgo}[2018/11/28]
+
+\RequirePackage[]{algpseudocode}	% imports algpseudocode + algorithmicx (use 'noend' to turn off 'end')
+\RequirePackage{calc}				% for numeric calculations
+\RequirePackage{xcolor}
+
+% Colors to be used in algorithms (can be redefined locally if desired)
+%\definecolor{AlgKeywordColor}{named}{black}
+%\definecolor{AlgProcedureColor}{named}{black}
+%\definecolor{AlgCommentColor}{named}{black}
+
+\definecolor{AlgKeywordColor}{rgb}{0.00, 0.00, 0.666}	% = Dark Blue
+\definecolor{AlgProcedureColor}{rgb}{0.00, 0.5, 0.20}	% = Dark Green
+\definecolor{AlgCommentColor}{gray}{0.40} 				% = Gray (40% black)
+
+\algrenewcommand\algorithmicend{\textbf{\color{AlgKeywordColor}end}}
+\algrenewcommand\algorithmicdo{\textbf{\color{AlgKeywordColor}do}}
+\algrenewcommand\algorithmicwhile{\textbf{\color{AlgKeywordColor}while}}
+\algrenewcommand\algorithmicfor{\textbf{\color{AlgKeywordColor}for}}
+\algrenewcommand\algorithmicforall{\textbf{\color{AlgKeywordColor}for all}}
+\algrenewcommand\algorithmicloop{\textbf{\color{AlgKeywordColor}loop}}
+\algrenewcommand\algorithmicrepeat{\textbf{\color{AlgKeywordColor}repeat}}
+\algrenewcommand\algorithmicuntil{\textbf{\color{AlgKeywordColor}until}}
+\algrenewcommand\algorithmicprocedure{\textbf{\color{AlgKeywordColor}procedure}}
+\algrenewcommand\algorithmicfunction{\textbf{\color{AlgKeywordColor}function}}
+\algrenewcommand\algorithmicif{\textbf{\color{AlgKeywordColor}if}}
+\algrenewcommand\algorithmicthen{\textbf{\color{AlgKeywordColor}then}}
+\algrenewcommand\algorithmicelse{\textbf{\color{AlgKeywordColor}else}}
+\algrenewcommand\algorithmicrequire{\textbf{\color{AlgKeywordColor}Require:}}
+\algrenewcommand\algorithmicensure{\textbf{\color{AlgKeywordColor}Ensure:}}
+\algrenewcommand\algorithmicreturn{\textbf{\color{AlgKeywordColor}return}}
+
+\algrenewcommand\algorithmiccomment[1]{\hfill{\color{AlgCommentColor}\(\triangleright\) #1}}%
+
+%% algpseudocode assumes that these keywords are non-empty:
+%\algrenewcommand\algorithmicprocedure{}	% no 'procedure' keyword
+%\algrenewcommand\algorithmicfunction{}	% no 'function' keyword
+
+% Use SF font and color for procedure and function names:
+\newcommand{\@AlgTextProc}[1]{\textcolor{AlgProcedureColor}{\textsf{#1}}}
+\algrenewcommand\textproc{\@AlgTextProc}			
+
+% Redefinitions to remove wrong space when \algorithmicprocedure is empty.
+% Inserts an empty () parameter list when no parameters are supplied:
+\algdef{SE}[PROCEDURE]{Procedure}{EndProcedure}[2]{%
+	\ifthenelse{\equal{\algorithmicprocedure}{}}%
+		{}{\algorithmicprocedure\ }%
+		\textproc{#1}\hskip0.75pt(#2)}%
+  {\algorithmicend\ \algorithmicprocedure}%
+	
+\algdef{SE}[FUNCTION]{Function}{EndFunction}[2]{%
+	\ifthenelse{\equal{\algorithmicfunction}{}}%
+		{}{\algorithmicfunction\ }%
+		\textproc{#1}\hskip0.75pt(#2)}%
+  {\algorithmicend\ \algorithmicfunction}%
+
+%\algrenewcommand\Call[2]{\textproc{#1}\ifthenelse{\equal{#2}{}}{}{(#2)}}%
+\algrenewcommand\Call[2]{\textproc{#1}\hskip0.75pt(#2)}%
+
+%% -----------------------------------------------------------------
+
+\newlength{\@AlgTmpIndent}
+
+%% New public macros:
+
+% \StateLong{<text>} creates numbered statements like algorithmicx's \State command but
+% provides consistent indentation on multi-line statements.
+% Note that the statement text must be passed as an argument in {...} brackets
+\newcommand*{\StateL}[1]{\State \parbox[t]{\linewidth-\ALG@thistlm}{#1\strut}}%
+
+% \StateNN[<nesting>]{<text>} creates non-numbered statements like algorithmicx's \Statex 
+% command but provides consistent indentation inside nested constructs and over multiple lines.
+% The optional integer argument [<nesting>] can be used to specify the nesting depth
+% to counteract a bug in algorithmicx (nesting level is not set properly before the first \State
+% command inside a nested construct.
+\newcommand{\StateNN}[2][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
+  \setlength\@AlgTmpIndent{\algorithmicindent*#1}% requires calc package
+	\Statex\hskip\@AlgTmpIndent\parbox[t]{\linewidth-\@AlgTmpIndent}{#2\strut}%
+}%
+
+% Macros for describing input and output of procedures and functions:
+\algnewcommand\Input[1]{\StateNN[1]{\textbf{Input:} #1}}%			use to describe input parameters: \Input{<description>}
+\algnewcommand\Output[1]{\StateNN[1]{\textbf{Output:} #1}}%		use to describe output values: \Output{<description>}
+\algnewcommand\Returns[1]{\StateNN[1]{\textbf{Returns} #1}}%	use to describe what a procedure/function returns: \Returns{<description}
+
+
+% 'algorithm' creates a floating environment for algorithms: \begin{algorithm}...\end{algorithm}
+\@ifundefined{chapter}%
+  {\RequirePackage[ruled]{algorithm}}%
+	{\RequirePackage[ruled,chapter]{algorithm}}
+
+\ifthenelse{\equal{\bbl@main@language}{german} \or \equal{\bbl@main@language}{ngerman}}%
+	{\floatname{algorithm}{Algorithmus}}{}%
+	
+\ifthenelse{\equal{\bbl@main@language}{english}}%
+	{\floatname{algorithm}{Algorithm}}{}%
