@@ -1,0 +1,36 @@
+%% hgbheadings.sty
+%% Headings setup
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+\ProvidesPackage{hgbheadings}[2018/11/28]
+
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+
+\RequirePackage[sf,raggedright]{titlesec}	% use sans serif for chapter/section headings
+
+\@ifundefined{chapter}%
+   {}%
+	 {\renewcommand{\chaptermark}[1]{%
+			\ifthenelse{\value{chapter} < 1}%
+				{\markboth{#1}{}}%
+				{\markboth{\thechapter.\ #1}{}}
+		}}
+
+\addtolength{\headheight}{\baselineskip}
+\renewcommand{\headrulewidth}{0pt}		% thin line under header
+\renewcommand{\footrulewidth}{0pt}
+\fancyhf{}                            	% clear all fields.
+\fancyhead[R]{\sffamily\thepage} %{\bf \rightmark}
+\fancyhead[L]{\sffamily\nouppercase{\leftmark}}  %{\slshape \leftmark}
+
+\fancypagestyle{plain}{%
+	\fancyhf{}							% clear all header and footer fields
+	\fancyfoot[C]{\sffamily\thepage}	% except the center
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+
