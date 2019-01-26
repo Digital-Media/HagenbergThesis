@@ -27,14 +27,20 @@
 
 %\usepackage{hgb}	%% does NOT work (defaults to german?)
 %\usepackage[english]{hgb}	%% works!
-%\usepackage[german]{hgb}	%% does NOT work
+\usepackage[german]{hgb}	%% does NOT work
 
 
 % In order to demonstrate babel support we load the babel package:
 %\usepackage[french,german,polish,american]{babel}
 %% wilbur: must load a specific language like american, UKenglish or USenglish to get proper outer quotes!?
-\usepackage[main=english,ngerman]{babel}			%% wilbur: WORKS fine
-%\usepackage[english,main=ngerman]{babel}			%% wilbur: does NOT work!
+%\usepackage[main=english,ngerman]{babel}			%% wilbur: WORKS fine
+%\usepackage[main=ngerman,english]{babel}			%% wilbur: does NOT work!
+% NOTE: apparently, something is wrong when setting the main language 
+% to german or ngerman in babel's package options!
+
+%\usepackage[ngerman,english]{babel}			%% main language = english (works fine)
+%\usepackage[english,ngerman]{babel}		%% main language = ngerman (does not work)
+%\selectlanguage{ngerman}
 
 
 % We load csquotes with the 'babel' option. The csquotes package works just
@@ -43,6 +49,7 @@
 %\usepackage[babel=true]{csquotes}
 \usepackage[autostyle=true,german=quotes]{csquotes}
 %\usepackage[german=quotes]{csquotes}
+%\usepackage[autostyle=true]{csquotes}
 
 
 
@@ -100,14 +107,19 @@
 \author{Benno Klabuster}
 
 \begin{document}
-
+%\selectlanguage{ngerman}
 \maketitle
+
 
 \begin{abstract}\noindent
 This is the typeset version of \texttt{\jobname.tex}. There is
 nothing fancy to see here. The tutorial you are looking for consists of a
 series of comments which are included in the source.
 \end{abstract}
+
+The current language is \texttt{\languagename}.
+Das ist ein "Zitat".
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -119,20 +131,24 @@ series of comments which are included in the source.
 % we will occasionally change the document language. We start off with American
 % English:
 
+
 \selectlanguage{english}
+\EnableQuotes
 
 \subsection{\languagename}
 
 % Getting started is simple: just load the package and use the command \enquote
 % to enclose a piece of text in quotation marks:
 
-\example{1} \enquote{outer quote \enquote{inner quote} outer quote}
+\example{1} \enquote{outer quote \enquote{inner quote} outer quote}\newline
+(\verb!\enquote{outer quote \enquote{inner quote} outer quote}!)
 
 % \enquote can detect nested quotations. It will toggle between outer and inner
 % quotation marks depending on the nesting level. There is also a starred
 % version of this command which jumps to the inner level right away:
 
-\example{2} \enquote*{inner quote}
+\example{2} \enquote*{inner quote}\newline
+(\verb!\enquote*{inner quote}!)
 
 % The csquotes package supports two markup styles for quotations: control
 % sequences and active characters. An active character is a single character
@@ -150,7 +166,8 @@ series of comments which are included in the source.
 %
 % Preamble: \MakeOuterQuote{"}
 
-\example{3} "outer quote"
+\example{3} "outer quote" \newline
+(\verb!"outer quote"!)
 
 % Using the straight Ascii quote as an active quote is tempting. However, note
 % that this may cause problems because it is used as an active character by
@@ -172,14 +189,17 @@ series of comments which are included in the source.
 %
 % Preamble: \MakeAutoQuote{«}{»}
 
-\example{4} «outer quote «inner quote» outer quote»
+\example{4} «outer quote «inner quote» outer quote» \newline
+(\verb!«outer quote «inner quote» outer quote»!)
 
 % Since the control sequences and active quotes of csquotes are essentially
 % different frontends to a common backend, you may also mix them:
 
-\example{5} \enquote{outer quote «inner quote» outer quote}
+\example{5} \enquote{outer quote «inner quote» outer quote} \newline
+(\verb!\enquote{outer quote «inner quote» outer quote}!)
 
-\example{6} "outer quote \enquote{inner quote} outer quote"
+\example{6} "outer quote \enquote{inner quote} outer quote" \newline
+(\verb!"outer quote \enquote{inner quote} outer quote"!)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -191,7 +211,8 @@ series of comments which are included in the source.
 
 % ... and csquotes will adjust the quotation marks as well:
 
-\example{1} «Zitat «Zitat im Zitat» Zitat»
+\example{1} «Zitat «Zitat im Zitat» Zitat» \newline
+(\verb!«Zitat «Zitat im Zitat» Zitat»!)
 
 % Before we continue with the multilingual capabilities of csquotes, a few
 % general notes concerning active quotes are in order.
@@ -205,14 +226,16 @@ series of comments which are included in the source.
 % Babel's German extension, for example, provides the command \glqq and the
 % shorthand "` to typset the opening quotation mark used in German:
 
-\example{2} \glqq Zitat\grqq\ "`Zitat"'
+\example{2} \glqq Zitat1\grqq\ "`Zitat2"' \newline
+(\verb!\glqq Zitat1\grqq\ "`Zitat2"'!)
 
 % The shorthand "` is more convenient than something like \quotedblbase, but
 % it's not different in concept. If you get the shorthands wrong by mixing up
 % "` and "', TeX will happily typeset the wrong quotation marks without giving
 % any warning:
 
-\example{3} "'Zitat"` (wrong quotes!)
+\example{3} "'Zitat"` \newline
+(\verb!"'Zitat"`!, \emph{wrong quotes!})
 
 % If you get the active quotes of csquotes wrong, TeX will bail out with an
 % error message drawing you attention to the problem. This package tracks the
@@ -245,7 +268,8 @@ series of comments which are included in the source.
 
 \selectlanguage{ngerman}
 
-\example{4} "a "o "u "i
+\example{4} "a "o "u "i \newline
+(\verb!"a "o "u "i!)
 
 % You can reclaim active quotes after their definitions have been overwritten
 % by another package with \EnableQuotes. This command will replay the
@@ -256,7 +280,8 @@ series of comments which are included in the source.
 
 \EnableQuotes
 
-\example{5} "Zitat"
+\example{5} "Zitat" \newline
+(\verb!"Zitat"!)
 
 % Use \EnableQuotes with care as you may break other packages by reclaiming
 % active quotes. Even if things don't break outright, you might loose
@@ -273,6 +298,9 @@ series of comments which are included in the source.
 % characters will not conflict with other packages since they have to make do
 % with Ascii for hard-wired active characters. The left and right guillemets
 % («») used as an example here are particularly well suited for this purpose.
+
+\example{6} "`Zitat"' \newline
+(\verb!"`Zitat"'!, quotes still enabled)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
