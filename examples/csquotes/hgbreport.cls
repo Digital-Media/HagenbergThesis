@@ -10,6 +10,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hgbreport}[2018/11/28]
 
+\typeout{********************************* hgbreport.cls ***********************}
+
 \RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
@@ -36,6 +38,10 @@
 \DeclareOption{german}{%
 	\renewcommand{\hgb@MainLanguage}{german}
 }
+
+%\DeclareOption{smartquotes}{%
+	%\PassOptionsToPackage{\CurrentOption}{hgb}
+%}
 
 \DeclareOption*{%
 	\ClassWarning{hgbreport}{Unknown document option '\CurrentOption'.}
