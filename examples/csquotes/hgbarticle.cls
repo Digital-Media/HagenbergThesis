@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2018/11/28]
+\ProvidesClass{hgbarticle}[9999/01/01]
 
 \RequirePackage{xifthen}
 
@@ -17,11 +17,12 @@
 \else{\errmessage{hgbarticle: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
-%% Handle class options --------------------------------------------------------------
+%% Handling class options --------------------------------------------------------------
 
 \DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \DeclareOption*{\ClassWarning{hgbarticle}{Unknown document option '\CurrentOption'.}}
 \ProcessOptions
 

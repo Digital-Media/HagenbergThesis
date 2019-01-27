@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbreport}[2018/11/28]
+\ProvidesClass{hgbreport}[9999/01/01]
 
 \typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
 
@@ -19,7 +19,7 @@
 \else{\errmessage{hgbreport: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
-%% Handle class options --------------------------------------------------------------
+%% Handling class options --------------------------------------------------------------
 
 \DeclareOption{notitlepage}{\PassOptionsToClass{\CurrentOption}{report}}
 \DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
