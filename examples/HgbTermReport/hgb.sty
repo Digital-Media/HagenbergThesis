@@ -12,6 +12,7 @@
 % Create a default/fallback main language so it is set no matter what
 \providecommand{\hgb@MainLanguage}{german}
 
+\RequirePackage{xifthen}
 \newboolean{HgbSmartQuotesOn}
 \setboolean{HgbSmartQuotesOn}{false}
 
@@ -24,7 +25,7 @@
 
 %% Required Packages ----------------------------------------------------------
 
-\RequirePackage{xifthen}
+
 \RequirePackage{lmodern}				% use Latin Modern Fonts
 \RequirePackage{cmap}						% make generated PDF files "searchable and copyable"
 \RequirePackage[utf8]{inputenc}
@@ -39,6 +40,7 @@
 %% Setup for smart quotes (csquotes package) -- experimental! ----------------------------------
 	
 \ifthenelse{\boolean{HgbSmartQuotesOn}}{
+	\languageshorthands{none}%			%% turn off babel's shorthands (permanently)
 	\usepackage[autostyle=true,german=quotes]{csquotes}%
 	\MakeOuterQuote{"}%
 	\EnableQuotes}{}
@@ -58,10 +60,6 @@
 {\end{otherlanguage}}%
 
 %% ------------------------------------------------------
-
-
-
-
 
 \RequirePackage{datetime}
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
