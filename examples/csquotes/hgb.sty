@@ -5,7 +5,7 @@
 %% File encoding: ASCII
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbDate}{2018/11/28}	% version string
+\newcommand{\hgbDate}{9999/01/01}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
 \typeout{******************* hgb.sty  (options=\@nameuse{opt@hgb.sty}) ***********************}
 
@@ -41,8 +41,7 @@
 \ifthenelse{\boolean{HgbSmartQuotesOn}}{
 	\usepackage[autostyle=true,german=quotes]{csquotes}%
 	\MakeOuterQuote{"}%
-	\EnableQuotes%
-	}{}
+	\EnableQuotes}{}
 
 %% Language environments ------------------------------------------------------
 

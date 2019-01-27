@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2018/11/28]
+\ProvidesClass{hgbthesis}[9999/01/01]
 
 \RequirePackage{xifthen}
 
@@ -30,7 +30,7 @@
 
 \newcommand{\@titlepagefont}{\sffamily}
 
-%% Class options --------------------------------------------------------------
+%% Handling class options --------------------------------------------------------------
 
 \DeclareOption{diplom}{%
 	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
@@ -46,8 +46,10 @@
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
+
 \DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}}
 \ProcessOptions
 
