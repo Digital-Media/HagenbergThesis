@@ -40,7 +40,7 @@
 %% Setup for smart quotes (csquotes package) -- experimental! ----------------------------------
 	
 \ifthenelse{\boolean{HgbSmartQuotesOn}}{
-	\languageshorthands{none}%			%% turn off babel's shortcuts (permanently)
+	\languageshorthands{none}%			%% turn off babel's shorthands (permanently)
 	\usepackage[autostyle=true,german=quotes]{csquotes}%
 	\MakeOuterQuote{"}%
 	\EnableQuotes}{}
@@ -60,10 +60,6 @@
 {\end{otherlanguage}}%
 
 %% ------------------------------------------------------
-
-
-
-
 
 \RequirePackage{datetime}
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
