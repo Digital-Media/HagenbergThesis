@@ -8,23 +8,15 @@
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
-\documentclass[notitlepage,german]{report}
+\documentclass[german,notitlepage]{hgbreport}
 
 \RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
-\usepackage[ngerman,german,english]{babel}
+\renewcommand{\chapter}[1]{}		% \chapter Befehl ist deaktiviert
 
+\graphicspath{{images/}}	% Verzeichnis mit Bildern und Grafiken
 
-%\renewcommand{\chapter}[1]{}		% \chapter Befehl ist deaktiviert
-
-%\graphicspath{{images/}}	% Verzeichnis mit Bildern und Grafiken
-
-
-\usepackage[autostyle=true]{csquotes}
-\MakeOuterQuote{"}
-
-
-%\bibliography{references}	% Biblatex-Literaturdatei (references.bib)
-%\ExecuteBibliographyOptions{backref=false}
+\bibliography{references}	% Biblatex-Literaturdatei (references.bib)
+\ExecuteBibliographyOptions{backref=false}
 
 
 
@@ -38,16 +30,14 @@
 \date{\today}
 
 
-
 %%%----------------------------------------------------------
 \begin{document}
-\selectlanguage{ngerman}
 %%%----------------------------------------------------------
 \maketitle
 %%%----------------------------------------------------------
 
 \begin{abstract}\noindent
-Fasse hier kurz zusammen, um welche Themen bzw. Fragestellungen 
+Fasse hier kurz zusammen, um welche Themen \bzw\ Fragestellungen 
 es in dieser Übungseinheit geht.
 \end{abstract}
 
@@ -55,27 +45,12 @@ es in dieser Übungseinheit geht.
 
 \section{Titel der ersten Aufgabe}
 
-
-
-\selectlanguage{german}
-And "{This} is a quotation (\languagename)."
-
-\shorthandoff{"}	%% https://de.wikibooks.org/wiki/LaTeX-W%C3%B6rterbuch:_Anf%C3%BChrungszeichen
-"Andere Tage" oder so
-\shorthandon{"}
-
-\selectlanguage{english}\EnableQuotes
-"This is a quotation (\languagename)."
-
-
-\selectlanguage{ngerman}
-"This is a quotation (\languagename)."
 Beschreibe die Aufgabenstellung in eigenen Worten 
-(dh, kopiere nicht einfach den Text aus der Angabe).
-Das umfasst ia.
+(\dah, kopiere nicht einfach den Text aus der Angabe).
+Das umfasst \ia 
 \begin{itemize}
 \item
-	die Aufgabe bzw das zu lösende Problem;
+	die Aufgabe \bzw\ das zu lösende Problem;
 \item
 	Ansatz der eigenen Lösung, Strukturierung, Betrachtung von Alternativen, Skizzen;
 \item
@@ -88,9 +63,9 @@ Das umfasst ia.
 	Antworten auf allfällige Zusatzfragen.
 \end{itemize}
 %
-Dieses Dokument basiert auf der \textsf{HagenbergThesis} 
+Dieses \latex-Dokument basiert auf der \textsf{HagenbergThesis} 
 Vorlage, die auf GitHub%
-%\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
+\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
 verfügbar ist.
 Das Dokument verwendet die spezielle Klasse \textsf{hgbreport}, die auf der \textsf{report}
 Standardklasse aufbaut. Jede Übungseinheit entspricht dabei einem Kapitel (\texttt{chapter}).
@@ -123,8 +98,8 @@ sie wurde mit dem Makro \verb!\section*{..}! erzeugt.
  
 %%%----------------------------------------------------------
   
-%\section*{Quellen}
-%\printbibliography[heading=noheader]
+\section*{Quellen}
+\printbibliography[heading=noheader]
 
 %%%----------------------------------------------------------
 
