@@ -27,13 +27,13 @@
 
 %\usepackage{hgb}	%% does NOT work (defaults to german?)
 %\usepackage[english]{hgb}	%% works!
-\usepackage[german]{hgb}	%% does NOT work
+%\usepackage[german]{hgb}	%% does NOT work
 
 
 % In order to demonstrate babel support we load the babel package:
 %\usepackage[french,german,polish,american]{babel}
 %% wilbur: must load a specific language like american, UKenglish or USenglish to get proper outer quotes!?
-%\usepackage[main=english,ngerman]{babel}			%% wilbur: WORKS fine
+\usepackage[main=english,ngerman]{babel}			%% wilbur: WORKS fine
 %\usepackage[main=ngerman,english]{babel}			%% wilbur: does NOT work!
 % NOTE: apparently, something is wrong when setting the main language 
 % to german or ngerman in babel's package options!
@@ -47,9 +47,9 @@
 % fine without babel, but it will support multilingual typesetting if babel
 % has been loaded.
 %\usepackage[babel=true]{csquotes}
-\usepackage[autostyle=true,german=quotes]{csquotes}
+%\usepackage[autostyle=true,german=quotes]{csquotes}
 %\usepackage[german=quotes]{csquotes}
-%\usepackage[autostyle=true]{csquotes}
+\usepackage[autostyle=true]{csquotes}
 
 
 
@@ -209,6 +209,7 @@ Das ist ein "Zitat".
 
 \subsection{\languagename}
 
+
 % ... and csquotes will adjust the quotation marks as well:
 
 \example{1} «Zitat «Zitat im Zitat» Zitat» \newline
@@ -234,8 +235,11 @@ Das ist ein "Zitat".
 % "` and "', TeX will happily typeset the wrong quotation marks without giving
 % any warning:
 
-\example{3} "'Zitat"` \newline
+\example{3A} "'Zitat"` \newline
 (\verb!"'Zitat"`!, \emph{wrong quotes!})
+
+\example{3B} "`Zitat"' \newline
+(\verb!"`Zitat"'!, \emph{proper quotes!})
 
 % If you get the active quotes of csquotes wrong, TeX will bail out with an
 % error message drawing you attention to the problem. This package tracks the
@@ -280,7 +284,7 @@ Das ist ein "Zitat".
 
 \EnableQuotes
 
-\example{5} "Zitat" \newline
+\example{5} "Zitat" (after \verb!\EnableQuotes!)\newline
 (\verb!"Zitat"!)
 
 % Use \EnableQuotes with care as you may break other packages by reclaiming
@@ -299,8 +303,11 @@ Das ist ein "Zitat".
 % with Ascii for hard-wired active characters. The left and right guillemets
 % («») used as an example here are particularly well suited for this purpose.
 
-\example{6} "`Zitat"' \newline
-(\verb!"`Zitat"'!, quotes still enabled)
+%\DisableQuotes
+\selectlanguage{ngerman}
+
+\example{6} "`Zitat"'\newline
+(\verb!"`Zitat"'!, quotes disabled) 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
