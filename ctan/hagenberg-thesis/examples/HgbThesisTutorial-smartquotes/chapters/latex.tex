@@ -615,26 +615,26 @@ Dieser Text ...
 \subsection{Anführungszeichen (Hochkommas)}
 \label{sec:anfuehrungszeichen}
 
-Mit Anführungszeichen wird aus Gewohnheit recht
-nachlässig umgegangen und auch dabei sind die Unterschiede zwischen Deutsch
-und Englisch zu beachten.
+Anführungszeichen sind eine häufige (und oft unbemerkte) Fehlerquelle und auch hier sind die Unterschiede zwischen Deutsch und Englisch (neben anderen Sprachen) zu beachten.
 
 
 \subsubsection{Variante 1: Hochkommas mit der \latex-Standardeinstellung}
 
-Mit der Standardeinstellung von \latex\ (\emph{ohne} Verwendung der Option \texttt{\texttt{smartquotes}})
-muss die Eingabe von vorderen und hinteren Hochkommas exakt erfolgen und führt daher
-häufig zu Fehlern.
-Hier die richtige \latex-Notation für beide Sprachen:
+Mit der Standardeinstellung von \latex\ (\dah, \emph{ohne} Verwendung der Dokumentenoption 
+\texttt{\texttt{smartquotes}})
+muss die Eingabe von vorderen und hinteren Hochkommas exakt nach den entsprechenden
+Konventionen erfolgen.
+Hier die korrekte \latex-Notation für englische und deutsche Texte:
 %
 \begin{quote}
 \verb!``English''! $\rightarrow$ ``English'',\\
 \verb!"`Deutsch"'! $\rightarrow$ {\glqq}Deutsch{\grqq}.
 \end{quote}
 %
-Manche Editoren (\ua\ TeXnicCenter) kann man so einstellen, dass
-bei der Eingabe eines einfachen Hochkommas die entsprechenden Zeichenfolge 
-automatisch (kontextabhängig) eingesetzt wird.
+Man beachte die subtilen typografischen Unterschiede zwischen den beiden Sprachen.
+Manche Editoren (\zB\ TeXnicCenter) kann man so einstellen, dass
+bei der Eingabe eines einfachen Hochkommas (\texttt{\textquotedbl}) die entsprechenden Zeichenfolge 
+\emph{automatisch} (kontext- und sprachabhängig) eingesetzt wird.
 
 \emph{Einfache} Anführungszeichen werden im Englischen analog erzeugt, 
 im Deutschen werden dafür hingegen die Makros \verb!\glq! \bzw\ \verb!\grq! 
@@ -656,7 +656,7 @@ aufbaut.
 Die korrekte Verwendung von Hochkommas vereinfacht sich damit deutlich, weil
 abhängig von der aktuellen Spracheinstellung und der Position des Hochkommas
 das jeweils richtige Zeichen eingesetzt wird.
-Es genügt hier die Verwendung eines doppelten (geraden) Hochkommas \texttt{\char34}, wie \zB
+Es genügt hier die Verwendung eines doppelten (geraden) Hochkommas \texttt{\textquotedbl}, wie \zB
 %
 \begin{quote}
 \begin{english}\verb!"English"! $\rightarrow$ "English"\end{english}\ (bei Spracheinstellung \texttt{english}),\\
@@ -665,12 +665,12 @@ Es genügt hier die Verwendung eines doppelten (geraden) Hochkommas \texttt{\cha
 %
 Dabei ist zu beachten, dass die traditionelle Eingabe von Hochkommas (s.\ Variante~1, oben) hier nicht
 mehr zur Verfügung steht. Die gemischte Verwendung von Variante~1 und Variante~2 ist somit
-nicht möglich! Es sind in diesem Fall auch alle weiteren "shorthands" des 
+nicht möglich! Es sind mit dieser Einstellung auch alle weiteren "shorthands" des 
 \texttt{babel}-Pakets%
 \footnote{\url{https://ctan.org/pkg/babel}}
 (wie \zB\ \verb!"a!, \verb!"o!, \verb!"u!) permanent \emph{deaktiviert} und diese können
 derzeit auch lokal nicht reaktiviert werden.%
-\footnote{Die hier eingestellte Verwendung des \texttt{\char34} Zeichens als 
+\footnote{Die hier eingestellte Verwendung des \texttt{\textquotedbl} Zeichens als 
 beidseitiges "outer quote" Zeichen gilt -- \va\ in Kombination mit der deutschen Sprache --
 als "gefährlich", weil \texttt{babel} seinerseits das gerade Hochkomma für zahlreiche
 \emph{shorthand}-Makros nutzt. Das nehmen wir mutig in Kauf, allerdings sind die \texttt{babel}-shorthands im aktuellen Setup
@@ -718,8 +718,9 @@ explizit verändern zu müssen, \zB%
 
 Um ein sauberes Schriftbild zu erreichen sind -- speziell im
 Deutschen wegen der großen Wortlängen -- Abteilungen
-(Silbentrennung, Hyphenation) unerlässlich, entweder manuell durch
-Einfügen von optionalen Trennzeichen oder automatisch. 
+(Silbentrennung, Hyphenation) unerlässlich.
+Die Silbentrennung erfolgt entweder \emph{automatisch} oder \emph{manuell} durch
+das Einfügen optionaler Trennzeichen. 
 
 
 \subsection{Automatischer Zeilenumbruch}

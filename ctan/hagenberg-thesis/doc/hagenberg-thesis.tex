@@ -67,10 +67,10 @@ The above document classes accept the following options:
 \begin{raggedright}
 \begin{itemize}
 \item \textbf{\texttt{hgbthesis}}: 
-	\texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{praktikum}, 
-	\texttt{internship}, \texttt{english}, \texttt{german};
-\item \textbf{\texttt{hgbreport}}: \texttt{notitlepage}, \texttt{english}, \texttt{german};
-\item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}, \texttt{english}, \texttt{german}.
+	\texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{praktikum} (deprecated), 
+	\texttt{internship}, \texttt{english}, \texttt{german}, \texttt{smartquotes};
+\item \textbf{\texttt{hgbreport}}: \texttt{notitlepage}, \texttt{english}, \texttt{german}, \texttt{smartquotes};
+\item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}, \texttt{english}, \texttt{german}, \texttt{smartquotes}.
 \end{itemize}
 \end{raggedright}
 %
@@ -78,7 +78,7 @@ For example, to start a Master thesis in German
 one would simply simply place
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[master,german]{hgbthesis}
+\documentclass[master,german,smartquotes]{hgbthesis}
 \end{LaTeXCode}
 %
 at the beginning of the document.
@@ -122,13 +122,16 @@ independently of the document classes listed above:
 \texttt{hgbmath.sty}.
 
 
-\subsection{General user commands (\texttt{hgb.sty})}
+\subsection{General user commands and environments(\texttt{hgb.sty})}
 
 
 \begin{itemize}
 \item \textbf{\texttt{{\bs}hgbDate}}: Outputs the package version date, 
 		\eg, ``\texttt{\hgbDate}''.
-\item \textbf{\texttt{{\bs}calibrationbox}}: Inserts a test box for checking the final print size.
+\item \verb!\calibrationbox{width}{height}!: Inserts a test box for checking the final print size 
+(in millimeters).
+\item \verb!\begin{english} ... \end{english}!
+\item \verb!\begin{german} ... \end{german}!
 \end{itemize}
 
 
