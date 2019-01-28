@@ -12,3 +12,4 @@
 * [2018/10/09] Added examples for patent references to thesis tutorial.
 * [2018/11/24] Added new macro ``\mcite`` for multiple citations with description texts (replacement for biblatex's ``\cites`` macro): ``\mcite`` inserts a semicolon as delimiter between each entry, while ordinary ``\cite`` inserts commas, as usual.
 * [2018/11/28] New release (submitted to CTAN).
+* [2019/01/28] Added (experimental) support for "smart quotes" using the ``csquotes`` package. To activate, pass the option ``smartquotes`` to any of the hgb document classes. See ``examples/HgbThesisTutorial-smartquotes`` for details.
