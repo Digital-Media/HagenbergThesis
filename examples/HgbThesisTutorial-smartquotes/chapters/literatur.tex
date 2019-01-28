@@ -194,12 +194,33 @@ In obigem Beispiel wird zudem auch auf Englisch umgeschalten
 \footnote{Man beachte auch die Verwendung von englischen Hochkommas innerhalb des Zitats.}
 %
 \begin{itemize}
- \item[] \verb!\begin{quote}\begin{english}! \emph{Zitierter Text} \verb!\end{english}\end{quote}!
+ \item[] \verb!\begin{quote}\begin{english}! \emph{quoted text \ldots} \verb!\end{english}\end{quote}!
 \end{itemize}
 %
 Wenn gewünscht, kann das Innere des Zitats auch in Hochkommas verpackt 
 \emph{oder} kursiv gesetzt werden -- aber nicht beides!
 
+\subsubsection{Alternative Erweiterungen (mit Dokumentenoption \texttt{smartquotes})}
+Das (durch die Option \texttt{smartquotes} automatisch geladene) \texttt{csquotes}-Paket%
+\footnote{\url{https://ctan.org/pkg/csquotes}, \sa\ Abschn.\ \ref{sec:anfuehrungszeichen}.}
+definiert mehrere zusätzliche Umgebungen für freigestellte
+Zitate, \zB\ 
+\begin{itemize}
+ \item[] \verb!\begin{displayquote}! \ldots \verb!\end{displayquote}!
+\end{itemize}
+(äquivalent zu \verb!\begin{quote}! \ldots \verb!\end{quote}!) sowie für fremdsprachige Zitate die Umgebung
+\begin{itemize}
+ \item[] \verb!\begin{foreigndisplayquote}{language}! \ldots \verb!\end{foreigndisplayquote}!.
+\end{itemize}
+Damit lässt sich beispielsweise ein englisches Zitat%
+\footnote{Aktuell sind nur die Sprachen \texttt{english} und \texttt{german} definiert.}
+\emph{ohne} explizite Sprachumschaltung
+so erstellen:
+\begin{itemize}
+ \item[] \verb!\begin{foreigndisplayquote}{english}!\newline
+	\emph{quoted text \ldots}\newline
+	\verb!\end{foreigndisplayquote}!
+\end{itemize}
 
 
 \subsection{Umgang mit Sekundärquellen}
