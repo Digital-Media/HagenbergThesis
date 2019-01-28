@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2018/11/28]
+\ProvidesClass{hgbthesis}[2019/01/28]
 
 \RequirePackage{xifthen}
 
@@ -30,23 +30,11 @@
 
 \newcommand{\@titlepagefont}{\sffamily}
 
-%% Class options --------------------------------------------------------------
-
-\DeclareOption{master}{
-	\renewcommand{\@maketitlepages}{\@mastertitlepages}
-}
+%% Handling class options --------------------------------------------------------------
 
 \DeclareOption{diplom}{%
 	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
 	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'diploma' instead.}
-}
-
-\DeclareOption{diploma}{%
-	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
-}
-
-\DeclareOption{bachelor}{%
-	\renewcommand{\@maketitlepages}{\@bachelortitlepages}
 }
 
 \DeclareOption{praktikum}{%
@@ -54,31 +42,23 @@
 	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'internship' instead.}
 }
 
-\DeclareOption{internship}{%
-	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
-}
+\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
+\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
+\DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
+\DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
 
-\DeclareOption{english}{%
-	\renewcommand{\hgb@MainLanguage}{english}
-}
-
-\DeclareOption{german}{%
-	\renewcommand{\hgb@MainLanguage}{german}
-}
-
-\DeclareOption*{%
-	\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}
-}
-
+\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}}
 \ProcessOptions
-
 
 %% Paper Options and Style File -----------------------------------------------
 
 \LoadClass[a4paper,11pt,oneside]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
  
-\RequirePackage{hgb}	% load associated style file hgb.sty
+\RequirePackage{hgb}	% load style file hgb.sty with options registered above
 
 
 %% Setup for Pages in the Front Matter ----------------------------------------

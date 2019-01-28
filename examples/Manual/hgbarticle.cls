@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2018/11/28]
+\ProvidesClass{hgbarticle}[2019/01/28]
 
 \RequirePackage{xifthen}
 
@@ -17,32 +17,14 @@
 \else{\errmessage{hgbarticle: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
+%% Handling class options --------------------------------------------------------------
 
-%% Command for language defintion ---------------------------------------------
-
-\newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
-
-
-%% Class options --------------------------------------------------------------
-
-\DeclareOption{twocolumn}{%
-	\PassOptionsToClass{\CurrentOption}{article}
-}
-
-\DeclareOption{english}{%
-	\renewcommand{\hgb@MainLanguage}{english}
-}
-
-\DeclareOption{german}{%
-	\renewcommand{\hgb@MainLanguage}{german}
-}
-
-\DeclareOption*{%
-	\ClassWarning{hgbarticle}{Unknown document option '\CurrentOption'.}
-}
-
+\DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\DeclareOption*{\ClassWarning{hgbarticle}{Unknown document option '\CurrentOption'.}}
 \ProcessOptions
-
 
 %% Paper options and style file -----------------------------------------------
 
@@ -54,7 +36,7 @@
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \fi%
 
-\RequirePackage{hgb}	% load associated style file hgb.sty
+\RequirePackage{hgb}	% load style file hgb.sty with options registered above
 
 
 %% Set title font to SF
