@@ -5,26 +5,31 @@
 %% File encoding: ASCII
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbDate}{2018/11/28}	% version string
+\newcommand{\hgbDate}{2019/01/28}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
+\typeout{******************* hgb.sty  (options=\@nameuse{opt@hgb.sty}) ***********************}
 
 % Create a default/fallback main language so it is set no matter what
 \providecommand{\hgb@MainLanguage}{german}
 
-% Then pass the language options (german/ngerman/english) from the class file
+\RequirePackage{xifthen}
+\newboolean{HgbSmartQuotesOn}
+\setboolean{HgbSmartQuotesOn}{false}
+
+% Handle package options passed from the class file
 \DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
 \DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
+\DeclareOption{smartquotes}{\setboolean{HgbSmartQuotesOn}{true}}
 \ProcessOptions*
-
 
 %% Required Packages ----------------------------------------------------------
 
-\RequirePackage{lmodern}			% use Latin Modern Fonts
-\RequirePackage{cmap}				% make generated PDF files "searchable and copyable"
-\RequirePackage[T1]{fontenc}		% T1 font encoding for improved hyphenation
 
-\RequirePackage{xifthen}
+\RequirePackage{lmodern}				% use Latin Modern Fonts
+\RequirePackage{cmap}						% make generated PDF files "searchable and copyable"
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}		% T1 font encoding for improved hyphenation
 
 % Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
@@ -32,6 +37,29 @@
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}%
 	{\RequirePackage[main=english,ngerman]{babel}}{}
 
+%% Setup for smart quotes (csquotes package) -- experimental! ----------------------------------
+	
+\ifthenelse{\boolean{HgbSmartQuotesOn}}{
+	\languageshorthands{none}%			%% turn off babel's shorthands (permanently)
+	\usepackage[autostyle=true,german=quotes]{csquotes}%
+	\MakeOuterQuote{"}%
+	\EnableQuotes}{}
+
+%% Language environments ------------------------------------------------------
+
+% Switch from German to English (babel)
+\newenvironment{english}%
+{\begin{otherlanguage}{english}%
+	\ifthenelse{\boolean{HgbSmartQuotesOn}}{\EnableQuotes}{}}%
+{\end{otherlanguage}\ignorespacesafterend}% 
+
+% Switch from English to German (babel)
+\newenvironment{german}%
+{\begin{otherlanguage}{ngerman}%
+	\ifthenelse{\boolean{HgbSmartQuotesOn}}{\EnableQuotes}{}}%
+{\end{otherlanguage}}%
+
+%% ------------------------------------------------------
 
 \RequirePackage{datetime}
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
@@ -81,19 +109,6 @@
 }
 
 \RequirePackage[figure,table,table*]{hypcap}	% do not redefine figure* for use in article (without captions)
-
-%% Language environments ------------------------------------------------------
-
-% Switch from German to English (babel)
-\newenvironment{english}%
-{\begin{otherlanguage}{english}}%
-{\end{otherlanguage}}
-
-% Switch from English to German (babel)
-\newenvironment{german}%
-{\begin{otherlanguage}{ngerman}}%
-{\end{otherlanguage}}
-
 
 %% Miscellaneous Utility Commands ---------------------------------------------
 
