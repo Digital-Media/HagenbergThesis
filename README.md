@@ -48,7 +48,7 @@ The following sample documents are currently available:
 | `HgbTermReport` | Term Report | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) |
 | `HgbArticle` | Journal Article | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) |
 
-#### NEW FEATURE: Smart Quotes (experimental - try it here)
+#### NEW FEATURE: Smart Quotes (experimental, see Sec. 3.4.4)
 
 | Name | Document Type | Language | PDF | ZIP | Overleaf |
 | :--- | :--- | --- | --- | --- | --- |
