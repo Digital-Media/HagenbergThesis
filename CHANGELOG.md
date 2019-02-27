@@ -72,3 +72,4 @@ This version has also been ported to Overleaf for online editing.
 [2017/11/05]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/10/16...2017/11/05
 [2017/10/16]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/02/28...2017/10/16
 [2017/02/28]: https://github.com/Digital-Media/HagenbergThesis/compare/2016/06/11...2017/02/28
+[2016/06/11]: https://github.com/Digital-Media/HagenbergThesis/releases/tag/2016/06/11
