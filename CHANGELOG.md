@@ -17,6 +17,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - Added setup for biblatex's \cites command (for multiple citations with supplementary texts).
 - Added a new macro \citenobr (in hgbbib.sty) to create citations with no "backref" entry in the bibliography.
 - Added new macro \mcite for multiple citations with description texts (replacement for biblatex's \cites macro): \mcite inserts a semicolon as delimiter between each entry, while ordinary \cite inserts commas, as usual.
+- CTAN release updated.
 
 ### Changed
 
