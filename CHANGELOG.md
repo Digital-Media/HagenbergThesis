@@ -67,7 +67,7 @@ This is the first release on GitHub. Future versions will now be published on th
 This version has also been ported to Overleaf for online editing.
 
 [Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2018/11/28...master
-[2018/22/28]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/11/05...2018/11/28
+[2018/11/28]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/11/05...2018/11/28
 [2017/11/05]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/10/16...2017/11/05
 [2017/10/16]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/02/28...2017/10/16
 [2017/02/28]: https://github.com/Digital-Media/HagenbergThesis/compare/2016/06/11...2017/02/28
