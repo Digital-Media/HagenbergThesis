@@ -8,26 +8,26 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Added (experimental) support for "smart quotes" using the csquotes package. To activate, pass the option smartquotes to any of the hgb document classes. See examples/HgbThesisTutorial-smartquotes for details.
+- Added (experimental) support for "smart quotes" using the csquotes package. To activate, pass the option ``smartquotes`` to any of the hgb document classes. See ``examples/HgbThesisTutorial-smartquotes`` for details.
 
 ## [2018/11/28]
 
 ### Added
 - Added patent references.
-- Added setup for biblatex's \cites command (for multiple citations with supplementary texts).
-- Added a new macro \citenobr (in hgbbib.sty) to create citations with no "backref" entry in the bibliography.
-- Added new macro \mcite for multiple citations with description texts (replacement for biblatex's \cites macro): \mcite inserts a semicolon as delimiter between each entry, while ordinary \cite inserts commas, as usual.
+- Added setup for biblatex's ``\cites`` command (for multiple citations with supplementary texts).
+- Added a new macro ``\citenobr`` (in ``hgbbib.sty``) to create citations with no ``backref`` entry in the bibliography.
+- Added new macro ``\mcite`` for multiple citations with description texts (replacement for biblatex's ``\cites`` macro): ``\mcite`` inserts a semicolon as delimiter between each entry, while ordinary ``\cite`` inserts commas, as usual.
 - CTAN release updated.
 
 ### Changed
 
-- Revised setup for algorithms (all contained in new file hgbalgo.sty): bug fixes, new commands, color.
+- Revised setup for algorithms (all contained in new file ``hgbalgo.sty``): bug fixes, new commands, color.
 - Better handling of multiple references in citations.
-- Blocked subfigure, lstlisting, footnotes in captions.
-- Discontinued support for the subfigure package (obsolete).
+- Blocked ``subfigure``, ``lstlisting``, ``footnotes`` in captions.
+- Discontinued support for the ``subfigure`` package (obsolete).
 
 ### Fixed
-- Fixed ToC page breaking problems using the tocbasic package (replacing the tocloft package).
+- Fixed ToC page breaking problems using the ``tocbasic`` package (replacing the ``tocloft`` package).
 - Many small fixes and improvements.
 
 ## [2017/11/05]
