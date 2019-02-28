@@ -25,7 +25,7 @@ Technisch basiert dieser Teil auf \texttt{BibTeX} \cite{Patashnik1988}
 \bzw\ \texttt{Biber}%
 \footnote{Wird seit Version 2013/02/19 anstelle von \texttt{bibtex} verwendet 
 	(s.\ \url{http://biblatex-biber.sourceforge.net/}),}
-in Kombination mit dem Paket \texttt{biblatex} \cite{Lehman2016}.
+in Kombination mit dem Paket \texttt{biblatex} \cite{Lehman2018}.
 
 
 Die Verwaltung von Quellen besteht grundsätzlich aus zwei Elementen: 
@@ -153,8 +153,8 @@ dem Punkt) stehen, nicht \emph{außerhalb}:
 %
 \begin{center}
 \begin{tabular}{rl}
- \textbf{Falsch:}  & \ldots hier ist der Satz zu Ende. \cite{Oetiker2015} Und jetzt geht es weiter \ldots \\
- \textbf{Richtig:} & \ldots hier ist der Satz zu Ende \cite{Oetiker2015}. Und jetzt geht es weiter \ldots
+ \textbf{Falsch:}  & \ldots hier ist der Satz zu Ende. \cite{Oetiker2018} Und jetzt geht es weiter \ldots \\
+ \textbf{Richtig:} & \ldots hier ist der Satz zu Ende \cite{Oetiker2018}. Und jetzt geht es weiter \ldots
 \end{tabular}
 \end{center}
 
@@ -164,8 +164,8 @@ Ein Quellenverweis ist \emph{immer} durch ein Leerzeichen vom vorangehenden Wort
 
 \begin{center}
 \begin{tabular}{rl}
-\textbf{Falsch:}  & \ldots hier folgt die Quellenangabe\cite{Oetiker2015} und es geht weiter \ldots \\
-\textbf{Richtig:} & \ldots hier folgt die Quellenangabe \cite{Oetiker2015} und es geht weiter \ldots
+\textbf{Falsch:}  & \ldots hier folgt die Quellenangabe\cite{Oetiker2018} und es geht weiter \ldots \\
+\textbf{Richtig:} & \ldots hier folgt die Quellenangabe \cite{Oetiker2018} und es geht weiter \ldots
 \end{tabular}
 \end{center}
 
@@ -173,7 +173,7 @@ Ein Quellenverweis ist \emph{immer} durch ein Leerzeichen vom vorangehenden Wort
 Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird,
 sollte der Verweis im vorlaufenden Text und nicht
 \emph{innerhalb} des Zitats selbst platziert werden. Als Beispiel die folgende Passage
-aus \cite{Oetiker2015}:
+aus \cite{Oetiker2018}:
 %
 \begin{quote}\begin{english}
 Typographical design is a craft. Unskilled authors often commit
@@ -257,7 +257,7 @@ Institutionen und Verlagen) \textbf{häufig falsch oder syntaktisch fehlerhaft}!
 Man sollte sie daher nicht ungeprüft übernehmen und insbesondere die Endergebnisse genau kontrollieren.
 Darüber hinaus gibt es eigene Anwendungen zur Wartung von
 BibTeX-Verzeichnissen, wie beispielsweise
-\emph{JabRef}.\footnote{\url{http://jabref.sourceforge.net/}}
+\emph{JabRef}.\footnote{\url{http://www.jabref.org/}}
 
 
 \subsubsection{Verwendung von \texttt{biblatex} und \texttt{biber}}
@@ -617,14 +617,14 @@ Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben,
 \item[]
 \begin{GenericCode}[numbers=none]
 @techreport{Drake1948,
-  author={Drake, Huber M. and McLaughlin, Milton D. and Goodman, Harold R.},
+  author={Drake, Hubert M. and McLaughlin, Milton D. and Goodman, Harold R.},
   title={Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92},
   institution={NASA Dryden Flight Research Center},
   year={1948},
   month={1},
   location={Edwards, CA},
   number={NACA-RM-L8A05A},
-  url={http://www.nasa.gov/centers/dryden/pdf/...05A.pdf},
+  url={https://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf},
   hyphenation={english}
 }
 \end{GenericCode}
@@ -640,17 +640,17 @@ Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dok
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{Mittelbach2016,
+@manual{Mittelbach2018,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
-  year={2016},
-  month={11},
-  version={2.16a},
+  year={2018},
+  month={12},
+  version={2.17b},
   url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
   hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2016}] \fullcite{Mittelbach2016}
+\item[\cite{Mittelbach2018}] \fullcite{Mittelbach2018}
 \end{itemize}
 %
 Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vornamen} + \emph{Nachname} interpretiert wird.%
@@ -670,16 +670,16 @@ unterstützt. Hier ein typisches Beispiel:
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@standard{W3C2017HTML52,
-  author={{World Wide Web Consortium}},
-  title={HTML 5.2},
-  titleaddon={W3C Candidate Recommendation},
-	date={2017-08-08},
-  url={https://www.w3.org/TR/html52/},
+@standard{W3C2018HTML53,
+	author={{World Wide Web Consortium}},
+	title={HTML 5.3},
+	titleaddon={W3C Working Draft},
+	date={2018-10-18},
+	url={https://www.w3.org/TR/html53/},
 	hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{W3C2017HTML52}] \fullcite{W3C2017HTML52}
+\item[\cite{W3C2018HTML53}] \fullcite{W3C2018HTML53}
 \end{itemize}
 %
 
@@ -698,7 +698,7 @@ Patenterteilung, die Angabe von \texttt{holder} ist optional:
 \begin{GenericCode}[numbers=none]
 @patent{Pike2008,
 	author={Pike, Dion},
-  title={Master-slave communications system and method for a network element},
+ 	title={Master-slave communications system and method for a network element},
 	type={US Patent},
 	holder={Alcatel-Lucent SAS},
 	number={7,460,482},
@@ -713,7 +713,7 @@ Patenterteilung, die Angabe von \texttt{holder} ist optional:
 \texttt{@patent} ist allerdings kein Standardtyp und daher wird nicht
 von allen BibTex-Imple\-mentier\-ungen unterstützt.
 Alternativ kann man für Patente auch den \texttt{@misc}-Typ verwenden,
-wie im nächsten Abschnitt gezeigt \cite{Hough62}.
+wie im nächsten Abschnitt gezeigt \cite{Hough1962}.
 
 %%------------------------------------------------------
 
@@ -722,7 +722,7 @@ wie im nächsten Abschnitt gezeigt \cite{Hough62}.
 
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
 nicht das Auslangen gefunden werden, sollte man sich zunächst die weiteren (hier nicht näher beschriebenen) 
-Typen im \texttt{biblatex}-Handbuch \cite{Lehman2016} ansehen, beispielsweise
+Typen im \texttt{biblatex}-Handbuch \cite{Lehman2018} ansehen, beispielsweise
 \texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin).
 
 Wenn nichts davon passt, dann kann auf den Typ \texttt{@misc} zurückgegriffen werden, der ein
@@ -736,7 +736,7 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 @misc{OoeRaumordnungsgesetz1994,
   title={Oberösterreichisches Raumordnungsgesetz 1994},
   howpublished={LGBl 1994/114 idF 1995/93},
-  url={http://www.ris.bka.gv.at/Dokumente/LrOO/...538.pdf},
+  url={https://www.ris.bka.gv.at/Dokumente/LrOO/...538.pdf},
   hyphenation={german}
 }
 \end{GenericCode}
@@ -748,7 +748,7 @@ Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein Patent
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@misc{Hough62,
+@misc{Hough1962,
 	author={Hough, Paul V. C.},
 	title={Method and means for recognizing complex patterns},
 	howpublished={US Patent 3,069,654},
@@ -757,7 +757,7 @@ Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein Patent
 	url={https://patents.google.com/patent/US3069654}
 }
 \end{GenericCode}
-\item[\cite{Hough62}] \fullcite{Hough62}
+\item[\cite{Hough1962}] \fullcite{Hough1962}
 \end{itemize}
 
 
@@ -818,7 +818,7 @@ das auch in Abb.\ \ref{fig:CocaCola} verwendet wird:
 	note={Library of Congress Prints and Photographs Division Washington, Farm Security Administration/Office of War Information Color Photographs},
 	year={1940},
 	month={8},
-	url={http://www.loc.gov/pictures/item/fsa1992000140/PP/},
+	url={https://www.loc.gov/pictures/item/fsa1992000140/PP/},
   hyphenation={english}
  }
 \end{GenericCode}
@@ -839,7 +839,7 @@ Das nachfolgende Beispiel zeigt den Verweis auf ein YouTube-Video:
 \begin{GenericCode}[numbers=none]
 @video{HistoryOfComputers2008,
   title={History of Computers},
-	url={http://www.youtube.com/watch?v=LvKxJ3bQRKE},
+	url={https://www.youtube.com/watch?v=LvKxJ3bQRKE},
   year={2008},
   month={9},
   hyphenation={english}
@@ -988,20 +988,20 @@ Durch den Umfang und die steigende Qualität dieser Einträge erscheint
 die Aufnahme in das Quellenverzeichnis durchaus berechtigt.
 Beispielsweise bezeichnet man als "`Reliquienschrein"'
 einen Schrein, in dem die Reliquien eines oder 
-mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2016}.
+mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2018}.
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@online{WikiReliquienschrein2016,
+@online{WikiReliquienschrein2018,
 	title={Reliquienschrein},
 	url={https://de.wikipedia.org/wiki/Reliquienschrein},
-  year={2016},
-  month={8},
-  urldate={2017-02-28}
+	year={2018},
+	month={9},
+	urldate={2019-02-28}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2016}] \fullcite{WikiReliquienschrein2016}
+\item[\cite{WikiReliquienschrein2018}] \fullcite{WikiReliquienschrein2018}
 \end{itemize}
 %
 In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL.
