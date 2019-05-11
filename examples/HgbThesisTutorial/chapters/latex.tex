@@ -13,7 +13,7 @@ Textverarbeitung.
 
 Zum Ersten ist -- im Unterschied zu den meisten gängigen
 Text\-ver\-arbei\-tungs\-prog\-ram\-men -- \latex nicht \textsc{Wysiwyg}%
-\footnote{"`What You See Is What You Get."' Es gibt auch 
+\footnote{"What You See Is What You Get." Es gibt auch 
 \textsc{Wysiwyg}-Implementierungen für \latex, 
 \zB\ \emph{Scientific WorkPlace} (\url{https://www.mackichan.com/}) oder
 \emph{LyX} (\url{https://www.lyx.org/}), 
@@ -40,14 +40,14 @@ Zudem könnte es durchaus sein, dass sich nebenbei auch das eigene Auge für
 die Feinheiten des Buchsatzes (weiter-){\obnh}entwickelt.%
 \footnote{Dieses abschließende Textelement wurde übrigens zur Ermöglichung eines 
 Zeilenumbruchs nach der Klammer so gesetzt: \texttt{\ldots (weiter-)\{{\bs}optbreaknh\}entwickelt.}
-Das Makro \texttt{{\bs}optbreaknh} ("`optional break with no hyphen"') ist in 
+Das Makro \texttt{{\bs}optbreaknh} ("optional break with no hyphen") ist in 
 \texttt{hgb.sty} definiert.}
 
 
 \subsection{Software}
 \label{sec:Software}
 
-Zum Arbeiten mit \latex wird -- neben einem Computer -- natürlich Software benötigt. Mussten früher oft die einzelnen Komponenten von \latex mühevoll zusammengesucht und für die eigene Umgebung konfiguriert werden, gibt es mittlerweile für die wichtigsten Plattformen (Windows, Mac~Os, Linux) fertige \latex-Installationen, die ohne weiteres Zutun laufen. Die aktuelle Version von \latex\ ist \LaTeXe\ (sprich "`LaTeX zwei e"'). 
+Zum Arbeiten mit \latex wird -- neben einem Computer -- natürlich Software benötigt. Mussten früher oft die einzelnen Komponenten von \latex mühevoll zusammengesucht und für die eigene Umgebung konfiguriert werden, gibt es mittlerweile für die wichtigsten Plattformen (Windows, Mac~Os, Linux) fertige \latex-Installationen, die ohne weiteres Zutun laufen. Die aktuelle Version von \latex\ ist \LaTeXe\ (sprich "LaTeX zwei e"). 
 Zum Arbeiten mit \latex\ werden zwei Dinge benötigt:
 %
 \begin{itemize}
@@ -182,7 +182,7 @@ bezüglich der Größe sehr gut aufeinander abgestimmt sind.
 
 Darüber hinaus können aber in \latex auch beliebige 
 \emph{PostScript}-Schrif\-ten (Type 1) verwendet werden, was allerdings in
-der Praxis einiges an "`Tuning"'-Arbeit verlangt. Häufig verwendet
+der Praxis einiges an "Tuning"-Arbeit verlangt. Häufig verwendet
 werden \zB\ \emph{Times} und \emph{Palatino}, derzeit ist aber ein Trend 
 zurück zu den klassischen CM-Schriften zu beobachten.
 
@@ -193,7 +193,7 @@ zurück zu den klassischen CM-Schriften zu beobachten.
 Texte können auf unterschiedliche Weise aus dem Fließtext hervorgehoben werden.
 \begin{itemize}
 %
-\item Die Auszeichnung in \textit{Kursivschrift} oder "`italic"' (\verb!\textit{..}!) ist \va\ zum Hervorheben von
+\item Die Auszeichnung in \textit{Kursivschrift} oder "italic" (\verb!\textit{..}!) ist \va\ zum Hervorheben von
 Betonungen und Zitaten geeignet, aber auch für
 Produktbezeichnungen, Fremdwörter und Variablen im Text, \zB
 %
@@ -224,7 +224,7 @@ zum Vergleich:
 ist normalerweise gleichbedeutend mit \verb!\textit!, wobei
 \verb!\emph! allerdings auch bei geschachtelten
 Hervorhebungen und im Bereich anderer Schriftschnitte das
-"`Richtige"' tut: 
+"Richtige" tut: 
 %
 \begin{quote}
 \setlength{\tabcolsep}{0pt}%
@@ -350,7 +350,7 @@ machen.
 
 Listen sind ein beliebtes Mittel zur Textstrukturierung. In
 \latex\ sind -- ähnlich wie in HTML -- drei Arten von formatierten
-Listen verfügbar: ungeordnete Auflistung ("`Knödelliste"'),
+Listen verfügbar: ungeordnete Auflistung ("Knödelliste"),
 geordnete Auflistung (Aufzählung) und Beschreibungsliste
 (Description):
 %
@@ -373,7 +373,7 @@ im Blocksatz formatiert, was für den Fließtext wegen der großen
 Zeilenlänge vorteilhaft ist. Innerhalb von Tabellen kommt es
 wegen der geringen Spaltenbreite jedoch häufig zu Problemen mit
 Abteilungen und Blocksatz, weshalb dort ohne schlechtes
-Gewissen zum Flattersatz ("`ragged right"') gegriffen werden sollte (wie
+Gewissen zum Flattersatz ("ragged right") gegriffen werden sollte (wie
 \zB\ in Tab.~\ref{tab:synthesis-techniques} auf Seite
 \pageref{tab:synthesis-techniques}).
 
@@ -415,7 +415,7 @@ der Eintrag im Inhaltsverzeichnis und im Seitenkopf.
 Der zweite (gleich lautende) Titel
 \texttt{\{Schlussbemerkungen\}} erscheint auf der aktuellen Seite und
 enthält auch den \verb!\footnote{}! Eintrag, der allerdings an
-dieser Stelle durch die Direktive \verb!\protect! "`geschützt"'
+dieser Stelle durch die Direktive \verb!\protect! "geschützt"
 werden muss. Die \verb!%!-Zeichen sind hier übrigens notwendig,
 um eventuelle Leerzeichen, die durch Zeilenumbrüche im Quelltext
 entstehen, zu eliminieren (dieser Trick wird 
@@ -479,7 +479,7 @@ Nummer bzw.\ Seitennummer eingesetzt werden, \zB\
 %
 Übrigens werden die Bezeichnungen \emph{Kapitel} und {\em
 Abschnitt} auffallend oft falsch verwendet -- Kapitel haben
-ausschließlich "`ungebrochene"' Nummern:
+ausschließlich "ungebrochene" Nummern:
 %
 \begin{quote}
 \begin{tabular}{ll}
@@ -500,7 +500,7 @@ Satzende einen gegenüber dem normalen Wortzwischenraum
 vergrößerten Abstand einzusetzen. Obwohl dies im Deutschen und
 Französischen traditionell nicht so ist, wird es wegen der
 verbesserten Lesbarkeit auch hier manchmal verwendet (nicht in diesem
-Dokument). Falls die englische ("`nicht-französische"') Satztrennung mit
+Dokument). Falls die englische ("nicht-französische") Satztrennung mit
 zusätzlichem Abstand bevorzugt wird, ist lediglich die Zeile
 %
 \begin{quote}
@@ -511,7 +511,7 @@ am Beginn des Dokuments einzusetzen.
 In diesem Fall sollte 
 aber die Interpunktion innerhalb von
 Sätzen (nach .\ und :) sorgfältig beachtet weren. Beispielsweise
-schreibt sich "`Dr.\ Mabuse"' in der Form
+schreibt sich "Dr.\ Mabuse" in der Form
 %
 \begin{quote}
 \verb!Dr.\ Mabuse! oder \verb!Dr.~Mabuse!
@@ -528,7 +528,7 @@ Zwischenraum) ist ganz allgemein eine häufige Fehlerquelle.
 Bewusst unterschieden werden sollte zwischen
 %
 \begin{itemize}
-\item kurzen Bindestrichen (wie in "`Wagner-Jauregg"'), %
+\item kurzen Bindestrichen (wie in "Wagner-Jauregg"), %
 \item Minus-Zeichen, \zB\ $-7$ (erzeugt mit \verb!$-7$!), und %
 \item echten Gedankenstrichen -- wie hier (erzeugt mit \verb!--!).
 \end{itemize}
@@ -615,34 +615,111 @@ Dieser Text ...
 \subsection{Anführungszeichen (Hochkommas)}
 \label{sec:anfuehrungszeichen}
 
-Mit Anführungszeichen wird aus Gewohnheit meist etwas
-nachlässig umgegangen; auch dabei sind aber die Unterschiede zwischen Deutsch
-und Englisch zu beachten. Hier die richtige \latex-Notation für
-beide Sprachen:
+Anführungszeichen sind eine häufige (und oft unbemerkte) Fehlerquelle und auch hier sind die Unterschiede zwischen Deutsch und Englisch (neben anderen Sprachen) zu beachten.
+
+
+\subsubsection{Variante 1: Hochkommas mit der \latex-Standardeinstellung}
+
+Mit der Standardeinstellung von \latex\ (\dah, \emph{ohne} Verwendung der 
+hier hier eingestellten Dokumentenoption \texttt{\texttt{smartquotes}}, \su)
+muss die Eingabe von vorderen und hinteren Hochkommas exakt nach den entsprechenden
+Konventionen erfolgen.
+Hier die korrekte \latex-Notation für englische und deutsche Texte:
 %
 \begin{quote}
-\verb!``English''! $\rightarrow$ ``English'' \\
-\verb!"`Deutsch"'! $\rightarrow$ "`Deutsch"' 
+\verb!``English''! $\rightarrow$ ``English'',\\
+\verb!"`Deutsch"'! $\rightarrow$ {\glqq}Deutsch{\grqq}.
 \end{quote}
 %
-Bei richtiger Einstellung werden beispielsweise im TeXnicCenter-Editor
-die entsprechenden Zeichenfolgen automatisch eingesetzt.
-\emph{Einfache} Anführungszeichen werden im Englischen analog erzeugt, im Deutschen werden dafür die Makros \verb!\glq! \bzw\ \verb!\grq! (German left/right quote) benötigt:
+Man beachte die subtilen typografischen Unterschiede zwischen den beiden Sprachen.%
+\footnote{Manche Editoren (\zB\ \textsf{TeXnicCenter}) kann man so einstellen, dass
+bei der Eingabe eines einfachen Hochkommas (\texttt{\textquotedbl}) die entsprechenden Zeichenfolge 
+\emph{automatisch} (kontext- und sprachabhängig) eingesetzt wird.
+Insbesondere in \textsf{Overleaf} ist das derzeit leider nicht möglich.}
+
+\emph{Einfache} Anführungszeichen werden im Englischen analog erzeugt, 
+im Deutschen werden dafür hingegen die Makros \verb!\glq! \bzw\ \verb!\grq! 
+(German left/right quote) benötigt:
+%
 \begin{quote}
-\verb!`English'! $\rightarrow$ `English' \\
-\verb!{\glq}Deutsch{\grq}! $\rightarrow$ {\glq}Deutsch{\grq} 
+\verb!`English'! $\rightarrow$ `English',\\
+\verb!{\glq}Deutsch{\grq}! $\rightarrow$ {\glq}Deutsch{\grq}.
 \end{quote}
 
 
+\subsubsection{Variante 2: Hochkommas mit der Option \texttt{\bfseries smartquotes}}
+
+Diese Vorlage verwendet mit der Dokumentenoption \texttt{smartquotes}
+ein \emph{spezielles Setup}, das auf dem \texttt{csquotes}-Paket%
+\footnote{\url{https://ctan.org/pkg/csquotes}}
+basiert.
+Die korrekte Einsatz von Hochkommas vereinfacht sich damit deutlich, weil
+abhängig von der aktuellen Spracheinstellung und der Position des Hochkommas
+das jeweils richtige Zeichen eingesetzt wird.
+Es genügt hier die Verwendung eines doppelten (geraden) Hochkommas \texttt{\textquotedbl}, wie \zB
+%
+\begin{quote}
+\begin{english}\verb!"English"! $\rightarrow$ "English"\end{english}\ (bei Spracheinstellung \texttt{english}),\\
+\verb!"Deutsch"! $\rightarrow$ "Deutsch" (bei Spracheinstellung \texttt{german}).
+\end{quote}
+%
+Dabei ist zu beachten, dass die traditionelle Eingabe von Hochkommas (Variante~1, \so) in diesem Fall \emph{nicht}
+zur Verfügung steht. Die gemischte Verwendung von Variante~1 und Variante~2 ist somit
+nicht möglich! Es sind mit dieser Einstellung auch alle weiteren "shorthands" des 
+\texttt{babel}-Pakets%
+\footnote{\url{https://ctan.org/pkg/babel}}
+(wie \zB\ \verb!"a!, \verb!"o!, \verb!"u!) \emph{permanent deaktiviert} und diese können
+auch lokal nicht reaktiviert werden.%
+\footnote{Die hier eingestellte Verwendung des \texttt{\textquotedbl} Zeichens als 
+beidseitiges "outer quote" Zeichen gilt -- \va\ in Kombination mit der deutschen Sprache --
+als "gefährlich", weil das \texttt{babel}-Paket das gerade Hochkomma für spezielle
+\emph{shorthand}-Makros nutzt. Das nehmen wir mutig in Kauf, allerdings sind die 
+\texttt{babel}-shorthands im aktuellen Setup generell deaktiviert um Schwierigkeiten 
+zu vermeiden.}
 
 
+\subsubsection{Zusätzliche Features des \texttt{csquotes}-Pakets}
+Das (mit der Option \texttt{smartquotes} automatisch geladene)
+\texttt{csquotes}-Paket bietet zahlreiche weitere Möglichkeiten zur 
+Eingabe von zitierten Texten (Zitaten), insbesondere das Makro
+%
+\begin{itemize}
+\item[] \verb!\enquote{text}!,
+\end{itemize}
+%
+das den angegebenen \texttt{text} in der jeweils korrekten Form (\ua\ abhängig von der Spracheinstellung und
+Verschachtelungstiefe) als Zitat auszeichnet, zum Beispiel,
+%
+\begin{itemize}
+\item[] \verb|\enquote{Niemand hat die Absicht, eine Mauer zu bauen!}| 
+\item[] $\rightarrow$ \enquote{Niemand hat die Absicht, eine Mauer zu bauen!}
+\end{itemize}
+%
+Der Vorteil dieses Konstrukts wird besonders bei \emph{geschachtelten} Zitaten deutlich, 
+wie beispielsweise in
+%
+\begin{itemize}
+\item[] \verb|\enquote{Napoleon sagte nur \enquote{Weiter so!} und ging.}| 
+\item[] $\rightarrow$ \enquote{Napoleon sagte nur \enquote{Weiter so!} und ging.}
+\end{itemize}
+%
+Eine weiteres praktisches Feature ist das Makro \verb!\foreignquote!, mit dem man sehr einfach
+fremdsprachige Zitate im Text einfügen kann, ohne die Spracheinstellung
+explizit verändern zu müssen, \zB%
+\footnote{Derzeit sind nur die Spracheinstellungen \texttt{german} und \texttt{english} verfügbar.}
+%
+\begin{itemize}
+\item[] \verb|\foreignquote{english}{And God asked him: |\newline
+				\verb|   \enquote{Where is Abel thy brother?} And Cain replied: \ldots}| 
+\item[] $\rightarrow$ \foreignquote{english}{And God asked him: \enquote{Where is Abel thy brother?} And Cain replied: \ldots}
+\end{itemize}
 
-\section{Abteilen}
+
+\section{Abteilen (Silbentrennung, \emph{Hyphenation})}
 \label{subsec:layout-abteilen}
 
 Um ein sauberes Schriftbild zu erreichen sind -- speziell im
-Deutschen wegen der großen Wortlängen -- Abteilungen
-(Silbentrennung, Hyphenation) unerlässlich.
+Deutschen wegen der großen Wortlängen -- Abteilungen unerlässlich.
 Die Silbentrennung erfolgt entweder \emph{automatisch} oder \emph{manuell} durch
 das Einfügen optionaler Trennzeichen. 
 
@@ -687,39 +764,40 @@ beispielsweise würde \latex\ \emph{keinen} der beiden Teile des Worts
 \end{itemize}
 automatisch trennen, sondern ggfs.\ ungebrochen über den Zeilenrand hinausragen
 lassen! Auch hier kann natürlich (wie oben gezeigt) durch individuelles 
-Einsetzen von \verb!\-! Abhilfe geschaffen werden. Eine generelle Lösung bietet das (ohnehin bereits
-geladene) \texttt{babel}-Paket%
-\footnote{\url{http://mirrors.ctan.org/language/german/gerdoc.pdf}} %https://ctan.org/pkg/german
-in der Form
-% 
-\begin{itemize}
-\item[] \verb!Arbeiter"=Unfallversicherungsgesetz!,
-\end{itemize}
-also durch Ersetzung des Bindestrichs mit der Zeichenfolge \verb!"=!.
-Damit wird erreicht, dass \latex\ die Wortteile wie unabhängige Einzelwörter behandelt
-und auch so umbricht.
+Einsetzen von \verb!\-! Abhilfe geschaffen werden.
+%
+%%% weggelassen, weil vermutlich nur verwirrend:
+%Eine generelle Lösung bietet das (ohnehin bereits
+%geladene) \texttt{babel}-Paket%
+%\footnote{\url{http://mirrors.ctan.org/language/german/gerdoc.pdf}} %https://ctan.org/pkg/german
+%in der Form
+%% 
+%\begin{itemize}
+%\item[] \verb!Arbeiter"=Unfallversicherungsgesetz!,
+%\end{itemize}
+%also durch Ersetzung des Bindestrichs mit der Zeichenfolge \verb!"=!.
+%Damit wird erreicht, dass \latex\ die Wortteile wie unabhängige Einzelwörter behandelt
+%und auch so umbricht.%
+%\footnote{Achtung: Diese Möglichkeit ist mit der (hier verwendeten) Dokumentenoption
+%\texttt{smartquotes} \emph{nicht} verfügbar, weil damit alle derartigen \texttt{babel} 
+%"shorthands" deaktiviert sind (s.\ Abschn.~\ref{sec:anfuehrungszeichen}).}
 
-\paragraph{"`Schlampige"' Formatierung:}
+\paragraph{"Schlampige" Formatierung:}
 In echten Problemfällen -- etwa bei Textelementen, die nicht umgebrochen 
 werden dürfen oder können -- kann \latex\ dazu veranlasst werden, in einzelnen Absätzen
 etwas weniger pingelig zu formatieren. Das wird wie folgt erreicht:
 %
-\begin{itemize}
-\item[]
-\begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \begin{sloppypar}
-Dieser Absatz wird ``schlampig'' (sloppy) gesetzt ...
+Dieser Absatz wird "schlampig" (sloppy) gesetzt ...
 \end{sloppypar}
-\end{verbatim}
-\end{itemize}
+\end{LaTeXCode}
 %
 Der allerletzte Rettungsanker ist, die betreffende Passage so umzuschreiben, dass sich ein 
 passabler Zeilenumbruch ergibt -- schließlich ist man ja selbst der Autor und 
 niemandem (abgesehen vom Betreuer) eine Rechtfertigung schuldig.%
 \footnote{Angeblich waren eigenständige Textänderungen durch Schriftsetzer
 auch beim früheren Bleisatz durchaus üblich.}
-
-
 
 
 
@@ -750,30 +828,34 @@ zum Erstellen dieses Dokuments erforderlich sind:
 \label{sec:HagenbergEinstellungen}
 
 
-Alle (\verb!.tex!) Dokumente dieser Klasse beginnen mit der Anweisung
+Alle (\verb!.tex!) Dokumente dieses Pakets beginnen mit der Anweisung
 %
 \begin{itemize}
-\item[] \verb!\documentclass[!\texttt{\emph{type}},\texttt{\emph{language}}\verb!]{hgbthesis}! 
+\item[] \verb!\documentclass[!\texttt{\emph{type}},\texttt{\emph{language}}\verb!]{hgbthesis}!.
 \end{itemize}
 %
-Dabei sind die möglichen Optionen für \texttt{\emph{type}} 
+Mit der \texttt{\emph{type}}-Option wird der Typ der Arbeit spezifiziert: 
 %
 \begin{itemize}
-\item[] \verb!master! (Masterarbeit = \emph{default})
-\item[] \verb!diploma! (Diplomarbeit)
-\item[] \verb!bachelor! (Bachelorarbeit)
-\item[] \verb!internship! (Praktikumsbericht)
+\item[] \verb!master! (Masterarbeit = \emph{default}),
+\item[] \verb!diploma! (Diplomarbeit),
+\item[] \verb!bachelor! (Bachelorarbeit),
+\item[] \verb!internship! (Praktikumsbericht).
 \end{itemize}
 %
 Mit der Option \texttt{\emph{language}} kann die Hauptsprache des Dokuments spezifiziert werden, 
 die möglichen Werte dafür sind
 %
 \begin{itemize}
-\item[] \verb!german! (\emph{default})
-\item[] \verb!english!
+\item[] \verb!german! (\emph{default}),
+\item[] \verb!english!.
 \end{itemize}
 %
-Wird keine Option angegeben, lautet die Standardeinstellung \texttt{[master,german]}.
+Weitere Optionen:
+\begin{itemize}
+\item[] \verb!smartquotes! (Verwendung gerader Hochkommas, s.\ Abschn.~\ref{sec:anfuehrungszeichen}).
+\end{itemize}
+Wird \emph{keine} Option angegeben, lautet die Standardeinstellung \texttt{[master,german]}.
 Der vollständige Quelltext für eine entsprechende \verb!.tex! Hauptdatei ist in Anhang \ref{app:latex} 
 gelistet.
 
@@ -909,16 +991,10 @@ Küpper (\url{https://ctan.org/pkg/jkthesis}).} definiert, die das
 Schreiben vereinfachen und für konsistente
 Zwisch\-en\-ab\-stän\-de sorgen (Tab.~\ref{tab:abkuerzungen}).
 Bei der Verwendung von Makros ist allgemein zu beachten, dass sie nachfolgende Leerzeichen manchmal
-"`auffressen"', sodass vor dem nachfolgenden Text kein Abstand erzeugt wird.%
+"auffressen", sodass vor dem nachfolgenden Text kein Abstand erzeugt wird.%
 \footnote{Bei fast allen in \texttt{hgb.sty} definierten Makros wird dies allerdings durch den Einsatz von \texttt{\textbackslash xspace} verhindert.} 
 Dies kann notfalls mit einem nachfolgenden
-"`\verb!\ !"' oder umhüllenden \verb!{}!-Klammern verhindert werden.
-%, wie in folgendem (nicht sehr schönen) Beispiel:
-%
-%\begin{itemize}
-%\item[] \verb!Mopeds und Autos haben \ia zwei {\bzw} vier Räder.!\\
-      %Mopeds und Autos haben \ia zwei {\bzw} vier Räder.
-%\end{itemize}
+"\verb!\ !" oder umhüllenden \verb!{}!-Klammern verhindert werden.
 Bei Verwendung von Makros mit abschließendem Punkt an einem Satzende 
 sollte auch darauf geachtet werden, dass keine \emph{doppelten} Punkte gesetzt werden.
 
@@ -926,7 +1002,7 @@ sollte auch darauf geachtet werden, dass keine \emph{doppelten} Punkte gesetzt w
 \begin{table}
 \caption{In \texttt{hgbabbrev.sty} definierte Abkürzungsmakros.}
 \label{tab:abkuerzungen}
-\centering
+\centering\small
 \begin{tabular}{llp{2cm}ll}
 \hline
     \verb+\bzw+        & \bzw   & &  \verb+\ua+         & \ua \\
@@ -947,6 +1023,7 @@ sollte auch darauf geachtet werden, dass keine \emph{doppelten} Punkte gesetzt w
 
 
 
+
 \subsection{Sprachumschaltung}
 \label{sec:sprachumschaltung}
 
@@ -954,27 +1031,24 @@ Für englischsprachige Abschnitte (\zB\ das Abstract oder englische
 Zitate) sollte die \emph{Sprache} von Deutsch auf Englisch
 umgeschaltet werden, um die richtige Form der Silbentrennung zu
 erhalten. Damit nicht versehentlich auf das Rückstellen der
-Sprache vergessen wird, sind dafür im \texttt{hagenberg-thesis}-Paket zwei
-spezielle \emph{Environments} vorgesehen:
+Sprache vergessen wird, sind dafür zwei spezielle Umgebungen (\emph{environments}) vorgesehen:
 %
-\begin{itemize}
-\item[] 
-\verb!\begin{english}!\\
-\verb!    This is a 1-page (maximum) summary!\\
-\verb!    of your work in English.!\\
-\verb!\end{english}!
-\end{itemize}
-
-\begin{itemize}
-\item[] 
-\verb!\begin{german}!\\
-\verb!    Text in Deutsch (wenn die Hauptsprache!\\
-\verb!    auf Englisch gesetzt ist).!\\
-\verb!\end{german}!
-\end{itemize}
+\begin{LaTeXCode}[numbers=none]
+\begin{english}
+	This is a 1-page (maximum) summary of your work in English.
+\end{english}
+\end{LaTeXCode}
+%
+beziehungsweise
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{german}
+	Text in Deutsch (wenn die Hauptsprache auf Englisch gesetzt ist).
+\end{german}
+\end{LaTeXCode}
 %
 Zur Kontrolle lässt sich die aktuelle Spracheinstellung mit dem Makro \verb!\languagename!
-anzeigen. An dieser Stelle ergibt das etwa "`\texttt{\languagename}"' (\emph{new german}, \dah\ neue deutsche Rechtschreibung).
+anzeigen. An dieser Stelle ergibt das etwa "\texttt{\languagename}" (\emph{new german}, \dah\ neue deutsche Rechtschreibung).
 
 
 \subsection{Zusätzliche {\latex}-Pakete}
@@ -994,7 +1068,6 @@ in Abschn.~\ref{sec:literatur} angegebenen CTAN-Sites.
 Alle sind in den gängigen \latex\ Standardinstallationen (\zB MikTeX) bereits enthalten.}
 \label{tab:packages}
 \centering\small
-\tabcolsep2pt
 \begin{tabular}{ll}
 %\hline
 \emph{Paket} &  \emph{Funktion} \\
@@ -1007,13 +1080,14 @@ Alle sind in den gängigen \latex\ Standardinstallationen (\zB MikTeX) bereits e
 \texttt{biblatex} &  Literaturverwaltung \\ 
 \texttt{caption}  &  Flexiblere Captions \\ 
 \texttt{cite}     &  Sortierte Literaturverweise \\ 
-\texttt{color}    &  Farbige Textelemente und Hintergrundfarben \\ 
+\texttt{color}    &  Farbige Textelemente und Hintergrundfarben \\
+\texttt{csquotes}    &  Kontextabhängige Hochkommas \\
 %\texttt{eurosym}  &  {\euro}-Symbol (\verb!\euro!)\\ 
 \texttt{marvosym}  &  {\euro}-Symbol (\verb!\euro!)\\ 
 \texttt{exscale}  &  Korrekte Schriftgrößen im Math-Modus \\ 
 \texttt{fancyhdr} &  zur Gestaltung Kopfzeilen (header) \\ 
 \texttt{float}    &  Verbessertes Float-Handling \\ 
-\texttt{fontenc}  &  zur Verwendung der cm-super Type1 Postscript Schriften \\ 
+\texttt{fontenc}  &  Verwendung der T1 (westeur.) Zeichencodierung \\ 
 \texttt{graphicx} &  Einbindung von EPS-Grafiken \\ 
 \texttt{hyperref} &  erzeugt aktive Querverweise im PDF-Dokument \\ 
 \texttt{ifthen}   &  für logische Entscheidungen in \latex\\
@@ -1023,7 +1097,7 @@ Alle sind in den gängigen \latex\ Standardinstallationen (\zB MikTeX) bereits e
 %\texttt{ngerman}  &  Neue deutsche Rechtschreibung \\ 
 \texttt{upquote}  &  Gerade Hochkommas in \texttt{verbatim}-Texten \\ 
 \texttt{url}      &  Behandlung von URLs im Text \\ 
-\texttt{verbatim} &  Verbesserte \texttt{verbatim}-Umgebung \\
+\texttt{verbatim} &  Verbesserte \texttt{verbatim}-Umgebung \\ 
 \hline
 \end{tabular}
 \end{table}

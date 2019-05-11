@@ -31,11 +31,11 @@ Dabei sollte unbedingt darauf geachtet werden, dass die Höhe der einzelnen Elem
 
 \paragraph{Häufiger Fehler:} 
 Im Fließtext wird bei einfachen Variablen oft auf die Verwendung der richtigen, mathematischen
-Zeichen vergessen, wie etwa in "`X-Achse"' anstelle von "`$X$-Achse"' (\verb!$X$-Achse!).
+Zeichen vergessen, wie etwa in "X-Achse" anstelle von "$X$-Achse" (\verb!$X$-Achse!).
 
 \paragraph{Zeilenumbrüche:}
 Bei längeren mathematischen Elementen im Fließtext sind Probleme mit Zeilenumbrüchen
-vorprogrammiert. In der Regel ermöglicht \latex nur am "`="' einen Zeilenumbruch,
+vorprogrammiert. In der Regel ermöglicht \latex nur am "=" einen Zeilenumbruch,
 an anderer Stelle kann man Umbrüche mit \texttt{{\bs}allowbreak} ermöglichen. 
 Hier ein kleines Beispiel:
 %
@@ -212,13 +212,13 @@ Beim Verweis auf nummerierte Formeln und Gleichungen genügt grundsätzlich die 
 der entsprechenden Nummer in runden Klammern,
 \zB\
 \begin{center}
-%"`\ldots\ wie aus (\ref{eq:f1}) abgeleitet werden kann \ldots"'
-"`\ldots\ wie aus (\ref{eq:f1}) abgeleitet werden kann \ldots"'
+%"\ldots\ wie aus (\ref{eq:f1}) abgeleitet werden kann \ldots"
+"\ldots\ wie aus (\ref{eq:f1}) abgeleitet werden kann \ldots"
 \end{center}
 Um Missverständnisse zu vermeiden, sollte aber -- \va\ in Texten mit
-nur wenigen mathematischen Elementen -- "`Gleichung \ref{eq:f1}"', "`Gl.~\ref{eq:f1}"' 
-oder "`Gl.~(\ref{eq:f1})"' geschrieben werden (natürlich konsistent). 
-%\emph{Falsch} wäre hingegen "`Gleichung (\ref{eqn:zerstreuungskreis})"'.
+nur wenigen mathematischen Elementen -- "Gleichung \ref{eq:f1}", "Gl.~\ref{eq:f1}" 
+oder "Gl.~(\ref{eq:f1})" geschrieben werden (natürlich konsistent). 
+%\emph{Falsch} wäre hingegen "Gleichung (\ref{eqn:zerstreuungskreis})".
 
 \begin{center}
 \setlength{\fboxrule}{0.2mm}
@@ -254,7 +254,7 @@ $x \in \R$ , $k \in \N_0$, $z = (a + \mathrm{i} \cdot b) \in \Cpx$.
 In \latex\ sind Dutzende von mathematischen Operatoren für spezielle Anwendungen definiert. Am häufigsten werden natürlich die arithmetischen Operatoren $+$, $-$, $\cdot$ und $/$ benötigt. Ein dabei oft beobachteter Fehler (der wohl aus der Programmierpraxis resultiert) ist die Verwendung von $*$ für die einfache Multiplikation -- richtig ist $\cdot$ (\verb!\cdot!).%
 \footnote{Das Zeichen $*$ ist üblicherweise für den \emph{Faltungsoperator} vorgesehen.}
 %
-Für Angaben wie \zB\ "`ein Feld mit $25 \times 70$ Metern"' (aber auch fast \emph{nur} dafür) wird sinnvollerweise der $\times$ (\verb!\times!) Operator und \emph{nicht} einfach das Textzeichen~"`x"' verwendet!
+Für Angaben wie \zB\ "ein Feld mit $25 \times 70$ Metern" (aber auch fast \emph{nur} dafür) wird sinnvollerweise der $\times$ (\verb!\times!) Operator und \emph{nicht} einfach das Textzeichen~"x" verwendet!
 
 
 \subsection{Variable (Symbole) mit mehreren Zeichen}
@@ -268,7 +268,7 @@ $$Scalefactor\leftarrow Scalefactor^2 \cdot 1.5 \; ,$$
 \begin{quote}
 	\verb!$Scalefactor \leftarrow Scalefactor^2! \verb!\cdot 1.5$!.
 \end{quote}
-Dabei interpretiert \latex allerdings die Zeichenkette "`Scalefactor"' als 11 einzelne,
+Dabei interpretiert \latex allerdings die Zeichenkette "Scalefactor" als 11 einzelne,
 aufeinanderfolgende Symbole $S$, $c$, $a$, $l$, $e$, \ldots und setzt dazwischen
 entsprechende Abstände.
 \textbf{Richtig} ist, diese Buchstaben mit
@@ -333,7 +333,7 @@ sondern wird mit dem \texttt{eurosym}-Paket erzeugt.}
 
 \subsection{Kommas in Dezimalzahlen (Mathematik-Modus)}
 
-\latex\ setzt im Mathematik-Modus (also innerhalb von \verb!$$! oder in Gleichungen) nach dem angloamerikanischen Stil in Dezimalzahlen grundsätzlich den \emph{Punkt} (\verb!.!) als Trennsymbol voraus. So wird etwa mit \verb!$3.141$! normalerweise die Ausgabe "`3.141"' erzeugt. Um das in Europa übliche Komma in Dezimalzahlen zu verwenden, genügt es \emph{nicht}, einfach \verb!.! durch \verb!,! zu ersetzen. Das Komma wird in diesem Fall
+\latex\ setzt im Mathematik-Modus (also innerhalb von \verb!$$! oder in Gleichungen) nach dem angloamerikanischen Stil in Dezimalzahlen grundsätzlich den \emph{Punkt} (\verb!.!) als Trennsymbol voraus. So wird etwa mit \verb!$3.141$! normalerweise die Ausgabe "3.141" erzeugt. Um das in Europa übliche Komma in Dezimalzahlen zu verwenden, genügt es \emph{nicht}, einfach \verb!.! durch \verb!,! zu ersetzen. Das Komma wird in diesem Fall
 als \textbf{Satzzeichen} interpretiert und sieht dann so aus:
 \begin{quote}
 \verb!$3,141$!	$\quad \rightarrow \quad 3,141$ 
@@ -384,7 +384,7 @@ $\wedge$ (\verb!$\wedge$!) statt \texttt{\&\&},
 \usw
 \item
 Verwende keine Elemente oder Syntax einer spezifischen Programmiersprache
-(\zB\ ist ein "`\texttt{;}"' am Ende einer Anweisung unnötig).
+(\zB\ ist ein "\texttt{;}" am Ende einer Anweisung unnötig).
 \item
 Wenn ein Algorithmus für eine Seite zu lang wird, überlege, wie man ihn
 sinnvoll auf kleinere Module aufteilen kann (meist ist dann auch die zugehörige
