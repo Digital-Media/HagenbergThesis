@@ -8,7 +8,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Added (experimental) support for "smart quotes" using the csquotes package. To activate, pass the option ``smartquotes`` to any of the hgb document classes. See ``examples/HgbThesisTutorial-smartquotes`` for details.
+- Added support for "smart quotes" using the ``csquotes`` package. To activate, pass the option ``smartquotes`` to any of the hgb document classes (all sample documents are set up to use this option). Remove document option ``smartquotes`` if traditional handling of quotes is desired. See ``examples/HgbThesisTutorial`` (Sec. 3.4.4) for details.
 
 ### Changed
 
