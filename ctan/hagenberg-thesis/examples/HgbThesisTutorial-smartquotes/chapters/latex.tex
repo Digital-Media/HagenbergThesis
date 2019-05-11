@@ -620,8 +620,8 @@ Anführungszeichen sind eine häufige (und oft unbemerkte) Fehlerquelle und auch
 
 \subsubsection{Variante 1: Hochkommas mit der \latex-Standardeinstellung}
 
-Mit der Standardeinstellung von \latex\ (\dah, \emph{ohne} Verwendung der Dokumentenoption 
-\texttt{\texttt{smartquotes}})
+Mit der Standardeinstellung von \latex\ (\dah, \emph{ohne} Verwendung der 
+hier hier eingestellten Dokumentenoption \texttt{\texttt{smartquotes}}, \su)
 muss die Eingabe von vorderen und hinteren Hochkommas exakt nach den entsprechenden
 Konventionen erfolgen.
 Hier die korrekte \latex-Notation für englische und deutsche Texte:
@@ -631,10 +631,11 @@ Hier die korrekte \latex-Notation für englische und deutsche Texte:
 \verb!"`Deutsch"'! $\rightarrow$ {\glqq}Deutsch{\grqq}.
 \end{quote}
 %
-Man beachte die subtilen typografischen Unterschiede zwischen den beiden Sprachen.
-Manche Editoren (\zB\ TeXnicCenter) kann man so einstellen, dass
+Man beachte die subtilen typografischen Unterschiede zwischen den beiden Sprachen.%
+\footnote{Manche Editoren (\zB\ \textsf{TeXnicCenter}) kann man so einstellen, dass
 bei der Eingabe eines einfachen Hochkommas (\texttt{\textquotedbl}) die entsprechenden Zeichenfolge 
 \emph{automatisch} (kontext- und sprachabhängig) eingesetzt wird.
+Insbesondere in \textsf{Overleaf} ist das derzeit leider nicht möglich.}
 
 \emph{Einfache} Anführungszeichen werden im Englischen analog erzeugt, 
 im Deutschen werden dafür hingegen die Makros \verb!\glq! \bzw\ \verb!\grq! 
@@ -646,14 +647,13 @@ im Deutschen werden dafür hingegen die Makros \verb!\glq! \bzw\ \verb!\grq!
 \end{quote}
 
 
-\subsubsection{Variante 2: Hochkommas mit der Option \texttt{\bfseries smartquotes} (experimentell!)}
+\subsubsection{Variante 2: Hochkommas mit der Option \texttt{\bfseries smartquotes}}
 
-Diese Version der Vorlage verwendet ein \textbf{experimentelles Setup},
-das durch die Dokumentenoption \enquote{\texttt{smartquotes}} aktiviert wird
-und auf dem \texttt{csquotes}-Paket%
+Diese Vorlage verwendet mit der Dokumentenoption \texttt{smartquotes}
+ein \emph{spezielles Setup}, das auf dem \texttt{csquotes}-Paket%
 \footnote{\url{https://ctan.org/pkg/csquotes}}
-aufbaut.
-Die korrekte Verwendung von Hochkommas vereinfacht sich damit deutlich, weil
+basiert.
+Die korrekte Einsatz von Hochkommas vereinfacht sich damit deutlich, weil
 abhängig von der aktuellen Spracheinstellung und der Position des Hochkommas
 das jeweils richtige Zeichen eingesetzt wird.
 Es genügt hier die Verwendung eines doppelten (geraden) Hochkommas \texttt{\textquotedbl}, wie \zB
@@ -663,21 +663,23 @@ Es genügt hier die Verwendung eines doppelten (geraden) Hochkommas \texttt{\tex
 \verb!"Deutsch"! $\rightarrow$ "Deutsch" (bei Spracheinstellung \texttt{german}).
 \end{quote}
 %
-Dabei ist zu beachten, dass die traditionelle Eingabe von Hochkommas (s.\ Variante~1, oben) hier nicht
-mehr zur Verfügung steht. Die gemischte Verwendung von Variante~1 und Variante~2 ist somit
+Dabei ist zu beachten, dass die traditionelle Eingabe von Hochkommas (Variante~1, \so) in diesem Fall \emph{nicht}
+zur Verfügung steht. Die gemischte Verwendung von Variante~1 und Variante~2 ist somit
 nicht möglich! Es sind mit dieser Einstellung auch alle weiteren "shorthands" des 
 \texttt{babel}-Pakets%
 \footnote{\url{https://ctan.org/pkg/babel}}
-(wie \zB\ \verb!"a!, \verb!"o!, \verb!"u!) permanent \emph{deaktiviert} und diese können
-derzeit auch lokal nicht reaktiviert werden.%
+(wie \zB\ \verb!"a!, \verb!"o!, \verb!"u!) \emph{permanent deaktiviert} und diese können
+auch lokal nicht reaktiviert werden.%
 \footnote{Die hier eingestellte Verwendung des \texttt{\textquotedbl} Zeichens als 
 beidseitiges "outer quote" Zeichen gilt -- \va\ in Kombination mit der deutschen Sprache --
-als "gefährlich", weil \texttt{babel} seinerseits das gerade Hochkomma für zahlreiche
-\emph{shorthand}-Makros nutzt. Das nehmen wir mutig in Kauf, allerdings sind die \texttt{babel}-shorthands im aktuellen Setup
-generell deaktiviert um Schwierigkeiten zu vermeiden.}
+als "gefährlich", weil das \texttt{babel}-Paket das gerade Hochkomma für spezielle
+\emph{shorthand}-Makros nutzt. Das nehmen wir mutig in Kauf, allerdings sind die 
+\texttt{babel}-shorthands im aktuellen Setup generell deaktiviert um Schwierigkeiten 
+zu vermeiden.}
 
-\paragraph{Verwendung des \texttt{csquotes}-Pakets:}
-Das (mit dieser Einstellung automatisch geladene)
+
+\subsubsection{Zusätzliche Features des \texttt{csquotes}-Pakets}
+Das (mit der Option \texttt{smartquotes} automatisch geladene)
 \texttt{csquotes}-Paket bietet zahlreiche weitere Möglichkeiten zur 
 Eingabe von zitierten Texten (Zitaten), insbesondere das Makro
 %
@@ -701,7 +703,7 @@ wie beispielsweise in
 \item[] $\rightarrow$ \enquote{Napoleon sagte nur \enquote{Weiter so!} und ging.}
 \end{itemize}
 %
-Eine weiteres praktisches Feature bietet das Makro \verb!\foreignquote!, mit dem man sehr einfach
+Eine weiteres praktisches Feature ist das Makro \verb!\foreignquote!, mit dem man sehr einfach
 fremdsprachige Zitate im Text einfügen kann, ohne die Spracheinstellung
 explizit verändern zu müssen, \zB%
 \footnote{Derzeit sind nur die Spracheinstellungen \texttt{german} und \texttt{english} verfügbar.}
@@ -713,12 +715,11 @@ explizit verändern zu müssen, \zB%
 \end{itemize}
 
 
-\section{Abteilen}
+\section{Abteilen (Silbentrennung, \emph{Hyphenation})}
 \label{subsec:layout-abteilen}
 
 Um ein sauberes Schriftbild zu erreichen sind -- speziell im
-Deutschen wegen der großen Wortlängen -- Abteilungen
-(Silbentrennung, Hyphenation) unerlässlich.
+Deutschen wegen der großen Wortlängen -- Abteilungen unerlässlich.
 Die Silbentrennung erfolgt entweder \emph{automatisch} oder \emph{manuell} durch
 das Einfügen optionaler Trennzeichen. 
 
@@ -763,42 +764,40 @@ beispielsweise würde \latex\ \emph{keinen} der beiden Teile des Worts
 \end{itemize}
 automatisch trennen, sondern ggfs.\ ungebrochen über den Zeilenrand hinausragen
 lassen! Auch hier kann natürlich (wie oben gezeigt) durch individuelles 
-Einsetzen von \verb!\-! Abhilfe geschaffen werden. Eine generelle Lösung bietet das (ohnehin bereits
-geladene) \texttt{babel}-Paket%
-\footnote{\url{http://mirrors.ctan.org/language/german/gerdoc.pdf}} %https://ctan.org/pkg/german
-in der Form
-% 
-\begin{itemize}
-\item[] \verb!Arbeiter"=Unfallversicherungsgesetz!,
-\end{itemize}
-also durch Ersetzung des Bindestrichs mit der Zeichenfolge \verb!"=!.
-Damit wird erreicht, dass \latex\ die Wortteile wie unabhängige Einzelwörter behandelt
-und auch so umbricht.%
-\footnote{Diese Möglichkeit ist alleridngs in Kombination mit der Dokumentenoption
-\texttt{smartquotes} nicht verfügbar, weil dadurch alle derartigen \texttt{babel} "shorthands"
-deaktiviert sind.}
+Einsetzen von \verb!\-! Abhilfe geschaffen werden.
+%
+%%% weggelassen, weil vermutlich nur verwirrend:
+%Eine generelle Lösung bietet das (ohnehin bereits
+%geladene) \texttt{babel}-Paket%
+%\footnote{\url{http://mirrors.ctan.org/language/german/gerdoc.pdf}} %https://ctan.org/pkg/german
+%in der Form
+%% 
+%\begin{itemize}
+%\item[] \verb!Arbeiter"=Unfallversicherungsgesetz!,
+%\end{itemize}
+%also durch Ersetzung des Bindestrichs mit der Zeichenfolge \verb!"=!.
+%Damit wird erreicht, dass \latex\ die Wortteile wie unabhängige Einzelwörter behandelt
+%und auch so umbricht.%
+%\footnote{Achtung: Diese Möglichkeit ist mit der (hier verwendeten) Dokumentenoption
+%\texttt{smartquotes} \emph{nicht} verfügbar, weil damit alle derartigen \texttt{babel} 
+%"shorthands" deaktiviert sind (s.\ Abschn.~\ref{sec:anfuehrungszeichen}).}
 
 \paragraph{"Schlampige" Formatierung:}
 In echten Problemfällen -- etwa bei Textelementen, die nicht umgebrochen 
 werden dürfen oder können -- kann \latex\ dazu veranlasst werden, in einzelnen Absätzen
 etwas weniger pingelig zu formatieren. Das wird wie folgt erreicht:
 %
-\begin{itemize}
-\item[]
-\begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \begin{sloppypar}
 Dieser Absatz wird "schlampig" (sloppy) gesetzt ...
 \end{sloppypar}
-\end{verbatim}
-\end{itemize}
+\end{LaTeXCode}
 %
 Der allerletzte Rettungsanker ist, die betreffende Passage so umzuschreiben, dass sich ein 
 passabler Zeilenumbruch ergibt -- schließlich ist man ja selbst der Autor und 
 niemandem (abgesehen vom Betreuer) eine Rechtfertigung schuldig.%
 \footnote{Angeblich waren eigenständige Textänderungen durch Schriftsetzer
 auch beim früheren Bleisatz durchaus üblich.}
-
-
 
 
 

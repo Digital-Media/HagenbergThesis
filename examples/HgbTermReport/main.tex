@@ -8,7 +8,7 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
-\documentclass[notitlepage,english]{hgbreport}
+\documentclass[notitlepage,english,smartquotes]{hgbreport}
 
 \RequirePackage[utf8]{inputenc}		% remove when using lualatex oder xelatex!
 
@@ -31,7 +31,7 @@
 
 \begin{abstract}\noindent
 This document is a simple template for a typical term or semester paper (lab/course report, 
-``Übungsbericht'', \etc) based on the \textsf{HagenbergThesis} \latex package.%
+"Übungsbericht", \etc) based on the \textsf{HagenbergThesis} \latex package.%
 \footnote{See \url{https://github.com/Digital-Media/HagenbergThesis} for the most current version
 and additional examples.
 This repository also provides a good introduction and useful hints for authoring academic texts with LaTeX.}
@@ -47,6 +47,7 @@ at the top of this document by
 \begin{quote}
 	\verb!\documentclass[german]{hgbreport}!.
 \end{quote}
+In addition, the \texttt{smartquotes} document option is used in this document for simplified insertion of quotes.
 To omit the default \textbf{title page} (as in this document) use the \texttt{notitlepage} option, \eg,
 \begin{quote}
 	\verb!\documentclass[notitlepage,english]{hgbreport}!.

@@ -7,7 +7,7 @@ Abbildungen (\emph{figures}) und Tabellen (\emph{tables}) werden üblicherweise
 zusammen mit einem nummerierten Titel (\emph{caption}) zentriert
 angeordnet (siehe Abb.~\ref{fig:CocaCola}).
 Im Text \emph{muss} es zu jeder Abbildung einen Verweis geben und die eigentliche Abbildung
-sollte erst \emph{nach} dem ersten Verweis platziert werden.
+sollte im \latex-Quelltext erst \emph{nach} dem ersten Verweis platziert werden.
 
 \begin{figure}
 \centering
@@ -27,7 +27,7 @@ eine geeignete Stelle auf nachfolgenden Seiten verschoben werden,
 was manuell sehr mühsam (jedoch in \emph{Word} beispielsweise unerlässlich) ist.
 
 In \latex funktioniert das weitgehend automatisch, indem
-Abbildungen, Tabellen und ähnliche als "`Floating Bodies"'
+Abbildungen, Tabellen und ähnliche als "Floating Bodies"
 behandelt werden. Bei der Positionierung dieser Elemente wird
 versucht, einerseits im Textfluss möglichst wenig Leer\-raum
 entstehen zu lassen und andererseits die Abbildungen und Tabellen
@@ -38,7 +38,7 @@ ge\-wünsch\-ten Stelle und möglicherweise nicht einmal auf
 derselben Seite Platz finden, ist für viele Anfänger aber offenbar sehr
 ungewohnt oder sogar beängstigend. Dennoch sollte zunächst einmal
 getrost \latex\ diese Arbeit überlassen und \emph{nicht} manuell
-eingegriffen werden. Erst am Ende, wenn das gesamte Dokument "`steht"' und
+eingegriffen werden. Erst am Ende, wenn das gesamte Dokument "steht" und
 die automatische Platzierung wirklich nicht zufriedenstellend erscheint, sollte (durch gezielte Platzierungsanweisungen
 \cite[S.~49]{Oetiker2018}) \textbf{in Einzelfällen} eingegriffen werden.
 
@@ -58,7 +58,7 @@ ist zwar leicht erstellt, in einer Abschlussarbeit aber (und eigentlich
 am Beginn des Dokuments.
 
 Die Markierung der Captions%
-\footnote{Ausnahmsweise wird das Wort "`Caption"' im Folgenden
+\footnote{Ausnahmsweise wird das Wort "Caption" im Folgenden
 ohne deutsche Übersetzung verwendet.} erfolgt in \latex mithilfe
 der \verb!\label{}! Anweisung, die unmittelbar auf die
 \verb!\caption{}! Anweisung folgen muss:
@@ -87,7 +87,7 @@ wird (\latex macht das automatisch).
 Captions sollten \emph{immer} mit einem Punkt abgeschlossen sein.%
 \footnote{Kurioserweise verlangen manche Anleitungen
 genau das Gegenteil, angeblich, weil beim klassischen Bleisatz 
-die abschließenden Punkte im Druck häufig "`weggebrochen"' sind. 
+die abschließenden Punkte im Druck häufig "weggebrochen" sind. 
 Das kann man glauben oder nicht, im Digitaldruck 
 spielt es jedenfalls keine Rolle.}
 
@@ -209,8 +209,8 @@ Einbindung nicht bearbeitet oder verkleinert wurden. Ansonsten sollte immer
 PNG verwendet werden.
 
 Besonders gerne werden farbige \textbf{Screenshots} einer JPEG-Kompression%
-\footnote{Das JPEG-Verfahren ist für natürliche Fotos konzipiert und dafür auch gut geeignet,
-seine undifferenzierte Verwendung ist aber zu einer globalen Plage geworden.}
+\footnote{Das JPEG-Verfahren ist für natürliche Fotos konzipiert und sollte auch
+nur dafür verwendet werden.}
 unter\-zogen, obwohl deren verheerende Folgen für jeden Laien sichtbar sein sollten
 (Abb.~\ref{fig:jpeg-pfusch}).
 
@@ -308,7 +308,7 @@ mit dem in Abb.~\ref{fig:InkscapeExample}\,(b) gezeigten Ergebnis.
 (\nolinkurl{inkscape-template.svg}).
 Originalgrafik im \textit{Inkscape}-Editor (a);
 beim Einfügen werden die Texte automatisch durch LaTeX ersetzt (b).
-Beim Speichern in Inkscape (als PDF) ist auf die Einstellung "`PDF+LaTeX"' zu achten (c).}
+Beim Speichern in Inkscape (als PDF) ist auf die Einstellung "PDF+LaTeX" zu achten (c).}
 \label{fig:InkscapeExample}
 \end{figure}
 
@@ -331,9 +331,9 @@ beabsichtigt im Ausdruck aufscheinen.
 In Grafik-Programmen wie \emph{Freehand} und \emph{Illustrator},
 die sich im Wesentlichen an der \emph{PostScript}-Funktionalität
 orientieren, ist es möglich, Linien bzgl.\ ihrer Stärke als
-"`Hairline"' zu definieren. Im zugehörigen \emph{PostScript}-Code
+"Hairline" zu definieren. Im zugehörigen \emph{PostScript}-Code
 wird dies als \texttt{linewidth} mit dem Wert \texttt{0} ausgedrückt und
-sollte am Ausgabegerät "`möglichst dünne"' Linien ergeben. 
+sollte am Ausgabegerät "möglichst dünne" Linien ergeben. 
 Das Ergebnis ist ausschließlich vom jeweiligen Drucker
 abhängig und somit kaum vorhersagbar.
 \textbf{Fazit:} Hairlines vermeiden und stattdessen immer konkrete
@@ -368,7 +368,7 @@ eigenen PC installiert werden.
 
 \subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
 
-Eine Alternative dazu sind die "`LM-Roman"'%
+Eine Alternative dazu sind die "LM-Roman"%
 \footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
  Open-Type Schriften, die speziell für die Verwendung im Umfeld von \latex\ entwickelt wurden.
 Sie sind auch Teil der MikTeX-Installation.%
@@ -561,7 +561,7 @@ strengen Abteilungsregeln zu lockern. Details dazu finden sich im zugehörigen
 \begin{table}
 \caption{Beispiel für eine Tabelle mit mehrzeiligem Text in engen Spalten.
 Hier werden die Zeilen für den Blocksatz zu kurz, daher wird linksbündig
-gesetzt (im "`Flattersatz"').}
+gesetzt (im "Flattersatz").}
 \label{tab:synthesis-techniques}
 \centering
 \def\rr{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
@@ -805,7 +805,7 @@ Wenn gewünscht, kann die Caption auch unten angebracht werden
 (jedenfalls aber konsistent und nicht gemischt).
 Natürlich darf auch hier nicht mit einer linearen Abfolge im fertigen
 Druckbild gerechnet werden, daher sind Wendungen wie
-"`... im  folgenden Programmstück ..."' zu vermeiden und entsprechende Verweise
+"... im  folgenden Programmstück ..." zu vermeiden und entsprechende Verweise
 einzusetzen. Beispiele sind Programme \ref{prog:processors-source} und \ref{prog:CodeExample}.
 
 \begin{program}
