@@ -194,12 +194,33 @@ In obigem Beispiel wird zudem auch auf Englisch umgeschalten
 \footnote{Man beachte auch die Verwendung von englischen Hochkommas innerhalb des Zitats.}
 %
 \begin{itemize}
- \item[] \verb!\begin{quote}\begin{english}! \emph{Zitierter Text} \verb!\end{english}\end{quote}!
+ \item[] \verb!\begin{quote}\begin{english}! \emph{quoted text \ldots} \verb!\end{english}\end{quote}!
 \end{itemize}
 %
 Wenn gewünscht, kann das Innere des Zitats auch in Hochkommas verpackt 
 \emph{oder} kursiv gesetzt werden -- aber nicht beides!
 
+\subsubsection{Alternative Erweiterungen (mit Dokumentenoption \texttt{smartquotes})}
+Das (durch die Option \texttt{smartquotes} automatisch geladene) \texttt{csquotes}-Paket%
+\footnote{\url{https://ctan.org/pkg/csquotes}, \sa\ Abschn.\ \ref{sec:anfuehrungszeichen}.}
+definiert mehrere zusätzliche Umgebungen für freigestellte
+Zitate, \zB\ 
+\begin{itemize}
+ \item[] \verb!\begin{displayquote}! \ldots \verb!\end{displayquote}!
+\end{itemize}
+(äquivalent zu \verb!\begin{quote}! \ldots \verb!\end{quote}!) sowie für fremdsprachige Zitate die Umgebung
+\begin{itemize}
+ \item[] \verb!\begin{foreigndisplayquote}{language}! \ldots \verb!\end{foreigndisplayquote}!.
+\end{itemize}
+Damit lässt sich beispielsweise ein englisches Zitat%
+\footnote{Aktuell sind nur die Sprachen \texttt{english} und \texttt{german} definiert.}
+\emph{ohne} explizite Sprachumschaltung
+so erstellen:
+\begin{itemize}
+ \item[] \verb!\begin{foreigndisplayquote}{english}!\newline
+	\emph{quoted text \ldots}\newline
+	\verb!\end{foreigndisplayquote}!
+\end{itemize}
 
 
 \subsection{Umgang mit Sekundärquellen}
@@ -245,7 +266,7 @@ wie im Folgenden beschrieben.
 \subsection{Literaturdaten in BibTeX}
 \label{sec:bibtex}
 
-BibTeX ist ein eigenständiges Programm, das aus einer "`Literaturdatenbank"' (eine oder mehrere
+BibTeX ist ein eigenständiges Programm, das aus einer "Literaturdatenbank" (eine oder mehrere
 Textdateien mit vorgegebener Struktur) ein für \latex geeignetes Quellenverzeichnis
 erzeugt. Literatur zur Verwendung von BibTeX findet sich online, \zB \cite{Feder2006, Patashnik1988}.
 Die BibTeX-Datei zu dieser Vorlage ist \nolinkurl{references.bib} (im Hauptverzeichnis).
@@ -286,7 +307,7 @@ folgendermaßen aus:
 \end{document}
 \end{LaTeXCode}
 %
-In der "`Präambel"' (Zeile \ref{tex:literatur1}) wird mit \verb!\bibliography{references}! 
+In der "Präambel" (Zeile \ref{tex:literatur1}) wird mit \verb!\bibliography{references}! 
 auf eine (modifizierte) BibTex-Datei \nolinkurl{references.bib} verwiesen.%
 \footnote{Das Makro 
 \texttt{{\bs}bibliography} ist eigentlich ein Relikt aus BibTeX
@@ -297,7 +318,7 @@ der Editor-Umgebung sichtbar.}
 Falls mehrere BibTeX-Dateien verwendet werden, können sie in der gleichen Form angegeben werden.
 
 Die Anweisung \verb!\MakeBibliography{..}! am Ende des Dokuments (Zeile~\ref{tex:literatur2})
-besorgt die Ausgabe des Quellenverzeichnisses, hier mit dem Titel "`Quellenverzeichnis"'.
+besorgt die Ausgabe des Quellenverzeichnisses, hier mit dem Titel "Quellenverzeichnis".
 Dabei sind zwei Varianten möglich:
 %
 \begin{description}
@@ -585,7 +606,7 @@ Kennzeichnung als URL gesetzt (mit dem \verb!\url{..}! Makro).
 %%------------------------------------------------------
 
 \paragraph{Bachelorarbeit:} ~ \newline
-Bachelorarbeiten gelten in der Regel zwar nicht als "`richtige"' Publikationen, bei Bedarf müssen sie aber dennoch referenziert werden können. 
+Bachelorarbeiten gelten in der Regel zwar nicht als "richtige" Publikationen, bei Bedarf müssen sie aber dennoch referenziert werden können. 
 %
 \begin{itemize}
 \item[]
@@ -910,9 +931,9 @@ Einen Verweis auf eine bestimmten Stelle in einem Musikstück oder Film kann man
 ähnlich ausführen wie die Seitenangabe in einem Druckwerk.
 Besonders legendär (und häufig parodiert) ist beispielsweise die Duschszene
 in \emph{Psycho} \cite[T=00:32:10]{Psycho1960}.
-Alternativ zur simplen Zeitangabe "`T=\emph{hh}:\emph{mm}:\emph{ss}"' 
+Alternativ zur simplen Zeitangabe "T=\emph{hh}:\emph{mm}:\emph{ss}" 
 könnte man eine bestimmte Stelle auch auf den Frame genau durch 
-den zugehörigen \emph{Timecode} "`TC=\emph{hh:mm:ss:ff}"' angeben, 
+den zugehörigen \emph{Timecode} "TC=\emph{hh:mm:ss:ff}" angeben, 
 \zB\ \cite[TC=00:32:10:12]{Psycho1960} für Frame \emph{ff}=12.
 
 
@@ -964,16 +985,16 @@ Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterschei
 %
 \begin{itemize}
 \item[A.] Man möchte allgemein auf eine Webseite verweisen, etwa auf die 
-	"`Panasonic products for business"' Seite.%
+	"Panasonic products for business" Seite.%
 	\footnote{\url{http://business.panasonic.co.uk/}}
-	In diesem Fall wird nicht auf ein konkretes "`Werk"' verwiesen und daher
+	In diesem Fall wird nicht auf ein konkretes "Werk" verwiesen und daher
 	erfolgt \emph{keine} Aufnahme ins Quellenverzeichnis. Stattdessen
 	genügt eine einfache Fußnote mit \verb!\footnote{\url{..}}!, wie im vorigen
 	Satz gezeigt.
 \item[B.] Ein gedrucktes oder audio-visuelles Werk 
 	(s.\ Abschnitte \ref{sec:KategorieLiterature} und \ref{sec:KategorieAvmedia})
 	ist \emph{zusätzlich} auch online verfügbar. In diesem Fall ist die Primär\-publikation 
-	aber \emph{nicht} "`online"' und es genügt, ggfs.\ den zugehörigen Link im 
+	aber \emph{nicht} "online" und es genügt, ggfs.\ den zugehörigen Link im 
 	\texttt{url}-Feld anzugeben, das bei jedem Eintragstyp zulässig ist.
 \item[C.] Es handelt sich im weitesten Sinn um ein Werk, das aber 
 	\emph{ausschließlich} online verfügbar ist, wie \zB\ ein Wiki oder Blog-Eintrag.
@@ -986,7 +1007,7 @@ Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterschei
 \label{sec:@online-www}
 Durch den Umfang und die steigende Qualität dieser Einträge erscheint
 die Aufnahme in das Quellenverzeichnis durchaus berechtigt.
-Beispielsweise bezeichnet man als "`Reliquienschrein"'
+Beispielsweise bezeichnet man als "Reliquienschrein"
 einen Schrein, in dem die Reliquien eines oder 
 mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2018}.
 %
@@ -1048,7 +1069,7 @@ der für die Sortierung im Quellenverzeichnis verwendet wird.
 %elektronischer Form (vorzugsweise als PDF-Da\-tei\-en) abzulegen
 %und die zugehörige Quelle im Quellenverzeichnis mit einem 
 %entsprechenden Verweis im \texttt{note}-Feld -- \zB\
-%"`Kopie auf USB-Stick (Datei \nolinkurl{xyz.pdf})"' --
+%"Kopie auf USB-Stick (Datei \nolinkurl{xyz.pdf})" --
 %zu versehen.
 %Für die Angabe von solchen Dateinamen, die nicht als Online-Link
 %zu öffnen sind, ist übrigens die Verwendung von 
@@ -1082,9 +1103,9 @@ für eine deutsch- \bzw\ englischsprachige Quelle.
 Mit dem numerischen \texttt{edition}-Feld wird die Auflage eines Werks spezifiziert.
 Es ist lediglich die Nummer selbst anzugeben, also etwa
 \verb!edition={3}!
-bei einer dritten Auflage. Das richtige "`Rundherum"' in der Quellenangabe wird 
+bei einer dritten Auflage. Das richtige "Rundherum" in der Quellenangabe wird 
 in Abhängigkeit von der Spracheinstellung automatisch hinzugefügt 
-(\zB\ "`3.\ Auflage"' oder "`3rd edition"').
+(\zB\ "3.\ Auflage" oder "3rd edition").
 %
 Wie bereits auf Seite \pageref{sec:@book} (unter \texttt{@book}) angemerkt, sollte im Fall einer
 \textbf{1.~Auflage} (sofern es keine andere Auflage gibt) das \texttt{edition}-Feld \textbf{nicht} 
@@ -1139,11 +1160,11 @@ Alle URLs und DOIs etc.\ \emph{weglassen}, wenn sie nicht unbedingt notwendig si
 für Bücher und Konferenzbeiträge.
 \item
 Journal-Beiträge: Den Namen des Journals immer vollständig ausschreiben, \zB\
-"`ACM Transactions on Computer-Human Interaction"' anstelle von 
-"`ACM Trans.\ Comput.-Hum.\ Interact."'! Seitenangaben nicht vergessen!
+"ACM Transactions on Computer-Human Interaction" anstelle von 
+"ACM Trans.\ Comput.-Hum.\ Interact."! Seitenangaben nicht vergessen!
 \item
 Konferenzbände: 
-Tagungsbände einheitlich in der Form "'Proceedings of the \emph{XY Conference on Something} \ldots"'
+Tagungsbände einheitlich in der Form "Proceedings of the \emph{XY Conference on Something} \ldots"
 bezeichnen. Tagungsort angeben, Seitenangaben nicht vergessen!
 \item
 Bei Techn.\ Berichten, Masterarbeiten und Dissertationen muss die Institution (Department)
