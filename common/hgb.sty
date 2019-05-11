@@ -13,14 +13,14 @@
 \providecommand{\hgb@MainLanguage}{german}
 
 \RequirePackage{xifthen}
-\newboolean{HgbSmartQuotesOn}
-\setboolean{HgbSmartQuotesOn}{false}
+\newboolean{hgb@SmartQuotesOn}
+\setboolean{hgb@SmartQuotesOn}{false}
 
 % Handle package options passed from the class file
 \DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
 \DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
-\DeclareOption{smartquotes}{\setboolean{HgbSmartQuotesOn}{true}}
+\DeclareOption{smartquotes}{\setboolean{hgb@SmartQuotesOn}{true}}
 \ProcessOptions*
 
 %% Required Packages ----------------------------------------------------------
@@ -39,7 +39,7 @@
 
 %% Setup for smart quotes (csquotes package) -- experimental! ----------------------------------
 	
-\ifthenelse{\boolean{HgbSmartQuotesOn}}{
+\ifthenelse{\boolean{hgb@SmartQuotesOn}}{
 	\languageshorthands{none}%			%% turn off babel's shorthands (permanently)
 	\usepackage[autostyle=true,german=quotes]{csquotes}%
 	\MakeOuterQuote{"}%
@@ -50,13 +50,13 @@
 % Switch from German to English (babel)
 \newenvironment{english}%
 {\begin{otherlanguage}{english}%
-	\ifthenelse{\boolean{HgbSmartQuotesOn}}{\EnableQuotes}{}}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
 {\end{otherlanguage}\ignorespacesafterend}% 
 
 % Switch from English to German (babel)
 \newenvironment{german}%
 {\begin{otherlanguage}{ngerman}%
-	\ifthenelse{\boolean{HgbSmartQuotesOn}}{\EnableQuotes}{}}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
 {\end{otherlanguage}}%
 
 %% ------------------------------------------------------
