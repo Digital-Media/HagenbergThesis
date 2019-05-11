@@ -48,11 +48,6 @@ The following sample documents are currently available:
 | `HgbTermReport` | Term Report | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbTermReport.zip) |
 | `HgbArticle` | Journal Article | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) |
 
-#### NEW FEATURE: Smart Quotes (experimental, see Sec. 3.4.4)
-
-| Name | Document Type | Language | PDF | ZIP | Overleaf |
-| :--- | :--- | --- | --- | --- | --- |
-| `HgbThesisTutorial-sq` | Tutorial using Smart Quotes | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial-smartquotes/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial-smartquotes.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial-smartquotes.zip) |
 
 \*Note: To open documents with **more than 40 files** you should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
 
