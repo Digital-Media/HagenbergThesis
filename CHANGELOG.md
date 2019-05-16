@@ -6,6 +6,8 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [2019/05/16]
+
 ### Added
 
 - Added support for "smart quotes" using the ``csquotes`` package. To activate, pass the option ``smartquotes`` to any of the hgb document classes (all sample documents are set up to use this option). Remove document option ``smartquotes`` if traditional handling of quotes is desired. See ``examples/HgbThesisTutorial`` (Sec. 3.4.4) for details.
@@ -17,6 +19,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 - Fixed and corrected outdated URLs and bibliography information.
+- Corrected a few typos in the example document.
 
 ## [2018/11/28]
 
@@ -75,7 +78,8 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 This is the first release on GitHub. Future versions will now be published on this repository.
 This version has also been ported to Overleaf for online editing.
 
-[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2018/11/28...master
+[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2019/05/16...HEAD
+[2019/05/16]: https://github.com/Digital-Media/HagenbergThesis/compare/2018/11/28...2019/05/16
 [2018/11/28]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/11/05...2018/11/28
 [2017/11/05]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/10/16...2017/11/05
 [2017/10/16]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/02/28...2017/10/16
