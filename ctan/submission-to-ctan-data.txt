@@ -1,4 +1,5 @@
-https://ctan.org/upload
+Upload link: 
+https://ctan.org/upload (Package update)
 
 Name of your contribution* 
 hagenberg-thesis
@@ -6,6 +7,7 @@ hagenberg-thesis
 Version number*
 2017-10-27
 2018-11-28
+2019-05-16
 	
 Maintainer*
 Wilhelm Burger, Wolfgang Hochleitner
@@ -31,7 +33,7 @@ Documentation in doc/
    Package documentation: doc/hagenberg-thesis.pdf
    Example document / Tutorial (German): doc/hagenberg-thesis-tutorial.pdf
 List of changes: 
-   https://github.com/Digital-Media/HagenbergThesis/releases/tag/2018%2F11%2F28
+   https://github.com/Digital-Media/HagenbergThesis/releases/tag/2019%2F05%2F16
 	
 License type*
 	CC BY 4.0
