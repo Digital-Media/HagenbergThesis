@@ -37,9 +37,9 @@ Use the **create** links in the table below to open the document on **[Overleaf]
 Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
 The following sample documents are currently available:
 
-| Name | Document Type | Language | PDF | ZIP | Overleaf |
+| Name | Document Type | Language | PDF | ZIP | Overleaf\* |
 | :--- | :--- | --- | --- | --- | --- |
-| `HgbThesisTutorial` | **Thesis Template and Tutorial** | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) | [create\*](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) |
+| `HgbThesisTutorial` | **Thesis Template and Tutorial** | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial.zip) |
 | `HgbThesisDE` | Minimal Thesis  Template | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisDE.zip) |
 | `HgbThesisEN` | Minimal Thesis  Template | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisEN.zip) |
 | `HgbInternshipReport` | Internship Report | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbInternshipReport.zip) |
@@ -49,7 +49,7 @@ The following sample documents are currently available:
 | `HgbArticle` | Journal Article | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbArticle.zip) |
 
 
-\*Note: To open documents with **more than 40 files** you should create a (free) personal account on **[Overleaf](https://www.overleaf.com/)** before getting started.
+\*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**.
 
 
 ## Additional information
