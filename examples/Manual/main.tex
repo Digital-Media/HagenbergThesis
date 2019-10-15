@@ -286,14 +286,14 @@ package which defines a compatible float container for algorithms:
 \item 
 \textbf{\texttt{{\bs}StateL\{<text>\}}}: Creates a \emph{numbered} statement like \texttt{algorithmicx}'s 
 \verb!\State! command but provides consistent indentation on multi-line statements.
-Note that the statement \texttt{<text>} must be passed as a single argument in \verb!{...}! brackets.
+Note that the argument \texttt{<text>} must be passed as a single argument in \verb!{...}! braces.
 \item
 \textbf{\texttt{{\bs}StateNN[<nesting>]\{<text>\}}}: 
-Creates a \emph{non-numbered} statement like \texttt{algorith\-micx}'s \verb!\State! 
+Creates a \emph{non-numbered} statement like \texttt{algo\-rith\-micx}'s \verb!\Statex! 
 command but provides consistent indentation inside nested constructs and over multiple lines.
 The optional integer argument \verb!<nesting>! can be used to specify the \emph{nesting depth}
 to compensate for a bug in \texttt{algorithmicx} (the nesting level inside a block is not set properly before 
-the first \verb!\State!). Omitting the optional argument should give correct indentation in most
+the first \verb!\State! command). Omitting the optional argument should give correct indentation in most
 cases.
 \item
 \textbf{\texttt{{\bs}Input\{<text>\}}}:
