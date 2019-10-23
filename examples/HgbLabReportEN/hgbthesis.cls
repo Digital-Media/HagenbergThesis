@@ -375,7 +375,7 @@ This work is published under the conditions of the
 	\setcounter{page}{2}
 	\thispagestyle{plain}
 	\rule{0mm}{1mm}
-	\vspace{120mm}
+	\vspace{90mm}
 	\begin{center}
 		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
 			{Betreuung:}%
