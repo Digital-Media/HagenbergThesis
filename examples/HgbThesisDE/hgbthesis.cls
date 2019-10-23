@@ -85,10 +85,6 @@
 }
 
 \newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
-\newcommand{\gegenstand}[1]{%
-	\renewcommand{\@coursetitle}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated, use '\string\coursetitle' instead.}
-}
 \newcommand{\coursetitle}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
 }
