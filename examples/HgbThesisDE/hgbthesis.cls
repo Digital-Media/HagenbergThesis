@@ -32,16 +32,6 @@
 
 %% Handling class options --------------------------------------------------------------
 
-%\DeclareOption{diplom}{%
-	%\renewcommand{\@maketitlepages}{\@diplomatitlepages}
-	%\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'diploma' instead.}
-%}
-
-%\DeclareOption{praktikum}{%
-	%\renewcommand{\@maketitlepages}{\@internshiptitlepages}
-	%\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'internship' instead.}
-%}
-
 \DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
@@ -65,6 +55,7 @@
 
 % General Commands
 
+\newcommand{\@programname}{\@MissingArg{Name of degree program not specified!}}
 \newcommand{\programname}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
 }
@@ -79,9 +70,8 @@
 	\renewcommand{\@advisor}{#1}		
 }
 
-\newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
 \newcommand{\thesisnumber}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
+	\ClassWarning{hgbthesis}{command '\protect\thesisnumber' is not supported any longer.}
 }
 
 \newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
@@ -176,8 +166,8 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
 			\vskip 4mm%
-			{\large Nr.~\@thesisnumber}
-			\vskip 4mm%
+			%{\large Nr.~\@thesisnumber}
+			%\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
 			\vskip 4mm%
 			{\large\@programname}%
@@ -277,8 +267,8 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
 			\vskip 4mm%
-			{\large Nr.~\@thesisnumber}
-			\vskip 4mm%
+			%{\large Nr.~\@thesisnumber}
+			%\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
 			\vskip 4mm%
 			{\large\@programname}%
