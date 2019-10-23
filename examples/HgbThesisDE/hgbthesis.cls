@@ -33,8 +33,8 @@
 %% Handling class options --------------------------------------------------------------
 
 \DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
-\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
+\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
 
 \DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
@@ -54,6 +54,11 @@
 %% Setup for Pages in the Front Matter ----------------------------------------
 
 % General Commands
+
+\newcommand{\@programtype}{\@MissingArg{Type of degree program not specified!}}
+\newcommand{\programtype}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programtype}{#1}}
+}
 
 \newcommand{\@programname}{\@MissingArg{Name of degree program not specified!}}
 \newcommand{\programname}[1]{%
@@ -79,7 +84,7 @@
 }
 
 \newcommand{\semester}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
+	\ClassWarning{hgbthesis}{command '\protect\semester' is not supported any longer.}
 }
 
 \newcommand{\@logofile}[0]{}
@@ -127,11 +132,12 @@
 	\renewcommand{\@companyPhone}{#1}
 }
 
+%% ----------------------------------------------------------------------------
+
 \newcommand{\@license}{\@MissingArg{License information is missing!}}
 \newcommand{\license}[1]{%
 	\renewcommand{\@license}{#1}
 }
-
 
 %% Commands for Creating the Title Pages --------------------------------------
 
@@ -166,7 +172,7 @@
 			\vskip 4mm%
 			%{\large Nr.~\@thesisnumber}
 			%\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
@@ -199,7 +205,7 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Masterarbeit}}}%
 			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Masterstudiengang}%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
