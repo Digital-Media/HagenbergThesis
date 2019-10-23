@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2019/06/17]
+\ProvidesClass{hgbthesis}[9999/01/01]
 
 \RequirePackage{xifthen}
 
@@ -478,7 +478,7 @@ This work is published under the conditions of the
 	\hypersetup{
 			pdftitle={\@title},
 			pdfauthor={\@author},
-			pdfsubject={\@programname, \@placeofstudy},
+			pdfsubject={\@programtype \@programname, \@placeofstudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
 			pdfkeywords={},
