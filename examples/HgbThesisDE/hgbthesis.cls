@@ -74,9 +74,8 @@
 	\ClassWarning{hgbthesis}{command '\protect\thesisnumber' is not supported any longer.}
 }
 
-\newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
 \newcommand{\coursetitle}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
+	\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
 }
 
 \newcommand{\@semester}{\@MissingArg{Semester not specified!}}
