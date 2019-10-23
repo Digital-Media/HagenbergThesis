@@ -32,15 +32,15 @@
 
 %% Handling class options --------------------------------------------------------------
 
-\DeclareOption{diplom}{%
-	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
-	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'diploma' instead.}
-}
+%\DeclareOption{diplom}{%
+	%\renewcommand{\@maketitlepages}{\@diplomatitlepages}
+	%\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'diploma' instead.}
+%}
 
-\DeclareOption{praktikum}{%
-	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
-	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'internship' instead.}
-}
+%\DeclareOption{praktikum}{%
+	%\renewcommand{\@maketitlepages}{\@internshiptitlepages}
+	%\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'internship' instead.}
+%}
 
 \DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
@@ -83,17 +83,9 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
 }
 
-\newcommand{\@advisor}{\@MissingArg{Advisor not specified!}}
-\newcommand{\betreuer}[1]{%
-	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated, use '\string\advisor' instead.}
-}
-\newcommand{\betreuerin}[1]{%
-	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated, use '\string\advisor' instead.}
-}
+\newcommand{\@advisor}{}					% empty by default
 \newcommand{\advisor}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@advisor}{#1}}
+	\renewcommand{\@advisor}{#1}		
 }
 
 \newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
@@ -422,7 +414,7 @@ This work is published under the conditions of the
 \vspace{45mm} 
 {Kontaktperson:}
 \\
-\vspace{3mm} 
+\vspace{3mm}
 {\Large\sf\@advisor\\ \mbox{}}
 \end{center}
 }
@@ -435,24 +427,8 @@ This work is published under the conditions of the
 	\setcounter{page}{2}
 	\thispagestyle{plain}
 	\rule{0mm}{1mm}
+	\vspace{120mm}
 	\begin{center}
-		%
-		\vspace{40mm}
-		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-			{Diese Arbeit entstand im Rahmen des Gegenstands}%
-			{This thesis was created as part of the course}%
-		\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-			{im}%
-			{during}%
-		\\
-		\bigskip
-		{\@semester}\\
-		%
-		\vspace{45mm}
 		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
 			{Betreuung:}%
 			{Advisor:}%
@@ -520,19 +496,24 @@ This work is published under the conditions of the
 
 \renewcommand{\@mastertitlepages}{
 	\@mastertitle
+	\ifthenelse{\equal{\@advisor}{}}%
+			{}{\@advisorpage}%
 	\@copyrightpage
 	\@declarationpage
 }
      
 \renewcommand{\@diplomatitlepages}{
 	\@diplomatitle
+	\ifthenelse{\equal{\@advisor}{}}%
+			{}{\@advisorpage}%
 	\@copyrightpage
 	\@declarationpage
 }
 
 \renewcommand{\@bachelortitlepages}{
 	\@bachelortitle
-	\@advisorpage
+	\ifthenelse{\equal{\@advisor}{}}%
+			{}{\@advisorpage}%
 	\@declarationpage
 }
 
