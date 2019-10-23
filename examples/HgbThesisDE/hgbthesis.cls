@@ -329,7 +329,7 @@ This work is published under the conditions of the
 
 \newcommand{\@copyrightpage}{%
 \newpage
-\setcounter{page}{2}
+%\setcounter{page}{2}
 \thispagestyle{plain}
 \rule{0mm}{1mm}
 \vspace*{75mm}
