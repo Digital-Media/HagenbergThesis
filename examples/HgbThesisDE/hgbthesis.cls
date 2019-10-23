@@ -124,28 +124,16 @@
 % Internship Report Commands
 
 \newcommand{\@companyName}{\@MissingArg{Company not specified!}}
-\newcommand{\firma}[1]{%
-	\renewcommand{\@companyName}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated, use '\string\companyName' instead.}
-}
 \newcommand{\companyName}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
 }
 
 \newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
-\newcommand{\firmenUrl}[1]{%
-	\renewcommand{\@companyUrl}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated, use '\string\companyUrl' instead.}
-}
 \newcommand{\companyUrl}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
 }
 
 \newcommand{\@companyPhone}{\@MissingArg{Company phone number not specified!}}
-\newcommand{\firmenTel}[1]{%
-	\renewcommand{\@companyPhone}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated, use '\string\companyPhone' instead.}
-}
 \newcommand{\companyPhone}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyPhone}{#1}}
 	\renewcommand{\@companyPhone}{#1}
@@ -159,10 +147,7 @@
 
 %% Commands for Creating the Title Pages --------------------------------------
 
-\newcommand{\titelseite}{%
-	\maketitle
-	\ClassWarning{hgbthesis}{Deprecated: '\string\titelseite' is deprecated, use '\string\maketitle' instead.}
-}
+
 
 %% adds blank space after each letter (http://stackoverflow.com/a/3951837)
 \newcommand{\@addspaces}[1]{%  
