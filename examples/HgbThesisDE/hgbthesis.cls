@@ -428,64 +428,39 @@ This work is published under the conditions of the
 }
 
 
-%% Advisor Pages in German and English ----------------------------------------
-
-% German
-
-\newcommand{\@advisorpageDe}{%
-	\newpage
-	\setcounter{page}{2}
-	\thispagestyle{plain}
-	\rule{0mm}{1mm}
-	\begin{center}
-		%
-		\vspace{40mm} 
-		{Diese Arbeit entstand im Rahmen des Gegenstands}\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		im\\
-		\bigskip
-		{\@semester}\\
-		%
-		\vspace{45mm} 
-		{Betreuung:}\\
-		\vspace{3mm} 
-		{\Large\sf \@advisor\\ \mbox{}}
-	\end{center}
-}
-
-% English
-
-\newcommand{\@advisorpageEn}{%
-	\newpage
-	\setcounter{page}{2}
-	\thispagestyle{plain}
-	\rule{0mm}{1mm}
-	\begin{center}
-		%
-		\vspace{40mm} 
-		{This thesis was created as part of the course}\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		during\\
-		\bigskip
-		{\@semester}\\
-		%
-		\vspace{45mm} 
-		{Advisor:}\\
-		\vspace{3mm} 
-		{\Large\sf \@advisor\\ \mbox{}}
-	\end{center}
-}
+%% Advisor Page ----------------------------------------
 
 \newcommand{\@advisorpage}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\@advisorpageDe}%
-	{\@advisorpageEn}
+	\newpage
+	\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		%
+		\vspace{40mm}
+		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			{Diese Arbeit entstand im Rahmen des Gegenstands}%
+			{This thesis was created as part of the course}%
+		\\
+		\vspace{6mm} 
+		{\Large\sf \@coursetitle\\ \mbox{}}\\
+		\medskip
+		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			{im}%
+			{during}%
+		\\
+		\bigskip
+		{\@semester}\\
+		%
+		\vspace{45mm}
+		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			{Betreuung:}%
+			{Advisor:}%
+		\\
+		\vspace{3mm} 
+		{\Large\sf \@advisor\\ \mbox{}}
+	\end{center}
 }
-
 
 %% Declaration Pages in German and English ------------------------------------
 
