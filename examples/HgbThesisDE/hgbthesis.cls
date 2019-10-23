@@ -115,24 +115,10 @@
 \setcounter{@monthofsubmission}{\the\month}
 \setcounter{@yearofsubmission}{\the\year}
 
-\newcommand{\abgabedatum}[3]{%	%\abgabedatum{yyyy}{mm}{dd}
-	\setcounter{@yearofsubmission}{#1}
-	\setcounter{@monthofsubmission}{#2}
-	\setcounter{@dayofsubmission}{#3}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabedatum' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
 \newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
 	\setcounter{@yearofsubmission}{#1}
 	\setcounter{@monthofsubmission}{#2}
 	\setcounter{@dayofsubmission}{#3}
-}
-
-\newcommand{\abgabemonat}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabemonat' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
-
-\newcommand{\abgabejahr}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabejahr' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
 }
 
 % Internship Report Commands
