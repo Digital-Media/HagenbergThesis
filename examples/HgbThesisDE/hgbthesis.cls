@@ -80,10 +80,6 @@
 }
 
 \newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
-\newcommand{\nummer}[1]{%
-	\renewcommand{\@thesisnumber}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated, use '\string\thesisnumber' instead.}
-}
 \newcommand{\thesisnumber}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
 }
