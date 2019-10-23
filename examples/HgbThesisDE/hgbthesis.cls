@@ -462,6 +462,7 @@ This work is published under the conditions of the
 	\@bachelortitle
 	\ifthenelse{\equal{\@advisor}{}}%
 			{}{\@advisorpage}%
+	\@copyrightpage
 	\@declarationpage
 }
 
