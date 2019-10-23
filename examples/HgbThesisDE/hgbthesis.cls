@@ -78,9 +78,8 @@
 	\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
 }
 
-\newcommand{\@semester}{\@MissingArg{Semester not specified!}}
 \newcommand{\semester}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@semester}{#1}}
+	\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
 }
 
 \newcommand{\@logofile}[0]{}
