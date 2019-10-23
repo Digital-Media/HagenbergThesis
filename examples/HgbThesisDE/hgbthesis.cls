@@ -65,11 +65,6 @@
 
 % General Commands
 
-\newcommand{\@programname}{\@MissingArg{Degree program not specified!}}
-\newcommand{\studiengang}[1]{%
-	\renewcommand{\@programname}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated, use '\string\programname' instead.}
-}
 \newcommand{\programname}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
 }
