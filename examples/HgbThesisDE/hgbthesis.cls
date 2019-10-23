@@ -70,10 +70,6 @@
 }
 
 \newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
-\newcommand{\studienort}[1]{%
-	\renewcommand{\@placeofstudy}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated, use '\string\placeofstudy' instead.}
-}
 \newcommand{\placeofstudy}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
 }
