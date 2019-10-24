@@ -872,40 +872,35 @@ erforderlich:
 \item[] %
 \verb!\title{!\texttt{\em Titel der Arbeit}\verb!}! \newline%
 \verb!\author{!\texttt{\em Autor}\verb!}! \newline%
+\verb!\programtype{!\texttt{\em Typ des Studiums}\verb!}! \newline%
 \verb!\programname{!\texttt{\em Studiengang}\verb!}! \newline%
 \verb!\placeofstudy{!\texttt{\em Studienort}\verb!}! \newline%
-\verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em mm}\verb!}{!\texttt{\em dd}\verb!}!
+\verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em mm}\verb!}{!\texttt{\em dd}\verb!}! \newline%
+\verb!\advisor{!\texttt{\em Name des Betreuers/der Betreuerin}\verb!}! -- optional
 \end{itemize}
 %
-\noindent Für \textbf{Bachelorarbeiten} werden zusätzlich zu den Basisangaben folgende Elemente verwendet (bei Diplom- und Masterarbeiten nicht relevant):
-%
-\begin{itemize}
-\item[] \verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
-\footnote{Wird normalerweise von der Institution vergeben. An der
-Fakultät Hagenberg ist dies bei einer Bachelorarbeit die (10-stellige) Studenten-ID 
-des Autors oder der Autorin,
-\zB\ \textsf{0310238045-A} für die erste Bachelorarbeit.} \newline%
-\verb!\coursetitle{!\texttt{\em Gegenstand oder Projektlehrveranstaltung}\verb!}! \newline%
-\verb!\semester{!\texttt{\em Semester der Lehrveranstaltung}\verb!}! \newline%
-\verb!\advisor{!\texttt{\em Name des Betreuers/der Betreuerin}\verb!}!
-\end{itemize}
+%\noindent Für \textbf{Bachelorarbeiten} werden \emph{zusätzlich }zu den Basisangaben folgende Elemente verwendet (bei Diplom- und Masterarbeiten nicht relevant):
+%%
+%\begin{itemize}
+%\item[] \verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
+%\footnote{Wird normalerweise von der Institution vergeben. An der
+%Fakultät Hagenberg ist dies bei einer Bachelorarbeit die (10-stellige) Studenten-ID 
+%des Autors oder der Autorin,
+%\zB\ \textsf{0310238045-A} für die erste Bachelorarbeit.} \newline%
+%\verb!\coursetitle{!\texttt{\em Gegenstand oder Projektlehrveranstaltung}\verb!}! \newline%
+%\verb!\semester{!\texttt{\em Semester der Lehrveranstaltung}\verb!}! \newline%
+%\verb!\advisor{!\texttt{\em Name des Betreuers/der Betreuerin}\verb!}!
+%\end{itemize}
 
 \noindent Für \textbf{Praktikumsberichte} werden zusätzlich zu den Basisangaben folgende
 Elemente berücksichtigt:
 %
 \begin{itemize}
 \item[] %
-\verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
-%\footnote{Wird normalerweise von der Institution vergeben. An der
-%FH-Hagenberg ist dies bei einer Bachelorarbeit üblicherweise die Matrikelnummer 
-%des Autors,
-%gefolgt von der Kennzeichnung \textbf{A} (fachbezogene Arbeit) 
-%oder \textbf{B} (Praktikumsbericht),
-%\zB\ \textsf{238-003-045}.} 
-\newline%
-\verb!\advisor{!\texttt{\em Betreuer oder Betreuerin im Unternehmen}\verb!}! \newline%
+%\verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}! \newline%
+%\verb!\advisor{!\texttt{\em Betreuer oder Betreuerin im Unternehmen}\verb!}! \newline%
 \verb!\companyName{!\texttt{\em Name und Adresse der Firma}\verb!}! \newline%
-\verb!\companyPhone{!\texttt{\em Telefonnummer der Firma}\verb!}! \newline%
+%\verb!\companyPhone{!\texttt{\em Telefonnummer der Firma}\verb!}! \newline%
 \verb!\companyUrl{!\texttt{\em Website der Firma}\verb!}!
 \end{itemize}
 
@@ -923,15 +918,16 @@ Elemente berücksichtigt:
 \hline
 \verb!\title! 			& $+$ & $+$ & $+$ & $+$ \\
 \verb!\author! 			& $+$ & $+$ & $+$ & $+$ \\
+\verb!\programtype! & $+$ & $+$ & $+$ & $+$ \\
 \verb!\programname! & $+$ & $+$ & $+$ & $+$ \\
 \verb!\placeofstudy! 	& $+$ & $+$ & $+$ & $+$ \\
 \verb!\dateofsubmission! 	& $+$ & $+$ & $+$ & $+$ \\
-\verb!\thesisnumber! 			& $-$ & $-$ & $+$ & $+$ \\
-\verb!\coursetitle! 	& $-$ & $-$ & $+$ & $-$ \\
-\verb!\advisor! 		& $-$ & $-$ & $+$ & $+$ \\
+%\verb!\thesisnumber! 			& $-$ & $-$ & $+$ & $+$ \\
+%\verb!\coursetitle! 	& $-$ & $-$ & $+$ & $-$ \\
+\verb!\advisor! 		& $+$ & $+$ & $+$ & $+$ \\
 \verb!\companyName! 			& $-$ & $-$ & $-$ & $+$ \\
 \verb!\companyPhone! 	& $-$ & $-$ & $-$ & $+$ \\
-\verb!\companyUrl! 	& $-$ & $-$ & $-$ & $+$ \\
+%\verb!\companyUrl! 	& $-$ & $-$ & $-$ & $+$ \\
 \hline
 \end{tabular}
 \end{table}
@@ -945,16 +941,16 @@ werden durch die Anweisung
 \begin{itemize}
 \item[] \verb!\maketitle!  
 \end{itemize}
-automatisch generiert, abhängig vom Typ der Arbeit und den obigen
-Einstellungen:
+automatisch generiert, abhängig von den obigen Einstellungen:
 %
 \begin{center}
-\begin{tabular}{cll}
-\emph{Seite} & \emph{Master-/Diplomarbeit} & \emph{Bachelorarbeit} \\
+\begin{tabular}{cl}
+\emph{Seite} & \emph{Inhalt} \\
   \hline
-  \textrm{i} & Titelseite & Titelseite \\
-  \textrm{ii} & Copyright-Seite & Betreuerseite \\
-  \textrm{iii} & Eidesstattliche Erklärung & Eidesstattliche Erklärung \\
+  \textrm{i} & Titelseite  \\
+  \textrm{ii} & Betreuerseite (nur wenn \verb!\advisor! angegeben) \\
+	\textrm{iii} & Copyright-Seite \\
+  \textrm{iv} & Eidesstattliche Erklärung \\
   \hline
 \end{tabular}
 \end{center}
@@ -968,8 +964,8 @@ folgenden Einstellungen am Beginn des Dokuments bestimmt werden:
 	Veröffentlichung unter einer Creative Commons%
 	\footnote{\url{http://creativecommons.org/licenses/by-nc-nd/3.0/}}
 	Lizenz, die die freie Weitergabe der Arbeit unter Nennung des Autors, jedoch
-	keine kommerzielle Nutzung oder Bearbeitung erlaubt
-	(Standardeinstellung).
+	keine kommerzielle Nutzung oder Bearbeitung erlaubt.
+	Das ist die \emph{empfohlene} Standardeinstellung.
 \item[\normalfont\texttt{{\bs}strictlicense}] ~ \newline 
 	Traditionelle Einschränkung der Nutzungsrechte 
 	(\emph{Alle Rechte vorbehalten} \bzw\ \emph{All Rights Reserved}).
