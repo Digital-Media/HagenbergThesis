@@ -126,10 +126,8 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
 }
 
-\newcommand{\@companyPhone}{\@MissingArg{Company phone number not specified!}}
 \newcommand{\companyPhone}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyPhone}{#1}}
-	\renewcommand{\@companyPhone}{#1}
+	\ClassWarning{hgbthesis}{command '\protect\companyPhone' is not supported any longer.}
 }
 
 %% ----------------------------------------------------------------------------
@@ -238,7 +236,7 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Diplomarbeit}}}%
 			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Diplomstudiengang}%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
@@ -262,18 +260,18 @@
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
 				\setlength{\baselineskip}{25pt}%
-				Endbericht zum Berufspraktikum%
+				\@title%
 			}
 			\vskip 15mm%
 			{\large\@author}%{\large\scshape\@author}%
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
+			{\Large\uppercase{\@addspaces{Praktikumsbericht}}}%
 			\vskip 4mm%
 			%{\large Nr.~\@thesisnumber}
 			%\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
@@ -354,8 +352,8 @@ This work is published under the conditions of the
 \\
 \vspace{3mm}
 {\Large\sf\@companyName\\ \mbox{}}
-\\
-{\sf \@companyPhone}
+%\\
+%{\sf \@companyPhone}
 \\
 {\sf \@companyUrl}
 \\
