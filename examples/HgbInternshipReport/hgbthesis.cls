@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2019/10/23]
+\ProvidesClass{hgbthesis}[2019/10/24]
 
 \RequirePackage{xifthen}
 
@@ -16,7 +16,6 @@
 \ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
-
 
 %% Commands for Title Pages (used in class options) ---------------------------
 
@@ -352,8 +351,6 @@ This work is published under the conditions of the
 \\
 \vspace{3mm}
 {\Large\sf\@companyName\\ \mbox{}}
-%\\
-%{\sf \@companyPhone}
 \\
 {\sf \@companyUrl}
 \\
@@ -467,6 +464,7 @@ This work is published under the conditions of the
 \renewcommand{\@internshiptitlepages}{
 	\@internshiptitle
 	\@companypage
+	\@copyrightpage
 	\@declarationpage
 }
 
