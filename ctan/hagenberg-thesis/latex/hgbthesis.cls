@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2019/06/17]
+\ProvidesClass{hgbthesis}[2019/10/24]
 
 \RequirePackage{xifthen}
 
@@ -16,7 +16,6 @@
 \ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
-
 
 %% Commands for Title Pages (used in class options) ---------------------------
 
@@ -32,19 +31,9 @@
 
 %% Handling class options --------------------------------------------------------------
 
-\DeclareOption{diplom}{%
-	\renewcommand{\@maketitlepages}{\@diplomatitlepages}
-	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'diploma' instead.}
-}
-
-\DeclareOption{praktikum}{%
-	\renewcommand{\@maketitlepages}{\@internshiptitlepages}
-	\ClassWarning{hgbthesis}{Deprecated: Document option '\CurrentOption' is deprecated, use 'internship' instead.}
-}
-
 \DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
-\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
+\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
 
 \DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
@@ -65,58 +54,36 @@
 
 % General Commands
 
-\newcommand{\@programname}{\@MissingArg{Degree program not specified!}}
-\newcommand{\studiengang}[1]{%
-	\renewcommand{\@programname}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studiengang' is deprecated, use '\string\programname' instead.}
+\newcommand{\@programtype}{\@MissingArg{Type of degree program not specified!}}
+\newcommand{\programtype}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programtype}{#1}}
 }
+
+\newcommand{\@programname}{\@MissingArg{Name of degree program not specified!}}
 \newcommand{\programname}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
 }
 
 \newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
-\newcommand{\studienort}[1]{%
-	\renewcommand{\@placeofstudy}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\studienort' is deprecated, use '\string\placeofstudy' instead.}
-}
 \newcommand{\placeofstudy}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
 }
 
-\newcommand{\@advisor}{\@MissingArg{Advisor not specified!}}
-\newcommand{\betreuer}[1]{%
-	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuer' is deprecated, use '\string\advisor' instead.}
-}
-\newcommand{\betreuerin}[1]{%
-	\renewcommand{\@advisor}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\betreuerin' is deprecated, use '\string\advisor' instead.}
-}
+\newcommand{\@advisor}{}					% empty by default
 \newcommand{\advisor}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@advisor}{#1}}
+	\renewcommand{\@advisor}{#1}		
 }
 
-\newcommand{\@thesisnumber}{\@MissingArg{Thesis number not specified!}}
-\newcommand{\nummer}[1]{%
-	\renewcommand{\@thesisnumber}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\nummer' is deprecated, use '\string\thesisnumber' instead.}
-}
 \newcommand{\thesisnumber}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@thesisnumber}{#1}}
+	\ClassWarning{hgbthesis}{command '\protect\thesisnumber' is not supported any longer.}
 }
 
-\newcommand{\@coursetitle}{\@MissingArg{Course not specified!}}
-\newcommand{\gegenstand}[1]{%
-	\renewcommand{\@coursetitle}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\gegenstand' is deprecated, use '\string\coursetitle' instead.}
-}
 \newcommand{\coursetitle}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@coursetitle}{#1}}
+	\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
 }
 
-\newcommand{\@semester}{\@MissingArg{Semester not specified!}}
 \newcommand{\semester}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@semester}{#1}}
+	\ClassWarning{hgbthesis}{command '\protect\semester' is not supported any longer.}
 }
 
 \newcommand{\@logofile}[0]{}
@@ -140,68 +107,38 @@
 \setcounter{@monthofsubmission}{\the\month}
 \setcounter{@yearofsubmission}{\the\year}
 
-\newcommand{\abgabedatum}[3]{%	%\abgabedatum{yyyy}{mm}{dd}
-	\setcounter{@yearofsubmission}{#1}
-	\setcounter{@monthofsubmission}{#2}
-	\setcounter{@dayofsubmission}{#3}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabedatum' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
 \newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
 	\setcounter{@yearofsubmission}{#1}
 	\setcounter{@monthofsubmission}{#2}
 	\setcounter{@dayofsubmission}{#3}
 }
 
-\newcommand{\abgabemonat}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabemonat' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
-
-\newcommand{\abgabejahr}[1]{%
-	\ClassWarning{hgbthesis}{Deprecated: '\string\abgabejahr' is deprecated, use '\string\dateofsubmission{yyyy}{mm}{dd}' instead.}
-}
-
 % Internship Report Commands
 
 \newcommand{\@companyName}{\@MissingArg{Company not specified!}}
-\newcommand{\firma}[1]{%
-	\renewcommand{\@companyName}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firma' is deprecated, use '\string\companyName' instead.}
-}
 \newcommand{\companyName}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
 }
 
 \newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
-\newcommand{\firmenUrl}[1]{%
-	\renewcommand{\@companyUrl}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenUrl' is deprecated, use '\string\companyUrl' instead.}
-}
 \newcommand{\companyUrl}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
 }
 
-\newcommand{\@companyPhone}{\@MissingArg{Company phone number not specified!}}
-\newcommand{\firmenTel}[1]{%
-	\renewcommand{\@companyPhone}{#1}
-	\ClassWarning{hgbthesis}{Deprecated: '\string\firmenTel' is deprecated, use '\string\companyPhone' instead.}
-}
 \newcommand{\companyPhone}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyPhone}{#1}}
-	\renewcommand{\@companyPhone}{#1}
+	\ClassWarning{hgbthesis}{command '\protect\companyPhone' is not supported any longer.}
 }
+
+%% ----------------------------------------------------------------------------
 
 \newcommand{\@license}{\@MissingArg{License information is missing!}}
 \newcommand{\license}[1]{%
 	\renewcommand{\@license}{#1}
 }
 
-
 %% Commands for Creating the Title Pages --------------------------------------
 
-\newcommand{\titelseite}{%
-	\maketitle
-	\ClassWarning{hgbthesis}{Deprecated: '\string\titelseite' is deprecated, use '\string\maketitle' instead.}
-}
+
 
 %% adds blank space after each letter (http://stackoverflow.com/a/3951837)
 \newcommand{\@addspaces}[1]{%  
@@ -230,9 +167,9 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
 			\vskip 4mm%
-			{\large Nr.~\@thesisnumber}
-			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
+			%{\large Nr.~\@thesisnumber}
+			%\vskip 4mm%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
@@ -265,7 +202,7 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Masterarbeit}}}%
 			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Masterstudiengang}%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
@@ -298,7 +235,7 @@
 			\vskip 15mm%
 			{\Large\uppercase{\@addspaces{Diplomarbeit}}}%
 			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Diplomstudiengang}%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
@@ -322,18 +259,18 @@
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
 				\setlength{\baselineskip}{25pt}%
-				Endbericht zum Berufspraktikum%
+				\@title%
 			}
 			\vskip 15mm%
 			{\large\@author}%{\large\scshape\@author}%
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
+			{\Large\uppercase{\@addspaces{Praktikumsbericht}}}%
 			\vskip 4mm%
-			{\large Nr.~\@thesisnumber}
-			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {Fachhochschul-Bachelorstudiengang}%
+			%{\large Nr.~\@thesisnumber}
+			%\vskip 4mm%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
@@ -389,7 +326,7 @@ This work is published under the conditions of the
 
 \newcommand{\@copyrightpage}{%
 \newpage
-\setcounter{page}{2}
+%\setcounter{page}{2}
 \thispagestyle{plain}
 \rule{0mm}{1mm}
 \vspace*{75mm}
@@ -415,77 +352,34 @@ This work is published under the conditions of the
 \vspace{3mm}
 {\Large\sf\@companyName\\ \mbox{}}
 \\
-{\sf \@companyPhone}
-\\
 {\sf \@companyUrl}
 \\
 \vspace{45mm} 
 {Kontaktperson:}
 \\
-\vspace{3mm} 
+\vspace{3mm}
 {\Large\sf\@advisor\\ \mbox{}}
 \end{center}
 }
 
 
-%% Advisor Pages in German and English ----------------------------------------
-
-% German
-
-\newcommand{\@advisorpageDe}{%
-	\newpage
-	\setcounter{page}{2}
-	\thispagestyle{plain}
-	\rule{0mm}{1mm}
-	\begin{center}
-		%
-		\vspace{40mm} 
-		{Diese Arbeit entstand im Rahmen des Gegenstands}\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		im\\
-		\bigskip
-		{\@semester}\\
-		%
-		\vspace{45mm} 
-		{Betreuung:}\\
-		\vspace{3mm} 
-		{\Large\sf \@advisor\\ \mbox{}}
-	\end{center}
-}
-
-% English
-
-\newcommand{\@advisorpageEn}{%
-	\newpage
-	\setcounter{page}{2}
-	\thispagestyle{plain}
-	\rule{0mm}{1mm}
-	\begin{center}
-		%
-		\vspace{40mm} 
-		{This thesis was created as part of the course}\\
-		\vspace{6mm} 
-		{\Large\sf \@coursetitle\\ \mbox{}}\\
-		\medskip
-		during\\
-		\bigskip
-		{\@semester}\\
-		%
-		\vspace{45mm} 
-		{Advisor:}\\
-		\vspace{3mm} 
-		{\Large\sf \@advisor\\ \mbox{}}
-	\end{center}
-}
+%% Advisor Page ----------------------------------------
 
 \newcommand{\@advisorpage}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\@advisorpageDe}%
-	{\@advisorpageEn}
+	\newpage
+	\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\vspace{90mm}
+	\begin{center}
+		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			{Betreuung:}%
+			{Advisor:}%
+		\\
+		\vspace{3mm} 
+		{\Large\sf \@advisor\\ \mbox{}}
+	\end{center}
 }
-
 
 %% Declaration Pages in German and English ------------------------------------
 
@@ -545,25 +439,32 @@ This work is published under the conditions of the
 
 \renewcommand{\@mastertitlepages}{
 	\@mastertitle
+	\ifthenelse{\equal{\@advisor}{}}%
+			{}{\@advisorpage}%
 	\@copyrightpage
 	\@declarationpage
 }
      
 \renewcommand{\@diplomatitlepages}{
 	\@diplomatitle
+	\ifthenelse{\equal{\@advisor}{}}%
+			{}{\@advisorpage}%
 	\@copyrightpage
 	\@declarationpage
 }
 
 \renewcommand{\@bachelortitlepages}{
 	\@bachelortitle
-	\@advisorpage
+	\ifthenelse{\equal{\@advisor}{}}%
+			{}{\@advisorpage}%
+	\@copyrightpage
 	\@declarationpage
 }
 
 \renewcommand{\@internshiptitlepages}{
 	\@internshiptitle
 	\@companypage
+	\@copyrightpage
 	\@declarationpage
 }
 
@@ -573,7 +474,7 @@ This work is published under the conditions of the
 	\hypersetup{
 			pdftitle={\@title},
 			pdfauthor={\@author},
-			pdfsubject={\@programname, \@placeofstudy},
+			pdfsubject={\@programtype \@programname, \@placeofstudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
 			pdfkeywords={},
