@@ -6,6 +6,10 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Added information on how/when to use the ``@unpublished`` biblatex tag (in ``examples/HgbThesisTutorial``).
+
 ## [2019/05/16]
 
 ### Added
