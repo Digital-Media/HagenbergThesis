@@ -13,7 +13,7 @@
 \RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
 
 \RequirePackage{datenumber}
-
+\RequirePackage{stringstrings}
 
 
 \renewcommand{\chapter}[1]{}		% \chapter Befehl ist deaktiviert
@@ -82,7 +82,7 @@ HagenbergThesis is \thedateAge\ days old.
 \newcounter{ageLimit}\setcounter{ageLimit}{6}
 
 \ifnum\value{dateAge}>\value{ageLimit}%
-     HGB is too old (limit is \the\value{ageLimit} \arabic{ageLimit})!%
+     HGB is too old (limit is \arabic{ageLimit})!%
     \else 
       HGB is fine.%
     \fi
@@ -98,6 +98,72 @@ HagenbergThesis is \thedateAge\ days old.
 Look at \url{https://tex.stackexchange.com/questions/396363/input-a-date-to-datetime2-in-a-format-different-than-iso/396483#396483}
 for adapting to LateX date format!
 
+
+
+%% problem: convert from "2014/12/20" -> DTNdate
+
+%\url{https://tex.stackexchange.com/questions/218813/latex-access-every-character-of-an-string-variable
+%\usepackage{stringstrings}
+
+%\def\x{2014/12/20}
+\newcommand{\hgbDateXX}{2019/12/10}
+\def\SSyear{\substring{\hgbDateXX}{1}{4}}
+\def\SSmonth{\substring{\hgbDateXX}{6}{7}}
+\def\SSday{\substring{\hgbDateXX}{9}{10}} % The $ implies the last character of the string
+
+\newcommand{\MakeDateString}[3]{%
+#1-#2-#3
+}
+
+\def\DateString{\MakeDateString{\SSyear}{\SSmonth}{\SSday}}
+
+MakeDateString1: \MakeDateString{\SSyear}{\SSmonth}{\SSday}\\
+MakeDateString2: \DateString
+
+% Look here: https://tex.stackexchange.com/questions/335635/expansion-of-argument-to-dtmdate-function-in-datetime2 !!
+% https://tex.stackexchange.com/questions/320256/datetime2s-dtmsavetimestamp-cant-read-from-macro-expansion-or-catcode-issue?rq=1
+%\DTMsavedate{HgbBuildDateA}{\DateString}                   % not working!
+%\DTMsavedate{HgbBuildDateA}{\SSyear-\SSmonth-\SSday}       % not working!
+\DTMsavenoparsedate{HgbBuildDateB}{2019}{12}{10}{-1} %{\SSyear}{\SSmonth}{\SSday}{-1}
+
+\def\YYYY{2019}
+\def\MM{12}
+\def\DD{10}
+\DTMsavenoparsedate{HgbBuildDateC}{\YYYY}{\MM}{\DD}{-1}     % working!
+
+\SSyear\ \SSmonth\ \SSday
+
+
+%% -------------------------------------------------------
+%https://tex.stackexchange.com/questions/321313/change-pre-defined-date-in-command-and-save-to-datetime2-expansion-issue?rq=1
+% THIS IS THE SOLUTION!!!!
+
+\def\eDTMsavedate#1#2{%
+  \begingroup\edef\x{\endgroup
+    \noexpand\DTMsavedate{#1}{#2}%
+  }\x
+}
+
+\def\origDate{1977-10-26}
+\eDTMsavedate{changeddate}{\origDate}%
+changeddate = \DTMusedate{changeddate}
+
 %%%----------------------------------------------------------
 
+% simpler calculation (without datenumber package)
+
+\DTMsavenoparsedate{TheDateA}{2019}{12}{01}{-1}
+\DTMsavenoparsedate{TheDateB}{2019}{12}{10}{-1}
+
+\newcount\myDiff
+\DTMsaveddatediff{TheDateB}{TheDateA}{\myDiff}
+
+myDiff = \the\myDiff.
+
+\ifnum\myDiff>6
+    HGB is too old (limit is \arabic{ageLimit})!%
+\else
+    HGB is fine.%
+\fi
+    
 \end{document}
