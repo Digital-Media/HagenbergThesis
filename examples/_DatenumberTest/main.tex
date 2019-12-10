@@ -43,6 +43,9 @@
 %%%----------------------------------------------------------
 
 
+\verb!\hgbDate! = \hgbDate.
+
+\setstartyear{2000}
 \setdatenumber{2007}{11}{22}
 datenumber = \thedatenumber.
 
@@ -50,6 +53,50 @@ datenumber = \thedatenumber.
 \setmydatenumber{mydatenumber}{2007}{11}{23}
 mydatenumber = \themydatenumber.
 
+\hrule
+
+\DTMsavedate{HGBdate}{2019-12-01}
+\DTMusedate{HGBdate}\\
+\DTMfetchyear{HGBdate}\\
+\DTMfetchmonth{HGBdate}\\
+\DTMfetchday{HGBdate}\\
+
+\newcounter{HGBdatenumber}
+\setmydatenumber{HGBdatenumber}{\DTMfetchyear{HGBdate}}{\DTMfetchmonth{HGBdate}}{\DTMfetchday{HGBdate}}
+HGBdatenumber = \theHGBdatenumber.
+
+%% ------------------------------------------------
+
+\newcounter{dateHgb}%
+\newcounter{dateAge}%
+
+%\newcommand{\daydifftoday}{%
+\setmydatenumber{dateHgb}{\DTMfetchyear{HGBdate}}{\DTMfetchmonth{HGBdate}}{\DTMfetchday{HGBdate}}%
+\setmydatenumber{dateAge}{\the\year}{\the\month}{\the\day}%
+\addtocounter{dateAge}{-\thedateHgb}%
+%\thedateAge
+%}
+
+HagenbergThesis is \thedateAge\ days old.
+
+\newcounter{ageLimit}\setcounter{ageLimit}{6}
+
+\ifnum\value{dateAge}>\value{ageLimit}%
+     HGB is too old (limit is \the\value{ageLimit} \arabic{ageLimit})!%
+    \else 
+      HGB is fine.%
+    \fi
+
+\PackageWarning{hagenberg-thesis}{%
+^^J***********************************************************
+^^J'hagenberg-thesis' is \arabic{dateAge} days old - pls. check for updates at
+^^Jhttps://github.com/Digital-Media/HagenbergThesis
+^^J***********************************************************
+^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
+
+
+Look at \url{https://tex.stackexchange.com/questions/396363/input-a-date-to-datetime2-in-a-format-different-than-iso/396483#396483}
+for adapting to LateX date format!
 
 %%%----------------------------------------------------------
 
