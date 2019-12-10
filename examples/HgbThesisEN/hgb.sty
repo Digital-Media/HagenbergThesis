@@ -5,7 +5,7 @@
 %% File encoding: ASCII
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbDate}{2019/10/24}	% version string
+\newcommand{\hgbDate}{2019/12/10}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
 \typeout{******************* hgb.sty  (options=\@nameuse{opt@hgb.sty}) ***********************}
 
@@ -61,7 +61,8 @@
 
 %% ------------------------------------------------------
 
-\RequirePackage{datetime}
+\RequirePackage[english,ngerman,calc,showdow=false]{datetime2}	% replaces obsolete 'datetime' package
+
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
 \RequirePackage{eurosym}			% provides \euro - conflict with marvosym on \EUR!
 
@@ -221,29 +222,6 @@
 
 \ifthenelse{\equal{\bbl@main@language}{english}}%
 	{\floatname{program}{Program}}{}%
-
-
-%% Date-related commands ------------------------------------------------------
-
-\RequirePackage{datetime}
-\showdowfalse						% do not show day of week
-
-% adapted from \newdate in datetime.sty
-\newcommand*{\@modifydate}[4]{%
-\@namedef{date@#1@d}{#2}%
-\@namedef{date@#1@m}{#3}%
-\@namedef{date@#1@y}{#4}%
-}
-
-\newdate{hgb@date}{\the\day}{\the\month}{\the\year}
-\newcommand{\Date}[3]{%	example for use: \Date{16}{5}{2008}
-  \@modifydate{hgb@date}{#1}{#2}{#3}
-}
-
-\newcommand{\hgb@GetDateDay}{\getdateday{hgb@date}}
-\newcommand{\hgb@GetDateMonth}{\getdatemonth{hgb@date}}
-\newcommand{\hgb@GetDateYear}{\getdateyear{hgb@date}}
-\newcommand{\hgb@DisplayDate}{\displaydate{hgb@date}}
 
 %% Experimental items ---------------------------------------------------------
 

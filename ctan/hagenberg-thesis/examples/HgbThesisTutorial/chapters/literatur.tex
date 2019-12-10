@@ -371,6 +371,7 @@ zugeordnet.
 	Handbuch, Produktbeschreibung & \texttt{@manual} & \pageref{sec:@manual}\\
 	Norm & \texttt{@standard} & \pageref{sec:@standard}\\
 	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
+	Vorpublikation (\zB\ Konferenzeinreichung) & \texttt{@unpublished} & \pageref{sec:@unpublished}\\
 %
 	\hline
 	\emph{Audiovisuelle Medien} (\textsf{avmedia}) & \\
@@ -415,6 +416,7 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 	\texttt{@manual}        &  & &  \\
 	\texttt{@standard}        &  & &  \\
 	\texttt{@misc}          &  & &  \\
+	\texttt{@unpublished}          &  & &  \\
 	\ldots                  &  & &  \\
 	\hline
 \end{tabular}
@@ -782,6 +784,50 @@ Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein Patent
 \end{itemize}
 
 
+\subsubsection{\texttt{@unpublished}}
+\label{sec:@unpublished}
+
+Es kommt immer häufiger vor, dass Manuskripte längere Zeit vor der eigentlichen Pub\-likation
+von den Autoren online veröffentlicht werden,
+beispielsweise auf Plattformen wie \textsf{arXiv.org}% 
+\footnote{\url{https://arxiv.org/}}
+oder \textsf{researchgate.net}.%
+\footnote{\url{https://www.researchgate.net/}}
+Dabei ist zu beachten, dass die Onlinestellung formell \textbf{keine Publikation}
+darstellt, da diese Plattformen keine Publikationsmedien sind.
+Tatsächlich werden manche der (von den Autoren selbst hochgeladenen) Arbeiten \emph{nie}
+publiziert, etwa Einreichungen zu Konferenzen.
+Hier ist wichtig festzustellen, ob der Beitrag tatsächlich
+angenommen und auch publiziert wurde:
+%
+\begin{itemize}
+\item[a)]
+\textbf{Die Arbeit wurde tatsächlich publiziert:} Hier muss man grundsätzlich die 
+entsprechende Original\-publikation suchen! 
+Die Quellenangabe erfolgt in herkömmlicher Form (\zB\ mit \texttt{@inproceedings} 
+im Fall eines Konferenzbands), aber \emph{ohne} Verweis auf die Onlinestellung.
+\item[b)]
+\textbf{Die Arbeit wurde \emph{nicht} publiziert:} Wenn sich tatsächlich \emph{keine} 
+Publikation (oder ein zugehöriger \emph{Technical Report}, \so) findet,  kann man sich 
+\evtl\ mit dem \texttt{@unpublished}-Tag abhelfen, \zB\ \cite{DaiLHS16}
+\begin{GenericCode}[numbers=none]
+@unpublished{DaiLHS16,
+  author = {Dai, Jifeng and Li, Yi and He, Kaiming and Sun, Jian},
+  title = {{R-FCN:} Object Detection via Region-based Fully ...},
+  year = {2016},
+  url = {http://arxiv.org/abs/1605.06409},
+  pubstate = {prepublished}
+}
+\end{GenericCode}
+In diesem Fall ist die Angabe des Links (\texttt{url}) natürlich unverzichtbar. 
+Details zum Feld \texttt{pubstate} (\texttt{prepublished}) findet man in der
+\texttt{biblatex}-Dokumentation.%
+\footnote{\url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf},
+(Abschn.\ 4.9.2.11)}
+Andernfalls (wenn unbekannt oder wirklich nicht veröffentlicht) könnte man 
+statt \texttt{pubstate} auch \texttt{note=\{unveröffentlicht\}} 
+\bzw\ \texttt{note=\{unpublished\}} verwenden.
+\end{itemize}
 
 
 

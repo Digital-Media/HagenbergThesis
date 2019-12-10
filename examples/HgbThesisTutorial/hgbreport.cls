@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbreport}[2019/10/24]
+\ProvidesClass{hgbreport}[2019/12/10]
 
 \typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
 
