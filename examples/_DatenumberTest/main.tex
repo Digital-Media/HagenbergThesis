@@ -1,0 +1,56 @@
+%% Ein einfaches template für einen Übungsbericht unter verwendung des Hagenberg Setups
+%% basierend auf der LaTeX 'report' Standardklasse.
+%% äöüÄÖÜß  <-- no German Umlauts here? Use an UTF-8 compatible editor!
+
+%%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = de_DE
+% !BIB program = biber
+
+\documentclass[german,notitlepage,smartquotes]{hgbreport}
+
+\RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
+
+\RequirePackage{datenumber}
+
+
+
+\renewcommand{\chapter}[1]{}		% \chapter Befehl ist deaktiviert
+
+\graphicspath{{images/}}	% Verzeichnis mit Bildern und Grafiken
+
+\bibliography{references}	% Biblatex-Literaturdatei (references.bib)
+\ExecuteBibliographyOptions{backref=false}
+
+
+
+
+%%-----------------------------------------------------------
+\setcounter{chapter}{3}	% <----- Auf die Übungsnummer setzen
+%%-----------------------------------------------------------
+
+\author{Peter A.\ Schlaumeier}
+\title{MTD128 Digitale Medientechnik II -- SS 2017\\
+				Übungsabgabe \arabic{chapter}}
+\date{\today}
+
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+\maketitle
+%%%----------------------------------------------------------
+
+
+\setdatenumber{2007}{11}{22}
+datenumber = \thedatenumber.
+
+\newcounter{mydatenumber}
+\setmydatenumber{mydatenumber}{2007}{11}{23}
+mydatenumber = \themydatenumber.
+
+
+%%%----------------------------------------------------------
+
+\end{document}
