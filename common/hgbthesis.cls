@@ -175,7 +175,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -208,7 +208,8 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -241,7 +242,8 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -276,7 +278,8 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -397,7 +400,8 @@ This work is published under the conditions of the
 		\par
 		\vspace{10mm}
 		\noindent
-		\@placeofstudy, am \formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}
+		%\@placeofstudy, am \formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}
+		\@placeofstudy, am \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
 		\par
 		\vspace{12mm}
 		\noindent
@@ -420,7 +424,8 @@ This work is published under the conditions of the
 		\vspace{10mm}
 		\noindent
 		%\@placeofstudy, \the\year-\leadingzero{\month}-\leadingzero{\day} %http://de.wikibooks.org/wiki/LaTeX-W%F6rterbuch:_today 
-		\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
+		%\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
+		\@placeofstudy, \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
 		\par
 		\vspace{12mm}
 		\noindent
