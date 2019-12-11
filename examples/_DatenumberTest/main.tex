@@ -14,6 +14,7 @@
 
 \RequirePackage{datenumber}
 \RequirePackage{stringstrings}
+\RequirePackage{xstring}				% will replace stringstrings?
 
 
 \renewcommand{\chapter}[1]{}		% \chapter Befehl ist deaktiviert
@@ -45,27 +46,37 @@
 
 \verb!\hgbDate! = \hgbDate.
 
-\setstartyear{2000}
-\setdatenumber{2007}{11}{22}
-datenumber = \thedatenumber.
-
-\newcounter{mydatenumber}
-\setmydatenumber{mydatenumber}{2007}{11}{23}
-mydatenumber = \themydatenumber.
-
-\hrule
+\subsection*{Initialization with \texttt{datetime2}}
 
 \DTMsavedate{HGBdate}{2019-12-01}
+
+\noindent
 \DTMusedate{HGBdate}\\
 \DTMfetchyear{HGBdate}\\
 \DTMfetchmonth{HGBdate}\\
 \DTMfetchday{HGBdate}\\
 
+
+
+
+\subsection*{Calculations with package \texttt{datenumber}}
+
+\setstartyear{2000}
+\setdatenumber{2007}{11}{22}
+\noindent
+datenumber = \thedatenumber.
+
+\newcounter{mydatenumber}
+\setmydatenumber{mydatenumber}{2007}{11}{23}
+\noindent
+mydatenumber = \themydatenumber.
+
+%% -----------------------
+
 \newcounter{HGBdatenumber}
 \setmydatenumber{HGBdatenumber}{\DTMfetchyear{HGBdate}}{\DTMfetchmonth{HGBdate}}{\DTMfetchday{HGBdate}}
+\noindent
 HGBdatenumber = \theHGBdatenumber.
-
-%% ------------------------------------------------
 
 \newcounter{dateHgb}%
 \newcounter{dateAge}%
@@ -77,10 +88,12 @@ HGBdatenumber = \theHGBdatenumber.
 %\thedateAge
 %}
 
+\noindent
 HagenbergThesis is \thedateAge\ days old.
 
 \newcounter{ageLimit}\setcounter{ageLimit}{6}
 
+\noindent
 \ifnum\value{dateAge}>\value{ageLimit}%
      HGB is too old (limit is \arabic{ageLimit})!%
     \else 
@@ -94,11 +107,17 @@ HagenbergThesis is \thedateAge\ days old.
 ^^J***********************************************************
 ^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
 
-
-Look at \url{https://tex.stackexchange.com/questions/396363/input-a-date-to-datetime2-in-a-format-different-than-iso/396483#396483}
-for adapting to LateX date format!
+%% ----------------------------------------------------------------------------------------
 
 
+
+
+
+\subsection*{Problem: convert from ``2014/12/20'' (Latex package version date) to \texttt{DTMdate}}
+
+\noindent
+\textbf{Look at} \url{https://tex.stackexchange.com/questions/396363/input-a-date-to-datetime2-in-a-format-different-than-iso/396483#396483}
+for adapting to Latex date format!
 
 %% problem: convert from "2014/12/20" -> DTNdate
 
@@ -111,12 +130,16 @@ for adapting to LateX date format!
 \def\SSmonth{\substring{\hgbDateXX}{6}{7}}
 \def\SSday{\substring{\hgbDateXX}{9}{10}} % The $ implies the last character of the string
 
+\noindent
+\verb!\SSyear\ \SSmonth\ \SSday! = \SSyear\ \SSmonth\ \SSday
+
 \newcommand{\MakeDateString}[3]{%
 #1-#2-#3
 }
 
 \def\DateString{\MakeDateString{\SSyear}{\SSmonth}{\SSday}}
 
+\noindent
 MakeDateString1: \MakeDateString{\SSyear}{\SSmonth}{\SSday}\\
 MakeDateString2: \DateString
 
@@ -130,23 +153,26 @@ MakeDateString2: \DateString
 \def\MM{12}
 \def\DD{10}
 \DTMsavenoparsedate{HgbBuildDateC}{\YYYY}{\MM}{\DD}{-1}     % working!
-
-\SSyear\ \SSmonth\ \SSday
+%\DTMsavenoparsedate{HgbBuildDateC}{\SSyear}{\SSmonth}{\SSday}{-1}     % NOT working!
+\noindent
+HgbBuildDateC = \DTMusedate{HgbBuildDateC}
 
 
 %% -------------------------------------------------------
 %https://tex.stackexchange.com/questions/321313/change-pre-defined-date-in-command-and-save-to-datetime2-expansion-issue?rq=1
-% THIS IS THE SOLUTION!!!!
+% THIS IS THE SOLUTION!!!!???
 
-\def\eDTMsavedate#1#2{%
-  \begingroup\edef\x{\endgroup
+\def\eDTMsavedate#1#2{% #1: counter-name, #2: date-string
+  \begingroup\edef\@x{\endgroup
     \noexpand\DTMsavedate{#1}{#2}%
-  }\x
+  }\@x
 }
 
 \def\origDate{1977-10-26}
-\eDTMsavedate{changeddate}{\origDate}%
-changeddate = \DTMusedate{changeddate}
+\eDTMsavedate{origdate}{\origDate}%
+\noindent
+origdate = \DTMusedate{origdate}
+
 
 %%%----------------------------------------------------------
 
@@ -158,12 +184,31 @@ changeddate = \DTMusedate{changeddate}
 \newcount\myDiff
 \DTMsaveddatediff{TheDateB}{TheDateA}{\myDiff}
 
+\noindent
 myDiff = \the\myDiff.
 
+\noindent
 \ifnum\myDiff>6
     HGB is too old (limit is \arabic{ageLimit})!%
 \else
     HGB is fine.%
 \fi
-    
+
+
+\subsection*{Testing \texttt{xstring} package}
+
+%% see https://tex.stackexchange.com/questions/451/when-to-use-edef-noexpand-and-expandafter
+
+\expanded{\YYYY-}
+
+%\edef\EDEFSTRING{\SSyear}  %{\SSyear-\SSmonth-\SSday}
+%\verb!\EDEFSTRING! = \EDEFSTRING
+
+%\newcommand{\YearD}[0]{\StrLeft{\SSyear\-\SSmonth\-\SSday}{10}}
+%\verb!\YearD! = \StrLeft{\SSyear-\SSmonth-\SSday}{10}
+
+%\DTMsavenoparsedate{TheDateD}{1977}{12}{10}{-1}
+
+
+
 \end{document}
