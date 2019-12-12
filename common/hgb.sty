@@ -13,14 +13,20 @@
 \providecommand{\hgb@MainLanguage}{german}
 
 \RequirePackage{xifthen}
+
 \newboolean{hgb@SmartQuotesOn}
-\setboolean{hgb@SmartQuotesOn}{false}
+\setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
+
+\newboolean{hgb@noUpdateCheck}
+\setboolean{hgb@noUpdateCheck}{false}	% update check is perfomed by default
 
 % Handle package options passed from the class file
 \DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
 \DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{smartquotes}{\setboolean{hgb@SmartQuotesOn}{true}}
+\DeclareOption{noUpdateCheck}{\setboolean{hgb@noUpdateCheck}{true}}
+\DeclareOption*{\ClassWarning{hgb}{Unknown option '\CurrentOption'.}}
 \ProcessOptions*
 
 %% Required Packages ----------------------------------------------------------
@@ -59,9 +65,41 @@
 	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
 {\end{otherlanguage}}%
 
-%% ------------------------------------------------------
 
-\RequirePackage[english,ngerman,calc,showdow=false]{datetime2}	% replaces obsolete 'datetime' package
+%% Date-related stuff ---------------------------------------------------------
+
+\RequirePackage{xstring}			% for string operations
+\RequirePackage[english,ngerman,calc,style=iso,showdow=false]{datetime2}	% replaces obsolete 'datetime' package
+
+% https://tex.stackexchange.com/questions/316253/latex-convert-date-string-format-from-mm-dd-yyyyy-to-dd-mm-yyyy/316257#316257
+\newcommand{\PackageToDTMdate}[2]{%	converts date in 'YYYY/MM/DD' format to DTMdate and saves to #2
+    \StrLeft{#1}{4}[\myYear]%
+    \StrRight{#1}{2}[\myDay]%
+    \StrMid{#1}{6}{7}[\myMonth]%
+		\DTMsavenoparsedate{#2}{\myYear}{\myMonth}{\myDay}{-1}%
+    %\DTMdate{\myYear-\myMonth-\myDay}%
+}
+
+\PackageToDTMdate{\hgbDate}{hgbPackageDate}	% converts package date to DTM format: \DTMusedate{hgbPackageDate}
+\DTMsavenoparsedate{hgbToday}{\the\year}{\the\month}{\the\day}{-1} % today's date in DTM format: \DTMusedate{hgbToday}
+
+\newcounter{hgbAgeLimit}\setcounter{hgbAgeLimit}{365}	% warn if package is older than 1 year
+\newcount\hgbAge
+\DTMsaveddatediff{hgbToday}{hgbPackageDate}{\hgbAge}
+
+\newcommand{\hgbWarnOldPackage}[1]{\PackageWarning{hagenberg-thesis}{%
+^^J****************************************************************
+^^JNOTE: 'hagenberg-thesis' is #1 days old - pls. check for updates 
+^^Jat https://github.com/Digital-Media/HagenbergThesis
+^^J****************************************************************
+^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
+}
+
+\ifthenelse{\hgbAge>\value{hgbAgeLimit} \AND \NOT \boolean{hgb@noUpdateCheck}}%
+	{\hgbWarnOldPackage{\the\hgbAge}}{}
+
+
+%% ------------------------------------------------------
 
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
 \RequirePackage{eurosym}			% provides \euro - conflict with marvosym on \EUR!

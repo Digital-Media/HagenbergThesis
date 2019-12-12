@@ -20,11 +20,13 @@
 %% Handling class options --------------------------------------------------------------
 
 \DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
-\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption*{\ClassWarning{hgbarticle}{Unknown document option '\CurrentOption'.}}
-\ProcessOptions
+%\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption*{\ClassWarning{hgbreport}{Unknown document option '\CurrentOption'.}}
+% pass all other options to hgb.sty
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\ProcessOptions*
 
 %% Paper options and style file -----------------------------------------------
 
