@@ -8,9 +8,9 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Added a new load-time check to validate if the currently used `hagenberg-thesis` installation is no older than 365 days (in `hgb.sty`). Otherwise a warning is issued with a reminder to check for updates on Github. This check can be suppressed by passing the new class option `noUpdateCheck`. In all `.cls` files the handling of class options was modified to pass all non-declared options to `hgb.sty`. In this course, the (obsolete) `datetime` package was replaced by the `datetime2` package (https://github.com/Digital-Media/HagenbergThesis/commit/2bc1895658b51904bfbbc2a7ec63230f23b9e17f).
+- 2019/12/12: Added a new load-time check to validate if the currently used `hagenberg-thesis` installation is no older than 365 days (in `hgb.sty`). Otherwise a warning is issued with a reminder to check for updates on Github. This check can be suppressed by passing the new class option `noUpdateCheck`. In all `.cls` files the handling of class options was modified to pass all non-declared options to `hgb.sty`. In this course, the (obsolete) `datetime` package was replaced by the `datetime2` package (https://github.com/Digital-Media/HagenbergThesis/commit/2bc1895658b51904bfbbc2a7ec63230f23b9e17f).
 
-- Added information on how/when to use the ``@unpublished`` biblatex tag in ``examples/HgbThesisTutorial`` (https://github.com/Digital-Media/HagenbergThesis/commit/90296eafc6089949780bf9c5e40b85836274fe3c).
+- 2019/11/19: Added information on how/when to use the ``@unpublished`` biblatex tag in ``examples/HgbThesisTutorial`` (https://github.com/Digital-Media/HagenbergThesis/commit/90296eafc6089949780bf9c5e40b85836274fe3c).
 
 ## [2019/05/16]
 
