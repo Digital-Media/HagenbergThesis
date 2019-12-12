@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbreport}[2019/10/24]
+\ProvidesClass{hgbreport}[2019/12/12]
 
 \typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
 
@@ -22,11 +22,13 @@
 %% Handling class options --------------------------------------------------------------
 
 \DeclareOption{notitlepage}{\PassOptionsToClass{\CurrentOption}{report}}
-\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption*{\ClassWarning{hgbreport}{Unknown document option '\CurrentOption'.}}
-\ProcessOptions
+%\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption*{\ClassWarning{hgbreport}{Unknown document option '\CurrentOption'.}}
+% pass all other options to hgb.sty
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\ProcessOptions*
 
 
 %% Paper options and style file -----------------------------------------------

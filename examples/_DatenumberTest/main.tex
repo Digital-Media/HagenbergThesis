@@ -1,0 +1,257 @@
+%% Ein einfaches template für einen Übungsbericht unter verwendung des Hagenberg Setups
+%% basierend auf der LaTeX 'report' Standardklasse.
+%% äöüÄÖÜß  <-- no German Umlauts here? Use an UTF-8 compatible editor!
+
+%%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = de_DE
+% !BIB program = biber
+
+\documentclass[german,notitlepage,smartquotes,noUpdateCheck]{hgbreport}
+%\documentclass[german,notitlepage,smartquotes]{hgbreport}
+
+\RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
+
+\RequirePackage{datenumber}
+\RequirePackage{stringstrings}
+\RequirePackage{xstring}				% will replace stringstrings?
+
+
+\renewcommand{\chapter}[1]{}		% \chapter Befehl ist deaktiviert
+
+\graphicspath{{images/}}	% Verzeichnis mit Bildern und Grafiken
+
+\bibliography{references}	% Biblatex-Literaturdatei (references.bib)
+\ExecuteBibliographyOptions{backref=false}
+
+
+
+
+%%-----------------------------------------------------------
+\setcounter{chapter}{3}	% <----- Auf die Übungsnummer setzen
+%%-----------------------------------------------------------
+
+\author{Peter A.\ Schlaumeier}
+\title{MTD128 Digitale Medientechnik II -- SS 2017\\
+				Übungsabgabe \arabic{chapter}}
+\date{\today}
+
+
+%%%----------------------------------------------------------
+\begin{document}
+%%%----------------------------------------------------------
+\maketitle
+%%%----------------------------------------------------------
+
+\subsection*{Final result}
+
+newlinechar = {\showthe\newlinechar}
+
+\ifthenelse{\hgbAge>\value{hgbAgeLimit}}%
+	{HGB too old}%
+	{HGB is fine!}
+
+
+
+hgbPackageDate default = \DTMusedate{hgbPackageDate}
+
+\DTMsetdatestyle{iso}
+hgbPackageDate iso = \DTMusedate{hgbPackageDate}
+
+\DTMsetdatestyle{default}
+hgbPackageDate default = \DTMusedate{hgbPackageDate}
+
+
+\DTMsetregional
+hgbPackageDate regional = \DTMusedate{hgbPackageDate}
+
+
+hgbToday = \DTMusedate{hgbToday}
+
+hgbAge = \the\hgbAge\ days
+
+hgbAgeLimit = \arabic{hgbAgeLimit} days
+
+\noindent
+\ifnum\hgbAge>\value{hgbAgeLimit}%
+     HGB is too old (limit is \arabic{hgbAgeLimit} days)!%
+\else
+    HGB is fine.%
+\fi
+
+
+
+
+\subsection*{Misc}
+
+
+\verb!\hgbDate! = \hgbDate.
+
+\subsection*{Initialization with \texttt{datetime2}}
+
+\DTMsavedate{HGBdate}{2019-12-01}
+
+\noindent
+\DTMusedate{HGBdate}\\
+\DTMfetchyear{HGBdate}\\
+\DTMfetchmonth{HGBdate}\\
+\DTMfetchday{HGBdate}\\
+
+
+
+
+\subsection*{Calculations with package \texttt{datenumber}}
+
+\setstartyear{2000}
+\setdatenumber{2007}{11}{22}
+\noindent
+datenumber = \thedatenumber.
+
+\newcounter{mydatenumber}
+\setmydatenumber{mydatenumber}{2007}{11}{23}
+\noindent
+mydatenumber = \themydatenumber.
+
+%% -----------------------
+
+\newcounter{HGBdatenumber}
+\setmydatenumber{HGBdatenumber}{\DTMfetchyear{HGBdate}}{\DTMfetchmonth{HGBdate}}{\DTMfetchday{HGBdate}}
+\noindent
+HGBdatenumber = \theHGBdatenumber.
+
+\newcounter{dateHgb}%
+\newcounter{dateAge}%
+
+%\newcommand{\daydifftoday}{%
+\setmydatenumber{dateHgb}{\DTMfetchyear{HGBdate}}{\DTMfetchmonth{HGBdate}}{\DTMfetchday{HGBdate}}%
+\setmydatenumber{dateAge}{\the\year}{\the\month}{\the\day}%
+\addtocounter{dateAge}{-\thedateHgb}%
+%\thedateAge
+%}
+
+\noindent
+HagenbergThesis is \thedateAge\ days old.
+
+\newcounter{ageLimit}\setcounter{ageLimit}{6}
+
+\noindent
+\ifnum\value{dateAge}>\value{ageLimit}%
+     HGB is too old (limit is \arabic{ageLimit})!%
+    \else 
+      HGB is fine.%
+    \fi
+
+%\PackageWarning{hagenberg-thesis}{%
+%^^J***********************************************************
+%^^J'hagenberg-thesis' is \arabic{dateAge} days old - pls. check for updates at
+%^^Jhttps://github.com/Digital-Media/HagenbergThesis
+%^^J***********************************************************
+%^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
+
+%% ----------------------------------------------------------------------------------------
+
+
+
+
+
+\subsection*{Problem: convert from ``2014/12/20'' (Latex package version date) to \texttt{DTMdate}}
+
+\noindent
+\textbf{Look at} \url{https://tex.stackexchange.com/questions/396363/input-a-date-to-datetime2-in-a-format-different-than-iso/396483#396483}
+for adapting to Latex date format!
+
+%% problem: convert from "2014/12/20" -> DTNdate
+
+%\url{https://tex.stackexchange.com/questions/218813/latex-access-every-character-of-an-string-variable
+%\usepackage{stringstrings}
+
+%\def\x{2014/12/20}
+\newcommand{\hgbDateXX}{2019/12/10}
+\def\SSyear{\substring{\hgbDateXX}{1}{4}}
+\def\SSmonth{\substring{\hgbDateXX}{6}{7}}
+\def\SSday{\substring{\hgbDateXX}{9}{10}} % The $ implies the last character of the string
+
+\noindent
+\verb!\SSyear\ \SSmonth\ \SSday! = \SSyear\ \SSmonth\ \SSday
+
+\newcommand{\MakeDateString}[3]{%
+#1-#2-#3
+}
+
+\def\DateString{\MakeDateString{\SSyear}{\SSmonth}{\SSday}}
+
+\noindent
+MakeDateString1: \MakeDateString{\SSyear}{\SSmonth}{\SSday}\\
+MakeDateString2: \DateString
+
+% Look here: https://tex.stackexchange.com/questions/335635/expansion-of-argument-to-dtmdate-function-in-datetime2 !!
+% https://tex.stackexchange.com/questions/320256/datetime2s-dtmsavetimestamp-cant-read-from-macro-expansion-or-catcode-issue?rq=1
+%\DTMsavedate{HgbBuildDateA}{\DateString}                   % not working!
+%\DTMsavedate{HgbBuildDateA}{\SSyear-\SSmonth-\SSday}       % not working!
+\DTMsavenoparsedate{HgbBuildDateB}{2019}{12}{10}{-1} %{\SSyear}{\SSmonth}{\SSday}{-1}
+
+\def\YYYY{2019}
+\def\MM{12}
+\def\DD{10}
+\DTMsavenoparsedate{HgbBuildDateC}{\YYYY}{\MM}{\DD}{-1}     % working!
+%\DTMsavenoparsedate{HgbBuildDateC}{\SSyear}{\SSmonth}{\SSday}{-1}     % NOT working!
+\noindent
+HgbBuildDateC = \DTMusedate{HgbBuildDateC}
+
+
+%% -------------------------------------------------------
+%https://tex.stackexchange.com/questions/321313/change-pre-defined-date-in-command-and-save-to-datetime2-expansion-issue?rq=1
+% THIS IS THE SOLUTION!!!!???
+
+\def\eDTMsavedate#1#2{% #1: counter-name, #2: date-string
+  \begingroup\edef\@x{\endgroup
+    \noexpand\DTMsavedate{#1}{#2}%
+  }\@x
+}
+
+\def\origDate{1977-10-26}
+\eDTMsavedate{origdate}{\origDate}%
+\noindent
+origdate = \DTMusedate{origdate}
+
+
+%%%----------------------------------------------------------
+
+% simpler calculation (without datenumber package)
+
+\DTMsavenoparsedate{TheDateA}{2019}{12}{01}{-1}
+\DTMsavenoparsedate{TheDateB}{2019}{12}{10}{-1}
+
+\newcount\myDiff
+\DTMsaveddatediff{TheDateB}{TheDateA}{\myDiff}
+
+\noindent
+myDiff = \the\myDiff.
+
+\noindent
+\ifnum\myDiff>6
+    HGB is too old (limit is \arabic{ageLimit})!%
+\else
+    HGB is fine.%
+\fi
+
+
+\subsection*{Testing \texttt{xstring} package}
+
+%% see https://tex.stackexchange.com/questions/451/when-to-use-edef-noexpand-and-expandafter
+%      https://tex.stackexchange.com/questions/8163/what-is-the-difference-between-let-and-edef
+
+\expanded{\YYYY-}
+
+%\edef\EDEFSTRING{\SSyear}  %{\SSyear-\SSmonth-\SSday}
+%\verb!\EDEFSTRING! = \EDEFSTRING
+
+%\newcommand{\YearD}[0]{\StrLeft{\SSyear\-\SSmonth\-\SSday}{10}}
+%\verb!\YearD! = \StrLeft{\SSyear-\SSmonth-\SSday}{10}
+
+%\DTMsavenoparsedate{TheDateD}{1977}{12}{10}{-1}
+
+
+
+\end{document}
