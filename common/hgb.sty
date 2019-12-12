@@ -69,7 +69,7 @@
 %% Date-related stuff ---------------------------------------------------------
 
 \RequirePackage{xstring}			% for string operations
-\RequirePackage[english,ngerman,calc,style=iso,showdow=false]{datetime2}	% replaces obsolete 'datetime' package
+\RequirePackage[english,ngerman,calc,useregional,showdow=false]{datetime2}	% replaces obsolete 'datetime' package
 
 % https://tex.stackexchange.com/questions/316253/latex-convert-date-string-format-from-mm-dd-yyyyy-to-dd-mm-yyyy/316257#316257
 \newcommand{\PackageToDTMdate}[2]{%	converts date in 'YYYY/MM/DD' format to DTMdate and saves to #2
