@@ -8,7 +8,8 @@
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
-\documentclass[german,notitlepage,smartquotes]{hgbreport}
+\documentclass[german,notitlepage,smartquotes,noUpdateCheck]{hgbreport}
+%\documentclass[german,notitlepage,smartquotes]{hgbreport}
 
 \RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
 
@@ -42,6 +43,47 @@
 %%%----------------------------------------------------------
 \maketitle
 %%%----------------------------------------------------------
+
+\subsection*{Final result}
+
+newlinechar = {\showthe\newlinechar}
+
+\ifthenelse{\hgbAge>\value{hgbAgeLimit}}%
+	{HGB too old}%
+	{HGB is fine!}
+
+
+
+hgbPackageDate default = \DTMusedate{hgbPackageDate}
+
+\DTMsetdatestyle{iso}
+hgbPackageDate iso = \DTMusedate{hgbPackageDate}
+
+\DTMsetdatestyle{default}
+hgbPackageDate default = \DTMusedate{hgbPackageDate}
+
+
+\DTMsetregional
+hgbPackageDate regional = \DTMusedate{hgbPackageDate}
+
+
+hgbToday = \DTMusedate{hgbToday}
+
+hgbAge = \the\hgbAge\ days
+
+hgbAgeLimit = \arabic{hgbAgeLimit} days
+
+\noindent
+\ifnum\hgbAge>\value{hgbAgeLimit}%
+     HGB is too old (limit is \arabic{hgbAgeLimit} days)!%
+\else
+    HGB is fine.%
+\fi
+
+
+
+
+\subsection*{Misc}
 
 
 \verb!\hgbDate! = \hgbDate.
@@ -100,12 +142,12 @@ HagenbergThesis is \thedateAge\ days old.
       HGB is fine.%
     \fi
 
-\PackageWarning{hagenberg-thesis}{%
-^^J***********************************************************
-^^J'hagenberg-thesis' is \arabic{dateAge} days old - pls. check for updates at
-^^Jhttps://github.com/Digital-Media/HagenbergThesis
-^^J***********************************************************
-^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
+%\PackageWarning{hagenberg-thesis}{%
+%^^J***********************************************************
+%^^J'hagenberg-thesis' is \arabic{dateAge} days old - pls. check for updates at
+%^^Jhttps://github.com/Digital-Media/HagenbergThesis
+%^^J***********************************************************
+%^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
 
 %% ----------------------------------------------------------------------------------------
 
@@ -198,6 +240,7 @@ myDiff = \the\myDiff.
 \subsection*{Testing \texttt{xstring} package}
 
 %% see https://tex.stackexchange.com/questions/451/when-to-use-edef-noexpand-and-expandafter
+%      https://tex.stackexchange.com/questions/8163/what-is-the-difference-between-let-and-edef
 
 \expanded{\YYYY-}
 
