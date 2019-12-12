@@ -35,12 +35,13 @@
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
-
-\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}}
-\ProcessOptions
+%\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}}
+% pass all other options to hgb.sty
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\ProcessOptions*
 
 %% Paper Options and Style File -----------------------------------------------
 
