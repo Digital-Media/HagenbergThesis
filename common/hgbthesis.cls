@@ -35,12 +35,13 @@
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
-
-\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}}
-\ProcessOptions
+%\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\DeclareOption*{\ClassWarning{hgbthesis}{Unknown document option '\CurrentOption'.}}
+% pass all other options to hgb.sty
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
+\ProcessOptions*
 
 %% Paper Options and Style File -----------------------------------------------
 
@@ -175,7 +176,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -208,7 +209,8 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -241,7 +243,8 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -276,7 +279,8 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -397,7 +401,8 @@ This work is published under the conditions of the
 		\par
 		\vspace{10mm}
 		\noindent
-		\@placeofstudy, am \formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}
+		%\@placeofstudy, am \formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}
+		\@placeofstudy, am \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
 		\par
 		\vspace{12mm}
 		\noindent
@@ -420,7 +425,8 @@ This work is published under the conditions of the
 		\vspace{10mm}
 		\noindent
 		%\@placeofstudy, \the\year-\leadingzero{\month}-\leadingzero{\day} %http://de.wikibooks.org/wiki/LaTeX-W%F6rterbuch:_today 
-		\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
+		%\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
+		\@placeofstudy, \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
 		\par
 		\vspace{12mm}
 		\noindent

@@ -5,7 +5,7 @@
 %% File encoding: ASCII
 
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\hgbDate}{2019/10/24}	% version string
+\newcommand{\hgbDate}{2019/12/12}	% version string
 \ProvidesPackage{hgb}[\hgbDate]
 \typeout{******************* hgb.sty  (options=\@nameuse{opt@hgb.sty}) ***********************}
 
@@ -13,14 +13,20 @@
 \providecommand{\hgb@MainLanguage}{german}
 
 \RequirePackage{xifthen}
+
 \newboolean{hgb@SmartQuotesOn}
-\setboolean{hgb@SmartQuotesOn}{false}
+\setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
+
+\newboolean{hgb@noUpdateCheck}
+\setboolean{hgb@noUpdateCheck}{false}	% update check is perfomed by default
 
 % Handle package options passed from the class file
 \DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
 \DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{smartquotes}{\setboolean{hgb@SmartQuotesOn}{true}}
+\DeclareOption{noUpdateCheck}{\setboolean{hgb@noUpdateCheck}{true}}
+\DeclareOption*{\ClassWarning{hgb}{Unknown option '\CurrentOption'.}}
 \ProcessOptions*
 
 %% Required Packages ----------------------------------------------------------
@@ -59,9 +65,42 @@
 	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
 {\end{otherlanguage}}%
 
+
+%% Date-related stuff ---------------------------------------------------------
+
+\RequirePackage{xstring}			% for string operations
+\RequirePackage[english,ngerman,calc,useregional,showdow=false]{datetime2}	% replaces obsolete 'datetime' package
+
+% https://tex.stackexchange.com/questions/316253/latex-convert-date-string-format-from-mm-dd-yyyyy-to-dd-mm-yyyy/316257#316257
+\newcommand{\PackageToDTMdate}[2]{%	converts date in 'YYYY/MM/DD' format to DTMdate and saves to #2
+    \StrLeft{#1}{4}[\myYear]%
+    \StrRight{#1}{2}[\myDay]%
+    \StrMid{#1}{6}{7}[\myMonth]%
+		\DTMsavenoparsedate{#2}{\myYear}{\myMonth}{\myDay}{-1}%
+    %\DTMdate{\myYear-\myMonth-\myDay}%
+}
+
+\PackageToDTMdate{\hgbDate}{hgbPackageDate}	% converts package date to DTM format: \DTMusedate{hgbPackageDate}
+\DTMsavenoparsedate{hgbToday}{\the\year}{\the\month}{\the\day}{-1} % today's date in DTM format: \DTMusedate{hgbToday}
+
+\newcounter{hgbAgeLimit}\setcounter{hgbAgeLimit}{365}	% warn if package is older than 1 year
+\newcount\hgbAge
+\DTMsaveddatediff{hgbToday}{hgbPackageDate}{\hgbAge}
+
+\newcommand{\hgbWarnOldPackage}[1]{\PackageWarning{hagenberg-thesis}{%
+^^J****************************************************************
+^^JNOTE: 'hagenberg-thesis' is #1 days old - pls. check for updates 
+^^Jat https://github.com/Digital-Media/HagenbergThesis
+^^J****************************************************************
+^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
+}
+
+\ifthenelse{\hgbAge>\value{hgbAgeLimit} \AND \NOT \boolean{hgb@noUpdateCheck}}%
+	{\hgbWarnOldPackage{\the\hgbAge}}{}
+
+
 %% ------------------------------------------------------
 
-\RequirePackage{datetime}
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
 \RequirePackage{eurosym}			% provides \euro - conflict with marvosym on \EUR!
 
@@ -221,29 +260,6 @@
 
 \ifthenelse{\equal{\bbl@main@language}{english}}%
 	{\floatname{program}{Program}}{}%
-
-
-%% Date-related commands ------------------------------------------------------
-
-\RequirePackage{datetime}
-\showdowfalse						% do not show day of week
-
-% adapted from \newdate in datetime.sty
-\newcommand*{\@modifydate}[4]{%
-\@namedef{date@#1@d}{#2}%
-\@namedef{date@#1@m}{#3}%
-\@namedef{date@#1@y}{#4}%
-}
-
-\newdate{hgb@date}{\the\day}{\the\month}{\the\year}
-\newcommand{\Date}[3]{%	example for use: \Date{16}{5}{2008}
-  \@modifydate{hgb@date}{#1}{#2}{#3}
-}
-
-\newcommand{\hgb@GetDateDay}{\getdateday{hgb@date}}
-\newcommand{\hgb@GetDateMonth}{\getdatemonth{hgb@date}}
-\newcommand{\hgb@GetDateYear}{\getdateyear{hgb@date}}
-\newcommand{\hgb@DisplayDate}{\displaydate{hgb@date}}
 
 %% Experimental items ---------------------------------------------------------
 
