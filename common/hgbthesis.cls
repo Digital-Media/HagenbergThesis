@@ -176,7 +176,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \DTMgermanmonthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
