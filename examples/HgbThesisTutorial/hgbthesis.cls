@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2019/12/12]
+\ProvidesClass{hgbthesis}[2020/01/23]
 
 \RequirePackage{xifthen}
 
@@ -176,7 +176,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \DTMgermanmonthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
+			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
