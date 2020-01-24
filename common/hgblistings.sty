@@ -360,6 +360,15 @@ keepspaces=true,%
 {}
 
 
+% Code Environment for Python
+\lstnewenvironment{PythonCode}[1][]
+{\lstset{%
+	language=Python,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
 % Language Definition and Code Environment for Swift
 \lstdefinelanguage{Swift}
 {	keywords=[1]{typealias,true, false,catch,private,internal,public,func,protocol,%
