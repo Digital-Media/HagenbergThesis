@@ -4,7 +4,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-\ProvidesPackage{hgblistings}[2020/01/23]
+\ProvidesPackage{hgblistings}[2020/01/24]
 
 \RequirePackage{ifthen}
 \RequirePackage{textcomp}	%% required for upquote option
@@ -355,6 +355,15 @@ keepspaces=true,%
 \lstnewenvironment{PhpCode}[1][]
 {\lstset{%
 	language=PHP,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for Python
+\lstnewenvironment{PythonCode}[1][]
+{\lstset{%
+	language=Python,
 	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
 	#1}}%
 {}
