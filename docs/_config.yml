@@ -1,0 +1,4 @@
+theme: jekyll-theme-slate
+title: Hagenberg LaTeX Thesis Template
+description: A LaTeX Template for Bachelor's and Master's Theses
+markdown: kramdown
