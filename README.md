@@ -6,7 +6,7 @@ This is a collection of modern LaTeX classes, style files and example documents 
 **Bachelor, Master or Diploma theses** and related academic manuscripts in English and German. 
 Pre-configured documents for English and German are available, easy to use even for LaTeX beginners and compatible with LaTeX distributions for Windows, Mac OS and Linux. The document classes are immediately usable and easy to customize.
 
-The main document ([**HgbThesisTutorial**](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf))
+The main document '[**HgbThesisTutorial**](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/HgbThesisTutorial/main.pdf)'
 serves both as a **template** and **tutorial** for authoring a Bachelor, Master or Diploma thesis with LaTeX. 
 Originally developed as an internal standard at the Upper Austria University of Applied Sciences at Hagenberg,
 this setup has become popular at several other (mostly German-speaking) institutions over the last years.
@@ -56,7 +56,7 @@ The following sample documents are currently available:
 ## Additional information
 
 * [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
-* [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/master/ctan/hagenberg-thesis/doc/hagenberg-thesis.pdf)
+* [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/master/examples/Manual/main.pdf)
 * [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
 * [Recent changes](CHANGELOG.md)
 * [License](LICENSE.md)
