@@ -14,7 +14,8 @@ this setup has become popular at several other (mostly German-speaking) institut
 This site is the main repository for the **hagenberg-thesis** package, which is also available
 on [CTAN](https://ctan.org/pkg/hagenberg-thesis) and shared by popular package repositories
 such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texlive/).
-Note that the **most recent versions are always found *here***, while only stable releases are submitted to CTAN.
+Note that the **most recent versions are always found *here***, while only periodic 
+[releases](https://github.com/Digital-Media/HagenbergThesis/releases) are submitted to CTAN.
 
 
 ## How to use
