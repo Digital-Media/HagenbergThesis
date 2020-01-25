@@ -16,8 +16,6 @@ on [CTAN](https://ctan.org/pkg/hagenberg-thesis) and shared by popular package r
 such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texlive/).
 Note that the most recent versions are always found *here*, while only stable releases are submitted to CTAN.
 
-**NOTE:** Typical users should **NOT clone THIS REPOSITORY** -- it is used for development only!
-
 
 ## How to use
 
