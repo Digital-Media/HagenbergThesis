@@ -99,7 +99,8 @@ The following parameters must be specified for \emph{all} types:
 \item \verb!\dateofsubmission{yyyy}{mm}{dd}!,
 \item \verb!\advisor{...}! (optional).
 \end{itemize}
-
+Note that \texttt{hgbthesis} only supports a \emph{single author} inside the \verb!\author{...}! macro 
+argument (commands \verb!\and! and \verb!\thanks{...}! are deactivated)!
 
 \section{Style files and user commands}
 
@@ -175,6 +176,10 @@ independently of the document classes listed above:
 \item \textbf{\texttt{{\bs}wrt}}: \wrt
 \end{itemize}
 
+\noindent 
+Note that none the above abbreviation macros ``eats'' subsequent white space,
+\ie, they can be used without additional controls, as in ``\verb!\wrt what I said!'',
+for example.
 
 \subsection{Bibliography commands (\texttt{hgbbib.sty})}
 
