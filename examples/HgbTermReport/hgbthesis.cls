@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2020/01/24]
+\ProvidesClass{hgbthesis}[2020/01/27]
 
 \RequirePackage{xifthen}
 
@@ -474,9 +474,12 @@ This work is published under the conditions of the
 	\@declarationpage
 }
 
-% Add PDF meta data and create title pages
+\newcommand{\@warnmultipleauthors}{\PackageWarning{hagenberg-thesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
 
+% Add PDF meta data and create title pages
 \renewcommand{\maketitle}{	%replace standard LaTeX-command
+	\def\and{\@warnmultipleauthors}% suppress \and inside \author{..}
+	\renewcommand{\thanks}[1]{}% suppress \thanks{..} inside \author{..}
 	\hypersetup{
 			pdftitle={\@title},
 			pdfauthor={\@author},
