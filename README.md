@@ -59,7 +59,7 @@ The following sample documents are currently available:
 * [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
 * [Recent changes](CHANGELOG.md)
 * [License](LICENSE.md)
-* [Web page for this repository](https://Digital-Media.github.io/HagenbergThesis/) (currently empty)
+
 
 
 
