@@ -5,7 +5,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2020/01/31]
+\ProvidesPackage{hgbbib}[2020/02/27]
 
 \usepackage{csquotes}				% recommended for biblatex
 
@@ -98,6 +98,43 @@
 %of the classic bibtex-workflow in the future.
 \newcommand{\AddBibFile}[1]{
 	\addbibresource{#1}%
+}
+
+% Declare a source map so the sorting in \cite commands works across the bib categories
+% The maps need to correspond to the entry types in the bib categories (which can't unfortunately used)
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{ % All entry types except for avmedia, software and online
+      \pernottype{movie}
+	  \pernottype{video}
+	  \pernottype{music}
+	  \pernottype{audio}
+	  \pernottype{image}
+	  \pernottype{sofware}
+	  \pernottype{electronic}
+	  \pernottype{online}
+	  \pernottype{www}
+	  \step[fieldset=presort, fieldvalue = {A}]
+	}
+	\map{ % avmedia entry types
+	  \pertype{movie}
+	  \pertype{video}
+	  \pertype{music}
+	  \pertype{audio}
+	  \pertype{image}
+	  \step[fieldset=presort, fieldvalue = {B}]
+	}
+	\map{ % software entry types
+	  \pertype{sofware}
+	  \pertype{electronic}
+	\step[fieldset=presort, fieldvalue = {C}]
+	}
+	\map{ % online entry types
+	  \pertype{online}
+	  \pertype{www}
+	  \step[fieldset=presort, fieldvalue = {D}]
+	}
+  }
 }
 
 %See http://www.jr-x.de/publikationen/latex/tipps/zeilenumbruch.html
