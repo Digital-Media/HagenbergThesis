@@ -8,8 +8,6 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- 2020/01/31: Top-level folder ``examples`` renamed to ``documents``.
-
 - 2020/01/27: `hgbthesis.cls` now issues a package warning if trying to define multiple authors inside the `\author{..}` command. The `\and` and `\thanks{..}` commands are suppressed.
 
 - 2020/01/24: Added `PythonCode` environment to include Python code in `listings` environments. Moved all build-related elements to a separate non-public repository, leaving only user-relevant parts in `HagenbergThesis`.
@@ -18,8 +16,13 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 - 2019/11/19: Added information on how/when to use the ``@unpublished`` biblatex tag in ``examples/HgbThesisTutorial`` (https://github.com/Digital-Media/HagenbergThesis/commit/90296eafc6089949780bf9c5e40b85836274fe3c).
 
+### Changed
+
+- 2020/01/31: Top-level folder ``examples`` renamed to ``documents``.
+
 ### Fixed
 
+- 2020/02/28: Fixed sorting error with multiple keys in cite commands.
 - 2020/01/23: Fixed error with \DTMgermanmonthname
 
 ## [2019/05/16]
