@@ -14,7 +14,7 @@ All build-related parts are now contained in the new ``dev/`` directory, where
 The build process updates the ``documents/`` and ``dev/ctan/`` directories.
 There is no duplication of document source files, all are in ``documents/``.
 Release dates are now automatically inserted (during build) into any date field, the ``9999/01/01``
-dummy markers are not required any more.
+dummy markers are not required any more. Experimental: ``latexmk`` is used in the build process.
 
 
 - 2020/01/27: `hgbthesis.cls` now issues a package warning if trying to define multiple authors inside the `\author{..}` command. The `\and` and `\thanks{..}` commands are suppressed.
