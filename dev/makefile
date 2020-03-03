@@ -60,7 +60,7 @@ $(EXAMPLES) :
 #	Run the LaTeX build in a sub-makefile:
 	make -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
-	cd $(DOCUMENTSDIR)/; rm -f $@.zip; $(ZIPEXE) -r $@.zip $@
+	cd $(DOCUMENTSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
 
 ctan :
 #	Builds the CTAN distribution
