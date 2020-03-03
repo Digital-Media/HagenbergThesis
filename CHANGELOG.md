@@ -8,6 +8,15 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- 2020/03/03: Modified repository setup (without GIT submodules) and adapted build process.
+All build-related parts are now contained in the new ``dev/`` directory, where
+.sty, .cls and .bib files are stored in a single place (``dev/latex/``).
+The build process updates the ``documents/`` and ``dev/ctan/`` directories.
+There is no duplication of document source files, all are in ``documents/``.
+Release dates are now automaticall inserted (during build) into any date field, the ``9999/01/01``
+dummy marker is not required any more.
+
+
 - 2020/01/27: `hgbthesis.cls` now issues a package warning if trying to define multiple authors inside the `\author{..}` command. The `\and` and `\thanks{..}` commands are suppressed.
 
 - 2020/01/24: Added `PythonCode` environment to include Python code in `listings` environments. Moved all build-related elements to a separate non-public repository, leaving only user-relevant parts in `HagenbergThesis`.
