@@ -45,7 +45,7 @@ all : setdates build ctan
 setdates :
 #	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty files:
 	@echo Updating release date in all sty/cls files by [$(RELEASEDATE)]
-	$(shell sed -i 's/$(DATEPATTERN)/\[$(RELEASEDATE)\]%%AUTO/' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls)
+	@$(shell sed -i 's/$(DATEPATTERN)/\[$(RELEASEDATE)\]%%AUTO/' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls)
 
 build : $(EXAMPLES)
 #	Defines a make target for each directory name in EXAMPLES
@@ -54,36 +54,36 @@ $(EXAMPLES) :
 #	Builds and zips every document (directory) in EXAMPLES
 	@echo Running LaTeX on $@
 #	Copy all .sty .cls *.bib files to the example directory:
-	cp -u $(SOURCEDIR)/*.sty $(DOCUMENTSDIR)/$@
-	cp -u $(SOURCEDIR)/*.cls $(DOCUMENTSDIR)/$@
-	cp -u $(SOURCEDIR)/*.bib $(DOCUMENTSDIR)/$@
+	@cp -u $(SOURCEDIR)/*.sty $(DOCUMENTSDIR)/$@
+	@cp -u $(SOURCEDIR)/*.cls $(DOCUMENTSDIR)/$@
+	@cp -u $(SOURCEDIR)/*.bib $(DOCUMENTSDIR)/$@
 #	Run the LaTeX build in a sub-makefile:
-	make -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
+	@make -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
-	cd $(DOCUMENTSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
+	@cd $(DOCUMENTSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
 
 ctan :
 #	Builds the CTAN distribution
 	@echo "***** Making $@ *****"
 #	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
-	cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
+	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
 #	Copy the entire documents/ directory to ctan/hagenberg-thesis/
-	cp -u -R $(DOCUMENTSDIR)/* $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
+	@cp -u -R $(DOCUMENTSDIR)/* $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
 #	Rename ..documents/ to ..examples/
 #	mv $(CTANDIR)/$(CTANPKG)/$(DOCUMENTSDIR) $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
 #	Remove all .sty and .cls files in ctan/hagenberg-thesis/examples/ (recursively):
-	find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.sty" -type f -delete
-	find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.cls" -type f -delete
+	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.sty" -type f -delete
+	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.cls" -type f -delete
 #	Remove all top-level ZIP files in ctan/hagenberg-thesis/examples/:
-	find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -maxdepth 1 -name "*.zip" -type f -delete
+	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -maxdepth 1 -name "*.zip" -type f -delete
 #	Copy manual/tutorial source and PDF to ctan/hagenberg-thesis/doc/
-	cp -u $(DOCUMENTSDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
-	cp -u $(DOCUMENTSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
-	cp -u $(DOCUMENTSDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
+	@cp -u $(DOCUMENTSDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
+	@cp -u $(DOCUMENTSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
+	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
 #	Update version number in package README file:
-	$(shell sed -i 's/$(READMEVERSIONTAG).*/$(READMEVERSIONTAG) $(RELEASEDATE)/' $(CTANDIR)/$(CTANPKG)/README.md)
+	@$(shell sed -i 's/$(READMEVERSIONTAG).*/$(READMEVERSIONTAG) $(RELEASEDATE)/' $(CTANDIR)/$(CTANPKG)/README.md)
 #	Make a ZIP of the complete ctan bundle:
-	cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXE) -r $(CTANPKG).zip $(CTANPKG)
+	@cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXE) -r -q $(CTANPKG).zip $(CTANPKG)
 
 
 

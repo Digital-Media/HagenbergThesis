@@ -3,6 +3,7 @@ SHELL = /bin/sh
 
 PDFLATEX=pdflatex
 LATEXFLAGS=-interaction=nonstopmode -file-line-error
+
 BIBTEX=biber
 IMAGEDIR=images
 LATEXJOB=main
@@ -13,25 +14,24 @@ LOCALDIR := $(shell basename $(LOCALPATH))
 TEXFILES := $(shell find . -name "\*.tex" -or -name "\*.sty" -or -name "\*.cls" -or -name "\*.bib")
 PICFILES := $(shell find $(IMAGEDIR)/ -name "\*.*" -type f)
 
-ERRORCNT=0
 
 all: $(LATEXJOB).pdf clean
 .PHONY : all clean listfiles
 
 $(LATEXJOB).pdf: $(TEXFILES) $(PICFILES)
-	@echo Running LaTeX on $(LATEXJOB).tex
-	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-	-$(BIBTEX) $(LATEXJOB)
-	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-	$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-	@echo RETURN STATUS: $?
-#	@ERRORCNT=$(($ERRORCNT + $?))
-#	@echo ERROR COUNT: $(ERRORCNT)
+	@echo Running LaTeX on $(LOCALDIR)/$(LATEXJOB).tex
+#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
+#	-$(BIBTEX) $(LATEXJOB)
+#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
+#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
+#	Experimental: useing latexmk:
+	@latexmk -pdflatex -silent $(LATEXJOB)
+	@latexmk -c $(LATEXJOB)
 
 clean:
 	@echo Cleaning up $(LOCALDIR)
-	rm -f *.bbl *.bcf *.blg *.log *.out *.toc *.run.xml *.tps
-	find . -name "*.aux" -type f -delete
+	@rm -f *.bbl *.bcf *.blg *.log *.out *.toc *.run.xml *.tps
+	@find . -name "*.aux" -type f -delete
 
 listfiles:
 	@echo tex files: $(TEXFILES)
