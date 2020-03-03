@@ -13,8 +13,8 @@ All build-related parts are now contained in the new ``dev/`` directory, where
 .sty, .cls and .bib files are stored in a single place (``dev/latex/``).
 The build process updates the ``documents/`` and ``dev/ctan/`` directories.
 There is no duplication of document source files, all are in ``documents/``.
-Release dates are now automaticall inserted (during build) into any date field, the ``9999/01/01``
-dummy marker is not required any more.
+Release dates are now automatically inserted (during build) into any date field, the ``9999/01/01``
+dummy markers are not required any more.
 
 
 - 2020/01/27: `hgbthesis.cls` now issues a package warning if trying to define multiple authors inside the `\author{..}` command. The `\and` and `\thanks{..}` commands are suppressed.
