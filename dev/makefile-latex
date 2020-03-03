@@ -10,8 +10,10 @@ LATEXJOB=main
 LOCALPATH := $(shell pwd)
 LOCALDIR := $(shell basename $(LOCALPATH))
 
-TEXFILES := $(shell find . -name "*.tex" -or -name "*.sty" -or -name "*.cls" -or -name "*.bib")
-PICFILES := $(shell find $(IMAGEDIR)/ -name "*.*" -type f)
+TEXFILES := $(shell find . -name "\*.tex" -or -name "\*.sty" -or -name "\*.cls" -or -name "\*.bib")
+PICFILES := $(shell find $(IMAGEDIR)/ -name "\*.*" -type f)
+
+ERRORCNT=0
 
 all: $(LATEXJOB).pdf clean
 .PHONY : all clean listfiles
@@ -21,7 +23,10 @@ $(LATEXJOB).pdf: $(TEXFILES) $(PICFILES)
 	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
 	-$(BIBTEX) $(LATEXJOB)
 	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
+	$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
+	@echo RETURN STATUS: $?
+#	@ERRORCNT=$(($ERRORCNT + $?))
+#	@echo ERROR COUNT: $(ERRORCNT)
 
 clean:
 	@echo Cleaning up $(LOCALDIR)
