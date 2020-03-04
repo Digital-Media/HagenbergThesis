@@ -45,7 +45,7 @@ all : setdates build ctan
 setdates :
 #	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty files:
 	@echo Updating release date in all sty/cls files by [$(RELEASEDATE)]
-	@$(shell sed -i 's/$(DATEPATTERN)/\[$(RELEASEDATE)\]%%AUTO/' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls)
+	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls)
 
 build : $(EXAMPLES)
 #	Defines a make target for each directory name in EXAMPLES
@@ -81,7 +81,7 @@ ctan :
 	@cp -u $(DOCUMENTSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
 	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
 #	Update version number in package README file:
-	@$(shell sed -i 's/$(READMEVERSIONTAG).*/$(READMEVERSIONTAG) $(RELEASEDATE)/' $(CTANDIR)/$(CTANPKG)/README.md)
+	@$(shell sed -i 's|$(READMEVERSIONTAG).*|$(READMEVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANPKG)/README.md)
 #	Make a ZIP of the complete ctan bundle:
 	@cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXE) -r -q $(CTANPKG).zip $(CTANPKG)
 
