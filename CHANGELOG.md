@@ -8,7 +8,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- 2020/03/03: Modified repository setup (without GIT submodules) and adapted build process.
+- 2020/03/04: Modified repository setup (without GIT submodules) and adapted build process.
 All build-related parts are now contained in the new ``dev/`` directory, where
 .sty, .cls and .bib files are stored in a single place (``dev/latex/``).
 The build process updates the ``documents/`` and ``dev/ctan/`` directories.
