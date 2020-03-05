@@ -30,7 +30,7 @@ $(LATEXJOB).pdf: $(TEXFILES) $(PICFILES)
 
 clean:
 	@echo Cleaning up $(LOCALDIR)
-	@rm -f *.bbl *.bcf *.blg *.log *.out *.toc *.run.xml *.tps
+	@rm -f *.bbl *.bcf *.blg *.fls *.log *.out *.toc *.run.xml *.tps
 	@find . -name "*.aux" -type f -delete
 
 listfiles:
