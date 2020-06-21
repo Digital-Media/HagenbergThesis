@@ -24,7 +24,7 @@ $(LATEXJOB).pdf: $(TEXFILES) $(PICFILES)
 #	-$(BIBTEX) $(LATEXJOB)
 #	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
 #	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-#	Experimental: useing latexmk:
+#	Experimental: using latexmk:
 	@latexmk -pdf -silent $(LATEXJOB)
 	@latexmk -c $(LATEXJOB)
 

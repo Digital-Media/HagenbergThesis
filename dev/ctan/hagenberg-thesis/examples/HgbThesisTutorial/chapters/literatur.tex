@@ -371,6 +371,7 @@ zugeordnet.
 	Handbuch, Produktbeschreibung & \texttt{@manual} & \pageref{sec:@manual}\\
 	Norm & \texttt{@standard} & \pageref{sec:@standard}\\
 	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
+	Kompositionen, Musiknoten & \texttt{@book}, \texttt{@incollection} & \pageref{sec:Musiknoten}\\
 	Vorpublikation (\zB\ Konferenzeinreichung) & \texttt{@unpublished} & \pageref{sec:@unpublished}\\
 %
 	\hline
@@ -750,7 +751,7 @@ Typen im \texttt{biblatex}-Handbuch \cite{Lehman2018} ansehen, beispielsweise
 
 Wenn nichts davon passt, dann kann auf den Typ \texttt{@misc} zurückgegriffen werden, der ein
 Textfeld \texttt{howpublished} vorsieht, in dem die Art der Publikation individuell 
-angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gesetzestext 
+angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen \emph{Gesetzestext} 
 (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 %
 \begin{itemize}
@@ -766,7 +767,7 @@ angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen Gese
 \item[\cite{OoeRaumordnungsgesetz1994}] \fullcite{OoeRaumordnungsgesetz1994}
 \end{itemize}
 %
-Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein Patent (als Alternative zu \texttt{@patent}, \so):
+Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein \emph{Patent} (als Alternative zu \texttt{@patent}, \so):
 %
 \begin{itemize}
 \item[]
@@ -782,6 +783,50 @@ Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein Patent
 \end{GenericCode}
 \item[\cite{Hough1962}] \fullcite{Hough1962}
 \end{itemize}
+
+
+\subsubsection{Kompositionen und Musiknoten}
+\label{sec:Musiknoten}
+
+Für gedruckte Kompositionen%
+\footnote{Engl.\ \emph{sheet music} oder \emph{musical scores}} gibt es in BibTex leider keinen
+speziellen Eintragstyp. Bei einer \emph{einzelnen} Ausgabe verwendet man am Einfachsten den Typ 
+\texttt{@book}, wie \zB\ (\sa\ \cite{HaydnCelloConcerto2,ShostakovichOp110})
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@book{BachBWV988,
+	author={Bach, Johann Sebastian},
+	title={Goldberg-Variationen für Streichquartett, BWV 988},
+	editor={Anka, Dana},
+	publisher={Musikverlag Hans Sikorski},
+	location={Hamburg},
+	year={2017}
+}
+\end{GenericCode}
+\item[\cite{BachBWV988}] \fullcite{BachBWV988}
+\end{itemize}
+%
+Bei Kompositionen, die in einer \emph{Sammlung} von Stücken herausgegeben wurden,
+kann man -- wie für einen Sammelband -- den Typ \texttt{@incollection} verwenden:
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@incollection{GershwinSummertime,
+	author={Gershwin, George and Heyward, DuBose},
+	title={Summertime},
+	booktitle={The Greatest Songs of George Gershwin},
+	publisher={Chappel Music},
+	location={London},
+	pages={40-43},
+	year={1979}
+}
+\end{GenericCode}
+\item[\cite{GershwinSummertime}] \fullcite{GershwinSummertime}
+\end{itemize}
+
 
 
 \subsubsection{\texttt{@unpublished}}

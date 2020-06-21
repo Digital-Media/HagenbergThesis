@@ -1,3 +1,5 @@
+%%% Biber accepts '%' for marking comments
+
 @thesis{Artner2007,
 	author={Artner, Nicole Maria},
 	title={Analyse und Reimplementierung des Mean-Shift Tracking-Verfahrens},
@@ -353,7 +355,7 @@
 
 @manual{Oostrum2019,
 	author={Oostrum, {Piet van}},
-	title={The \textrm{fancyhdr} and \textrm{extramarks} packages},
+	title={The \texttt{fancyhdr} and \texttt{extramarks} packages},
 	year={2019},
 	month={1},
 	version={3.10},
@@ -455,6 +457,8 @@
 	hyphenation={english}
 }
 
+%%% Beispiel für Online-Quelle -----------------------------------------
+
 @online{WikiReliquienschrein2018,
 	url={https://de.wikipedia.org/wiki/Reliquienschrein},
 	title={Reliquienschrein},
@@ -462,6 +466,8 @@
 	month={9},
 	urldate={2019-02-28}
 }
+
+%%% Beispiel für Audio-Aufnahme -----------------------------------------
 
 @audio{Zappa1995,
 	author={Zappa, Frank},
@@ -473,10 +479,52 @@
 	hyphenation={english}
 }
 
+%%% Beispiele UNPUBLISHED -----------------------------------------
+
 @unpublished{DaiLHS16,
 	author={Dai, Jifeng and Li,Yi and He, Kaiming and Sun, Jian},
 	title={{R-FCN:} Object Detection via Region-based Fully Convolutional Networks},
 	year={2016},
 	url={http://arxiv.org/abs/1605.06409},
 	pubstate = {prepublished}
+}
+
+%%% Beispiele für Musiknoten -----------------------------------------
+
+@book{BachBWV988,
+	author={Bach, Johann Sebastian},
+	title={Goldberg-Variationen für Streichquartett, BWV 988},
+	editor={Anka, Dana},
+	publisher={Musikverlag Hans Sikorski},
+	location={Hamburg},
+	year={2017}
+}
+
+@book{HaydnCelloConcerto2,
+	author={Haydn, Josef},
+	title={Konzert für Violoncello No.\ 2 in D-Dur, Hob.VIIb:2},
+	editor={Soldan,Kurt},
+	publisher={C. F. Peters},
+	location={Leipzig},
+	year={1920}
+}
+
+@book{ShostakovichOp110,
+	author={Shostakovich, Dimitri},
+	title={Streichquartett Nr.\ 8 in c-Moll, Op.\ 110},
+	editor={Hans Sikorski},
+	publisher={G. Schirmer},
+	location={New York},
+	year={1960}
+}
+
+@incollection{GershwinSummertime,
+	author={Gershwin, George and Heyward, DuBose},
+	title={Summertime},
+	booktitle={The Greatest Songs of George Gershwin},
+	publisher={Chappel Music},
+	location={London},
+	pages={40-43},
+	year={1979},
+	hyphenation={english}
 }
