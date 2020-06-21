@@ -8,7 +8,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- 2020/06/21: Added hints for citing musical scores. Modified Appendix B (listing of supplementary materials),
+- 2020/06/21: Added hints in `HgbThesisTutorial` for citing musical scores. Modified `Appendix B` (listing of supplementary materials),
 replacing obsolete CD/DVD by cloud archive submission.
 
 - 2020/03/04: Modified repository setup (without GIT submodules) and adapted build process.
