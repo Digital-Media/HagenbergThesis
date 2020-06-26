@@ -5,7 +5,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2020/06/25]%%AUTO
+\ProvidesPackage{hgbbib}[2020/06/26]%%AUTO
 
 \usepackage{csquotes}				% recommended for biblatex
 
@@ -23,21 +23,21 @@
 %% titles of reference section + 3 categories of references:
 \newcommand{\@bibtitle}{Quellenverzeichnis}
 \newcommand{\@bibtitleLiteratur}{Literatur}
-\newcommand{\@bibtitleAvmedia}{Audiovisuelle Medien}
+\newcommand{\@bibtitleMedia}{Medien}
 \newcommand{\@bibtitleOnline}{Online-Quellen}
 \newcommand{\@bibtitleSoftware}{Software}	
 
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}{%
 	\renewcommand{\@bibtitle}{References}
 	\renewcommand{\@bibtitleLiteratur}{Literature}
-	\renewcommand{\@bibtitleAvmedia}{Audio-visual media}
+	\renewcommand{\@bibtitleMedia}{Media}
 	\renewcommand{\@bibtitleOnline}{Online sources}	
 	\renewcommand{\@bibtitleSoftware}{Software}
 }{}
 
 %% categories for a split bibliography (order of declaration is important!)
 \DeclareBibliographyCategory{literature}
-\DeclareBibliographyCategory{avmedia}
+\DeclareBibliographyCategory{media}
 \DeclareBibliographyCategory{software}
 \DeclareBibliographyCategory{online}
 
@@ -48,11 +48,11 @@
 	\addcontentsline{toc}{section}{\@bibtitleLiteratur}%
 }
 
-\defbibheading{avmedia}{%
+\defbibheading{media}{%
 	\pagebreak[3]%
 	\phantomsection%
-	\section*{\@bibtitleAvmedia}%
-	\addcontentsline{toc}{section}{\@bibtitleAvmedia}%
+	\section*{\@bibtitleMedia}%
+	\addcontentsline{toc}{section}{\@bibtitleMedia}%
 }
 
 \defbibheading{online}{%
@@ -83,7 +83,7 @@
 		\ifentrytype{music}\OR
 		\ifentrytype{audio}\OR
 		\ifentrytype{image}}
-	{\addtocategory{avmedia}{#1}}%
+	{\addtocategory{media}{#1}}%
 {\ifthenelse{%
 		\ifentrytype{software}\OR
 		\ifentrytype{electronic}}
@@ -104,7 +104,7 @@
 % The maps need to correspond to the entry types in the bib categories (which can't unfortunately used)
 \DeclareSourcemap{
   \maps[datatype=bibtex]{
-    \map{ % All entry types except for avmedia, software and online
+    \map{ % All entry types except for media, software and online
       \pernottype{movie}
 	  \pernottype{video}
 	  \pernottype{music}
@@ -116,7 +116,7 @@
 	  \pernottype{www}
 	  \step[fieldset=presort, fieldvalue = {A}]
 	}
-	\map{ % avmedia entry types
+	\map{ % media entry types
 	  \pertype{movie}
 	  \pertype{video}
 	  \pertype{music}
