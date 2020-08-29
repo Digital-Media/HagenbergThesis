@@ -42,7 +42,7 @@ $(LATEXMAIN).pdf: $(TEXFILES) $(PICFILES)
 	@echo "creating $(DOCUMENTSDIR)/$(LATEXJOB).zip"
 	@cd ../; rm -f $(DOCUMENTSDIR)/$(LATEXJOB).zip; $(ZIPEXE) -r -q $(LATEXJOB).zip $(LATEXJOB)
 
-clean:	# obsolete (done my latexmk)
+clean:	# obsolete (done my latexmk -c)
 	@echo "tex files: $(TEXFILES)"
 	@echo "pic files: $(PICFILES)"
 	@echo "cleaning up $(LATEXJOB)/"

@@ -69,7 +69,7 @@ $(EXAMPLES) :
 ctan :
 #	Builds the CTAN distribution
 	@echo "" 
-	@echo "Building CTAN distribution ..."
+	@echo "Building CTAN bundle ..."
 #	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
 	@echo "  copying .sty and .cls files from $(SOURCEDIR)/"
 	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
