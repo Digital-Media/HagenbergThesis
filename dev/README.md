@@ -55,4 +55,4 @@ It is also possible to execute specific parts of the build process. Call `make` 
 
 ### Testing changes
 
-To test and review your changes, open one of the example documents in the `documents` directory (e.g. HgbThesisTutorial) after a complete or partial build process. It will include the updated style files and classes which can then be tested and evaluated. Keep in mind to make further changes only to the style and class files in the `dev/latex` directory. Any changes to style or class files of the example documents will be overridden by the build process.
+To test and review your changes, open one of the example documents in the `documents` directory (e.g. `HgbThesisTutorial`) after a complete or partial build process. It will include the updated style files and classes which can then be tested and evaluated. Keep in mind to make further changes only to the style and class files in the `dev/latex` directory. Any changes to style or class files of the example documents will be overridden by the build process.
