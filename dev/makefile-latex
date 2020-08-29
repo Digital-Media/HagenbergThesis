@@ -1,41 +1,54 @@
 # makefile-latex: Builds a single LaTeX document.
+
 SHELL = /bin/sh
+ZIPEXE := zip
 
 PDFLATEX=pdflatex
 LATEXFLAGS=-interaction=nonstopmode -file-line-error
 
 BIBTEX=biber
 IMAGEDIR=images
-LATEXJOB=main
+LATEXMAIN=main
 
-LOCALPATH := $(shell pwd)
-LOCALDIR := $(shell basename $(LOCALPATH))
+LATEXPATH := $(shell pwd)
+LATEXJOB := $(shell basename $(LATEXPATH))
+DOCUMENTSDIR := documents
 
-TEXFILES := $(shell find . -name "\*.tex" -or -name "\*.sty" -or -name "\*.cls" -or -name "\*.bib")
-PICFILES := $(shell find $(IMAGEDIR)/ -name "\*.*" -type f)
+# collect all .tex files:
+TEXFILES := $(shell find -name "*.tex" -or -name "*.sty" -or -name "*.cls" -or -name "*.bib" -type f)
+
+# collect all image files:
+PICFILES := $(shell find $(IMAGEDIR)/ -iname "*.pdf" -or -iname "*.png" -or -iname "*.jpg" -type f)
+#PICFILES := $(shell find */ -iname "*.pdf" -or -iname "*.png" -or -iname "*.jpg" -type f)
 
 
-all: $(LATEXJOB).pdf clean
+all: $(LATEXMAIN).pdf #clean
 .PHONY : all clean listfiles
 
-$(LATEXJOB).pdf: $(TEXFILES) $(PICFILES)
-	@echo Running LaTeX on $(LOCALDIR)/$(LATEXJOB).tex
-#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-#	-$(BIBTEX) $(LATEXJOB)
-#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXJOB)
-#	Experimental: using latexmk:
-	@latexmk -pdf -silent $(LATEXJOB)
-	@latexmk -c $(LATEXJOB)
+# LaTeX is only run when any of the contributing files has been modified
+$(LATEXMAIN).pdf: $(TEXFILES) $(PICFILES)
+	@echo "running LaTeX on $(LATEXJOB)/$(LATEXMAIN).tex"
+#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXMAIN)
+#	-$(BIBTEX) $(LATEXMAIN)
+#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXMAIN)
+#	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXMAIN)
+#
+#	Experimental: using latexmk (comes with MikTeX et al.):
+	@latexmk -pdf -silent $(LATEXMAIN)
+	@echo "cleaning up $(LATEXJOB)"
+	@latexmk -c -silent $(LATEXMAIN)
+#
+#	Make a ZIP for importing to Overleaf:
+	@echo "creating $(DOCUMENTSDIR)/$(LATEXJOB).zip"
+	@cd ../; rm -f $(DOCUMENTSDIR)/$(LATEXJOB).zip; $(ZIPEXE) -r -q $(LATEXJOB).zip $(LATEXJOB)
 
-clean:
-	@echo Cleaning up $(LOCALDIR)
+clean:	# obsolete (done my latexmk)
+	@echo "tex files: $(TEXFILES)"
+	@echo "pic files: $(PICFILES)"
+	@echo "cleaning up $(LATEXJOB)/"
 	@rm -f *.bbl *.bcf *.blg *.fls *.log *.out *.toc *.run.xml *.tps
 	@find . -name "*.aux" -type f -delete
 
 listfiles:
-	@echo tex files: $(TEXFILES)
-	@echo style files: $(STYLES)
-	@echo class files: $(CLASSES)
-	@echo bin files: $(BIBS)
-	@echo image files: $(PICFILES)
+	@echo "tex files: $(TEXFILES)"
+	@echo "image files: $(PICFILES)"
