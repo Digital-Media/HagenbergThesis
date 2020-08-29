@@ -46,43 +46,53 @@ setdates :
 #	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty files:
 	@echo Updating release date in all sty/cls files by [$(RELEASEDATE)]
 	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls)
+	@echo ""
 
 build : $(EXAMPLES)
 #	Defines a make target for each directory name in EXAMPLES
 
 $(EXAMPLES) : 
 #	Builds and zips every document (directory) in EXAMPLES
-	@echo Running LaTeX on $@
+	@echo "+++ Processing document \"$@\" +++"
 #	Copy all .sty .cls *.bib files to the example directory:
+	@echo "updating .sty, .cls, .bib files from $(SOURCEDIR)/"
 	@cp -u $(SOURCEDIR)/*.sty $(DOCUMENTSDIR)/$@
 	@cp -u $(SOURCEDIR)/*.cls $(DOCUMENTSDIR)/$@
 	@cp -u $(SOURCEDIR)/*.bib $(DOCUMENTSDIR)/$@
 #	Run the LaTeX build in a sub-makefile:
-	@make -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
+	@make --silent -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
-	@cd $(DOCUMENTSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
-
+#	@echo "creating $@.zip"
+#	@cd $(DOCUMENTSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
+	@echo ""
+	
 ctan :
 #	Builds the CTAN distribution
-	@echo "***** Making $@ *****"
+	@echo "" 
+	@echo "Building CTAN distribution ..."
 #	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
+	@echo "  copying .sty and .cls files from $(SOURCEDIR)/"
 	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
 #	Copy the entire documents/ directory to ctan/hagenberg-thesis/
+	@echo "  copying $(DOCUMENTSDIR)/ directory to $(CTANEXAMPLES)/"
 	@cp -u -R $(DOCUMENTSDIR)/* $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
-#	Rename ..documents/ to ..examples/
-#	mv $(CTANDIR)/$(CTANPKG)/$(DOCUMENTSDIR) $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
 #	Remove all .sty and .cls files in ctan/hagenberg-thesis/examples/ (recursively):
+	@echo "  removing all .sty and .cls files in $(CTANEXAMPLES)/"
 	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.sty" -type f -delete
 	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.cls" -type f -delete
 #	Remove all top-level ZIP files in ctan/hagenberg-thesis/examples/:
+	@echo "  removing ZIP files in $(CTANEXAMPLES)/"
 	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -maxdepth 1 -name "*.zip" -type f -delete
-#	Copy manual/tutorial source and PDF to ctan/hagenberg-thesis/doc/
+#	Copy manual/tutorial source and PDFs to ctan/hagenberg-thesis/doc/
+	@echo "  copying manual/tutorial source and PDFs to $(CTANDIR)/doc/"
 	@cp -u $(DOCUMENTSDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
 	@cp -u $(DOCUMENTSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
 	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
 #	Update version number in package README file:
+	@echo "  updating version number in package README.md"
 	@$(shell sed -i 's|$(READMEVERSIONTAG).*|$(READMEVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANPKG)/README.md)
-#	Make a ZIP of the complete ctan bundle:
+#	Make a ZIP of the complete CTAN bundle:
+	@echo "  ZIPing the complete CTAN bundle"
 	@cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXE) -r -q $(CTANPKG).zip $(CTANPKG)
 
 
