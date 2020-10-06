@@ -48,68 +48,18 @@ Das Makro \texttt{{\bs}optbreaknh} ("optional break with no hyphen") ist in
 \label{sec:Software}
 
 Zum Arbeiten mit \latex wird -- neben einem Computer -- natürlich Software benötigt. Mussten früher oft die einzelnen Komponenten von \latex mühevoll zusammengesucht und für die eigene Umgebung konfiguriert werden, gibt es mittlerweile für die wichtigsten Plattformen (Windows, Mac~Os, Linux) fertige \latex-Installationen, die ohne weiteres Zutun laufen. Die aktuelle Version von \latex\ ist \LaTeXe\ (sprich "LaTeX zwei e"). 
-Zum Arbeiten mit \latex\ werden zwei Dinge benötigt:
+Zum lokalen Arbeiten mit \latex\ werden zwei Dinge benötigt:
 %
 \begin{itemize}
 \item \latex-Installation (Distribution),
 \item Texteditor oder Autorenumgebung (Frontend).
-%\item PostScript/PDF-Software 
 \end{itemize}
 %
 Sämtliche Komponenten sind kostenlos und für alle gängigen Plattformen verfügbar.
 
+Alternativ kann auch ein Online-Editor verwendet werden, der ein Arbeiten im Browser ermöglicht und keinerlei Installation auf dem eigenen Rechner voraussetzt.
 
-\subsubsection{Windows}
-\label{sec:Windows}
-
-Unter \emph{Windows} (XP und höher) hat sich folgendes Setup bewährt,
-mit dem \ua auch dieses Dokument erstellt wurde:
-%
-\begin{itemize}
-\item \textbf{\latex-Distribution}: \emph{MikTeX 2.9}\footnote{\url{https://miktex.org/}} oder höher.
-MikTeX enthält bereits alle notwendigen Hilfsprogramme, wie beispielsweise \texttt{pdflatex}.
-
-\item \textbf{PDF-Viewer}: \emph{SumatraPDF}.%
-\footnote{\url{https://www.sumatrapdfreader.org/}}
-
-\item \textbf{Frontend}: \emph{TeXnicCenter}.%
-\footnote{\url{http://www.texniccenter.org/}}
-Grundsätzlich kann jeder Texteditor%
-\footnote{Unter Windows \zB\ \emph{Notepad++} (\url{https://notepad-plus-plus.org/}).}
-verwendet werden, praktischer ist jedoch eine integrierte \latex-Um\-geb\-ung wie TeXnicCenter, die einen auch bei 
-der Dateiverwaltung, der Verarbeitung der Dokumente und der Fehlerbehandlung unterstützt.
-Eine interessante Alternative bietet die Verwendung von \emph{Eclipse}\footnote{\url{https://www.eclipse.org/}}
-als plattformunabhängiges Frontend 
-(mit dem \emph{TeXlipse}\footnote{\url{https://projects.eclipse.org/projects/science.texlipse}} Plugin).
-\end{itemize}
-%
-Beim erstem Mal sollten \emph{MikTeX}, \emph{SumatraPDF} und \emph{TeXnicCenter} in genau dieser Reihenfolge installiert werden.
-
-Als Gesamtpaket bietet sich \emph{TeXstudio}\footnote{\url{https://www.texstudio.org/}} an. 
-In diesem Fall kann die Installation eines separaten PDF-Viewers entfallen, denn dieser ist in der 
-Software bereits enthalten.
-
-\subsubsection{Mac~OS}
-\label{sec:MacOs}
-
-Unter Mac~OS~X ist die Referenzdistribution \emph{MacTeX}.%
-\footnote{\url{https://www.tug.org/mactex/}} 
-Sie enthält neben der TeX-Distribution \emph{TeX Live} auch gängige Editoren wie \emph{TeXWorks} oder \emph{TeXshop}. Mit dem \emph{TeX Live Utility} können Pakete verwaltet und die Distribution auf den neuesten Stand gebracht werden. Als Alternative zu den beiden genannten Editoren steht \emph{TeXnicle}%
-\footnote{\url{http://www.bobsoft-mac.de/texnicle/texnicle.html}} zur Verfügung. Er bietet -- ähnlich wie \emph{TeXnicCenter} unter Windows -- einen projektbasierten Workflow an.
-Ebenso ist auch \emph{TeXstudio} für Mac~OS~X 10.8 und neuer verfügbar.
-Ein PDF-Viewer muss unter Mac~OS~X übrigens nicht extra installiert werden. Alle genannten Editoren beinhalten eine eigene PDF-Vorschau.
-
-
-\subsubsection{Linux}
-
-Auch unter Linux ist \emph{TeX Live} (\so) eine häufig verwendete TeX-Distri\-bution. 
-Als Frontend sind beispielsweise
-\emph{Lyx}\footnote{\url{https://www.lyx.org/}},
-\emph{Kile}\footnote{\url{https://kile.sourceforge.io/}} und
-\emph{Texmaker}\footnote{\url{http://www.xm1math.net/texmaker/}} 
-verbreitet.
-\emph{TeXstudio} ist ebenfalls für alle gängigen Distributionen über die jeweiligen Paket-Manager erhältlich. Alternativ können die entsprechenden Packages von der Webseite bezogen werden.
-In manchen gängigen Linux-Versionen ist bereits eine komplette \latex-Distribution enthalten, sodass im besten Fall überhaupt keine zusätzliche Installation notwendig ist.  
+Details zu empfohlenen Setups und möglichen Alternativen finden sich in Anhang \ref{app:TechnischeInfos}.
 
 
 \subsection{Literatur}
@@ -632,7 +582,7 @@ Hier die korrekte \latex-Notation für englische und deutsche Texte:
 \end{quote}
 %
 Man beachte die subtilen typografischen Unterschiede zwischen den beiden Sprachen.%
-\footnote{Manche Editoren (\zB\ \textsf{TeXnicCenter}) kann man so einstellen, dass
+\footnote{Manche Editoren (\zB\ \textsf{TeXstudio}) kann man so einstellen, dass
 bei der Eingabe eines einfachen Hochkommas (\texttt{\textquotedbl}) die entsprechenden Zeichenfolge 
 \emph{automatisch} (kontext- und sprachabhängig) eingesetzt wird.
 Insbesondere in \textsf{Overleaf} ist das derzeit leider nicht möglich.}
