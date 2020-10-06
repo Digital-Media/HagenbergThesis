@@ -21,67 +21,128 @@ Datum & Datei \\
 
 
 Das ist eine völlig überarbeitete Version der DA/BA-Vorlage, die
-\mbox{UTF-8} kodierten Dateien vorsieht und ausschließlich im PDF-Modus arbeitet.
-Der "klassische" DVI-PS-PDF-Modus wird somit nicht mehr unterstützt! 
+\mbox{UTF-8} kodierte Dateien vorsieht und ausschließlich im PDF-Modus arbeitet.
+Der "klassische" DVI-PS-PDF-Modus wird somit nicht mehr unterstützt!
 
 \subsection{Allgemeine technische Voraussetzungen}
 
 Eine aktuelle \latex-Installation mit
 \begin{itemize}
-	
-		\item Texteditor für \mbox{UTF-8} kodierte (Unicode) Dateien,
 		\item \texttt{biber}-Programm (BibTeX-Ersatz, Version $\geq 1.5$),
 		\item \texttt{biblatex}-Paket (Version $\geq 2.5$, 2013/01/10),
 		\item Latin Modern Schriften (Paket \texttt{lmodern}).%
-			\footnote{\url{http://www.ctan.org/pkg/lm}, \url{http://www.tug.dk/FontCatalogue/lmodern}}
+			\footnote{\url{https://www.ctan.org/pkg/lm}, \url{https://tug.org/FontCatalogue/latinmodernroman/}}
 \end{itemize}
+
+Darüber hinaus ein Texteditor für \mbox{UTF-8} kodierte (Unicode) Dateien, sowie Software zum Öffnen und Betrachten von PDF-Dateien.
 
 
 \subsection{Verwendung unter Windows}
 \label{sec:VerwendungUnterWindows}
 
-Eine typische Installation unter Windows sieht folgendermaßen aus
-(s.\ auch Abschnitt \ref{sec:Windows}):
+Eine typische Installation unter Windows sieht folgendermaßen aus:
 %
 \begin{enumerate}
-\item \textbf{MikTeX 2.9}%
-	\footnote{\url{http://www.miktex.org/} -- \textbf{Achtung:} 
-	Generell wird die \textbf{Komplett\-installation} von MikTeX ("Complete MiKTeX") empfohlen, 
-	da diese bereits alle notwendigen Zusatzpakete und Schriftdateien enthält! 
+\item \textbf{MikTeX}%
+	\footnote{\url{https://miktex.org/} -- \textbf{Achtung:} 
+	Generell wird die \textbf{Komplettinstallation} von MikTeX ("Complete MiKTeX") empfohlen, 
+	da diese bereits alle notwendigen Zusatzpakete und Schriftdateien enthält. Hierzu wird der
+	MikTeX Net Installer (im Gegensatz zum Basic Installer) benötigt.
 	Bei der Installation ist darauf zu achten, 
 	dass die automatische Installation erforderlicher Packages 
 	durch "\emph{Install missing packages on-the-fly: = Yes}" ermöglicht wird (NICHT "\emph{Ask me first}")!
-	Außerdem ist zu empfehlen, unmittelbar nach der Installation von MikTeX mit dem Programm
-	\texttt{MikTeX} $\to$ \texttt{Maintenance} $\to$ \texttt{Update} und \texttt{Package Manager} 
-	ein Update der installierten Pakete durchzuführen.}
-	(LaTeX-Basisumgebung),
-\item \textbf{TeXnicCenter 2.0}%
-	\footnote{\url{http://www.texniccenter.org/}}
-	(Editor, unterstützt UTF-8),
-\item \textbf{SumatraPDF}%
-	\footnote{\url{http://blog.kowalczyk.info/software/sumatrapdf/}} 
-	(PDF-Viewer).
+	Außerdem ist zu empfehlen, unmittelbar nach der Installation von MikTeX sowie in weiterer Folge regelmäßig
+	mit dem Programm \texttt{MikTeX Console} ein Update der installierten Pakete durchzuführen.}
+	(\latex-Basisumgebung),
+\item \textbf{TeXstudio}%
+	\footnote{\url{https://www.texstudio.org/}}
+	(Editor, unterstützt UTF-8 und beinhaltet einen integrierten PDF-Viewer).
 \end{enumerate}
-%
-Ein passendes TeXnicCenter-Outputprofil für MikTeX, Biber und Sumatra ist in diesem Paket enthalten.%
-\footnote{Datei \nolinkurl{_setup/texniccenter/tc_output_profile_sumatra_utf8.tco}} 
-Dieses sollte man zuerst
-über \texttt{Build} $\to$ \texttt{Define Output Profiles...} in TeXnicCenter importieren.
-\textbf{Achtung}: Alle neu angelegten \texttt{.tex}-Dateien sollten grundsätzlich in UTF-8 Kodierung gespeichert werden!
 
+Alternative Editoren und PDF-Viewer:
+%
+\begin{enumerate}
+	\item TeXnicCenter,%
+	\footnote{\url{https://www.texniccenter.org/}}
+	\item Texmaker,%
+	\footnote{\url{https://www.xm1math.net/texmaker/}}
+	\item Lyx,%
+	\footnote{\url{https://www.lyx.org/}}
+	\item TeXworks,%
+	\footnote{\url{https://www.tug.org/texworks/}}
+	\item WinEdt,%
+	\footnote{\url{https://www.winedt.com/}}
+	\item Sumatra PDF (\latex-freundlicher PDF-Viewer).%
+	\footnote{\url{https://www.sumatrapdfreader.org/}}
+\end{enumerate}
 
 \subsection{Verwendung unter Mac~OS}
 
-Diese Version sollte insbesondere mit \emph{MacTeX} problemlos laufen (s.\ auch Abschnitt \ref{sec:MacOs}):
+Für Mac~OS empfiehlt sich die folgende Konfiguration:
+%
 \begin{enumerate}
 \item 
-	\emph{MacTex} (2012 oder höher).
-\item 
-	Die Zeichenkodierung des Editors sollte auf UTF-8 eingestellt sein.
-\item 
-	Als Engine (vergleichbar mit den Ausgabeprofilen in TeXnicCenter) sollte \emph{LaTeXMk} verwendet werden. 
-	Dieses Perl-Skript erkennt automatisch, wie viele Aufrufe von \emph{pdfLaTeX} und \emph{Biber} nötig sind. 
-	Die Ausgabeprofile \emph{LaTeX} oder \emph{pdfLaTeX} hingegen müssen mehrmals aufgerufen werden, 
-	zudem werden hierbei auch die Literaturdaten nicht verarbeitet. Dazu müsste extra die \emph{Biber}-Engine 
-	aufgerufen werden, 	die jedoch noch nicht in allen Editoren vorhanden ist.
+	\textbf{MacTex}%
+	\footnote{\url{https://tug.org/mactex/} -- \textbf{Achtung:} Aktuelle MacTeX-Distributionen verlangen in
+		der Regel eine weitgehend aktuelle Version von Mac~OS. Auf älteren Betriebssystemen kann alternativ
+		TeXLive mit einem speziellen Installationsscript installiert werden.
+		Um die Pakete der \LaTeX-Distribution aktuell zu halten, sollte regelmäßig das \texttt{TeX Live Utility}
+		ausgeführt werden.}
+	(\latex-Basisumgebung),
+\item \textbf{TeXstudio}%
+	(Editor, unterstützt UTF-8 und beinhaltet einen integrierten PDF-Viewer).
+\end{enumerate}
+
+Alternative Editoren und PDF-Viewer:
+%
+\begin{enumerate}
+	\item Texmaker,%
+	\item Lyx,%
+	\item TeXworks,%
+	\item Skim (\latex-freundlicher PDF-Viewer).%
+	\footnote{\url{https://skim-app.sourceforge.io/}}
+\end{enumerate}
+
+\subsection{Verwendung unter Linux}
+
+Unter Linux kann folgendes Setup zum Einsatz kommen:
+%
+\begin{enumerate}
+	\item 
+	\textbf{TeX Live}%
+	\footnote{\url{https://tug.org/texlive/} -- Eine Installation unter Linux erfolgt -- abhängig von der verwendeten
+	Distribution -- am einfachsten mit Hilfe des jeweiligen Paketverwaltungssystems (\zB \texttt{apt-get}).}
+	(\latex-Basisumgebung),
+	\item \textbf{TeXstudio}%
+	(Editor, unterstützt UTF-8 und beinhaltet einen integrierten PDF-Viewer).
+\end{enumerate}
+
+Alternative Editoren und PDF-Viewer:
+%
+\begin{enumerate}
+	\item Texmaker,%
+	\item Lyx,%
+	\item TeXworks,%
+	\item qpdfview (\latex-freundlicher PDF-Viewer).%
+	\footnote{\url{https://launchpad.net/qpdfview}}
+\end{enumerate}
+
+\subsection{Verwendung von Online-Editoren}
+
+Neben einer lokalen \latex-Installation mit Editor gibt es mittlerweile auch Online-Editoren, die das Arbeiten mit \latex-Dokumenten
+im Browser ermöglichen. Die \latex-Basisumgebung ist dabei auf den Servern des Dienstes installiert, Dokumente können im Editor neu
+erstellt oder auch bestehende Vorlagen (wie etwa dieses Dokument) hochgeladen und weiter bearbeitet werden. Die meisten Plattformen
+ermöglichen darüber hinaus ein kollaboratives Arbeiten an einem Dokument.
+
+Der bekannteste und mit dieser Vorlage getestete Editor ist \emph{Overleaf}\footnote{\url{https://www.overleaf.com/}}. Um schnell
+Vorlagendokumente aus dem \texttt{hagenberg-thesis} Paket zu importieren, können die Import-Links in der Readme zum Repository
+dieser Vorlage\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}} verwendet werden.
+
+Alternativ existieren noch weitere Online-Editoren:
+%
+\begin{enumerate}
+	\item Papeeria,%
+	\footnote{\url{https://papeeria.com/}}
+	\item CoCalc.%
+	\footnote{\url{https://cocalc.com/}}
 \end{enumerate}
