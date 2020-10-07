@@ -2,83 +2,11 @@
 \label{cha:Drucken}
 
 
-
-
 \section{PDF-Workflow}
 \label{sec:pdf}
 
 In der aktuellen Version wird \latex\ so benutzt, dass damit direkt PDF-Dokumente (ohne den früher üblichen Umweg über DVI und PS) erzeugt werden.
-Zur Arbeit mit dem Sumatra PDF-Viewer unter Windows und TeXnicCenter ist ein passendes Ausgabeprofil vorbereitet
-(s.\ Abschn.\ \ref{sec:VerwendungUnterWindows} im Anhang).%
-
-
-
-\begin{comment}
-
-\section{DVI-PS-Workflow (optional)}
-
-Dieser Abschnitt ist nur dann relevant, wenn \latex\ im ("alten") "Kompatibilitätsmodus" verwendet wird,
-in dem die druckfähige PDF-Datei über DVI- und PostScript-Zwischendateien erzeugt wird. 
-Dieser Modus ist weiterhin notwendig, wenn das \texttt{psfrag}-Package verwendet wird
-(s.\ Abschnitt \ref{sec:psfrag}).
-
-\subsection{DVI-Dateien}
-
-\latex selbst erzeugt sogenannte DVI-Dateien (\emph{device independent}), die man mit einem
-DVI-\emph{Viewer} wie
-\zB\ \texttt{Yap}%
-\footnote{\emph{Yet Another Previewer} von Christian Schenk, Teil der
-MikTeX-Installation.}
-betrachten und auch drucken kann. Falls das Dokument EPS-Grafiken
-enthält, muss auch \emph{GhostScript} installiert sein, um Bilder und Grafiken im DVI-Previewer 
-direkt betrachten zu können.%
-\footnote{In den aktuellen MikTeX-Installationen ist eine spezielle Version von GhostScript (\texttt{mgs.exe}) für die interne Darstellung von Grafiken in YAP bereits enthalten.}
-
-
-
-\subsection{PostScript- und PDF-Dateien}
-
-PostScript-Dateien erzeugt man mit dem Programm \texttt{dvips}, das Teil der
-\latex-Installation ist.
-Die damit generierten Files sind vollständig, \dah sie enthalten auch die
-vorgesehenen EPS-Grafiken, und sind daher in der Regel umfangreich.
-Eine PS-Datei kann man entweder direkt betrachten (\zB mit \texttt{ghostview}%
-\footnote{\url{www.gnu.org/software/ghostview/}}%
-), drucken, oder mithilfe von \texttt{ps2pdf} (\bzw\ \texttt{gswin32c.exe} in der GhostScript-Installation unter Windows) in eine
-PDF-Datei umwandeln (Abb.~\ref{fig:latex-pdf-workflow}):
-%
-\begin{center}
-\begin{tabular}{lcl}
-\texttt{latex da.tex}        & $\rightarrow$ & \texttt{da.dvi}\\
-\texttt{dvips -ta4 -Ppdf da} & $\rightarrow$ & \texttt{da.ps}\\
-\texttt{ps2pdf -sDEVICE=pdfwrite}  & $\rightarrow$ & \texttt{da.pdf}\\
-%-sPAPERSIZE=a4 -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile="%bm.pdf" -c save pop -f "%bm.ps"
-\end{tabular}
-\end{center}
-In der \emph{TeXnicCenter}-Umgebung werden diese Schritte durch das Ausgabeprofil
-\begin{center}
-\verb!LaTeX => PS => PDF!
-\end{center}
-automatisch durchgeführt, wobei Adaptierungen der einzelnen Schritte durch Modifikation des entsprechenden Ausgabeprofils möglich sind. 
-Zur Erzeugung einer hochqualitativen PDF-Datei ist für \texttt{ps2pdf} die zusätzliche Option \texttt{-dPDFSETTINGS=/prepress} zu empfehlen.
-Weitere (aktuelle) Details zur Einstellung von Ausgabeprofilen unter TeXnicCenter und MikTeX finden sich in
-Anhang \ref{sec:TeXnicCenterUndMikTeX}.
-
-
-
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{workflow-cm}
-\caption{Erzeugung von
-PDF-Doku\-men\-ten im DVI-PS-Workflow. EPS-Grafiken werden erst bei der
-Erzeugung der PS-Datei eingebunden. 
-Anmerkung: Die abgebildete Vektorgrafik wurde mit \emph{Freehand} unter
-Verwendung der \emph{BaKoMa} TrueType-Schriften erstellt %
-(s.\ Abschn.\ \ref{sec:tex-schriften-in-grafiken}).}
-\label{fig:latex-pdf-workflow}
-\end{figure}
-
-\end{comment}
+In modernen Editoren (\zB TeXstudio) funktioniert dies ohne weiteren Konfigurationsaufwand.%
 
 
 \section{Drucken}
@@ -88,8 +16,8 @@ Vor dem Drucken der Arbeit empfiehlt es sich, einige Dinge zu beachten, um unnö
 \subsection{Drucker und Papier}
 
 Die Abschlussarbeit sollte in der Endfassung unbedingt auf einem
-qualitativ hochwertigen Laserdrucker ausgedruckt werden, Ausdrucke
-mit Tintenstrahldruckern sind \emph{nicht} ausreichend. Auch das
+qualitativ hochwertigen \textbf{Laserdrucker} ausgedruckt werden; 
+Ausdrucke mit Tintenstrahldruckern sind \emph{nicht} ausreichend. Auch das
 verwendete Papier sollte von guter Qualität (holzfrei) und
 üblicher Stärke (mind.\ $80\; {\mathrm g} / {\mathrm m}^2$) sein.
 Falls \emph{farbige} Seiten notwendig sind, sollte man diese einzeln%
@@ -98,10 +26,9 @@ des Dokuments für den Farbdruck auswählen und zusammenstellen.}
 auf einem Farb-Laserdrucker ausdrucken und dem Dokument beifügen.
 
 Übrigens sollten \emph{alle} abzugebenden Exemplare \textbf{gedruckt} (und nicht kopiert) werden! Die Kosten für den Druck
-sind heute nicht höher als die für Kopien, der
+sind nicht höher als die für Kopien, der
 Qualitätsunterschied ist jedoch -- \va\ bei Bildern und Grafiken
 -- meist deutlich.
-
 
 \subsection{Druckgröße}
 
@@ -131,8 +58,6 @@ werden, so sollten natürlich auch diese genau auf die Einhaltung der Druckgrö�
 kontrolliert werden!
 
 
-
-
 \section{Binden}
 
 Die Endfassung der Abschlussarbeit%
@@ -151,7 +76,6 @@ verhindert, \zB durch eine traditionelle Rückenbindung
 oder Metall. Eine einfache Leimbindung ohne Verstärkung ist
 jedenfalls \emph{nicht} ausreichend.
 
-
 Falls man -- was sehr zu empfehlen ist -- die Arbeit bei einem
 professionellen Buchbinder durchführen lässt, sollte man auch auf
 die Prägung am Buchrücken achten, die kaum zusätzliche Kosten
@@ -168,22 +92,25 @@ lang, muss man notfalls eine gekürzte  Version angeben, wie \zB:
 %
 
 
+\section{Elektronische Datenträger (CD-R, DVD)}
 
-\section{Elektronische Datenträger (CD-R, DVD, USB-Stick)}
 Speziell bei Arbeiten im Bereich der Informationstechnik (aber
 nicht nur dort) fallen fast immer Informationen an, wie Programme,
 Daten, Grafiken, Kopien von Internetseiten \usw, die für eine
 spätere Verwendung elektronisch verfügbar sein sollten.
 Vernünftigerweise wird man diese Daten während der Arbeit bereits
-gezielt sammeln und der fertigen Arbeit auf einer CD-ROM, DVD oder
-einem USB-Stick beilegen. Es ist außerdem sinnvoll -- schon allein
-aus Gründen der elektronischen Archivierbarkeit -- die eigene Arbeit
+gezielt sammeln und der fertigen Arbeit auf einer CD-ROM oder DVD  beilegen.%
+\footnote{Als Alternative sehen Institute zunehmend den Upload dieser Daten
+in ein entsprechendes Online-Archiv vor, zumal CD/DVD-Laufwerke in
+neuen Geräten kaum mehr eingebaut werden. Das konkrete Vorgehen sollte man 
+jedenfalls mit den zuständigen Stellen abstimmen.}
+Es ist außerdem sinnvoll -- schon allein
+aus Gründen der elektronischen Archivierbarkeit -- auch die eigene Arbeit
 selbst als PDF-Datei beizulegen.%
 \footnote{Auch Bilder und Grafiken könnten in elektronischer Form nützlich
-sein, die \latex- oder Word-Dateien sind hingegen überflüssig.}
+sein, die \latex-Dateien sind hingegen überflüssig.}
 
-
-Falls ein elektronischer Datenträger (CD-ROM, DVD, USB-Stick) beigelegt
+Falls ein elektronischer Datenträger (CD-ROM, DVD) beigelegt
 wird, sollte auf folgende Dinge geachtet werden:
 %
 \begin{enumerate}
