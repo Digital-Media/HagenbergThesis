@@ -35,6 +35,7 @@ dummy markers are not required any more. Experimental: ``latexmk`` is used in th
 ### Changed
 
 - 2020/01/31: Top-level folder ``examples`` renamed to ``documents``.
+- 2020/10/27: Used gender-sensitive language in all German template documents. Also switched the example names to gender-neutral versions. Also updated references to their latest versions.
 
 ### Fixed
 
