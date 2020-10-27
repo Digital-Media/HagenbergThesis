@@ -35,7 +35,7 @@ nicht zu weit von der ursprünglichen Textstelle zu entfernen.
 
 Der Gedanke, dass etwa Abbildungen kaum jemals genau an der
 ge\-wünsch\-ten Stelle und möglicherweise nicht einmal auf
-derselben Seite Platz finden, ist für viele Anfänger aber offenbar sehr
+derselben Seite Platz finden, ist für viele Anfänger*innen aber offenbar sehr
 ungewohnt oder sogar beängstigend. Dennoch sollte zunächst einmal
 getrost \latex\ diese Arbeit überlassen und \emph{nicht} manuell
 eingegriffen werden. Erst am Ende, wenn das gesamte Dokument "steht" und
@@ -138,7 +138,7 @@ aufweisen. Im Gegensatz dazu sollte JPEG nur dann verwendet werden, wenn das Ori
 Die Bilder werden üblicherweise in einem Unterverzeichnis (oder in mehreren Unterverzeichnissen) abgelegt,
 im Fall dieses Dokuments in \nolinkurl{images/}.
 Dazu dient die folgende Anweisung
-am Beginn des Hauptdokuments \nolinkurl{_DaBa.tex} (\sa\ Anhang \ref{app:latex}):
+am Beginn des Hauptdokuments \nolinkurl{main.tex} (\sa\ Anhang \ref{app:latex}):
 %
 \begin{quote}
 \verb!\graphicspath{{images/}}!
@@ -186,8 +186,8 @@ richtig einzustellen.
 Brauchbare Auflösungen bezogen auf die endgültige Bildgröße sind:
 %
 \begin{itemize}
-  \item \textbf{Farb- und Grauwertbilder:} 150--300 dpi
-  \item \textbf{Binärbilder (Schwarz/Weiß):} 300--600 dpi
+  \item \textbf{Farb- und Grauwertbilder:} 150--300 dpi,
+  \item \textbf{Binärbilder (Schwarz/Weiß):} 300--600 dpi.
 \end{itemize}
 %
 Eine wesentlich höhere Auflösung macht aufgrund der beim Laserdruck notwendigen
@@ -208,10 +208,10 @@ Eine Ausnahme ist, wenn die Originaldaten nur in JPEG vorliegen und für die
 Einbindung nicht bearbeitet oder verkleinert wurden. Ansonsten sollte immer
 PNG verwendet werden.
 
-Besonders gerne werden farbige \textbf{Screenshots} einer JPEG-Kompression%
+Besonders gerne werden farbige \textbf{Screenshots} der JPEG-Kompression%
 \footnote{Das JPEG-Verfahren ist für natürliche Fotos konzipiert und sollte auch
 nur dafür verwendet werden.}
-unter\-zogen, obwohl deren verheerende Folgen für jeden Laien sichtbar sein sollten
+unter\-zogen, obwohl deren verheerende Folgen für jede*n Laiin*Laien sichtbar sein sollten
 (Abb.~\ref{fig:jpeg-pfusch}).
 
 \begin{figure}
@@ -277,7 +277,7 @@ Die ursprüngliche Inkscape-Grafik \nolinkurl{images/inkscape-template.svg}  ent
 Texte, die nachträglich von \latex\ ersetzt werden sollen 
 (siehe Abb.~\ref{fig:InkscapeExample}\,(a)).
 \item
-Durch \textsf{Save a Copy...} (als PDF) in Inkscape, mit den Einstellungen wie in 
+Mit Hilfe von \textsf{Save a Copy...} (als PDF) in Inkscape und den Einstellungen wie in 
 Abb.~\ref{fig:InkscapeExample}\,(c), werden folgende zwei Files erzeugt:
 \begin{itemize}
 \item[] \nolinkurl{inkscape-template.pdf}: eine PDF-Datei der Grafik ohne Texte, 
@@ -328,7 +328,7 @@ beabsichtigt im Ausdruck aufscheinen.
 
 \subsubsection{Strichstärken -- \emph{Hairlines} vermeiden!}
 
-In Grafik-Programmen wie \emph{Freehand} und \emph{Illustrator},
+In Grafik-Programmen wie \emph{Inkscape} und \emph{Illustrator},
 die sich im Wesentlichen an der \emph{PostScript}-Funktionalität
 orientieren, ist es möglich, Linien bzgl.\ ihrer Stärke als
 "Hairline" zu definieren. Im zugehörigen \emph{PostScript}-Code
@@ -349,7 +349,7 @@ Strichstärken ($\geq 0.25\,\mathrm{pt}$) einstellen!
 Während bei Abbildungen, die mit externen
 Grafik-Programmen erzeugt werden, meist mit ähnlich aussehende
 Schriften (wie \emph{Times-Roman} oder \emph{Garamond}) Abhilfe schaffen,
-besteht bei Puristen oft der verständliche Wunsch, die 
+besteht bei Purist*innen oft der verständliche Wunsch, die 
 \emph{Computer-Modern} (CM) Schriftfamilie von {\tex}/{\latex} auch
 innerhalb von eingebetteten Grafiken einzusetzen.
 
@@ -372,7 +372,7 @@ Eine Alternative dazu sind die "LM-Roman"%
 \footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
  Open-Type Schriften, die speziell für die Verwendung im Umfeld von \latex\ entwickelt wurden.
 Sie sind auch Teil der MikTeX-Installation.%
-\footnote{\zB unter \url{C:/Program Files (x86)/MikTeX 2.9/fonts/opentype/public/lm/}}
+\footnote{\zB unter \url{C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm}}
 Diese Schriften enthalten \ua\ Zeichen mit Umlauten und sind daher auch für 
 deutsche Texte recht bequem zu verwenden.
 
@@ -505,15 +505,15 @@ findet sich in Prog.~\ref{prog:processors-source}.
 \label{tab:processors}
 \centering
 \setlength{\tabcolsep}{5mm}	% separator between columns
-\def\arraystretch{1.25}			% vertical stretch factor (Standard = 1.0)
+\def\arraystretch{1.25}     % vertical stretch factor (Standard = 1.0)
 \begin{tabular}{|r||c|c|c|} \hline
 & \emph{PowerPC} & \emph{Pentium} & \emph{Athlon} \\
 \hline\hline
 Manufacturer & Motorola & Intel & AMD \\
 \hline
-Speed & high & medium & high   \\
+Speed & high & medium & high \\
 \hline
-Price & high & high   & medium \\
+Price & high & high  & medium \\
 \hline
 \end{tabular}
 \end{table}
@@ -538,9 +538,9 @@ Die Erzeugung des dargestellten Listings selbst ist in Abschn.\ \ref{sec:program
 		\hline
 		Manufacturer & Motorola & Intel & AMD \\
 		\hline
-		Speed & high & medium & high   \\
+		Speed & high & medium & high \\
 		\hline
-		Price & high & high   & medium \\
+		Price & high & high & medium \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -640,7 +640,7 @@ Die Einbindung von Programmtexten (source code) ist eine häufige Notwendigkeit,
 \subsection{Formatierung von Programmcode}
 \label{sec:FormatierungVonProgrammcode}
 
-Es gibt für \latex\ spezielle Pakete zur Darstellung von Programmen, die \ua\ auch die automatische
+Es existieren für \latex\ spezielle Pakete zur Darstellung von Programmen, die \ua\ auch die automatische
 Nummerierung der Zeilen vornehmen, insbesondere die Pakete \texttt{listings}%
 \footnote{\url{https://ctan.org/pkg/listings}}
 und \texttt{listingsutf8}.%
@@ -806,7 +806,7 @@ Wenn gewünscht, kann die Caption auch unten angebracht werden
 (jedenfalls aber konsistent und nicht gemischt).
 Natürlich darf auch hier nicht mit einer linearen Abfolge im fertigen
 Druckbild gerechnet werden, daher sind Wendungen wie
-"... im  folgenden Programmstück ..." zu vermeiden und entsprechende Verweise
+"\ldots\ im  folgenden Programmstück \ldots" zu vermeiden und entsprechende Verweise
 einzusetzen. Beispiele sind Programme \ref{prog:processors-source} und \ref{prog:CodeExample}.
 
 \begin{program}
@@ -856,6 +856,6 @@ solches Beispiel ist der \latex-Quellcode in Anhang
 \ref{app:latex} (Seite \pageref{app:latex}).%
 \footnote{%
 Grundsätzlich ist zu überlegen, ob die gedruckte Einbindung der gesamten
-Programmtexte einer Implementierung für den Leser überhaupt sinnvoll ist, oder
+Programmtexte einer Implementierung für den*die Leser*in überhaupt sinnvoll ist, oder
 ob diese nicht besser elektronisch (auf Datenträger) beigefügt und nur exemplarisch
 beschrieben werden.}
