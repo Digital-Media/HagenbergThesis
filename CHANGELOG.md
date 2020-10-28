@@ -8,13 +8,11 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- 2020/10/28: Added a section about gender-sensitive language and writing style.
 - 2020/10/07: Cleanup of technical issues (software setup, workflow, printing) in ``HgbThesisTutorial``.
-
 - 2020/06/26: Changed bibliography section titles from `Audio-visual media` (`Audiovisuelle Medien`) to `Media` (`Medien`) to include media types that are non-A/V (e.g., still images).
-
 - 2020/06/21: Added hints in `HgbThesisTutorial` for citing musical scores. Modified `Appendix B` (listing of supplementary materials),
 replacing obsolete CD/DVD by cloud archive submission.
-
 - 2020/03/04: Modified repository setup (without GIT submodules) and adapted build process.
 All build-related parts are now contained in the new ``dev/`` directory, where
 .sty, .cls and .bib files are stored in a single place (``dev/latex/``).
