@@ -8,6 +8,7 @@ Version number*
 2017-10-27
 2018-11-28
 2019-05-16
+2020-10-29
 	
 Maintainer*
 Wilhelm Burger, Wolfgang Hochleitner
@@ -38,6 +39,9 @@ List of changes:
 License type*
 	CC BY 4.0
 
+Archive file:
+	hagenberg-thesis.zip
+	
 Home page
 
 Repository: (only)
