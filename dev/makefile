@@ -74,8 +74,9 @@ ctan :
 #	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
 	@echo "  copying .sty and .cls files from $(SOURCEDIR)/"
 	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
-#	Copy the entire documents/ directory to ctan/hagenberg-thesis/
+#	Copy the entire documents/ directory to ctan/hagenberg-thesis/ (clear target first)
 	@echo "  copying $(DOCUMENTSDIR)/ directory to $(CTANEXAMPLES)/"
+	@rm -r -f $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/*
 	@cp -u -R $(DOCUMENTSDIR)/* $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
 #	Remove all .sty and .cls files in ctan/hagenberg-thesis/examples/ (recursively):
 	@echo "  removing all .sty and .cls files in $(CTANEXAMPLES)/"

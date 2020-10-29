@@ -22,7 +22,7 @@ PICFILES := $(shell find $(IMAGEDIR)/ -iname "*.pdf" -or -iname "*.png" -or -ina
 #PICFILES := $(shell find */ -iname "*.pdf" -or -iname "*.png" -or -iname "*.jpg" -type f)
 
 
-all: $(LATEXMAIN).pdf #clean
+all: $(LATEXMAIN).pdf clean
 .PHONY : all clean listfiles
 
 # LaTeX is only run when any of the contributing files has been modified
