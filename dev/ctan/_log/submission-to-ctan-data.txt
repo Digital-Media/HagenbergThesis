@@ -13,6 +13,9 @@ Version number*
 Maintainer*
 Wilhelm Burger, Wolfgang Hochleitner
 
+Your name*
+Wilhelm Burger
+
 Your email*
 wilhelm.burger@fh-hagenberg.at
 	
