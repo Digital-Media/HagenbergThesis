@@ -24,8 +24,8 @@ Disziplinen üblich ist.%
 Technisch basiert dieser Teil auf \texttt{BibTeX} \cite{Patashnik1988}
 \bzw\ \texttt{Biber}%
 \footnote{Wird seit Version 2013/02/19 anstelle von \texttt{bibtex} verwendet 
-	(s.\ \url{http://biblatex-biber.sourceforge.net/}),}
-in Kombination mit dem Paket \texttt{biblatex} \cite{Lehman2018}.
+	(s.\ \url{http://biblatex-biber.sourceforge.net/}).}
+in Kombination mit dem Paket \texttt{biblatex} \cite{Kime2020}.
 
 
 Die Verwaltung von Quellen besteht grundsätzlich aus zwei Elementen: 
@@ -114,11 +114,11 @@ angeben kann, zum Beispiel:
 \begin{itemize}
 \item
 Ähnliches findet sich auch in 
-\mcite[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+\mcite[Kap.~2]{Loimayr2019}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
 %
 \begin{LaTeXCode}[numbers=none]
 Ähnliches findet sich auch in
-\mcite[Kap.~2]{Artner2007}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+\mcite[Kap.~2]{Loimayr2019}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
 \end{LaTeXCode}
 \end{itemize}
 %
@@ -278,7 +278,7 @@ Institutionen und Verlagen) \textbf{häufig falsch oder syntaktisch fehlerhaft}!
 Man sollte sie daher nicht ungeprüft übernehmen und insbesondere die Endergebnisse genau kontrollieren.
 Darüber hinaus gibt es eigene Anwendungen zur Wartung von
 BibTeX-Verzeichnissen, wie beispielsweise
-\emph{JabRef}.\footnote{\url{http://www.jabref.org/}}
+\emph{JabRef}.\footnote{\url{https://www.jabref.org/}}
 
 
 \subsubsection{Verwendung von \texttt{biblatex} und \texttt{biber}}
@@ -286,7 +286,7 @@ BibTeX-Verzeichnissen, wie beispielsweise
 Dieses Dokument verwendet \texttt{biblatex} (Version 1.4 oder höher) in Verbindung
 mit dem Programm \texttt{biber}, 
 das viele Unzulänglichkeiten des traditionellen BibTeX-Work\-flows behebt und dessen Möglichkeiten deutlich erweitert.%
-\footnote{Tatsächlich ist \texttt{biblatex} die erste radikale (und längst notwendige) Überarbeitung des mittlerweile stark in die Jahre gekommenen BibTeX-Workflows. Zwar wird dabei BibTex weiterhin für 
+\footnote{Tatsächlich ist \texttt{biblatex} die erste radikale (und längst notwendige) Überarbeitung des mittlerweile stark in die Jahre gekommenen BibTeX-Workflows. Zwar wird dabei BibTeX weiterhin für 
 die Sortierung der Quellen verwendet, die Formatierung der Einträge und viele andere Elemente werden jedoch ausschließlich über \latex-Makros gesteuert.}
 Allerdings sind die in \texttt{biblatex} verwendeten Literaturdaten nicht mehr vollständig 
 rückwärts-kompatibel zu BibTeX. Es ist daher in der Regel notwendig, bestehende oder aus
@@ -341,7 +341,7 @@ bei Bedarf relativ leicht möglich.}
 %
 \begin{itemize}
 	\item[] \textsf{literature} -- für klassische Publikationen, die gedruckt oder online vorliegen;
-	\item[] \textsf{avmedia} -- für Filme, audio-visuelle Medien (auf DVD, CD, \usw);
+	\item[] \textsf{avmedia} -- für Filme, audio-visuelle Medien (auf DVD, Streaming \usw);
 	\item[] \textsf{software} -- für Softwareprodukte, APIs, Computer Games;
 	\item[] \textsf{online} -- für Artefakte, die \emph{ausschließlich} online verfügbar sind.
 \end{itemize}
@@ -363,7 +363,7 @@ zugeordnet.
 	\emph{Literatur} (\textsf{literature}) & Typ & Seite\\
 	\hline
 	Buch (Textbuch, Monographie) & \texttt{@book} & \pageref{sec:@book}\\
-	Sammelband (Hrsg.\ + mehrere Autoren) & \texttt{@incollection} & \pageref{sec:@incollection} \\
+	Sammelband (Hrsg.\ + mehrere Autor*innen) & \texttt{@incollection} & \pageref{sec:@incollection} \\
 	Konferenz-, Tagungsband & \texttt{@inproceedings} & \pageref{sec:@inproceedings}\\
 	Beitrag in Zeitschrift, Journal & \texttt{@article} & \pageref{sec:@article}\\
 	Bachelor-, Master-, Diplomarbeit, Dissertation & \texttt{@thesis} & \pageref{sec:@thesis}\\
@@ -436,7 +436,7 @@ angegeben, gefolgt vom zugehörigen Ergebnis im Quellenverzeichnis.
 
 \subsubsection{\texttt{@book}}
 \label{sec:@book}
-Ein einbändiges Buch (Monographie), das von einem Autor oder mehreren Autoren zur Gänze gemeinsam verfasst und (typischerweise) von einem Verlag herausgegeben wurde.
+Ein einbändiges Buch (Monographie), das von einem*einer Autor*in oder mehreren Autor*innen zur Gänze gemeinsam verfasst und (typischerweise) von einem Verlag herausgegeben wurde.
 % 
 \begin{itemize}
 \item[] 
@@ -465,9 +465,9 @@ wenn diese die einzige ist!
 \subsubsection{\texttt{@incollection}}
 \label{sec:@incollection}
 Ein in sich abgeschlossener und mit einem eigenen Titel versehener
-Beitrag eines oder mehrerer Autoren in einem Buch oder Sammelband.
+Beitrag eines oder mehrerer Autor*innen in einem Buch oder Sammelband.
 Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel des Sammelbands und
-\texttt{editor} der Name des Herausgebers.
+\texttt{editor} der Name des*der Herausgebers*Herausgeberin.
 %
 \begin{itemize}
 \item[] 
@@ -578,30 +578,31 @@ insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertati
 \item[\cite{Eberl1987}] \fullcite{Eberl1987}
 \end{itemize}
 
-\paragraph{Magister- oder Masterarbeit:} ~ \newline
-Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\{mathesis\}}.%
+\paragraph{Diplomarbeit:} ~ \newline
+Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\obnh\{Diplomarbeit\}}:%
 
 %%------------------------------------------------------
 
-\paragraph{Diplomarbeit:} ~ \newline
-Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\obnh\{Diplomarbeit\}}:%
+\paragraph{Magister- oder Masterarbeit:} ~ \newline
+Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\{mathesis\}}.%
+
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@thesis{Artner2007,
-  author={Artner, Nicole Maria},
-  title={Analyse und Reimplementierung des Mean-Shift Tracking-Verfahrens},
-  type={Diplomarbeit},
-  year={2007},
-  month={7},
-  institution={University of Applied Sciences Upper Austria, Digitale Medien},
+@thesis{Loimayr2019,
+  author={Loimayr, Nora},
+  title={Utilization of GPU-Based Smoothed Particle Hydrodynamics for Immersive Audiovisal Experiences},
+  type={mathesis},
+  year={2019},
+  month={11},
+  institution={University of Applied Sciences Upper Austria, Interactive Media},
   location={Hagenberg, Austria},
-  url={http://theses.fh-hagenberg.at/thesis/Artner07},
-  hyphenation={german}
+  url={https://theses.fh-hagenberg.at/thesis/Loimayr19},
+  hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Artner2007}] \fullcite{Artner2007}
+\item[\cite{Loimayr2019}] \fullcite{Loimayr2019}
 \end{itemize}
 %
 Der Inhalt des Felds \verb!url={..}! wird dabei automatisch und ohne zusätzliche
@@ -660,25 +661,25 @@ Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben,
 
 \subsubsection{\texttt{@manual}}
 \label{sec:@manual}
-Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen von Herstellern, Anleitungen, Präsentationen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
+Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen, Anleitungen, Präsentationen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{Mittelbach2018,
+@manual{Mittelbach2020,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
-  year={2018},
-  month={12},
-  version={2.17b},
+  year={2020},
+  month={9},
+  version={2.17i},
   url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
   hyphenation={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2018}] \fullcite{Mittelbach2018}
+\item[\cite{Mittelbach2020}] \fullcite{Mittelbach2020}
 \end{itemize}
 %
-Oft wird bei derartigen Dokumenten kein Autor genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vornamen} + \emph{Nachname} interpretiert wird.%
+Oft wird bei derartigen Dokumenten kein*e Autor*in genannt. Dann wird der Name des \emph{Unternehmens} oder der \emph{Institution} im \texttt{author}-Feld angegeben, allerdings innerhalb einer \textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht fälschlicherweise als \emph{Vornamen} + \emph{Nachname} interpretiert wird.%
 \footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz für \texttt{author} akzeptiert.}
 Dieser Trick wird \ua\ im nächsten Beispiel verwendet.
 
@@ -736,7 +737,7 @@ Patenterteilung, die Angabe von \texttt{holder} ist optional:
 \end{itemize}
 %
 \texttt{@patent} ist allerdings kein Standardtyp und daher wird nicht
-von allen BibTex-Imple\-mentier\-ungen unterstützt.
+von allen BibTeX-Imple\-mentier\-ungen unterstützt.
 Alternativ kann man für Patente auch den \texttt{@misc}-Typ verwenden,
 wie im nächsten Abschnitt gezeigt \cite{Hough1962}.
 
@@ -747,7 +748,7 @@ wie im nächsten Abschnitt gezeigt \cite{Hough1962}.
 
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
 nicht das Auslangen gefunden werden, sollte man sich zunächst die weiteren (hier nicht näher beschriebenen) 
-Typen im \texttt{biblatex}-Handbuch \cite{Lehman2018} ansehen, beispielsweise
+Typen im \texttt{biblatex}-Handbuch \cite{Kime2020} ansehen, beispielsweise
 \texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin).
 
 Wenn nichts davon passt, dann kann auf den Typ \texttt{@misc} zurückgegriffen werden, der ein
@@ -790,7 +791,7 @@ Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein \emph{
 \label{sec:Musiknoten}
 
 Für gedruckte Kompositionen%
-\footnote{Engl.\ \emph{sheet music} oder \emph{musical scores}} gibt es in BibTex leider keinen
+\footnote{Engl.\ \emph{sheet music} oder \emph{musical scores}} gibt es in BibTeX leider keinen
 speziellen Eintragstyp. Bei einer \emph{einzelnen} Ausgabe verwendet man am Einfachsten den Typ 
 \texttt{@book}, wie \zB\ (\sa\ \cite{HaydnCelloConcerto2,ShostakovichOp110})
 %
@@ -834,14 +835,14 @@ kann man -- wie für einen Sammelband -- den Typ \texttt{@incollection} verwende
 \label{sec:@unpublished}
 
 Es kommt immer häufiger vor, dass Manuskripte längere Zeit vor der eigentlichen Pub\-likation
-von den Autoren online veröffentlicht werden,
+von den Autor*innen online veröffentlicht werden,
 beispielsweise auf Plattformen wie \textsf{arXiv.org}% 
 \footnote{\url{https://arxiv.org/}}
 oder \textsf{researchgate.net}.%
 \footnote{\url{https://www.researchgate.net/}}
 Dabei ist zu beachten, dass die Onlinestellung formell \textbf{keine Publikation}
 darstellt, da diese Plattformen keine Publikationsmedien sind.
-Tatsächlich werden manche der (von den Autoren selbst hochgeladenen) Arbeiten \emph{nie}
+Tatsächlich werden manche der (von den Autor*innen selbst hochgeladenen) Arbeiten \emph{nie}
 publiziert, etwa Einreichungen zu Konferenzen.
 Hier ist wichtig festzustellen, ob der Beitrag tatsächlich
 angenommen und auch publiziert wurde:
@@ -861,7 +862,7 @@ Publikation (oder ein zugehöriger \emph{Technical Report}, \so) findet,  kann m
   author = {Dai, Jifeng and Li, Yi and He, Kaiming and Sun, Jian},
   title = {{R-FCN:} Object Detection via Region-based Fully ...},
   year = {2016},
-  url = {http://arxiv.org/abs/1605.06409},
+  url = {https://arxiv.org/abs/1605.06409},
   pubstate = {prepublished}
 }
 \end{GenericCode}
@@ -982,8 +983,9 @@ Hier ein Beispiel für den Verweis auf eine DVD-Edition:
 \end{itemize}
 %
 In diesem Fall ist das angegebene Datum der \emph{Erscheinungstermin}. 
-Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
-\texttt{author}-Feld weg und verpackt die entsprechenden Angaben im \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
+Falls kein*e eindeutige*r Autor*in namhaft gemacht werden kann, lässt man das
+\texttt{author}-Feld weg und verpackt die entsprechenden Angaben im
+\texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
 
 
 
@@ -991,7 +993,7 @@ Falls kein eindeutiger Autor namhaft gemacht werden kann, lässt man das
 \subsubsection{\texttt{@movie}}
 \label{sec:@movie}
 Dieser Eintragstyp ist für Filme reserviert. 
-Hier wird von vornherein \emph{kein} Autor angegeben, weil dieser bei 
+Hier wird von vornherein \emph{kein*e} Autor*in angegeben, weil diese*r bei 
 einer Filmproduktion \ia\ nicht eindeutig zu benennen ist. 
 Im folgenden Beispiel (\sa\ \cite{Psycho1960}) sind die betreffenden Daten 
 im \texttt{note}-Feld angegeben:%
@@ -1101,20 +1103,20 @@ Durch den Umfang und die steigende Qualität dieser Einträge erscheint
 die Aufnahme in das Quellenverzeichnis durchaus berechtigt.
 Beispielsweise bezeichnet man als "Reliquienschrein"
 einen Schrein, in dem die Reliquien eines oder 
-mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2018}.
+mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2020}.
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@online{WikiReliquienschrein2018,
-	title={Reliquienschrein},
-	url={https://de.wikipedia.org/wiki/Reliquienschrein},
-	year={2018},
-	month={9},
-	urldate={2019-02-28}
+@online{WikiReliquienschrein2020,
+  url={https://de.wikipedia.org/wiki/Reliquienschrein},
+  title={Reliquienschrein},
+  year={2020},
+  month={10},
+  urldate={2020-10-27}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2018}] \fullcite{WikiReliquienschrein2018}
+\item[\cite{WikiReliquienschrein2020}] \fullcite{WikiReliquienschrein2020}
 \end{itemize}
 %
 In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL.
@@ -1212,7 +1214,7 @@ unvollständig, inkonsistent oder syntaktisch fehlerhaft!
 Sie sollten bei der Übernahme \emph{immer} auf Korrektheit überprüft werden!
 Besonders sollte dabei auf die richtige Angabe der Vornamen (VN) und Nachnamen (NN) geachtet werden,
 nämlich in der Form%
-\footnote{\texttt{and} ist hier ein fixes Trennwort zwischen den Namen der einzelnen Autoren.}
+\footnote{\texttt{and} ist hier ein fixes Trennwort zwischen den Namen der einzelnen Autor*innen.}
 \begin{itemize}
 \item[]
 \texttt{author=\{\textit{NN1}, \textit{VN1a} \emph{VN1b} and \textit{NN2}, \textit{VN2a} \ldots \}}.
@@ -1241,7 +1243,7 @@ Hier ist eine Liste der häufigsten Fehler im Zusammenhang mit dem Quellenverzei
 \item
 Alle Einträge auf fehlende oder falsch interpretierte Elemente überprüfen!
 \item
-Alle Namen und Vornamen der Autoren überprüfen, sind die Abkürzungen (der Vornamen) konsistent?
+Alle Namen und Vornamen der Autor*innen überprüfen, sind die Abkürzungen (der Vornamen) konsistent?
 \item
 Groß-/Kleinschreibung und Satzzeichen in allen  Einträgen überprüfen und ggfs.\ korrigieren.
 \item
@@ -1294,4 +1296,4 @@ Insbesondere ist es nicht zulässig, eine Quelle nur eingangs zu erwähnen und n
 Auf gar keinen Fall tolerierbar ist die direkte Übernahme oder \emph{Paraphrase} längerer Textpassagen, egal ob mit oder ohne Quellenangabe. Auch indirekt übernommene oder aus einer anderen Sprache übersetzte Passagen müssen mit entsprechenden Quellenangaben gekennzeichnet sein! 
 \end{itemize}
 %
-Im Zweifelsfall finden sich detailliertere Regeln in jedem guten Buch über wissenschaftliches Arbeiten oder man fragt sicherheitshalber den Betreuer der Arbeit.
+Im Zweifelsfall finden sich detailliertere Regeln in jedem guten Buch über wissenschaftliches Arbeiten oder man fragt sicherheitshalber den*die Betreuer*in der Arbeit.
