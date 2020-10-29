@@ -8,37 +8,34 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- 2020/10/28: Added a section about gender-sensitive language and writing style.
-- 2020/10/07: Cleanup of technical issues (software setup, workflow, printing) in ``HgbThesisTutorial``.
-- 2020/06/26: Changed bibliography section titles from `Audio-visual media` (`Audiovisuelle Medien`) to `Media` (`Medien`) to include media types that are non-A/V (e.g., still images).
-- 2020/06/21: Added hints in `HgbThesisTutorial` for citing musical scores. Modified `Appendix B` (listing of supplementary materials),
-replacing obsolete CD/DVD by cloud archive submission.
-- 2020/03/04: Modified repository setup (without GIT submodules) and adapted build process.
-All build-related parts are now contained in the new ``dev/`` directory, where
-.sty, .cls and .bib files are stored in a single place (``dev/latex/``).
-The build process updates the ``documents/`` and ``dev/ctan/`` directories.
-There is no duplication of document source files, all are in ``documents/``.
-Release dates are now automatically inserted (during build) into any date field, the ``9999/01/01``
-dummy markers are not required any more. Experimental: ``latexmk`` is used in the build process.
-
-
-- 2020/01/27: `hgbthesis.cls` now issues a package warning if trying to define multiple authors inside the `\author{..}` command. The `\and` and `\thanks{..}` commands are suppressed.
-
-- 2020/01/24: Added `PythonCode` environment to include Python code in `listings` environments. Moved all build-related elements to a separate non-public repository, leaving only user-relevant parts in `HagenbergThesis`.
-
-- 2019/12/12: Added a new load-time check to validate if the currently used `hagenberg-thesis` installation is no older than 365 days (in `hgb.sty`). Otherwise a warning is issued with a reminder to check for updates on Github. This check can be suppressed by passing the new class option `noUpdateCheck`. In all `.cls` files the handling of class options was modified to pass all non-declared options to `hgb.sty`. In this course, the (obsolete) `datetime` package was replaced by the `datetime2` package (https://github.com/Digital-Media/HagenbergThesis/commit/2bc1895658b51904bfbbc2a7ec63230f23b9e17f).
-
-- 2019/11/19: Added information on how/when to use the ``@unpublished`` biblatex tag in ``examples/HgbThesisTutorial`` (https://github.com/Digital-Media/HagenbergThesis/commit/90296eafc6089949780bf9c5e40b85836274fe3c).
-
 ### Changed
-
-- 2020/01/31: Top-level folder ``examples`` renamed to ``documents``.
-- 2020/10/27: Used gender-sensitive language in all German template documents. Also switched the example names to gender-neutral versions. Also updated references to their latest versions.
 
 ### Fixed
 
-- 2020/02/28: Fixed sorting error with multiple keys in cite commands.
-- 2020/01/23: Fixed error with \DTMgermanmonthname
+## [2020/10/29]
+
+### Added
+
+- Added a section about gender-sensitive language and writing style.
+- Cleanup of technical issues (software setup, workflow, printing) in ``HgbThesisTutorial``.
+- Changed bibliography section titles from `Audio-visual media` (`Audiovisuelle Medien`) to `Media` (`Medien`) to include media types that are non-A/V (e.g., still images).
+- Added hints in `HgbThesisTutorial` for citing musical scores. Modified `Appendix B` (listing of supplementary materials),
+replacing obsolete CD/DVD by cloud archive submission.
+- Modified repository setup (without GIT submodules) and adapted build process. All build-related parts are now contained in the new ``dev/`` directory, where .sty, .cls and .bib files are stored in a single place (``dev/latex/``). The build process updates the ``documents/`` and ``dev/ctan/`` directories. There is no duplication of document source files, all are in ``documents/``. Release dates are now automatically inserted (during build) into any date field, the ``9999/01/01`` dummy markers are not required any more. Experimental: ``latexmk`` is used in the build process.
+- `hgbthesis.cls` now issues a package warning if trying to define multiple authors inside the `\author{..}` command. The `\and` and `\thanks{..}` commands are suppressed.
+- Added `PythonCode` environment to include Python code in `listings` environments. Moved all build-related elements to a separate non-public repository, leaving only user-relevant parts in `HagenbergThesis`.
+- Added a new load-time check to validate if the currently used `hagenberg-thesis` installation is no older than 365 days (in `hgb.sty`). Otherwise a warning is issued with a reminder to check for updates on Github. This check can be suppressed by passing the new class option `noUpdateCheck`. In all `.cls` files the handling of class options was modified to pass all non-declared options to `hgb.sty`. In this course, the (obsolete) `datetime` package was replaced by the `datetime2` package (https://github.com/Digital-Media/HagenbergThesis/commit/2bc1895658b51904bfbbc2a7ec63230f23b9e17f).
+- Added information on how/when to use the ``@unpublished`` biblatex tag in ``examples/HgbThesisTutorial`` (https://github.com/Digital-Media/HagenbergThesis/commit/90296eafc6089949780bf9c5e40b85836274fe3c).
+
+### Changed
+
+- Top-level folder ``examples`` renamed to ``documents``.
+- Used gender-sensitive language in all German template documents. Also switched the example names to gender-neutral versions. Also updated references to their latest versions.
+
+### Fixed
+
+- Fixed sorting error with multiple keys in cite commands.
+- Fixed error with \DTMgermanmonthname
 
 ## [2019/05/16]
 
@@ -112,7 +109,8 @@ dummy markers are not required any more. Experimental: ``latexmk`` is used in th
 This is the first release on GitHub. Future versions will now be published on this repository.
 This version has also been ported to Overleaf for online editing.
 
-[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2019/05/16...HEAD
+[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2020/10/29...HEAD
+[2020/10/29]: https://github.com/Digital-Media/HagenbergThesis/compare/2019/05/16...2020/10/29
 [2019/05/16]: https://github.com/Digital-Media/HagenbergThesis/compare/2018/11/28...2019/05/16
 [2018/11/28]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/11/05...2018/11/28
 [2017/11/05]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/10/16...2017/11/05
