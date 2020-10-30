@@ -74,17 +74,21 @@ ctan :
 #	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
 	@echo "  copying .sty and .cls files from $(SOURCEDIR)/"
 	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
+#
 #	Copy the entire documents/ directory to ctan/hagenberg-thesis/ (clear target first)
-	@echo "  copying $(DOCUMENTSDIR)/ directory to $(CTANEXAMPLES)/"
-	@rm -r -f $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/*
-	@cp -u -R $(DOCUMENTSDIR)/* $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
+#	@echo "  copying $(DOCUMENTSDIR)/ directory to $(CTANEXAMPLES)/"
+#	@rm -r -f $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/*
+#	@cp -u -R $(DOCUMENTSDIR)/* $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
+#
 #	Remove all .sty and .cls files in ctan/hagenberg-thesis/examples/ (recursively):
-	@echo "  removing all .sty and .cls files in $(CTANEXAMPLES)/"
-	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.sty" -type f -delete
-	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.cls" -type f -delete
+#	@echo "  removing all .sty and .cls files in $(CTANEXAMPLES)/"
+#	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.sty" -type f -delete
+#	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.cls" -type f -delete
+#
 #	Remove all top-level ZIP files in ctan/hagenberg-thesis/examples/:
-	@echo "  removing ZIP files in $(CTANEXAMPLES)/"
-	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -maxdepth 1 -name "*.zip" -type f -delete
+#	@echo "  removing ZIP files in $(CTANEXAMPLES)/"
+#	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -maxdepth 1 -name "*.zip" -type f -delete
+#
 #	Copy manual/tutorial source and PDFs to ctan/hagenberg-thesis/doc/
 	@echo "  copying manual/tutorial source and PDFs to $(CTANDIR)/doc/"
 	@cp -u $(DOCUMENTSDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
