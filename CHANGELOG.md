@@ -10,6 +10,8 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+-2020/10/30: Removed `ctan/hagenberg-thesis/examples/` directory from CTAN bundle, modified `ctan` target in `makefile` and added another reference in `README.md` to this GitHub repo. (CTAN admins had complained about duplicate files.)
+
 ### Fixed
 
 ## [2020/10/29]
