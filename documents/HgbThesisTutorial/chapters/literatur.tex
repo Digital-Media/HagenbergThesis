@@ -1212,23 +1212,28 @@ Viele Verlage und Literatur-Broker bieten fertige BibTeX-Einträge zum Herunterl
 Dabei ist jedoch größte Vorsicht geboten, denn diese Einträge sind häufig
 unvollständig, inkonsistent oder syntaktisch fehlerhaft!
 Sie sollten bei der Übernahme \emph{immer} auf Korrektheit überprüft werden!
-Besonders sollte dabei auf die richtige Angabe der Vornamen (VN) und Nachnamen (NN) geachtet werden,
-nämlich in der Form%
-\footnote{\texttt{and} ist hier ein fixes Trennwort zwischen den Namen der einzelnen Autor*innen.}
+Besonders sollte dabei auf die richtige Angabe der Vornamen (\texttt{\textit{vn}}) und 
+Nachnamen (\texttt{\textit{nn}}) geachtet werden, nämlich in der Form%
+\footnote{Beachte, wie die Kommas gesetzt werden! Mit dem Schlüsselwort 
+\underline{\texttt{and}} werden die Namen der einzelnen Autor*innen getrennt.}
 \begin{itemize}
 \item[]
-\texttt{author=\{\textit{NN1}, \textit{VN1a} \emph{VN1b} and \textit{NN2}, \textit{VN2a} \ldots \}}.
+\texttt{author=\{\textit{nn1}, \textit{vn1a} \emph{vn1b} \underline{and} \textit{nn2}, \textit{vn2a} \ldots \}}.
 \end{itemize}
 Das ist \va\ bei mehrteiligen Nachnamen wichtig, weil sonst
 Vor- und Nachnamen nicht korrekt zugeordnet werden können, \zB
 \begin{itemize}
 \item[]
-\texttt{author=\{van Beethoven, Ludwig and ter Linden, Jaap\}}
+\texttt{author=\{van Beethoven, Ludwig \underline{and} ter Linden, Jaap\}}
 \end{itemize}
 für ein (hypothetisches) Werk der Herren \emph{Ludwig van Beethoven} und \emph{Jaap ter Linden}.
-sowie die Angabe von \texttt{volume}, \texttt{number} und \texttt{pages}.
-Die Namen von Konferenzen sind sehr oft falsch (auch bei ACM und IEEE).
-ISBN-, DOI- und ISSN-Nummern sind entbehrlich und können getrost weggelassen werden.
+
+Häufig finden sich Weglassungen oder Fehler bei Einträgen von \texttt{volume}, \texttt{number} 
+und \texttt{pages}, \va\ bei Sammelbänden (\texttt{@incollection}) und Konferenzbeiträgen
+(\texttt{@inproceedings}).
+Auch die Namen von Konferenzen und Tagungsorten werden oft nicht korrekt angegeben 
+(sogar in offiziellen ACM- und IEEE-Quellen).
+ISBN-, DOI- und ISSN-Nummern sind in der Regel überflüssig und sollten weggelassen werden.
 
 
 \subsubsection{Häufige Fehler bei Quellenangaben}
@@ -1261,7 +1266,7 @@ Konferenzbände:
 Tagungsbände einheitlich in der Form "Proceedings of the \emph{XY Conference on Something} \ldots"
 bezeichnen. Tagungsort angeben, Seitenangaben nicht vergessen!
 \item
-Bei Techn.\ Berichten, Masterarbeiten und Dissertationen muss die Institution (Department)
+Bei Techn.\ Berichten, Masterarbeiten und Dissertationen \emph{muss} die Institution (Department)
 angegeben sein!
 \end{itemize}
  
