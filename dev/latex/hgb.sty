@@ -314,8 +314,11 @@
 % compatible with our quality standards. Loading this package is therefore blocked
 % by default. We recommend to use the 'tabular' environment instead.
 
-\newcommand{\subfigure}{%
-\PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}}
+\AtBeginDocument{%
+  \@ifpackageloaded{subfigure}{%
+    \PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}
+  }%
+}%
 
 %% ----------------------------------------------------------------------------
 
