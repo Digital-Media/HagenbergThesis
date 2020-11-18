@@ -317,6 +317,7 @@
 \AtBeginDocument{%
   \@ifpackageloaded{subfigure}{%
     \PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}
+	\let\subfigure\undefined% just to make sure ...
   }%
 }%
 
