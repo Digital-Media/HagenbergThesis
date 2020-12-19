@@ -62,17 +62,23 @@ for drafting journal articles.
 
 
 \subsection{Class options} 
-The above document classes accept the following options:
+All document classes accept the following \textbf{general options}:
 %
-\begin{raggedright}
+\begin{itemize}
+\item \texttt{english} or \texttt{german} (select the primary language), 
+\item \texttt{smartquotes} (use smart quotes replacement), 
+\item \texttt{apa} (use \texttt{apa} bibliography style instead of \texttt{numeric-comp}),
+\item \texttt{noUpdateCheck} (suppress check of package release date).
+\end{itemize}
+%
+In addition, the following \textbf{class-specific options} are accepted:
+%
 \begin{itemize}
 \item \textbf{\texttt{hgbthesis}}: 
-	\texttt{master}, \texttt{diploma}, \texttt{bachelor}, 
-	\texttt{internship}, \texttt{english}, \texttt{german}, \texttt{smartquotes}, \texttt{noUpdateCheck};
-\item \textbf{\texttt{hgbreport}}: \texttt{notitlepage}, \texttt{english}, \texttt{german}, \texttt{smartquotes}, \texttt{noUpdateCheck};
-\item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}, \texttt{english}, \texttt{german}, \texttt{smartquotes}, \texttt{noUpdateCheck}.
+	\texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship};
+\item \textbf{\texttt{hgbreport}}: \texttt{notitlepage};
+\item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}.
 \end{itemize}
-\end{raggedright}
 %
 For example, to start a master's thesis in German
 one would simply simply place
