@@ -5,13 +5,16 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2020/11/18]%%AUTO
+\ProvidesPackage{hgbbib}[2020/12/19]%%AUTO
 
-\usepackage{csquotes}				% recommended for biblatex
+\newcommand{\@bibstyle}{numeric-comp}	%% default bibliography style is 'numeric-comp'
+\DeclareOption{apa}{\renewcommand{\@bibstyle}{apa}}
+\ProcessOptions\relax
 
-%Note: biblatex with bibtex backend is frozen at version 1.7.
-\usepackage[style=numeric-comp,backend=biber,bibencoding=auto]{biblatex}
+%\usepackage[style=numeric-comp,backend=biber,bibencoding=auto]{biblatex}
+\usepackage[style=\@bibstyle,backend=biber]{biblatex}
 \ExecuteBibliographyOptions{
+	bibencoding=auto,
 	bibwarn=true,
 	sortcites=true,
 	defernumbers=true,
@@ -19,6 +22,8 @@
 	doi=false,
 	backref=true,
 	backrefstyle=three}
+	
+\RequirePackage{csquotes}				% recommended for biblatex
 
 %% titles of reference section + 3 categories of references:
 \newcommand{\@bibtitle}{Quellenverzeichnis}
@@ -201,14 +206,22 @@
 % Macro to produce cites with no backref entries
 % Modified from http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex-contrib/biblatex-ieee/ieee.cbx
 % See also https://tex.stackexchange.com/questions/344861/biblatex-backref-option-per-entry
-\DeclareCiteCommand{\citenobr}%
-  {\usebibmacro{cite:init}%
-   \bibopenbracket
-	 \backtrackerfalse\usebibmacro{prenote}}
+%\DeclareCiteCommand{\citenobr}%	%% this version does not work with apa style!
+  %{\usebibmacro{cite:init}%
+   %\bibopenbracket
+	 %\backtrackerfalse\usebibmacro{prenote}}
+  %{\usebibmacro{citeindex}%
+   %\usebibmacro{cite:comp}}
+  %{}
+  %{\usebibmacro{cite:dump}%
+   %\usebibmacro{postnote}%
+   %\bibclosebracket
+  %}
+\DeclareCiteCommand{\citenobr}
+  {\backtrackerfalse\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
-   \usebibmacro{cite:comp}}
-  {}
-  {\usebibmacro{cite:dump}%
-   \usebibmacro{postnote}%
-   \bibclosebracket
-  }
+   \ifthenelse{\equal{\@bibstyle}{apa}}%	%% ugly kludge to adopt to APA style
+		{\usebibmacro{cite}}{\usebibmacro{cite:comp}}%
+	}%
+  {\multicitedelim}
+  {\usebibmacro{postnote}}

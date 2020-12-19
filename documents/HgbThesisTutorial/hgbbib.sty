@@ -5,7 +5,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2020/11/18]%%AUTO
+\ProvidesPackage{hgbbib}[2020/12/19]%%AUTO
 
 \newcommand{\@bibstyle}{numeric-comp}	%% default bibliography style is 'numeric-comp'
 \DeclareOption{apa}{\renewcommand{\@bibstyle}{apa}}
@@ -220,6 +220,8 @@
 \DeclareCiteCommand{\citenobr}
   {\backtrackerfalse\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
+   \ifthenelse{\equal{\@bibstyle}{apa}}%	%% ugly kludge to adopt to APA style
+		{\usebibmacro{cite}}{\usebibmacro{cite:comp}}%
+	}%
   {\multicitedelim}
   {\usebibmacro{postnote}}
