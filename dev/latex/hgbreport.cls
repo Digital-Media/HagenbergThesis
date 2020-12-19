@@ -22,10 +22,7 @@
 %% Handling class options --------------------------------------------------------------
 
 \DeclareOption{notitlepage}{\PassOptionsToClass{\CurrentOption}{report}}
-%\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-%\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-%\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-%\DeclareOption*{\ClassWarning{hgbreport}{Unknown document option '\CurrentOption'.}}
+\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
