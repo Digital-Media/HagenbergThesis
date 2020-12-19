@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2020/11/18]%%AUTO
+\ProvidesClass{hgbarticle}[2020/12/19]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -20,10 +20,7 @@
 %% Handling class options --------------------------------------------------------------
 
 \DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
-%\DeclareOption{english}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-%\DeclareOption{german}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-%\DeclareOption{smartquotes}{\PassOptionsToPackage{\CurrentOption}{hgb}}
-%\DeclareOption*{\ClassWarning{hgbreport}{Unknown document option '\CurrentOption'.}}
+\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
