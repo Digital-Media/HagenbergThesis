@@ -5,11 +5,13 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2020/12/19]%%AUTO
+\ProvidesPackage{hgbbib}[2021/01/04]%%AUTO
 
 \newcommand{\@bibstyle}{numeric-comp}	%% default bibliography style is 'numeric-comp'
 \DeclareOption{apa}{\renewcommand{\@bibstyle}{apa}}
 \ProcessOptions\relax
+
+\RequirePackage{xifthen}
 
 %\usepackage[style=numeric-comp,backend=biber,bibencoding=auto]{biblatex}
 \usepackage[style=\@bibstyle,backend=biber]{biblatex}
