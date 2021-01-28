@@ -1,0 +1,35 @@
+\chapter[Umgang mit Literatur]{Umgang mit Literatur und anderen Quellen}
+\label{cha:Literatur}
+
+Der APA-Zitierstil benötigt verschiedene Zitationsmakros, abhängig von der Verwendung \bzw. dem Auftreten der Quelle im Text.
+
+\section{Narrative Verweise}
+
+Bei narrativen Verweisen (engl. "narrative citations") wird die Quelle wie Subjekt oder Objekt des Satzes verwendet. Die Jahreszahl wird dabei dem Autor*innenname in Klammern nachgestellt.
+
+Das verwendete Makro ist \verb|\textcite{bibkey}|.
+
+\subsection{Beispiel}
+
+\textcite{Daniel2018} geben eine kurze Einführung in das Thema \latex, wohingegen \textcite{Oetiker2018, Kopka2003} bereits mehr ins Detail gehen.
+
+\section{Narrative Verweise innerhalb von Klammern}
+
+Soll ein Verweis innerhalb von Klammern verwendet werden, so müssen diese bei der Quellenangabe selbst entfallen.
+
+Das Makro \verb|\nptextcite{bibkey}| beachtet dies.
+
+\subsection{Beispiel}
+
+Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex besorgen (\zB \nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
+
+\section{Parenthetische Verweise}
+
+Parenthetische Verweise (engl. "parenthetical citations") werden verwendet, wenn die Quelle am Ende eines Satzes oder einer Aussage angegeben werden soll. Die Autor*innenname und Jahreszahl werden dabei gemeinsam in Klammern gesetzt.
+
+Das verwendete Makro ist \verb|\parencite{bibkey}|.
+
+\subsection{Beispiel}
+
+Für \latex existieren sowohl kurze Einführungen \parencite{Daniel2018}, als auch umfangreichere Werke \parencite{Oetiker2018, Kopka2003}.
+
