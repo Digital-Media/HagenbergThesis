@@ -29,19 +29,27 @@ Use the **create** links in the table below to open the document on **[Overleaf]
 ## Sample documents
 
 Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
-The following sample documents are currently available:
+The following sample documents (with numerical citations using `numeric-comp`) are currently available:
 
 | Name | Document Type | Language | PDF | ZIP | Overleaf\* |
 | :--- | :--- | --- | --- | --- | --- |
 | `HgbThesisTutorial` | **Thesis Template and Tutorial** | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisTutorial/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisTutorial.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisTutorial.zip) |
-| `HgbThesisDE` | Minimal Thesis  Template | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE.zip) |
-| `HgbThesisEN` | Minimal Thesis  Template | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN.zip) |
+| `HgbThesisDE` | Minimal Thesis Template | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE.zip) |
+| `HgbThesisEN` | Minimal Thesis Template | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN.zip) |
 | `HgbInternshipReport` | Internship Report | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbInternshipReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbInternshipReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbInternshipReport.zip) |
 | `HgbLabReportDE` | Lab Report (weekly assignments) | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbLabReportDE/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbLabReportDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbLabReportDE.zip) |
 | `HgbLabReportEN` | Lab Report (weekly assignments) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbLabReportEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbLabReportEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbLabReportEN.zip) |
 | `HgbTermReport` | Term/Project Report (full semester) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbTermReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbTermReport.zip) |
 | `HgbArticle` | Journal Article | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbArticle/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbArticle.zip) |
 
+### APA style documents
+
+To use the APA 7th edition style for citations and references, the option `apa` can be used in the document's preamble. Two separate sample documents are already prepared for the use of the APA style:
+
+| Name | Document Type | Language | PDF | ZIP | Overleaf\* |
+| :--- | :--- | --- | --- | --- | --- |
+| `HgbThesisDE-APA` | Minimal Thesis Template (APA style references) | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA.zip) |
+| `HgbThesisEN-APA` | Minimal Thesis Template (APA style references) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA.zip) |
 
 \*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**.
 
