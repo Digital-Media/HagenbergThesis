@@ -41,7 +41,8 @@ im Text referenziert wird.
 
 \section{Quellenverweise}
 
-Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu verweisen, stellt \latex ein zentrales Kommando zur Verfügung.
+Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu verweisen, stellt 
+\latex ein zentrales Kommando zur Verfügung.
 
 \subsection{Das \texttt{\textbackslash cite} Makro}
 
@@ -253,91 +254,6 @@ gefunden hat. Das könnte man \zB\ mit folgender Fußnote bewerkstelligen.%
 S.~314 (1632). Zitiert nach \cite[S.~59]{Hemleben1969}.} % Alle Seitennummern sind frei erfunden!
 
 
-\subsection{Verwendung des APA-Zitierstils}
-
-Als Alternative zu dem in diesem Dokument eingestellten numerischen Zitierstils (\texttt{numeric-comp})
-kann auch der Stil der American Psychological Association (APA) verwendet werden. Bei dieser Art der
-Quellenformatierung werden der Autor*innenname und die Jahreszahl der Publikation anstatt einer in
-eckigen Klammern angeführten Zahl verwendet. Auch die Formatierung der Einträge im Quellenverzeichnis
-ist unterschiedlich.
-
-Um APA als Zitierstil im gesamten Dokument zu verwenden, muss die Option \verb|apa| als Dokumentenoption
-in der Hauptdatei des Dokuments angegeben werden:
-%
-\begin{LaTeXCode}[numbers=none]
-\documentclass[master,german,smartquotes,apa]{hgbthesis}
-\end{LaTeXCode}
-%
-Um Quellen im Text zu referenzieren sind andere Makros -- abhängig von der Art der Verwendung -- notwendig.
-
-\subsubsection{Narrative Verweise}
-
-Bei narrativen Verweisen (engl. "narrative citations") wird die Quelle wie Subjekt oder Objekt des Satzes
-verwendet. Die Jahreszahl wird dabei dem Autor*innenname in Klammern nachgestellt.
-
-Das verwendete Makro ist \verb!\textcite{!\textit{keys}\verb!}!:
-%
-\begin{LaTeXCode}[numbers=none]
-\textcite{Daniel2018} geben eine kurze Einführung in das Thema \latex, wohingegen
-\textcite{Oetiker2018, Kopka2003} bereits mehr ins Detail gehen.
-\end{LaTeXCode}
-%
-Daniel et al. (2018) geben eine kurze Einführung in das Thema \latex, wohingegen Kopka und Daly (2003)
-und Oetiker et al. (2018) bereits mehr ins Detail gehen.
-
-\subsubsection{Narrative Verweise innerhalb von Klammern}
-
-Soll ein Verweis innerhalb von Klammern verwendet werden, so müssen diese bei der Quellenangabe
-selbst entfallen.
-
-Das Makro \verb!\nptextcite{!\textit{keys}\verb!}! beachtet dies:
-%
-\begin{LaTeXCode}[numbers=none]
-Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen (\zB       \nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
-\end{LaTeXCode}
-%
-Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen (\zB Daniel et al., 2018;
-Kopka \& Daly, 2003; Oetiker et al., 2018).
-
-\subsubsection{Parenthetische Verweise}
-
-Parenthetische Verweise (engl. "parenthetical citations") werden verwendet, wenn die Quelle am
-Ende eines Satzes oder einer Aussage angegeben werden soll. Autor*innen\-name und Jahreszahl
-werden dabei gemeinsam in Klammern gesetzt und durch einen Beistrich getrennt.
-
-Das verwendete Makro ist \verb!\parencite{!\textit{keys}\verb!}!:
-%
-\begin{LaTeXCode}[numbers=none]
-Für \latex existieren sowohl kurze Einführungen \parencite{Daniel2018}, als auch umfangreichere Werke \parencite{Oetiker2018, Kopka2003}.
-\end{LaTeXCode}
-%
-Für \latex existieren sowohl kurze Einführungen (Daniel et al., 2018), als auch umfangreichere
-Werke (Kopka \& Daly, 2003; Oetiker et al., 2018).
-
-\subsubsection{Darstellung im Quellenverzeichnis}
-
-Die drei verwendeten Quellen werden wie folgt im Quellenverzeichnis dargestellt:
-
-\begin{list}{}{
-\setlength{\leftmargin}{1.3cm}
-\setlength{\itemindent}{-1.3cm}
-\setlength{\itemsep}{-0.15cm}
-\urlstyle{rm}
-}
-\item
-Daniel, M., Gundlach, P., Schmidt, W., Knappen, J., Partl, H. \& Hyna, I. (2018).
-\textit{\LaTeX2e-Kurzbeschreibung.} Version 3.0c.
-\textrm{\url{http://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}.
-(Siehe S. 49)
-\item
-Kopka, H. \& Daly, P. W. (2003). \textit{A guide to \LaTeX} (4. Aufl.).
-Addison-Wesley. (Siehe S. 49).
-\item
-Oetiker, T., Partl, H., Hyna, I. \& Schlegl, E. (2018).
-\textit{The Not So ShortIntroduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.}
-Version 6.2. \url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}.
-(Siehe S. 6, 7)
-\end{list}
 
 
 \section{Quellenverzeichnis}
@@ -1361,6 +1277,128 @@ angegeben sein!
 \subsubsection{Listing aller Quellen}
 
 Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
+
+
+
+
+\section{Verwendung des APA-Zitierstils}
+
+\begin{sloppypar}
+Als Alternative zu dem in diesem Dokument eingestellten numerischen Zitierstils (\texttt{numeric-comp})
+kann auch der Stil der American Psychological Association%
+\footnote{\url{https://apastyle.apa.org/style-grammar-guidelines/references/}}
+(APA) verwendet werden.
+(Das sollte natürlich den Richtlinien des Instituts entsprechen und mit dem*der Betreuer*in abgestimmt sein.)
+Bei dieser Art der Quellenformatierung werden der Autor*innenname und die Jahreszahl der Publikation anstatt einer in
+eckigen Klammern angeführten Zahl verwendet. Auch die Formatierung der Einträge im Quellenverzeichnis
+ist unterschiedlich.
+\end{sloppypar}
+
+Um APA als Zitierstil im gesamten Dokument zu verwenden, muss in der Hauptdatei die Dokumenten\-option "\texttt{apa}"
+angegeben werden, \zB
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[master,german,smartquotes,apa]{hgbthesis}
+\end{LaTeXCode}
+%
+Um Quellen im Text zu referenzieren sind mehrere \textbf{unterschiedliche Makros} -- abhängig von der Art der Verwendung -- notwendig.
+
+\subsection{Narrative Verweise}
+
+Bei narrativen Verweisen (engl. "narrative citations") wird die Quelle wie Subjekt oder Objekt des Satzes
+verwendet. Die Jahreszahl wird dabei dem Autor*innenname in Klammern nachgestellt. Das verwendete Makro ist 
+%
+\begin{itemize}
+\item[] \verb!\textcite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+Beispiel:
+%
+\begin{itemize}
+\item[]
+\begin{LaTeXCode}[numbers=none,breakindent=0pt]
+\textcite{Daniel2018} geben eine kurze Einführung in das Thema \latex,
+wohingegen \textcite{Oetiker2018, Kopka2003} bereits mehr ins Detail gehen.
+\end{LaTeXCode}
+\item[] 
+Daniel et al. (2018) geben eine kurze Einführung in das Thema \latex, wohingegen Kopka und Daly (2003)
+und Oetiker et al. (2018) bereits mehr ins Detail gehen.
+\end{itemize}
+
+
+\subsection{Narrative Verweise innerhalb von Klammern}
+
+Soll ein Verweis \emph{innerhalb} von Klammern verwendet werden, so müssen diese bei der Quellenangabe
+selbst entfallen. Das Makro dafür ist
+%
+\begin{itemize}
+\item[] \verb!\nptextcite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+Beispiel:
+%
+\begin{itemize}
+\item[]
+\begin{LaTeXCode}[numbers=none,breakindent=0pt]
+Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen
+(\zB \nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
+\end{LaTeXCode}
+\item[]
+Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen 
+(\zB Daniel et al., 2018; Kopka \& Daly, 2003; Oetiker et al., 2018).
+\end{itemize}
+
+\subsection{Parenthetische Verweise}
+
+Parenthetische Verweise (engl. "parenthetical citations") werden verwendet, wenn die Quelle am
+Ende eines Satzes oder einer Aussage angegeben werden soll. Autor*innen\-name und Jahreszahl
+werden dabei gemeinsam in Klammern gesetzt und durch einen Beistrich getrennt.
+Das verwendete Makro ist
+%
+\begin{itemize}
+\item[] \verb!\parencite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+Beispiel:
+%
+\begin{itemize}
+\item[]
+\begin{LaTeXCode}[numbers=none,breakindent=0pt]
+Für \latex existieren sowohl kurze Einführungen \parencite{Daniel2018}, als auch umfangreichere Werke \parencite{Oetiker2018, Kopka2003}.
+\end{LaTeXCode}
+%
+\item[] Für \latex existieren sowohl kurze Einführungen (Daniel et al., 2018), als auch umfangreichere
+Werke (Kopka \& Daly, 2003; Oetiker et al., 2018).
+\end{itemize}
+
+
+\subsubsection{Darstellung im Quellenverzeichnis}
+
+\begin{sloppypar}
+Die oben verwendeten Quellen werden wie folgt im Quellenverzeichnis dargestellt:
+%
+\begin{list}{}{
+\setlength{\leftmargin}{1.3cm}
+\setlength{\itemindent}{-1.3cm}
+\setlength{\itemsep}{-0.15cm}
+\urlstyle{rm}
+}
+\item
+Daniel, M., Gundlach, P., Schmidt, W., Knappen, J., Partl, H. \& Hyna, I. (2018).
+\textit{\LaTeX2e-Kurzbeschreibung.} Version 3.0c.
+\textrm{\url{http://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}.
+(Siehe S. 49)
+\item
+Kopka, H. \& Daly, P. W. (2003). \textit{A guide to \LaTeX} (4. Aufl.).
+Addison-Wesley. (Siehe S. 49).
+\item
+Oetiker, T., Partl, H., Hyna, I. \& Schlegl, E. (2018).
+\textit{The Not So ShortIntroduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.}
+Version 6.2. \url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}.
+(Siehe S. 6, 7)
+\end{list}
+\end{sloppypar}
+
 
 
 

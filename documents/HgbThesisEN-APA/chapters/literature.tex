@@ -7,34 +7,43 @@ occurrence of the reference in the text.
 \section{Narrative Citations}
 
 In narrative references, the source is used as the subject or object of the sentence. The
-year is placed after the author's name in parentheses.
+year is placed after the author's name in parentheses. To create this kind of citation use 
+%
+\begin{itemize}
+\item[] \verb!\textcite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+\textbf{Example:}
+\textcite{Daniel2018} give a brief introduction to \latex, whereas \textcite{Oetiker2018, Kopka2003} 
+go into more detail.
 
-Use \verb!\textcite{!\textit{keys}\verb!}! to create this kind of citation.
-
-\subsection{Example}
-
-\textcite{Daniel2018} give a brief introduction to \latex, whereas \textcite{Oetiker2018, Kopka2003} go into more detail.
 
 \section{Narrative Citations within Parentheses}
 
-If a reference is to be used within parentheses, these must be omitted from the reference itself.
+If a reference is to be used within parentheses, these must be omitted from the reference itself. 
+The associated macro is
+%
+\begin{itemize}
+\item[] \verb!\nptextcite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+\textbf{Example:}
+In any case, it is recommended to obtain literature on the topic of \latex (e.g., 
+\nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
 
-The macro \verb!\nptextcite{!\textit{keys}\verb!}! considers this.
-
-\subsection{Example}
-
-In any case, it is recommended to obtain literature on the topic of \latex (e.g., \nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
 
 \section{Parenthetical Citations}
 
 Parenthetical citations are used when the reference should be cited at the end of a sentence or statement.
-The author's name and year are enclosed in parentheses and separated by a comma.
-
-Use \verb!\parencite{!\textit{keys}\verb!}! for this case.
-
-\subsection{Example}
-
-For \latex, there are short introductions \parencite{Daniel2018}, as well as more comprehensive works \parencite{Oetiker2018, Kopka2003}.
+The author's name and year are enclosed in parentheses and separated by a comma. In this case use
+%
+\begin{itemize}
+\item[] \verb!\parencite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+\textbf{Example:}
+For \latex, there are short introductions \parencite{Daniel2018}, as well as more comprehensive works 
+\parencite{Oetiker2018, Kopka2003}.
 
 
 
