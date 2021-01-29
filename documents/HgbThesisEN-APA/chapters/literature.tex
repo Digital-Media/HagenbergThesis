@@ -1,0 +1,40 @@
+\chapter[Using Literature]{Using Literature and other Resources}
+\label{cha:Literature}
+
+The APA citation style requires different citation macros, depending on the usage and the
+occurrence of the reference in the text.
+
+\section{Narrative Citations}
+
+In narrative references, the source is used as the subject or object of the sentence. The
+year is placed after the author's name in parentheses.
+
+Use \verb!\textcite{!\textit{keys}\verb!}! to create this kind of citation.
+
+\subsection{Example}
+
+\textcite{Daniel2018} give a brief introduction to \latex, whereas \textcite{Oetiker2018, Kopka2003} go into more detail.
+
+\section{Narrative Citations within Parentheses}
+
+If a reference is to be used within parentheses, these must be omitted from the reference itself.
+
+The macro \verb!\nptextcite{!\textit{keys}\verb!}! considers this.
+
+\subsection{Example}
+
+In any case, it is recommended to obtain literature on the topic of \latex (e.g., \nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
+
+\section{Parenthetical Citations}
+
+Parenthetical citations are used when the reference should be cited at the end of a sentence or statement.
+The author's name and year are enclosed in parentheses and separated by a comma.
+
+Use \verb!\parencite{!\textit{keys}\verb!}! for this case.
+
+\subsection{Example}
+
+For \latex, there are short introductions \parencite{Daniel2018}, as well as more comprehensive works \parencite{Oetiker2018, Kopka2003}.
+
+
+
