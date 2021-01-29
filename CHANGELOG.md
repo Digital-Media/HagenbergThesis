@@ -8,11 +8,13 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
--2021/01/04: Added `apa` document option to switch to APA bibliography style (documentation pending).
+- 2021/01/04: Added `apa` document option to switch to APA bibliography style (documentation pending).
+- 2021/01/29: Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to most important APA citation macros in it.
+- 2021/01/29: Added a section in HgbThesisTutorial about APA with instruction on how to enable it and an overview of the citation commands as well as the resulting reference list.
 
 ### Changed
 
--2020/10/30: Removed `ctan/hagenberg-thesis/examples/` directory from CTAN bundle, modified `ctan` target in `makefile` and added another reference in `README.md` to this GitHub repo. (CTAN admins had complained about duplicate files.)
+- 2020/10/30: Removed `ctan/hagenberg-thesis/examples/` directory from CTAN bundle, modified `ctan` target in `makefile` and added another reference in `README.md` to this GitHub repo (CTAN admins had complained about duplicate files).
 
 ### Fixed
 
