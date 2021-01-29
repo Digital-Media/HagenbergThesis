@@ -1,0 +1,48 @@
+\chapter[Umgang mit Literatur]{Umgang mit Literatur und anderen Quellen}
+\label{cha:Literatur}
+
+Der APA-Zitierstil%
+\footnote{\url{https://apastyle.apa.org/style-grammar-guidelines/references/}}
+benötigt unterschiedliche Zitationsmakros, abhängig von der Verwendung \bzw dem Auftreten der Quelle im Text.
+
+\section{Narrative Verweise}
+
+Bei narrativen Verweisen (engl. "narrative citations") wird die Quelle wie ein Subjekt oder Objekt des Satzes
+verwendet. Die Jahreszahl wird dabei dem Autor*innenname in Klammern nachgestellt. Das zugehörige Makro ist
+%
+\begin{itemize}
+\item[] \verb!\textcite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+\textbf{Beispiel:}
+\textcite{Daniel2018} geben eine kurze Einführung in das Thema \latex, wohingegen \textcite{Oetiker2018, Kopka2003}
+bereits mehr ins Detail gehen.
+
+
+\section{Narrative Verweise innerhalb von Klammern}
+
+Soll ein Verweis \emph{innerhalb} von Klammern verwendet werden, so müssen diese bei der Quellenangabe
+selbst entfallen. Dazu verwendet man das Makro 
+%
+\begin{itemize}
+\item[] \verb!\nptextcite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+\textbf{Beispiel:}
+Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen (\zB \nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
+
+\section{Parenthetische Verweise}
+
+Parenthetische Verweise (engl. "parenthetical citations") werden verwendet, wenn die Quelle am
+Ende eines Satzes oder einer Aussage angegeben werden soll. Autor*innen\-name und Jahreszahl
+werden dabei gemeinsam in Klammern gesetzt und durch einen Beistrich getrennt.
+Das verwendete Makro ist
+%
+\begin{itemize}
+\item[] \verb!\parencite{!\textit{keys}\verb!}!.
+\end{itemize}
+%
+\textbf{Beispiel:}
+Für \latex existieren sowohl kurze Einführungen \parencite{Daniel2018} wie auch umfangreichere Werke 
+\parencite{Oetiker2018, Kopka2003}.
+
