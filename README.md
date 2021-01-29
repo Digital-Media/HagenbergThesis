@@ -44,7 +44,7 @@ The following sample documents (with numerical citations using `numeric-comp`) a
 
 ### APA style documents
 
-To use the APA 7th edition style for citations and references, the option `apa` can be used in the document's preamble. Two separate sample documents are already prepared for the use of the APA style:
+To use the [APA 7th edition style for citations and references](https://apastyle.apa.org/style-grammar-guidelines/references/), the option `apa` can be used in the document's preamble. Two separate sample documents are already prepared for the use of the APA style:
 
 | Name | Document Type | Language | PDF | ZIP | Overleaf\* |
 | :--- | :--- | --- | --- | --- | --- |
