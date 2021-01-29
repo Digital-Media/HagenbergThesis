@@ -48,8 +48,8 @@ To use the APA 7th edition style for citations and references, the option `apa` 
 
 | Name | Document Type | Language | PDF | ZIP | Overleaf\* |
 | :--- | :--- | --- | --- | --- | --- |
-| `HgbThesisDE-APA` | Minimal Thesis Template (APA style references) | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA.zip) |
-| `HgbThesisEN-APA` | Minimal Thesis Template (APA style references) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA.zip) |
+| `HgbThesisDE-APA` | Minimal Thesis Template (APA-style) | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisDE-APA.zip) |
+| `HgbThesisEN-APA` | Minimal Thesis Template (APA-style) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/master/documents/HgbThesisEN-APA.zip) |
 
 \*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**.
 
