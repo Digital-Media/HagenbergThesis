@@ -62,7 +62,7 @@ To test and review your changes, open one of the example documents in the `docum
 Since this repo holds several binary files (pdf, zip) its size tends to grow steadily with each update. 
 To purge such files from the repo's history do the following:
 
-- Get [BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) (a single Java JAR file).
+- Get [BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) (a single Java JAR file, referred to as ``bfg.jar`` below).
 
 Use the shell (``Git Bash``) to perform the following steps:
 
