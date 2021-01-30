@@ -68,10 +68,7 @@ Use the shell (``Git Bash``) to perform the following steps:
 
 - ``$ git clone --mirror https://github.com/Digital-Media/HagenbergThesis.git`` (this creates a bare repo in folder ``HagenbergThesis.git``)
 - Make a backup copy of ``HagenbergThesis.git`` to be safe.
-- ``$ java -jar bfg.jar --delete-files "main.pdf" HagenbergThesis.git``
-- ``$ java -jar bfg.jar --delete-files "hag*.zip" HagenbergThesis.git``
-- ``$ java -jar bfg.jar --delete-files "Hgb*.zip" HagenbergThesis.git``
-- ``$ java -jar bfg.jar --delete-files "Manual.zip" HagenbergThesis.git``
+- ``$ java -jar bfg.jar --delete-files {main.pdf,hag*.zip,Hgb*.zip,Manual.zip} HagenbergThesis.git``
 - ``$ cd HagenbergThesis.git``
 - ``$ git reflog expire --expire=now --all && git gc --prune=now --aggressive``
 - ``$ git push``
