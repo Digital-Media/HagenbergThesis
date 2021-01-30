@@ -66,7 +66,7 @@ To purge such files from the repo's history do the following:
 
 Use the shell (``Git Bash``) to perform the following steps:
 
-- ``$ git clone --mirror https://github.com/Digital-Media/HagenbergThesis.git`` (this creates a bare repo folder ``HagenbergThesis.git``)
+- ``$ git clone --mirror https://github.com/Digital-Media/HagenbergThesis.git`` (this creates a bare repo in folder ``HagenbergThesis.git``)
 - Make a backup copy of ``HagenbergThesis.git`` to be safe.
 - ``$ java -jar bfg.jar --delete-files "main.pdf" HagenbergThesis.git``
 - ``$ java -jar bfg.jar --delete-files "hag*.zip" HagenbergThesis.git``
