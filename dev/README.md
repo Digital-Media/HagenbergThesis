@@ -56,3 +56,27 @@ It is also possible to execute specific parts of the build process. Call `make` 
 ### Testing changes
 
 To test and review your changes, open one of the example documents in the `documents` directory (e.g. `HgbThesisTutorial`) after a complete or partial build process. It will include the updated style files and classes, which can then be tested and evaluated. Keep in mind to make further changes only to the style and class files in the `dev/latex` directory. The build process will override any changes to style or class files of the example documents.
+
+### GIT repository cleanup
+
+Since this repo holds several binary files (pdf, zip) its size tends to grow steadily with each update. 
+To purge such files from the repo's history do the following:
+
+- Get [BFG Repo Cleaner](https://rtyley.github.io/bfg-repo-cleaner/) (a single Java JAR file).
+
+Use the shell (``Git Bash``) to perform the following steps:
+
+- ``$ git clone --mirror https://github.com/Digital-Media/HagenbergThesis.git`` (this creates a bare repo folder ``HagenbergThesis.git``)
+- Make a backup copy of ``HagenbergThesis.git`` to be safe.
+- ``$ java -jar bfg.jar --delete-files "main.pdf" HagenbergThesis.git``
+- ``$ java -jar bfg.jar --delete-files "hag*.zip" HagenbergThesis.git``
+- ``$ java -jar bfg.jar --delete-files "Hgb*.zip" HagenbergThesis.git``
+- ``$ java -jar bfg.jar --delete-files "Manual.zip" HagenbergThesis.git``
+- ``$ cd HagenbergThesis.git``
+- ``$ git reflog expire --expire=now --all && git gc --prune=now --aggressive``
+- ``$ git push``
+
+Cleaning reports can be found in the ``HagenbergThesis.git.bfg-report`` folder.
+
+Finally, make a **fresh checkout** (clone) from ``https://github.com/Digital-Media/HagenbergThesis.git`` to avoid
+local garbage being pushed again!
