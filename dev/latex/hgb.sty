@@ -163,6 +163,10 @@
 \PackageWarning{hgb}{Due to frequent misuse, macro 'SuperPar' has been removed.}
 }
 
+\newcommand{\email}[1]{%
+\texorpdfstring{\href{mailto:#1}{\nolinkurl{#1}}}{<#1>}%
+}
+
 % Test box for print proofing
 \newcommand{\calibrationbox}[2]{% parameters: #1=width, #2=height
 	\setlength{\unitlength}{1.0mm}%
