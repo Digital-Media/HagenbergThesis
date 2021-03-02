@@ -10,7 +10,8 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 - 2021/01/04: Added `apa` document option to switch to APA bibliography style (documentation pending).
 - 2021/01/29: Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to most important APA citation macros in it.
-- 2021/01/29: Added a section in HgbThesisTutorial about APA with instruction on how to enable it and an overview of the citation commands as well as the resulting reference list.
+- 2021/01/29: Added a section in `HgbThesisTutorial` about APA with instruction on how to enable it and an overview of the citation commands as well as the resulting reference list.
+- 2021/03/02: Added `\email` macro in `hgb.sty` to print correct email addresses in documents as well as the preamble.
 
 ### Changed
 
