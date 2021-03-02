@@ -220,6 +220,7 @@ Ausnahmefällen verwendet werden, \zB
 
 Zur Strukturierung des eigenen Text stellt \latex eine Reihe von Auszeichnungen zur Verfügung.
 
+
 \subsection{Absatztrennung}
 
 Absätze werden in {\latex}-Quelltext ausschließlich durch das
@@ -267,8 +268,6 @@ Für alle übrigen Gliederungen im vertikalen Textfluss sind Überschriften (s.\
 %%
 %erreicht werden, sollte jedoch sehr sparsam und wirklich \textbf{nur in begründbaren Einzelfällen} verwendet werden.%
 %\footnote{Das Makro \texttt{{\bs}SuperPar} ist in \texttt{hgb.sty} definiert.}
-
-
 
 
 \subsection{Überschriften}
@@ -446,6 +445,41 @@ ausschließlich "ungebrochene" Nummern:
    \textbf{Falsch:\ }  & Kapitel 7.2 oder Abschnitt 5
 \end{tabular}
 \end{quote}
+
+
+\subsection{Hyperlinks und E-Mail-Adressen}
+
+Hyperlinks (URLs) stellen für den Schriftsatz eine besondere Herausforderung dar,
+vor allem wenn es zu einem Zeilenumbruch kommt. Die Anweisung 
+%
+\begin{quote}
+	\verb!\url{!\texttt{\em Adresse}\verb!}!
+\end{quote}
+%
+ermöglicht Umbrüche bei bestimmten Zeichen der Adresse und sollte daher immer
+eingesetzt werden, wenn ein Hyperlink etwa im Fließtext oder innerhalb einer Fußnote
+angegeben wird.
+
+Für E-Mail-Adressen wurde in \texttt{hgb.sty} das Makro
+%
+\begin{quote}
+	\verb!\email{!\texttt{\em E-Mail-Adresse}\verb!}!
+\end{quote}
+%
+definiert. Es erzeugt im Dokument einen korrekten Link mit \texttt{mailto:}-Angabe
+unter Zuhilfenahme von \verb|\url{}|. Die Anweisung kann auch innerhalb des
+\verb|\author{}|-Befehls in der Präambel eines Dokuments verwendet werden,
+um auf der Titelseite zusätzlich eine E-Mail-Adresse anzugeben:
+%
+\begin{quote}
+\begin{verbatim}
+\author{%
+    Alex A. Schlaumeier \\%
+    \email{alex@schlaumeier.at}%
+}
+\end{verbatim}
+\end{quote}
+%
 
 
 \section{Wortabstand und Interpunktion}
