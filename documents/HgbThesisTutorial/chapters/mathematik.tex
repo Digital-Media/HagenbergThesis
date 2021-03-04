@@ -394,23 +394,23 @@ Programmstruktur nicht optimal).
 
 Für die Notation von Algorithmen in mathematischer Form oder auch für
 Pseudo\-code ist in \latex selbst keine spezielle Unterstützung vorgesehen.
-Dazu gibt es jedoch eine Reihe von \latex-Paketen, \zB\ \texttt{algorithms}, 
-\texttt{algorithm2e} und \texttt{algorithmicx}.
-Letzteres wird wegen seiner einfachen Syntax auch in dieser Vorlage verwendet, 
-allerdings mit einigen Erweiterungen.%
+Dazu gibt es jedoch eine Reihe von brauchbaren \latex-Paketen,
+\ua\ \texttt{algorithmicx}, das wegen seiner einfachen Syntax auch hier
+verwendet wird, allerdings in der verbesserten Version 
+\texttt{algpseudocodex}.%
 \footnote{Die Datei \nolinkurl{hgbalgo.sty} des \texttt{hagenberg-thesis}-Pakets erweitert die Pakete
-\texttt{algorithmicx} und \texttt{algpseudocode} (s.\ \url{https://ctan.org/pkg/algorithmicx})
-durch verbesserte Einrückung, Farben \etc  Weitere Details finden sich in 
-\url{http://mirrors.ctan.org/macros/latex/contrib/hagenberg-thesis/doc/hagenberg-thesis.pdf}.}
-Das Beispiel in Alg.~\ref{alg:Example} wurde mit der Float-Umgebung \texttt{algorithm} 
-und dem \texttt{algpseudocode}-Paket ausgeführt (s.\ Quellcode in Prog.\ \ref{prog:AlgExample}).
-Umfangreichere Beispiele für Algorithmen mit einem ähnlichen Setup finden sich \zB\ in 
-\cite{BurgerBurge2015}.
+\texttt{algorithmicx} \bzw\ \texttt{algpseudocodex} (s.\ \url{https://ctan.org/pkg/algpseudocodex})
+durch verbesserte Einrückung, Farben \etc}
+%
+Das Beispiel in Alg.~\ref{alg:Example} wurde mit der Float-Umgebung \texttt{algorithm}
+und dem \texttt{algpseudocodex}-Paket erstellt (s.\ Quellcode in Prog.\ \ref{prog:AlgExample}).
+Zur besseren Lesbarkeit werden hier vertikale Einrückungslinien verwendet (\texttt{indLines=true}) und
+auf das Schlüsselwort \texttt{end} am Ende von Blöcken wird verzichtet (\texttt{noEnd=true}).
 
 %%--------------------------------------------------------------------
 
 \begin{algorithm}
-\caption{Beispiel für einen mit \texttt{algorithmicx} (\texttt{algpseudocode} + \texttt{hgbalgo})
+\caption{Beispiel für einen mit dem Paket \texttt{algpseudocodex}
 gesetzten Algorithmus zur bikubischen Interpolation in 2D (aus \cite{BurgerBurge2016}). 
 Die in den Zeilen \ref{alg:wcub1} und
 \ref{alg:wcub2} verwendete Funktion $\Call{Cubic1D}{x}$ berechnet die Gewichtung
@@ -418,11 +418,10 @@ des Werts für die eindimensionale Position $x$.}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
-\Procedure{BicubicInterpolation}{$I, x, y$} \Comment{two-dimensional interpolation}
-	\Input{$I$, original image; $x,y \in \R$, continuous position; 	$a$, control para\-meter.}
-	\Returns{the interpolated pixel value at the continuous position $(x,y)$.}
+\Function{BicubicInterpolation}{$I, x, y$} \Comment{two-dimensional interpolation}
+	\Input{$I$, original image; $x,y \in \R$, continuous position.}
+	\Returns{the interpolated pixel value at position $(x,y)$.}
 	
-	\smallskip 
 	\State $\mathit{val} \gets 0$
 	
 	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
@@ -430,7 +429,7 @@ des Werts für die eindimensionale Position $x$.}
 		\State $p \gets 0$
 		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
 			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$ % w_{\mathrm{cub}}(x - u )$
+			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$
 					\label{alg:wcub1}
 		\EndFor		
 		\StateNN[2]{Sometimes it is useful to insert a longer, \emph{unnumbered} explanation extending
@@ -442,11 +441,10 @@ des Werts für die eindimensionale Position $x$.}
 				\label{alg:wcub2}
 	\EndFor
 	\State\Return $\mathit{val}$
-\EndProcedure
+\EndFunction
 
 \medskip
 \hrule
-\medskip
 
 \Function{Cubic1D}{$x$} \Comment{piecewise cubic polynomial (1D)}
 	\State $z \gets 0$
@@ -474,32 +472,30 @@ Lesbarkeit deutlich verbessert.}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
-\Procedure{BicubicInterpolation}{$I, x, y$} 
-	\Comment{two-dimensional interpolation}
-	\Input{$I$, original image; $x,y \in \R$, continuous position; 	
-				 $a$, control para\-meter.}
-	\Returns{the interpolated pixel value at the continuous position $(x,y)$.}
+\Function{BicubicInterpolation}{$I, x, y$} \Comment{two-dimensional interpolation}
+	\Input{$I$, original image; $x,y \in \R$, continuous position.}
+	\Returns{the interpolated pixel value at position $(x,y)$.}
 	
-	\smallskip 
 	\State $\mathit{val} \gets 0$
+	
 	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
 		\State $v \gets \lfloor y \rfloor - 1 + j$
 		\State $p \gets 0$
 		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
 			\State $u \gets \lfloor x \rfloor - 1 + i$
 			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$
-			\label{alg:wcub1}
-		\EndFor
-		
+					\label{alg:wcub1}
+		\EndFor		
 		\StateNN[2]{Sometimes it is useful to insert a longer, ...}
 		
 		\State $\mathit{val} \gets \mathit{val} + p \cdot \Call{Cubic1D}{y - v}$
-		\label{alg:wcub2}
+				\label{alg:wcub2}
 	\EndFor
 	\State\Return $\mathit{val}$
-\EndProcedure
+\EndFunction
 
-\medskip\hrule\medskip
+\medskip
+\hrule
 
 \Function{Cubic1D}{$x$} \Comment{piecewise cubic polynomial (1D)}
 	\State $z \gets 0$
