@@ -120,7 +120,7 @@ independently of the document classes listed above:
 \texttt{hgbmath.sty}.
 
 
-\subsection{General user commands and environments (\texttt{hgb.sty})}
+\subsection{General user commands and environments(\texttt{hgb.sty})}
 
 
 \begin{itemize}
@@ -128,8 +128,6 @@ independently of the document classes listed above:
 		\eg, ``\texttt{\hgbDate}''.
 \item \verb!\calibrationbox{width}{height}!: Inserts a test box for checking the final print size 
 (in millimeters).
-\item \verb!\email{...}!: Typesets an email address with the prefixed \texttt{mailto:} pseudo protocol.
-Can also be used inside of \verb!\author{...}! in the document's preamble.
 \item \verb!\begin{english} ... \end{english}!
 \item \verb!\begin{german} ... \end{german}!
 \end{itemize}
@@ -277,8 +275,8 @@ The following \emph{additional} commands can only be used in math mode:
 \subsection{Algorithms (\texttt{hgbalgo.sty})}
 
 \texttt{hgbalgo} is a stand-alone package that is based on -- and extends -- the \texttt{algorithmicx} and 
-\texttt{algpseudocode} packages.%
-\footnote{\url{https://ctan.org/pkg/algorithmicx}}
+\texttt{algpseudocodex} packages.%
+\footnote{\url{https://ctan.org/pkg/algorithmicx}, \url{https://ctan.org/pkg/algpseudocodex}}
 It fixes some (mostly indentation-related) problems, adds color and provides some additional
 commands. It also loads the \texttt{algorithm}%
 \footnote{\url{https://ctan.org/pkg/algorithms}}
@@ -315,9 +313,9 @@ For describing the return values in a procedure's preamble. %Usage: \verb!\Retur
 \begin{itemize}
 \item[] \textbf{\texttt{AlgKeywordColor}} (for algorithm keywords),
 \item[] \textbf{\texttt{AlgProcedureColor}} (for procedure and function names),
-\item[] \textbf{\texttt{AlgCommentColor}} (for comments).
+%\item[] \textbf{\texttt{AlgCommentColor}} (for comments).
 \end{itemize}
-The above colors can be redefined at any time (see the \texttt{xcolor}%
+These colors can be redefined at any time (see the \texttt{xcolor}%
 \footnote{\url{https://ctan.org/pkg/xcolor}} package), \eg, by
 \begin{LaTeXCode}[numbers=none]
     \definecolor{AlgKeywordColor}{named}{black}
@@ -332,7 +330,7 @@ The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\
 \texttt{abstract}, 
 \texttt{algorithm}, 
 \texttt{algorithmicx}, 
-\texttt{algpseudocode}, 
+\texttt{algpseudocodex}, 
 \texttt{amsbsy}, 
 \texttt{amsfonts}, 
 \texttt{amsmath}, 
