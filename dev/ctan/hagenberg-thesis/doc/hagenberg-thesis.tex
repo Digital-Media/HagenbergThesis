@@ -286,14 +286,14 @@ package which defines a compatible float container for algorithms:
 
 \paragraph{Additional user commands:}
 \begin{itemize}
-\item 
-\textbf{\texttt{{\bs}StateL\{<text>\}}}: Creates a \emph{numbered} statement like \texttt{algorithmicx}'s 
-\verb!\State! command but provides consistent indentation on multi-line statements.
-Note that the argument \texttt{<text>} must be passed as a single argument in \verb!{...}! braces.
+%\item 
+%\textbf{\texttt{{\bs}StateL\{<text>\}}}: Creates a \emph{numbered} statement like \texttt{algorithmicx}'s 
+%\verb!\State! command but provides consistent indentation on multi-line statements.
+%Note that the argument \texttt{<text>} must be passed as a single argument in \verb!{...}! braces.
 \item
 \textbf{\texttt{{\bs}StateNN[<nesting>]\{<text>\}}}: 
 Creates a \emph{non-numbered} statement like \texttt{algo\-rith\-micx}'s \verb!\Statex! 
-command but provides consistent indentation inside nested constructs and over multiple lines.
+command but provides controlled indentation inside nested constructs.
 The optional integer argument \verb!<nesting>! can be used to specify the \emph{nesting depth}
 to compensate for a bug in \texttt{algorithmicx} (the nesting level inside a block is not set properly before 
 the first \verb!\State! command). Omitting the optional argument should give correct indentation in most
@@ -309,10 +309,30 @@ For describing the output values in a procedure's preamble. %Usage: \verb!\Outpu
 For describing the return values in a procedure's preamble. %Usage: \verb!\Returns{<description>}!
 \end{itemize}
 
+\paragraph{Vertical spacing commands:}
+The following commands are provided for fine-tuning the vertical spacing
+between individual statements of an algorithm (the standard spacing commands like 
+\verb!\smallskip! \etc\ have no effect between statements):%
+\footnote{Note that the standard spacing commands work \emph{between} \texttt{procedure} 
+and \texttt{function} blocks in the usual way.}
+\begin{itemize}
+\item \textbf{{\bs}\texttt{algsmallskip}}: inserts 3pt extra space,
+\item \textbf{{\bs}\texttt{algmedskip}}: inserts 6pt extra space,
+\item \textbf{{\bs}\texttt{algbigskip}}: inserts 12pt extra space.
+\end{itemize}
+They are supposed to be used inside (\ie, at the end of) statements, for example:
+%
+\begin{LaTeXCode}[numbers=none]
+    \State $x \gets x + 1$ \algsmallskip
+\end{LaTeXCode}
+%
+
+
+
 \paragraph{Defined algorithm colors:}
 \begin{itemize}
-\item[] \textbf{\texttt{AlgKeywordColor}} (for algorithm keywords),
-\item[] \textbf{\texttt{AlgProcedureColor}} (for procedure and function names),
+\item \textbf{\texttt{AlgKeywordColor}} (for algorithm keywords),
+\item \textbf{\texttt{AlgProcedureColor}} (for procedure and function names).
 %\item[] \textbf{\texttt{AlgCommentColor}} (for comments).
 \end{itemize}
 These colors can be redefined at any time (see the \texttt{xcolor}%
