@@ -48,19 +48,18 @@
 
 \newlength{\@AlgTmpIndent}
 
-%% New public macros:
+%% Additional public macros:
 
-% \StateLong{<text>} creates numbered statements like algorithmicx's \State command but
-% provides consistent indentation on multi-line statements.
-% Note that the statement text must be passed as an argument in {...} brackets
-\newcommand*{\StateL}[1]{\State \parbox[t]{\linewidth-\ALG@thistlm}{#1\strut}}%
+% This macro is obsolete and will eventually dissappear:
+\algnewcommand{\StateL}[1]{\State #1%
+	\PackageWarning{hgbalgo}{Macro \protect\StateL\space is obsolete, use \protect\State\space instead}}%
 
 % \StateNN[<nesting>]{<text>} creates non-numbered statements like algorithmicx's \Statex 
 % command but provides consistent indentation inside nested constructs and over multiple lines.
 % The optional integer argument [<nesting>] can be used to specify the nesting depth
 % to counteract a bug in algorithmicx (nesting level is not set properly before the first \State
 % command inside a nested construct.
-\newcommand{\StateNN}[2][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
+\algnewcommand{\StateNN}[2][\numexpr\theALG@nested-1]{% default indentation = nesting - 1
   \setlength\@AlgTmpIndent{\algorithmicindent*#1}% requires calc package
 	\Statex\hskip\@AlgTmpIndent\parbox[t]{\linewidth-\@AlgTmpIndent}{#2\strut}%
 }%
@@ -70,6 +69,13 @@
 \algrenewcommand\Output[1]{\StateNN[1]{\textbf{Output:} #1}}%		use to describe output values: \Output{<description>} (already defined in algpseudocodex.sty) 
 \algnewcommand\Returns[1]{\StateNN[1]{\textbf{Returns} #1}}%	use to describe what a procedure/function returns: \Returns{<description}
 
+% The following macros insert additional vertical space after a statement.
+% They only work in horizontal mode and are supposed
+% to be used inside (at the end of) statements, e.g.,
+%     \State $x \gets x + 1$ \algsmallskip
+\algnewcommand{\algsmallskip}[0]{\raisebox{-3pt}{\strut}}
+\algnewcommand{\algmedskip}[0]{\raisebox{-6pt}{\strut}}
+\algnewcommand{\algbigskip}[0]{\raisebox{-12pt}{\strut}}
 
 % 'algorithm' creates a floating environment for algorithms: \begin{algorithm}...\end{algorithm}
 \@ifundefined{chapter}%

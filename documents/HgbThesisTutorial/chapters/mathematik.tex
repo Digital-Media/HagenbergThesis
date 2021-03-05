@@ -411,16 +411,16 @@ auf das Schlüsselwort \texttt{end} am Ende von Blöcken wird verzichtet (\textt
 
 \begin{algorithm}
 \caption{Beispiel für einen mit dem Paket \texttt{algpseudocodex}
-gesetzten Algorithmus zur bikubischen Interpolation in 2D (aus \cite{BurgerBurge2016}). 
-Die in den Zeilen \ref{alg:wcub1} und
-\ref{alg:wcub2} verwendete Funktion $\Call{Cubic1D}{x}$ berechnet die Gewichtung
-des Werts für die eindimensionale Position $x$.}
+gesetzten Algorithmus zur bikubischen Interpolation in 2D 
+(aus \cite{BurgerBurge2016}). Die in den Zeilen \ref{alg:wcub1} und
+\ref{alg:wcub2} verwendete Funktion $\Call{Cubic1D}{x}$ berechnet 
+die Gewichtung des Werts für die eindimensionale Position $x$.}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
 \Function{BicubicInterpolation}{$I, x, y$} \Comment{two-dimensional interpolation}
 	\Input{$I$, original image; $x,y \in \R$, continuous position.}
-	\Returns{the interpolated pixel value at position $(x,y)$.}
+	\Returns{the interpolated pixel value at position $(x,y)$.\algsmallskip}
 	
 	\State $\mathit{val} \gets 0$
 	
@@ -429,13 +429,13 @@ des Werts für die eindimensionale Position $x$.}
 		\State $p \gets 0$
 		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
 			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$
-					\label{alg:wcub1}
+			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$	\label{alg:wcub1}
 		\EndFor		
-		\StateNN[2]{Sometimes it is useful to insert a longer, \emph{unnumbered} explanation extending
+		
+		\StateNN[2]{Sometimes it is useful to insert a longer, \emph{unnumbered} statement extending
 		over multiple lines with proper indentation. This can be done with the (non-standard) command 
-		\texttt{{\bs}StateNN[]\{..\}}. There is also a \texttt{{\bs}StateL\{..\}} command for long 
-		\emph{numbered} (multi-line) statements.}
+		\texttt{{\bs}StateNN[]\{..\}}. For long \emph{numbered} (multi-line) statements use the 
+		regular \texttt{{\bs}State} command.}
 		
 		\State $\mathit{val} \gets \mathit{val} + p \cdot \Call{Cubic1D}{y - v}$
 				\label{alg:wcub2}
@@ -443,7 +443,7 @@ des Werts für die eindimensionale Position $x$.}
 	\State\Return $\mathit{val}$
 \EndFunction
 
-\medskip
+\medskip	% \medskip can be used here, because we are in vertical mode
 \hrule
 
 \Function{Cubic1D}{$x$} \Comment{piecewise cubic polynomial (1D)}
@@ -466,15 +466,19 @@ des Werts für die eindimensionale Position $x$.}
 Wie ersichtlich, können hier auch beliebig Leerzeilen verwendet werden, was die
 Lesbarkeit deutlich verbessert.}
 \label{prog:AlgExample}
-\begin{LaTeXCode}[numbers=none]
+\begin{LaTeXCode}
 \begin{algorithm}
-\caption{Beispiel für einen mit \texttt{algorithmicx} ... }
+\caption{Beispiel für einen mit dem Paket \texttt{algpseudocodex}
+gesetzten Algorithmus zur bikubischen Interpolation in 2D 
+(aus \cite{BurgerBurge2016}). Die in den Zeilen \ref{alg:wcub1} und
+\ref{alg:wcub2} verwendete Funktion $\Call{Cubic1D}{x}$ berechnet 
+die Gewichtung des Werts für die eindimensionale Position $x$.}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
 \Function{BicubicInterpolation}{$I, x, y$} \Comment{two-dimensional interpolation}
 	\Input{$I$, original image; $x,y \in \R$, continuous position.}
-	\Returns{the interpolated pixel value at position $(x,y)$.}
+	\Returns{the interpolated pixel value at position $(x,y)$.\algsmallskip}
 	
 	\State $\mathit{val} \gets 0$
 	
@@ -483,9 +487,9 @@ Lesbarkeit deutlich verbessert.}
 		\State $p \gets 0$
 		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
 			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$
-					\label{alg:wcub1}
+			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$	\label{alg:wcub1}
 		\EndFor		
+		
 		\StateNN[2]{Sometimes it is useful to insert a longer, ...}
 		
 		\State $\mathit{val} \gets \mathit{val} + p \cdot \Call{Cubic1D}{y - v}$
@@ -494,7 +498,7 @@ Lesbarkeit deutlich verbessert.}
 	\State\Return $\mathit{val}$
 \EndFunction
 
-\medskip
+\medskip	% \medskip can be used here, because we are in vertical mode
 \hrule
 
 \Function{Cubic1D}{$x$} \Comment{piecewise cubic polynomial (1D)}
