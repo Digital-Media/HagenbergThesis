@@ -16,6 +16,7 @@ MKFILELATEX := $(realpath makefile-latex)
 # -----------------------------------------------------------------------
 # directory where we keep the original .cls and .sty files
 SOURCEDIR=latex
+# directory for holding .sty files from other packages if needed
 SOURCEDIRFOREIGN=latex-foreign
 # Target directory for the compiled documents (examples):
 DOCUMENTSDIR := ../documents
