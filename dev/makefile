@@ -16,6 +16,7 @@ MKFILELATEX := $(realpath makefile-latex)
 # -----------------------------------------------------------------------
 # directory where we keep the original .cls and .sty files
 SOURCEDIR=latex
+SOURCEDIRFOREIGN=latex-foreign
 # Target directory for the compiled documents (examples):
 DOCUMENTSDIR := ../documents
 # Collect all subdirectories (examples) in DOCUMENTSDIR:
@@ -60,6 +61,7 @@ $(EXAMPLES) :
 	@cp -u $(SOURCEDIR)/*.sty $(DOCUMENTSDIR)/$@
 	@cp -u $(SOURCEDIR)/*.cls $(DOCUMENTSDIR)/$@
 	@cp -u $(SOURCEDIR)/*.bib $(DOCUMENTSDIR)/$@
+	@cp -u $(SOURCEDIRFOREIGN)/*.sty $(DOCUMENTSDIR)/$@
 #	Run the LaTeX build in a sub-makefile:
 	@make --silent -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
