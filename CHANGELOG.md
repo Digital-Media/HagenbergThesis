@@ -20,6 +20,8 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+- Fixed two occurrences of missing gender-sensitive language in `HgbThesisTutorial`. Thanks to Julia Gruber.
+
 ## [2020/10/29]
 
 ### Added
