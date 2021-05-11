@@ -370,7 +370,7 @@ zugeordnet.
 	Konferenz-, Tagungsband & \texttt{@inproceedings} & \pageref{sec:@inproceedings}\\
 	Beitrag in Zeitschrift, Journal & \texttt{@article} & \pageref{sec:@article}\\
 	Bachelor-, Master-, Diplomarbeit, Dissertation & \texttt{@thesis} & \pageref{sec:@thesis}\\
-	Technischer Bericht, Laborbericht & \texttt{@techreport} & \pageref{sec:@techreport}\\
+	Technischer Bericht, Laborbericht & \texttt{@report} & \pageref{sec:@report}\\
 	Handbuch, Produktbeschreibung & \texttt{@manual} & \pageref{sec:@manual}\\
 	Norm & \texttt{@standard} & \pageref{sec:@standard}\\
 	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
@@ -411,20 +411,21 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 \begin{tabular}{llll}
 	\textsf{literature} & \textsf{avmedia} & \textsf{software} & \textsf{online} \\
 	\hline
-	\texttt{@book}          & \texttt{@audio}                & \texttt{@software} & \texttt{@online} \\
-	\texttt{@incollection}  & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
-	\texttt{@inproceedings} & \texttt{@video}                & & \texttt{\color{midgray}@www} \\
-	\texttt{@article}       & \texttt{@movie}                & &  \\
-	\texttt{@thesis}        & \texttt{@software}             & &  \\
-	\texttt{@techreport}    &  & &  \\
-	\texttt{@manual}        &  & &  \\
-	\texttt{@standard}        &  & &  \\
-	\texttt{@misc}          &  & &  \\
-	\texttt{@unpublished}          &  & &  \\
-	\ldots                  &  & &  \\
+	\texttt{@book} & \texttt{@audio} & \texttt{@software} & \texttt{@online} \\
+	\texttt{@incollection} & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
+	\texttt{@inproceedings} & \texttt{@video} & & \texttt{\color{midgray}@www} \\
+	\texttt{@article} & \texttt{@movie} & & \\
+	\texttt{@thesis} & \texttt{@software} & & \\
+	\texttt{@report} & & & \\
+	\texttt{@manual} & & & \\
+	\texttt{@standard} & & & \\
+	\texttt{@misc} & & &  \\
+	\texttt{@unpublished} &  & & \\
+	\ldots & & & \\
 	\hline
 \end{tabular}
 \end{table}
+
 
 %%------------------------------------------------------
 
@@ -448,11 +449,11 @@ Ein einbändiges Buch (Monographie), das von einem*einer Autor*in oder mehreren 
   author={Burger, Wilhelm and Burge, Mark James},
   title={Digitale Bildverarbeitung},
   subtitle={Eine algorithmische Einführung mit Java},
-  publisher={Springer-Verlag},
-  location={Heidelberg},
+  publisher={Springer},
+  location={Berlin and Heidelberg},
   edition={3},
-  year={2015},
-  hyphenation={german}
+  date={2015},
+  langid={ngerman}
 }
 \end{GenericCode}
 \item[\cite{BurgerBurge2015}] \fullcite{BurgerBurge2015}
@@ -478,14 +479,15 @@ Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel de
 @incollection{BurgeBurger1999,
   author={Burge, Mark and Burger, Wilhelm},
   title={Ear Biometrics},
-  booktitle={Biometrics: Personal Identification in Networked Society},
+  booktitle={Biometrics},
+  booksubtitle={Personal Identification in Networked Society},
   publisher={Kluwer Academic Publishers},
-  year={1999},
+  date={1999},
   location={Boston},
   editor={Jain, Anil K. and Bolle, Ruud and Pankanti, Sharath},
   chapter={13},
   pages={273-285},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{BurgeBurger1999}] \fullcite{BurgeBurger1999}
@@ -507,15 +509,15 @@ zur Angabe des Tagungsorts und
 @inproceedings{Burger1987,
   author={Burger, Wilhelm and Bhanu, Bir},
   title={Qualitative Motion Understanding},
-  booktitle={Proceedings of the Intl.\ Joint Conference on Artificial Intelligence},
-  year={1987},
-  month={5},
+  booktitle={Proceedings of the Tenth International Joint Conference on Artificial Intelligence},
+  date={1987-08},
   editor={McDermott, John P.},
-  venue={Mailand},
+  eventdate={1987-08-23/1987-08-28},
+  venue={Milano},
   publisher={Morgan Kaufmann Publishers},
   location={San Francisco},
   pages={819-821},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Burger1987}] \fullcite{Burger1987}
@@ -558,9 +560,7 @@ in \cite{Vardavoulia2001}.
 
 \subsubsection{\texttt{@thesis}}
 \label{sec:@thesis}
-Dieser (neue) Eintragstyp kann allgemein für akademische Abschlussarbeiten verwendet werden. Er ersetzt
-insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertationen) sowie
-\texttt{@mastersthesis} (für Di\-plom- und Masterarbeiten), die allerdings weiterhin verwendet werden können. Zusätzlich ist damit etwa auch die Angabe von Bachelorarbeiten möglich.
+Dieser Eintragstyp kann allgemein für akademische Abschlussarbeiten verwendet werden. Über die Angabe des Attributs \texttt{type} wird der genaue Typ spezifiziert. Die Werte \texttt{phdthesis}, \texttt{mathesis} und \texttt{bathesis} kennzeichnen Doktor-, Master- \bzw Bachelorarbeiten und geben, abhängig von Dokumentensprache und Stil, den Typ der Arbeit korrekt an. Alternativ können auch eigene Inhalte im Feld hinterlegt werden.
 
 \paragraph{Dissertation (Doktorarbeit):}
 %
@@ -622,12 +622,11 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "richtige" Publikationen, be
 @thesis{Bacher2004,
   author={Bacher, Florian},
   title={Interaktionsmöglichkeiten mit Bildschirmen und großflächigen Projektionen},
-  type={Bachelorarbeit},
-  year={2004},
-  month={6},
-  institution={Upper Austria University of Applied Sciences, Medientechnik und {-design}},
+  type={bathesis},
+  date={2004-06},
+  institution={University of Applied Sciences Upper Austria, Medientechnik und {-design}},
   location={Hagenberg, Austria},
-  hyphenation={german}
+  langid={ngerman}
 }
 \end{GenericCode}
 \item[\cite{Bacher2004}] \fullcite{Bacher2004}
@@ -635,26 +634,27 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "richtige" Publikationen, be
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@techreport}}
-\label{sec:@techreport}
-Das sind typischerweise nummerierte Berichte (\emph{technical reports}) aus Unternehmen, 
-Hochschulinstituten oder Forschungsprojekten.
+\subsubsection{\texttt{@report}}
+\label{sec:@report}
+Das sind typischerweise nummerierte Berichte (\emph{technical reports} oder \emph{research reports}) aus Unternehmen, 
+Hochschulinstituten oder Forschungsprojekten. Unterschieden werden diese durch das \texttt{type}-Attribut, das die Werte
+\texttt{techreport} oder \texttt{resreport} annehmen kann.
 Wichtig ist, dass die herausgebende Organisationseinheit (Firma, Institut, Fakultät \etc) und 
-Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben, sofern vorhanden. 
+Adresse angegeben werden. Sinnvollerweise wird auch der zugehörige URL angegeben, sofern vorhanden. 
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@techreport{Drake1948,
+@report{Drake1948,
   author={Drake, Hubert M. and McLaughlin, Milton D. and Goodman, Harold R.},
   title={Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92},
+  type={techreport},
   institution={NASA Dryden Flight Research Center},
-  year={1948},
-  month={1},
+  date={1948-01},
   location={Edwards, CA},
   number={NACA-RM-L8A05A},
   url={https://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Drake1948}] \fullcite{Drake1948}
