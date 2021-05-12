@@ -21,9 +21,8 @@ Gebrauch, bestimmt \ua\ vom jeweiligen Fachgebiet oder Richtlinien von Verlagen 
 Diese Vorlage sieht ein Schema vor, das in den natur\-wissen\-schaftlich-technischen 
 Disziplinen üblich ist.%
 \footnote{Anpassungen an andere Formen sind relativ leicht möglich.}
-Technisch basiert dieser Teil auf \texttt{BibTeX} \cite{Patashnik1988}
-\bzw\ \texttt{Biber}%
-\footnote{Wird seit Version 2013/02/19 anstelle von \texttt{bibtex} verwendet 
+Technisch basiert dieser Teil auf \texttt{Biber}%
+\footnote{Wird seit Version 2013/02/19 anstelle von \texttt{bibtex} \cite{Patashnik1988} verwendet 
 	(s.\ \url{http://biblatex-biber.sourceforge.net/}).}
 in Kombination mit dem Paket \texttt{biblatex} \cite{Kime2020}.
 
@@ -154,8 +153,8 @@ dem Punkt) stehen, nicht \emph{außerhalb}:
 %
 \begin{center}
 \begin{tabular}{rl}
- \textbf{Falsch:}  & \ldots hier ist der Satz zu Ende. \cite{Oetiker2018} Und jetzt geht es weiter \ldots \\
- \textbf{Richtig:} & \ldots hier ist der Satz zu Ende \cite{Oetiker2018}. Und jetzt geht es weiter \ldots
+ \textbf{Falsch:}  & \ldots hier ist der Satz zu Ende. \cite{Oetiker2021} Und jetzt geht es weiter \ldots \\
+ \textbf{Richtig:} & \ldots hier ist der Satz zu Ende \cite{Oetiker2021}. Und jetzt geht es weiter \ldots
 \end{tabular}
 \end{center}
 
@@ -165,8 +164,8 @@ Ein Quellenverweis ist \emph{immer} durch ein Leerzeichen vom vorangehenden Wort
 
 \begin{center}
 \begin{tabular}{rl}
-\textbf{Falsch:}  & \ldots hier folgt die Quellenangabe\cite{Oetiker2018} und es geht weiter \ldots \\
-\textbf{Richtig:} & \ldots hier folgt die Quellenangabe \cite{Oetiker2018} und es geht weiter \ldots
+\textbf{Falsch:}  & \ldots hier folgt die Quellenangabe\cite{Oetiker2021} und es geht weiter \ldots \\
+\textbf{Richtig:} & \ldots hier folgt die Quellenangabe \cite{Oetiker2021} und es geht weiter \ldots
 \end{tabular}
 \end{center}
 
@@ -174,7 +173,7 @@ Ein Quellenverweis ist \emph{immer} durch ein Leerzeichen vom vorangehenden Wort
 Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird,
 sollte der Verweis im vorlaufenden Text und nicht
 \emph{innerhalb} des Zitats selbst platziert werden. Als Beispiel die folgende Passage
-aus \cite{Oetiker2018}:
+aus \cite{Oetiker2021}:
 %
 \begin{quote}\begin{english}
 Typographical design is a craft. Unskilled authors often commit
@@ -262,17 +261,16 @@ S.~314 (1632). Zitiert nach \cite[S.~59]{Hemleben1969}.} % Alle Seitennummern si
 Für die Erstellung des Quellenverzeichnisses gibt es in \latex grundsätzlich 
 mehrere Möglichkeiten.
 Die gängigste Methode ist die Verwendung von \texttt{BibTeX} \cite{Patashnik1988} \bzw 
-\texttt{biber}\footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}, 
+\texttt{biber}\footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}} und \texttt{biblatex}, 
 wie im Folgenden beschrieben.
 
 
-\subsection{Literaturdaten in BibTeX}
+\subsection{Literaturdaten in BibTeX und Biblatex}
 \label{sec:bibtex}
 
 BibTeX ist ein eigenständiges Programm, das aus einer "Literaturdatenbank" (eine oder mehrere
 Textdateien mit vorgegebener Struktur) ein für \latex geeignetes Quellenverzeichnis
 erzeugt. Literatur zur Verwendung von BibTeX findet sich online, \zB \cite{Feder2006, Patashnik1988}.
-Die BibTeX-Datei zu dieser Vorlage ist \nolinkurl{references.bib} (im Hauptverzeichnis).
 
 BibTeX-Dateien können natürlich mit einem Texteditor manuell erstellt werden und für
 viele Literaturquellen sind bereits fertige BibTeX-Einträge online verfügbar.
@@ -288,19 +286,19 @@ BibTeX-Verzeichnissen, wie beispielsweise
 
 Dieses Dokument verwendet \texttt{biblatex} (Version 1.4 oder höher) in Verbindung
 mit dem Programm \texttt{biber}, 
-das viele Unzulänglichkeiten des traditionellen BibTeX-Work\-flows behebt und dessen Möglichkeiten deutlich erweitert.%
-\footnote{Tatsächlich ist \texttt{biblatex} die erste radikale (und längst notwendige) Überarbeitung des mittlerweile stark in die Jahre gekommenen BibTeX-Workflows. Zwar wird dabei BibTeX weiterhin für 
-die Sortierung der Quellen verwendet, die Formatierung der Einträge und viele andere Elemente werden jedoch ausschließlich über \latex-Makros gesteuert.}
-Allerdings sind die in \texttt{biblatex} verwendeten Literaturdaten nicht mehr vollständig 
+das viele Unzulänglichkeiten des traditionellen BibTeX-Workflows behebt und dessen Möglichkeiten deutlich erweitert.%
+\footnote{Tatsächlich ist \texttt{biblatex} die erste radikale (und längst notwendige) Überarbeitung des mittlerweile stark in die Jahre gekommenen BibTeX-Workflows und hat diesen in vielen Dokumenten bereits abgelöst.}
+So gibt es eine Vielzahl von neuen Typen für Quellen, die vor allem für die Referenzierung von modernen, multimedialen Formaten unumgänglich sind.
+Allerdings sind die in \texttt{biblatex} verwendeten Literaturdaten dadurch nicht mehr vollständig 
 rückwärts-kompatibel zu BibTeX. Es ist daher in der Regel notwendig, bestehende oder aus
-Online-Quellen übernommene BibTeX-Daten manuell zu überarbeiten (\sa\ Abschnitt~\ref{sec:TippsZuBibtex}).
+Online-Quellen übernommene BibTeX-Daten manuell zu überarbeiten (\sa\ Abschnitt~\ref{sec:TippsZuBiblatex}).
 
 In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in der Style-Datei 
 \nolinkurl{hgbbib.sty} verpackt. Die typische Verwendung in der \latex-Haupt\-datei sieht 
 folgendermaßen aus:
 %
 \begin{LaTeXCode}[numbers=left]
-\documentclass[master,german]{hgbthesis}
+\documentclass[master,german,smartquotes]{hgbthesis}
    ...
 \bibliography{references} /+\label{tex:literatur1}+/
    ...
@@ -310,15 +308,15 @@ folgendermaßen aus:
 \end{document}
 \end{LaTeXCode}
 %
-In der "Präambel" (Zeile \ref{tex:literatur1}) wird mit \verb!\bibliography{references}! 
-auf eine (modifizierte) BibTex-Datei \nolinkurl{references.bib} verwiesen.%
-\footnote{Das Makro 
-\texttt{{\bs}bibliography} ist eigentlich ein Relikt aus BibTeX
-und wird in \texttt{biblatex} durch die Anweisung \texttt{{\bs}addbibresource} 
-ersetzt. Beide Anweisungen sind gleichwertig, allerdings wird oft nur mit 
-\texttt{{\bs}bibliography} die zugehörige \texttt{.bib}-Datei im File-Verzeichnis 
-der Editor-Umgebung sichtbar.}
-Falls mehrere BibTeX-Dateien verwendet werden, können sie in der gleichen Form angegeben werden.
+In der "Präambel" (Zeile \ref{tex:literatur1}) wird mit \verb!\bibliography{references}!%
+\footnote{Das Makro \texttt{{\bs}bibliography} ist eigentlich ein Relikt aus BibTeX
+	und wird in \texttt{biblatex} durch die Anweisung \texttt{{\bs}addbibresource} 
+	ersetzt. Beide Anweisungen sind gleichwertig, allerdings wird oft nur mit 
+	\texttt{{\bs}bibliography} die zugehörige \texttt{.bib}-Datei im File-Verzeichnis 
+	der Editor-Umgebung sichtbar.}
+auf eine Biblatex-Datei \nolinkurl{references.bib} verwiesen, welche alle Quelleneinträge enthält.%
+
+Falls mehrere Biblatex-Dateien verwendet werden, können sie in der gleichen Form angegeben werden.
 
 Die Anweisung \verb!\MakeBibliography{..}! am Ende des Dokuments (Zeile~\ref{tex:literatur2})
 besorgt die Ausgabe des Quellenverzeichnisses, hier mit dem Titel "Quellenverzeichnis".
@@ -349,7 +347,7 @@ bei Bedarf relativ leicht möglich.}
 	\item[] \textsf{online} -- für Artefakte, die \emph{ausschließlich} online verfügbar sind.
 \end{itemize}
 %
-Jedes Quellenobjekt wird aufgrund des angegebenen BibTeX-Eintragtyps 
+Jedes Quellenobjekt wird aufgrund des angegebenen Biblatex-Eintragtyps 
 (\texttt{@\emph{type}}) automatisch einer dieser Kategorien 
 zugeordnet (s.\ Tabelle~\ref{tab:BibKategorien}).
 Angeführt sind hier nur die wichtigsten Eintragstypen, die allerdings die meisten
@@ -358,7 +356,7 @@ Alle nicht explizit angegebenen Einträge werden grundsätzlich der Kategorie \t
 zugeordnet.
 
 \begin{table}
-\caption{Definierte Kategorien von Quellen und empfohlene BibTeX-Eintragstypen.}
+\caption{Definierte Kategorien von Quellen und empfohlene Biblatex-Eintragstypen.}
 \label{tab:QuellenUndEintragstypen}
 \centering
 \begin{tabular}{llc}
@@ -370,15 +368,15 @@ zugeordnet.
 	Konferenz-, Tagungsband & \texttt{@inproceedings} & \pageref{sec:@inproceedings}\\
 	Beitrag in Zeitschrift, Journal & \texttt{@article} & \pageref{sec:@article}\\
 	Bachelor-, Master-, Diplomarbeit, Dissertation & \texttt{@thesis} & \pageref{sec:@thesis}\\
-	Technischer Bericht, Laborbericht & \texttt{@techreport} & \pageref{sec:@techreport}\\
+	Technischer Bericht, Laborbericht & \texttt{@report} & \pageref{sec:@report}\\
 	Handbuch, Produktbeschreibung & \texttt{@manual} & \pageref{sec:@manual}\\
-	Norm & \texttt{@standard} & \pageref{sec:@standard}\\
-	Gesetzestext, Verordnung etc. & \texttt{@misc} & \pageref{sec:@misc}\\
+	Norm, Standard & \texttt{@standard} & \pageref{sec:@standard}\\
+	Gesetzestext, Verordnung etc. & \texttt{@legislation} & \pageref{sec:@legislation}\\
 	Kompositionen, Musiknoten & \texttt{@book}, \texttt{@incollection} & \pageref{sec:Musiknoten}\\
 	Vorpublikation (\zB\ Konferenzeinreichung) & \texttt{@unpublished} & \pageref{sec:@unpublished}\\
 %
 	\hline
-	\emph{Audiovisuelle Medien} (\textsf{avmedia}) & \\
+	\emph{Audiovisuelle Medien} (\textsf{avmedia}) & & \\
 	\hline
 	Audio (CD) & \texttt{@audio} & \pageref{sec:@audio}\\
 	Bild, Foto, Grafik & \texttt{@image} & \pageref{sec:@image}\\
@@ -386,13 +384,13 @@ zugeordnet.
 	Film (Kino) & \texttt{@movie} & \pageref{sec:@movie}\\
 %
 	\hline
-	\emph{Software} (\textsf{software}) & \\
+	\emph{Software} (\textsf{software}) & & \\
 	\hline
 	Softwareprodukt oder -projekt & \texttt{@software} & \pageref{sec:@software}\\
 	Computer Game & \texttt{@software} & \pageref{sec:@software}\\
 %
 	\hline
-	\emph{Online-Quellen} (\textsf{online}) & \\
+	\emph{Online-Quellen} (\textsf{online}) & & \\
 	\hline
 	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www}
 \end{tabular}
@@ -400,7 +398,7 @@ zugeordnet.
 
 
 \begin{table}
-\caption{Kategorien von Quellenangaben und zugehörige BibTeX-Eintragstypen.
+\caption{Kategorien von Quellenangaben und zugehörige Biblatex-Eintragstypen.
 Bei geteiltem Quellenverzeichnis werden die Einträge jeder Kategorie in einem
 eigenen Abschnitt gesammelt.
 Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden Typen.}
@@ -411,20 +409,22 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 \begin{tabular}{llll}
 	\textsf{literature} & \textsf{avmedia} & \textsf{software} & \textsf{online} \\
 	\hline
-	\texttt{@book}          & \texttt{@audio}                & \texttt{@software} & \texttt{@online} \\
-	\texttt{@incollection}  & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
-	\texttt{@inproceedings} & \texttt{@video}                & & \texttt{\color{midgray}@www} \\
-	\texttt{@article}       & \texttt{@movie}                & &  \\
-	\texttt{@thesis}        & \texttt{@software}             & &  \\
-	\texttt{@techreport}    &  & &  \\
-	\texttt{@manual}        &  & &  \\
-	\texttt{@standard}        &  & &  \\
-	\texttt{@misc}          &  & &  \\
-	\texttt{@unpublished}          &  & &  \\
-	\ldots                  &  & &  \\
+	\texttt{@book} & \texttt{@audio} & \texttt{@software} & \texttt{@online} \\
+	\texttt{@incollection} & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
+	\texttt{@inproceedings} & \texttt{@video} & & \texttt{\color{midgray}@www} \\
+	\texttt{@article} & \texttt{@movie} & & \\
+	\texttt{@thesis} & \texttt{@software} & & \\
+	\texttt{@report} & & & \\
+	\texttt{@manual} & & & \\
+	\texttt{@standard} & & & \\
+	\texttt{@legislation} & & & \\
+	\texttt{@misc} & & &  \\
+	\texttt{@unpublished} &  & & \\
+	\ldots & & & \\
 	\hline
 \end{tabular}
 \end{table}
+
 
 %%------------------------------------------------------
 
@@ -433,11 +433,11 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 
 Diese Kategorie umfasst alle Werke, die in gedruckter Form publiziert wurden,
 also beispielsweise in Büchern, Konferenzbänden, Zeitschriftenartikeln, Diplomarbeiten \usw
-In den folgenden Beispielen ist jeweils der BibTeX-Eintrag in der Datei \nolinkurl{references.bib}
+In den folgenden Beispielen ist jeweils der Biblatex-Eintrag in der Datei \nolinkurl{references.bib}
 angegeben, gefolgt vom zugehörigen Ergebnis im Quellenverzeichnis.
 
 
-\subsubsection{\texttt{@book}}
+\subsubsection{\texttt{\bfseries @book}}
 \label{sec:@book}
 Ein einbändiges Buch (Monographie), das von einem*einer Autor*in oder mehreren Autor*innen zur Gänze gemeinsam verfasst und (typischerweise) von einem Verlag herausgegeben wurde.
 % 
@@ -448,11 +448,11 @@ Ein einbändiges Buch (Monographie), das von einem*einer Autor*in oder mehreren 
   author={Burger, Wilhelm and Burge, Mark James},
   title={Digitale Bildverarbeitung},
   subtitle={Eine algorithmische Einführung mit Java},
-  publisher={Springer-Verlag},
-  location={Heidelberg},
+  publisher={Springer},
+  location={Berlin and Heidelberg},
   edition={3},
-  year={2015},
-  hyphenation={german}
+  date={2015},
+  langid={ngerman}
 }
 \end{GenericCode}
 \item[\cite{BurgerBurge2015}] \fullcite{BurgerBurge2015}
@@ -465,7 +465,7 @@ wenn diese die einzige ist!
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@incollection}}
+\subsubsection{\texttt{\bfseries @incollection}}
 \label{sec:@incollection}
 Ein in sich abgeschlossener und mit einem eigenen Titel versehener
 Beitrag eines*einer oder mehrerer Autor*innen in einem Buch oder Sammelband.
@@ -478,14 +478,15 @@ Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel de
 @incollection{BurgeBurger1999,
   author={Burge, Mark and Burger, Wilhelm},
   title={Ear Biometrics},
-  booktitle={Biometrics: Personal Identification in Networked Society},
+  booktitle={Biometrics},
+  booksubtitle={Personal Identification in Networked Society},
   publisher={Kluwer Academic Publishers},
-  year={1999},
+  date={1999},
   location={Boston},
   editor={Jain, Anil K. and Bolle, Ruud and Pankanti, Sharath},
   chapter={13},
   pages={273-285},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{BurgeBurger1999}] \fullcite{BurgeBurger1999}
@@ -494,7 +495,7 @@ Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel de
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@inproceedings}}
+\subsubsection{\texttt{\bfseries @inproceedings}}
 \label{sec:@inproceedings}
 Konferenzbeitrag, individueller Beitrag in einem Tagungsband.
 Man beachte die Verwendung des neuen Felds \texttt{venue}
@@ -507,15 +508,15 @@ zur Angabe des Tagungsorts und
 @inproceedings{Burger1987,
   author={Burger, Wilhelm and Bhanu, Bir},
   title={Qualitative Motion Understanding},
-  booktitle={Proceedings of the Intl.\ Joint Conference on Artificial Intelligence},
-  year={1987},
-  month={5},
+  booktitle={Proceedings of the Tenth International Joint Conference on Artificial Intelligence},
+  date={1987-08},
   editor={McDermott, John P.},
-  venue={Mailand},
+  eventdate={1987-08-23/1987-08-28},
+  venue={Milano},
   publisher={Morgan Kaufmann Publishers},
   location={San Francisco},
   pages={819-821},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Burger1987}] \fullcite{Burger1987}
@@ -523,7 +524,7 @@ zur Angabe des Tagungsorts und
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@article}}
+\subsubsection{\texttt{\bfseries @article}}
 \label{sec:@article}
 Beitrag in einer Zeitschrift, einem wissenschaftlichen Journal oder einer Tageszeitung.
 Dabei steht \texttt{volume} üblicherweise für den Jahrgang und \texttt{number} für die 
@@ -537,12 +538,12 @@ zu vermeiden.
 @article{Mermin1989,
   author={Mermin, Nathaniel David},
   title={What's wrong with these equations?},
-  journal={Physics Today},
+  journaltitle={Physics Today},
   volume={42},
   number={10},
-  year={1989},
+  date={1989},
   pages={9-11},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Mermin1989}] \fullcite{Mermin1989}
@@ -556,11 +557,9 @@ in \cite{Vardavoulia2001}.
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@thesis}}
+\subsubsection{\texttt{\bfseries @thesis}}
 \label{sec:@thesis}
-Dieser (neue) Eintragstyp kann allgemein für akademische Abschlussarbeiten verwendet werden. Er ersetzt
-insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertationen) sowie
-\texttt{@mastersthesis} (für Di\-plom- und Masterarbeiten), die allerdings weiterhin verwendet werden können. Zusätzlich ist damit etwa auch die Angabe von Bachelorarbeiten möglich.
+Dieser Eintragstyp kann allgemein für akademische Abschlussarbeiten verwendet werden. Über die Angabe des Attributs \texttt{type} wird der genaue Typ spezifiziert. Die Werte \texttt{phdthesis}, \texttt{mathesis} und \texttt{bathesis} kennzeichnen Doktor-, Master- \bzw Bachelorarbeiten und geben, abhängig von Dokumentensprache und Stil, den Typ der Arbeit korrekt an. Alternativ können auch eigene Inhalte im Feld hinterlegt werden.
 
 \paragraph{Dissertation (Doktorarbeit):}
 %
@@ -571,11 +570,10 @@ insbesondere die bekannten BibTeX-Einträge \texttt{@phdthesis} (für Dissertati
   author={Eberl, Gerhard},
   title={Automatischer Landeanflug durch Rechnersehen},
   type={phdthesis},
-  year={1987},
-  month={8},
+  date={1987-08},
   institution={Universität der Bundeswehr, Fakultät für Raum- und Luftfahrttechnik},
   location={München},
-  hyphenation={german}
+  langid={ngerman}
 }
 \end{GenericCode}
 \item[\cite{Eberl1987}] \fullcite{Eberl1987}
@@ -597,12 +595,12 @@ Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\{mathesis\}}.%
   author={Loimayr, Nora},
   title={Utilization of GPU-Based Smoothed Particle Hydrodynamics for Immersive Audiovisal Experiences},
   type={mathesis},
-  year={2019},
+  date={2019-11-26},
   month={11},
   institution={University of Applied Sciences Upper Austria, Interactive Media},
   location={Hagenberg, Austria},
   url={https://theses.fh-hagenberg.at/thesis/Loimayr19},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Loimayr2019}] \fullcite{Loimayr2019}
@@ -622,12 +620,11 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "richtige" Publikationen, be
 @thesis{Bacher2004,
   author={Bacher, Florian},
   title={Interaktionsmöglichkeiten mit Bildschirmen und großflächigen Projektionen},
-  type={Bachelorarbeit},
-  year={2004},
-  month={6},
-  institution={Upper Austria University of Applied Sciences, Medientechnik und {-design}},
+  type={bathesis},
+  date={2004-06},
+  institution={University of Applied Sciences Upper Austria, Medientechnik und {-design}},
   location={Hagenberg, Austria},
-  hyphenation={german}
+  langid={ngerman}
 }
 \end{GenericCode}
 \item[\cite{Bacher2004}] \fullcite{Bacher2004}
@@ -635,26 +632,27 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "richtige" Publikationen, be
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@techreport}}
-\label{sec:@techreport}
-Das sind typischerweise nummerierte Berichte (\emph{technical reports}) aus Unternehmen, 
-Hochschulinstituten oder Forschungsprojekten.
+\subsubsection{\texttt{\bfseries @report}}
+\label{sec:@report}
+Das sind typischerweise nummerierte Berichte (\emph{technical reports} oder \emph{research reports}) aus Unternehmen, 
+Hochschulinstituten oder Forschungsprojekten. Unterschieden werden diese durch das \texttt{type}-Attribut, das die Werte
+\texttt{techreport} oder \texttt{resreport} annehmen kann.
 Wichtig ist, dass die herausgebende Organisationseinheit (Firma, Institut, Fakultät \etc) und 
-Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben, sofern vorhanden. 
+Adresse angegeben werden. Sinnvollerweise wird auch der zugehörige URL angegeben, sofern vorhanden. 
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@techreport{Drake1948,
+@report{Drake1948,
   author={Drake, Hubert M. and McLaughlin, Milton D. and Goodman, Harold R.},
   title={Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92},
+  type={techreport},
   institution={NASA Dryden Flight Research Center},
-  year={1948},
-  month={1},
+  date={1948-01},
   location={Edwards, CA},
   number={NACA-RM-L8A05A},
   url={https://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Drake1948}] \fullcite{Drake1948}
@@ -662,7 +660,7 @@ Adresse angegeben wird. Sinnvollerweise wird auch der zugehörige URL angegeben,
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@manual}}
+\subsubsection{\texttt{\bfseries @manual}}
 \label{sec:@manual}
 Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen, Anleitungen, Präsentationen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
 %
@@ -672,11 +670,10 @@ Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dok
 @manual{Mittelbach2020,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
-  year={2020},
-  month={9},
+  date={2020-09-23},
   version={2.17i},
   url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
-  hyphenation={english}
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Mittelbach2020}] \fullcite{Mittelbach2020}
@@ -689,7 +686,7 @@ Dieser Trick wird \ua\ im nächsten Beispiel verwendet.
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@standard}}
+\subsubsection{\texttt{\bfseries @standard}}
 \label{sec:@standard}
 
 
@@ -699,22 +696,23 @@ unterstützt. Hier ein typisches Beispiel:
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@standard{W3C2018HTML53,
-	author={{World Wide Web Consortium}},
-	title={HTML 5.3},
-	titleaddon={W3C Working Draft},
-	date={2018-10-18},
-	url={https://www.w3.org/TR/html53/},
-	hyphenation={english}
+@standard{WHATWGHTMLLivingStandard,
+  author={{Web Hypertext Application Technology Working Group}},
+  shortauthor={WHATWG},
+  title={HTML},
+  titleaddon={Living Standard},
+  date={2021-05-11},
+  url={https://html.spec.whatwg.org/},
+  langid={english}
 }
 \end{GenericCode}
-\item[\cite{W3C2018HTML53}] \fullcite{W3C2018HTML53}
+\item[\cite{WHATWGHTMLLivingStandard}] \fullcite{WHATWGHTMLLivingStandard}
 \end{itemize}
 %
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@patent}}
+\subsubsection{\texttt{\bfseries @patent}}
 \label{sec:@patent}
 
 Für Patente gibt es den speziellen Eintragstyp \texttt{@patent},
@@ -726,27 +724,50 @@ Patenterteilung, die Angabe von \texttt{holder} ist optional:
 \item[]
 \begin{GenericCode}[numbers=none]
 @patent{Pike2008,
-	author={Pike, Dion},
- 	title={Master-slave communications system and method for a network element},
-	type={US Patent},
-	holder={Alcatel-Lucent SAS},
-	number={7,460,482},
-	year={2008},
-	month={12},
-	url={https://patents.google.com/patent/US7460482}
+  author={Pike, Dion},
+  title={Master-slave communications system and method for a network element},
+  type={US Patent},
+  holder={Alcatel-Lucent SAS},
+  number={7,460,482},
+  date={2008-12-02},
+  url={https://patents.google.com/patent/US7460482},
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Pike2008}] \fullcite{Pike2008}
 \end{itemize}
 %
-\texttt{@patent} ist allerdings kein Standardtyp und daher wird nicht
-von allen BibTeX-Imple\-mentier\-ungen unterstützt.
-Alternativ kann man für Patente auch den \texttt{@misc}-Typ verwenden,
-wie im nächsten Abschnitt gezeigt \cite{Hough1962}.
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@misc}}
+\subsubsection{\texttt{\bfseries @legislation}}
+\label{sec:@legislation}
+
+Gesetzestexte können in \texttt{biblatex} über den Typ \texttt{@legislation} abgebildet werden. Da es sich hierbei
+um einen nicht standardisierten Typ handelt, kommt der Treiber für \texttt{@misc} zum Einsatz, weshalb es wichtig
+ist, Details wie die Art der Publikation explizit mit dem Feld \texttt{howpublished} anzugeben.
+Das folgende Beispiel zeigt die Anwendung für einen Gesetzestext (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
+%
+\begin{itemize}
+\item[]
+\begin{GenericCode}[numbers=none]
+@legislation{OoeRaumordnungsgesetz1994,
+  title={Landesgesetz vom 6. Oktober 1993 über die Raumordnung im Land Oberösterreich},
+  titleaddon={Oö. Raumordnungsgesetz 1994 - Oö. ROG 1994},
+  howpublished={LGBl.Nr. 114/1993 zuletzt geändert durch LGBl.Nr. 125/2020},
+  date={1993-12-23},
+  url={https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrOO&Gesetzesnummer=10000370},
+  langid={ngerman}
+}
+\end{GenericCode}
+\item[\cite{OoeRaumordnungsgesetz1994}] \fullcite{OoeRaumordnungsgesetz1994}
+\end{itemize}
+%
+
+%%------------------------------------------------------
+
+
+\subsubsection{\texttt{\bfseries @misc}}
 \label{sec:@misc}
 
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
@@ -755,46 +776,19 @@ Typen im \texttt{biblatex}-Handbuch \cite{Kime2020} ansehen, beispielsweise
 \texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein Beitrag darin).
 
 Wenn nichts davon passt, dann kann auf den Typ \texttt{@misc} zurückgegriffen werden, der ein
-Textfeld \texttt{howpublished} vorsieht, in dem die Art der Publikation individuell 
-angegeben werden kann. Das folgende Beispiel zeigt die Anwendung für einen \emph{Gesetzestext} 
-(\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
-%
-\begin{itemize}
-\item[]
-\begin{GenericCode}[numbers=none]
-@misc{OoeRaumordnungsgesetz1994,
-  title={Oberösterreichisches Raumordnungsgesetz 1994},
-  howpublished={LGBl 1994/114 idF 1995/93},
-  url={https://www.ris.bka.gv.at/Dokumente/LrOO/...538.pdf},
-  hyphenation={german}
-}
-\end{GenericCode}
-\item[\cite{OoeRaumordnungsgesetz1994}] \fullcite{OoeRaumordnungsgesetz1994}
-\end{itemize}
-%
-Hier ist ein weiteres Beispiel zur Verwendung von \texttt{@misc} für ein \emph{Patent} (als Alternative zu \texttt{@patent}, \so):
-%
-\begin{itemize}
-\item[]
-\begin{GenericCode}[numbers=none]
-@misc{Hough1962,
-	author={Hough, Paul V. C.},
-	title={Method and means for recognizing complex patterns},
-	howpublished={US Patent 3,069,654},
-	year={1962},
-	month={12},
-	url={https://patents.google.com/patent/US3069654}
-}
-\end{GenericCode}
-\item[\cite{Hough1962}] \fullcite{Hough1962}
-\end{itemize}
+Textfeld \texttt{howpublished} vorsieht, in dem die Art der Veröffentlichung individuell 
+angegeben werden kann. Ebenso kann mit dem Feld \texttt{type} spezifiziert werden, um welches Art von Dokument es
+sich handelt.
+
+
+%%------------------------------------------------------
 
 
 \subsubsection{Kompositionen und Musiknoten}
 \label{sec:Musiknoten}
 
 Für gedruckte Kompositionen%
-\footnote{Engl.\ \emph{sheet music} oder \emph{musical scores}} gibt es in BibTeX leider keinen
+\footnote{Engl.\ \emph{sheet music} oder \emph{musical scores}} gibt es in Biblatex leider keinen
 speziellen Eintragstyp. Bei einer \emph{einzelnen} Ausgabe verwendet man am Einfachsten den Typ 
 \texttt{@book}, wie \zB\ (\sa\ \cite{HaydnCelloConcerto2,ShostakovichOp110})
 %
@@ -802,12 +796,13 @@ speziellen Eintragstyp. Bei einer \emph{einzelnen} Ausgabe verwendet man am Einf
 \item[]
 \begin{GenericCode}[numbers=none]
 @book{BachBWV988,
-	author={Bach, Johann Sebastian},
-	title={Goldberg-Variationen für Streichquartett, BWV 988},
-	editor={Anka, Dana},
-	publisher={Musikverlag Hans Sikorski},
-	location={Hamburg},
-	year={2017}
+  author={Bach, Johann Sebastian},
+  title={Goldberg-Variationen für Streichquartett, BWV 988},
+  editor={Anka, Dana},
+  publisher={Musikverlag Hans Sikorski},
+  location={Hamburg},
+  date={2017},
+  langid={ngerman}
 }
 \end{GenericCode}
 \item[\cite{BachBWV988}] \fullcite{BachBWV988}
@@ -820,13 +815,14 @@ kann man -- wie für einen Sammelband -- den Typ \texttt{@incollection} verwende
 \item[]
 \begin{GenericCode}[numbers=none]
 @incollection{GershwinSummertime,
-	author={Gershwin, George and Heyward, DuBose},
-	title={Summertime},
-	booktitle={The Greatest Songs of George Gershwin},
-	publisher={Chappel Music},
-	location={London},
-	pages={40-43},
-	year={1979}
+  author={Gershwin, George and Heyward, DuBose},
+  title={Summertime},
+  booktitle={The Greatest Songs of George Gershwin},
+  publisher={Chappel Music},
+  location={London},
+  pages={40-43},
+  date={1979},
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{GershwinSummertime}] \fullcite{GershwinSummertime}
@@ -834,7 +830,7 @@ kann man -- wie für einen Sammelband -- den Typ \texttt{@incollection} verwende
 
 
 
-\subsubsection{\texttt{@unpublished}}
+\subsubsection{\texttt{\bfseries @unpublished}}
 \label{sec:@unpublished}
 
 Es kommt immer häufiger vor, dass Manuskripte längere Zeit vor der eigentlichen Pub\-likation
@@ -846,7 +842,7 @@ oder \textsf{researchgate.net}.%
 Dabei ist zu beachten, dass die Onlinestellung formell \textbf{keine Publikation}
 darstellt, da diese Plattformen keine Publikationsmedien sind.
 Tatsächlich werden manche der (von den Autor*innen selbst hochgeladenen) Arbeiten \emph{nie}
-publiziert, etwa Einreichungen zu Konferenzen.
+publiziert, etwa nicht akzeptierte Einreichungen zu Konferenzen.
 Hier ist wichtig festzustellen, ob der Beitrag tatsächlich
 angenommen und auch publiziert wurde:
 %
@@ -859,24 +855,23 @@ im Fall eines Konferenzbands), aber \emph{ohne} Verweis auf die Onlinestellung.
 \item[b)]
 \textbf{Die Arbeit wurde \emph{nicht} publiziert:} Wenn sich tatsächlich \emph{keine} 
 Publikation (oder ein zugehöriger \emph{Technical Report}, \so) findet,  kann man sich 
-\evtl\ mit dem \texttt{@unpublished}-Tag abhelfen, \zB\ \cite{DaiLHS16}
+\evtl\ mit dem \texttt{@unpublished}-Tag abhelfen, \zB\ \cite{Dai2016}
 \begin{GenericCode}[numbers=none]
-@unpublished{DaiLHS16,
-  author = {Dai, Jifeng and Li, Yi and He, Kaiming and Sun, Jian},
-  title = {{R-FCN:} Object Detection via Region-based Fully ...},
-  year = {2016},
-  url = {https://arxiv.org/abs/1605.06409},
-  pubstate = {prepublished}
+@unpublished{Dai2016,
+  author={Dai, Jifeng and Li,Yi and He, Kaiming and Sun, Jian},
+  title={{R-FCN:} Object Detection via Region-Based Fully Convolutional Networks},
+  date={2016},
+  url={https://arxiv.org/abs/1605.06409},
+  pubstate = {prepublished},
+  langid={english}
 }
 \end{GenericCode}
 In diesem Fall ist die Angabe des Links (\texttt{url}) natürlich unverzichtbar. 
 Details zum Feld \texttt{pubstate} (\texttt{prepublished}) findet man in der
-\texttt{biblatex}-Dokumentation.%
-\footnote{\url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf},
-(Abschn.\ 4.9.2.11)}
-Andernfalls (wenn unbekannt oder wirklich nicht veröffentlicht) könnte man 
+\texttt{biblatex}-Dokumentation \cite[Abschn.\ 4.9.2.11]{Kime2020}.%
+Andernfalls (wenn unbekannt oder wirklich nicht veröffentlicht) kann 
 statt \texttt{pubstate} auch \texttt{note=\{unveröffentlicht\}} 
-\bzw\ \texttt{note=\{unpublished\}} verwenden.
+\bzw\ \texttt{note=\{unpublished\}} verwendet werden.
 \end{itemize}
 
 
@@ -897,7 +892,7 @@ sind \emph{keine} Bib\-TeX-Standardtypen. Sie sind aber in \texttt{biblatex} vor
 Gliederung des Quellenverzeichnisses zu ermöglichen.
 
 
-\subsubsection{\texttt{@audio}}
+\subsubsection{\texttt{\bfseries @audio}}
 \label{sec:@audio}
 Hier ein Beispiel für die Spezifikation einer Audio-CD:
 %
@@ -906,21 +901,20 @@ Hier ein Beispiel für die Spezifikation einer Audio-CD:
 \begin{GenericCode}[numbers=none]
 @audio{Zappa1995,
   author={Zappa, Frank},
-  title={Freak Out},
-  howpublished={Audio-CD},
-  year={1995},
-  month={5},
-  note={Rykodisc, New York},
-  hyphenation={english}
+  title={Freak Out!},
+  type={audiocd},
+  date={1995-05},
+  organization={Rykodisc, New York},
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Zappa1995}] \fullcite{Zappa1995}
 \end{itemize}
 %
-Anstelle von \verb!howpublished={Audio-CD}! könnte auch \verb!type={audiocd}! verwendet werden.
+Anstelle von \verb!type={audiocd}! könnte auch \verb!howpublished={Audio-CD}! verwendet werden.
 
 
-\subsubsection{\texttt{@image}}
+\subsubsection{\texttt{\bfseries @image}}
 \label{sec:@image}
 
 Das nachfolgende Beispiel zeigt den Verweis auf ein digital verfügbares Foto,
@@ -931,22 +925,19 @@ das auch in Abb.\ \ref{fig:CocaCola} verwendet wird:
 \begin{GenericCode}[numbers=none]
 @image{CocaCola1940,
   author={Wolcott, Marion Post},
-	title={Natchez, Miss.},
-	note={Library of Congress Prints and Photographs Division Washington, Farm Security Administration/Office of War Information Color Photographs},
-	year={1940},
-	month={8},
-	url={https://www.loc.gov/pictures/item/2017877479/},
-  hyphenation={english}
- }
+  title={Natchez, Miss.},
+  note={Library of Congress Prints and Photographs Division Washington, Farm Security Administration/Office of War Information Color Photographs},
+  date={1940-08},
+  url={https://www.loc.gov/pictures/item/2017877479/},
+  langid={english}
+}
 \end{GenericCode}
 \item[\cite{CocaCola1940}] \fullcite{CocaCola1940}
 \end{itemize}
 
 
 
-
-
-\subsubsection{\texttt{@video}}
+\subsubsection{\texttt{\bfseries @video}}
 \label{sec:@video}
 
 Das nachfolgende Beispiel zeigt den Verweis auf ein YouTube-Video:
@@ -955,11 +946,10 @@ Das nachfolgende Beispiel zeigt den Verweis auf ein YouTube-Video:
 \item[]
 \begin{GenericCode}[numbers=none]
 @video{HistoryOfComputers2008,
-	title={History of Computers},
-	url={https://www.youtube.com/watch?v=LvKxJ3bQRKE},
-	year={2008},
-	month={9},
-	hyphenation={english}
+  title={History of Computers},
+  date={2008-09-24},
+  url={https://www.youtube.com/watch?v=LvKxJ3bQRKE},
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{HistoryOfComputers2008}] \fullcite{HistoryOfComputers2008}
@@ -976,11 +966,10 @@ Hier ein Beispiel für den Verweis auf eine DVD-Edition:
   title={Futurama},
   titleaddon={Season 1 Collection},
   howpublished={DVD},
-  year={2002},
-  month={2},
-  note={Twentieth Century Fox Home Entertainment},
-  hyphenation={english}
- }
+  date={2002-02},
+  organization={Twentieth Century Fox Home Entertainment},
+  langid={english}
+}
 \end{GenericCode}
 \item[\cite{Futurama1999}] \fullcite{Futurama1999}
 \end{itemize}
@@ -993,7 +982,7 @@ Falls kein*e eindeutige*r Autor*in namhaft gemacht werden kann, lässt man das
 
 
 
-\subsubsection{\texttt{@movie}}
+\subsubsection{\texttt{\bfseries @movie}}
 \label{sec:@movie}
 Dieser Eintragstyp ist für Filme reserviert. 
 Hier wird von vornherein \emph{kein*e} Autor*in angegeben, weil diese*r bei 
@@ -1009,9 +998,9 @@ Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
 @movie{Nosferatu1922,
   title={Nosferatu -- A Symphony of Horrors},
   howpublished={Film},
-  year={1922},
-  note={Drehbuch/Regie: F. W. Murnau. Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.},
-  hyphenation={english}
+  date={1922},
+  note={Drehbuch/Regie: F.\ W.\ Murnau. Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.},
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{Nosferatu1922}] \fullcite{Nosferatu1922}
@@ -1035,7 +1024,7 @@ den zugehörigen \emph{Timecode} "TC=\emph{hh:mm:ss:ff}" angeben,
 
 
 
-\subsection{Software (\textsf{software})}
+\subsection{Software (\texttt{\bfseries @software})}
 \label{sec:@software}
 
 
@@ -1051,8 +1040,8 @@ eines eigenen Eintragstyps).
   title={The Legend of Zelda: Ocarina of Time},
   howpublished={N64-Spielmodul},
   publisher={Nintendo},
-  year={1998},
-  hyphenation={english}
+  date={1998-11},
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{LegendOfZelda1998}] \fullcite{LegendOfZelda1998}
@@ -1065,9 +1054,9 @@ Nachfolgend ein Beispiel für den Verweis auf ein typisches Software-Projekt:
 \item[] 
 \begin{GenericCode}[numbers=none]
 @software{SpringFramework,
-	title={Spring Framework},
-	url={https://github.com/spring-projects/spring-framework},
-	hyphenation={english}
+  title={Spring Framework},
+  url={https://github.com/spring-projects/spring-framework},
+  langid={english}
 }
 \end{GenericCode}
 \item[\cite{SpringFramework}] \fullcite{SpringFramework}
@@ -1075,7 +1064,7 @@ Nachfolgend ein Beispiel für den Verweis auf ein typisches Software-Projekt:
 
 
 
-\subsection{Online-Quellen (\textsf{online})}
+\subsection{Online-Quellen (\texttt{\bfseries @online})}
 \label{sec:KategorieOnline}
 
 Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterscheiden:
@@ -1112,85 +1101,54 @@ mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2020}.
 \item[]
 \begin{GenericCode}[numbers=none]
 @online{WikiReliquienschrein2020,
-  url={https://de.wikipedia.org/wiki/Reliquienschrein},
   title={Reliquienschrein},
-  year={2020},
-  month={10},
-  urldate={2020-10-27}
+  url={https://de.wikipedia.org/wiki/Reliquienschrein},
+  date={2020-10-20},
+  urldate={2021-05-12},
+  langid={ngerman}
 }
 \end{GenericCode}
 \item[\cite{WikiReliquienschrein2020}] \fullcite{WikiReliquienschrein2020}
 \end{itemize}
 %
 In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL.
-Mit \texttt{year} und \texttt{month} kann man die Version näher spezifizieren, 
-die zum gegebenen Zeitpunkt aktuell war.
+Mit \texttt{date} kann man die Version näher spezifizieren, die zum gegebenen Zeitpunkt aktuell war.
 Durch die (optionale) Angabe von \texttt{urldate} (im \texttt{YYYY-MM-DD} Format) wird automatisch 
 die Information eingefügt, wann das Online-Dokument tatsächlich eingesehen wurde.
-
-
-
 
 \noindent\textbf{Hinweis:}
 Technisch ist bei Online-Quellen nur das Feld \texttt{url} erforderlich,
 die Angabe von weiteren Details (\zB\ \texttt{author}) ist aber natürlich möglich.
-Liegt aber \emph{kein} Autor vor, dann sollte man -- wie in den obigen Beispielen gezeigt --
+Liegt aber \emph{kein*e} Autor*in vor, dann sollte man -- wie in den obigen Beispielen gezeigt --
 zumindest einen sinnvollen \emph{Titel} (\texttt{title}) angeben, 
 der für die Sortierung im Quellenverzeichnis verwendet wird.
 
 
-%\subsubsection{Beispiel: Bildquelle}
-%
-%In Abbildungen wird sehr häufig fremdes Bildmaterial verwendet, dessen Herkunft natürlich 
-%in jedem Fall angegeben werden sollte. Die Angabe von URLs unmittelbar in den Captions von Abbildungen
-%ist problematisch, weil sie meistens für das Schriftbild ziemlich störend sind.
-%Einfacher ist es, auch einzelne Bilder und Grafiken ins Quellenverzeichnis aufzunehmen und
-%wie üblich mit dem \verb!\cite{..}! Kommando darauf zu verweisen.
-%Beispiele dazu sind die Angaben zu Abb.\ \ref{fig:CocaCola}--\ref{fig:ibm360}.
-%%
-%\begin{itemize}
-%\item[]
-%\begin{GenericCode}[numbers=none]
-%@online{IBM360,
-	%title={Mainframes},
-  %url={http://www.plyojump.com/classes/mainframe_era.php}
-%}
-%\end{GenericCode}
-%\item[\cite{IBM360}] \fullcite{IBM360}
-%\end{itemize}
+\subsection{Tipps zur Erstellung von Biblatex-Dateien}
+\label{sec:TippsZuBiblatex}
 
-%\subsection{Elektronische Datenträger als Ergänzung zur Arbeit}
-%
-%Wird der Abschlussarbeit ein elektronischer Datenträger (CD-ROM, DVD, USB-Stick
-%etc.) beigelegt, empfiehlt sich die angeführten Webseiten in
-%elektronischer Form (vorzugsweise als PDF-Da\-tei\-en) abzulegen
-%und die zugehörige Quelle im Quellenverzeichnis mit einem 
-%entsprechenden Verweis im \texttt{note}-Feld -- \zB\
-%"Kopie auf USB-Stick (Datei \nolinkurl{xyz.pdf})" --
-%zu versehen.
-%Für die Angabe von solchen Dateinamen, die nicht als Online-Link
-%zu öffnen sind, ist übrigens die Verwendung von 
-%\verb!\nolinkurl{...}! anstelle von \verb!\url{...}! zu empfehlen.
+Die folgenden Dinge sollten bei der Erstellung korrekter Biblatex-Dateien beachtet werden.
+
+\subsubsection{\texttt{date}-Attribut}
+
+Während im klassischen BibTeX die Angaben für Jahr und Monat des Veröffentlichungsdatums über die Attribute \texttt{year}
+und \texttt{month} gemacht werden, bietet sich für reine Biblatex-Bibliografien (wie in diesem Dokument) das Attribut \texttt{date} an.
+Angaben werden im Format \texttt{YYYY-MM-DD} gemacht, wobei diese auch nur aus Jahr (\texttt{YYYY}) oder auch Jahr und Monat
+(\texttt{YYYY-MM}) bestehen können. Ebenso können auch Zeiträume im Format \texttt{YYYY-MM-DD/YYYY-MM-DD} definiert werden.
+Verwandte Felder sind \texttt{origdate} (ursprüngliches Veröffentlichungsdatum, etwa bei einem Nachdruck oder einer Übersetzung),
+\texttt{eventdate} (Datum einer Konferenz) und \texttt{urldate} (Datum des Zugriffs auf einen URL).
+
+Sollten dennoch \texttt{year} und \texttt{month} verwendet werden, ist zu beachten, dass letzteres in \texttt{biblatex}
+(im Unterschied zu BibTeX) numerisch ist und beispielsweise einfach in der Form \verb!month={8}! (für den Monat August)
+angegeben wird.
 
 
-\subsection{Tipps zur Erstellung von BibTeX-Dateien}
-\label{sec:TippsZuBibtex}
+\subsubsection{\texttt{langid}-Attribut}
 
-Die folgenden Dinge sollten bei der Erstellung korrekter BibTeX-Dateien beachtet werden.
-
-\subsubsection{\texttt{month}-Attribut}
-
-Das \texttt{month}-Attribut ist in \texttt{biblatex} (im Unterschied zu BibTeX) numerisch
-und wird beispielsweise einfach in der Form \verb!month={8}! (für den Monat August)
-angegeben.
-
-
-\subsubsection{\texttt{hyphenation}-Attribut}
-
-Das \texttt{hyphenation} Attribut ermöglicht den korrekten Satz mehrsprachiger Quellenverzeichnisse. 
+Das \texttt{langid} Attribut ermöglicht den korrekten Satz mehrsprachiger Quellenverzeichnisse. 
 Es sollte nach Möglichkeit bei jedem Quelleneintrag angegeben werden, also beispielsweise
 \begin{quote}
-\verb!hyphenation={german}! \quad oder \quad \verb!hyphenation={english}!
+\verb!langid={ngerman}! \quad oder \quad \verb!langid={english}!
 \end{quote}
 für eine deutsch- \bzw\ englischsprachige Quelle.
 
@@ -1237,6 +1195,9 @@ und \texttt{pages}, \va\ bei Sammelbänden (\texttt{@incollection}) und Konferen
 Auch die Namen von Konferenzen und Tagungsorten werden oft nicht korrekt angegeben 
 (sogar in offiziellen ACM- und IEEE-Quellen).
 ISBN-, DOI- und ISSN-Nummern sind in der Regel überflüssig und sollten weggelassen werden.
+
+Da es sich in der Regel auch immer um BibTeX- und nicht Biblatex-Einträge handelt, sollten diese
+angepasst werden, um die korrekten Typen und Detail-Felder nützen zu können.
 
 
 \subsubsection{Häufige Fehler bei Quellenangaben}
@@ -1318,11 +1279,11 @@ Beispiel:
 \item[]
 \begin{LaTeXCode}[numbers=none,breakindent=0pt]
 \textcite{Daniel2018} geben eine kurze Einführung in das Thema \latex,
-wohingegen \textcite{Oetiker2018, Kopka2003} bereits mehr ins Detail gehen.
+wohingegen \textcite{Oetiker2021, Kopka2003} bereits mehr ins Detail gehen.
 \end{LaTeXCode}
 \item[] 
 Daniel et al. (2018) geben eine kurze Einführung in das Thema \latex, wohingegen Kopka und Daly (2003)
-und Oetiker et al. (2018) bereits mehr ins Detail gehen.
+und Oetiker et al. (2021) bereits mehr ins Detail gehen.
 \end{itemize}
 
 
@@ -1341,11 +1302,11 @@ Beispiel:
 \item[]
 \begin{LaTeXCode}[numbers=none,breakindent=0pt]
 Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen
-(\zB \nptextcite{Daniel2018, Oetiker2018, Kopka2003}).
+(\zB \nptextcite{Daniel2018, Oetiker2021, Kopka2003}).
 \end{LaTeXCode}
 \item[]
 Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen 
-(\zB Daniel et al., 2018; Kopka \& Daly, 2003; Oetiker et al., 2018).
+(\zB Daniel et al., 2018; Kopka \& Daly, 2003; Oetiker et al., 2021).
 \end{itemize}
 
 \subsection{Parenthetische Verweise}
@@ -1364,11 +1325,11 @@ Beispiel:
 \begin{itemize}
 \item[]
 \begin{LaTeXCode}[numbers=none,breakindent=0pt]
-Für \latex existieren sowohl kurze Einführungen \parencite{Daniel2018}, als auch umfangreichere Werke \parencite{Oetiker2018, Kopka2003}.
+Für \latex existieren sowohl kurze Einführungen \parencite{Daniel2018}, als auch umfangreichere Werke \parencite{Oetiker2021, Kopka2003}.
 \end{LaTeXCode}
 %
 \item[] Für \latex existieren sowohl kurze Einführungen (Daniel et al., 2018), als auch umfangreichere
-Werke (Kopka \& Daly, 2003; Oetiker et al., 2018).
+Werke (Kopka \& Daly, 2003; Oetiker et al., 2021).
 \end{itemize}
 
 
@@ -1384,18 +1345,18 @@ Die oben verwendeten Quellen werden wie folgt im Quellenverzeichnis dargestellt:
 \urlstyle{rm}
 }
 \item
-Daniel, M., Gundlach, P., Schmidt, W., Knappen, J., Partl, H. \& Hyna, I. (2018).
+Daniel, M., Gundlach, P., Schmidt, W., Knappen, J., Partl, H. \& Hyna, I. (2018, 8. April).
 \textit{\LaTeX2e-Kurzbeschreibung.} Version 3.0c.
 \textrm{\url{http://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}.
-(Siehe S. 49)
+(Siehe S. 63, 64)
 \item
 Kopka, H. \& Daly, P. W. (2003). \textit{A guide to \LaTeX} (4. Aufl.).
-Addison-Wesley. (Siehe S. 49).
+Addison-Wesley. (Siehe S. 63, 64).
 \item
-Oetiker, T., Partl, H., Hyna, I. \& Schlegl, E. (2018).
+Oetiker, T., Partl, H., Hyna, I. \& Schlegl, E. (2021, 9. März).
 \textit{The Not So ShortIntroduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.}
-Version 6.2. \url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}.
-(Siehe S. 6, 7)
+Version 6.4. \url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}.
+(Siehe S. 63, 64)
 \end{list}
 \end{sloppypar}
 

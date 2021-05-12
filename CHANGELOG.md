@@ -17,6 +17,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 - 2020/10/30: Removed `ctan/hagenberg-thesis/examples/` directory from CTAN bundle, modified `ctan` target in `makefile` and added another reference in `README.md` to this GitHub repo (CTAN admins had complained about duplicate files).
 - 2021/03/05: Algorithm setup converted to `algpseudocodex` for improved readability, added new spacing commands for fine-tuning.
+- 2021/05/12: Completely reworked `references.bib`. Replaced all occurrences of `year` and `month` with `date`. Switched `hyphenation` to `langid`. Also updated all references, corrected mistakes and removed unused entries from the file.
 
 ### Fixed
 
