@@ -437,7 +437,7 @@ In den folgenden Beispielen ist jeweils der Biblatex-Eintrag in der Datei \nolin
 angegeben, gefolgt vom zugehörigen Ergebnis im Quellenverzeichnis.
 
 
-\subsubsection{\texttt{@book}}
+\subsubsection{\texttt{\bfseries @book}}
 \label{sec:@book}
 Ein einbändiges Buch (Monographie), das von einem*einer Autor*in oder mehreren Autor*innen zur Gänze gemeinsam verfasst und (typischerweise) von einem Verlag herausgegeben wurde.
 % 
@@ -465,7 +465,7 @@ wenn diese die einzige ist!
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@incollection}}
+\subsubsection{\texttt{\bfseries @incollection}}
 \label{sec:@incollection}
 Ein in sich abgeschlossener und mit einem eigenen Titel versehener
 Beitrag eines*einer oder mehrerer Autor*innen in einem Buch oder Sammelband.
@@ -495,7 +495,7 @@ Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel de
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@inproceedings}}
+\subsubsection{\texttt{\bfseries @inproceedings}}
 \label{sec:@inproceedings}
 Konferenzbeitrag, individueller Beitrag in einem Tagungsband.
 Man beachte die Verwendung des neuen Felds \texttt{venue}
@@ -524,7 +524,7 @@ zur Angabe des Tagungsorts und
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@article}}
+\subsubsection{\texttt{\bfseries @article}}
 \label{sec:@article}
 Beitrag in einer Zeitschrift, einem wissenschaftlichen Journal oder einer Tageszeitung.
 Dabei steht \texttt{volume} üblicherweise für den Jahrgang und \texttt{number} für die 
@@ -557,7 +557,7 @@ in \cite{Vardavoulia2001}.
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@thesis}}
+\subsubsection{\texttt{\bfseries @thesis}}
 \label{sec:@thesis}
 Dieser Eintragstyp kann allgemein für akademische Abschlussarbeiten verwendet werden. Über die Angabe des Attributs \texttt{type} wird der genaue Typ spezifiziert. Die Werte \texttt{phdthesis}, \texttt{mathesis} und \texttt{bathesis} kennzeichnen Doktor-, Master- \bzw Bachelorarbeiten und geben, abhängig von Dokumentensprache und Stil, den Typ der Arbeit korrekt an. Alternativ können auch eigene Inhalte im Feld hinterlegt werden.
 
@@ -632,7 +632,7 @@ Bachelorarbeiten gelten in der Regel zwar nicht als "richtige" Publikationen, be
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@report}}
+\subsubsection{\texttt{\bfseries @report}}
 \label{sec:@report}
 Das sind typischerweise nummerierte Berichte (\emph{technical reports} oder \emph{research reports}) aus Unternehmen, 
 Hochschulinstituten oder Forschungsprojekten. Unterschieden werden diese durch das \texttt{type}-Attribut, das die Werte
@@ -660,7 +660,7 @@ Adresse angegeben werden. Sinnvollerweise wird auch der zugehörige URL angegebe
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@manual}}
+\subsubsection{\texttt{\bfseries @manual}}
 \label{sec:@manual}
 Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer Dokumentation an, wie etwa Produktbeschreibungen, Anleitungen, Präsentationen, White Papers \usw Die Dokumentation muss dabei nicht zwingend gedruckt existieren.
 %
@@ -686,7 +686,7 @@ Dieser Trick wird \ua\ im nächsten Beispiel verwendet.
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@standard}}
+\subsubsection{\texttt{\bfseries @standard}}
 \label{sec:@standard}
 
 
@@ -712,7 +712,7 @@ unterstützt. Hier ein typisches Beispiel:
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@patent}}
+\subsubsection{\texttt{\bfseries @patent}}
 \label{sec:@patent}
 
 Für Patente gibt es den speziellen Eintragstyp \texttt{@patent},
@@ -740,13 +740,12 @@ Patenterteilung, die Angabe von \texttt{holder} ist optional:
 
 %%------------------------------------------------------
 
-\subsubsection{\texttt{@legislation}}
+\subsubsection{\texttt{\bfseries @legislation}}
 \label{sec:@legislation}
 
 Gesetzestexte können in \texttt{biblatex} über den Typ \texttt{@legislation} abgebildet werden. Da es sich hierbei
 um einen nicht standardisierten Typ handelt, kommt der Treiber für \texttt{@misc} zum Einsatz, weshalb es wichtig
 ist, Details wie die Art der Publikation explizit mit dem Feld \texttt{howpublished} anzugeben.
-
 Das folgende Beispiel zeigt die Anwendung für einen Gesetzestext (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 %
 \begin{itemize}
@@ -768,7 +767,7 @@ Das folgende Beispiel zeigt die Anwendung für einen Gesetzestext (\sa\ \cite{Fh
 %%------------------------------------------------------
 
 
-\subsubsection{\texttt{@misc}}
+\subsubsection{\texttt{\bfseries @misc}}
 \label{sec:@misc}
 
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte Publikationen
@@ -831,7 +830,7 @@ kann man -- wie für einen Sammelband -- den Typ \texttt{@incollection} verwende
 
 
 
-\subsubsection{\texttt{@unpublished}}
+\subsubsection{\texttt{\bfseries @unpublished}}
 \label{sec:@unpublished}
 
 Es kommt immer häufiger vor, dass Manuskripte längere Zeit vor der eigentlichen Pub\-likation
@@ -843,7 +842,7 @@ oder \textsf{researchgate.net}.%
 Dabei ist zu beachten, dass die Onlinestellung formell \textbf{keine Publikation}
 darstellt, da diese Plattformen keine Publikationsmedien sind.
 Tatsächlich werden manche der (von den Autor*innen selbst hochgeladenen) Arbeiten \emph{nie}
-publiziert, etwa Einreichungen zu Konferenzen.
+publiziert, etwa nicht akzeptierte Einreichungen zu Konferenzen.
 Hier ist wichtig festzustellen, ob der Beitrag tatsächlich
 angenommen und auch publiziert wurde:
 %
@@ -893,7 +892,7 @@ sind \emph{keine} Bib\-TeX-Standardtypen. Sie sind aber in \texttt{biblatex} vor
 Gliederung des Quellenverzeichnisses zu ermöglichen.
 
 
-\subsubsection{\texttt{@audio}}
+\subsubsection{\texttt{\bfseries @audio}}
 \label{sec:@audio}
 Hier ein Beispiel für die Spezifikation einer Audio-CD:
 %
@@ -915,7 +914,7 @@ Hier ein Beispiel für die Spezifikation einer Audio-CD:
 Anstelle von \verb!type={audiocd}! könnte auch \verb!howpublished={Audio-CD}! verwendet werden.
 
 
-\subsubsection{\texttt{@image}}
+\subsubsection{\texttt{\bfseries @image}}
 \label{sec:@image}
 
 Das nachfolgende Beispiel zeigt den Verweis auf ein digital verfügbares Foto,
@@ -938,7 +937,7 @@ das auch in Abb.\ \ref{fig:CocaCola} verwendet wird:
 
 
 
-\subsubsection{\texttt{@video}}
+\subsubsection{\texttt{\bfseries @video}}
 \label{sec:@video}
 
 Das nachfolgende Beispiel zeigt den Verweis auf ein YouTube-Video:
@@ -983,7 +982,7 @@ Falls kein*e eindeutige*r Autor*in namhaft gemacht werden kann, lässt man das
 
 
 
-\subsubsection{\texttt{@movie}}
+\subsubsection{\texttt{\bfseries @movie}}
 \label{sec:@movie}
 Dieser Eintragstyp ist für Filme reserviert. 
 Hier wird von vornherein \emph{kein*e} Autor*in angegeben, weil diese*r bei 
@@ -1025,7 +1024,7 @@ den zugehörigen \emph{Timecode} "TC=\emph{hh:mm:ss:ff}" angeben,
 
 
 
-\subsection{Software (\textsf{software})}
+\subsection{Software (\texttt{\bfseries @software})}
 \label{sec:@software}
 
 
@@ -1065,7 +1064,7 @@ Nachfolgend ein Beispiel für den Verweis auf ein typisches Software-Projekt:
 
 
 
-\subsection{Online-Quellen (\textsf{online})}
+\subsection{Online-Quellen (\texttt{\bfseries @online})}
 \label{sec:KategorieOnline}
 
 Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu unterscheiden:
