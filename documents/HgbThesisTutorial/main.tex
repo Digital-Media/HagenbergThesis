@@ -22,6 +22,18 @@
 \logofile{logo}				% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
 \bibliography{references}  	% Biblatex-Literaturdatei (references.bib)
 
+\usepackage{acro}
+\acsetup{
+	first-style=long-short, % long-short|short-long|short|long|footnote
+	subsequent-style=short, % long-short|short-long|short|long|footnote
+	single=false, % set to "true" if an acronym that has only been used once should not be part of the list of acronyms
+	make-links=true, % set to "true" to link acronyms with their entry in the list of acronyms
+	list/display=used, % set to "all" to print all defined acronyms, no matter if they are referenced or not
+	list/template=toc
+	%list/heading=chapter
+}
+\input{back/acronyms}
+
 %%%----------------------------------------------------------
 % Angaben für die Titelei (Titelseite, Erklärung etc.)
 %%%----------------------------------------------------------
@@ -79,7 +91,22 @@
 \include{back/anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
+
+
+\makeatletter
+\g@addto@macro{\backmatter}{
+	\renewcommand{\chaptermark}[1]{%
+		\markboth{#1}{}%
+	}    
+}
+\makeatother
+\backmatter
+
 \MakeBibliography                        % Quellenverzeichnis
+%\addcontentsline{toc}{chapter}{Abkürzungen}
+\printacronyms
+%\printacronyms[heading=chapter]
+%\printacronyms[heading=chapter*]
 %%%----------------------------------------------------------
 
 %%% Messbox zur Druckkontrolle ------------------------------
