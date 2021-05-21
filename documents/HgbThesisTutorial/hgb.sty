@@ -250,6 +250,14 @@
 \RequirePackage{tocbasic}%				%% tocbasic is part of koma script
 \DeclareTOCStyleEntry[entryformat=\bfseries\textsf]{tocline}{chapter}%
 
+
+%% Avoid appendix-style chapter numbering within 'backmatter' (introduced for acronyms listing)
+\g@addto@macro{\backmatter}{
+	\renewcommand{\chaptermark}[1]{%
+		\markboth{#1}{}%
+	}    
+}
+
 %% Program environments  ----------------------------------------
 
 % Define the program float environment:
