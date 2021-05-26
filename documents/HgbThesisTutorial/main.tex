@@ -9,6 +9,7 @@
 % !BIB program = biber
 
 \documentclass[master,german,smartquotes]{hgbthesis}
+
 % Zulässige Optionen in [..]: 
 %    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship' 
 %    Hauptsprache: 'german' (default), 'english'
@@ -19,51 +20,10 @@
 \RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
 
 \graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}				% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
+\logofile{logo}							% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
 \bibliography{references}  	% Biblatex-Literaturdatei (references.bib)
 
-
-
-
-%\RequirePackage{longtable}
-%\RequirePackage{array}
-\usepackage{acro}  %% https://github.com/cgnieder/acro
-
-\NewAcroTemplate[list]{descriptionX}{%
-\acroheading
-\acropreamble
-\begin{description}
-	\acronymsmapF{%
-		\item[\acrowrite{short}\acroifT{alt}{/\acrowrite{alt}}] ~ \newline
-			\acrowrite{list}%
-			\acroifanyT{foreign,extra}{ (}%
-			\acroifT{foreign}{\acrowrite{foreign}\acroifT{extra}{, }}%
-			\acroifT{extra}{\acrowrite{extra}}%
-			\acroifanyT{foreign,extra}{)}%
-			\dotfill%\acropagefill
-			\acropages
-				{\acrotranslate{page}\nobreakspace}
-				{\acrotranslate{pages}\nobreakspace}%
-		}
-		{\item\AcroRerun}
-\end{description}
-}
-		
-\acsetup{
-	first-style=long-short,	% long-short|short-long|short|long|footnote
-	subsequent-style=short,	% long-short|short-long|short|long|footnote
-	single=false,						% set to "true" if an acronym that has only been used once should not be part of the list of acronyms
-	make-links=true,				% set to "true" to link acronyms with their entry in the list of acronyms
-	list/display=used,			% set to "all" to print all defined acronyms, no matter if they are referenced or not
-	%%list/template=toc,			% output list of acronyms in 'table-of-contents' style
-	list/template=descriptionX,			% output list of acronyms in 'table-of-contents' style
-	list/heading=chapter*,		% use chapter* as heading (default)
-	pages/display=all,
-}
-
-\input{acronyms}
-
-
+\usepackage{hgbacro}				% Use setup for acronyms
 
 
 %%%----------------------------------------------------------
@@ -125,34 +85,11 @@
 \include{back/anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
-
-
-%\makeatletter
-%\g@addto@macro{\backmatter}{
-	%\renewcommand{\chaptermark}[1]{%
-		%\markboth{#1}{}%
-	%}    
-%}
-%\makeatother
-
 \backmatter
+%%%----------------------------------------------------------
 
-\chapter{Foo}
-
-Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-\clearpage
-Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
-\clearpage
-Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-
-\addcontentsline{toc}{chapter}{\acrolistname}
-\printacronyms
-%\printacronyms[heading=chapter]
-%\printacronyms[heading=chapter*]
-
-
-\MakeBibliography                        % Quellenverzeichnis
+\PrintAcronyms					% Liste der Abkürzungen
+\MakeBibliography       % Quellenverzeichnis
 
 %%%----------------------------------------------------------
 
