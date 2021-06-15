@@ -12,6 +12,8 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - 2021/01/29: Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to most important APA citation macros in it.
 - 2021/01/29: Added a section in `HgbThesisTutorial` about APA with instruction on how to enable it and an overview of the citation commands as well as the resulting reference list.
 - 2021/03/02: Added `\email` macro in `hgb.sty` to print correct email addresses in documents as well as the preamble.
+- 2021/06/15: Added `\backmatter` section to `main.tex` to avoid that things like a list of figures or acronyms are treated as appendices.
+- 2021/06/15: Added `hgbacro.sty` for acronyms typesetting support (including a list of acronyms).
 
 ### Changed
 
