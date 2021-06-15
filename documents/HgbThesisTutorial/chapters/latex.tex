@@ -809,12 +809,13 @@ zum Erstellen dieses Dokuments erforderlich sind:
 		aber grundsätzlich auch für andere Dokumente verwendet werden.
 \item Weitere Style-Dateien, die von \nolinkurl{hgbthesis.cls} importiert werden:
     \begin{itemize}
-	\item[] \nolinkurl{hgbabbrev.sty} (div.\ Abkürzungen),
-    \item[] \nolinkurl{hgbalgo.sty} (Algorithmen),
-	\item[] \nolinkurl{hgbbib.sty} (Literaturverwaltung),
-	\item[] \nolinkurl{hgbheadings.sty} (Seiten-Header),
-	\item[] \nolinkurl{hgblistings.sty} (Code-Listings),
-    \item[] \nolinkurl{hgbmath.sty} (Mathematisches).
+		\item[] \nolinkurl{hgbabbrev.sty} (Macros für spezielle Abkürzungen),
+		\item[] \nolinkurl{hgbalgo.sty} (Algorithmen),
+		\item[] \nolinkurl{hgbbib.sty} (Literaturverwaltung),
+		\item[] \nolinkurl{hgbheadings.sty} (Seiten-Header),
+		\item[] \nolinkurl{hgblistings.sty} (Code-Listings),
+		\item[] \nolinkurl{hgbmath.sty} (Mathematisches),
+		\item[] \nolinkurl{hgbacro.sty} (Akronyme).
     \end{itemize}
 \end{itemize}
 
@@ -974,7 +975,7 @@ folgenden Einstellungen am Beginn des Dokuments bestimmt werden:
 
 
 
-\subsection{Definierte Abkürzungen}
+\subsection{Makros für spezielle Abkürzungen}
 
 Es wird im \texttt{hagenberg-thesis}-Paket weiters eine Reihe von Abkürzungsmakros%
 \footnote{In Anlehnung an den \texttt{jkthesis}-Style von J.
@@ -1040,6 +1041,21 @@ beziehungsweise
 %
 Zur Kontrolle lässt sich die aktuelle Spracheinstellung mit dem Makro \verb!\languagename!
 anzeigen. An dieser Stelle ergibt das etwa "\texttt{\languagename}" (\emph{new german}, \dah\ neue deutsche Rechtschreibung).
+
+
+
+\subsection{Abkürzungen (Akronyme)}
+\label{sec:akronyme}
+
+Werden viele Abkürzungen verwendet, empfiehlt sich das \texttt{acro} Package. 
+Geht es beispielsweise um \ac{jpg},
+so wird der Begriff beim ersten Mal ausgeschrieben, wird \ac{jpg} nochmals verwendet, folgt die Abkürzung.
+Selbiges mit \ac{ufo}, \ac{pi} oder \ac{c}.
+
+\begin{center}
+\textbf{*** Add more details here! ***}
+\end{center}
+
 
 
 \subsection{Zusätzliche {\latex}-Pakete}
