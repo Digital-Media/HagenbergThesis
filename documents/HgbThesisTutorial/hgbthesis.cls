@@ -500,5 +500,6 @@ This work is published under the conditions of the
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
+\RequirePackage{hgbacro}
 
 \endinput

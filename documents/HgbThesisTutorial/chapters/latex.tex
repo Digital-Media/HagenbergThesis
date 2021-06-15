@@ -1047,16 +1047,61 @@ anzeigen. An dieser Stelle ergibt das etwa "\texttt{\languagename}" (\emph{new g
 \subsection{Abkürzungen (Akronyme)}
 \label{sec:akronyme}
 
-Werden viele Abkürzungen verwendet, empfiehlt sich das \texttt{acro} Package. 
-Geht es beispielsweise um \ac{jpg},
-so wird der Begriff beim ersten Mal ausgeschrieben, wird \ac{jpg} nochmals verwendet, folgt die Abkürzung.
-Selbiges mit \ac{ufo}, \ac{pi} oder \ac{c}.
+Werden viele Abkürzungen verwendet, empfiehlt sich das \texttt{acro}-Package \cite{Niederberger2021}.
+Dieses wird für Abschlussarbeiten mit \nolinkurl{hgbthesis.cls} automatisch
+inkludiert, für alle anderen Klassen (\nolinkurl{hgbreport.cls},
+\nolinkurl{hgbarticle.cls}) muss \nolinkurl{hgbacro.sty} in der Präambel eingebunden werden.
 
-\begin{center}
-\textbf{*** Add more details here! ***}
-\end{center}
+Akronyme oder mathematische Nomenklatur werden zunächst in der Datei \nolinkurl{acronyms.tex}
+definiert:
+%
+\begin{LaTeXCode}[numbers=none]
+\DeclareAcronym{jpg}{
+	short=JPEG,
+	long=Joint Photographic Experts Group,
+	alt=JPG,
+	sort=jpeg,
+	tag=acro
+}
+\end{LaTeXCode}
+%
+Wird eine Abkürzung im Fließtext benötigt, wird sie mit Hilfe des Makros
+%
+\begin{quote}
+	\verb!\ac{!\textit{acronymkey}\verb!}!
+\end{quote}
+%
+referenziert. Das Akronym wird bei der ersten Verwendung ausgeschrieben, die Kurzversion
+wird in Klammern angeführt. Bei weiteren Verwendungen wird nur das Akronym dargestellt.
+Bei mathematischen Symbolen (Nomenklatur) wird in der Regel nur das Symbol dargestellt,
+eine lange Variante wird zur Erklärung in einem Abkürzungsverzeichnis hinterlegt.
 
+So wird das folgende Fragment 
+%
+\begin{LaTeXCode}[numbers=none]
+Geht es beispielsweise um die \ac{jpg}, so wird der Begriff beim ersten Mal ausgeschrieben, wird \ac{jpg} nochmals verwendet, folgt die Abkürzung. Dies gilt auch für ein \ac{ufo}. \ac{pi} und \ac{c} zählen zur Nomenklatur.
+\end{LaTeXCode}
+%
+wie folgt gesetzt:
 
+\begin{quote}
+Geht es beispielsweise um die \ac{jpg}, so wird der Begriff beim ersten Mal ausgeschrieben,
+wird \ac{jpg} nochmals verwendet, folgt die Abkürzung. Dies gilt auch für ein \ac{ufo}.
+\ac{pi} und \ac{c} zählen zur Nomenklatur.
+\end{quote}
+
+Optional kann ein Abkürzungsverzeichnis am Ende des Dokuments (unmittelbar vor dem
+Literaturverzeichnis eingefügt werden):
+%
+\begin{quote}
+	\verb!\PrintAcronyms! \\
+	\verb!\PrintAcronyms[include=acro]!
+\end{quote}
+%
+Der erste Aufruf gibt alle definierten und verwendeten Akronyme aus, der zweite zeigt
+nur jene an, die mit dem Tag \texttt{acro} versehen sind. Wird das Abkürzungsverzeichnis
+verwendet, empfiehlt es sich, \verb|make-links=true| in \nolinkurl{hgbacro.sty} zu
+aktivieren, um im PDF eine Verlinkung von Akronymen zu ihrer Auflistung zu erwirken.
 
 \subsection{Zusätzliche {\latex}-Pakete}
 

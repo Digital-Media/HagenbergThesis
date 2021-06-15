@@ -17,13 +17,11 @@
 %    Use APA bibliography style: 'apa'
 %%%----------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
+\RequirePackage[utf8]{inputenc} % bei der Verw. von lualatex oder xelatex entfernen!
 
-\graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}							% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
-\bibliography{references}  	% Biblatex-Literaturdatei (references.bib)
-
-\usepackage{hgbacro}				% Use setup for acronyms
+\graphicspath{{images/}}        % Verzeichnis mit Bildern und Grafiken
+\logofile{logo}                 % Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
+\bibliography{references}       % Biblatex-Literaturdatei (references.bib)
 
 
 %%%----------------------------------------------------------
@@ -85,10 +83,9 @@
 \include{back/anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
-\backmatter
+\backmatter       % Schlussteil (Quellenverzeichnis und dgl.)
 %%%----------------------------------------------------------
 
-\PrintAcronyms			% Liste der Abkürzungen
 \MakeBibliography       % Quellenverzeichnis
 
 %%%----------------------------------------------------------
