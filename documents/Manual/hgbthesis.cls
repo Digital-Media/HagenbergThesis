@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2021/05/12]%%AUTO
+\ProvidesClass{hgbthesis}[2021/06/15]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -500,5 +500,6 @@ This work is published under the conditions of the
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
+\RequirePackage{hgbacro}
 
 \endinput

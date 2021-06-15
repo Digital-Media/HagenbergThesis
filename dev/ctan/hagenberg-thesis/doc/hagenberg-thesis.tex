@@ -343,11 +343,30 @@ These colors can be redefined at any time (see the \texttt{xcolor}%
 \end{LaTeXCode}
 
 
+
+\subsection{Abbreviations, Acronyms and Nomenclature (\texttt{hgbacro.sty})}
+
+\texttt{hgbacro} is a wrapper for the \texttt{acro}%
+\footnote{\url{https://ctan.org/pkg/acro}}
+package. It provides a simple and pre-configured setup to typeset acronyms or
+nomenclature.
+
+Acronyms should be defined in a file called \texttt{acronyms.tex} in the
+root directory. By using the \verb|\ac{...}| command, acronyms can be referred in
+the running text. The extended description is used for the first appearance, whereas the
+acronym is printed for any subsequent use.
+
+To display a list of acronyms, use the \verb|\PrintAcronyms| command.
+
+For additional options, please refer to the \texttt{acro} manual.
+
+
 \section{Package dependencies}
 
 \begin{sloppypar}
 The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\newline
 \texttt{abstract}, 
+\texttt{acro}, 
 \texttt{algorithm}, 
 \texttt{algorithmicx}, 
 \texttt{algpseudocodex}, 
