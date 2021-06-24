@@ -1,5 +1,5 @@
 % !TeX document-id = {d6373e26-6fc2-494b-a9ec-b221ee39738f}
-%%% File encoding: UTF-8
+%%% Dateikodierung: UTF-8
 %%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 %%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
@@ -12,53 +12,52 @@
 % Zulässige Optionen in [..]: 
 %    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship' 
 %    Hauptsprache: 'german' (default), 'english'
-%    Turn on smart quote handling: 'smartquotes'
-%    Use APA bibliography style: 'apa'
-%%%----------------------------------------------------------
+%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
+%    APA Zitierstil: 'apa'
+%%%-----------------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}		% bei der Verw. von lualatex oder xelatex entfernen!
+\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 
-\graphicspath{{images/}}    % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}				% Logo-Datei = images/logo.pdf (\logofile{}, wenn kein Logo gewünscht)
-\bibliography{references}  	% Biblatex-Literaturdatei (references.bib)
+\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
+\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
+\bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
 % Angaben für die Titelei (Titelseite, Erklärung etc.)
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
 
-%%% Einträge für ALLE Arbeiten: -----------------------------
 \title{Partielle Lösungen zur allgemeinen Problematik}
 \author{Alex A.\ Schlaumeier}
 \programname{Universal Computing}
 
-% \programtype{Fachhochschul-Bachelorstudiengang}		% select/edit
+%\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
 \programtype{Fachhochschul-Masterstudiengang}
 
 \placeofstudy{Hagenberg}
-\dateofsubmission{2021}{07}{15}	% {YYYY}{MM}{DD}
+\dateofsubmission{2021}{07}{15} % {YYYY}{MM}{DD}
 
-\advisor{Alois B.~Treuer, Päd.\ Phil.}	% optional
+\advisor{Alois B.~Treuer, Päd.\ Phil.} % optional
 
-%\strictlicense		%%% restrictive license instead of Creative Commons (discouraged!)
+%\strictlicense % restriktive Lizenz anstatt Creative Commons (nicht empfohlen!)
 
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
 \begin{document}
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
 
-%%%----------------------------------------------------------
-\frontmatter                    % Titelei (röm. Seitenzahlen)
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
+\frontmatter                                       % Titelei (röm. Seitenzahlen)
+%%%-----------------------------------------------------------------------------
 
 \maketitle
 \tableofcontents
 
-\include{front/vorwort} 				% Vorwort ist optional
+\include{front/vorwort} % Ein Vorwort ist optional
 \include{front/kurzfassung}		
 \include{front/abstract}			
 
-%%%----------------------------------------------------------
-\mainmatter          % Hauptteil (ab hier arab. Seitenzahlen)
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
+\mainmatter                             % Hauptteil (ab hier arab. Seitenzahlen)
+%%%-----------------------------------------------------------------------------
 
 \include{chapters/einleitung}
 \include{chapters/abschlussarbeit}
@@ -69,22 +68,27 @@
 \include{chapters/drucken}
 \include{chapters/schluss}
 
-%%%----------------------------------------------------------
-\appendix                                            % Anhang 
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
+\appendix                                                               % Anhang 
+%%%-----------------------------------------------------------------------------
 
 \include{back/anhang_a}	% Technische Ergänzungen
 \include{back/anhang_b}	% Inhalt der CD-ROM/DVD
 \include{back/anhang_c}	% Chronologische Liste der Änderungen
 \include{back/anhang_d}	% Quelltext dieses Dokuments
 
-%%%----------------------------------------------------------
-\MakeBibliography                        % Quellenverzeichnis
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
+\backmatter                          % Schlussteil (Quellenverzeichnis und dgl.)
+%%%-----------------------------------------------------------------------------
 
-%%% Messbox zur Druckkontrolle ------------------------------
+\MakeBibliography % Quellenverzeichnis
+
+%%%-----------------------------------------------------------------------------
+% Messbox zur Druckkontrolle
+%%%-----------------------------------------------------------------------------
+
 \include{back/messbox}
 
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
 \end{document}
-%%%----------------------------------------------------------
+%%%-----------------------------------------------------------------------------
