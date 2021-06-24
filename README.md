@@ -1,6 +1,6 @@
 # Hagenberg Thesis Document Collection (LaTeX)
 
-## What you find here
+## What You Find Here
 
 This is a collection of modern LaTeX classes, style files, and example documents for authoring **Bachelor, Master or Diploma theses** and related academic manuscripts in English and German. 
 Pre-configured English and German documents are available, easy to use even for LaTeX beginners, and compatible with LaTeX distributions for Windows, Mac OS, and Linux. The document classes are immediately usable and convenient to customize.
@@ -12,21 +12,21 @@ This site is the main repository for the **hagenberg-thesis** package, which is 
 Note that the **most recent versions are always found *here***, while only periodic [releases](https://github.com/Digital-Media/HagenbergThesis/releases) are submitted to CTAN.
 
 
-## How to use
+## How to Use
 
-### Checkout (local LaTeX installation)
+### Checkout (Local LaTeX Installation)
 
 To open a sample document on your computer, use the appropriate **download** (ZIP) link in the table below. 
 Unzip the downloaded archive to a suitable location and open the `main.tex` file in your TeX editor.
 Make sure you have a current LaTeX environment installed.
 
-### Online usage (single-click authoring)
+### Online Usage (Single-click Authoring)
 
 The sample documents can also be used in online mode without having to install LaTeX on your computer.
 Use the **create** links in the table below to open the document on **[Overleaf](https://www.overleaf.com/)**.
 
 
-## Sample documents
+## Sample Documents
 
 Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
 The following sample documents (with numerical citations using `numeric-comp`) are currently available:
@@ -42,7 +42,7 @@ The following sample documents (with numerical citations using `numeric-comp`) a
 | `HgbTermReport` | Term/Project Report (full semester) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip) |
 | `HgbArticle` | Journal Article | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip) |
 
-### APA style documents
+### APA Style Documents
 
 To use the [APA 7th edition style for citations and references](https://apastyle.apa.org/style-grammar-guidelines/references/), the option `apa` can be used in the document's preamble. Two separate sample documents are already prepared for the use of the APA style:
 
@@ -54,11 +54,15 @@ To use the [APA 7th edition style for citations and references](https://apastyle
 \*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**.
 
 
-## Additional information
+## Additional Features
+
+The **hagenberg-thesis** classes and styles try to provide as much functionality out-of-the-box as possible while still being easy to use. Additional functionality that did not permanently find its way into the files is documented in the [wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki).
+
+
+## Further Information
 
 * [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/Manual/main.pdf)
 * [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
-* [Wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki)
 * [Recent changes](CHANGELOG.md)
 * [License](LICENSE.md)
 * [NEW: Discussions](https://github.com/Digital-Media/HagenbergThesis/discussions)
