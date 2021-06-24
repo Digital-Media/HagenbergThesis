@@ -12,12 +12,14 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - 2021/01/29: Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to most important APA citation macros in it.
 - 2021/01/29: Added a section in `HgbThesisTutorial` about APA with instruction on how to enable it and an overview of the citation commands as well as the resulting reference list.
 - 2021/03/02: Added `\email` macro in `hgb.sty` to print correct email addresses in documents as well as the preamble.
+- 2021/06/24: Added `\backmatter` section to `main.tex` to avoid that things like a list of figures or acronyms are treated as appendices.
 
 ### Changed
 
 - 2020/10/30: Removed `ctan/hagenberg-thesis/examples/` directory from CTAN bundle, modified `ctan` target in `makefile` and added another reference in `README.md` to this GitHub repo (CTAN admins had complained about duplicate files).
 - 2021/03/05: Algorithm setup converted to `algpseudocodex` for improved readability, added new spacing commands for fine-tuning.
 - 2021/05/12: Completely reworked `references.bib`. Replaced all occurrences of `year` and `month` with `date`. Switched `hyphenation` to `langid`. Also updated all references, corrected mistakes and removed unused entries from the file.
+- 2021/06/24: Reworked all `main.tex` files and unified their appearance in terms of formatting and descriptions.
 
 ### Fixed
 
