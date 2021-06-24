@@ -8,18 +8,19 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- 2021/01/04: Added `apa` document option to switch to APA bibliography style (documentation pending).
-- 2021/01/29: Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to most important APA citation macros in it.
-- 2021/01/29: Added a section in `HgbThesisTutorial` about APA with instruction on how to enable it and an overview of the citation commands as well as the resulting reference list.
-- 2021/03/02: Added `\email` macro in `hgb.sty` to print correct email addresses in documents as well as the preamble.
-- 2021/06/24: Added `\backmatter` section to `main.tex` to avoid that things like a list of figures or acronyms are treated as appendices.
+- 2021/01/04: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added `apa` document option to switch to APA bibliography style.
+- 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to most important APA citation macros in it.
+- 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added a section in `HgbThesisTutorial` about APA with instructions on how to enable it and an overview of the citation commands as well as the resulting reference list.
+- 2021/03/02: [#119](https://github.com/Digital-Media/HagenbergThesis/discussions/119): Added `\email` macro in `hgb.sty` to print correct email addresses in documents as well as the preamble.
+- 2021/06/24: [#127](https://github.com/Digital-Media/HagenbergThesis/issues/127): Added `\backmatter` section to `main.tex` to avoid that things like a list of figures or acronyms are treated as appendices.
 
 ### Changed
 
-- 2020/10/30: Removed `ctan/hagenberg-thesis/examples/` directory from CTAN bundle, modified `ctan` target in `makefile` and added another reference in `README.md` to this GitHub repo (CTAN admins had complained about duplicate files).
-- 2021/03/05: Algorithm setup converted to `algpseudocodex` for improved readability, added new spacing commands for fine-tuning.
-- 2021/05/12: Completely reworked `references.bib`. Replaced all occurrences of `year` and `month` with `date`. Switched `hyphenation` to `langid`. Also updated all references, corrected mistakes and removed unused entries from the file.
+- 2020/10/30: [#111](https://github.com/Digital-Media/HagenbergThesis/issues/111): Removed `ctan/hagenberg-thesis/examples/` directory from CTAN bundle, modified `ctan` target in `makefile` and added another reference in `README.md` to this GitHub repo (CTAN admins had complained about duplicate files).
+- 2021/03/05: [#120](https://github.com/Digital-Media/HagenbergThesis/issues/120): Algorithm setup converted to `algpseudocodex` for improved readability, added new spacing commands for fine-tuning.
+- 2021/05/12: [#124](https://github.com/Digital-Media/HagenbergThesis/issues/124): Completely reworked `references.bib`. Replaced all occurrences of `year` and `month` with `date`. Switched `hyphenation` to `langid`. Also updated all references, corrected mistakes and removed unused entries from the file.
 - 2021/06/24: Reworked all `main.tex` files and unified their appearance in terms of formatting and descriptions.
+- 2012/06/24: [#125](https://github.com/Digital-Media/HagenbergThesis/issues/125): Changed displayed math shorthand from `$$...$$` to `\[...\]`. 
 
 ### Fixed
 
