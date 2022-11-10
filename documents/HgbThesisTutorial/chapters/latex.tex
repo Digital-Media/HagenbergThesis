@@ -874,58 +874,14 @@ erforderlich:
 \verb!\advisor{!\texttt{\em Name des*der Betreuers*Betreuerin}\verb!}! -- optional.
 \end{itemize}
 %
-%\noindent Für \textbf{Bachelorarbeiten} werden \emph{zusätzlich }zu den Basisangaben folgende Elemente verwendet (bei Diplom- und Masterarbeiten nicht relevant):
-%%
-%\begin{itemize}
-%\item[] \verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}!%
-%\footnote{Wird normalerweise von der Institution vergeben. An der
-%Fakultät Hagenberg ist dies bei einer Bachelorarbeit die (10-stellige) Studenten-ID 
-%des Autors oder der Autorin,
-%\zB\ \textsf{0310238045-A} für die erste Bachelorarbeit.} \newline%
-%\verb!\coursetitle{!\texttt{\em Gegenstand oder Projektlehrveranstaltung}\verb!}! \newline%
-%\verb!\semester{!\texttt{\em Semester der Lehrveranstaltung}\verb!}! \newline%
-%\verb!\advisor{!\texttt{\em Name des Betreuers/der Betreuerin}\verb!}!
-%\end{itemize}
-
 \noindent Für \textbf{Praktikumsberichte} werden zusätzlich zu den Basisangaben folgende
 Elemente berücksichtigt:
 %
 \begin{itemize}
 \item[] %
-%\verb!\thesisnumber{!\texttt{\em laufende Nummer der Arbeit}\verb!}! \newline%
-%\verb!\advisor{!\texttt{\em Betreuer oder Betreuerin im Unternehmen}\verb!}! \newline%
 \verb!\companyName{!\texttt{\em Name und Adresse der Firma}\verb!}! \newline%
-%\verb!\companyPhone{!\texttt{\em Telefonnummer der Firma}\verb!}! \newline%
 \verb!\companyUrl{!\texttt{\em Website der Firma}\verb!}!
 \end{itemize}
-
-%\begin{table}
-%\caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen.}
-%\label{tab:TitelElemente}
-%\centering\small
-%\begin{tabular}{lcccc}
-%\emph{Element} & 
-%\texttt{diploma} &
-%\texttt{master} &
-%\texttt{bachelor} & 
-%\texttt{internship} 
-%\\
-%\hline
-%\verb!\title! 			& $+$ & $+$ & $+$ & $+$ \\
-%\verb!\author! 			& $+$ & $+$ & $+$ & $+$ \\
-%\verb!\programtype! & $+$ & $+$ & $+$ & $+$ \\
-%\verb!\programname! & $+$ & $+$ & $+$ & $+$ \\
-%\verb!\placeofstudy! 	& $+$ & $+$ & $+$ & $+$ \\
-%\verb!\dateofsubmission! 	& $+$ & $+$ & $+$ & $+$ \\
-%%\verb!\thesisnumber! 			& $-$ & $-$ & $+$ & $+$ \\
-%%\verb!\coursetitle! 	& $-$ & $-$ & $+$ & $-$ \\
-%\verb!\advisor! 		& $+$ & $+$ & $+$ & $+$ \\
-%\verb!\companyName! 			& $-$ & $-$ & $-$ & $+$ \\
-%\verb!\companyPhone! 	& $-$ & $-$ & $-$ & $+$ \\
-%%\verb!\companyUrl! 	& $-$ & $-$ & $-$ & $+$ \\
-%\hline
-%\end{tabular}
-%\end{table}
 
 \begin{table}
 	\caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen.}
@@ -941,17 +897,12 @@ Elemente berücksichtigt:
 		\verb!\programname! & $+$ & $+$ & $+$ & $+$ \\
 		\verb!\placeofstudy! 	& $+$ & $+$ & $+$ & $+$ \\
 		\verb!\dateofsubmission! 	& $+$ & $+$ & $+$ & $+$ \\
-		%\verb!\thesisnumber! 			& $-$ & $-$ & $+$ & $+$ \\
-		%\verb!\coursetitle! 	& $-$ & $-$ & $+$ & $-$ \\
 		\verb!\advisor! 		& $+$ & $+$ & $+$ & $+$ \\
 		\verb!\companyName! 			& $-$ & $-$ & $-$ & $+$ \\
 		\verb!\companyPhone! 	& $-$ & $-$ & $-$ & $+$ \\
-		%\verb!\companyUrl! 	& $-$ & $-$ & $-$ & $+$ \\
 		\bottomrule
 	\end{tabular}
 \end{table}
-
-
 
 \subsubsection{Titelseiten}
 
@@ -963,15 +914,16 @@ werden durch die Anweisung
 automatisch generiert, abhängig von den obigen Einstellungen:
 %
 \begin{center}
-\begin{tabular}{cl}
-\emph{Seite} & \emph{Inhalt} \\
-  \hline
-  \textrm{i} & Titelseite  \\
-  \textrm{ii} & Betreuer*innenseite (nur wenn \verb!\advisor! angegeben) \\
-	\textrm{iii} & Copyright-Seite \\
-  \textrm{iv} & Eidesstattliche Erklärung \\
-  \hline
-\end{tabular}
+	\begin{tabular}{cl}
+		\toprule
+		\emph{Seite} & \emph{Inhalt} \\
+		\midrule
+		\textrm{i} & Titelseite  \\
+		\textrm{ii} & Betreuer*innenseite (nur wenn \verb!\advisor! angegeben) \\
+		\textrm{iii} & Copyright-Seite \\
+		\textrm{iv} & Eidesstattliche Erklärung \\
+		\bottomrule
+	\end{tabular}
 \end{center}
 %
 Auf der Copyright-Seite werden auch die Bedingungen für die Nutzung 
