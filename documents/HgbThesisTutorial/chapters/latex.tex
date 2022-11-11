@@ -971,7 +971,7 @@ sollte auch darauf geachtet werden, dass keine \emph{doppelten} Punkte gesetzt w
 \label{tab:abkuerzungen}
 \centering\small
 \begin{tabular}{llp{2cm}ll}
-\hline
+\toprule
     \verb+\bzw+        & \bzw   & &  \verb+\ua+         & \ua \\
     \verb+\bzgl+       & \bzgl  & &  \verb+\Ua+         & \Ua \\
     \verb+\ca+         & \ca    & &  \verb+\uae+        & \uae \\
@@ -983,7 +983,7 @@ sollte auch darauf geachtet werden, dass keine \emph{doppelten} Punkte gesetzt w
     \verb+\sa+         & \sa    & &  \verb+\zB+         & \zB \\
     \verb+\so+         & \so    & &  \verb+\ZB+         & \ZB \\
     \verb+\su+         & \su    & &  \verb+\etc+        & \etc \\
-\hline
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -1031,47 +1031,39 @@ Die aktuellen Versionen der Pakete sind online verfügbar, \ua\ auf den
 in Abschn.~\ref{sec:literatur} angegebenen CTAN-Sites.
 
 \begin{table}
-\caption{Die wichtigsten der im \texttt{hagenberg-thesis}-Paket verwendeten \latex-Ergänzungen. 
-Alle sind in den gängigen \latex\ Standardinstallationen (\zB MikTeX) bereits enthalten.}
-\label{tab:packages}
-\centering\small
-\begin{tabular}{ll}
-%\hline
-\emph{Paket} &  \emph{Funktion} \\
-\hline
-\texttt{algorithmicx} & Beschreibung von Algorithmen \\ 
-\texttt{amsfonts}, \texttt{amsbsy}   &  Mathematische Symbole \\ 
-\texttt{amsmath}  &  Mathematischer Schriftsatz \\ 
-\texttt{babel}  	&  Sprachumschaltung \\ 
-%\texttt{babelbib} &  Mehrsprachige Literaturverwaltung \\ 
-\texttt{biblatex} &  Literaturverwaltung \\ 
-\texttt{caption}  &  Flexiblere Captions \\ 
-\texttt{cite}     &  Sortierte Literaturverweise \\ 
-\texttt{color}    &  Farbige Textelemente und Hintergrundfarben \\
-\texttt{csquotes}    &  Kontextabhängige Hochkommas \\
-%\texttt{eurosym}  &  {\euro}-Symbol (\verb!\euro!)\\ 
-\texttt{marvosym}  &  {\euro}-Symbol (\verb!\euro!)\\ 
-\texttt{exscale}  &  Korrekte Schriftgrößen im Math-Modus \\ 
-\texttt{fancyhdr} &  zur Gestaltung Kopfzeilen (header) \\ 
-\texttt{float}    &  Verbessertes Float-Handling \\ 
-\texttt{fontenc}  &  Verwendung der T1 (westeur.) Zeichencodierung \\ 
-\texttt{graphicx} &  Einbindung von EPS-Grafiken \\ 
-\texttt{hyperref} &  erzeugt aktive Querverweise im PDF-Dokument \\ 
-\texttt{ifthen}   &  für logische Entscheidungen in \latex\\
-\texttt{inputenc} &  Erweiterter Eingabezeichensatz \\ 
-%\texttt{latin1}   &  T1-Schriften, \ua zur besseren Silbentrennung \\ 
-\texttt{listings} &  Auflistung von Programmcode \\ 
-%\texttt{ngerman}  &  Neue deutsche Rechtschreibung \\ 
-\texttt{upquote}  &  Gerade Hochkommas in \texttt{verbatim}-Texten \\ 
-\texttt{url}      &  Behandlung von URLs im Text \\ 
-\texttt{verbatim} &  Verbesserte \texttt{verbatim}-Umgebung \\ 
-\hline
-\end{tabular}
+	\caption{Die wichtigsten der im \texttt{hagenberg-thesis}-Paket verwendeten \latex-Ergänzungen. 
+		Alle sind in den gängigen \latex\ Standardinstallationen (\zB MikTeX) bereits enthalten.}
+	\label{tab:packages}
+	\centering\small
+	\begin{tabular}{ll}
+		\toprule
+		\emph{Paket} &  \emph{Funktion} \\
+		\midrule
+		\texttt{algorithmicx} & Beschreibung von Algorithmen \\ 
+		\texttt{amsfonts}, \texttt{amsbsy}   &  Mathematische Symbole \\ 
+		\texttt{amsmath}  &  Mathematischer Schriftsatz \\ 
+		\texttt{babel}  	&  Sprachumschaltung \\ 
+		\texttt{biblatex} &  Literaturverwaltung \\ 
+		\texttt{caption}  &  Flexiblere Captions \\ 
+		\texttt{cite}     &  Sortierte Literaturverweise \\ 
+		\texttt{color}    &  Farbige Textelemente und Hintergrundfarben \\
+		\texttt{csquotes}    &  Kontextabhängige Hochkommas \\
+		\texttt{marvosym}  &  {\euro}-Symbol (\verb!\euro!)\\ 
+		\texttt{exscale}  &  Korrekte Schriftgrößen im Math-Modus \\ 
+		\texttt{fancyhdr} &  zur Gestaltung Kopfzeilen (header) \\ 
+		\texttt{float}    &  Verbessertes Float-Handling \\ 
+		\texttt{fontenc}  &  Verwendung der T1 (westeur.) Zeichencodierung \\ 
+		\texttt{graphicx} &  Einbindung von EPS-Grafiken \\ 
+		\texttt{hyperref} &  erzeugt aktive Querverweise im PDF-Dokument \\ 
+		\texttt{ifthen}   &  für logische Entscheidungen in \latex\\
+		\texttt{inputenc} &  Erweiterter Eingabezeichensatz \\ 
+		\texttt{listings} &  Auflistung von Programmcode \\ 
+		\texttt{upquote}  &  Gerade Hochkommas in \texttt{verbatim}-Texten \\ 
+		\texttt{url}      &  Behandlung von URLs im Text \\ 
+		\texttt{verbatim} &  Verbesserte \texttt{verbatim}-Umgebung \\ 
+		\bottomrule
+	\end{tabular}
 \end{table}
-
-
-
-
 
 \section{\latex-Fehlermeldungen und Warnungen}
 

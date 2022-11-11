@@ -360,9 +360,9 @@ zugeordnet.
 \label{tab:QuellenUndEintragstypen}
 \centering
 \begin{tabular}{llc}
-	\hline
+	\toprule
 	\emph{Literatur} (\textsf{literature}) & Typ & Seite\\
-	\hline
+	\midrule
 	Buch (Textbuch, Monographie) & \texttt{@book} & \pageref{sec:@book}\\
 	Sammelband (Hrsg.\ + mehrere Autor*innen) & \texttt{@incollection} & \pageref{sec:@incollection} \\
 	Konferenz-, Tagungsband & \texttt{@inproceedings} & \pageref{sec:@inproceedings}\\
@@ -374,25 +374,29 @@ zugeordnet.
 	Gesetzestext, Verordnung etc. & \texttt{@legislation} & \pageref{sec:@legislation}\\
 	Kompositionen, Musiknoten & \texttt{@book}, \texttt{@incollection} & \pageref{sec:Musiknoten}\\
 	Vorpublikation (\zB\ Konferenzeinreichung) & \texttt{@unpublished} & \pageref{sec:@unpublished}\\
+	\addlinespace
 %
-	\hline
+	\midrule
 	\emph{Audiovisuelle Medien} (\textsf{avmedia}) & & \\
-	\hline
+	\midrule
 	Audio (CD) & \texttt{@audio} & \pageref{sec:@audio}\\
 	Bild, Foto, Grafik & \texttt{@image} & \pageref{sec:@image}\\
 	Video (auf DVD, Blu-ray Disk, online) & \texttt{@video} & \pageref{sec:@video}\\
 	Film (Kino) & \texttt{@movie} & \pageref{sec:@movie}\\
+	\addlinespace
 %
-	\hline
+	\midrule
 	\emph{Software} (\textsf{software}) & & \\
-	\hline
+	\midrule
 	Softwareprodukt oder -projekt & \texttt{@software} & \pageref{sec:@software}\\
 	Computer Game & \texttt{@software} & \pageref{sec:@software}\\
+	\addlinespace
 %
-	\hline
+	\midrule
 	\emph{Online-Quellen} (\textsf{online}) & & \\
-	\hline
-	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www}
+	\midrule
+	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www} \\
+	\bottomrule
 \end{tabular}
 \end{table}
 
@@ -407,8 +411,9 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 \definecolor{midgray}{gray}{0.5}
 \setlength{\tabcolsep}{4mm}
 \begin{tabular}{llll}
+	\toprule
 	\textsf{literature} & \textsf{avmedia} & \textsf{software} & \textsf{online} \\
-	\hline
+	\midrule
 	\texttt{@book} & \texttt{@audio} & \texttt{@software} & \texttt{@online} \\
 	\texttt{@incollection} & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
 	\texttt{@inproceedings} & \texttt{@video} & & \texttt{\color{midgray}@www} \\
@@ -421,7 +426,7 @@ Grau gekennzeichnete Elemente sind Synonyme für die jeweils darüber stehenden 
 	\texttt{@misc} & & &  \\
 	\texttt{@unpublished} &  & & \\
 	\ldots & & & \\
-	\hline
+	\bottomrule
 \end{tabular}
 \end{table}
 
