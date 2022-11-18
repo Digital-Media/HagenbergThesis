@@ -496,52 +496,58 @@ Bildquelle~\cite{Faires1934}.}
 
 Tabellen werden häufig eingesetzt um numerische Zusammenhänge, Testergebnisse
 etc.\ in übersichtlicher Form darzustellen.
-Ein einfaches Beispiel ist Tab.~\ref{tab:processors}, der \latex-Quelltext dazu
-findet sich in Prog.~\ref{prog:processors-source}.
+Ein einfaches Beispiel ist Tab.~\ref{tab:programming-languages}, der \latex-Quelltext dazu
+findet sich in Prog.~\ref{prog:programming-languages-source}.
 
 \begin{table}
-	\caption{Prozessor-Familien im Überblick.}
-	\label{tab:processors}
+	\caption{Programmiersprachen im Überblick.}
+	\label{tab:programming-languages}
 	\centering
-	\setlength{\tabcolsep}{5mm}	% separator between columns
-	\def\arraystretch{1.25}     % vertical stretch factor (Standard = 1.0)
-	\begin{tabular}{@{}rccc@{}}
+	\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+	\def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
+	\begin{tabular}{@{}llll@{}}
 		\toprule
-		& \emph{PowerPC} & \emph{Pentium} & \emph{Athlon} \\
+		Sprache    & Typ           & Anwendung        & Standardisierung   \\
 		\midrule
-		Manufacturer & Motorola & Intel & AMD \\
-		Speed & high & medium & high \\
-		Price & high & high  & medium \\
+		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2020 \\
+		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2014  \\
+		JavaScript & Interpretiert & Web              & ECMA-262           \\
+		Python     & Interpretiert & Machine Learning & PEPs               \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 
 \begin{program}
 % place caption consistently either at the top or bottom:
-\caption{\latex\ Quelltext zu Tab.~\ref{tab:processors}.
+\caption{\latex\ Quelltext zu Tab.~\ref{tab:programming-languages}.
 Die Erzeugung des dargestellten Listings selbst ist in Abschn.\ \ref{sec:programmtexte} beschrieben.}
-\label{prog:processors-source}
+\label{prog:programming-languages-source}
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{table}
-	\caption{Prozessor-Familien im Überblick.}
-	\label{tab:processors}
+	\caption{Programmiersprachen im Überblick.}
+	\label{tab:programming-languages}
 	\centering
-	\setlength{\tabcolsep}{5mm}	% separator between columns
-	\def\arraystretch{1.25}		% vertical stretch factor
-	\begin{tabular}{rccc}
+	\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+	\def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
+	\begin{tabular}{@{}llll@{}}
 		\toprule
-		& \emph{PowerPC} & \emph{Pentium} & \emph{Athlon} \\
+		Sprache    & Typ           & Anwendung        & Standardisierung   \\
 		\midrule
-		Manufacturer & Motorola & Intel & AMD \\
-		Speed & high & medium & high \\
-		Price & high & high  & medium \\
+		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2020 \\
+		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2014  \\
+		JavaScript & Interpretiert & Web              & ECMA-262           \\
+		Python     & Interpretiert & Machine Learning & PEPs               \\
 		\bottomrule
 	\end{tabular}
 \end{table}
 \end{LaTeXCode}
 %
-\end{program}
+\end{program} 
+
+% booktabs und Regeln beschreiben!
+
+\subsection{Lange Texte in Spalten}
 
 Manchmal ist es notwendig, in Tabellen relativ viel Text in engen Spalten
 unter zu bringen, wie in Tab.~\ref{tab:synthesis-techniques}. In diesem Fall
@@ -560,17 +566,12 @@ strengen Abteilungsregeln zu lockern. Details dazu finden sich im zugehörigen
 	\label{tab:synthesis-techniques}
 	\centering
 	\def\rr{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
-	\setlength{\tabcolsep}{1ex}
 	\def\arraystretch{1.20}
-	\setlength{\tabcolsep}{1ex}
 	\small
 	\begin{english}
-		\begin{tabular}{@{}p{0.2\textwidth}cp{0.3\textwidth}p{0.2\textwidth}@{}}
+		\begin{tabular}{@{}p{0.2\textwidth}lp{0.3\textwidth}p{0.2\textwidth}@{}}
 			\toprule
-			\multicolumn{1}{c}{\emph{Method}} &
-			\multicolumn{1}{c}{\emph{Implem.}} &
-			\multicolumn{1}{c}{\emph{Features}} &
-			\multicolumn{1}{c|}{\emph{Status}} \\
+			Method & Implem. & Features & Status \\
 			\midrule
 			{\rr polygon shading} &
 			SW/HW &
@@ -596,6 +597,8 @@ strengen Abteilungsregeln zu lockern. Details dazu finden sich im zugehörigen
 		\end{tabular}
 	\end{english}
 \end{table}
+
+\subsection{Mehrseitige Tabellen}
 
 %--------------------------------------------------------------------------------
 
