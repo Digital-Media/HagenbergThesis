@@ -543,9 +543,29 @@ Die Erzeugung des dargestellten Listings selbst ist in Abschn.\ \ref{sec:program
 \end{table}
 \end{LaTeXCode}
 %
-\end{program} 
+\end{program}
 
-% booktabs und Regeln beschreiben!
+Der Anspruch an ein ansehnliches Erscheinungsbild von Tabellen ist in den letzten
+Jahren zusehends gestiegen. So folgen mittlerweile viele Autor*innen und auch Verlage,
+die auf \latex setzen, einigen einfachen Gestaltungsrichtlinien für Tabellen \cite{Fear2020}, von denen
+vor allem die ersten zwei das grundsätzliche Layout der Tabelle bestimmen:
+
+\begin{enumerate}
+	\item Nie vertikale Linien benutzen.
+	\item Nie doppelte Linien benutzen.
+	\item Einheiten in den Spaltenkopf (nicht in den Inhaltsbereich der Tabelle) setzen.
+	\item Einem Dezimaltrennzeichen geht stets eine Ziffer voran; also $0{,}1$ nicht bloß ${,}1$.
+	\item Unterführungszeichen, wie etwa Anführungszeichen, werden nicht benutzt, um einen Wert zu wiederholen.
+	Meist reicht eine leere Spalte völlig aus. Falls nicht, sollte der Wert wiederholt werden.
+\end{enumerate}
+
+Das \latex-Paket \texttt{booktabs} ermöglicht es auf einfache Art und Weise, diesen
+Anforderungen gerecht zu werden. Innerhalb der \texttt{tabular}-Umgebung (welche die eigentliche Tabelle definiert)
+werden zunächst die Anzahl der Spalten -- bevorzugt linksbündig (\texttt{l}-Angaben) gesetzt -- definiert.
+\verb|\toprule| markiert den Beginn der Tabelle, es folgt die Kopfzeile, die durch \verb|\midrule| abgeschlossen wird.
+Danach folgen die Zeilen mit dem Tabelleninhalt. Mittels \verb|\bottomrule| wird die Tabelle mit einer weiteren
+horizontalen Linie abgeschlossen. \verb|\midrule|-Aufrufe können auch öfters vorkommen, um die Tabelle zu gliedern.
+Werden horizontale Linien benötigt, die nicht alle Spalten umfassen sollen, kann \verb|\cmidrule|
 
 \subsection{Lange Texte in Spalten}
 
