@@ -493,60 +493,89 @@ Bildquelle~\cite{Faires1934}.}
 
 
 \section{Tabellen}
+\label{sec:tabellen}
 
 Tabellen werden häufig eingesetzt um numerische Zusammenhänge, Testergebnisse
 etc.\ in übersichtlicher Form darzustellen.
-Ein einfaches Beispiel ist Tab.~\ref{tab:processors}, der \latex-Quelltext dazu
-findet sich in Prog.~\ref{prog:processors-source}.
+Ein einfaches Beispiel ist Tab.~\ref{tab:programming-languages}, der \latex-Quelltext dazu
+findet sich in Prog.~\ref{prog:programming-languages-source}.
 
+Als Argumente der \texttt{tabular}-Umgebung werden die Ausrichtungen der einzelnen Spalten
+angegeben. Die Anzahl der Argumente bestimmt somit die Anzahl der Spalten. Gültige Werte sind
+\texttt{l} für linksbündig, \texttt{c} für zentriert und \texttt{r} für rechtsbündig.
+Die Spaltenbreite ergibt sich durch die Länge des Inhalts, ein Zeilenumbruch erfolgt nicht.
+Um die Breite festzulegen und somit einen Umbruch zu erzeugen, wird \verb|p{Breite}| verwendet.
+\texttt{Breite} ist dabei eine gültige Längenangabe, eine Übersicht über alle gültigen Werte
+bietet \cite{WikibooksLaTeXLengths2018}. Die Angabe von \verb|@{}| entfernt den (meist
+überflüssigen) Rand an den Seiten der Tabelle.
 
 \begin{table}
-\caption{Prozessor-Familien im Überblick.}
-\label{tab:processors}
-\centering
-\setlength{\tabcolsep}{5mm}	% separator between columns
-\def\arraystretch{1.25}     % vertical stretch factor (Standard = 1.0)
-\begin{tabular}{|r||c|c|c|} \hline
-& \emph{PowerPC} & \emph{Pentium} & \emph{Athlon} \\
-\hline\hline
-Manufacturer & Motorola & Intel & AMD \\
-\hline
-Speed & high & medium & high \\
-\hline
-Price & high & high  & medium \\
-\hline
-\end{tabular}
+	\caption{Programmiersprachen im Überblick.}
+	\label{tab:programming-languages}
+	\centering
+	\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+	\def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
+	\begin{tabular}{@{}llll@{}}
+		\toprule
+		Sprache    & Typ           & Anwendung        & Standardisierung   \\
+		\midrule
+		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2020 \\
+		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2014  \\
+		JavaScript & Interpretiert & Web              & ECMA-262           \\
+		Python     & Interpretiert & Machine Learning & PEPs               \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \begin{program}
 % place caption consistently either at the top or bottom:
-\caption{\latex\ Quelltext zu Tab.~\ref{tab:processors}.
+\caption{\latex\ Quelltext zu Tab.~\ref{tab:programming-languages}.
 Die Erzeugung des dargestellten Listings selbst ist in Abschn.\ \ref{sec:programmtexte} beschrieben.}
-\label{prog:processors-source}
+\label{prog:programming-languages-source}
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{table}
-	\caption{Prozessor-Familien im Überblick.}
-	\label{tab:processors}
+	\caption{Programmiersprachen im Überblick.}
+	\label{tab:programming-languages}
 	\centering
-	\setlength{\tabcolsep}{5mm}	% separator between columns
-	\def\arraystretch{1.25}		% vertical stretch factor
-	\begin{tabular}{|r||c|c|c|} 
-		\hline
-		& \emph{PowerPC} & \emph{Pentium} & \emph{Athlon} \\
-		\hline
-		\hline
-		Manufacturer & Motorola & Intel & AMD \\
-		\hline
-		Speed & high & medium & high \\
-		\hline
-		Price & high & high & medium \\
-		\hline
+	\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+	\def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
+	\begin{tabular}{@{}llll@{}}
+		\toprule
+		Sprache    & Typ           & Anwendung        & Standardisierung   \\
+		\midrule
+		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2020 \\
+		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2014  \\
+		JavaScript & Interpretiert & Web              & ECMA-262           \\
+		Python     & Interpretiert & Machine Learning & PEPs               \\
+		\bottomrule
 	\end{tabular}
 \end{table}
 \end{LaTeXCode}
 %
 \end{program}
+
+Der Anspruch an ein ansehnliches Erscheinungsbild von Tabellen ist in den letzten
+Jahren zusehends gestiegen. So folgen mittlerweile viele Autor*innen und auch Verlage,
+die auf \latex setzen, einigen einfachen Gestaltungsrichtlinien für Tabellen \cite{Fear2020}, von denen
+vor allem die ersten zwei das grundsätzliche Layout der Tabelle bestimmen:
+
+\begin{enumerate}
+	\item Nie vertikale Linien benutzen.
+	\item Nie doppelte Linien benutzen.
+	\item Einheiten in den Spaltenkopf (nicht in den Inhaltsbereich der Tabelle) setzen.
+	\item Einem Dezimaltrennzeichen geht stets eine Ziffer voran; also $0{,}1$ nicht bloß ${,}1$.
+\end{enumerate}
+
+Das \latex-Paket \texttt{booktabs} ermöglicht es auf einfache Art und Weise, diesen
+Anforderungen gerecht zu werden. Innerhalb der \texttt{tabular}-Umgebung (welche die eigentliche Tabelle definiert)
+werden zunächst die Anzahl der Spalten -- bevorzugt linksbündig (\texttt{l}-Angaben) gesetzt -- definiert.
+\verb|\toprule| markiert den Beginn der Tabelle, es folgt die Kopfzeile, die durch \verb|\midrule| abgeschlossen wird.
+Danach folgen die Zeilen mit dem Tabelleninhalt. Mittels \verb|\bottomrule| wird die Tabelle mit einer weiteren
+horizontalen Linie abgeschlossen. \verb|\midrule|-Aufrufe können auch öfters vorkommen, um die Tabelle zu gliedern.
+Werden horizontale Linien benötigt, die nicht alle Spalten umfassen sollen, kann \verb|\cmidrule| verwendet werden.
+
+\subsection{Lange Texte in Spalten}
 
 Manchmal ist es notwendig, in Tabellen relativ viel Text in engen Spalten
 unter zu bringen, wie in Tab.~\ref{tab:synthesis-techniques}. In diesem Fall
@@ -559,71 +588,127 @@ strengen Abteilungsregeln zu lockern. Details dazu finden sich im zugehörigen
 % Table with narrow columns
 %--------------------------------------------------------------------------------
 \begin{table}
-\caption{Beispiel für eine Tabelle mit mehrzeiligem Text in engen Spalten.
-Hier werden die Zeilen für den Blocksatz zu kurz, daher wird linksbündig
-gesetzt (im "Flattersatz").}
-\label{tab:synthesis-techniques}
-\centering
-\def\rr{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
-\setlength{\tabcolsep}{1ex}
-\def\arraystretch{1.20}
-\setlength{\tabcolsep}{1ex}
-\small
-\begin{english}
-\begin{tabular}{|p{0.2\textwidth}|c|p{0.3\textwidth}|p{0.2\textwidth}|}
-\hline
-   \multicolumn{1}{|c}{\emph{Method}} &
-   \multicolumn{1}{|c}{\emph{Implem.}} &
-   \multicolumn{1}{|c}{\emph{Features}} &
-   \multicolumn{1}{|c|}{\emph{Status}} \\
-\hline\hline
-   {\rr polygon shading} &
-   SW/HW &
-   {\rr flat-shaded polygons} &
-   \\
-\hline
-  {\rr flat shading with z-buffer} &
-  SW/HW &
-  {\rr depth values} &
-  \\
-\hline
-  {\rr goraud shading with z-buffer} &
-  SW/HW &
-  {\rr smooth shading, simple fog, point light sources} &
-  {\rr SGI entry models} \\
-\hline
-  {\rr phong shading with z-buffer} &
-  SW/HW &
-  {\rr highlights} &
-  \\
-\hline
-  {\rr texture mapping with z-buffer} &
-  SW/HW &
-  {\rr surface textures, simple shadows} &
-  {\rr SGI high end, flight simulators} \\
-\hline
-%  {\rr reflection mapping with z-buffer} &
-%  SW/HW &
-%  {\rr reflections} &
-%  {\rr SGI next generation} \\
-%\hline
-%  {\rr raytracing} &
-%  SW &
-%  {\rr refraction, real camera model, area light sources with penumbra, realistic material models} &
-%  {\rr common ray\-tracers} \\
-%\hline
-%  {\rr raytracing + global illumination simulation} &
-%  SW &
-%  {\rr indirect illumination} &
-%  \textit{Radiance} \\
-%\hline
-%  {\rr raytracing + global illumination simulation + dissipating media} &
-%  none &
-%  {\rr realistic clouds, scattering, ...} &
-%  {\rr research} \\
-%\hline
-\end{tabular}
-\end{english}
+	\caption{Beispiel für eine Tabelle mit mehrzeiligem Text in engen Spalten.
+		Hier werden die Zeilen für den Blocksatz zu kurz, daher wird linksbündig
+		gesetzt (im "Flattersatz").}
+	\label{tab:synthesis-techniques}
+	\centering
+	\def\rr{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
+	\def\arraystretch{1.20}
+	\small
+	\begin{english}
+		\begin{tabular}{@{}p{0.2\textwidth}lp{0.3\textwidth}p{0.2\textwidth}@{}}
+			\toprule
+			Method & Implem. & Features & Status \\
+			\midrule
+			{\rr polygon shading} &
+			SW/HW &
+			{\rr flat-shaded polygons} &
+			\\
+			{\rr flat shading with z-buffer} &
+			SW/HW &
+			{\rr depth values} &
+			\\
+			{\rr goraud shading with z-buffer} &
+			SW/HW &
+			{\rr smooth shading, simple fog, point light sources} &
+			{\rr SGI entry models} \\
+			{\rr phong shading with z-buffer} &
+			SW/HW &
+			{\rr highlights} &
+			\\
+			{\rr texture mapping with z-buffer} &
+			SW/HW &
+			{\rr surface textures, simple shadows} &
+			{\rr SGI high end, flight simulators} \\
+			\bottomrule
+		\end{tabular}
+	\end{english}
+\end{table}
+
+\subsection{Mehrseitige Tabellen}
+
+Oftmals benötigen tabellarische Informationen mehr als nur eine Seite. Hier wird dann das durch die \texttt{table}-Umgebung
+erzeugte Floating zum Problem, denn es verhindert Umbrüche über mehrere Seiten. Um einen Seitenumbruch in Tabellen
+zu ermöglichen, kann das \texttt{longtable}-Paket verwendet werden. Es ersetzt die \texttt{tabular}-Umgebung und benötigt kein
+umgebendes \texttt{table}-Environment.
+
+Die Tabelle wird dabei weitgehend gleich definiert, wie in Programm \ref{prog:programming-languages-source} gezeigt.
+Hinzu kommen lediglich die Befehle \verb|\endhead| und \verb|\endfoot|. Sie begrenzen den Kopf- \bzw Fußbereich, der
+auf jeder Seite wiederholt werden soll. Soll dieser für den Kopfbereich auf der ersten Seite \bzw für den Fußbereich
+auf der letzten Seite anders sein, können \verb|\endfirsthead| und \verb|\endlastfoot| verwendet werden.
+
+\texttt{longtable} bietet ebenfalls eine \verb|\caption|-Anweisung, die jedoch Teil der Tabelle ist und daher mit \verb|\\|
+abgeschlossen werden muss. \verb|\label| kann ebenfalls verwendet werden, um auf die Tabelle zu referenzieren. Dieses sollte
+jedoch nicht im wiederholenden Kopfbereich geschehen, da es sonst mehrfach definiert wird. Eine Platzierung im
+Körper der Tabelle oder einem mit \verb|\firsthead| definierten Kopfbereich umgeht dieses Problem.
+
+Tabelle \ref{tab:longtable} zeigt ein Beispiel für eine lange Tabelle. Sollen horizontale und vertikale Abstände vergrößert werden,
+müssen diese Anweisungen vor dem Beginn der Tabelle stehen und mit \verb|{ }| umschlossen werden.
+
+{
+	\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+	\def\arraystretch{1.50}      % vertical stretch factor (standard = 1.0)
+	\begin{longtable}{@{}lp{0.2\textwidth}@{}}
+		\caption{Eine lange Tabelle, die über zwei Seiten umbricht.} \\
+		\toprule
+		Erste Spalte & Zweite Spalte \\
+		\midrule\endhead
+		\label{tab:longtable}
+		Die Spalte rechts enthält viel Text. & In dieser Spalte wird viel Text eingefügt, der eine lange Spalte erzeugt. Wiederum kann es Sinn machen, den Inhalt im Flattersatz zu setzen. \texttt{longtable} bricht in solchen Spalten jedoch nicht um, nur zwischen einzelnen Zeilen. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		\bottomrule
+	\end{longtable}
+}
+
+\subsection{Spalten und Zeilen verbinden}
+
+Um in einer Tabelle mehrere Spalten zu einer zusammenzufassen wird die Anweisung
+%
+\begin{quote}
+	\verb!\multicolumn{Anzahl}{Format}{Text}!
+\end{quote}
+%
+verwendet. \texttt{Anzahl} definiert die Menge an Spalten, die verbunden werden sollen.
+\texttt{Format} gibt die zu verwendende Ausrichtung analog zur Angabe in \texttt{tabular}-Umgebung an und
+\texttt{Text} ist der enthaltene Text.
+
+Um mehrere Zeilen zu einer zusammenzufassen, kann mit
+%
+\begin{quote}
+	\verb!\multirow{Anzahl}{Breite}{Text}!.
+\end{quote}
+%
+eine ähnliche Anweisung verwendet werden. \texttt{Anzahl} repräsentiert hier die Anzahl an Zeilen, die zu
+einer verbunden werden sollen. Mit \texttt{Breite} wird eine Breitenangabe gesetzt. Dabei kommen dieselben
+Angaben wie in der \texttt{tabular}-Umgebung zum Einsatz. Zusätzlich können \texttt{*} und \texttt{=} angegeben
+werden. Ersteres setzt die durch den Text entstehende Breite, zweiteres übernimmt die Breite der Spalte aus
+der \texttt{tabular}-Angabe. \texttt{Text} ist der zu setzende Inhalt.
+
+Der \verb|multirow|-Befehl wird in der ersten der zu verbindenden Zeilen gesetzt. Die nachfolgenden Zeilen bleiben
+leer. Tabelle \ref{tab:multi-column-row-tabelle} zeigt ein einfaches Beispiel mit verbundenen Spalten und Zeilen.
+
+\begin{table}
+	\caption{Eine Tabelle mit verbundenen Spalten und Zeilen.}
+	\label{tab:multi-column-row-tabelle}
+	\centering
+	\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+	\def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		Spalte 1 & \multicolumn{2}{c}{Spalte 2--3}                                                                      \\
+		\midrule
+		Zeile 1  & \multirow{2}{4cm}{Dieser Text erstreckt sich über zwei Zeilen.} & \multirow{2}{*}{Dieser Text auch.} \\
+	    Zeile 2  &                                                                 &                                    \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 %--------------------------------------------------------------------------------
@@ -651,8 +736,8 @@ Damit sind auch die in Tabelle~\ref{tab:CodeUmgebungen} aufgelisteten Code-Umgeb
 \caption{In \nolinkurl{hgb.sty} vordefinierte Code-Umgebungen.}
 \label{tab:CodeUmgebungen}
 \centering
-\begin{tabular}{llll}
-	\hline
+\begin{tabular}{@{}lll@{}}
+	\toprule
 	C (ANSI): & \verb!\begin{CCode}! & \verb!...! \verb!\end{CCode}! \\
 	C++ (ISO): & \verb!\begin{CppCode}! & \verb!...! \verb!\end{CppCode}! \\
 	C\#: & \verb!\begin{CsCode}! & \verb!...! \verb!\end{CsCode}! \\
@@ -667,7 +752,7 @@ Damit sind auch die in Tabelle~\ref{tab:CodeUmgebungen} aufgelisteten Code-Umgeb
 	Swift: & \verb!\begin{SwiftCode}! & \verb!...! \verb!\end{SwiftCode}! \\
 	XML: & \verb!\begin{XmlCode}! & \verb!...! \verb!\end{XmlCode}! \\
 	Generisch: & \verb!\begin{GenericCode}! & \verb!...! \verb!\end{GenericCode}! \\
-	\hline
+	\bottomrule
 \end{tabular}
 \end{table}
 %
@@ -807,7 +892,7 @@ Wenn gewünscht, kann die Caption auch unten angebracht werden
 Natürlich darf auch hier nicht mit einer linearen Abfolge im fertigen
 Druckbild gerechnet werden, daher sind Wendungen wie
 "\ldots\ im folgenden Programmstück \ldots" zu vermeiden und entsprechende Verweise
-einzusetzen. Beispiele sind die Programme \ref{prog:processors-source} und \ref{prog:CodeExample}.
+einzusetzen. Beispiele sind die Programme \ref{prog:programming-languages-source} und \ref{prog:CodeExample}.
 
 \begin{program}
 % place caption consistently either at the top or bottom:
