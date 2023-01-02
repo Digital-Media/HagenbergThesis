@@ -21,7 +21,7 @@
 	sortcites=true,
 	defernumbers=true,
 	isbn=false,
-	doi=false,
+	doi=true,
 	backref=true,
 	backrefstyle=three}
 	
@@ -195,6 +195,13 @@
 \DeclareBibliographyAlias{image}{misc}
 \DeclareBibliographyAlias{standard}{misc}
 \DeclareBibliographyAlias{legislation}{misc}
+
+
+% Remove the contents of the url field if a doi field is present
+% To avoid duplicate DOI URLs
+\AtEveryBibitem{
+    \iffieldundef{doi}{}{\clearfield{url}}
+}
 
 
 % Use a semicolon between multiple entries in \cites
