@@ -491,6 +491,7 @@ Dabei ist \texttt{title} der Titel des Beitrags, \texttt{booktitle} der Titel de
   editor={Jain, Anil K. and Bolle, Ruud and Pankanti, Sharath},
   chapter={13},
   pages={273-285},
+  doi={10.1007/0-306-47044-6_13},
   langid={english}
 }
 \end{GenericCode}
@@ -521,6 +522,7 @@ zur Angabe des Tagungsorts und
   publisher={Morgan Kaufmann Publishers},
   location={San Francisco},
   pages={819-821},
+  doi={10.1007/978-1-4615-3566-9},
   langid={english}
 }
 \end{GenericCode}
@@ -866,12 +868,12 @@ Publikation (oder ein zugehöriger \emph{Technical Report}, \so) findet,  kann m
   author={Dai, Jifeng and Li,Yi and He, Kaiming and Sun, Jian},
   title={{R-FCN:} Object Detection via Region-Based Fully Convolutional Networks},
   date={2016},
-  url={https://arxiv.org/abs/1605.06409},
-  pubstate = {prepublished},
+  pubstate={prepublished},
+  doi={10.48550/arXiv.1605.06409},
   langid={english}
 }
 \end{GenericCode}
-In diesem Fall ist die Angabe des Links (\texttt{url}) natürlich unverzichtbar. 
+In diesem Fall ist die Angabe des Links (über \texttt{doi} oder alternativ \texttt{url}) natürlich unverzichtbar. 
 Details zum Feld \texttt{pubstate} (\texttt{prepublished}) findet man in der
 \texttt{biblatex}-Dokumentation \cite[Abschn.\ 4.9.2.11]{Kime2020}.%
 Andernfalls (wenn unbekannt oder wirklich nicht veröffentlicht) kann 
@@ -1199,7 +1201,11 @@ und \texttt{pages}, \va\ bei Sammelbänden (\texttt{@incollection}) und Konferen
 (\texttt{@inproceedings}).
 Auch die Namen von Konferenzen und Tagungsorten werden oft nicht korrekt angegeben 
 (sogar in offiziellen ACM- und IEEE-Quellen).
-ISBN-, DOI- und ISSN-Nummern sind in der Regel überflüssig und sollten weggelassen werden.
+ISBN-, und ISSN-Nummern sind in der Regel überflüssig und sollten weggelassen werden.
+Ein DOI-Eintrag (Digital Object Identifier) ist jedoch sinnvoll. Dieser eindeutigen Nummer
+wird von Biblatex ein Hyperlink hinterlegt, der auf die Quelle des Werks (meist die des
+veröffentlichenden Verlags) zeigt. Damit keine doppelten Verweise im Eintrag entstehen, wird im
+\texttt{hagenberg-thesis}-Paket das \texttt{url}-Feld bei vorhandenem DOI entfernt.
 
 Da es sich in der Regel auch immer um BibTeX- und nicht Biblatex-Einträge handelt, sollten diese
 angepasst werden, um die korrekten Typen und Detail-Felder nützen zu können.
@@ -1224,8 +1230,8 @@ Groß-/Kleinschreibung und Satzzeichen in allen  Einträgen überprüfen und ggf
 Bücher: Verlagsnamen und Verlagsort auf Vollständigkeit, Konsistenz und allfällige
 Redundanzen überprüfen.
 \item
-Alle URLs und DOIs etc.\ \emph{weglassen}, wenn sie nicht unbedingt notwendig sind! Das gilt insbesondere
-für Bücher und Konferenzbeiträge.
+URLs \emph{weglassen}, wenn sie nicht unbedingt notwendig sind! Das gilt insbesondere
+für Bücher und Konferenzbeiträge. Stattdessen einen DOI angeben, wenn verfügbar. Dieser wird im PDF auch verlinkt.
 \item
 Journal-Beiträge: Den Namen des Journals immer vollständig ausschreiben, \zB\
 "ACM Transactions on Computer-Human Interaction" anstelle von 
@@ -1242,7 +1248,7 @@ angegeben sein!
 
 \subsubsection{Listing aller Quellen}
 
-Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der BibTeX-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
+Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument platziert -- werden \emph{alle} bestehenden Einträge der Biblatex-Datei im Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise müssen aber alle angeführten Quellen auch im Text referenziert sein!
 
 
 
