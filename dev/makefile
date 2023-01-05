@@ -59,10 +59,15 @@ $(EXAMPLES) :
 	@echo "+++ Processing document \"$@\" +++"
 #	Copy all .sty .cls *.bib files to the example directory:
 	@echo "updating .sty, .cls, .bib files from $(SOURCEDIR)/"
-	@cp -u $(SOURCEDIR)/*.sty $(DOCUMENTSDIR)/$@
-	@cp -u $(SOURCEDIR)/*.cls $(DOCUMENTSDIR)/$@
-	@cp -u $(SOURCEDIR)/*.bib $(DOCUMENTSDIR)/$@
-	@cp -u $(SOURCEDIRFOREIGN)/*.sty $(DOCUMENTSDIR)/$@
+	@find $(SOURCEDIR)/ -type f -name "*.sty" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
+	@find $(SOURCEDIR)/ -type f -name "*.cls" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
+	@find $(SOURCEDIR)/ -type f -name "*.bib" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
+	@find $(SOURCEDIRFOREIGN)/ -type f -name "*.sty" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
+#	@cp -u $(SOURCEDIR)/*.sty $(DOCUMENTSDIR)/$@
+#	@cp -u $(SOURCEDIR)/*.cls $(DOCUMENTSDIR)/$@
+#	@cp -u $(SOURCEDIR)/*.bib $(DOCUMENTSDIR)/$@
+#	@cp -u $(SOURCEDIRFOREIGN)/*.sty $(DOCUMENTSDIR)/$@
+#
 #	Run the LaTeX build in a sub-makefile:
 	@make --silent -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
