@@ -9,10 +9,12 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 ### Added
 
 - 2021/01/04: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added `apa` document option to switch to APA bibliography style.
-- 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to most important APA citation macros in it.
-- 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added a section in `HgbThesisTutorial` about APA with instructions on how to enable it and an overview of the citation commands as well as the resulting reference list.
-- 2021/03/02: [#119](https://github.com/Digital-Media/HagenbergThesis/discussions/119): Added `\email` macro in `hgb.sty` to print correct email addresses in documents as well as the preamble.
-- 2021/06/24: [#127](https://github.com/Digital-Media/HagenbergThesis/issues/127): Added `\backmatter` section to `main.tex` to avoid that things like a list of figures or acronyms are treated as appendices.
+- 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added two additional example documents (HgbThesisDE-APA and HgbThesisEN-APA) with a short introduction to the most important APA citation macros in it.
+- 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added a section in `HgbThesisTutorial` about APA with instructions on how to enable it and an overview of the citation commands and the resulting reference list.
+- 2021/03/02: [#119](https://github.com/Digital-Media/HagenbergThesis/discussions/119): Added `\email` macro in `hgb.sty` to print correct email addresses in documents and the preamble.
+- 2021/06/24: [#127](https://github.com/Digital-Media/HagenbergThesis/issues/127): Added `\backmatter` section to `main.tex` to avoid things like a list of figures or acronyms being treated as appendices.
+- 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Expanded the section about tables in `HgbThesisTutorial` to include more information on how to create tables, multi-page tables, as well as connecting rows and columns.
+- 2023/01/03: [#146](https://github.com/Digital-Media/HagenbergThesis/issues/146): Include DOIs in references. Clear `url` field if a `doi` entry is present to avoid duplicate entries.
 
 ### Changed
 
@@ -20,11 +22,15 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - 2021/03/05: [#120](https://github.com/Digital-Media/HagenbergThesis/issues/120): Algorithm setup converted to `algpseudocodex` for improved readability, added new spacing commands for fine-tuning.
 - 2021/05/12: [#124](https://github.com/Digital-Media/HagenbergThesis/issues/124): Completely reworked `references.bib`. Replaced all occurrences of `year` and `month` with `date`. Switched `hyphenation` to `langid`. Also updated all references, corrected mistakes and removed unused entries from the file.
 - 2021/06/24: Reworked all `main.tex` files and unified their appearance in terms of formatting and descriptions.
-- 2012/06/24: [#125](https://github.com/Digital-Media/HagenbergThesis/issues/125): Changed displayed math shorthand from `$$...$$` to `\[...\]`. 
+- 2021/06/24: [#125](https://github.com/Digital-Media/HagenbergThesis/issues/125): Changed displayed math shorthand from `$$...$$` to `\[...\]`. 
+- 2022/06/30: [#137](https://github.com/Digital-Media/HagenbergThesis/issues/137): Clarified using the listings escape sequence for `GenericCode`.
+- 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Reworked all tables using the `booktabs` package for a more modern and cleaner look.
 
 ### Fixed
 
-- Fixed two occurrences of missing gender-sensitive language in `HgbThesisTutorial`. Thanks to Julia Gruber.
+- 2021/03/22: Fixed two occurrences of missing gender-sensitive language in `HgbThesisTutorial`. Thanks to Julia Gruber.
+- 2022/12/27: [#133](https://github.com/Digital-Media/HagenbergThesis/issues/133): Fixed `//` in the `CssCode` environment being treated as a comment.
+- 2023/01/05: [#136](https://github.com/Digital-Media/HagenbergThesis/issues/136): Fixed smart quotes not working in the title.
 
 ## [2020/10/29]
 
