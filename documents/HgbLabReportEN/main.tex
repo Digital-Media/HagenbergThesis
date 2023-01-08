@@ -40,19 +40,18 @@
 
 \begin{abstract}\noindent
 This lab unit deals with various interesting problems \ldots (give a short
-summary of the specific topics addressed). If you decide to write your report in
-German, make sure to change the \verb!\documentclass! parameter from
-\texttt{english} to \texttt{german}.
-If you write in MS Word (and such), try to use a similar structure.
+summary of the specific topics addressed). If you decide to write your report
+in German, make sure to change the \verb!\documentclass! parameter from
+\texttt{english} to \texttt{german}. If you write in MS Word (and such), try
+to use a similar structure.
 \end{abstract}
 
 %%%-----------------------------------------------------------------------------
 
 \section{The first assignment}
 
-Describe the goals of the assignment briefly in your own words
-(i.e., do not just copy-paste the assignment text).
-In general, try to describe
+Describe the goals of the assignment briefly in your own words (i.e., do not
+just copy-paste the assignment text). In general, try to describe
 %
 \begin{itemize}
 	\item the task or problem to solve;
@@ -63,18 +62,17 @@ In general, try to describe
 
 \subsection{Structuring} % title of a subtask
 
-This \latex document is based on the \texttt{HagenbergThesis} 
-template, whose most recent version can be found on GitHub.%
+This \latex document is based on the \texttt{HagenbergThesis} template, whose
+most recent version can be found on GitHub.%
 \footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
 
-The document uses the custom class \textsf{hgbreport} which is based
-on \latex's standard \texttt{report} document class. Each lab unit 
-(weekly assignment) corresponds to one \texttt{chapter}.
-Use \verb!\setcounter{chapter}{n}! in the document's preamble
-to set the \emph{lab unit number} to \texttt{n}.
-Note that the \verb!\chapter! command itself is deactivated.
-Use \verb!section{..}! at the beginning of each \emph{assignment}.
-For individual \emph{subtasks} use the 
+The document uses the custom class \textsf{hgbreport} which is based on
+\latex's standard \texttt{report} document class. Each lab unit (weekly
+assignment) corresponds to one \texttt{chapter}. Use
+\verb!\setcounter{chapter}{n}! in the document's preamble to set the
+\emph{lab unit number} to \texttt{n}. Note that the \verb!\chapter! command
+itself is deactivated. Use \verb!section{..}! at the beginning of each
+\emph{assignment}. For individual \emph{subtasks} use the
 \verb!\subsection{..}! command, as shown here.
 
 \subsection{Literature}
@@ -94,24 +92,25 @@ Use mathematical expressions wherever appropriate, either in-line
 
 \subsection{Pictures, figures}
 
-Use figures to show your test images, results, screen shots, \etc, noting that
-(with the given setup) only graphics in PNG, JPEG and PDF format can be directly
-included (see Fig.~\ref{fig:example}).
-See the thesis template for more details.
-All images are set up to reside in the \verb!images/! subdirectory.
-However, it may be a good idea to create a specific image folder for each
-assignment.
+Use figures to show your test images, results, screen shots, \etc, noting
+that (with the given setup) only graphics in PNG, JPEG and PDF format can be
+directly included (see Fig.~\ref{fig:example}). See the thesis template for
+more details. All images are set up to reside in the \verb!images/!
+subdirectory. However, it may be a good idea to create a specific image
+folder for each assignment.
 
 \begin{figure}[htbp]
-\centering\small
-\begin{tabular}{cc}
-	\fbox{\includegraphics[width=0.45\textwidth]{screenshot-dirty}} &  % JPEG
-	\fbox{\includegraphics[width=0.45\textwidth]{screenshot-clean}} \\ % PNG
-	(a) & (b) 
-\end{tabular}
-\caption{Example for including images in a figure. Explain what is shown
-in (a) and (b), respectively.} 
-\label{fig:example}
+	\centering\small
+	\begin{tabular}{cc}
+		\fbox{\includegraphics[width=0.45\textwidth]{screenshot-dirty}} &  %
+		JPEG
+		\fbox{\includegraphics[width=0.45\textwidth]{screenshot-clean}} \\ %
+		PNG
+		(a) & (b)
+	\end{tabular}
+	\caption{Example for including images in a figure. Explain what is shown
+	in (a) and (b), respectively.}
+	\label{fig:example}
 \end{figure}
 
 \subsection{Including code}
@@ -141,7 +140,7 @@ public class Filter_Demo implements PlugInFilter {
 \end{JavaCode}
 %
 The thesis template provides suitable code environments for various other
-languages.
+programming languages.
 
 %%%-----------------------------------------------------------------------------
 
@@ -154,9 +153,9 @@ And so on for all other assignments \ldots
 \section*{Summary and comments}
 
 Here you should summarize your learning experience, personal discoveries and
-major difficulties (if any). Also state the approximate amount of time you spent
-for this assignment and any optional accomplishments.
-This non-numbered section is produced with the \verb!\section*{..}! command.
+major difficulties (if any). Also state the approximate amount of time you
+spent for this assignment and any optional accomplishments. This non-numbered
+section is produced with the \verb!\section*{..}! command.
 
 %%%-----------------------------------------------------------------------------
   

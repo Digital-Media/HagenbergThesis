@@ -42,11 +42,10 @@
 %%%-----------------------------------------------------------------------------
 
 \begin{abstract}\noindent
-This document shows how to use the \textsf{hgbarticle} class, which combines the
-standard \latex \textsf{article} class with the \texttt{hgb.sty} (Hagenberg)
-thesis styles. 
-For example, this may be useful if you wish to publish part of your thesis as a
-journal article without major changes.
+This document shows how to use the \textsf{hgbarticle} class, which combines
+the standard \latex \textsf{article} class with the \texttt{hgb.sty}
+(Hagenberg) thesis styles. For example, this may be useful if you wish to
+publish part of your thesis as a journal article without major changes.
 \end{abstract}
 
 %%%-----------------------------------------------------------------------------
@@ -78,9 +77,9 @@ sections, sections to subsections etc.
 \subsection{Mathematical Elements}
 
 This document is typeset in the typical two-column format required by many
-scientific journals. Unfortunately, the narrow text width often creates problems
-with mathematical structures \cite{Voss2014}. 
-While smaller equations like
+scientific journals. Unfortunately, the narrow text width often creates
+problems with mathematical structures \cite{Voss2014}. While smaller
+equations like
 %
 \begin{equation}
 \bar{\mathbf{M}} =  
@@ -95,27 +94,29 @@ While smaller equations like
 \end{pmatrix}
 \end{equation}
 %
-may fit without any modification, larger structures like
-the one shown in Equation \ref{wideEquation} need special treatment.
+may fit without any modification, larger structures like the one shown in
+Equation \ref{wideEquation} need special treatment.
 %
 \begin{figure*}[t]
-\begin{equation}
-\begin{split}
-\lambda_{1,2} 
-&= \frac{\mathrm{tr}(\bar{\mathbf{M}})}{2} \pm \sqrt{\Bigl(\frac{\mathrm{tr}(\bar{\mathbf{M}})}{2}\Bigr)^2 
-                      - \mathrm{det}(\bar{\mathbf{M}})}  \\
-&= \frac{1}{2} \cdot \left( \bar{A} + \bar{B} \pm \sqrt{\bar{A}^2 - 
-		2 \cdot \bar{A} \cdot \bar{B} + \bar{B}^2 + 4 \cdot \bar{C}^2} \right) 
-		,
-\end{split}
-\label{wideEquation}
-\end{equation}
+	\begin{equation}
+		\begin{split}
+			\lambda_{1,2}
+			&= \frac{\mathrm{tr}(\bar{\mathbf{M}})}{2} \pm \sqrt{\Bigl
+			(\frac{\mathrm{tr}(\bar{\mathbf{M}})}{2}\Bigr)^2
+			- \mathrm{det}(\bar{\mathbf{M}})}  \\
+			&= \frac{1}{2} \cdot \left( \bar{A} + \bar{B} \pm \sqrt{\bar{A}^2 -
+			2 \cdot \bar{A} \cdot \bar{B} + \bar{B}^2 + 4 \cdot \bar{C}^2}
+			\right)
+			,
+		\end{split}
+		\label{wideEquation}
+	\end{equation}
 \end{figure*}
 %
-In this case, the equation was wrapped into a
-\verb!\begin{figure*}! \ldots \verb!\end{figure*}! environment, which produces
-an unnumbered float object that extends across the full page width.
-Additional details can be found in the source text.
+In this case, the equation was wrapped into a \verb!\begin{figure*}! \ldots
+\verb!\end{figure*}! environment, which produces an unnumbered float object
+that extends across the full page width. Additional details can be found in
+the source text.
 
 \subsection{Graphics and Images}
 
@@ -125,10 +126,10 @@ should use the length \verb!\columnwidth! for scaling. An example is shown in
 Fig.~\ref{fig:CocaCola} (see the source text for details).
 
 \begin{figure}
-\centering
-\includegraphics[width=1.0\columnwidth]{cola-public-domain-photo-p}
-\caption{Coca-Cola advertisement photographed in 1940 \cite{CocaCola1940}.}
-\label{fig:CocaCola}
+	\centering
+	\includegraphics[width=1.0\columnwidth]{cola-public-domain-photo-p}
+	\caption{Coca-Cola advertisement photographed in 1940 \cite{CocaCola1940}.}
+	\label{fig:CocaCola}
 \end{figure}
 
 And by the way, the \texttt{lipsum} package was used to create the following
@@ -136,10 +137,9 @@ dummy texts.
 
 \subsection{Bibliography}
 
-The use of citations and the compilation of the bibliography work much the same
-as in the thesis template. 
-The only difference is that \verb!\printbibliography! is used directly at the end
-of the document.
+The use of citations and the compilation of the bibliography work much the
+same as in the thesis template. The only difference is that
+\verb!\printbibliography! is used directly at the end of the document.
 
 %%%-----------------------------------------------------------------------------
 
