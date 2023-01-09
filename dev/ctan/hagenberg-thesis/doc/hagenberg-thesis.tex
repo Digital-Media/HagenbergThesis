@@ -10,13 +10,6 @@
 University of Applied Sciences Upper Austria\\
 Department of Digital Media, Hagenberg (Austria)}
 
-%\author{
-%Wilhelm Burger, Wolfgang Hochleitner\\ 
-%\texttt{wilhelm.burger@fh-ooe.at}
-%\and
-%Wolfgang Hochleitner\\
-%\texttt{wolfgang.hochleitner@fh-ooe.at}}
-
 
 %%%----------------------------------------------------------
 \begin{document}
@@ -25,63 +18,63 @@ Department of Digital Media, Hagenberg (Austria)}
 %%%----------------------------------------------------------
 
 \begin{abstract}\noindent
-The \textsf{hagenberg-thesis} package is a collection of modern LaTeX templates for university theses (bachelor, 
-master or diploma programs) and related documents.
-This manual describes the main features of this package.
-Pre-configured document templates for English and German manuscripts and a complete
-tutorial are available on the package's home repository.
+The \textsf{hagenberg-thesis} package is a collection of modern LaTeX
+templates for university theses (bachelor, master or diploma programs) and
+related documents. This manual describes the main features of this package.
+Pre-configured document templates for English and German manuscripts and a
+complete tutorial are available on the package's home repository.
 \end{abstract}
-
 
 
 \section{Introduction}
 
 The complete source of this package and auxiliary materials are available on
-CTAN\footnote{\url{https://ctan.org/pkg/hagenberg-thesis}}
-and its development repository.\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
-The package is made available under the terms of the
-Creative Commons Attribution 4.0 International Public License.%
+CTAN%
+\footnote{\url{https://ctan.org/pkg/hagenberg-thesis}}
+and its development repository.%
+\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
+The package is made available under the terms of the Creative Commons
+Attribution 4.0 International Public License.%
 \footnote{\url{https://creativecommons.org/licenses/by/4.0/legalcode}}
 
 
 \section{Document classes}
 
-The \texttt{hgb} package provides the following document classes,
-which are based on the standard \latex\ classes
-\texttt{book}, \texttt{report} and \texttt{article}, respectively:
+The \texttt{hgb} package provides the following document classes, which are
+based on the standard \latex\ classes \texttt{book}, \texttt{report} and
+\texttt{article}, respectively:
 %
 \begin{itemize}
-\item \textbf{\texttt{hgbthesis}} (\texttt{book}): 
-for bachelor's, master's and diploma theses;
-\item \textbf{\texttt{hgbreport}} (\texttt{report}):
-for project and term reports;
-\item \textbf{\texttt{hgbarticle}} (\texttt{article}):
-for drafting journal articles.
+    \item \textbf{\texttt{hgbthesis}} (\texttt{book}):
+    for bachelor's, master's and diploma theses;
+    \item \textbf{\texttt{hgbreport}} (\texttt{report}):
+    for project and term reports;
+    \item \textbf{\texttt{hgbarticle}} (\texttt{article}):
+    for drafting journal articles.
 \end{itemize}
-
 
 
 \subsection{Class options} 
 All document classes accept the following \textbf{general options}:
 %
 \begin{itemize}
-\item \texttt{english} or \texttt{german} (select the primary language), 
-\item \texttt{smartquotes} (use smart quotes replacement), 
-\item \texttt{apa} (use \texttt{apa} bibliography style instead of \texttt{numeric-comp}),
-\item \texttt{noUpdateCheck} (suppress check of package release date).
+    \item \texttt{english} or \texttt{german} (select the primary language),
+    \item \texttt{smartquotes} (use smart quotes replacement),
+    \item \texttt{apa} (use \texttt{apa} bibliography style instead of
+    \texttt{numeric-comp}),
+    \item \texttt{noUpdateCheck} (suppress check of package release date).
 \end{itemize}
 %
 In addition, the following \textbf{class-specific options} are accepted:
 %
 \begin{itemize}
-\item \textbf{\texttt{hgbthesis}}: 
-	\texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship};
-\item \textbf{\texttt{hgbreport}}: \texttt{notitlepage};
-\item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}.
+    \item \textbf{\texttt{hgbthesis}}:
+    \texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship};
+    \item \textbf{\texttt{hgbreport}}: \texttt{notitlepage};
+    \item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}.
 \end{itemize}
 %
-For example, to start a master's thesis in German
-one would simply simply place
+For example, to start a master's thesis in German one would simply simply place
 %
 \begin{LaTeXCode}[numbers=none]
 \documentclass[master,german,smartquotes]{hgbthesis}
@@ -90,23 +83,25 @@ one would simply simply place
 at the beginning of the document.
 
 
-
 \subsection{Thesis parameters (class \texttt{hgbthesis})}
 
-\texttt{hgbthesis} supports several types of thesis documents.
-The following parameters must be specified for \emph{all} types:
+\texttt{hgbthesis} supports several types of thesis documents. The following
+parameters must be specified for \emph{all} types:
 %
 \begin{itemize}
-\item \verb!\title{...}!,
-\item \verb!\author{...}!,
-\item \verb!\programtype{...}!,
-\item \verb!\programname{...}!,
-\item \verb!\placeofstudy{...}!,
-\item \verb!\dateofsubmission{yyyy}{mm}{dd}!,
-\item \verb!\advisor{...}! (optional).
+    \item \verb!\title{...}!,
+    \item \verb!\author{...}!,
+    \item \verb!\programtype{...}!,
+    \item \verb!\programname{...}!,
+    \item \verb!\placeofstudy{...}!,
+    \item \verb!\dateofsubmission{yyyy}{mm}{dd}!,
+    \item \verb!\advisor{...}! (optional).
 \end{itemize}
-Note that \texttt{hgbthesis} only supports a \emph{single author} inside the \verb!\author{...}! macro 
-argument (commands \verb!\and! and \verb!\thanks{...}! are deactivated)!
+%
+Note that \texttt{hgbthesis} only supports a \emph{single author} inside the
+\verb!\author{...}! macro argument (commands \verb!\and! and
+\verb!\thanks{...}! are deactivated)!
+
 
 \section{Style files and user commands}
 
@@ -122,16 +117,14 @@ independently of the document classes listed above:
 
 \subsection{General user commands and environments(\texttt{hgb.sty})}
 
-
 \begin{itemize}
-\item \textbf{\texttt{{\bs}hgbDate}}: Outputs the package version date, 
-		\eg, ``\texttt{\hgbDate}''.
-\item \verb!\calibrationbox{width}{height}!: Inserts a test box for checking the final print size 
-(in millimeters).
-\item \verb!\begin{english} ... \end{english}!
-\item \verb!\begin{german} ... \end{german}!
+    \item \textbf{\texttt{{\bs}hgbDate}}: Outputs the package version date,
+    \eg, ``\texttt{\hgbDate}''.
+    \item \verb!\calibrationbox{width}{height}!: Inserts a test box for
+    checking the final print size (in millimeters).
+    \item \verb!\begin{english} ... \end{english}!
+    \item \verb!\begin{german} ... \end{german}!
 \end{itemize}
-
 
 
 \subsection{Text commands (\texttt{hgbabbrev.sty})}
@@ -139,80 +132,85 @@ independently of the document classes listed above:
 \subsubsection*{Special characters:}
 
 \begin{itemize}
-\item \textbf{\texttt{{\bs}bs}}: Inserts a backslash character (short for \verb!\textbackslash!).
-\item \textbf{\texttt{{\bs}obnh}}: Inserts an optional break with no hyphen (\eg, \verb!PlugIn{\obnh}Filter!).
+    \item \textbf{\texttt{{\bs}bs}}: Inserts a backslash character (short for
+    \verb!\textbackslash!).
+    \item \textbf{\texttt{{\bs}obnh}}: Inserts an optional break with no
+    hyphen (\eg, \verb!PlugIn{\obnh}Filter!).
 \end{itemize}
-
 
 
 \subsubsection*{German abbreviations:}
 
 \begin{itemize}
-\item \textbf{\texttt{{\bs}bzgl}}: bzgl.
-\item \textbf{\texttt{{\bs}bzw}}: bzw.
-\item \textbf{\texttt{{\bs}ca}}: ca.
-\item \textbf{\texttt{{\bs}dah}}: d.\thinspace{}h.
-\item \textbf{\texttt{{\bs}Dah}}: D.\thinspace{}h.
-\item \textbf{\texttt{{\bs}ds}}: d.\thinspace{}sind
-\item \textbf{\texttt{{\bs}etc}}: etc.
-\item \textbf{\texttt{{\bs}evtl}}: evtl.
-\item \textbf{\texttt{{\bs}ia}}: i.\thinspace{}Allg.
-\item \textbf{\texttt{{\bs}sa}}: s.\ auch
-\item \textbf{\texttt{{\bs}so}}: s.\ oben
-\item \textbf{\texttt{{\bs}su}}: s.\ unten
-\item \textbf{\texttt{{\bs}ua}}: u.\thinspace{}a.
-\item \textbf{\texttt{{\bs}Ua}}: U.\thinspace{}a.
-\item \textbf{\texttt{{\bs}uae}}: u.\thinspace{}\"A.
-\item \textbf{\texttt{{\bs}usw}}: usw.
-\item \textbf{\texttt{{\bs}uva}}: u.\thinspace{}v.\thinspace{}a.
-\item \textbf{\texttt{{\bs}uvm}}: u.\thinspace{}v.\thinspace{}m.
-\item \textbf{\texttt{{\bs}va}}: vor allem
-\item \textbf{\texttt{{\bs}vgl}}: vgl.
-\item \textbf{\texttt{{\bs}zB}}: z.\thinspace{}B.
-\item \textbf{\texttt{{\bs}ZB}}: Zum Beispiel
+    \item \textbf{\texttt{{\bs}bzgl}}: bzgl.
+    \item \textbf{\texttt{{\bs}bzw}}: bzw.
+    \item \textbf{\texttt{{\bs}ca}}: ca.
+    \item \textbf{\texttt{{\bs}dah}}: d.\thinspace{}h.
+    \item \textbf{\texttt{{\bs}Dah}}: D.\thinspace{}h.
+    \item \textbf{\texttt{{\bs}ds}}: d.\thinspace{}sind
+    \item \textbf{\texttt{{\bs}etc}}: etc.
+    \item \textbf{\texttt{{\bs}evtl}}: evtl.
+    \item \textbf{\texttt{{\bs}ia}}: i.\thinspace{}Allg.
+    \item \textbf{\texttt{{\bs}sa}}: s.\ auch
+    \item \textbf{\texttt{{\bs}so}}: s.\ oben
+    \item \textbf{\texttt{{\bs}su}}: s.\ unten
+    \item \textbf{\texttt{{\bs}ua}}: u.\thinspace{}a.
+    \item \textbf{\texttt{{\bs}Ua}}: U.\thinspace{}a.
+    \item \textbf{\texttt{{\bs}uae}}: u.\thinspace{}\"A.
+    \item \textbf{\texttt{{\bs}usw}}: usw.
+    \item \textbf{\texttt{{\bs}uva}}: u.\thinspace{}v.\thinspace{}a.
+    \item \textbf{\texttt{{\bs}uvm}}: u.\thinspace{}v.\thinspace{}m.
+    \item \textbf{\texttt{{\bs}va}}: vor allem
+    \item \textbf{\texttt{{\bs}vgl}}: vgl.
+    \item \textbf{\texttt{{\bs}zB}}: z.\thinspace{}B.
+    \item \textbf{\texttt{{\bs}ZB}}: Zum Beispiel
 \end{itemize}
 
 \subsubsection*{English abbreviations:}
 
 \begin{itemize}
-\item \textbf{\texttt{{\bs}ie}}: \ie
-\item \textbf{\texttt{{\bs}eg}}: \eg
-\item \textbf{\texttt{{\bs}etc}}: etc.
-\item \textbf{\texttt{{\bs}Eg}}: \Eg
-\item \textbf{\texttt{{\bs}wrt}}: \wrt
+    \item \textbf{\texttt{{\bs}ie}}: \ie
+    \item \textbf{\texttt{{\bs}eg}}: \eg
+    \item \textbf{\texttt{{\bs}etc}}: etc.
+    \item \textbf{\texttt{{\bs}Eg}}: \Eg
+    \item \textbf{\texttt{{\bs}wrt}}: \wrt
 \end{itemize}
 
-\noindent 
-Note that none of the above abbreviation macros ``eats'' subsequent white space,
-\ie, they can be used without additional controls, as in ``\verb!\wrt what I said!'',
-for example.
+\noindent
+Note that none of the above abbreviation macros ``eats'' subsequent white
+space, \ie, they can be used without additional controls, as in
+``\verb!\wrt what I said!'', for example.
 
 \subsection{Bibliography commands (\texttt{hgbbib.sty})}
 
-
-
 \begin{itemize}
-\item
-\textbf{\texttt{{\bs}AddBibFile}}: A wrapper to \texttt{biblatex}'s \verb!\addbibresource! macro
-(for backward compatibility only).
-\item
-\textbf{\texttt{{\bs}MakeBibliography[\emph{options}]}}: Inserts the reference section or chapter.
-By default, references are automatically split into category subsections.%
-\footnote{Predefined reference categories are \texttt{literature}, \texttt{avmedia}, \texttt{online}
-and \texttt{software}.}
-Use the option \texttt{nosplit} to produce a traditional (\ie, contiguous) list of references.
-\item
-\textbf{\texttt{{\bs}citenobr\{\emph{keys}\}}}: Analogous to the standard \texttt{{\bs}cite\{\emph{keys}\}} command, but inserts no ``backref'' page numbers in the bibliography.
-\item
-\textbf{\texttt{{\bs}mcite%
-[\emph{text1}]\{\emph{key1}\}%
-[\emph{text2}]\{\emph{key2}\}%
-\ldots
-[\emph{textN}]\{\emph{keyN}\}%
-}}:
-Analogous to \texttt{bib\-la\-tex}'s \texttt{{\bs}cites} command,%
-\footnote{\url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf} (see Sec.~3.8.3)}
-but inserts semicolons between reference entries for better readability.
+    \item
+    \textbf{\texttt{{\bs}AddBibFile}}: A wrapper to \texttt{biblatex}'s
+    \verb!\addbibresource! macro (for backward compatibility only).
+    \item
+    \textbf{\texttt{{\bs}MakeBibliography[\emph{options}]}}: Inserts the
+    reference section or chapter. By default, references are automatically
+    split into category subsections.%
+    \footnote{Predefined reference categories are \texttt{literature},
+        \texttt{avmedia}, \texttt{online} and \texttt{software}.}
+    Use the option \texttt{nosplit} to produce a traditional (\ie,
+    contiguous) list of references.
+    \item
+    \textbf{\texttt{{\bs}citenobr\{\emph{keys}\}}}: Analogous to the standard
+    \texttt{{\bs}cite\{\emph{keys}\}} command, but inserts no ``backref''
+    page numbers in the bibliography.
+    \item
+    \textbf{\texttt{{\bs}mcite%
+        [\emph{text1}]\{\emph{key1}\}%
+        [\emph{text2}]\{\emph{key2}\}%
+        \ldots
+        [\emph{textN}]\{\emph{keyN}\}%
+    }}:
+    Analogous to \texttt{bib\-la\-tex}'s \texttt{{\bs}cites} command,%
+    \footnote{%
+    \url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
+    (see Sec.~3.8.3)} but inserts semicolons between reference entries for
+    better readability.
 \end{itemize}
 
 % \MakeBibliography ... creates a reference section split subsections (default)
@@ -224,28 +222,28 @@ but inserts semicolons between reference entries for better readability.
 The following types of code environments are defined:%
 %
 \begin{itemize}
-\item \textbf{\texttt{CCode}}: for C (ANSI),
-\item \textbf{\texttt{CppCode}}: for C++ (ISO),
-\item \textbf{\texttt{CsCode}}: for C\#,
-\item \textbf{\texttt{CssCode}}: for CSS,
-\item \textbf{\texttt{GenericCode}}: for generic code,
-\item \textbf{\texttt{HtmlCode}}: for HTML,
-\item \textbf{\texttt{JavaCode}}: for Java,
-\item \textbf{\texttt{JsCode}}: for JavaScript,
-\item \textbf{\texttt{LaTeXCode}}: for \latex,
-\item \textbf{\texttt{ObjCCode}}: for ObjectiveC,
-\item \textbf{\texttt{PhpCode}}: for PHP,
-\item \textbf{\texttt{PythonCode}}: for Python,
-\item \textbf{\texttt{Swift}}: for Swift,
-\item \textbf{\texttt{XmlCode}}: for XML.
+    \item \textbf{\texttt{CCode}}: for C (ANSI),
+    \item \textbf{\texttt{CppCode}}: for C++ (ISO),
+    \item \textbf{\texttt{CsCode}}: for C\#,
+    \item \textbf{\texttt{CssCode}}: for CSS,
+    \item \textbf{\texttt{GenericCode}}: for generic code,
+    \item \textbf{\texttt{HtmlCode}}: for HTML,
+    \item \textbf{\texttt{JavaCode}}: for Java,
+    \item \textbf{\texttt{JsCode}}: for JavaScript,
+    \item \textbf{\texttt{LaTeXCode}}: for \latex,
+    \item \textbf{\texttt{ObjCCode}}: for ObjectiveC,
+    \item \textbf{\texttt{PhpCode}}: for PHP,
+    \item \textbf{\texttt{PythonCode}}: for Python,
+    \item \textbf{\texttt{Swift}}: for Swift,
+    \item \textbf{\texttt{XmlCode}}: for XML.
 \end{itemize}
 %
 \texttt{hgblistings} is based on the \texttt{listingsutf8}%
 \footnote{\url{https://ctan.org/pkg/listingsutf8}}
 package, thus any valid \texttt{listings}%
 \footnote{\url{https://ctan.org/pkg/listings}}
-option may be used; for example, 
-the option \texttt{numbers=none} to suppress line numbers:
+option may be used; for example, the option \texttt{numbers=none} to suppress
+line numbers:
 \begin{LaTeXCode}[numbers=none]
     \begin{JavaCode}[numbers=none]
     ... // Java code comes here
@@ -253,90 +251,83 @@ the option \texttt{numbers=none} to suppress line numbers:
 \end{LaTeXCode}
 
 
-
 \subsection{Mathematical commands (\texttt{hgbmath.sty})}
 
 \texttt{hgbmath} requires (and automatically loads) the \texttt{amsmath}%
 \footnote{\url{https://ctan.org/pkg/amsmath}}
-package, thus all
-commands and symbols of \texttt{amsmath} are available by default.
-The following \emph{additional} commands can only be used in math mode:
+package, thus all commands and symbols of \texttt{amsmath} are available by
+default. The following \emph{additional} commands can only be used in math mode:
 %
 \begin{itemize}
-\item \textbf{\texttt{{\bs}Cpx}}: $\Cpx$ (complex numbers),
-\item \textbf{\texttt{{\bs}N}}: $\N$ (natural numbers),
-\item \textbf{\texttt{{\bs}R}}: $\R$ (real numbers),
-\item \textbf{\texttt{{\bs}Q}}: $\Q$ (rational numbers),
-\item \textbf{\texttt{{\bs}Z}}: $\Z$ (integer numbers).
+    \item \textbf{\texttt{{\bs}Cpx}}: $\Cpx$ (complex numbers),
+    \item \textbf{\texttt{{\bs}N}}: $\N$ (natural numbers),
+    \item \textbf{\texttt{{\bs}R}}: $\R$ (real numbers),
+    \item \textbf{\texttt{{\bs}Q}}: $\Q$ (rational numbers),
+    \item \textbf{\texttt{{\bs}Z}}: $\Z$ (integer numbers).
 \end{itemize}
-
 
 
 \subsection{Algorithms (\texttt{hgbalgo.sty})}
 
-\texttt{hgbalgo} is a stand-alone package that is based on -- and extends -- the \texttt{algorithmicx} and 
-\texttt{algpseudocodex} packages.%
-\footnote{\url{https://ctan.org/pkg/algorithmicx}, \url{https://ctan.org/pkg/algpseudocodex}}
-It fixes some (mostly indentation-related) problems, adds color and provides some additional
-commands. It also loads the \texttt{algorithm}%
+\texttt{hgbalgo} is a stand-alone package that is based on -- and extends --
+the \texttt{algorithmicx} and \texttt{algpseudocodex} packages.%
+\footnote{\url{https://ctan.org/pkg/algorithmicx},
+    \url{https://ctan.org/pkg/algpseudocodex}}
+It fixes some (mostly indentation-related) problems, adds color and provides
+some additional commands. It also loads the \texttt{algorithm}%
 \footnote{\url{https://ctan.org/pkg/algorithms}}
 package which defines a compatible float container for algorithms:
 \verb!\begin{algorithm}! \verb!...! \verb!\end{algorithm}!.
 
-
 \paragraph{Additional user commands:}
 \begin{itemize}
-%\item 
-%\textbf{\texttt{{\bs}StateL\{<text>\}}}: Creates a \emph{numbered} statement like \texttt{algorithmicx}'s 
-%\verb!\State! command but provides consistent indentation on multi-line statements.
-%Note that the argument \texttt{<text>} must be passed as a single argument in \verb!{...}! braces.
-\item
-\textbf{\texttt{{\bs}StateNN[<nesting>]\{<text>\}}}: 
-Creates a \emph{non-numbered} statement like \texttt{algo\-rith\-micx}'s \verb!\Statex! 
-command but provides controlled indentation inside nested constructs.
-The optional integer argument \verb!<nesting>! can be used to specify the \emph{nesting depth}
-to compensate for a bug in \texttt{algorithmicx} (the nesting level inside a block is not set properly before 
-the first \verb!\State! command). Omitting the optional argument should give correct indentation in most
-cases.
-\item
-\textbf{\texttt{{\bs}Input\{<text>\}}}:
-For describing the input parameters in a procedure's preamble. %Usage: \verb!\Input{<description>}!
-\item
-\textbf{\texttt{{\bs}Output\{<text>\}}}:
-For describing the output values in a procedure's preamble. %Usage: \verb!\Output{<description>}!
-\item
-\textbf{\texttt{{\bs}Returns\{<text>\}}}:
-For describing the return values in a procedure's preamble. %Usage: \verb!\Returns{<description>}!
+    \item
+    \textbf{\texttt{{\bs}StateNN[<nesting>]\{<text>\}}}:
+    Creates a \emph{non-numbered} statement like \texttt{algo\-rith\-micx}'s
+    \verb!\Statex! command but provides controlled indentation inside nested
+    constructs. The optional integer argument \verb!<nesting>! can be used to
+    specify the \emph{nesting depth} to compensate for a bug in
+    \texttt{algorithmicx} (the nesting level inside a block is not set
+    properly before the first \verb!\State! command). Omitting the optional
+    argument should give correct indentation in most situations.
+    \item
+    \textbf{\texttt{{\bs}Input\{<text>\}}}:
+    For describing the input parameters in a procedure's preamble.
+    \item
+    \textbf{\texttt{{\bs}Output\{<text>\}}}:
+    For describing the output values in a procedure's preamble.
+    \item
+    \textbf{\texttt{{\bs}Returns\{<text>\}}}:
+    For describing the return values in a procedure's preamble.
 \end{itemize}
 
 \paragraph{Vertical spacing commands:}
 The following commands are provided for fine-tuning the vertical spacing
-between individual statements of an algorithm (the standard spacing commands like 
-\verb!\smallskip! \etc\ have no effect between statements):%
-\footnote{Note that the standard spacing commands work \emph{between} \texttt{procedure} 
-and \texttt{function} blocks in the usual way.}
+between individual statements of an algorithm (the standard spacing commands
+like \verb!\smallskip! \etc\ have no effect between statements):%
+\footnote{Note that the standard spacing commands work \emph{between}
+\texttt{procedure} and \texttt{function} blocks in the usual way.}
 \begin{itemize}
-\item \textbf{{\bs}\texttt{algsmallskip}}: inserts 3pt extra space,
-\item \textbf{{\bs}\texttt{algmedskip}}: inserts 6pt extra space,
-\item \textbf{{\bs}\texttt{algbigskip}}: inserts 12pt extra space.
+    \item \textbf{{\bs}\texttt{algsmallskip}}: inserts 3pt extra space,
+    \item \textbf{{\bs}\texttt{algmedskip}}: inserts 6pt extra space,
+    \item \textbf{{\bs}\texttt{algbigskip}}: inserts 12pt extra space.
 \end{itemize}
-They are supposed to be used inside (\ie, at the end of) statements, for example:
+They are supposed to be used inside (\ie, at the end of) statements, for
+example:
 %
 \begin{LaTeXCode}[numbers=none]
     \State $x \gets x + 1$ \algsmallskip
 \end{LaTeXCode}
-%
-
-
 
 \paragraph{Defined algorithm colors:}
 \begin{itemize}
-\item \textbf{\texttt{AlgKeywordColor}} (for algorithm keywords),
-\item \textbf{\texttt{AlgProcedureColor}} (for procedure and function names).
-%\item[] \textbf{\texttt{AlgCommentColor}} (for comments).
+    \item \textbf{\texttt{AlgKeywordColor}} (for algorithm keywords),
+    \item \textbf{\texttt{AlgProcedureColor}} (for procedure and function
+    names).
 \end{itemize}
 These colors can be redefined at any time (see the \texttt{xcolor}%
-\footnote{\url{https://ctan.org/pkg/xcolor}} package), \eg, by
+\footnote{\url{https://ctan.org/pkg/xcolor}}
+package), \eg, by
 \begin{LaTeXCode}[numbers=none]
     \definecolor{AlgKeywordColor}{named}{black}
     \definecolor{AlgProcedureColor}{rgb}{0.0, 0.5, 0.0}     % dark green
@@ -346,7 +337,8 @@ These colors can be redefined at any time (see the \texttt{xcolor}%
 \section{Package dependencies}
 
 \begin{sloppypar}
-The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\newline
+The \texttt{hagenberg-thesis} package builds on the following \latex\
+packages:\newline
 \texttt{abstract}, 
 \texttt{algorithm}, 
 \texttt{algorithmicx}, 
@@ -393,6 +385,5 @@ The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\
 \texttt{xstring},
 \texttt{xspace}.
 \end{sloppypar}
-
 
 \end{document}
