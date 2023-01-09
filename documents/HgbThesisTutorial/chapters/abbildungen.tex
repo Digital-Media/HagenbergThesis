@@ -636,17 +636,18 @@ werden.
 
 {\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
 \def\arraystretch{1.50}      % vertical stretch factor (standard = 1.0)
-\begin{longtable}{@{}lp{0.2\textwidth}@{}}
+\begin{longtable}{@{}lp{0.23\textwidth}@{}}
 	\caption{Eine lange Tabelle, die ggfs.\ über zwei Seiten umbricht.} \\
 	\toprule
 	Erste Spalte & Zweite Spalte \\
 	\midrule\endhead
 	\label{tab:longtable}
 	Die Spalte rechts enthält viel Text. &
-	In dieser Spalte wird viel Text eingefügt, der eine lange Spalte
-	erzeugt. Wiederum kann es Sinn machen, den Inhalt im Flattersatz zu
+	In dieser Spalte steht viel Text, der eine lange Spalte
+	erzeugt. Auch hier kann es Sinn machen, den Inhalt im Flattersatz zu
 	setzen. \texttt{longtable} bricht in solchen Spalten jedoch nicht um,
 	nur zwischen einzelnen Zeilen. \\
+	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
 	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
 	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
 	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
@@ -698,13 +699,12 @@ verbundenen Spalten und Zeilen.
 	\def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
 	\begin{tabular}{@{}lll@{}}
 		\toprule
-		Spalte 1 & \multicolumn{2}{c}{Spalte 2--3}                                                                      \\
+		Spalte 1 & \multicolumn{2}{c}{Spalte 2--3} \\
 		\midrule
-		Zeile 1  &
+		Zeile 1  & 
 		\multirow{2}{4cm}{Dieser Text erstreckt sich über zwei Zeilen.} &
-		\multirow{2}{*}{Dieser Text auch.}
-		\\
-	    Zeile 2  &                                                                 &                                    \\
+		\multirow{2}{*}{Dieser Text auch.} \\
+	    Zeile 2  & & \\
 		\bottomrule
 	\end{tabular}
 \end{table}
