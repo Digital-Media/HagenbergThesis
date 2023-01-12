@@ -246,62 +246,77 @@ bedeutet nicht, dass dasselbe Dokument auf einem anderen Computer oder
 Drucker genau so dargestellt wird. Dieser Umstand ist besonders wichtig, wenn
 Druckdokumente online zur Verfügung gestellt werden. Kontrollieren Sie daher
 genau, ob die innerhalb Ihrer Grafiken verwendeten Schriften auch exakt wie
-beabsichtigt im Ausdruck aufscheinen.
+beabsichtigt im Ausdruck aufscheinen 
+(\sa\ Abschnitt \ref{sec:tex-schriften-in-grafiken}).
 
 
 \subsubsection{Strichstärken -- \emph{Hairlines} vermeiden!}
 
-In Grafik-Programmen wie \emph{Inkscape} und \emph{Illustrator}, die sich im
-Wesentlichen an der \emph{PostScript}-Funktionalität orientieren, ist es
-möglich, Linien bzgl.\ ihrer Stärke als "Hairline" zu definieren. Im
-zugehörigen \emph{PostScript}-Code wird dies als \texttt{linewidth} mit dem
-Wert \texttt{0} ausgedrückt und sollte am Ausgabegerät "möglichst dünne"
-Linien ergeben. Das Ergebnis ist ausschließlich vom jeweiligen Drucker
-abhängig und somit kaum vorhersagbar.
-\textbf{Fazit:} Hairlines vermeiden und stattdessen immer konkrete
-Strichstärken ($\geq 0.25\,\mathrm{pt}$) einstellen!
+In Grafik-Programmen wie \emph{Illustrator} und \emph{Inkscape}, die sich im
+Wesentlichen an der PDF- \bzw\ SVG-Funktionalität orientieren, 
+ist es möglich, Linien bzgl.\ ihrer Stärke als "Hairline" zu definieren. Dies 
+soll in der Ausgabe "möglichst dünne" Linien erzeugen. Das Ergebnis ist 
+aber ausschließlich vom jeweiligen Drucker abhängig und somit kaum 
+vorhersagbar. \textbf{Fazit:} Hairlines vermeiden und stattdessen immer 
+konkrete Strichstärken ($\geq 0.25\,\mathrm{pt}$) einstellen!
 
 
 \subsection{\tex-Schriften auch in Grafiken?}
 \label{sec:tex-schriften-in-grafiken}
 
-Während bei Abbildungen, die mit externen Grafik-Programmen erzeugt werden,
-meist mit ähnlich aussehende Schriften (wie \emph{Times-Roman} oder
-\emph{Garamond}) Abhilfe schaffen, besteht bei Purist*innen oft der
-verständliche Wunsch, die \emph{Computer-Modern} (CM) Schriftfamilie von
-{\tex}/{\latex} auch innerhalb von eingebetteten Grafiken einzusetzen.
-
-\subsubsection{\emph{BaKoMa}-Schriften (TrueType)}
-
-Glücklicherweise stehen einige Portierungen von CM als
-\emph{TrueType}-Schriften zur Verfügung, die auch in herkömmlichen
-DTP-Anwendungen unter \emph{Windows} und \emph{Mac~OS} verwendet werden
-können. Empfehlenswert ist \zB\ die \emph{BaKoMa Fonts Collection},%
+Grundsätzlich sollten auch die in Grafiken verwendete Schriften möglichst genau
+mit der Schrift im Haupttext übereinstimmen. Bei Abbildungen, die mit externen
+Grafikprogrammen erzeugt werden, kann man
+zumindest \emph{ähnlich} aussehende Schriften (wie \emph{Times-Roman} oder
+\emph{Garamond}) verwenden. Es ist aber auch möglich, die 
+\emph{Computer-Modern} (CM) Schriftfamilie von {\tex}/{\latex} direkt
+zur Erzeugung von Grafiken einzusetzen.
+Es stehen einige Portierungen von CM als \emph{TrueType}-Schriften zur
+Verfügung, die auch in herkömmlichen Grafikprogrammen unter \emph{Windows}
+und \emph{Mac~OS} verwendet werden können:
+%
+\begin{itemize}
+\item	%\subsubsection{\emph{BaKoMa}-Schriften (TrueType)}
+Empfehlenswert ist \zB\ die "BaKoMa Fonts Collection",%
 \footnote{\url{http://ctan.org/pkg/bakoma-fonts}}
-die neben den CM-Standardschriften auch die mathematischen Schriften der
-AMS-Familie ent\-hält und zudem kostenfrei ist. Natürlich müssen die TrueType
-Schriften vor der Verwendung zunächst auf dem eigenen PC installiert werden.
-
-
-\subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
-
+die neben den CM Standardschriften auch die mathematischen Schriften der
+AMS-Familie ent\-hält und zudem kostenfrei ist. 
+\item	%\subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
 Eine Alternative dazu sind die "LM-Roman"%
 \footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
 Open-Type Schriften, die speziell für die Verwendung im Umfeld von \latex\
 entwickelt wurden. Sie sind auch Teil der MikTeX-Installation.%
 \footnote{\zB unter \url{C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm}}
 Diese Schriften enthalten \ua\ Zeichen mit Umlauten und sind daher auch für 
-deutsche Texte recht bequem zu verwenden.
+deutsche Texte gut geeignet.
+\end{itemize}
+%
+Natürlich müssen diese Schriften vor der Verwendung zunächst auf dem eigenen PC
+installiert werden.
 
-
-\subsection{Für Gourmets: Grafiken mit \latex-Overlays}
+\subsection{Grafiken mit \latex-Overlays (\texttt{overpic})}
 \label{sec:GraphicOverlays}
 
-Bisweilen ist es erforderlich, ein bestehendes Bilder oder eine Grafik mit
-\latex-eigenen (Vektor-)Elementen zu überlagern, \zB\ für Markierungen oder
+Manchmal ist es erforderlich, ein bestehendes Bilder oder eine Grafik mit
+\latex-eigenen (Vektor-){\obnh}Elementen zu überlagern, \zB\ für Markierungen oder
 Beschriftungen. Ein typisches Beispiel ist in Abb.~\ref{fig:overpic-example}
 gezeigt, wo eine mit \emph{Mathematica} generierte PDF-Grafik mit
 mathematischen Elementen annotiert wird.
+
+Dazu wird das \texttt{overpic}-Paket%
+\footnote{\url{https://www.ctan.org/pkg/overpic}}
+verwendet, wobei die darunter liegende Grafik nicht mit \verb!\includegraphics!
+sondern \verb!\begin{overpic}! \ldots \verb!\end{overpic}! importiert wird
+(mit ähnlicher Syntax):
+
+\begin{LaTeXCode}[numbers=none]
+\begin{overpic}[width=0.85\textwidth]{mathematica-example}
+	\put(101,14){$x$}%
+	\put(4,31){$f(x)$}%
+	\put(29.5,28){\line(1,1){2}}%
+	...
+\end{overpic}
+\end{LaTeXCode}
 
 \begin{figure}
 	\centering\small
@@ -325,28 +340,16 @@ mathematischen Elementen annotiert wird.
 	\label{fig:overpic-example}
 \end{figure}
 
-Dazu wird das \texttt{overpic}-Paket%
-\footnote{\url{https://www.ctan.org/pkg/overpic}}
-verwendet und zum Importieren der Grafik anstelle von \verb!\includegraphics!
-die Umgebung \verb!\begin{overpic}! \ldots \verb!\end{overpic}! verwendet 
-(mit ähnlicher Syntax):
-
-\begin{LaTeXCode}[numbers=none]
-\begin{overpic}[width=0.85\textwidth]{mathematica-example}
-	\put(101,14){$x$}%
-	\put(4,31){$f(x)$}%
-	\put(29.5,28){\line(1,1){2}}%
-	...
-\end{overpic}
-\end{LaTeXCode}
-
-Die \texttt{overpic}-Umgebung bildet gleichzeitig eine
-\texttt{picture}-Umgebung, in der \latex-Zeichenanweisungen (wie \verb!\put!
-u.ä.) platziert werden können, wie in obigem Beispiel gezeigt.\footnote{Die
-Standard-Zeichenanweisungen in \latex sind ziemlich restriktiv, weshalb hier
-zusätzlich das \texttt{pict2e}-Paket (\url{https://www.ctan.org/pkg/pict2e})
-	verwendet wird.} Die $x/y$-Positionen sind in Prozent der Bildbreite
-angegeben. Weitere Details finden sich im Quelltext.
+Die \texttt{overpic}-Umgebung bildet gleichzeitig eine 
+\texttt{picture}-Umgebung,%
+\footnote{\url{https://www.overleaf.com/learn/latex/Picture_environment}}
+in der \latex-Zeichenanweisungen (wie \verb!\put! u.ä.) platziert werden
+können, wie in obigem Beispiel gezeigt.%
+\footnote{Die Standard-Zeichenanweisungen in \latex sind ziemlich restriktiv,
+weshalb hier zusätzlich das \texttt{pict2e}-Paket 
+(\url{https://www.ctan.org/pkg/pict2e}) verwendet wird.}
+Die $x/y$-Positionen sind in Prozent der Bildbreite angegeben. Weitere
+Details finden sich im Quelltext.
 
 
 \subsection{Abbildungen mit mehreren Elementen}
