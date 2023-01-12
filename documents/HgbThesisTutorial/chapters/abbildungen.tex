@@ -230,73 +230,11 @@ der ursprünglichen Quelle).
 In diesem Fall kommt als Datenformat nur PDF in Frage, dieses bietet sich
 aber auch in anderen Umgebungen als universelles Vektor-Format an. Zur
 Erstellung von PDF-Vektorgrafiken wird ein geeignetes Grafikprogramm, \zB\
-\emph{Illustrator} von \emph{Adobe} benötigt. Manche gängigen Grafikprogramme
-unterstützen allerdings keinen direkten Export von PDF-Dateien oder erzeugen
-unsaubere Dateien. Vor der Entscheidung für eine bestimmte Zeichensoftware
-sollte das im Zweifelsfall ausprobiert werden. PDF kann im Notfall über einen
-entsprechenden Druckertreiber erzeugt werden.
-
-
-\subsubsection{Vektorgrafiken mit \emph{Inkscape}}
-\label{sec:InkscapeGraphics}
-
-Mit \emph{Inkscape}\footnote{\url{https://inkscape.org/}} können
-Vektorgrafiken auf sehr einfache Weise erstellt werden. Das Basisformat von
-Inkscape ist SVG, nach dem Export als PDF können solche Grafiken aber wie
-üblich mit \verb!\includegraphics[..]{..}! in \latex\ eingefügt werden.
-
-Eine interessante Möglichkeit dabei ist, Texte innerhalb der Grafik durch
-\latex\ automatisch ersetzen zu lassen. Dadurch werden in der fertigen Grafik
-dieselben Schriften wie im Fließtext verwendet und \va\ mathematische
-Elemente entsprechend ersetzt. Abbildung \ref{fig:InkscapeExample} zeigt ein
-Beispiel dazu:
-%
-\begin{itemize}
-	\item
-	Die ursprüngliche Inkscape-Grafik \nolinkurl{images/inkscape-template.svg}
-	enthält
-	Texte, die nachträglich von \latex\ ersetzt werden sollen
-	(siehe Abb.~\ref{fig:InkscapeExample}\,(a)).
-	\item
-	Mit Hilfe von \textsf{Save a Copy...} (als PDF) in Inkscape und den
-	Einstellungen wie in
-	Abb.~\ref{fig:InkscapeExample}\,(c), werden folgende zwei Files erzeugt:
-	\begin{itemize}
-		\item[] \nolinkurl{inkscape-template.pdf}: eine PDF-Datei der Grafik
-		ohne Texte,
-		\item[] \nolinkurl{inkscape-template.pdf_tex}: eine \latex-Datei mit
-		allen relevanten Informationen.
-	\end{itemize}
-\end{itemize}
-%
-Die Einbindung der Grafik in das Dokument erfolgt schließlich durch
-\begin{itemize}
-	\item[] \verb!\input{images/inkscape-template.pdf_tex}!,
-\end{itemize}
-mit dem in Abb.~\ref{fig:InkscapeExample}\,(b) gezeigten Ergebnis.
-
-
-
-\begin{figure}
-	\centering\small
-	\begin{tabular}{cc}
-		\includegraphics[scale=1.0]{inkscape-template-orig} &
-		\input{images/inkscape-template.pdf_tex}
-		\\
-		(a) & (b)
-		\\[6pt]
-		\multicolumn{2}{c}{\includegraphics[width=0.4\textwidth]%
-		{inkscape-pdf-save-screenhot}%
-		~~\raisebox{25mm}{(c)}}
-	\end{tabular}
-	\caption{Beispiel für eine mit \emph{Inkscape} erzeugte Vektorgrafik
-		(\nolinkurl{inkscape-template.svg}).
-		Originalgrafik im \textit{Inkscape}-Editor (a);
-		beim Einfügen werden die Texte automatisch durch LaTeX ersetzt (b).
-		Beim Speichern in Inkscape (als PDF) ist auf die Einstellung
-		"PDF+LaTeX" zu achten (c).}
-	\label{fig:InkscapeExample}
-\end{figure}
+\emph{Adobe Illustrator} oder \emph{Inkscape}, benötigt. Manche gängigen
+Grafikprogramme unterstützen allerdings keinen direkten Export von PDF-Dateien
+oder erzeugen unsaubere Dateien. Vor der Entscheidung für eine bestimmte
+Zeichensoftware sollte das im Zweifelsfall ausprobiert werden. PDF kann im
+Notfall über einen entsprechenden Druckertreiber erzeugt werden.
 
 
 \subsubsection{Einbettung von Schriften}
