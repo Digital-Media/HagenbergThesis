@@ -26,6 +26,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - 2022/06/30: [#137](https://github.com/Digital-Media/HagenbergThesis/issues/137): Clarified using the listings escape sequence for `GenericCode`.
 - 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Reworked all tables using the `booktabs` package for a more modern and cleaner look.
 - 2023/01/09: [#151](https://github.com/Digital-Media/HagenbergThesis/pull/151): Re-formatted the source code of all example documents for a cleaner look. Line breaks are at 80 characters per line.
+- 2023/01/12: [#135](https://github.com/Digital-Media/HagenbergThesis/issues/135): Added a guide on including SVG files in the document to the project's wiki: https://github.com/Digital-Media/HagenbergThesis/wiki/Including-SVGs. Also removed "Creating vector graphics using Inkscape" from `abbildungen.tex` into a wiki article: https://github.com/Digital-Media/HagenbergThesis/wiki/Vector-Graphics-with-Inkscape
 
 ### Fixed
 
