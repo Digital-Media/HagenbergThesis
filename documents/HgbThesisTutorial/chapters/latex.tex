@@ -13,10 +13,9 @@ als mit herkömmlichen Werkzeugen für die Textverarbeitung.
 
 Zum Ersten ist -- im Unterschied zu den meisten gängigen
 Text\-ver\-arbei\-tungs\-prog\-ram\-men -- \latex nicht \textsc{Wysiwyg},%
-\footnote{"What You See Is What You Get." Es gibt auch
-\textsc{Wysiwyg}-Implementierungen für \latex, \zB\ \emph{Scientific
-WorkPlace} (\url{https://www.mackichan.com/}) oder \emph{LyX}
-(\url{https://www.lyx.org/}), die aber teuer und/oder relativ langsam sind.}
+\footnote{"What You See Is What You Get." Es gab für \latex einige
+\textsc{Wysiwyg}-Editoren, diese sind aber mittlerweile alle wieder von der
+Bildfläche verschwunden.}
 sondern es handelt sich um eine \emph{Markup}-Sprache (wie HTML) -- noch
 dazu eine für Anfänger*innen recht komplizierte -- und zugehörige Werkzeuge.
 Ungewohnt erscheinen sicher auch die vermeintlich starken Einschränkungen von
@@ -27,7 +26,7 @@ gelingt, sich stärker auf die Inhalte der Arbeit zu konzentrieren als auf
 deren äußere Form. Dass am Ende die Form dennoch stimmt, ist allerdings nur
 dann gewährleistet, wenn man sich bei den eigenen Modifikationen der Formate
 und Parameter äußerste Zurückhaltung auferlegt, es sei denn, man ist in der
-Zwischenzeit bereits selbst zum \latex-\emph{Guru} avanciert.
+Zwischenzeit bereits selbst zum*zur \latex-\emph{Expert*in} avanciert.
 
 Insgesamt lohnt sich der Aufwand, wie viele meinen, zumal die Abschlussarbeit
 in jedem Fall (mit oder ohne \latex) ein substantielles Stück Arbeit ist.
@@ -63,8 +62,9 @@ verfügbar.
 
 Alternativ kann auch ein Online-Editor verwendet werden, der ein Arbeiten im
 Browser ermöglicht und keinerlei Installation auf dem eigenen Rechner
-voraussetzt. Details zu empfohlenen Setups und möglichen Alternativen finden
-sich in Anhang~\ref{app:TechnischeInfos}.
+voraussetzt. Zudem kann die Arbeit darin mühelos mit anderen Personen -- etwa
+dem*der Betreuer*in -- geteilt werden. Details zu empfohlenen Setups und
+möglichen Alternativen finden sich in Anhang~\ref{app:TechnischeInfos}.
 
 \subsection{Literatur}
 \label{sec:literatur}
@@ -75,18 +75,15 @@ sein. Erfreulicherweise ist sehr viel Nützliches auch online verfügbar.
 Gute Startpunkte sind \zB
 %
 \begin{itemize}
-    \item \emph{\textrm{\LaTeXe}-Kurzbeschreibung} von Daniel et al.\
-    \cite{Daniel2018}
-    \item \emph{The Not So Short Introduction to \textrm{\LaTeXe}}
-    von Oetiker et al.\ \cite{Oetiker2021}
+	\item \citetitle{Daniel2018} von \textcite{Daniel2018}, oder
+    \item \citetitle{Oetiker2021} von \textcite{Oetiker2021}.
 \end{itemize}
 %
 \noindent
 Als mittlerweile bereits klassisches Handbuch zu \latex ist
 %
 \begin{itemize}
-    \item \emph{A Guide to \textrm{\LaTeX}} von H.~Kopka und P.~Daly
-    \cite{Kopka2003}
+    \item \citetitle{Kopka2003} von \textcite{Kopka2003}
 \end{itemize}
 %
 zu empfehlen, zu dem es für Interessierte auch zwei vertiefende Zusatzbände
@@ -94,18 +91,18 @@ in Deutsch gibt. Zahlreiche weitere Dokumente zu \latex und verwandten Themen
 finden sich \ua im Rahmen des {\em Comprehensive TeX Archive Network} (CTAN) auf
 %
 \begin{quote}
-    \url{https://www.ctan.org/}
+    \url{https://ctan.org/}
 \end{quote}
 %
-Besonders nützlich sind auch die \emph{Comprehensive List of \textrm{\latex}
-Symbols} \cite{Pakin2021} und die Beschreibungen wichtiger \latex-Pakete, wie
+Besonders nützlich sind auch \citetitle{Pakin2021} \cite{Pakin2021} und die
+Beschreibungen wichtiger \latex-Pakete, wie
 %
-\begin{quote}
-    \texttt{babel} \cite{Bezos2021},\newline
-    \texttt{graphics}, \texttt{graphicx} \cite{Carlisle2020},\newline
-    \texttt{fancyhdr} \cite{Oostrum2021},\newline
-    \texttt{caption} \cite{Sommerfeldt2020}.
-\end{quote}
+\begin{itemize}
+    \item[] \texttt{babel} \cite{Bezos2022},
+    \item[] \texttt{graphics}, \texttt{graphicx} \cite{Carlisle2021},
+    \item[] \texttt{fancyhdr} \cite{Oostrum2022},
+    \item[] \texttt{caption} \cite{Sommerfeldt2022}.
+\end{itemize}
 
 
 \section{Schriften}
@@ -211,7 +208,7 @@ Texte können auf unterschiedliche Weise aus dem Fließtext hervorgehoben werden
 
 \section{Textstruktur}
 
-Zur Strukturierung des eigenen Text stellt \latex eine Reihe von
+Zur Strukturierung des eigenen Texts stellt \latex eine Reihe von
 Auszeichnungen zur Verfügung.
 
 \subsection{Absatztrennung}
@@ -507,7 +504,7 @@ Konventionen:
     Leerzeichen umgebener Gedankenstrich%
     \footnote{Halbgeviertstrich (\emph{En Dash}).} -- wie hier (in \latex\ mit {\verb*! -- !}) gesetzt.
     Dieser wird auch für die Angabe von Zahlenintervallen (Seiten 12--19)
-    benutzt.
+    benutzt, dabei aber ohne Leerzeichen.
 %
     \item In \emph{englischen} Texten wird ein noch längerer
     Gedankenstrich\footnote{Geviertstrich (\emph{Em Dash}).} \emph{ohne}
@@ -854,27 +851,18 @@ folgende Elemente berücksichtigt:
     \centering\small
     \begin{tabular}{@{}lcccc@{}}
         \toprule
-        \emph{Element}           & \texttt{diploma} & \texttt{master} &
+        \emph{Element} & \texttt{diploma} & \texttt{master} &
         \texttt{bachelor} & \texttt{internship} \\
         \midrule
-        \verb!\title!          & $+$              & $+$             & $+$
-        & $+$                 \\
-        \verb!\author!         & $+$              & $+$             & $+$
-        & $+$                 \\
-        \verb!\programtype!        & $+$              & $+$             & $+$
-        & $+$                 \\
-        \verb!\programname!        & $+$              & $+$             & $+$
-        & $+$                 \\
-        \verb!\placeofstudy!     & $+$              & $+$             & $+$
-        & $+$                 \\
-        \verb!\dateofsubmission! & $+$              & $+$             & $+$
-        & $+$                 \\
-        \verb!\advisor!         & $+$              & $+$             & $+$
-        & $+$                 \\
-        \verb!\companyName!    & $-$              & $-$             & $-$
-        & $+$                 \\
-        \verb!\companyPhone!     & $-$              & $-$             & $-$
-        & $+$                 \\
+        \verb!\title!            & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\author!           & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\programtype!      & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\programname!      & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\placeofstudy!     & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\dateofsubmission! & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\advisor!          & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\companyName!      & $-$ & $-$ & $-$ & $+$ \\
+        \verb!\companyPhone!     & $-$ & $-$ & $-$ & $+$ \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -893,17 +881,13 @@ automatisch generiert, abhängig von den obigen Einstellungen:
 \begin{center}
     \begin{tabular}{@{}cl@{}}
         \toprule
-        \emph{Seite} & \emph{Inhalt}
-        \\
+        \emph{Seite} & \emph{Inhalt} \\
         \midrule
-        \textrm{i}     & Titelseite
-        \\
-        \textrm{ii}    & Betreuer*innenseite (nur wenn \verb!\advisor!
-        angegeben) \\
-        \textrm{iii}   & Copyright-Seite
-        \\
-        \textrm{iv}    & Eidesstattliche Erklärung
-        \\
+        \textrm{i}   & Titelseite \\
+        \textrm{ii}  & Betreuer*innenseite (nur wenn \verb!\advisor!
+                       angegeben) \\
+        \textrm{iii} & Copyright-Seite \\
+        \textrm{iv}  & Eidesstattliche Erklärung \\
         \bottomrule
     \end{tabular}
 \end{center}
@@ -915,10 +899,10 @@ Einstellungen am Beginn des Dokuments bestimmt werden:
 \begin{description}
     \item[\normalfont\texttt{{\bs}cclicense}] ~ \newline
     Veröffentlichung unter einer Creative Commons%
-    \footnote{\url{http://creativecommons.org/licenses/by-nc-nd/3.0/}}
-    Lizenz, die die freie Weitergabe der Arbeit unter Nennung des Autors,
-    jedoch keine kommerzielle Nutzung oder Bearbeitung erlaubt. Das ist die
-    \emph{empfohlene} Standardeinstellung.
+    \footnote{\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}}
+    Lizenz, die die freie Weitergabe der Arbeit unter Nennung des*der
+    Autors*Autorin, jedoch keine kommerzielle Nutzung oder Bearbeitung erlaubt.
+    Das ist die \emph{empfohlene} Standardeinstellung.
     \item[\normalfont\texttt{{\bs}strictlicense}] ~ \newline
     Traditionelle Einschränkung der Nutzungsrechte
     (\emph{Alle Rechte vorbehalten} \bzw\ \emph{All Rights Reserved}).
@@ -1014,51 +998,31 @@ auf den in Abschn.~\ref{sec:literatur} angegebenen CTAN-Sites.
     \centering\small
     \begin{tabular}{@{}ll@{}}
         \toprule
-        \emph{Paket}                     & \emph{Funktion}
-        \\
+        \emph{Paket}          & \emph{Funktion} \\
         \midrule
-        \texttt{algorithmicx}              & Beschreibung von Algorithmen
-        \\
-        \texttt{amsfonts}, \texttt{amsbsy} & Mathematische Symbole
-        \\
-        \texttt{amsmath}                   & Mathematischer Schriftsatz
-        \\
-        \texttt{babel}                    & Sprachumschaltung
-        \\
-        \texttt{biblatex}                  & Literaturverwaltung
-        \\
-        \texttt{caption}                   & Flexiblere Captions
-        \\
-        \texttt{cite}                      & Sortierte Literaturverweise
-        \\
-        \texttt{color}                     & Farbige Textelemente und
-        Hintergrundfarben    \\
-        \texttt{csquotes}                  & Kontextabhängige Hochkommas
-        \\
-        \texttt{marvosym}                  & {\euro}-Symbol (\verb!\euro!)
-        \\
-        \texttt{exscale}                   & Korrekte Schriftgrößen im
-        Math-Modus          \\
-        \texttt{fancyhdr}                  & zur Gestaltung Kopfzeilen
-        (header)            \\
-        \texttt{float}                     & Verbessertes Float-Handling
-        \\
-        \texttt{fontenc}                   & Verwendung der T1 (westeur.)
-        Zeichencodierung \\
-        \texttt{graphicx}                  & Einbindung von EPS-Grafiken
-        \\
-        \texttt{hyperref}                  & erzeugt aktive Querverweise im
-        PDF-Dokument   \\
-        \texttt{ifthen}                    & für logische Entscheidungen in
-        \latex         \\
-        \texttt{inputenc}                  & Erweiterter Eingabezeichensatz
-        \\
-        \texttt{listings}                  & Auflistung von Programmcode
-        \\
-        \texttt{upquote}                   & Gerade Hochkommas in
-        \texttt{verbatim}-Texten \\
-        \texttt{url}                       & Behandlung von URLs im Text                   \\
-        \texttt{verbatim}                  & Verbesserte \texttt{verbatim}-Umgebung        \\
+        \texttt{algorithmicx} & Beschreibung von Algorithmen \\
+        \texttt{amsfonts},
+        \texttt{amsbsy}       & Mathematische Symbole \\
+        \texttt{amsmath}      & Mathematischer Schriftsatz \\
+        \texttt{babel}        & Sprachumschaltung \\
+        \texttt{biblatex}     & Literaturverwaltung \\
+        \texttt{caption}      & Flexiblere Captions \\
+        \texttt{csquotes}     & Kontextabhängige Hochkommas \\
+        \texttt{eurosym}      & {\euro}-Symbol (\verb!\euro!) \\
+        \texttt{exscale}      & Korrekte Schriftgrößen im Math-Modus \\
+        \texttt{fancyhdr}     & zur Gestaltung Kopfzeilen (header) \\
+        \texttt{float}        & Verbessertes Float-Handling \\
+        \texttt{fontenc}      & Verwendung der T1 (westeur.) Zeichencodierung \\
+        \texttt{graphicx}     & Einbindung Grafiken \\
+        \texttt{hyperref}     & erzeugt aktive Querverweise im PDF-Dokument\\
+        \texttt{ifthen},
+        \texttt{xifthen}      & für logische Entscheidungen in \latex \\
+        \texttt{inputenc}     & Erweiterter Eingabezeichensatz \\
+        \texttt{listings}     & Auflistung von Programmcode \\
+        \texttt{upquote}      & Gerade Hochkommas in \texttt{verbatim}-Texten \\
+        \texttt{url}          & Behandlung von URLs im Text \\
+        \texttt{verbatim}     & Verbesserte \texttt{verbatim}-Umgebung\\
+        \texttt{xcolor}       & Farbige Textelemente und Hintergrundfarben \\
         \bottomrule
     \end{tabular}
 \end{table}

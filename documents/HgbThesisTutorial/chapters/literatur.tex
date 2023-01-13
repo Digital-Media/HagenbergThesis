@@ -24,7 +24,7 @@ ein Schema vor, das in den natur\-wissen\-schaftlich-technischen Disziplinen
 \footnote{Die Anpassung an andere Vorgaben ist relativ leicht möglich.}
 Technisch basiert dieser Teil auf dem Programm \texttt{Biber}%
 \footnote{\url{https://ctan.org/pkg/biber}}
-in Kombination mit dem \latex-Paket \texttt{biblatex} \cite{Kime2020}.
+in Kombination mit dem \latex-Paket \texttt{biblatex} \cite{Kime2022}.
 
 
 Die Verwaltung von Quellen besteht grundsätzlich aus zwei Elementen:
@@ -59,29 +59,25 @@ Quellenverweis angegeben werden, wie \zB Kapitel- oder Seitenangaben bei
 Büchern. Nachfolgend einige Beispiele:
 %
 \begin{itemize}
-    \item
-    Mehr dazu findet sich in \cite{Kopka2003}.
-    \begin{LaTeXCode}[numbers=none]
-        Mehr dazu findet sich in \cite{Kopka2003}.
-    \end{LaTeXCode}
+    \item Mehr dazu findet sich in \cite{Kopka2003}.
+\begin{LaTeXCode}[numbers=none]
+Mehr dazu findet sich in \cite{Kopka2003}.
+\end{LaTeXCode}
 %
-    \item
-    Mehr zu diesem Thema in \cite[Kap.~3]{Kopka2003}.
-    \begin{LaTeXCode}[numbers=none]
-        Mehr zu diesem Thema in \cite[Kap.~3]{Kopka2003}.
-    \end{LaTeXCode}
+    \item Mehr zu diesem Thema in \cite[Kap.~3]{Kopka2003}.
+\begin{LaTeXCode}[numbers=none]
+Mehr zu diesem Thema in \cite[Kap.~3]{Kopka2003}.
+\end{LaTeXCode}
 %
-    \item
-    Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} erscheinen überholt.
-    \begin{LaTeXCode}[numbers=none]
-        Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} erscheinen überholt.
-    \end{LaTeXCode}
+    \item Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} erscheinen überholt.
+\begin{LaTeXCode}[numbers=none]
+Die Angaben in \cite[S.\ 274--277]{BurgeBurger1999} erscheinen überholt.
+\end{LaTeXCode}
 %
-    \item
-    Wichtig sind auch \cite{Patashnik1988,Feder2006,Duden1997}.
-    \begin{LaTeXCode}[numbers=none]
-        Wichtig sind auch \cite{Patashnik1988,Feder2006,Duden1997}.
-    \end{LaTeXCode}
+    \item Wichtig sind auch \cite{Patashnik1988,Feder2006,Duden1997}.
+\begin{LaTeXCode}[numbers=none]
+Wichtig sind auch \cite{Patashnik1988,Feder2006,Duden1997}.
+\end{LaTeXCode}
 \end{itemize}
 %
 Im letzten Beispiel sind mehrere Quellen in einem einzigen
@@ -98,7 +94,7 @@ Seitennummern. Dafür bietet das \texttt{hagenberg-thesis}-Paket das
 zusätzliche Makro%
 \footnote{\texttt{\textbackslash mcite} ist in \texttt{hgbbib.sty} definiert und
 funktioniert ähnlich dem \texttt{{\bs}cites}-Kommando von \texttt{biblatex}
-(s.\ \url{http://mirrors.ctan.org/info/translations/biblatex/de/biblatex-de-Benutzerhandbuch.pdf}).}
+(s.\ \url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}).}
 %
 \begin{itemize}
 \item[]
@@ -111,13 +107,11 @@ bei dem man zu jedem angeführten Quellenschlüssel (\textit{key}) auch einen
 zugehörigen \textit{text} angeben kann, zum Beispiel:
 %
 \begin{itemize}
-    \item
-    Ähnliches findet sich auch in
+    \item Ähnliches findet sich auch in
     \mcite[Kap.~2]{Loimayr2019}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
-    \begin{LaTeXCode}[numbers=none]
-        Ähnliches findet sich auch in
-        \mcite[Kap.~2]{Loimayr2019}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
-    \end{LaTeXCode}
+\begin{LaTeXCode}[numbers=none]
+Ähnliches findet sich auch in \mcite[Kap.~2]{Loimayr2019}[Abschn.~3.6]{Drake1948}[S.~5--7]{Eberl1987}.
+\end{LaTeXCode}
 \end{itemize}
 %
 Zur besseren Lesbarkeit wird in der Ausgabe -- anders als beim gewöhnlichen
@@ -125,7 +119,6 @@ Zur besseren Lesbarkeit wird in der Ausgabe -- anders als beim gewöhnlichen
 zwischen den Einträgen eingefügt. Bei der Verwendung von
 \texttt{\textbackslash mcite} muss man sich allerdings (sofern gewünscht)
 selbst um die Sortierung der Einträge kümmern, sie erfolgt nicht automatisch.
-
 
 
 \subsection{Unterdrückung der Rückverweise mit \texttt{\textbackslash citenobr}}
@@ -143,6 +136,10 @@ vorgesehen, das ansonsten wie \texttt{\textbackslash cite} funktioniert
 %
 
 \subsection{Häufige Fehler}
+
+Bei der Arbeit mit Literaturquellen schleichen sich, gerade bei in dieser Sache
+unerfahrenen Personen, schnell oft gesehene Fehler ein. Diese lassen sich jedoch
+leicht vermeiden.
 
 \subsubsection{Verweise außerhalb des Satzes}
 
@@ -588,13 +585,13 @@ abgekürzt werden, um Missverständnisse zu vermeiden.
 \begin{GenericCode}[numbers=none]
 @article{Mermin1989,
   author={Mermin, Nathaniel David},
-  title={What's wrong with these equations?},
+  title={What's Wrong with these Equations?},
   journaltitle={Physics Today},
   volume={42},
   number={10},
   date={1989},
   pages={9-11},
-	doi={10.1063/1.2811173},
+  doi={10.1063/1.2811173},
   langid={english}
 }
 \end{GenericCode}
@@ -735,16 +732,16 @@ gedruckt existieren.
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{Mittelbach2020,
+@manual{Mittelbach2022,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
-  date={2020-09-23},
-  version={2.17i},
+  date={2022-04-08},
+  version={2.17n},
   url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
   langid={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2020}] \fullcite{Mittelbach2020}
+\item[\cite{Mittelbach2022}] \fullcite{Mittelbach2022}
 \end{itemize}
 %
 Oft wird bei derartigen Dokumenten kein*e Autor*in genannt. Dann wird der
@@ -775,8 +772,8 @@ Typ \texttt{@standard} unterstützt. Hier ein typisches Beispiel:
   shortauthor={WHATWG},
   title={HTML},
   titleaddon={Living Standard},
-  date={2021-05-11},
-  url={https://html.spec.whatwg.org/},
+  date={2023-01-12},
+  url={https://html.spec.whatwg.org/multipage/},
   langid={english}
 }
 \end{GenericCode}
@@ -830,7 +827,7 @@ für einen Gesetzestext (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 @legislation{OoeRaumordnungsgesetz1994,
   title={Landesgesetz vom 6. Oktober 1993 über die Raumordnung im Land Oberösterreich},
   titleaddon={Oö. Raumordnungsgesetz 1994 - Oö. ROG 1994},
-  howpublished={LGBl.Nr. 114/1993 zuletzt geändert durch LGBl.Nr. 125/2020},
+  howpublished={LGBl.Nr. 114/1993 zuletzt geändert durch LGBl.Nr. 111/2022},
   date={1993-12-23},
   url={https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrOO&Gesetzesnummer=10000370},
   langid={ngerman}
@@ -849,7 +846,7 @@ für einen Gesetzestext (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte
 Publikationen nicht das Auslangen gefunden werden, sollte man sich zunächst
 die weiteren (hier nicht näher beschriebenen) Typen im
-\texttt{biblatex}-Handbuch \cite{Kime2020} ansehen, beispielsweise
+\texttt{biblatex}-Handbuch \cite{Kime2022} ansehen, beispielsweise
 \texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein
 Beitrag darin).
 
@@ -935,8 +932,7 @@ Konferenzbands), aber \emph{ohne} Verweis auf die Onlinestellung.
 \item[b)]
 \textbf{Die Arbeit wurde \emph{nicht} publiziert:} Wenn sich tatsächlich
 \emph{keine} Publikation (oder ein zugehöriger \emph{Technical Report}, \so)
-findet,  kann man sich \evtl\ mit dem \texttt{@unpublished}-Tag abhelfen,
-\zB\ \cite{Dai2016}
+findet, kann man sich \evtl\ mit dem \texttt{@unpublished}-Tag abhelfen:
 \item %
 \begin{GenericCode}[numbers=none]
 @unpublished{Dai2016,
@@ -948,11 +944,15 @@ findet,  kann man sich \evtl\ mit dem \texttt{@unpublished}-Tag abhelfen,
   langid={english}
 }
 \end{GenericCode}
+\begin{itemize}
+\item[\cite{Dai2016}] \fullcite{Dai2016}
+\end{itemize}
 %
+\item[] %
 In diesem Fall ist die Angabe des Links (über \texttt{doi} oder alternativ
 \texttt{url}) natürlich unverzichtbar. Details zum Feld \texttt{pubstate}
 (\texttt{prepublished}) findet man in der \texttt{biblatex}-Dokumentation
-\cite[Abschn.\ 4.9.2.11]{Kime2020}. Andernfalls (wenn unbekannt oder wirklich
+\cite[Abschn.\ 4.9.2.11]{Kime2022}. Andernfalls (wenn unbekannt oder wirklich
 nicht veröffentlicht) kann anstelle von \texttt{pubstate} auch der Eintrag
 %
 \begin{itemize}
@@ -1198,20 +1198,20 @@ unterscheiden:
 Durch den Umfang und die steigende Qualität dieser Einträge erscheint die
 Aufnahme in das Quellenverzeichnis durchaus berechtigt. Beispielsweise
 bezeichnet man als "Reliquienschrein" einen Schrein, in dem die Reliquien
-eines oder mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2020}.
+eines oder mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2022}.
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@online{WikiReliquienschrein2020,
+@online{WikiReliquienschrein2022,
   title={Reliquienschrein},
   url={https://de.wikipedia.org/wiki/Reliquienschrein},
-  date={2020-10-20},
-  urldate={2021-05-12},
+  date={2022-08-29},
+  urldate={2023-01-13},
   langid={ngerman}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2020}] \fullcite{WikiReliquienschrein2020}
+\item[\cite{WikiReliquienschrein2022}] \fullcite{WikiReliquienschrein2022}
 \end{itemize}
 %
 In diesem Fall besteht die Quellenangabe praktisch nur mehr aus dem URL. Mit
@@ -1415,8 +1415,8 @@ Beispiel:
 \begin{itemize}
 \item[]
 \begin{LaTeXCode}[numbers=none,breakindent=0pt]
-	\textcite{Daniel2018} geben eine kurze Einführung in das Thema \latex,
-    wohingegen \textcite{Oetiker2021, Kopka2003} bereits mehr ins Detail gehen.
+\textcite{Daniel2018} geben eine kurze Einführung in das Thema \latex,
+wohingegen \textcite{Oetiker2021, Kopka2003} bereits mehr ins Detail gehen.
 \end{LaTeXCode}
 \item[]
     Daniel et al. (2018) geben eine kurze Einführung in das Thema \latex,
@@ -1439,8 +1439,8 @@ Beispiel:
 \begin{itemize}
 \item[]
 \begin{LaTeXCode}[numbers=none,breakindent=0pt]
-	Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen
-    (\zB \nptextcite{Daniel2018, Oetiker2021, Kopka2003}).
+Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen
+(\zB \nptextcite{Daniel2018, Oetiker2021, Kopka2003}).
 \end{LaTeXCode}
 \item[]
     Auf jeden Fall empfiehlt es sich, Literatur zum Thema \latex zu besorgen

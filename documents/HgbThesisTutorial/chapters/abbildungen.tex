@@ -35,8 +35,8 @@ entfernen.
 
 Der Gedanke, dass etwa Abbildungen kaum jemals genau an der ge\-wünsch\-ten
 Stelle und möglicherweise nicht einmal auf derselben Seite Platz finden, ist
-für viele Anfänger*innen aber offenbar sehr ungewohnt oder sogar beängstigend
-. Dennoch sollte zunächst einmal getrost \latex\ diese Arbeit überlassen und
+für viele Anfänger*innen aber offenbar sehr ungewohnt oder sogar beängstigend.
+Dennoch sollte zunächst einmal getrost \latex\ diese Arbeit überlassen und
 \emph{nicht} manuell eingegriffen werden. Erst am Ende, wenn das gesamte
 Dokument "steht" und die automatische Platzierung wirklich nicht
 zufriedenstellend erscheint, sollte (durch gezielte Platzierungsanweisungen
@@ -50,10 +50,12 @@ hingegen -- je nach Konvention -- \emph{oben} (wie in diesem Dokument) oder
 ebenfalls \emph{unten}. In \latex\ erfolgt auch die Nummerierung der
 Abbildungen automatisch, ebenso der Eintrag in das (optionale)
 Abbildungsverzeichnis%
-\footnote{Ein eigenes Verzeichnis der Abbildungen am Anfang des Dokuments ist
+\footnote{Ein eigenes Verzeichnis der Abbildungen am Ende des Dokuments ist
 zwar leicht erstellt, in einer Abschlussarbeit aber (und eigentlich überall
-sonst auch) überflüssig. Man sollte es daher weglassen.} am Beginn des
-Dokuments.
+sonst auch) überflüssig. Man sollte es daher weglassen. Sollte der*die
+Betreuer*in dennoch darauf bestehen, findet sich im Wiki des
+\texttt{hagenberg-thesis} GitHub-Repositorys eine Anleitung zur Integration ins
+eigene Dokument.} am Ende des Dokuments.
 
 Die Markierung der Captions%
 \footnote{Ausnahmsweise wird das Wort "Caption" im Folgenden ohne deutsche
@@ -105,7 +107,7 @@ Captions sollten \emph{immer} mit einem Punkt abgeschlossen sein.%
 \section{Abbildungen}
 
 Für die Einbindung von Grafiken in \latex wird die Verwendung des
-Stan\-dard-Pakets \texttt{graphicx} \cite{Carlisle2020} empfohlen (wird durch
+Stan\-dard-Pakets \texttt{graphicx} \cite{Carlisle2021} empfohlen (wird durch
 das \texttt{hagenberg-thesis}-Paket bereits eingebunden). Mit dem aktuell
 verwendeten Workflow (\texttt{pdflatex}) können Bild- bzw.\ Grafikformate
 ausschließlich in folgenden Formaten eingebunden werden:
@@ -304,7 +306,7 @@ gezeigt, wo eine mit \emph{Mathematica} generierte PDF-Grafik mit
 mathematischen Elementen annotiert wird.
 
 Dazu wird das \texttt{overpic}-Paket%
-\footnote{\url{https://www.ctan.org/pkg/overpic}}
+\footnote{\url{https://ctan.org/pkg/overpic}}
 verwendet, wobei die darunter liegende Grafik nicht mit \verb!\includegraphics!
 sondern \verb!\begin{overpic}! \ldots \verb!\end{overpic}! importiert wird
 (mit ähnlicher Syntax):
@@ -347,7 +349,7 @@ in der \latex-Zeichenanweisungen (wie \verb!\put! u.ä.) platziert werden
 können, wie in obigem Beispiel gezeigt.%
 \footnote{Die Standard-Zeichenanweisungen in \latex sind ziemlich restriktiv,
 weshalb hier zusätzlich das \texttt{pict2e}-Paket 
-(\url{https://www.ctan.org/pkg/pict2e}) verwendet wird.}
+(\url{https://ctan.org/pkg/pict2e}) verwendet wird.}
 Die $x/y$-Positionen sind in Prozent der Bildbreite angegeben. Weitere
 Details finden sich im Quelltext.
 
@@ -676,20 +678,34 @@ Code-Umgebungen realisiert.
 \centering
 \begin{tabular}{@{}lll@{}}
 	\toprule
-	C (ANSI): & \verb!\begin{CCode}! & \verb!...! \verb!\end{CCode}! \\
-	C++ (ISO): & \verb!\begin{CppCode}! & \verb!...! \verb!\end{CppCode}! \\
-	C\#: & \verb!\begin{CsCode}! & \verb!...! \verb!\end{CsCode}! \\
-	CSS: & \verb!\begin{CssCode}! & \verb!...! \verb!\end{CssCode}! \\
-	HTML: & \verb!\begin{HtmlCode}! & \verb!...! \verb!\end{HtmlCode}! \\
-	Java: & \verb!\begin{JavaCode}! & \verb!...! \verb!\end{JavaCode}! \\
-	JavaScript: & \verb!\begin{JsCode}! & \verb!...! \verb!\end{JsCode}! \\
-	\latex: & \verb!\begin{LaTeXCode}! & \verb!...! \verb!\end{LaTeXCode}! \\
-	Objective-C: & \verb!\begin{ObjCCode}! & \verb!...! \verb!\end{ObjCCode}! \\
-	PHP: & \verb!\begin{PhpCode}! & \verb!...! \verb!\end{PhpCode}! \\
-	Python: & \verb!\begin{PythonCode}! & \verb!...! \verb!\end{PythonCode}! \\
-	Swift: & \verb!\begin{SwiftCode}! & \verb!...! \verb!\end{SwiftCode}! \\
-	XML: & \verb!\begin{XmlCode}! & \verb!...! \verb!\end{XmlCode}! \\
-	Generisch: & \verb!\begin{GenericCode}! & \verb!...! \verb!\end{GenericCode}! \\
+	C (ANSI):    & \verb!\begin{CCode}!
+		& \verb!...! \verb!\end{CCode}! \\
+	C++ (ISO):   & \verb!\begin{CppCode}!
+		& \verb!...! \verb!\end{CppCode}! \\
+	C\#:         & \verb!\begin{CsCode}!
+		& \verb!...! \verb!\end{CsCode}! \\
+	CSS:         & \verb!\begin{CssCode}!
+		& \verb!...! \verb!\end{CssCode}! \\
+	HTML:        & \verb!\begin{HtmlCode}!
+		& \verb!...! \verb!\end{HtmlCode}! \\
+	Java:        & \verb!\begin{JavaCode}!
+		& \verb!...! \verb!\end{JavaCode}! \\
+	JavaScript:  & \verb!\begin{JsCode}!
+		& \verb!...! \verb!\end{JsCode}! \\
+	\latex:      & \verb!\begin{LaTeXCode}!
+		& \verb!...! \verb!\end{LaTeXCode}! \\
+	Objective-C: & \verb!\begin{ObjCCode}!
+		& \verb!...! \verb!\end{ObjCCode}! \\
+	PHP:         & \verb!\begin{PhpCode}!
+		& \verb!...! \verb!\end{PhpCode}! \\
+	Python:      & \verb!\begin{PythonCode}!
+		& \verb!...! \verb!\end{PythonCode}! \\
+	Swift:       & \verb!\begin{SwiftCode}!
+		& \verb!...! \verb!\end{SwiftCode}! \\
+	XML:         & \verb!\begin{XmlCode}!
+		& \verb!...! \verb!\end{XmlCode}! \\
+	Generisch:   & \verb!\begin{GenericCode}!
+		& \verb!...! \verb!\end{GenericCode}! \\
 	\bottomrule
 \end{tabular}
 \end{table}

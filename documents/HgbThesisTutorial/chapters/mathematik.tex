@@ -107,7 +107,7 @@ allerdings etwas eigenwillige Zwischenräume erzeugt. Es empfiehlt sich, dafür
 gleich auf die erweiterten Möglichkeiten des \texttt{amsmath}-Pakets%
 \footnote{American Mathematical Society (AMS). \texttt{amsmath} ist Teil der
 \latex\ Standardinstallation und wird von \texttt{hgb.sty} bereits importiert.}
-\cite{Mittelbach2020} zurückzugreifen. Hier ein Beispiel mit zwei am $=$
+\cite{Mittelbach2022} zurückzugreifen. Hier ein Beispiel mit zwei am $=$
 Zeichen ausgerichteten Gleichungen,
 %
 \begin{align}
@@ -204,7 +204,7 @@ Platzhalter für das darüberliegende Minuszeichen verwendet wird. Alternativ
 zu \texttt{pmatrix} kann mit der \texttt{bmatrix}-Umgebung Matrizen und
 Vektoren mit eckigen Klammern erzeugt werden. Zahlreiche weitere
 mathematische Konstrukte des \texttt{amsmath}-Pakets sind in
-\cite{Mittelbach2020} beschrieben.
+\cite{Mittelbach2022} beschrieben.
 
 
 \subsection{Verweise auf Gleichungen}
@@ -340,17 +340,17 @@ Italics) verwendet, \zB:
 \end{quote}
 %
 Der Abstand zwischen der Zahl und der Maßeinheit ist dabei gewollt. Das
-\$-Zeichen erzeugt wird mit \verb!\$! und das Euro-Symbol (\euro) mit dem
-Makro \verb!\euro! erzeugt.%
+\$-Zeichen wird mit \verb!\$! und das Euro-Symbol (\euro) mit dem Makro
+\verb!\euro! erzeugt.%
 \footnote{Das \euro\ Zeichen ist nicht im ursprünglichen \latex-Zeichensatz
 enthalten sondern wird mit dem \texttt{eurosym}-Paket erzeugt.}
 
 
 \subsection{Kommas in Dezimalzahlen (Mathematik-Modus)}
 
-\latex\ setzt im Mathematik-Modus (also innerhalb von \verb!\[! \ldots
-\verb!\]! oder in Gleichungen) nach dem angloamerikanischen Stil in
-Dezimalzahlen grundsätzlich den \emph{Punkt} (\verb!.!) als Trennsymbol
+\latex\ setzt im Mathematik-Modus (also innerhalb von \verb!$! \ldots \verb!$!,
+\verb!\[! \ldots \verb!\]! oder in Gleichungen) nach dem angloamerikanischen
+Stil in Dezimalzahlen grundsätzlich den \emph{Punkt} (\verb!.!) als Trennsymbol
 voraus. So wird etwa mit \verb!$3.141$! normalerweise die Ausgabe "3.141"
 erzeugt. Um das in Europa übliche Komma in Dezimalzahlen zu verwenden, genügt
 es \emph{nicht}, einfach \verb!.! durch \verb!,! zu ersetzen. Das Komma wird
@@ -396,8 +396,9 @@ Programmiersprache. Dadurch ergibt sich eine bessere Lesbarkeit, breitere
 Anwendbarkeit und erhöhte Nachhaltigkeit (möglicherweise über die Lebensdauer
 einer Programmiersprache hinaus). Bei der Formulierung von Algorithmen sollte
 man \ua\ folgendes beachten:%
-\footnote{Siehe auch \url{http://mirror.easyname
-.at/ctan/macros/latex/contrib/algorithms/algorithms.pdf} (Abschnitt~7).}
+\footnote{Siehe auch
+\url{http://mirrors.ctan.org/macros/latex/contrib/algorithms/algorithms.pdf}
+(Abschnitt~7).}
 %
 \begin{itemize}
 	\item
@@ -547,9 +548,3 @@ die Gewichtung des Werts für die eindimensionale Position $x$.}
 \end{algorithm}
 \end{LaTeXCode}
 \end{program}
-
-
- 
-
-
-
