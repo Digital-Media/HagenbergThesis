@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2023/01/12]%%AUTO
+\ProvidesClass{hgbthesis}[2023/01/14]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -110,6 +110,10 @@
 	 % remove chapter number from sections and figures (basic LaTeX):
 	\counterwithout{section}{chapter}
 	\counterwithout{figure}{chapter}
+	\counterwithout{table}{chapter}
+	\counterwithout{equation}{chapter}
+	\counterwithout{program}{chapter}
+	\counterwithout{algorithm}{chapter}
 	% remove chapter number from header (fancyhdr):
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
 }

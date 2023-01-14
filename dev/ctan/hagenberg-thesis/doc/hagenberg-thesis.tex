@@ -69,7 +69,7 @@ In addition, the following \textbf{class-specific options} are accepted:
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}}:
-    \texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship};
+    \texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship}, \texttt{proposal};
     \item \textbf{\texttt{hgbreport}}: \texttt{notitlepage};
     \item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}.
 \end{itemize}
@@ -81,6 +81,13 @@ For example, to start a master's thesis in German one would simply simply place
 \end{LaTeXCode}
 %
 at the beginning of the document.
+The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'') and is currently 
+only effective in \emph{conjunction} with the \texttt{bachelor} option, \eg,
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[bachelor,proposal,german,smartquotes]{hgbthesis}
+\end{LaTeXCode}
+%
 
 
 \subsection{Thesis parameters (class \texttt{hgbthesis})}
