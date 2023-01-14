@@ -11,9 +11,9 @@ klassischen Kontrollmechanismen wie Tastatur, Maus oder Gamepad sondern die
 Spieler*innen selbst "steuern" die Inhalte mit ihren Bewegungen. Darüber
 hinaus finden diese Spiele in einem halb-öffentlichen bis öffentlichen Raum
 statt, wodurch sich die Bestimmung der Zielgruppe sowie die Anzahl der
-spielenden Personen schwierig gestaltet. Diese Bachelorarbeit beleuchtet
-diese Problematik und stellt konkrete Lösungsvorschläge anhand eines
-Beispiels dar.
+spielenden Personen schwierig gestaltet. Diese Bachelorarbeit (Masterarbeit)
+beleuchtet diese Problematik und stellt konkrete Lösungsvorschläge anhand
+eines Beispiels dar.
 
 
 \section{Theoretischer Hintergrund und Stand der Forschung}
@@ -55,7 +55,7 @@ werden (siehe Abbildung \ref{fig:logo}). %nur ein Test
 \section{Forschungsfrage}
 
 Aus diesen Ansätzen ergibt sich die folgende Forschungsfrage für diese
-Bachelorarbeit:
+Bachelorarbeit (Masterarbeit):
 %
 \begin{quote}
 	Welche Spielmechaniken müssen auf welche Art und Weise in einem
@@ -67,9 +67,9 @@ Bachelorarbeit:
 
 \section{Methodik}
 
-Um diese Frage zu beantworten, soll die Bachelorarbeit als eine Kombination
-von Literaturarbeit und praktischer \bzw prototypischer Umsetzung realisiert
-werden.
+Um diese Frage zu beantworten, soll die Bachelorarbeit (Masterarbeit) als eine
+Kombination von Literaturarbeit und praktischer \bzw prototypischer Umsetzung
+realisiert werden.
 
 Zunächst soll aus bestehender Literatur (erweiternd zu Abschnitt
 \ref{sec:hintergrund}) erörtert werden, wie mit dem Thema des Smooth
@@ -97,128 +97,3 @@ erwartet, dass sich solche konkreten Mechaniken finden und beschreiben lassen.
 Bei den Tests der praktischen Umsetzung des Frameworks wird ebenfalls eine
 positive Evaluierung erwartet, da es bereits erfolgreiche Konzepte \bzw LPD
 Games gibt, auf deren Erfahrungen aufgebaut werden kann.
-
-
-%% --------------------------------------------------------------
-
-\begin{comment}
-
-\begin{table}
-    \caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen.}
-    \label{tab:TitelElemente}
-    \centering\small
-    \begin{tabular}{@{}lcccc@{}}
-        \toprule
-        \emph{Element} & \texttt{diploma} & \texttt{master} &
-        \texttt{bachelor} & \texttt{internship} \\
-        \midrule
-        \verb!\title!            & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\author!           & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\programtype!      & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\programname!      & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\placeofstudy!     & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\dateofsubmission! & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\advisor!          & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\companyName!      & $-$ & $-$ & $-$ & $+$ \\
-        \verb!\companyPhone!     & $-$ & $-$ & $-$ & $+$ \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-%% --------------------------
-
-\begin{equation}
-	f(k) = \frac{1}{N} \sum_{i=0}^{k-1} i^2 .
-	\label{eq:MyFirstEquation}
-\end{equation}
-
-%% --------------------------
-
-\begin{algorithm}
-\caption{Beispiel für einen mit dem Paket \texttt{algpseudocodex} gesetzten
-Algorithmus zur bikubischen Interpolation in 2D (aus \cite{BurgerBurge2022}).
-Die in den Zeilen \ref{alg:wcub1} und \ref{alg:wcub2} verwendete Funktion
-$\Call{Cubic1D}{x}$ berechnet die Gewichtung des Werts für die eindimensionale
-Position $x$.}
-\label{alg:Example}
-
-\begin{algorithmic}[1]     % [1] = all lines are numbered
-\Function{BicubicInterpolation}{$I, x, y$} \Comment{two-dimensional interpolation}
-	\Input{$I$, original image; $x,y \in \R$, continuous position.}
-	\Returns{the interpolated pixel value at position $(x,y)$.\algsmallskip}
-	
-	\State $\mathit{val} \gets 0$
-	
-	\For{$j \gets 0, \ldots, 3$} \Comment{iterate over 4 lines}
-		\State $v \gets \lfloor y \rfloor - 1 + j$
-		\State $p \gets 0$
-		\For{$i \gets 0, \ldots, 3$} \Comment{iterate over 4 columns}
-			\State $u \gets \lfloor x \rfloor - 1 + i$
-			\State $p \gets p + I(u,v) \cdot \Call{Cubic1D}{x - u}$	\label{alg:wcub1}
-		\EndFor
-
-		\StateNN[2]{Sometimes it is useful to insert a longer, \emph{unnumbered}
-		statement extending over multiple lines with proper indentation. This
-		can be done with the (non-standard) command
-		\texttt{{\bs}StateNN[]\{..\}}. For long \emph{numbered} (multi-line)
-		statements use the standard \texttt{{\bs}State} command.}
-		
-		\State $\mathit{val} \gets \mathit{val} + p \cdot \Call{Cubic1D}{y - v}$
-				\label{alg:wcub2}
-	\EndFor
-	\State\Return $\mathit{val}$
-\EndFunction
-
-\medskip	% \medskip can be used here, because we are in vertical mode
-\hrule
-
-\Function{Cubic1D}{$x$} \Comment{piecewise cubic polynomial (1D)}
-	\State $z \gets 0$
-		\If{$|x| < 1$}
-			\State $z \gets |x|^3 - 2 \cdot |x|^2 + 1$
-		\ElsIf{$|x| < 2$}
-			\State $z \gets -|x|^3 + 5 \cdot |x|^2 - 8 \cdot |x| + 4$
-		\EndIf
-		\State\Return{$z$}
-\EndFunction
-
-\end{algorithmic}
-\end{algorithm}
-
-%% --------------------------
-
-\begin{program}
-% place caption consistently either at the top or bottom:
-\caption{Beispiel für die Auflistung von (Java) Programmcode als Float-Element.}
-\label{prog:CodeExample}
-\begin{JavaCode}
-import ij.ImagePlus;
-import ij.plugin.filter.PlugInFilter;
-import ij.process.ImageProcessor;
-
-public class My_Inverter implements PlugInFilter {
-	int agent_velocity;
-	String title = ""; 				// just to test printing of double quotes
-
-	public int setup (String arg, ImagePlus im) {
-		return DOES_8G;
-	}
-
-	public void run (ImageProcessor ip) {
-		int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/
-		int h = ip.getHeight();
-
-		/* iterate over all image coordinates */
-		for (int u = 0; u < w; u++) {
-			for (int v = 0; v < h; v++) {
-				int p = ip.getPixel(u, v);
-				ip.putPixel(u, v, 255 - p); // invert: /+\smash{$I'(u,v) \leftarrow (255 - I(u,v))$}\label{MathInCode}+/
-			}
-		}
-	}
-} // end of class /+My\_Inverter+/
-\end{JavaCode}
-%
-\end{program}
-
-\end{comment}
