@@ -1,22 +1,27 @@
-\chapter*{Exposé}
-\addcontentsline{toc}{chapter}{Exposé}
+\chapter{Exposé}
 
-
-\section*{Einleitung}
+\section{Einleitung}
 
 Der \emph{Deep Space 8K}\footnote{\url{https://ars.electronica.art/center/de/exhibitions/deepspace/}} des Ars Electronica Centers in Linz bietet mit seiner $16 \times 9$ Meter großen Projektionsfläche inklusive Positionstracking eine einzigartige Möglichkeit, Computerspiele zu realisieren. Diese Spiele verwenden keine klassischen Kontrollmechanismen wie Tastatur, Maus oder Gamepad sondern die Spieler*innen selbst "steuern" die Inhalte mit ihren Bewegungen. Darüber hinaus finden diese Spiele in einem halb-öffentlichen bis öffentlichen Raum statt, wodurch sich die Bestimmung der Zielgruppe sowie die Anzahl der spielenden Personen schwierig gestaltet. Diese Bachelorarbeit beleuchtet diese Problematik und stellt konkrete Lösungsvorschläge anhand eines Beispiels dar.
 
 
-\section*{Theoretischer Hintergrund und Stand der Forschung}
-\addcontentsline{toc}{section}{Theoretischer Hintergrund und Stand der Forschung}
+\section{Theoretischer Hintergrund und Stand der Forschung}
+\label{sec:hintergrund}
 
 Large Public Display Games (LPD Games) sind Spiele, die auf großen, öffentlich einsehbaren Projektionsflächen dargestellt werden. Derlei Installationen finden sich etwa in Museen (wie dem Ars Electronica Center) oder auch auf öffentlichen Plätzen. Personen können diese Spiele in der Regel jederzeit sehen und auch aktiv an ihnen teilnehmen. Durch diese Öffentlichkeit ergeben sich nach \cite{Finke2008} drei Arten von Personengruppen, die am Spiel beteiligt sind: \emph{Actors} nehmen aktiv am Spielgeschehen teil, \emph{Spectators} verfolgen dieses aktiv und \emph{Bystanders} befinden sich lediglich in der Umgebung der öffentlichen Installation. Das Ziel ist es, dass Bystanders zur Spectators und Spectators zu Actors werden, also das Spiel aktiv spielen. Dieser Prozess soll dabei möglichst fließend vonstattengehen und eine größtmögliche Anzahl an Personen umfassen. Ein derartiger Ansatz wurde in \cite{Hochleitner2013} als \emph{Smooth Transition Gameplay} bezeichnet. Anhand einer konkreten Anwendung wird dabei demonstriert, wie dieser Übergang erreicht werden kann, es wird jedoch nicht systematisch beschrieben, welche Faktoren dafür nötig sind.
 
 Einen möglichen Ansatzpunkt bieten dabei die verwendeten Spielmechaniken. Der in \cite{Schell2019} aufgestellten Kategorisierung folgend bieten sich hierbei vor allem Mechaniken aus den Bereichen Raum (Space), Handlungen (Actions) und Regeln (Rules) an. Dort angesiedelte Mechaniken können in einem entsprechenden Gamedesign so eingesetzt werden, dass in einem LPD Game die oben genannten Anforderungen -- möglichst einfacher Einstieg und gute Skalierbarkeit in Bezug auf die Anzahl der Spieler*innen -- erreicht werden.
 
+Siehe Abbildung \ref{fig:logo}. % Test
 
-\section*{Forschungsfrage}
-\addcontentsline{toc}{section}{Forschungsfrage}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.3\textwidth]{logo}
+	\caption{Dieses Bild dient nur als Test.}
+	\label{fig:logo}
+\end{figure}
+
+\section{Forschungsfrage}
 
 Aus diesen Ansätzen ergibt sich die folgende Forschungsfrage für diese Bachelorarbeit:
 %
@@ -25,19 +30,16 @@ Welche Spielmechaniken müssen auf welche Art und Weise in einem Gamedesign für
 \end{quote}
 
 
-\section*{Methodik}
-\addcontentsline{toc}{section}{Methodik}
+\section{Methodik}
 
 Um diese Frage zu beantworten, soll die Bachelorarbeit als eine Kombination von Literaturarbeit und praktischer \bzw prototypischer Umsetzung realisiert werden.
 
-Zunächst soll aus bestehender Literatur %(erweiternd zu Abschnitt \ref{sec:hintergrund}) % no labels!
-erörtert werden, wie mit dem Thema des Smooth Transition Gameplay aus Sicht des Gamedesigns umgegangen wurde. Gemeinsame Faktoren wie Mechaniken sollen daraus extrahiert werden und als Grundlage für ein eigenes, theoretisches Framework dienen. Dieses Framework soll schlussendlich eine Liste von Kernmechaniken und Richtlinien für deren Anwendung enthalten, sodass LPD Games einen leichten Einstieg sowie eine variable Anzahl von Spieler*innen ermöglichen.
+Zunächst soll aus bestehender Literatur (erweiternd zu Abschnitt \ref{sec:hintergrund}) erörtert werden, wie mit dem Thema des Smooth Transition Gameplay aus Sicht des Gamedesigns umgegangen wurde. Gemeinsame Faktoren wie Mechaniken sollen daraus extrahiert werden und als Grundlage für ein eigenes, theoretisches Framework dienen. Dieses Framework soll schlussendlich eine Liste von Kernmechaniken und Richtlinien für deren Anwendung enthalten, sodass LPD Games einen leichten Einstieg sowie eine variable Anzahl von Spieler*innen ermöglichen.
 
 Überprüft soll die Anwendbarkeit dieses Frameworks durch ein eigenes, im Rahmen des Semesterprojekts 5 entwickeltes, LPD Game werden. Durch einfache, qualitative Fragestellungen an die Spieler*innen und Beobachtungen der Besucher*innen während mehrerer Testläufe soll herausgefunden werden, ob der Gedanke des Smooth Transition Gameplays mit den verwendeten Mechaniken erreicht werden konnte.
 
 
-\section*{Erwartete Ergebnisse}
-\addcontentsline{toc}{section}{Erwartete Ergebnisse}
+\section{Erwartete Ergebnisse}
 
 Als konkretes Ergebnis wird ein Framework aus Spielmechaniken erstellt, welches als Grundlage für die Erstellung von LPD Games dienen soll. Es wird erwartet, dass sich solche konkreten Mechaniken finden und beschreiben lassen.
 

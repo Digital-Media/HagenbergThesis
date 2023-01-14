@@ -21,6 +21,12 @@
 \logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
+\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge} % remove "Kapitel 1"
+\renewcommand{\thechapter}{} % delete chapter counter
+\DeclareTOCStyleEntry[numwidth=0pt]{tocline}{chapter} % remove indentation for chapter numbering in TOC
+\counterwithout{section}{chapter} % remove chapter number from sections
+\counterwithout{figure}{chapter} % remove chapter number from figures
+
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
