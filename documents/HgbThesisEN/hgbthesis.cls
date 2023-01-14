@@ -33,12 +33,12 @@
 
 %% Handling class options --------------------------------------------------------------
 
-\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
+\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-\DeclareOption{proposal}{\setboolean{hgb@isProposal}{true}}	% no effect without 'bachelor' option
+\DeclareOption{proposal}{\setboolean{hgb@isProposal}{true}}	% use with 'bachelor' or 'master' option
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
@@ -180,8 +180,8 @@
 \newcommand{\@makebachelortitle}{%
 \begin{titlepage}%
 	\begin{german}
-		\rule{0mm}{1mm}
-		\vspace*{0mm}
+		\rule{0mm}{1mm}%
+		\vspace*{0mm}%
 		\begin{center}%
 			\@titlepagefont%
 			\setlength{\unitlength}{1cm}%
@@ -214,14 +214,24 @@
 \end{titlepage}%
 }
 
+\newcommand{\@mastertitlefinal}{
+	% use language switch to add english term
+	\@addspaces{MASTERARBEIT}%
+}
+
+\newcommand{\@mastertitleproposal}{
+	% use language switch to add english term
+	\@addspaces{MASTERARBEIT} \space (\@addspaces{EXPOS{É}})%
+}
+
 \newcommand{\@makemastertitle}{%
 \begin{titlepage}%
 	\begin{german}
-		\rule{0mm}{1mm}
-		\vspace*{0mm}
+		\rule{0mm}{1mm}%
+		\vspace*{0mm}%
 		\begin{center}%
 			\@titlepagefont %\normalfont
-			\setlength{\unitlength}{1cm}
+			\setlength{\unitlength}{1cm}%
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%%
 				\setlength{\baselineskip}{25pt}%
@@ -232,7 +242,11 @@
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Masterarbeit}}}%
+			%
+			\ifthenelse{\boolean{hgb@isProposal}}%
+					{\Large{\@mastertitleproposal}}%
+					{\Large{\@mastertitlefinal}}%
+			%
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
@@ -491,26 +505,8 @@ This work is published under the conditions of the
 
 %% Assembly of title pages ----------------------------------------------------
 
-\renewcommand{\@mastertitlepages}{
-	\@makemastertitle
-	%\ifthenelse{\equal{\@advisor}{}}%
-			%{}{\@advisorpage}%
-	\@advisorpage
-	\@copyrightpage
-	\@declarationpage
-}
-     
-\renewcommand{\@diplomatitlepages}{
-	\@makediplomatitle
-	%\ifthenelse{\equal{\@advisor}{}}%
-			%{}{\@advisorpage}%
-	\@advisorpage
-	\@copyrightpage
-	\@declarationpage
-}
-
 \renewcommand{\@bachelortitlepages}{
-	\@makebachelortitle
+	\@makebachelortitle%
 	\ifthenelse{\boolean{hgb@isProposal}}%
 		{%	thesis proposal:
 			\@proposalsetup%
@@ -520,10 +516,37 @@ This work is published under the conditions of the
 		}%			
 		{%	final thesis:
 			\@advisorpage%
-			\@copyrightpage
-			\@declarationpage
+			\@copyrightpage%
+			\@declarationpage%
 		}%
 }
+
+\renewcommand{\@mastertitlepages}{
+	\@makemastertitle
+	\ifthenelse{\boolean{hgb@isProposal}}%
+		{%	thesis proposal:
+			\@proposalsetup%
+			\@advisorpage%
+			%no copyright page for proposals
+			%no declaration page for proposals
+		}%			
+		{%	final thesis:
+			\@advisorpage%
+			\@copyrightpage%
+			\@declarationpage%
+		}%
+}
+
+\renewcommand{\@diplomatitlepages}{
+	\@makediplomatitle
+	%\ifthenelse{\equal{\@advisor}{}}%
+			%{}{\@advisorpage}%
+	\@advisorpage
+	\@copyrightpage
+	\@declarationpage
+}
+
+
 
 \renewcommand{\@internshiptitlepages}{
 	\@makeinternshiptitle
