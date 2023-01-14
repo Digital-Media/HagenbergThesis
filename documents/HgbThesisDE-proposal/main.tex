@@ -9,7 +9,8 @@
 
 \documentclass[bachelor,proposal,german,smartquotes]{hgbthesis}
 % Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship' 
+%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
+%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (dzt. nur für 'bachelor')
 %    Hauptsprache: 'german' (default), 'english'
 %    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
 %    APA Zitierstil: 'apa'
@@ -21,12 +22,6 @@
 \logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
-\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge} % remove "Kapitel 1"
-\newcommand\noentrynumber[1]{} % define an empty entry format for the TOC chapter numbering
-\DeclareTOCStyleEntry[entrynumberformat=\noentrynumber,numwidth=0pt]{tocline}{chapter} % set empty number and remove indentation for chapter numbering in TOC
-\counterwithout{section}{chapter} % remove chapter number from sections
-\counterwithout{figure}{chapter} % remove chapter number from figures
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}} % remove chapter number from header
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
