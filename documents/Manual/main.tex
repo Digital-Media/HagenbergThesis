@@ -54,8 +54,11 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report} and
 \end{itemize}
 
 
-\subsection{Class options} 
-All document classes accept the following \textbf{general options}:
+\subsection{Class options}
+
+\subsubsection{General options}
+
+All document classes accept the following general options:
 %
 \begin{itemize}
     \item \texttt{english} or \texttt{german} (select the primary language),
@@ -64,8 +67,11 @@ All document classes accept the following \textbf{general options}:
     \texttt{numeric-comp}),
     \item \texttt{noUpdateCheck} (suppress check of package release date).
 \end{itemize}
-%
-In addition, the following \textbf{class-specific options} are accepted:
+
+
+\subsubsection{Class-specific options}
+
+In addition, the following class-specific options are accepted:
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}}:
@@ -81,14 +87,17 @@ For example, to start a master's thesis in German one would simply simply place
 \end{LaTeXCode}
 %
 at the beginning of the document.
-The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'') and is currently 
-only effective in \emph{conjunction} with the \texttt{bachelor} option, \eg,
+
+The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'') and is 
+only effective in \emph{conjunction} with the \texttt{bachelor} and \texttt{master} 
+options, \eg,
 %
 \begin{LaTeXCode}[numbers=none]
 \documentclass[bachelor,proposal,german,smartquotes]{hgbthesis}
 \end{LaTeXCode}
 %
-
+To migrate a proposal document to the final thesis, only the \texttt{proposal} 
+needs to be removed.
 
 \subsection{Thesis parameters (class \texttt{hgbthesis})}
 
