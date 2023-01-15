@@ -267,12 +267,18 @@ konkrete Strichstärken ($\geq 0.25\,\mathrm{pt}$) einstellen!
 \label{sec:tex-schriften-in-grafiken}
 
 Grundsätzlich sollten auch die in Grafiken verwendete Schriften möglichst genau
-mit der Schrift im Haupttext übereinstimmen. Bei Abbildungen, die mit externen
-Grafikprogrammen erzeugt werden, kann man
-zumindest \emph{ähnlich} aussehende Schriften (wie \emph{Times-Roman} oder
+mit der Schrift im Haupttext übereinstimmen. Eine interessantes Werkzeug dafür
+ist der \emph{Ipe Extensible Drawing Editor},%
+\footnote{\url{https://ipe.otfried.org/}}
+ein Zeichenprogramm, das Texte in Grafiken direkt mit \latex\ generiert
+(einschließlich mathematischer Ausdrücke) und PDF als Fileformat verwendet.
+
+Bei Abbildungen, die mit anderen externen Grafikprogrammen erzeugt werden, kann
+man zumindest \emph{ähnlich} aussehende Schriften (wie \emph{Times-Roman} oder
 \emph{Garamond}) verwenden. Es ist aber auch möglich, die 
 \emph{Computer-Modern} (CM) Schriftfamilie von {\tex}/{\latex} direkt
 zur Erzeugung von Grafiken einzusetzen.
+Es stehen einige Portierungen von CM als \emph{TrueType}-Schriften zur
 Es stehen einige Portierungen von CM als \emph{TrueType}-Schriften zur
 Verfügung, die auch in herkömmlichen Grafikprogrammen unter \emph{Windows}
 und \emph{Mac~OS} verwendet werden können:
