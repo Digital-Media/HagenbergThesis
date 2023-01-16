@@ -13,8 +13,9 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added a section in `HgbThesisTutorial` about APA with instructions on how to enable it and an overview of the citation commands and the resulting reference list.
 - 2021/03/02: [#119](https://github.com/Digital-Media/HagenbergThesis/discussions/119): Added `\email` macro in `hgb.sty` to print correct email addresses in documents and the preamble.
 - 2021/06/24: [#127](https://github.com/Digital-Media/HagenbergThesis/issues/127): Added `\backmatter` section to `main.tex` to avoid things like a list of figures or acronyms being treated as appendices.
-- 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Expanded the section about tables in `HgbThesisTutorial` to include more information on how to create tables, multi-page tables, as well as connecting rows and columns.
+- 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Expanded the table section in `HgbThesisTutorial` to include more information on how to create tables, multi-page tables, and connecting rows and columns.
 - 2023/01/03: [#146](https://github.com/Digital-Media/HagenbergThesis/issues/146): Include DOIs in references. Clear `url` field if a `doi` entry is present to avoid duplicate entries.
+- 2023/01/16: [#155](https://github.com/Digital-Media/HagenbergThesis/issues/155): Added the option `proposal` for `hgbthesis` class documents with either the `bachelor` or `master` option active. Provided the two example documents, `HgbThesisDE-proposal` and `HgbThesisEN-proposal`, with an example exposé for a bachelor's thesis.
 
 ### Changed
 
@@ -27,7 +28,7 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Reworked all tables using the `booktabs` package for a more modern and cleaner look.
 - 2023/01/09: [#151](https://github.com/Digital-Media/HagenbergThesis/pull/151): Re-formatted the source code of all example documents for a cleaner look. Line breaks are at 80 characters per line.
 - 2023/01/12: [#135](https://github.com/Digital-Media/HagenbergThesis/issues/135): Added a guide on including SVG files in the document to the project's wiki: https://github.com/Digital-Media/HagenbergThesis/wiki/Including-SVGs. Also removed "Creating vector graphics using Inkscape" from `abbildungen.tex` into a wiki article: https://github.com/Digital-Media/HagenbergThesis/wiki/Vector-Graphics-with-Inkscape
-- 2023/01/13: [#141](https://github.com/Digital-Media/HagenbergThesis/issues/141): Updated `HgbThesisTutorial` and all other documents. Removed outdated content, added or changed information where necessary.
+- 2023/01/13: [#141](https://github.com/Digital-Media/HagenbergThesis/issues/141): Updated `HgbThesisTutorial` and all other documents. Removed outdated content and added or changed information where necessary.
 - 2022/01/13: [#142](https://github.com/Digital-Media/HagenbergThesis/issues/142): Updated the content of `references.bib`. Updated versions of various manuals and online sources.
 
 ### Fixed
