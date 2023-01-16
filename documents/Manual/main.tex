@@ -19,7 +19,7 @@ Department of Digital Media, Hagenberg (Austria)}
 
 \begin{abstract}\noindent
 The \textsf{hagenberg-thesis} package is a collection of modern LaTeX
-templates for university theses (bachelor, master or diploma programs) and
+templates for university theses (bachelor, master or, diploma programs) and
 related documents. This manual describes the main features of this package.
 Pre-configured document templates for English and German manuscripts and a
 complete tutorial are available on the package's home repository.
@@ -41,12 +41,12 @@ Attribution 4.0 International Public License.%
 \section{Document classes}
 
 The \texttt{hgb} package provides the following document classes, which are
-based on the standard \latex\ classes \texttt{book}, \texttt{report} and
+based on the standard \latex\ classes \texttt{book}, \texttt{report}, and
 \texttt{article}, respectively:
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}} (\texttt{book}):
-    for bachelor's, master's and diploma theses;
+    for bachelor's, master's, and diploma theses;
     \item \textbf{\texttt{hgbreport}} (\texttt{report}):
     for project and term reports;
     \item \textbf{\texttt{hgbarticle}} (\texttt{article}):
@@ -54,8 +54,11 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report} and
 \end{itemize}
 
 
-\subsection{Class options} 
-All document classes accept the following \textbf{general options}:
+\subsection{Class options}
+
+\subsubsection{General options}
+
+All document classes accept the following general options:
 %
 \begin{itemize}
     \item \texttt{english} or \texttt{german} (select the primary language),
@@ -64,17 +67,20 @@ All document classes accept the following \textbf{general options}:
     \texttt{numeric-comp}),
     \item \texttt{noUpdateCheck} (suppress check of package release date).
 \end{itemize}
-%
-In addition, the following \textbf{class-specific options} are accepted:
+
+
+\subsubsection{Class-specific options}
+
+In addition, the following class-specific options are accepted:
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}}:
-    \texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship};
+    \texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship}, \texttt{proposal};
     \item \textbf{\texttt{hgbreport}}: \texttt{notitlepage};
     \item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}.
 \end{itemize}
 %
-For example, to start a master's thesis in German one would simply simply place
+For example, to start a master's thesis in German, simply place
 %
 \begin{LaTeXCode}[numbers=none]
 \documentclass[master,german,smartquotes]{hgbthesis}
@@ -82,6 +88,18 @@ For example, to start a master's thesis in German one would simply simply place
 %
 at the beginning of the document.
 
+The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'') and is 
+only effective in \emph{conjunction} with the \texttt{bachelor} and \texttt{master} 
+options, \eg,
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[bachelor,proposal,german,smartquotes]{hgbthesis}
+\end{LaTeXCode}
+%
+This option is meant for a short exposé, containing only one chapter. Thus,
+chapter numbers are not displayed. Remove the \texttt{proposal} option to
+migrate a proposal document to the final thesis (and restore the usual
+numbering scheme).
 
 \subsection{Thesis parameters (class \texttt{hgbthesis})}
 
@@ -197,7 +215,7 @@ space, \ie, they can be used without additional controls, as in
     contiguous) list of references.
     \item
     \textbf{\texttt{{\bs}citenobr\{\emph{keys}\}}}: Analogous to the standard
-    \texttt{{\bs}cite\{\emph{keys}\}} command, but inserts no ``backref''
+    \texttt{{\bs}cite\{\emph{keys}\}} command but inserts no ``backref''
     page numbers in the bibliography.
     \item
     \textbf{\texttt{{\bs}mcite%
@@ -206,7 +224,7 @@ space, \ie, they can be used without additional controls, as in
         \ldots
         [\emph{textN}]\{\emph{keyN}\}%
     }}:
-    Analogous to \texttt{bib\-la\-tex}'s \texttt{{\bs}cites} command,%
+    Analogous to \texttt{bib\-la\-tex}'s \texttt{{\bs}cites} command%
     \footnote{%
     \url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
     (see Sec.~3.8.3)} but inserts semicolons between reference entries for
@@ -255,7 +273,7 @@ line numbers:
 
 \texttt{hgbmath} requires (and automatically loads) the \texttt{amsmath}%
 \footnote{\url{https://ctan.org/pkg/amsmath}}
-package, thus all commands and symbols of \texttt{amsmath} are available by
+package, thus, all commands and symbols of \texttt{amsmath} are available by
 default. The following \emph{additional} commands can only be used in math mode:
 %
 \begin{itemize}
@@ -273,10 +291,10 @@ default. The following \emph{additional} commands can only be used in math mode:
 the \texttt{algorithmicx} and \texttt{algpseudocodex} packages.%
 \footnote{\url{https://ctan.org/pkg/algorithmicx},
     \url{https://ctan.org/pkg/algpseudocodex}}
-It fixes some (mostly indentation-related) problems, adds color and provides
+It fixes some (mostly indentation-related) problems, adds color, and provides
 some additional commands. It also loads the \texttt{algorithm}%
 \footnote{\url{https://ctan.org/pkg/algorithms}}
-package which defines a compatible float container for algorithms:
+package, which defines a compatible float container for algorithms:
 \verb!\begin{algorithm}! \verb!...! \verb!\end{algorithm}!.
 
 \paragraph{Additional user commands:}

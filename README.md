@@ -2,11 +2,11 @@
 
 ## What You Find Here
 
-This is a collection of modern LaTeX classes, style files, and example documents for authoring **Bachelor, Master or Diploma theses** and related academic manuscripts in English and German. 
+This is a collection of modern LaTeX classes, style files, and example documents for authoring **Bachelor, Master, or Diploma theses** and related academic manuscripts in English and German. 
 Pre-configured English and German documents are available, easy to use even for LaTeX beginners, and compatible with LaTeX distributions for Windows, Mac OS, and Linux. The document classes are immediately usable and convenient to customize.
 
-The main document '[**HgbThesisTutorial**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorial/main.pdf)' serves both as a **template** and **tutorial** for authoring a Bachelor, Master or Diploma thesis with LaTeX. 
-Developed initially as an internal standard at the Upper Austria University of Applied Sciences in Hagenberg, this setup has become popular at several other (mostly German-speaking) institutions over the last years.
+The main document, '[**HgbThesisTutorial**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorial/main.pdf)', serves both as a **template** and **tutorial** for authoring a bachelor, master, or diploma thesis with LaTeX. 
+Developed initially as an internal standard at the Upper Austria University of Applied Sciences in Hagenberg, this setup has become popular at several other (mostly German-speaking) institutions over the last few years.
 
 This site is the main repository for the **hagenberg-thesis** package, which is also available on [CTAN](https://ctan.org/pkg/hagenberg-thesis) and shared by popular package repositories such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texlive/).
 Note that the **most recent versions are always found *here***, while only periodic [releases](https://github.com/Digital-Media/HagenbergThesis/releases) are submitted to CTAN.
@@ -22,7 +22,7 @@ Make sure you have a current LaTeX environment installed.
 
 ### Online Usage (Single-click Authoring)
 
-The sample documents can also be used in online mode without having to install LaTeX on your computer.
+The sample documents can also be edited in a web browser without installing LaTeX on your computer.
 Use the **create** links in the table below to open the document on **[Overleaf](https://www.overleaf.com/)**.
 
 
@@ -41,6 +41,8 @@ The following sample documents (with numerical citations using `numeric-comp`) a
 | `HgbLabReportEN` | Lab Report (weekly assignments) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN.zip) |
 | `HgbTermReport` | Term/Project Report (full semester) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip) |
 | `HgbArticle` | Journal Article | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip) |
+| `HgbThesisDE-proposal` | Thesis Proposal (Exposé) | German | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal.zip) |
+| `HgbThesisEN-proposal` | Thesis Proposal (Exposé) | English | [preview](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal.zip) |
 
 ### APA Style Documents
 
@@ -65,4 +67,5 @@ The **hagenberg-thesis** classes and styles try to provide as much functionality
 * [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
 * [Recent changes](CHANGELOG.md)
 * [License](LICENSE.md)
-* [NEW: Discussions](https://github.com/Digital-Media/HagenbergThesis/discussions)
+* [Issues](https://github.com/Digital-Media/HagenbergThesis/issues)
+* [Discussions](https://github.com/Digital-Media/HagenbergThesis/discussions)

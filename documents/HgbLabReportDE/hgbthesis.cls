@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2023/01/12]%%AUTO
+\ProvidesClass{hgbthesis}[2023/01/16]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -26,19 +26,23 @@
 \newcommand{\@internshiptitlepages}{}
 \newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
 
+\newboolean{hgb@isProposal}
+\setboolean{hgb@isProposal}{false}
 
 \newcommand{\@titlepagefont}{\sffamily}
 
 %% Handling class options --------------------------------------------------------------
 
-\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
 \DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
+\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
+\DeclareOption{proposal}{\setboolean{hgb@isProposal}{true}}	% use with 'bachelor' or 'master' option
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
+
 
 %% Paper Options and Style File -----------------------------------------------
 
@@ -95,6 +99,25 @@
 	{\includegraphics[height=30mm]{\@logofile}}%
 }
 
+% Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
+\newcommand{\@proposalsetup}[0]{%
+	% remove "Kapitel 1" (titlesec):
+	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
+	% define an empty entry format for the TOC chapter numbering (tocbasic)
+	\newcommand\noentrynumber[1]{}
+	% set empty number and remove indentation for chapter numbering in TOC (tocbasic)
+	\DeclareTOCStyleEntry[entrynumberformat=\noentrynumber,numwidth=0pt]{tocline}{chapter}
+	 % remove chapter number from sections and figures (basic LaTeX):
+	\counterwithout{section}{chapter}
+	\counterwithout{figure}{chapter}
+	\counterwithout{table}{chapter}
+	\counterwithout{equation}{chapter}
+	\counterwithout{program}{chapter}
+	\counterwithout{algorithm}{chapter}
+	% remove chapter number from header (fancyhdr):
+	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+}
+
 % Submission Commands
 
 \newcounter{@dayofsubmission}
@@ -136,37 +159,48 @@
 
 %% Commands for Creating the Title Pages --------------------------------------
 
-
-
-%% adds blank space after each letter (http://stackoverflow.com/a/3951837)
+%% dirty trick: adds blank space after each letter (https://stackoverflow.com/a/3951837)
 \newcommand{\@addspaces}[1]{%  
   \@tfor\letter:=#1\do{%
     \letter\thinspace%	%\space
-  }%
+  }\negthinspace%
 }
 
-\newcommand{\@bachelortitle}{%
+
+\newcommand{\@bachelortitlefinal}{
+	% use language switch to add english term
+	\@addspaces{BACHELORARBEIT}%
+}
+
+\newcommand{\@bachelortitleproposal}{
+	% use language switch to add english term
+	\@addspaces{BACHELORARBEIT} \space (\@addspaces{EXPOS{É}})%
+}
+
+\newcommand{\@makebachelortitle}{%
 \begin{titlepage}%
 	\begin{german}
-		\rule{0mm}{1mm}
-		\vspace*{0mm}
+		\rule{0mm}{1mm}%
+		\vspace*{0mm}%
 		\begin{center}%
-			\@titlepagefont %\normalfont
-			\setlength{\unitlength}{1cm}
+			\@titlepagefont%
+			\setlength{\unitlength}{1cm}%
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
 				\setlength{\baselineskip}{25pt}%
 				\@title%
 			}
 			\vskip 15mm%
-			{\large\@author}%{\large\scshape\@author}%
+			{\large\@author}%
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Bachelorarbeit}}}%
+			%
+			\ifthenelse{\boolean{hgb@isProposal}}%
+					{\Large{\@bachelortitleproposal}}%
+					{\Large{\@bachelortitlefinal}}%
 			\vskip 4mm%
-			%{\large Nr.~\@thesisnumber}
-			%\vskip 4mm%
+			%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
@@ -180,14 +214,24 @@
 \end{titlepage}%
 }
 
-\newcommand{\@mastertitle}{%
+\newcommand{\@mastertitlefinal}{
+	% use language switch to add english term
+	\@addspaces{MASTERARBEIT}%
+}
+
+\newcommand{\@mastertitleproposal}{
+	% use language switch to add english term
+	\@addspaces{MASTERARBEIT} \space (\@addspaces{EXPOS{É}})%
+}
+
+\newcommand{\@makemastertitle}{%
 \begin{titlepage}%
 	\begin{german}
-		\rule{0mm}{1mm}
-		\vspace*{0mm}
+		\rule{0mm}{1mm}%
+		\vspace*{0mm}%
 		\begin{center}%
 			\@titlepagefont %\normalfont
-			\setlength{\unitlength}{1cm}
+			\setlength{\unitlength}{1cm}%
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%%
 				\setlength{\baselineskip}{25pt}%
@@ -198,7 +242,11 @@
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Masterarbeit}}}%
+			%
+			\ifthenelse{\boolean{hgb@isProposal}}%
+					{\Large{\@mastertitleproposal}}%
+					{\Large{\@mastertitlefinal}}%
+			%
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
@@ -214,7 +262,7 @@
 \end{titlepage}%
 }
 
-\newcommand{\@diplomatitle}{%
+\newcommand{\@makediplomatitle}{%
 \begin{titlepage}%
 	\begin{german}
 		\rule{0mm}{1mm}
@@ -248,7 +296,7 @@
 \end{titlepage}%
 }
 
-\newcommand{\@internshiptitle}{%
+\newcommand{\@makeinternshiptitle}{%
 \begin{titlepage}%
 	\begin{german}
 		\rule{0mm}{1mm}
@@ -366,20 +414,35 @@ This work is published under the conditions of the
 
 %% Advisor Page ----------------------------------------
 
+\newcommand{\@advisorheaderfinal}{
+	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			{Betreuung}%
+			{Advisor}%
+}
+
+\newcommand{\@advisorheaderproposal}{
+	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			{Betreuung (Vorschlag)}%
+			{Proposed Advisor}%
+}
+
 \newcommand{\@advisorpage}{%
-	\newpage
-	\setcounter{page}{2}
-	\thispagestyle{plain}
-	\rule{0mm}{1mm}
-	\vspace{90mm}
-	\begin{center}
-		\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-			{Betreuung:}%
-			{Advisor:}%
-		\\
-		\vspace{3mm} 
-		{\Large\sf \@advisor\\ \mbox{}}
-	\end{center}
+	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor not defined 
+		{}{%
+		\newpage
+		\setcounter{page}{2}
+		\thispagestyle{plain}
+		\rule{0mm}{1mm}
+		\vspace{90mm}
+		\begin{center}
+			\ifthenelse{\boolean{hgb@isProposal}}%
+				{\@advisorheaderproposal:}%
+				{\@advisorheaderfinal:}%
+			\\
+			\vspace{3mm} 
+			{\Large\sf \@advisor\\ \mbox{}}
+		\end{center}
+		}
 }
 
 %% Declaration Pages in German and English ------------------------------------
@@ -442,32 +505,51 @@ This work is published under the conditions of the
 
 %% Assembly of title pages ----------------------------------------------------
 
-\renewcommand{\@mastertitlepages}{
-	\@mastertitle
-	\ifthenelse{\equal{\@advisor}{}}%
-			{}{\@advisorpage}%
-	\@copyrightpage
-	\@declarationpage
+\renewcommand{\@bachelortitlepages}{
+	\@makebachelortitle%
+	\ifthenelse{\boolean{hgb@isProposal}}%
+		{%	thesis proposal:
+			\@proposalsetup%
+			\@advisorpage%
+			%no copyright page for proposals
+			%no declaration page for proposals
+		}%			
+		{%	final thesis:
+			\@advisorpage%
+			\@copyrightpage%
+			\@declarationpage%
+		}%
 }
-     
+
+\renewcommand{\@mastertitlepages}{
+	\@makemastertitle
+	\ifthenelse{\boolean{hgb@isProposal}}%
+		{%	thesis proposal:
+			\@proposalsetup%
+			\@advisorpage%
+			%no copyright page for proposals
+			%no declaration page for proposals
+		}%			
+		{%	final thesis:
+			\@advisorpage%
+			\@copyrightpage%
+			\@declarationpage%
+		}%
+}
+
 \renewcommand{\@diplomatitlepages}{
-	\@diplomatitle
-	\ifthenelse{\equal{\@advisor}{}}%
-			{}{\@advisorpage}%
+	\@makediplomatitle
+	%\ifthenelse{\equal{\@advisor}{}}%
+			%{}{\@advisorpage}%
+	\@advisorpage
 	\@copyrightpage
 	\@declarationpage
 }
 
-\renewcommand{\@bachelortitlepages}{
-	\@bachelortitle
-	\ifthenelse{\equal{\@advisor}{}}%
-			{}{\@advisorpage}%
-	\@copyrightpage
-	\@declarationpage
-}
+
 
 \renewcommand{\@internshiptitlepages}{
-	\@internshiptitle
+	\@makeinternshiptitle
 	\@companypage
 	\@copyrightpage
 	\@declarationpage
