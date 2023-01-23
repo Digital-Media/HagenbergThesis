@@ -51,31 +51,31 @@
 \maketitle
 \tableofcontents
 
-\include{front/vorwort} % A preface is optional
-\include{front/kurzfassung}		
-\include{front/abstract}			
+\include{front/preface} % A preface is optional
+\include{front/abstract}
+\include{front/kurzfassung}
 
 %%%-----------------------------------------------------------------------------
 \mainmatter                                    % Main part (arabic page numbers)
 %%%-----------------------------------------------------------------------------
 
-\include{chapters/einleitung}
-\include{chapters/abschlussarbeit}
+\include{chapters/introduction}
+\include{chapters/thethesis}
 \include{chapters/latex}
-\include{chapters/abbildungen}
-\include{chapters/mathematik}
-\include{chapters/literatur}
-\include{chapters/drucken}
-\include{chapters/schluss}
+\include{chapters/figures}
+\include{chapters/mathematics}
+\include{chapters/literature}
+\include{chapters/printing}
+\include{chapters/closing}
 
 %%%-----------------------------------------------------------------------------
 \appendix                                                             % Appendix
 %%%-----------------------------------------------------------------------------
 
-\include{back/anhang_a} % Technical supplements
-\include{back/anhang_b} % Contents of the CD-ROM/DVD
-\include{back/anhang_c} % Chronological list of changes
-\include{back/anhang_d} % Source text of this document
+\include{back/appendix_a} % Technical supplements
+\include{back/appendix_b} % Contents of the CD-ROM/DVD
+\include{back/appendix_c} % Chronological list of changes
+\include{back/appendix_d} % Source text of this document
 
 %%%-----------------------------------------------------------------------------
 \backmatter                           % Back part (bibliography, glossary, etc.)
@@ -87,7 +87,7 @@
 % Special page for checking print size
 %%%-----------------------------------------------------------------------------
 
-\include{back/messbox}
+\include{back/printbox}
 
 %%%-----------------------------------------------------------------------------
 \end{document}
