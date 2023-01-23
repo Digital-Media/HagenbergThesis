@@ -1,94 +1,84 @@
-\chapter{Vorwort} 	% engl. Preface
+\chapter{Preface} % German: Vorwort
 
+This is \textbf{version \hgbDate} of the \latex document template for various
+theses at the School of Informatics, Communication and Media at the University
+of Applied Sciences Upper Austria in Hagenberg. This collection of documents is
+known to be used at other universities in Austria and abroad.
 
-Dies ist \textbf{Version \hgbDate} der \latex-Dokumentenvorlage für
-verschiedene Abschlussarbeiten an der Fakultät für Informatik, Kommunikation
-und Medien der FH Oberösterreich in Hagenberg, die mittlerweile auch an
-anderen Hochschulen im In- und Ausland gerne verwendet wird.
+The document was initially created in response to requests from students after
+the 2000/01 academic year when an official \latex introductory course was
+offered for the first time in Media Technology and Design at the Hagenberg
+Campus of the University of Applied Sciences. The fundamental idea was to
+"simply" convert the already existing \emph{Microsoft Word} template for
+diploma theses to \latex\ and possibly to add some unique features. This quickly
+turned out to be not very useful since \latex, especially concerning the
+handling of literature and graphics, requires a substantially different way of
+working. The result is--- rewritten from scratch and much more extensive than
+the previous document---a manual for writing with \latex, supplemented with
+additional (meanwhile removed) hints for \emph{Word} users. Technical details
+of the current version can be found in appendix \ref{app:TechnicalDetails}.
 
-Das Dokument entstand ursprünglich auf Anfragen von Studierenden, nachdem im
-Studienjahr 2000/01 erstmals ein offizieller \latex-Grundkurs im Studiengang
-Medientechnik und -design an der FH Hagenberg angeboten wurde. Eigentlich war
-die Idee, die bereits bestehende \emph{Word}-Vorlage für Diplomarbeiten
-"einfach" in \latex\ zu übersetzen und dazu eventuell einige spezielle
-Ergänzungen einzubauen. Das erwies sich rasch als wenig zielführend, da
-\latex, \va was den Umgang mit Literatur und Grafiken anbelangt, doch eine
-wesentlich andere Arbeitsweise verlangt. Das Ergebnis ist -- von Grund auf
-neu geschrieben und wesentlich umfangreicher als das vorherige Dokument --
-letztendlich eine Anleitung für das Schreiben mit \latex, ergänzt mit einigen
-speziellen (mittlerweile entfernten) Hinweisen für \emph{Word}-Benutzer*innen
-. Technische Details zur aktuellen Version finden sich in Anhang
-\ref{app:TechnischeInfos}.
+While this document was initially intended exclusively for the preparation
+of diploma theses, it now also covers \emph{master theses},
+\emph{bachelor theses}, and \emph{internship reports}. The differences between
+these documents have been deliberately kept small.
 
-Während dieses Dokument anfangs ausschließlich für die Erstellung von
-Diplomarbeiten gedacht war, sind nunmehr auch \emph{Masterarbeiten},
-\emph{Bachelor\-arbeiten} und \emph{Praktikumsberichte} abgedeckt, wobei die
-Unterschiede bewusst gering gehalten wurden.
+When creating this template, an attempt was made to work with the basic
+functionality of \latex and---as far as possible---to achieve this without
+additional packages. This was only partially successful; several supplementary
+"packages" are necessary, but only common extensions have been used. Of course,
+there is a large number of additional packages which can be helpful for further
+improvements and refinements. Everyone is encouraged to experiment with these as
+soon as they have the necessary self-confidence and sufficient time to
+experiment. Many details and tricks are not explicitly mentioned in this
+document but can be explored in the corresponding source code at any time.
 
-Bei der Zusammenstellung dieser Vorlage wurde versucht, mit der
-Basisfunktionalität von \latex das Auslangen zu finden und -- soweit möglich
--- auf zusätzliche Pakete zu verzichten. Das ist nur zum Teil gelungen;
-tat\-säch\-lich ist eine Reihe von ergänzenden "Paketen" notwendig, wobei
-jedoch nur auf gängige Erweiterungen zurückgegriffen wurde.
-Selbstverständlich gibt es darüber hinaus eine Vielzahl weiterer Pakete, die
-für weitere Verbesserungen und Finessen nützlich sein können. Damit kann sich
-aber jede*r selbst beschäftigen, sobald das notwendige Selbstvertrauen und
-genügend Zeit zum Experimentieren vorhanden sind. Eine Vielzahl von Details
-und Tricks sind zwar in diesem Dokument nicht explizit angeführt, können aber
-im zugehörigen Quelltext jederzeit ausgeforscht werden.
+Numerous colleagues have provided valuable support through careful proofreading
+and constructive suggestions for improvement. We thank Heinz Dobler for
+consistently improving our "computer slang" and Elisabeth Mitterbauer for her
+proven orthographic eye.
 
-Zahlreiche Kolleg*innen haben durch sorgfältiges Korrekturlesen und
-konstruktive Verbesserungsvorschläge wertvolle Unterstützung geliefert.
-Speziell bedanken möchte ich mich bei Heinz Dobler für die konsequente
-Verbesserung meines "Computer Slangs" und bei Elisabeth Mitterbauer für das
-bewährte orthographische Auge.
+Usage of this template is free without any restrictions and not bound to any
+mention. However, when used as a basis for one's work, one should not simply
+start working on it, but at least \emph{read} the essential parts of the
+document and, if possible, take them to heart. Experience has shown that this
+improves the quality of the results significantly.
 
-Die Verwendung dieser Vorlage ist uneingeschränkt freigestellt und an
-keinerlei Erwähnung gebunden. Allerdings, wer sie als Grundlage der eigenen
-Arbeit verwenden möchte, sollte nicht einfach ("ung'schaut") darauf los
-werken, sondern zumindest die wichtigsten Teile des Dokuments \emph{lesen}
-und nach Möglichkeit auch beherzigen. Die Erfahrung zeigt, dass dies die
-Qualität der Ergebnisse deutlich zu steigern vermag.
-
-Dieses Dokument und die zugehörigen \latex-Klassen sind seit November 2017
-auf CTAN%
+This document and the associated \latex classes have been available since
+November 2017 on CTAN%
 \footnote{Comprehensive TeX Archive Network} 
-als Paket \texttt{hagenberg-thesis} verfügbar unter
+as package \texttt{hagenberg-thesis}
 %
 \begin{itemize}
-    \item[]\url{https://ctan.org/pkg/hagenberg-thesis}.
+	\item[]\url{https://ctan.org/pkg/hagenberg-thesis}.
 \end{itemize}
 %
-Den jeweils aktuellen Quelltext sowie zusätzliche Materialien -- etwa ein Wiki
-mit Anleitungen zur Integration von oft angefragten Funktionalitäten \bzw
-Erweiterungen -- findet man unter
+The current source code, as well as additional materials---such as a wiki with
+instructions for the integration of often requested functionalities and
+extensions---can be found at
 %
 \begin{itemize}
-    \item[]\url{https://github.com/Digital-Media/HagenbergThesis}.%
-    \footnote{Unter
-    \url{https://github.com/Digital-Media/HagenbergThesis/blob/main/CHANGELOG.md}
-    findet man auch eine (früher im Anhang dieses Dokuments enthaltene)
-    chronologische Auflistung der Änderungen.}
+	\item[]\url{https://github.com/Digital-Media/HagenbergThesis}.%
+	\footnote{\url{https://github.com/Digital-Media/HagenbergThesis/blob/main/CHANGELOG.md}
+	contains a change\-log with a chronological list of changes (formerly
+	included in the appendix of this document).}
 \end{itemize}
 
 \noindent
-Trotz großer Mühe enthält ein Dokument wie dieses immer Fehler und
-Unzulänglichkeiten -- Kommentare, Verbesserungsvorschläge und sinnvolle
-Ergänzungen sind daher willkommen, am einfachsten als Kommentar oder
-Fehlermeldung ("Issue") auf GitHub.
+Despite great effort, a document like this always contains errors and
+shortcomings. Comments, suggestions, and valuable additions are welcome.
+Ideally, as comments or issues on GitHub.
 
-Übrigens, hier im Vorwort (das bei Diplom- und Masterarbeiten üblich, bei
-Bachelor\-arbeiten aber entbehrlich ist) kann kurz auf die Entstehung des
-Dokuments eingegangen werden. Hier ist auch der Platz für allfällige
-Danksagungen (\zB an den*die Betreuer*in, den*die Begutachter*in, die
-Familie, den Hund, \ldots), Widmungen und philosophische Anmerkungen. Das
-sollte man allerdings auch nicht übertreiben und auf einen Umfang von maximal
-zwei Seiten beschränken.
+By the way, here, in the preface (which is typical for diploma and master theses
+but dispensable for bachelor's theses), you can briefly describe the genesis of
+the document. This is also the place for any acknowledgments (e.g., to the
+supervisor, the examiner, the family, the dog, \etc) as well as dedications and
+philosophical remarks. These should be balanced and limited to a maximum of two
+pages.
 
 \vspace{6ex}
 \noindent
 W.\ Burger (em.), W.\ Hochleitner\newline
-Department für Digitale Medien\newline
-Fachhochschule Oberösterreich, Campus Hagenberg\newline
+Department of Digital Media\newline
+University of Applied Sciences Upper Austria, Hagenberg Campus \newline
 \url{https://www.fh-ooe.at/campus-hagenberg/}
-
