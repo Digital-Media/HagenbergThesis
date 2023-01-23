@@ -1,0 +1,337 @@
+%% hgb.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgb}[2023/01/16]%%AUTO
+\typeout{******************* hgb.sty  (options=\@nameuse{opt@hgb.sty}) ***********************}
+
+% Create a default/fallback main language so it is set no matter what
+\providecommand{\hgb@MainLanguage}{german}
+
+\RequirePackage{xifthen}
+
+\newboolean{hgb@SmartQuotesOn}
+\setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
+
+\newboolean{hgb@noUpdateCheck}
+\setboolean{hgb@noUpdateCheck}{false}	% update check is perfomed by default
+
+% Handle package options passed from the class file
+\DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
+\DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
+\DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
+\DeclareOption{smartquotes}{\setboolean{hgb@SmartQuotesOn}{true}}
+\DeclareOption{noUpdateCheck}{\setboolean{hgb@noUpdateCheck}{true}}
+\DeclareOption*{\ClassWarning{hgb}{Unknown option '\CurrentOption'.}}
+\ProcessOptions*
+
+%% Required Packages ----------------------------------------------------------
+
+
+\RequirePackage{lmodern}				% use Latin Modern Fonts
+\RequirePackage{cmap}						% make generated PDF files "searchable and copyable"
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}		% T1 font encoding for improved hyphenation
+
+% Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	{\RequirePackage[english,main=ngerman]{babel}}{}
+\ifthenelse{\equal{\hgb@MainLanguage}{english}}%
+	{\RequirePackage[main=english,ngerman]{babel}}{}
+
+%% Setup for smart quotes (csquotes package) -- experimental! ----------------------------------
+	
+\ifthenelse{\boolean{hgb@SmartQuotesOn}}{
+	\languageshorthands{none}%			%% turn off babel's shorthands (permanently)
+	\usepackage[autostyle=true,german=quotes]{csquotes}%
+	\MakeOuterQuote{"}%
+	\EnableQuotes}{}
+
+%% Language environments ------------------------------------------------------
+
+% Switch from German to English (babel)
+\newenvironment{english}%
+{\begin{otherlanguage}{english}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
+{\end{otherlanguage}\ignorespacesafterend}% 
+
+% Switch from English to German (babel)
+\newenvironment{german}%
+{\begin{otherlanguage}{ngerman}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
+{\end{otherlanguage}}%
+
+
+%% Date-related stuff ---------------------------------------------------------
+
+\edef\hgbDate{\csname ver@hgb.sty\endcsname}	% get this package's build date
+
+\RequirePackage{xstring}			% for string operations
+\RequirePackage[english,ngerman,calc,useregional,showdow=false]{datetime2}	% replaces obsolete 'datetime' package
+
+% https://tex.stackexchange.com/questions/316253/latex-convert-date-string-format-from-mm-dd-yyyyy-to-dd-mm-yyyy/316257#316257
+\newcommand{\PackageToDTMdate}[2]{%	converts date in 'YYYY/MM/DD' format to DTMdate and saves to #2
+    \StrLeft{#1}{4}[\myYear]%
+    \StrRight{#1}{2}[\myDay]%
+    \StrMid{#1}{6}{7}[\myMonth]%
+		\DTMsavenoparsedate{#2}{\myYear}{\myMonth}{\myDay}{-1}%
+    %\DTMdate{\myYear-\myMonth-\myDay}%
+}
+
+\PackageToDTMdate{\hgbDate}{hgbPackageDate}	% converts package date to DTM format: \DTMusedate{hgbPackageDate}
+\DTMsavenoparsedate{hgbToday}{\the\year}{\the\month}{\the\day}{-1} % today's date in DTM format: \DTMusedate{hgbToday}
+
+\newcounter{hgbAgeLimit}\setcounter{hgbAgeLimit}{365}	% warn if package is older than 1 year
+\newcount\hgbAge
+\DTMsaveddatediff{hgbToday}{hgbPackageDate}{\hgbAge}
+
+\newcommand{\hgbWarnOldPackage}[1]{\PackageWarning{hagenberg-thesis}{%
+^^J****************************************************************
+^^JNOTE: 'hagenberg-thesis' is #1 days old - pls. check for updates 
+^^Jat https://github.com/Digital-Media/HagenbergThesis
+^^J****************************************************************
+^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
+}
+
+\ifthenelse{\hgbAge>\value{hgbAgeLimit} \AND \NOT \boolean{hgb@noUpdateCheck}}%
+	{\hgbWarnOldPackage{\the\hgbAge}}{}
+
+
+%% ------------------------------------------------------
+
+\RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
+\RequirePackage{eurosym}			% provides \euro - conflict with marvosym on \EUR!
+
+\RequirePackage{graphicx}
+\RequirePackage[percent]{overpic}	% to allow text/graphics overlays on pictures
+\RequirePackage{pict2e}				% extends the LaTeX 'picture' environment		
+
+\RequirePackage{xcolor}
+\newcommand{\@MissingArg}[1]{\textcolor{red}{#1}}
+
+\RequirePackage[T1,hyphens,obeyspaces,spaces,lowtilde]{url}
+\urlstyle{sf}
+
+\RequirePackage{verbatim}
+\RequirePackage{moreverb}
+\def\verbatimtabsize{2\relax}
+
+\RequirePackage{ifpdf}
+\ifpdf % LaTeX is in native PDF mode (pdflatex) 
+  \RequirePackage{epstopdf}			% converting EPS to PDF for pdflatex
+%  \pdfcompresslevel=0				% 0 = no compression, 9 = max. compression
+%  \pdfimageresolution=300
+\else								% LaTeX is in emulation mode (DVI-PS-PDF)
+  \RequirePackage[hyphenbreaks]{breakurl} % allows line breaks in URLs without pdflatex (DIV, PS, PDF)
+\fi	
+
+
+%% hyperref Setup -------------------------------------------------------------
+
+\RequirePackage[unicode]{hyperref}	% utf8-change
+\hypersetup{
+	linktocpage = true,				% make page number, not text, be link on TOC, LOF and LOT 
+	colorlinks = false,				% don't uses colored links (because this shows up in printing!) 
+	pdfborder = {0 0 0.5},			% use a thinner (0.5pt) border around all PDF links
+	allbordercolors = {0 0 0.8},	% dark blue border for all types of links
+	breaklinks = true				% allow links to break over lines by making links over multiple lines
+}	%see https://www.tug.org/applications/hyperref/manual.html
+
+% Redefine certain commands for bookmarks and meta-data
+\let\oldand\and
+\pdfstringdefDisableCommands{%
+	\def\\{}%
+	\def\url#1{<#1>}%
+	\def\and{\texorpdfstring{\oldand}{, }}%
+}
+
+\RequirePackage[figure,table,table*]{hypcap}	% do not redefine figure* for use in article (without captions)
+
+%% Miscellaneous Utility Commands ---------------------------------------------
+
+\newcommand\trennstrich{%
+  \nopagebreak[4]
+  \vskip 1.5ex %
+%  \nopagebreak[4]
+  \noindent\makebox[\textwidth]{\rule{4cm}{0.4pt}}
+  \vskip 2.5ex}
+
+\newcommand{\SuperPar}[0]{%
+\PackageWarning{hgb}{Due to frequent misuse, macro \protect\SuperPar\space has been removed.}
+}
+
+\newcommand{\email}[1]{%
+\texorpdfstring{\href{mailto:#1}{\nolinkurl{#1}}}{<#1>}%
+}
+
+% Test box for print proofing
+\newcommand{\calibrationbox}[2]{% parameters: #1=width, #2=height
+	\setlength{\unitlength}{1.0mm}%
+	\begin{picture}(#1,#2)%
+	\linethickness{0.05mm}%
+	\put(0,0){\dashbox{0.2}(#1,#2)%
+	{\parbox{#1mm}{%
+	\centering\footnotesize 
+	width $ = #1 \textrm{mm}$\\
+	height $ = #2 \textrm{mm}$
+	}}}\end{picture}
+}
+
+% Test box for print proofing (obsolete - use \calibrationbox)
+\newcommand{\Messbox}[2]{
+	\calibrationbox{#1}{#2}
+}
+
+\newcommand{\ShowParameter}[1]{\the#1\showthe#1} % to display TeX parameters
+%Beispiel: clubpenalty = \ShowParameter{\clubpenalty}
+
+
+%% Layout Settings ------------------------------------------------------------
+
+\frenchspacing						% creates normal spacing between sentences
+\setlength{\parskip}{0pt plus 0.1pt}
+\raggedbottom						%\flushbottom
+
+\RequirePackage{float}
+\floatstyle{plain}
+
+% Captions with font size "small" and additional margin spacing
+\RequirePackage[small,bf]{caption}
+\DeclareCaptionStyle{ruled}{labelfont=bf,labelsep=colon} 
+\setlength{\captionmargin}{5mm}
+\setlength{\abovecaptionskip}{10pt}
+\setlength{\belowcaptionskip}{10pt}
+
+%% Disable \footnote in captions:
+\newcommand{\@WarnFootnoteInCaption}{%
+\GenericError{}{Package hgb Error: footnotes in captions are disabled}%
+{How to fix: do not place footnotes in captions!}{}}%
+\DeclareCaptionTextFormat{nofootnotes}{%
+	\renewcommand{\footnote}[1]{\@WarnFootnoteInCaption\relax}#1}
+\captionsetup{textformat=nofootnotes}
+
+
+% Make float placement easier    
+\renewcommand{\floatpagefraction}{.9}	% previously: .5
+\renewcommand{\textfraction}{.1}		% previously: .2
+\renewcommand{\topfraction}{.9}			% previously: .7
+\renewcommand{\bottomfraction}{.7}		% previously: .3
+\setcounter{topnumber}{3}				% previously: 2
+\setcounter{bottomnumber}{2}			% previously: 1
+\setcounter{totalnumber}{5}				% previously: 3
+
+\RequirePackage{enumitem}				% fix excessive vertical spacing in lists
+\setlist{%
+	partopsep = .0ex plus .1ex, 
+	topsep = .6ex plus .3ex, 
+	itemsep = .0ex plus .1ex, 
+	parsep = .4ex plus .2ex
+}
+
+\newenvironment{nowidows}%
+	{\clubpenalty=10000%
+	\widowpenalty=10000%
+	\displaywidowpenalty=10000}%
+	{}
+%Example:
+% \begin{nowidows}
+% Any text where no widows are allowed
+% \end{nowidows}
+
+
+% Setup for Table of Contents (ToC)
+
+%\RequirePackage[tocgraduated,tocbreaksstrict]{tocstyle}%		%% Note: tocstyle is unsupported!
+%\usetocstyle{classic}%
+
+\RequirePackage{tocbasic}%				%% tocbasic is part of koma script
+\DeclareTOCStyleEntry[entryformat=\bfseries\textsf]{tocline}{chapter}%
+
+%% Program environments  ----------------------------------------
+
+% Define the program float environment:
+\@ifundefined{chapter}%
+   {\newfloat{program}{tbp}{lop}}%
+	 {\newfloat{program}{tbp}{lop}[chapter]}
+
+\floatstyle{plain}
+\restylefloat*{program}
+	
+\ifthenelse{\equal{\bbl@main@language}{german} \or \equal{\bbl@main@language}{ngerman}}%
+	{\floatname{program}{Programm}}{}%
+
+\ifthenelse{\equal{\bbl@main@language}{english}}%
+	{\floatname{program}{Program}}{}%
+
+%% Experimental items ---------------------------------------------------------
+
+\newenvironment{NarrowList}%
+{\begin{list}{}%
+{\setlength{\leftmargin}{2.5em}
+ \setlength{\labelwidth}{1em}
+ \setlength{\labelsep}{0.5em}
+ \setlength{\itemsep}{0.5ex}
+ \setlength{\parsep}{0ex}
+ \setlength{\topsep}{0ex}
+\raggedright
+}}%
+{\end{list}}
+
+\providecommand{\hgb@PathName}{Pfad}
+
+\newenvironment{FileList}[1]%
+{%\paragraph{Pfad:} \url{#1}
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}
+	{\renewcommand{\hgb@PathName}{Pfad}}%
+	{\renewcommand{\hgb@PathName}{Path}}%
+\paragraph{\hgb@PathName: \nolinkurl{#1}}
+\begin{list}{}%
+{\setlength{\leftmargin}{5cm}
+ \setlength{\labelwidth}{4cm}
+ \setlength{\labelsep}{0.25cm}
+ \setlength{\rightmargin}{0cm}
+ \setlength{\itemindent}{0cm}
+ \setlength{\itemsep}{0.5ex}
+ \setlength{\parsep}{0ex}
+ \setlength{\topsep}{1ex}
+\raggedright
+}}%
+{\end{list}}
+
+\def\widedotfill{\leaders\hbox to 8pt{\hfil.\hfil}\hfill}
+
+\newcommand{\fitem}[1]{%
+\item[\nolinkurl{#1}\widedotfill]
+}
+
+%% For inserting foreign PDF pages --------------------------------------------
+
+\RequirePackage{pdfpages}
+
+%% Tables ---------------------------------------------------------------------
+
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{multirow}
+
+
+%% Prevent subfigure package from being loaded -------------------------------
+
+% The subfigure package is DEPRECATED (see https://ctan.org/pkg/subfigure)!
+% We strongly advise against its use since it creates poor output which is not 
+% compatible with our quality standards. Loading this package is therefore blocked
+% by default. We recommend to use the 'tabular' environment instead.
+
+\AtBeginDocument{%
+  \@ifpackageloaded{subfigure}{%
+    \PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}
+	\let\subfigure\undefined% just to make sure ...
+  }%
+}%
+
+%% ----------------------------------------------------------------------------
+
+\setlength{\fboxsep}{0mm}			%globally zero fbox separator

@@ -1,0 +1,453 @@
+%% hgblistings.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilhelm.burger@fh-hagenberg.at)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\ProvidesPackage{hgblistings}[2023/01/16]%%AUTO
+
+\RequirePackage{xifthen}
+\RequirePackage{textcomp}	%% required for upquote option
+
+\RequirePackage{xcolor}
+\definecolor{ListingsBackgroundColor}{gray}{0.95}
+
+\RequirePackage{listingsutf8}
+\lstset{
+inputencoding=utf8,
+extendedchars=true,
+basicstyle=\ttfamily\footnotesize,%
+keywordstyle=,%\ttfamily,%\bfseries,
+identifierstyle=,%\sffamily, %\bfseries
+commentstyle=\normalfont\itshape,%
+stringstyle=\ttfamily,%
+showstringspaces=false,%
+columns = flexible,% fixed, 
+breaklines=true,%
+tabsize=2, %
+backgroundcolor=\color{ListingsBackgroundColor},
+xleftmargin=6mm,%
+frame=none,
+framexleftmargin=6mm,
+numbers=left,%
+numbersep=5pt,%
+numberstyle=\normalfont\scriptsize,%
+stepnumber=1,%
+numberfirstline=true,%
+numberblanklines=true,%
+texcl=false,%						%important: read program comments as Latex content
+mathescape=false,					%no mathescape by default
+upquote=true,%
+keepspaces=true,%
+}
+
+\RequirePackage[utf8]{inputenc}
+\lstset{literate=% to allow Umlauts etc. in listed code % utf8-change
+{Ö}{{\"O}}1
+{Ä}{{\"A}}1
+{Ü}{{\"U}}1
+{ü}{{\"u}}1
+{ä}{{\"a}}1
+{ö}{{\"o}}1
+{ß}{{\ss}}2
+}
+
+%% Code Environments ----------------------------------------------------------
+
+% Code Environment for C (ANSI)
+\lstnewenvironment{CCode}[1][]
+{\lstset{%
+	language=[ANSI]C,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for C++ (ISO)
+\lstnewenvironment{CppCode}[1][]
+{\lstset{%
+	language=[ISO]C++,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for C#
+\lstnewenvironment{CsCode}[1][]
+{\lstset{%
+	language=[Sharp]C,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+% Language Definition and Code Environment for CSS
+\lstdefinelanguage{CSS}
+{	morekeywords={accelerator,azimuth,background,background-attachment,%
+    background-color,background-image,background-position,%
+    background-position-x,background-position-y,background-repeat,%
+    behavior,border,border-bottom,border-bottom-color,%
+    border-bottom-style,border-bottom-width,border-collapse,%
+    border-color,border-left,border-left-color,border-left-style,%
+    border-left-width,border-right,border-right-color,%
+    border-right-style,border-right-width,border-spacing,%
+    border-style,border-top,border-top-color,border-top-style,%
+    border-top-width,border-width,bottom,caption-side,clear,%
+    clip,color,content,counter-increment,counter-reset,cue,%
+    cue-after,cue-before,cursor,direction,display,elevation,%
+    empty-cells,filter,float,font,font-family,font-size,%
+    font-size-adjust,font-stretch,font-style,font-variant,%
+    font-weight,height,ime-mode,include-source,%
+    layer-background-color,layer-background-image,layout-flow,%
+    layout-grid,layout-grid-char,layout-grid-char-spacing,%
+    layout-grid-line,layout-grid-mode,layout-grid-type,left,%
+    letter-spacing,line-break,line-height,list-style,%
+    list-style-image,list-style-position,list-style-type,margin,%
+    margin-bottom,margin-left,margin-right,margin-top,%
+    marker-offset,marks,max-height,max-width,min-height,%
+    min-width,orphans,outline,outline-color,outline-style,%
+	outline-width,overflow,overflow-X,overflow-Y,padding,%
+	padding-bottom,padding-left,adding-right,padding-top,%
+	page,page-break-after,page-break-before,page-break-inside,%
+	pause,pause-after,pause-before,pitch,pitch-range,%
+	play-during,position,quotes,-replace,richness,right,%
+	ruby-align,ruby-overhang,ruby-position,-set-link-source,%
+	size,speak,speak-header,speak-numeral,speak-punctuation,%
+	speech-rate,stress,scrollbar-arrow-color,scrollbar-base-color,%
+    scrollbar-dark-shadow-color,scrollbar-face-color,%
+    scrollbar-highlight-color,scrollbar-shadow-color,%
+    scrollbar-3d-light-color,scrollbar-track-color,table-layout,%
+    text-align,text-align-last,text-decoration,text-indent,%
+    text-justify,text-overflow,text-shadow,text-transform,%
+    text-autospace,text-kashida-space,text-underline-position,top,%
+    unicode-bidi,-use-link-source,vertical-align,visibility,%
+    voice-family,volume,white-space,widows,width,word-break,%
+    word-spacing,word-wrap,writing-mode,z-index,zoom},%
+	sensitive=false,
+	morecomment=[s]{/*}{*/},
+	morestring=[s]{:}{;},
+	morestring=[b]"
+}
+
+\lstnewenvironment{CssCode}[1][]
+{\lstset{%
+	language=CSS,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Enivornmente for Generic Code
+\lstnewenvironment{GenericCode}[1][]
+{\lstset{%
+	language={},
+	keepspaces=true,
+	commentstyle={},
+	texcl=false,
+	escapechar={},
+	escapeinside={},
+	#1}}
+{}
+
+
+% Code Enivornmente for HTML
+\lstnewenvironment{HtmlCode}[1][]
+{\lstset{%
+	language=HTML,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Enivornmente for Java
+\lstnewenvironment{JavaCode}[1][]
+{\lstset{%
+	language=Java,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Language Definition and Code Environment for JavaScript
+\lstdefinelanguage{JavaScript}{
+    alsoletter={.},
+    keywords={arguments, async, await, break, case, catch, class, const, continue, debugger,%
+		default, delete, do, else, enum, eval, export, extends, false, finally, for,%
+		function, if, implements, import, in, instanceof, interface, let, new, null,%
+		package, private, protected, public, return, static, super, switch, this,%
+		throw, true, try, typeof, var, void, while, with, yield}, % JavaScript ES6 keywords
+    morekeywords={add, apply, args, Array, Array.from, Array.isArray, Array.of,%
+		Array.prototype, ArrayBuffer, bind, Boolean, call, charAt, charCodeAt, clear,%
+		codePointAt, concat, constructor, copyWithin, DataView, Date, Date.now,%
+		Date.parse, Date.prototype, Date.UTC, decodeURI, decodeURIComponent, encodeURI,%
+		encodeURIComponent, endsWith, entries, Error, Error.prototype, EvalError, every,%
+		false, fill, filter, find, findIndex, Float32Array, Float64Array, forEach,%
+		FulfillPromise, Function, Function.length, get, getDate, getDay, getFullYear,%
+		getHours, getMilliseconds, getMinutes, getMonth, getSeconds, getTime,%
+		getTimezoneOffset, getUTCDate, getUTCDay, getUTCFullYear, getUTCHours,%
+		getUTCMilliseconds, getUTCMinutes, getUTCMonth, getUTCSeconds, has,hasInstance,%
+		hasOwnProperty, ignoreCase, includes, indexOf, indexOf, Infinity, Int8Array,%
+		Int16Array, Int32Array, isConcatSpreadable, isFinite, isNaN, IsPromise,%
+		isPrototypeOf, Iterable, iterator, join, JSON, JSON.parse, JSON.stringify, keys,%
+		lastIndexOf, lastIndexOf, length, localeCompare, map, Map, match, match, Math,%
+		Math.abs , Math.acos, Math.acosh, Math.asin, Math.asinh, Math.atan, Math.atan2,%
+		Math.atanh, Math.cbrt, Math.ceil, Math.clz32, Math.cos, Math.cosh,  Math.E,%
+		Math.exp, Math.expm1, Math.floor, Math.fround, Math.hypot, Math.imul, Math.LN2,%
+		Math.LN10, Math.log, Math.log1p, Math.log2, Math.LOG2E, Math.log10, Math.LOG10E,%
+		Math.max, Math.min, Math.PI, Math.pow, Math.random, Math.round, Math.sign,%
+		Math.sin, Math.sinh, Math.sqrt, Math.SQRT1_2, Math.SQRT2, Math.tan, Math.tanh,%
+		Math.trunc, message, multiline, name, NaN, NewPromiseCapability, next, normalize,%
+		null, Number, Number.EPSILON, Number.isFinite, Number.isInteger, Number.isNaN,%
+		Number.isSafeInteger, Number.MAX_SAFE_INTEGER, Number.MAX_VALUE,%
+		Number.MIN_SAFE_INTEGER, Number.MIN_VALUE, Number.NaN, Number.NEGATIVE_INFINITY,%
+		Number.parseFloat, Number.parseInt, Number.POSITIVE_INFINITY, Number.prototype,%
+		Object, Object, Object.assign, Object.create, Object.defineProperties,%
+		Object.defineProperty, Object.freeze, Object.getOwnPropertyDescriptor,%
+		Object.getOwnPropertyNames, Object.getOwnPropertySymbols, Object.getPrototypeOf,%
+		Object.is, Object.isExtensible, Object.isFrozen, Object.isSealed, Object.keys,%
+		Object.preventExtensions, Object.prototype, Object.seal, Object.setPrototypeOf,%
+		of, parseFloat, parseInt, pop, Promise, Promise.all , Promise.race,%
+		Promise.reject, Promise.resolve, PromiseReactionJob, propertyIsEnumerable,%
+		prototype, Proxy, Proxy.revocable , push, RangeError, reduce, reduceRight,%
+		ReferenceError, Reflect, Reflect.apply, Reflect.construct,%
+		Reflect.defineProperty, Reflect.deleteProperty, Reflect.enumerate, Reflect.get,%
+		Reflect.getOwnPropertyDescriptor, Reflect.getPrototypeOf, Reflect.has,%
+		Reflect.isExtensible, Reflect.ownKeys, Reflect.preventExtensions, Reflect.set,%
+		Reflect.setPrototypeOf, Reflection, RegExp, RegExp, RegExp.prototype, repeat,%
+		replace, replace, reverse, search, search, Set, set, setDate, setFullYear,%
+		setHours, setMilliseconds, setMinutes, setMonth, setSeconds, setTime, setUTCDate,%
+		setUTCFullYear, setUTCHours, setUTCMilliseconds, setUTCMinutes, setUTCMonth,%
+		setUTCSeconds, shift, slice, slice, some, sort, species, splice, split, split,%
+		startsWith, String, String.fromCharCode, String.fromCodePoint, String.raw,%
+		substring, Symbol, Symbol.for, Symbol.hasInstance, Symbol.isConcatSpreadable,%
+		Symbol.iterator, Symbol.keyFor, Symbol.match, Symbol.prototype, Symbol.replace,%
+		Symbol.replace, Symbol.search, Symbol.species, Symbol.split, Symbol.toPrimitive,%
+		Symbol.toStringTag, Symbol.unscopables, SyntaxError, then, toDateString,%
+		toExponential, toFixed, toISOString, toJSON, toLocaleDateString,%
+		toLocaleLowerCase, toLocaleString, toLocaleString, toLocaleString, toLocaleString,%
+		toLocaleTimeString, toLocaleUpperCase, toLowerCase, toPrecision, toPrimitive,%
+		toString, toStringTag, toTimeString, toUpperCase, toUTCString,%
+		TriggerPromiseReactions, trim, true, TypeError, Uint8Array, Uint8ClampedArray,%
+		Uint16Array, Uint32Array, undefined, unscopables, unshift, URIError, valueOf,%
+		WeakMap, WeakSet}, % JavaScript extended keywords
+	morekeywords={app.all, app.delete, app.disable, app.disabled, app.enable, app.enabled,%
+		app.engine, app.get, app.listen, app.locals, app.METHOD, app.mountpath, app.param,%
+		app.path, app.post, app.put, app.render, app.route, app.set, app.use, express,%
+		express.Router, express.static, req.acceptLanguages, req.accepts,%
+		req.acceptsCharsets, req.acceptsEncodings, req.app, req.baseUrl, req.body,%
+		req.cookies, req.fresh, req.get, req.hostname, req.ip, req.ips, req.is,%
+		req.method, req.originalUrl, req.param, req.params, req.path, req.protocol,%
+		req.query, req.range, req.route, req.secure, req.signedCookies, req.stale,%
+		req.subdomains, req.xhr, res.app, res.append, res.attachment, res.clearCookie,%
+		res.cookies, res.download, res.end, res.format, res.get, res.headersSent,%
+		res.json, res.jsonp, res.links, res.locals, res.location, res.redirect,%
+		res.render, res.sendFile, res.sendStatus, res.set, res.status, res.type, res.vary,%
+		router.all, router.METHOD, router.param, router.route, router.use}, % express keywords
+	morekeywords={agent.createConnection, agent.destroy, agent.freeSockets, agent.getName,%
+		agent.maxFreeSockets, agent.maxSockets, agent.requests, agent.sockets,%
+		certificate.exportChallenge, certificate.exportPublicKey, certificate.verifySpkac,%
+		child.channel, child.connected, child.disconnect, child.kill, child.pid,%
+		child.send, child.stderr, child.stdin, child.stdio, child.stdout,%
+		child_process.exec, child_process.execFile, child_process.execFileSync,%
+		child_process.execSync, child_process.fork, child_process.spawn,%
+		child_process.spawnSync, cipher.final, cipher.getAuthTag, cipher.setAAD,%
+		cipher.setAutoPadding, cipher.update, clearImmediate, clearImmediate,%
+		clearInterval, clearInterval, clearTimeout, clearTimeout, console, console.assert,%
+		console.dir, console.error, console.info, console.log, console.time,%
+		console.timeEnd, console.trace, console.warn, decipher.final, decipher.setAAD,%
+		decipher.setAuthTag, decipher.setAutoPadding, decipher.update, dgram.createSocket,%
+		dgram.createSocket, diffieHellman.computeSecret, diffieHellman.generateKeys,%
+		diffieHellman.getGenerator, diffieHellman.getPrime, diffieHellman.getPrivateKey,%
+		diffieHellman.getPublicKey, diffieHellman.setPrivateKey,%
+		diffieHellman.setPublicKey, diffieHellman.verifyError, dns.getServers,%
+		dns.getServers, dns.lookup, dns.lookup, dns.lookupService, dns.resolve,%
+		dns.resolve4, dns.resolve6, dns.resolveCname, dns.resolveMx, dns.resolveNaptr,%
+		dns.resolveNs, dns.resolvePtr, dns.resolveSoa, dns.resolveSrv, dns.resolveTxt,%
+		dns.reverse, dns.setServers, ecdh.computeSecret, ecdh.generateKeys,%
+		ecdh.getPrivateKey, ecdh.getPublicKey, ecdh.setPrivateKey, ecdh.setPublicKey,%
+		error.address, error.code, error.errno, error.message, error.path, error.port,%
+		error.stack, error.syscall, exports, fs.access, fs.accessSync, fs.appendFile,%
+		fs.appendFileSync, fs.chmod, fs.chmodSync, fs.chown, fs.chownSync, fs.close,%
+		fs.closeSync, fs.constants, fs.createReadStream, fs.createWriteStream,%
+		fs.exists, global, http.createServer, http.get, http.globalAgent,%
+		http.request, https.createServer, https.get, https.globalAgent, https.request,%
+		message.destroy, message.headers, message.httpVersion, message.method,%
+		message.rawHeaders, message.rawTrailers, message.setTimeout, message.socket,%
+		message.statusCode, message.statusMessage, message.trailers, message.url,%
+		module, module.children, module.exports, module.filename, module.id,%
+		module.loaded, module.parent, module.require, os.arch, os.constants,%
+		os.cpus, os.endianness, os.EOL, os.freemem, os.homedir, os.hostname,%
+		os.loadavg, os.networkInterfaces, os.platform, os.release, os.tmpdir,%
+		os.totalmem, os.type, os.uptime, os.userInfo, path.basename, path.delimiter,%
+		path.dirname, path.extname, path.format, path.isAbsolute, path.join,%
+		path.normalize, path.parse, path.posix, path.relative, path.resolve,%
+		path.sep, path.win32, process, process.abort, process.arch, process.argv,%
+		process.argv0, process.channel, process.chdir, process.config,%
+		process.connected, process.cpuUsage, process.cwd, process.disconnect,%
+		process.emitWarning, process.env, process.execArgv, process.execPath,%
+		process.exit, process.exitCode, process.getegid, process.geteuid,%
+		process.getgid, process.getgroups, process.getuid, process.hrtime,%
+		process.initgroups, process.kill, process.mainModule, process.memoryUsage,%
+		process.nextTick, process.pid, process.platform, process.release,%
+		process.send, process.setegid, process.seteuid, process.setgid,%
+		process.setgroups, process.setuid, process.stderr, process.stdin,%
+		process.stdout, process.title, process.umask, process.uptime,%
+		process.version, process.versions, querystring.escape, querystring.parse,%
+		querystring.stringify, querystring.unescape, r.clearLine, readable.pause,%
+		readable.pipe, readable.push, readable.push, readable.read, readable.read,%
+		readable.resume, readable.setEncoding, readable.unpipe, readable.unshift,%
+		readable.wrap, readable._read, readStream.bytesRead, readStream.isRaw,%
+		readStream.path, readStream.setRawMode, repl.start, request.abort,%
+		request.aborted, request.end, request.flushHeaders, request.setNoDelay,%
+		request.setSocketKeepAlive, request.setTimeout, request.write, require,%
+		require.cache, require.extensions, response.addTrailers, response.end,%
+		response.finished, response.getHeader, response.getHeaderNames,%
+		response.getHeaders, response.hasHeader, response.headersSent,%
+		response.removeHeader, response.sendDate, response.setHeader,%
+		response.setTimeout, response.statusCode, response.statusMessage,%
+		response.write, response.writeContinue, response.writeHead,%
+		rl.clearScreenDown, rl.close, rl.createInterface, rl.cursorTo,%
+		rl.emitKeypressEvents, rl.moveCursor, rl.pause, rl.prompt, rl.question,%
+		rl.resume, rl.setPrompt, rl.write, script.runInNewContext,%
+		script.runInThisContext, server.addContext, server.address,%
+		server.address, server.close, server.close, server.connections,%
+		server.getTicketKeys, server.listen, server.listen, server.setTicketKeys,%
+		server.setTimeout, server.setTimeout, server.timeout, server.timeout,%
+		setImmediate, setInterval, setTimeout, socket.addMembership,%
+		socket.address, socket.bind, socket.bind, socket.close,%
+		socket.dropMembership, socket.ref, socket.send, socket.setBroadcast,%
+		socket.setMulticastLoopback, socket.setMulticastTTL, socket.setTTL,%
+		socket.unref, stream.Readable, stringDecoder.end, stringDecoder.write,%
+		timeout.ref, timeout.unref, tls.connect, tls.createSecureContext,%
+		tls.createServer, tls.getCiphers, tlsSocket.address,%
+		tlsSocket.authorizationError, tlsSocket.authorized, tlsSocket.encrypted,%
+		tlsSocket.getCipher, tlsSocket.getEphemeralKeyInfo,%
+		tlsSocket.getPeerCertificate, tlsSocket.getProtocol, tlsSocket.getSession,%
+		tlsSocket.getTLSTicket, tlsSocket.localAddress, tlsSocket.localPort,%
+		tlsSocket.remoteAddress, tlsSocket.remoteFamily, tlsSocket.remotePort,%
+		tlsSocket.renegotiate, tlsSocket.setMaxSendFragment, transform._flush,%
+		transform._transform, util.debuglog, util.deprecate, util.format,%
+		util.inherits, util.inspect, v8.getHeapStatistics, v8.setFlagsFromString,%
+		vm.createContext, vm.isContext, vm.runInContext, vm.runInDebugContext,%
+		vm.runInNewContext, vm.runInThisContext, watcher.close, worker.disconnect,%
+		worker.exitedAfterDisconnect, worker.id, worker.isConnected,%
+		worker.isDead, worker.kill, worker.process, worker.send, worker.suicide,%
+		writable.cork, writable.end, writable.setDefaultEncoding, writable.write,%
+		writeStream.bytesWritten, writeStream.columns, writeStream.path,%
+		writeStream.rows, zlib, zlib.createGunzip, zlib.createGzip, zlib.createInflate,%
+		zlib.createInflateRaw, zlib.createUnzip, zlib.deflate, zlib.deflateRaw,%
+		zlib.deflateRawSync, zlib.deflateSync, zlib.gunzip, zlib.gunzipSync,%
+		zlib.gzip, zlib.gzipSync, zlib.inflate, zlib.inflateRaw, zlib.inflateRawSync,%
+		zlib.inflateSync, zlib.unzip, zlib.unzipSync, __dirname, __filename}, % Node.js keywords
+	morekeywords={assert, assert.deepEqual, assert.deepStrictEqual,%
+		assert.doesNotThrow, assert.equal, assert.fail, assert.ifError,%
+		assert.notDeepEqual, assert.notDeepStrictEqual, assert.notEqual,%
+		assert.notStrictEqual, assert.ok, assert.strictEqual, assert.throws, describe,%
+		toBe, it, xdescribe, beforeEach, afterEach, beforeAll, afterAll, expect, it,%
+		xit, xdiscribe, pending, and.callThrough, and.returnValue, and.returnValues,%
+		and.callFake, and.throwError, and.stub, .not, .calls.any, .calls.count,%
+		.calls.argsFor, .calls.allArgs, .calls.all, .calls.mostRecent, .calls.first,%
+		.calls.reset, jasmine.createSpy, jasmine.createSpyObj, jasmine.any,%
+		jasmine.anything, jasmine.objectContaining, jasmine.arrayContaining,%
+		jasmine.stringMatching, asymmetricMatch,  jasmine.clock, .not.toBeTruthy,%
+		.toBeTruthy, .not.toBeFalsy, .toBeFalsy, .not.toBeDefined .toBeDefined,%
+		.not.toBeNull .toBeNull, .not.toEqual .toEqual, .not.toBeCloseTo .toBeCloseTo,%
+		.not.toContain, .toContain, .not.toMatch, .toMatch, .not.toBeGreaterThan,%
+		.toBeGreaterThan, .not.toBeLessThan, .toBeLessThan, .toThrow, .not.toThrow,%
+		.toBeNull, .not.toBeNull, .toBeDefined, .not.toBeDefined}, % Node.js Assert, Jasmine, ... keywords
+    sensitive=true,
+    morestring=[b]",
+    morestring=[d]',
+    morestring=[s]{`}{`},
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morecomment=[s]{/**}{*/}
+}
+
+\lstnewenvironment{JsCode}[1][]
+{\lstset{%
+	language=JavaScript,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for LaTeX
+\lstnewenvironment{LaTeXCode}[1][]	% code environment for Latex
+{\lstset{%
+	language=[LaTeX]TeX,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for Objective-C
+\lstnewenvironment{ObjCCode}[1][]
+{\lstset{%
+	language=[Objective]C,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for PHP
+\lstnewenvironment{PhpCode}[1][]
+{\lstset{%
+	language=PHP,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for Python
+\lstnewenvironment{PythonCode}[1][]
+{\lstset{%
+	language=Python,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Language Definition and Code Environment for Swift
+\lstdefinelanguage{Swift}
+{	keywords=[1]{typealias,true, false,catch,private,internal,public,func,protocol,%
+		optional,return,nil,catch,switch,let,as,var,if,in,for,while,where,do,else,case,%
+		break,import,class,struct,enum,override,super,required,designated,convenience},
+	keywords=[2]{String,Int,Double,Float},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	morestring=[b]',
+	morestring=[b]"
+}
+
+\lstnewenvironment{SwiftCode}[1][]
+{\lstset{%
+	language=Swift,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Code Environment for XML
+\lstnewenvironment{XmlCode}[1][]
+{\lstset{%
+	language=XML,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
+
+
+% Disable the lstlisting environment (due to popular abuse)
+\newcommand{\@WarnLstlisting}{
+\GenericError{}{Package hgblistings Error: The 'lstlisting' environment is disabled}%
+{See the error note inserted in the document output for details.}{}%
+\begin{quote}
+\color{red}\textbf{NOTE:} The \texttt{lstlisting} environment has been deliberately disabled in this setup.
+Use \emph{inline code} (breakable and \emph{without} a caption) or create a \emph{float container} with 
+\texttt{{\textbackslash}begin\{program\} \ldots {\textbackslash}end\{program\}} instead!
+See the \texttt{hgbthesis} tutorial for examples.
+\end{quote}%
+}
+\renewenvironment{lstlisting}[0]%
+{\@WarnLstlisting\expandafter\comment}%
+{\expandafter\endcomment}%
