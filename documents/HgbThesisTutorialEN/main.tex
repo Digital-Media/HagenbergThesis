@@ -1,62 +1,62 @@
-%%% Dateikodierung: UTF-8
-%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
+%%% File encoding: UTF-8
+%%% äöüÄÖÜß  <-- no German umlauts here? Use an UTF-8 compatible editor!
 
-%%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
+%%% Magic comments for setting the correct parameters in compatible IDEs
 % !TeX encoding = utf8
 % !TeX program = pdflatex 
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
-\documentclass[master,german,smartquotes]{hgbthesis}
-% Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
+\documentclass[master,english,smartquotes]{hgbthesis}
+% Valid options in [..]: 
+%    Type of work: 'diploma', 'master' (default), 'bachelor', 'internship' 
+%		 Additionally for a thesis exposé: 'proposal (for 'bachelor' and 'master')
+%    Main language: 'german' (default), 'english'
+%    Turn on smart quote handling: 'smartquotes'
+%    APA bibliography style: 'apa'
 %%%-----------------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 
-\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
-\bibliography{references} % Biblatex-Literaturdatei (references.bib)
+\graphicspath{{images/}}  % Location of images and graphics
+\logofile{logo}           % Logo file: images/logo.pdf (no logo: \logofile{})
+\bibliography{references} % Biblatex bibliography file (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
 
 %%%-----------------------------------------------------------------------------
-% Angaben für die Titelei (Titelseite, Erklärung etc.)
+% Title page entries
 %%%-----------------------------------------------------------------------------
 
-\title{Partielle Lösungen zur allgemeinen Problematik}
-\author{Alex A.\ Schlaumeier}
+\title{Partial Solutions to Universal Problems}
+\author{Alex A.\ Wiseguy}
 \programname{Universal Computing}
 
-%\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
+%\programtype{Fachhochschul-Bachelorstudiengang} % select/edit
 \programtype{Fachhochschul-Masterstudiengang}
 
 \placeofstudy{Hagenberg}
 \dateofsubmission{2023}{06}{27} % {YYYY}{MM}{DD}
 
-\advisor{Dr. Alois B.~Treuer} % optional
+\advisor{Roger K.~Putnik, M.Sc.} % optional
 
-%\strictlicense % restriktive Lizenz anstatt Creative Commons (nicht empfohlen!)
+%\strictlicense % restrictive license instead of Creative Commons (discouraged!)
 
 %%%-----------------------------------------------------------------------------
-\frontmatter                                       % Titelei (röm. Seitenzahlen)
+\frontmatter                                   % Front part (roman page numbers)
 %%%-----------------------------------------------------------------------------
 
 \maketitle
 \tableofcontents
 
-\include{front/vorwort} % Ein Vorwort ist optional
+\include{front/vorwort} % A preface is optional
 \include{front/kurzfassung}		
 \include{front/abstract}			
 
 %%%-----------------------------------------------------------------------------
-\mainmatter                             % Hauptteil (ab hier arab. Seitenzahlen)
+\mainmatter                                    % Main part (arabic page numbers)
 %%%-----------------------------------------------------------------------------
 
 \include{chapters/einleitung}
@@ -69,22 +69,22 @@
 \include{chapters/schluss}
 
 %%%-----------------------------------------------------------------------------
-\appendix                                                               % Anhang 
+\appendix                                                             % Appendix
 %%%-----------------------------------------------------------------------------
 
-\include{back/anhang_a} % Technische Ergänzungen
-\include{back/anhang_b} % Inhalt der CD-ROM/DVD
-\include{back/anhang_c} % Chronologische Liste der Änderungen
-\include{back/anhang_d} % Quelltext dieses Dokuments
+\include{back/anhang_a} % Technical supplements
+\include{back/anhang_b} % Contents of the CD-ROM/DVD
+\include{back/anhang_c} % Chronological list of changes
+\include{back/anhang_d} % Source text of this document
 
 %%%-----------------------------------------------------------------------------
-\backmatter                          % Schlussteil (Quellenverzeichnis und dgl.)
+\backmatter                           % Back part (bibliography, glossary, etc.)
 %%%-----------------------------------------------------------------------------
 
-\MakeBibliography % Quellenverzeichnis
+\MakeBibliography % References
 
 %%%-----------------------------------------------------------------------------
-% Messbox zur Druckkontrolle
+% Special page for checking print size
 %%%-----------------------------------------------------------------------------
 
 \include{back/messbox}
