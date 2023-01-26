@@ -1,87 +1,78 @@
-\chapter{Einleitung}
-\label{cha:Einleitung}
+\chapter{Introduction}
+\label{cha:Introduction}
 
 
-\section{Zielsetzung}
+\section{Objectives}
 
-Dieses Dokument ist als vorwiegend technische Starthilfe für das Erstellen
-einer Masterarbeit oder Bachelorarbeit mit \latex gedacht und ist die
-Weiterentwicklung einer früheren Vorlage%
-\footnote{Nicht mehr verfügbar.}
-für das Arbeiten mit Microsoft \emph{Word}. Während ursprünglich daran
-gedacht war, die bestehende Vorlage einfach in \latex zu übernehmen, wurde
-rasch klar, dass allein aufgrund der großen Unterschiede zum Arbeiten mit
-\emph{Word} ein gänzlich anderer Ansatz notwendig wurde. Dazu kamen
-zahlreiche Erfahrungen mit Diplomarbeiten in den nachfolgenden Jahren, die zu
-einigen zusätzlichen Hinweisen Anlass gaben.
+This document is intended as a primarily technical jump-start for writing a
+master's thesis or bachelor's thesis using \latex, and is an evolution of an
+earlier template%
+\footnote{No longer available.}
+for working with \emph{Microsoft Word}. While the original idea was to transfer
+the existing template into \latex, it quickly became clear that a completely
+different approach was necessary simply because of the major differences to
+working with \emph{Word}. In addition, numerous experiences with diploma theses
+in the following years gave rise to some additional hints.
 
-Das vorliegende Dokument dient einem zweifachen Zweck: \emph{erstens} als
-Erläuterung und Anleitung, \emph{zweitens} als direkter Ausgangspunkt für die
-eigene Arbeit. Angenommen wird, dass der*die Leser*in bereits über elementare
-Kenntnisse im Umgang mit \latex verfügt. In diesem Fall sollte -- eine
-einwandfreie Installation der Software oder die Registrierung bei einem
-\latex-Online-Editor vorausgesetzt -- der Arbeit nichts mehr im Wege stehen.
-Auch sonst ist der Start mit \latex\ nicht schwierig, da viele hilfreiche
-Informationen auf den zugehörigen Webseiten zu finden sind
-(s.\ Kap.~\ref{cha:ArbeitenMitLatex}).
+The purpose of this document is twofold: \emph{first} as an explanation and
+guidance, \emph{second} as a direct starting point for your work. It is assumed
+that the reader already has an elementary knowledge of how to use \latex. In
+this case---assuming a proper installation of the software or registration with
+an \latex online editor---nothing should stand in the way of getting started.
+Also, starting with \latex\ is easy since much helpful information is to be
+found on the associated web pages (see Chapter~\ref{cha:WorkingWithLatex}).
 
 
-\section{Warum {\latex}?}
+\section{Why {\latex}?}
 
-Bachelor- und Masterarbeiten, Dissertationen und Bücher im technisch-%
-natur\-wissen\-schaft\-lichen Bereich werden traditionell mithilfe
-des Textverarbeitungssystems \latex \cite{Lamport1994, Lamport1995} gesetzt.
-Das hat gute Gründe, denn \latex ist bzgl.\ der Qualität des Druckbilds, des
-Umgangs mit mathematischen Elementen, Literaturverzeichnissen etc.\
-unübertroffen und ist noch dazu frei verfügbar. Wer mit \latex bereits
-vertraut ist, sollte es auch für die Abschlussarbeit unbedingt in Betracht
-ziehen, aber auch für den*die Anfänger*in sollte sich die zusätzliche Mühe am
-Ende durchaus lohnen.
+Bachelor's and master's theses, dissertations, and books in the technical and
+scientific fields are traditionally typeset using the document preparation
+system \latex \cite{Lamport1994, Lamport1995}. There are good reasons for this
+because \latex is unsurpassed in terms of the quality of the printed image, the
+handling of mathematical elements, bibliographies, etc., and is also freely
+available. If one is already familiar with \latex, it is definitely worth
+considering for typesetting one's thesis. Nevertheless, even for the beginner,
+the extra effort should be worth it.
 
-Für den professionellen elektronischen Buchsatz wurde früher häufig
-\emph{Adobe Framemaker} verwendet, allerdings ist diese Software teuer und
-komplex. Eine modernere Alternative dazu ist \emph{Adobe InDesign}, wobei
-allerdings die Erstellung mathematischer Elemente und die Verwaltung von
-Literaturverweisen zur Zeit nur rudimentär unterstützt werden.%
-\footnote{Angeblich werden aber für den (sehr sauberen) Schriftsatz in
-\emph{InDesign} ähnliche Algorithmen wie in \latex\ verwendet.}
+For professional electronic book typesetting, \emph{Adobe Framemaker} used to be
+widely employed, but this software is expensive and complex. A more modern
+alternative to this is \emph{Adobe InDesign}, although the creation of
+mathematical elements and the management of literature references are currently
+only supported in a rudimentary way.%
+\footnote{Supposedly, however, the (very clean) typesetting in \emph{InDesign}
+uses algorithms similar to those in \latex.}
 
-Microsoft \emph{Word} gilt im Unterschied zu \latex, \emph{Framemaker} und
-\emph{InDesign} übrigens nicht als professionelle Textverarbeitungssoftware,
-obwohl es immer häufiger auch von großen Verlagen verwendet wird.%
-\footnote{Siehe auch \url{https://latex.tugraz.at/dokumentation/mythen}.}
-Das Schriftbild in \emph{Word} lässt -- zumindest für das geschulte Auge --
-einiges zu wünschen übrig und das Erstellen von Büchern und ähnlich großen
-Dokumenten wird nur unzureichend unterstützt. Allerdings ist \emph{Word} sehr
-verbreitet, flexibel und vielen Benutzer*innen zumindest oberflächlich
-vertraut, sodass das Erlernen eines speziellen Werkzeugs wie \latex\
-ausschließlich für das Erstellen einer Abschlussarbeit manchen
-verständlicherweise zu mühevoll ist. Es sollte daher niemandem übel genommen
-werden, wenn er*sie sich auch bei der Abschlussarbeit auf \emph{Word}
-verlässt. Im Endeffekt lässt sich mit etwas Sorgfalt (und ein paar Tricks)
-auch damit ein durchaus akzeptables Ergebnis erzielen. Ansonsten sollten auch
-für \emph{Word}-Benutzer*innen einige Teile dieses Dokuments von Interesse
-sein, insbesondere die Abschnitte über Abbildungen und Tabellen
-(Kap.~\ref{cha:Abbildungen}) und mathematische Elemente
-(Kap.~\ref{cha:Mathematik}).
+\emph{Microsoft Word}, unlike \latex, \emph{Framemaker}, and \emph{InDesign},
+is not considered professional word processing software, although major
+publishers increasingly use it as well.%.
+\footnote{See also \url{https://openwetware.org/wiki/Word_vs._LaTeX}.}
+The typeface in \emph{Word} leaves something to be desired---at least to the
+trained eye---and the creation of books and similarly large documents are poorly
+supported. However, \emph{Word} is widespread, flexible, and at least
+superficially familiar to many users, so learning a specialized tool like \latex
+solely for writing a thesis is understandably too cumbersome for some.
+Therefore, no one should be vilified for using \emph{Word} for their thesis.
+Ultimately, an acceptable result can be achieved with a small amount of care
+(and a few tricks). Some parts of this document should still be of interest to
+\emph{Word} users, especially the sections on figures and tables
+(Chapter~\ref{cha:Figures}) and mathematical elements
+(Chapter~\ref{cha:Mathematics}).
 
 
-\section{Aufbau der Arbeit}
+\section{Structure of this Document}
 
-Hier am Ende des Einleitungskapitels (und nicht etwa in der Kurzfassung) ist
-der richtige Platz, um die inhaltliche Gliederung der nachfolgenden Arbeit zu
-beschreiben. Hier sollte man darstellen, welche Teile (Kapitel) der Arbeit
-welche Funktion haben und wie sie inhaltlich zusammenhängen. Auch die Inhalte
-des \emph{Anhangs} -- sofern vorgesehen -- sollten hier kurz beschrieben werden.
+Here at the end of the introduction chapter (and not in the Abstract), is the
+right place to describe the content structure of the thesis. Here one should
+present which parts (chapters) of the work have which function and how they are
+connected in terms of content. Also, the contents of the \emph{Appendix}---if
+provided---should be described here briefly.
 
-Zunächst sind in Kapitel \ref{cha:Abschlussarbeit} einige wichtige Punkte zu
-Abschlussarbeiten im Allgemeinen zusammengefasst. Kapitel
-\ref{cha:ArbeitenMitLatex} beschreibt die Idee und die grundlegenden
-technischen Eigenschaften von \latex. Kapitel \ref{cha:Abbildungen} widmet
-sich der Erstellung von Abbildungen und Tabellen sowie der Einbindung von
-Quellcode. Mathematische Elemente und Gleichungen sind das Thema in Kapitel
-\ref{cha:Mathematik} \usw\ Anhang \ref{app:TechnischeInfos} enthält
-technische Details zu dieser Vorlage, Anhang \ref{app:materials} enthält eine
-Auflistung von zugehörigen Materialien auf einem beigelegten Speichermedium,
-und Anhang \ref{app:Fragebogen} zeigt ein Beispiel für die Einbindung eines
-mehrseitigen PDF-Dokuments.
+Chapter~\ref{cha:TheThesis} summarizes some essential points about theses in
+general. Chapter~\ref{cha:WorkingWithLatex} describes the idea and basic
+technical features of \latex. Chapter~\ref{cha:Figures} is devoted to creating
+figures and tables and including source code. Mathematical elements and
+equations are the topics in Chapter~\ref{cha:Mathematics} \etc
+Appendix~\ref{app:TechnicalDetails} contains technical details about this
+template, Appendix \ref{app:Materials} contains a listing of related materials
+on an included storage medium. Appendix \ref{app:Questionnaire} shows an
+example of including a multi-page PDF document.
