@@ -1,7 +1,6 @@
 \chapter{Abbildungen, Tabellen, Quellcode}
 \label{cha:Abbildungen}
 
-\section{Allgemeines}
 
 Abbildungen (\emph{figures}) und Tabellen (\emph{tables}) werden
 üblicherweise zusammen mit einem nummerierten Titel (\emph{caption})
@@ -37,10 +36,10 @@ Der Gedanke, dass etwa Abbildungen kaum jemals genau an der ge\-wünsch\-ten
 Stelle und möglicherweise nicht einmal auf derselben Seite Platz finden, ist
 für viele Anfänger*innen aber offenbar sehr ungewohnt oder sogar beängstigend.
 Dennoch sollte zunächst einmal getrost \latex\ diese Arbeit überlassen und
-\emph{nicht} manuell eingegriffen werden. Erst am Ende, wenn das gesamte
+\emph{nicht} manuell eingegriffen werden! Erst am Ende, wenn das gesamte
 Dokument "steht" und die automatische Platzierung wirklich nicht
-zufriedenstellend erscheint, sollte (durch gezielte Platzierungsanweisungen
-\cite[S.~39]{Oetiker2021}) \textbf{in Einzelfällen} eingegriffen werden.
+zufriedenstellend erscheint, sind Eingriffe \emph{in Einzelfällen} gerechtfertigt.%
+\footnote{Durch gezielte Platzierungsanweisungen (s.~\cite[S.~39]{Oetiker2021}).}
 
 
 \section{Captions}
@@ -49,13 +48,13 @@ Bei Abbildungen steht der Titel üblicherweise \emph{unten}, bei Tabellen
 hingegen -- je nach Konvention -- \emph{oben} (wie in diesem Dokument) oder
 ebenfalls \emph{unten}. In \latex\ erfolgt auch die Nummerierung der
 Abbildungen automatisch, ebenso der Eintrag in das (optionale)
-Abbildungsverzeichnis%
+Abbildungsverzeichnis am Ende des Dokuments.%
 \footnote{Ein eigenes Verzeichnis der Abbildungen am Ende des Dokuments ist
 zwar leicht erstellt, in einer Abschlussarbeit aber (und eigentlich überall
 sonst auch) überflüssig. Man sollte es daher weglassen. Sollte der*die
 Betreuer*in dennoch darauf bestehen, findet sich im Wiki des
 \texttt{hagenberg-thesis} GitHub-Repositorys eine Anleitung zur Integration ins
-eigene Dokument.} am Ende des Dokuments.
+eigene Dokument.}
 
 Die Markierung der Captions%
 \footnote{Ausnahmsweise wird das Wort "Caption" im Folgenden ohne deutsche
@@ -73,7 +72,7 @@ die \verb!\caption{}! Anweisung folgen muss:
 \end{LaTeXCode}
 %
 Der Name des Labels (\texttt{fig:CocaCola}) kann beliebig gewählt werden. Die
-Kennzeichnung \texttt{fig:} ist (wie in Abschn.\ \ref{sec:querverweise}
+Kennzeichnung "\texttt{fig:}" ist (wie in Abschn.\ \ref{sec:querverweise}
 erwähnt) nur eine nützliche Hilfe, um beim Schreiben verschiedene Arten von
 Labels besser unterscheiden zu können.
 
@@ -113,9 +112,9 @@ verwendeten Workflow (\texttt{pdflatex}) können Bild- bzw.\ Grafikformate
 ausschließlich in folgenden Formaten eingebunden werden:
 %
 \begin{itemize}
-	\item \textbf{PNG}: für Grau-, S/W- und Farb-Rasterbilder (bevorzugt),
-	\item \textbf{JPEG}: für Fotos (wenn nicht anders vorhanden),
-	\item \textbf{PDF}: für Vektorgrafiken (Illustrationen, Strichzeichnungen \etc).
+	\item PNG: für Grau-, S/W- und Farb-Rasterbilder (bevorzugt),
+	\item JPEG: für Fotos (wenn nicht anders vorhanden),
+	\item PDF: für Vektorgrafiken (Illustrationen, Strichzeichnungen \etc).
 \end{itemize}
 %
 Bei Rasterbildern sollte wenn möglich PNG verwendet werden, weil die darin
@@ -140,6 +139,10 @@ Der (zum Hauptdokument relative) Pfad \texttt{graphicspath} kann innerhalb
 des Dokuments jederzeit geändert werden, was durchaus nützlich ist, wenn \zB\
 die Grafiken einzelner Kapitel getrennt in entsprechenden Verzeichnissen
 abgelegt werden sollen.
+
+
+\subsection{Größe der Abbildungen}
+
 Die Größe der Abbildung im Druck kann durch Vorgabe einer bestimmten Breite
 oder Höhe oder eines Skalierungsfaktors gesteuert werden, {\zB}:
 %
@@ -168,15 +171,15 @@ abgrenzbar wären.
 
 \subsection{Rasterbilder (Pixelgrafiken)}
 
-Generell sollten Bilder bereits vorher so aufbereitet werden, dass sie später
+Generell sollten Rasterbilder bereits vorher so aufbereitet werden, dass sie später
 beim Druck möglichst wenig an Qualität verlieren. Es empfiehlt sich daher,
 die Bildgröße (Auflösung) bereits im Vorhinein (\zB mit \emph{Photoshop})
 richtig einzustellen.
 Brauchbare Auflösungen bezogen auf die endgültige Bildgröße sind:
 %
 \begin{itemize}
-  \item \textbf{Farb- und Grauwertbilder:} 150--300 dpi,
-  \item \textbf{Binärbilder (Schwarz/Weiß):} 300--600 dpi.
+  \item Farb- und Grauwertbilder: 150--300 dpi,
+  \item Binärbilder (Schwarz/Weiß): 300--600 dpi.
 \end{itemize}
 %
 Eine wesentlich höhere Auflösung macht aufgrund der beim Laserdruck
@@ -195,7 +198,7 @@ Eine Ausnahme ist, wenn die Originaldaten nur in JPEG vorliegen und für die
 Einbindung nicht bearbeitet oder verkleinert wurden. Ansonsten sollte immer
 PNG verwendet werden.
 
-Besonders gerne werden farbige \textbf{Screenshots} der JPEG-Kompression%
+Besonders gerne werden farbige \emph{Screenshots} der JPEG-Kompression%
 \footnote{Das JPEG-Verfahren ist für natürliche Fotos konzipiert und sollte
 auch nur dafür verwendet werden.}
 unter\-zogen, obwohl deren verheerende Folgen für jede*n Laiin*Laien sichtbar
@@ -208,7 +211,7 @@ sein sollten (Abb.~\ref{fig:jpeg-pfusch}).
 		% JPEG file
 		\fbox{\includegraphics[width=0.475\textwidth]{screenshot-clean}} \\
 		% PNG file
-		(a) & (b)
+		(a) JPEG & (b) PNG
 	\end{tabular}
 	\caption{Typischer JPEG-Pfusch. Screenshots und ähnliche im Original
 	verfügbare Rasterbilder sollten für Druckdokumente \emph{keinesfalls} mit
@@ -221,7 +224,7 @@ sein sollten (Abb.~\ref{fig:jpeg-pfusch}).
 
 \subsection{Vektorgrafiken}
 
-Für schematische Abbildungen (\zB Flussdiagramme,
+Für Illustrationen und schematische Abbildungen (\zB Flussdiagramme,
 Entity-Relationship-Diagramme oder sonstige strukturelle Darstellungen)
 sollten unbedingt Vektorgrafiken (PDF) verwendet werden. Gerasterte Grafiken,
 wie sie üblicherweise als GIF- oder PNG-Dateien auf Webseiten vorliegen,
@@ -279,7 +282,6 @@ man zumindest \emph{ähnlich} aussehende Schriften (wie \emph{Times-Roman} oder
 \emph{Computer-Modern} (CM) Schriftfamilie von {\tex}/{\latex} direkt
 zur Erzeugung von Grafiken einzusetzen.
 Es stehen einige Portierungen von CM als \emph{TrueType}-Schriften zur
-Es stehen einige Portierungen von CM als \emph{TrueType}-Schriften zur
 Verfügung, die auch in herkömmlichen Grafikprogrammen unter \emph{Windows}
 und \emph{macOS} verwendet werden können:
 %
@@ -288,7 +290,7 @@ und \emph{macOS} verwendet werden können:
 Empfehlenswert ist \zB\ die "BaKoMa Fonts Collection",%
 \footnote{\url{http://ctan.org/pkg/bakoma-fonts}}
 die neben den CM Standardschriften auch die mathematischen Schriften der
-AMS-Familie ent\-hält und zudem kostenfrei ist. 
+AMS-Familie ent\-hält. 
 \item	%\subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
 Eine Alternative dazu sind die "LM-Roman"%
 \footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
@@ -352,7 +354,7 @@ Die \texttt{overpic}-Umgebung bildet gleichzeitig eine
 \texttt{picture}-Umgebung,%
 \footnote{\url{https://www.overleaf.com/learn/latex/Picture_environment}}
 in der \latex-Zeichenanweisungen (wie \verb!\put! u.ä.) platziert werden
-können, wie in obigem Beispiel gezeigt.%
+können, wie in Abb.~\ref{fig:overpic-example} gezeigt.%
 \footnote{Die Standard-Zeichenanweisungen in \latex sind ziemlich restriktiv,
 weshalb hier zusätzlich das \texttt{pict2e}-Paket 
 (\url{https://ctan.org/pkg/pict2e}) verwendet wird.}
@@ -479,8 +481,8 @@ Der Anspruch an ein ansehnliches Erscheinungsbild von Tabellen ist in den
 letzten Jahren zusehends gestiegen. So folgen mittlerweile viele Autor*innen
 und auch Verlage, die auf \latex setzen, einigen einfachen
 Gestaltungsrichtlinien für Tabellen \cite{Fear2020}, von denen vor allem die
-ersten zwei das grundsätzliche Layout der Tabelle bestimmen:
-
+ersten zwei ihr grundsätzliches Layout bestimmen:
+%
 \begin{enumerate}
 	\item Nie vertikale Linien benutzen.
 	\item Nie doppelte Linien benutzen.
@@ -489,7 +491,7 @@ ersten zwei das grundsätzliche Layout der Tabelle bestimmen:
 	\item Einem Dezimaltrennzeichen geht stets eine Ziffer voran; also $0{,}1$
 	nicht bloß ${,}1$.
 \end{enumerate}
-
+%
 Das \latex-Paket \texttt{booktabs} ermöglicht es auf einfache Art und Weise,
 diesen Anforderungen gerecht zu werden. Innerhalb der
 \texttt{tabular}-Umgebung (welche die eigentliche Tabelle definiert) werden
@@ -731,13 +733,13 @@ Der Quellcode innerhalb dieser Umgebungen wird in der jeweiligen
 Programmiersprache interpretiert, wobei Kommentare erhalten bleiben. Diese
 Umgebungen können sowohl alleinstehend (im Fließtext) oder innerhalb von
 Float-Umgebungen (insbes.\ \texttt{program}) verwendet werden. Im ersten Fall
-wird der Quelltext auch über Seitengrenzen umgebrochen. Mit \verb!/+! ...
+wird der Quelltext auch über Seitengrenzen umgebrochen. Mit \verb!/+! \ldots
 \verb!+/! ist eine Escape-Möglichkeit nach \latex\ vorgesehen, die \va\ zum
 Setzen von Labels für Verweise auf einzelne Programmzeilen nützlich ist, \zB\
 mit
 %
 \begin{quote}
-	\verb!/+\label{ExampleCodeLabel}+/!
+	\verb!int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/!
 \end{quote}
 %
 Ein Beispiel mit Java ist in Prog.~\ref{prog:CodeExample} gezeigt, wobei der
@@ -796,7 +798,7 @@ grundsätzlich drei Möglichkeiten zur Einbindung von Programmtext:
 Kurze Codesequenzen können ohne weiteres im laufenden Text eingebettet
 werden, sofern sie an den gegebenen Stellen von unmittelbarer Bedeutung sind.
 Die folgende (rudimentäre) Java-Methode \texttt{extractEmail} sucht nach
-einer E-Mail-Adresse in der Zeichenkette \texttt{line}:
+einer E-Mail-Adresse in der übergebenen Zeichenkette:
 %
 \begin{JavaCode}[numbers=none]
 static String extractEmail(String line) {
@@ -905,5 +907,5 @@ werden. Ein solches Beispiel ist der \latex-Quellcode in Anhang
 \ref{app:latex} (Seite \pageref{app:latex}).%
 \footnote{Grundsätzlich ist zu überlegen, ob die gedruckte Einbindung der
 gesamten Programmtexte einer Implementierung für den*die Leser*in überhaupt
-sinnvoll ist, oder ob diese nicht besser elektronisch (auf Datenträger)
+sinnvoll ist, oder ob diese nicht besser elektronisch (auf Datenträger oder online)
 beigefügt und nur exemplarisch beschrieben werden.}
