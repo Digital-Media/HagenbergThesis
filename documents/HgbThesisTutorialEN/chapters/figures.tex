@@ -403,8 +403,8 @@ the (usually unwanted) margin at the left and right table borders.
     \caption{Programming languages at a glance.}
     \label{tab:programming-languages}
     \centering
-    \setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
-    \def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
+    \setlength{\tabcolsep}{10pt} 				% separator between columns (standard = 6pt)
+    \renewcommand{\arraystretch}{1.25}	% vertical stretch factor (standard = 1.0)
     \begin{tabular}{@{}llll@{}}
         \toprule
         Language & Type        & Typical Use      & Standards          \\
@@ -431,7 +431,7 @@ the (usually unwanted) margin at the left and right table borders.
             \centering
             \setlength{\tabcolsep}{10pt} % separator between columns
             (standard = 6pt)
-            \def\arraystretch{1.25}      % vertical stretch factor (standard
+            \renewcommand{\arraystretch}{1.25} % vertical stretch factor (standard
             = 1.0)
             \begin{tabular}{@{}llll@{}}
                 \toprule
@@ -496,7 +496,7 @@ source text.
     \label{tab:synthesis-techniques}
     \centering
     \def\rr{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
-    \def\arraystretch{1.20}
+    \renewcommand{\arraystretch}{1.20}
     \small
     \begin{english}
         \begin{tabular}{@{}p{0.2\textwidth}lp{0.3\textwidth}p{0.2\textwidth}@{}}
@@ -533,37 +533,58 @@ source text.
 Often tabular information needs more than one page. Here the float-element
 created by the \texttt{table} environment becomes a problem, because it
 prevents breaks across multiple pages. To allow page breaks \emph{within}
-tables, the \texttt{longtable} package can be used. It replaces the
-\texttt{tabular} environment and does not require a surrounding
-\texttt{table} environment.
+tables, the \texttt{longtable} package can be used.%
+\footnote{%
+\url{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}}
+It replaces the \texttt{tabular} environment and does not require a
+surrounding \texttt{table} environment.%
+\footnote{Note that a \texttt{longtable} is \emph{no} float element but 
+always gets inserted at the current text position. This may lead to large
+empty blocks if the table header and/or the first table row do not fit onto
+the current page.}
 
 The table definition is largely the same as shown in Program
 \ref{prog:programming-languages-source}. Only the commands \verb|\endhead|
-and \verb|\endfoot| are added. They limit the head and foot areas that is
-repeated on each page. If this should be different for the header on the
+and \verb|\endfoot| are added. They outline the head and footer areas to be
+repeated on each page. If these should be different for the header on the
 first page and the footer on the last page, \verb|\endfirsthead| and
-\verb|\endlastfoot| can be used.
+\verb|\endlastfoot| are used.
 
-\texttt{longtable} also provides a \verb|\caption| statement, but it is part
-of the table and must therefore be terminated with \verb|\\|. \verb|\label|
-can also be used to reference the table. However, this should not be done in
-the repeating header, otherwise it will be defined multiple times. Placing
-the label definition in the body of the table or a header area defined with
-\verb|\firsthead| avoids this problem.
+Table \ref{tab:LongtableDemo} shows a concrete example for using 
+\texttt{longtable}. A specific header is assigned to the first page, 
+defining the main caption text and the associated label.
+The following pages show an abbreviated header ("\emph{continued}") with the
+\emph{same} table number, which is only defined once in the main header. 
+If horizontal and vertical spacing are to be modified, these statements must
+be placed \emph{before} the beginning of the table and enclosed with
+\verb|{|\ldots\verb|}| or \verb|\begin{block}| \ldots \verb|\end{block}|%
+\footnote{The (dummy) "\texttt{block}" environment is defined in 
+\texttt{hgb.sty}. It does nothing but provides a limited scope for
+temporarily setting (and automatically resetting) \latex\ variables.}
+to restrict their scope. Consult the source code of this document for
+additional details.
 
-Table \ref{tab:longtable} shows an example of a long table. If horizontal and
-vertical spacing is to be increased, these statements must be placed before
-the beginning of the table and enclosed with \verb|{ }|.
-
-
-{\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
-\def\arraystretch{1.50}      % vertical stretch factor (standard = 1.0)
+\begin{block}										 % 'block' environment is defined in hgb.sty
+\setlength{\tabcolsep}{10pt}     % separator between columns (standard = 6pt)
+\renewcommand{\arraystretch}{1.50} % vertical stretch factor (standard = 1.0)
 \begin{longtable}{@{}lp{0.23\textwidth}@{}}
-    \caption{A long table that potentially breaks over two pages.} \\
+		% -------------------------- first header ----------------------------
+    \caption{A long table (using \texttt{longtable}) that breaks over two pages. 
+		Note that different table headers are defined for the first page and
+		subsequent pages and the associated label is only assigned once 
+		(referring to \emph{this} page).} 
+		\label{tab:LongtableDemo}																						 \\
     \toprule
     First Column            & Second Column                              \\
-    \midrule\endhead
-    \label{tab:longtable}
+    \midrule
+		\endfirsthead
+		% ---------------------- subsequent headers ---------------------------
+		\caption*{\textbf{Table \getcurrentlabel} (\emph{continued})}				 \\
+    \toprule
+    First Column            & Second Column                              \\
+    \midrule
+		\endhead
+		% --------------------------------------------------------------------
     The column on the right contains a lot of text. &
     There is a lot of text in this column, which creates a long column.
     Here, too, it can make sense to set the content left-aligned. However,
@@ -578,8 +599,43 @@ the beginning of the table and enclosed with \verb|{ }|.
     More lines follow here. & This content serves only as a placeholder. \\
     More lines follow here. & This content serves only as a placeholder. \\
     More lines follow here. & This content serves only as a placeholder. \\
+		More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
+    More lines follow here. & This content serves only as a placeholder. \\
     \bottomrule
-\end{longtable}}
+\end{longtable}
+\end{block}
+
+%{\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+%\def\arraystretch{1.50}      % vertical stretch factor (standard = 1.0)
+%\begin{longtable}{@{}lp{0.23\textwidth}@{}}
+    %\caption{A long table that potentially breaks over two pages.} \\
+    %\toprule
+    %First Column            & Second Column                              \\
+    %\midrule\endhead
+    %\label{tab:LongtableDemo}
+    %The column on the right contains a lot of text. &
+    %There is a lot of text in this column, which creates a long column.
+    %Here, too, it can make sense to set the content left-aligned. However,
+    %\texttt{longtable} does not wrap lines in such columns, only between
+    %individual lines. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %More lines follow here. & This content serves only as a placeholder. \\
+    %\bottomrule
+%\end{longtable}}
 
 
 \subsection{Joining columns and rows}
@@ -617,7 +673,7 @@ a simple example with joined columns and rows.
     \label{tab:multi-column-row-table}
     \centering
     \setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
-    \def\arraystretch{1.25}      % vertical stretch factor (standard = 1.0)
+    \renewcommand{\arraystretch}{1.25}      % vertical stretch factor (standard = 1.0)
     \begin{tabular}{@{}lll@{}}
         \toprule
         Column 1 & \multicolumn{2}{c}{Columns 2--3} \\
@@ -872,3 +928,6 @@ of comprehensive implementation code is at all useful for the reader, or
 whether this is not better provided electronically (on physical media or
 online) and only described selectively.}
 
+
+\clearpage
+\listoftables
