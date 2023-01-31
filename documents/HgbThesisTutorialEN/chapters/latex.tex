@@ -60,8 +60,8 @@ can easily be shared with other people, such as the supervisor. Details about
 recommended setups and possible alternatives can be found in
 Appendix~\ref{app:TechnicalDetails}.
 
-\subsection{Literatur}
-\label{sec:literatur}
+\subsection{Literature}
+\label{sec:literature}
 
 It is tedious to start with \latex without relevant literature; even advanced
 users will often require help. Fortunately, many helpful resources are available
@@ -188,82 +188,74 @@ Text can be formatted in different ways.
 \end{itemize}
 
 
-\section{Textstruktur}
+\section{Text Structure}
 
-Zur Strukturierung des eigenen Texts stellt \latex eine Reihe von
-Auszeichnungen zur Verfügung.
+\latex provides several commands for structuring one's text.
 
-\subsection{Absatztrennung}
+\subsection{Paragraph Breaks}
 
-Absätze werden in {\latex}-Quelltext ausschließlich durch das Einfügen einer
-oder mehrerer \textbf{Leerzeilen} voneinander getrennt, es sind also
-\emph{keinerlei sonstige Steueranweisungen} notwendig!
+Paragraphs are separated in {\latex} source text exclusively by inserting one or
+more \textbf{blank lines} from each other, so \emph{no other commands} are
+necessary!
 %
 \begin{center}
-    \setlength{\fboxrule}{0.2mm}
-    \setlength{\fboxsep}{2mm}
-    \fbox{%
-        \begin{minipage}{0.9\textwidth}
-            Besonders die Verwendung von
-            \texttt{\textbackslash\textbackslash} und
-            \texttt{\textbackslash{newline}} Anweisungen zur Absatztrennung ist
-            ein häufig zu beobachtender \textbf{Fehler}. Vor normalen Absätzen
-            auch \emph{nichts} verloren hat die Anweisung
-            \texttt{\textbackslash{paragraph}\{\}} -- sie ist in \latex\ (im
-            Unterschied zu HTML) eine Markierung für Überschriften mit Titel
-            (\su)!
-        \end{minipage}}
+	\setlength{\fboxrule}{0.2mm}
+	\setlength{\fboxsep}{2mm}
+	\fbox{%
+		\begin{minipage}{0.9\textwidth}
+			Especially the use of \texttt{\textbackslash\textbackslash} and
+			\texttt{\textbackslash{newline}} commands for line breaks is a
+			common \textbf{error}. Also, the statement
+			\texttt{\textbackslash{paragraph}\{\}} must \emph{not} be used
+			in this context; it represents---unlike in HTML---a command for
+			headings with titles in \latex\ (see below).
+	\end{minipage}}
 \end{center}
 
-Üblicherweise wird von {\latex} zwischen aufeinanderfolgenden Ab\-sätzen
-\emph{kein} zusätzlicher vertikaler Abstand eingefügt.%
-\footnote{Das ist die Standardeinstellung in {\latex} und natürlich abhängig
-von der verwendeten Dokumentenklasse, Style etc.}
-Allerdings wird die \emph{erste} Zeile jedes Absatzes (mit Ausnahme des
-ersten Absatzes eines Abschnitts) eingerückt, um so die Absatzgrenzen
-deutlich zu machen. Dieses Schema hat sich nicht nur im traditionellen
-Buchsatz bewährt%
-\footnote{Wer es nicht glaubt, sollte sein Bücherregal (oder notfalls das
-seiner Eltern) nach Gegenbeispielen durchsuchen.}
-und sollte auch beibehalten werden, es sei denn es gibt wirklich \emph{sehr}
-gute Gründe dagegen. Für alle übrigen Gliederungen im vertikalen Textfluss
-sind Überschriften (s.\ unten) vorgesehen.
+Usually, \latex inserts \emph{no} additional vertical spacing between
+consecutive paragraphs.%
+\footnote{This is the default setting in \latex. It depends on parameters
+such as the document class and style used.}
+However, the \emph{first} line of each paragraph (except
+the first paragraph of a section) is indented to define the paragraph
+boundaries. This scheme has proven successful in traditional book typesetting%
+\footnote{Those who do not believe it should search their bookshelf (or their
+parents' bookshelf if necessary) for counterexamples.}
+and should be retained unless there are very good reasons against it. Headings
+(see below) are provided for all other outlines in the vertical text flow.
 
-\subsection{Überschriften}
-\label{sec:ueberschriften}
+\subsection{Headings}
+\label{sec:headings}
 
-\latex\ bietet -- abhängig von der verwendeten Dokumentenklasse -- einen Satz
-vordefinierter Überschriftformate in folgender Ordnung:
+\latex provides---depending on the document class used---a set of predefined
+heading formats in the following order:
 %
 \begin{quote}
-    \verb!\part{!\texttt{\em Titel}\verb!}!%
-    \footnote{\texttt{part} ist für die Gliederung eines
-    größeren Werks in mehrere Teile vorgesehen und wird üblicherweise
-    bei einer Abschlussarbeit (und auch in diesem Dokument) nicht
-    verwendet.}
+    \verb!\part{!\texttt{\em Title}\verb!}!%
+    \footnote{\texttt{part} is intended for splitting a more extensive document
+    into several parts and is usually not used in a thesis (and not in this
+    document).}
     \newline%
-    \verb!\chapter{!\texttt{\em Titel}\verb!}! \newline%
-    \verb!\section{!\texttt{\em Titel}\verb!}! \newline%
-    \verb!\subsection{!\texttt{\em Titel}\verb!}! \newline%
-    \verb!\subsubsection{!\texttt{\em Titel}\verb!}! \newline%
-    \verb!\paragraph{!\texttt{\em Titel}\verb!}! \newline%
-    \verb!\subparagraph{!\texttt{\em Titel}\verb!}!
+    \verb!\chapter{!\texttt{\em Title}\verb!}! \newline%
+    \verb!\section{!\texttt{\em Title}\verb!}! \newline%
+    \verb!\subsection{!\texttt{\em Title}\verb!}! \newline%
+    \verb!\subsubsection{!\texttt{\em Title}\verb!}! \newline%
+    \verb!\paragraph{!\texttt{\em Title}\verb!}! \newline%
+    \verb!\subparagraph{!\texttt{\em Title}\verb!}!
 \end{quote}
 %
+\paragraph{Frequent error:} When using \verb!\paragraph{}! and
+\verb!\subparagraph{}!---as seen in this paragraph---the text following the
+title continues on the same line without a line break; care should be taken to
+use appropriate punctuation in the title (here, \eg, \underline{\texttt{:}}).
+The horizontal spacing after the title alone would not make it recognizable as a
+heading.
 
-\paragraph{Häufiger Fehler:} Bei \verb!\paragraph{}! und \verb!\subparagraph{}!
-läuft -- wie in diesem Absatz zu sehen -- der dem Titel folgende Text ohne
-Umbruch in der selben Zeile weiter, weshalb im Titel auf eine passende
-Interpunktion (hier \zB\ \underline{\texttt{:}}) geachtet werden sollte. Der
-horizontale Abstand nach dem Titel allein würde diesen als Überschrift nicht
-erkennbar machen.
+\subsection{Lists}
 
-\subsection{Listen}
-
-Listen sind ein beliebtes Mittel zur Textstrukturierung. In \latex\ sind --
-ähnlich wie in HTML -- drei Arten von formatierten Listen verfügbar:
-ungeordnete Auflistung ("Knödelliste"), geordnete Auflistung (Aufzählung) und
-Beschreibungsliste (Description):
+Lists are a popular means of structuring text. In \latex---similar to HTML---
+three types of formatted lists are available: unordered lists ("bullet lists"),
+ordered lists (enumerations), and description lists:
 %
 \begin{verbatim}
     \begin{itemize}     ... \end{itemize}
@@ -271,566 +263,531 @@ Beschreibungsliste (Description):
     \begin{description} ... \end{description}
 \end{verbatim}
 %
-Listeneinträge werden mit \verb!\item! markiert, bei
-\texttt{description}-Listen mit \verb!\item[!\texttt{\em titel}\verb!]!.
-Listen können ineinander verschachtelt werden, wobei sich bei \texttt{itemize}-
-und \texttt{enumerate}-Listen die Aufzählungszeichen mit der Schachtelungstiefe
-ändern (Details dazu in der \latex-Dokumentation).
+List entries are marked using \verb!\item!, for \texttt{description} lists with
+\verb!\item[!\texttt{\em title}\verb!]!. Lists can be nested; for
+\texttt{itemize} and \texttt{enumerate} lists, the bullets change with nesting
+depth (see the \latex documentation for details).
 
-\subsection{Absatzformatierung und Zeilenabstand}
+\subsection{Paragraph Formatting and Line Spacing}
 
-Abschlussarbeiten werden -- wie Bücher -- in der Regel einspaltig und im
-Blocksatz formatiert, was für den Fließtext wegen der großen Zeilenlänge
-vorteilhaft ist. Innerhalb von Tabellen kommt es wegen der geringen
-Spaltenbreite jedoch häufig zu Problemen mit Abteilungen und Blocksatz,
-weshalb dort ohne schlechtes Gewissen zum Flattersatz ("ragged right")
-gegriffen werden sollte (wie \zB\ in Tab.~\ref{tab:synthesis-techniques} auf
-Seite \pageref{tab:synthesis-techniques}).
+Theses---like books---are usually formatted in one column and justified, which
+makes sense for the continuous text due to the considerable line length.
+However, there are often problems with hyphenation and justification within
+tables because of the small column width. Using ragged-right aligment (e.g., in
+Table~\ref{tab:synthesis-techniques} on page \pageref{tab:synthesis-techniques})
+is advisable in this case.
 
-\subsection{Fußnoten}
-Fußnoten können in \latex\ an beinahe jeder beliebigen Stelle, jedenfalls
-aber in normalen Absätzen, durch die Anweisung
+\subsection{Footnotes}
+
+Footnotes can be placed in \latex at almost any position, but definitely in
+normal paragraphs, using the command
 %
 \begin{quote}
-    \verb!\footnote{!\texttt{\em Fußnotentext}\verb!}!
+    \verb!\footnote{!\texttt{\em Footnote text}\verb!}!.
 \end{quote}
 %
-gesetzt werden. Zwischen der \verb!\footnote!-Marke und dem davor liegenden
-Text sollte grundsätzlich \emph{kein Leerzeichen} entstehen (eventuelle
-Zeilen\-um\-brüche mit \verb!%! auskommentieren). Die Nummerierung und
-Platzierung der Fußnoten erfolgt automatisch, sehr große Fußnoten werden
-notfalls sogar auf zwei aufeinanderfolgende Seiten umgebrochen.
+There should \emph{never be a space} between the \verb!\footnote! command and
+the preceding text (comment out any line breaks with \verb!%!). The numbering
+and placement of footnotes are done automatically; extensive footnotes are
+wrapped on two consecutive pages if necessary.
 
-\subsubsection{Fußnoten in Überschriften}
+\subsubsection{Footnotes in Headings}
 
-Auch das ist ab und zu nötig, ist aber \va\ deshalb kein so einfacher Fall,
-weil die Fußnote in einer Überschrift nur an Ort und Stelle aufscheinen darf,
-nicht aber im \emph{Inhaltsverzeichnis}! Ein konkretes Beispiel dafür ist die
-Überschrift zu Kapitel~\ref{cha:Schluss}, die folgendermaßen definiert ist:
+This is also necessary from time to time, but is no simple case because the
+footnote in a heading must only appear on the spot and not in the \emph{table
+of contents}! A concrete example is the heading for Chapter~\ref{cha:Closing},
+which is defined as follows:
 %
 \begin{quote}
     \begin{verbatim}
-\chapter[Schlussbemerkungen]%
-        {Schlussbemerkungen%
-        \protect\footnote{Diese Anmerkung ....}}%
+\chapter[Closing Remarks]%
+        {Closing Remarks%
+        \protect\footnote{This note ....}}%
     \end{verbatim}
 \end{quote}
 %
-Dabei ist der erste (optionale) Titel \verb![Schlussbemerkungen]! der Eintrag
-im Inhaltsverzeichnis und im Seitenkopf. Der zweite (gleich lautende) Titel
-\texttt{\{Schlussbemerkungen\}} erscheint auf der aktuellen Seite und enthält
-auch den \verb!\footnote{}! Eintrag, der allerdings an dieser Stelle durch
-die Direktive \verb!\protect! "geschützt" werden muss. Die \verb!%!-Zeichen
-sind hier übrigens notwendig, um eventuelle Leerzeichen, die durch
-Zeilenumbrüche im Quelltext entstehen, zu eliminieren (dieser Trick wird in
-\latex\ häufig benötigt, s.\ Abschn.~\ref{sec:kommentare}). Ziemlich
-kompliziert also, und damit ein weiterer Grund, Fußnoten an solchen Stellen
-überhaupt zu vermeiden.
+The first (optional) title \verb![Closing Remarks]! is the entry in the table of
+contents and the page header. The second (identical) title \texttt{\{Closing
+Remarks\}} appears on the current page and also contains the \verb!\footnote{}!
+entry, which, at this point, must be "protected" by the \verb!\protect!
+directive. The \verb!%! characters are necessary here to eliminate possible
+spaces caused by line breaks in the source text (this trick is often needed in
+\latex, see Section~\ref{sec:comments}). All in all, this is quite complicated,
+and thus another reason to avoid footnotes altogether in such places.
 
-Generell sollte mit Fußnoten sparsam umgegangen werden, da sie den Textfluss
-unterbrechen und den*die Leser*in ablenken. Insbesondere sollten Fußnoten
-nicht (wie \va\ in manchen sozialwissenschaftlichen Werken gepflegt) derart
-lang werden, dass sie einen Großteil der Seite einnehmen und damit praktisch
-ein zweites Dokument bilden.%
-\footnote{Das führt bei Dokumenten mit vielen Fußnoten bei manchen
-Leser*innen angeblich so weit, dass sie aus Neugier (oder Versehen)
-    regelmäßig bei den Fußnoten zu lesen beginnen und dann mühevoll die
-    zugehörigen, kleingedruckten Verweise im Haupttext suchen.}
+In general, footnotes should be used sparingly, as they interrupt the flow of
+the text and distract the reader. In particular, footnotes should not take up a
+large part of the page and thus form a second document (as seen in some social
+science publications).%
+\footnote{In documents with many footnotes, this allegedly leads some readers to
+the point where they regularly start reading the footnotes out of curiosity (or
+by mistake) and then laboriously search for the associated small-print
+references in the main text.}
 
-\subsection{Querverweise}
-\label{sec:querverweise}
+\subsection{Cross-References}
+\label{sec:cross-references}
 
-Zur Verwaltung von Querverweisen innerhalb eines Dokuments stellt \latex\
-einen sehr einfachen Mechanismus zur Verfügung. Zunächst muss jede Stelle
-(Kapitel, Abschnitt, Abbildung, Tabelle etc.) durch
+To manage cross-references within a document, \latex\ provides a straightforward
+mechanism. First, each location (chapter, section, figure, table, \etc) must be
+marked by
 %
 \begin{quote}
     \verb!\label{!\texttt{\em key}\verb!}!
 \end{quote}
 %
-markiert werden, wobei \texttt{\em key} ein gültiges \latex-Symbol sein muss.
-Damit Labels (die nur Zahlen sind) nicht verwechselt werden, ist es üblich,
-sie je nach Bedeutung mit einer unterschiedlichen Prefix zu versehen, \zB\
+where \texttt{\em key} must be a valid \latex symbol.
+To prevent confusion about labels (which are just numbers), it is common to give
+them a different prefix depending on their meaning, \eg
 %
 \begin{quote}
     \tabcolsep0pt
     \begin{tabular}{ll}
-        \verb!cha:!\texttt{\em kapitel} & \ \ldots\ für Kapitel,
-        \\
-        \verb!sec:!\texttt{\em abschnitt} & \ \ldots\ für Abschnitte
-        (Sections) und Unterabschnitte,
-        \\
-        \verb!fig:!\texttt{\em abbildung} & \ \ldots\ für Abbildungen,
-        \\
-        \verb!tab:!\texttt{\em tabelle} & \ \ldots\ für Tabellen,
-        \\
-        \verb!equ:!\texttt{\em gleichung} & \ \ldots\ für Formeln und
-        Gleichungen.
+        \verb!cha:!\texttt{\em chapter} & \ \ldots\ for chapters, \\
+        \verb!sec:!\texttt{\em section} & \ \ldots\ for sections and
+        subsections, \\
+        \verb!fig:!\texttt{\em figure} & \ \ldots\ for figures, \\
+        \verb!tab:!\texttt{\em table} & \ \ldots\ for tables, \\
+        \verb!equ:!\texttt{\em equation} & \ \ldots\ for formulae and equations.
     \end{tabular}
 \end{quote}
 %
 \noindent
-Beispiele:\ \verb!\label{cha:Introduction}! oder \verb!\label{fig:Screen-1}!.
-Mit den Anweisungen
+Examples:\ \verb!\label{cha:Introduction}! or \verb!\label{fig:Screen-1}!.
+Using the commands
 %
 \begin{quote}
     \verb!\ref{!\texttt{\emph{key}}\verb!}!
-    \hspace{1em} oder \hspace{1em}
+    \hspace{1em} or \hspace{1em}
     \verb!\pageref{!\texttt{\emph{key}}\verb!}!
 \end{quote}
 %
-kann an beliebiger Stelle im Dokument die zu \texttt{\emph{key}} gehörige
-Nummer bzw.\ Seitennummer eingesetzt werden, \zB\
+allows the number or page number associated with \texttt{\emph{key}} to be
+inserted anywhere in the document, \eg
 %
 \begin{quote}
-    \verb!.. wie in Kap.~\ref{cha:Introduction} erwähnt ..!\\
-    \verb!.. der Screenshot auf Seite \pageref{fig:Screen-1} ..!
+    \verb!.. as mentioned in Chapter~\ref{cha:Introduction} ..!\\
+    \verb!.. the screenshot on page \pageref{fig:Screen-1} ..!
 \end{quote}
 %
-Übrigens werden die Bezeichnungen \emph{Kapitel} und \emph{Abschnitt} sehr
-häufig falsch verwendet -- Kapitel haben ausschließlich "ungebrochene" Nummern:
+By the way, the terms \emph{chapter} and \emph{section} are frequently misused.
+Chapters always have whole numbers:
 %
 \begin{quote}
     \begin{tabular}{ll}
-        \textrm{Richtig:\ } & Kapitel 7 oder Abschnitt 2.3.4 \\
-        \textbf{Falsch:\ }  & Kapitel 7.2 oder Abschnitt 5
+        \textrm{Correct:\ } & Chapter 7 or Section 2.3.4 \\
+        \textbf{Incorrect:\ }  & Chapter 7.2 or Section 5
     \end{tabular}
 \end{quote}
 
-\subsection{Hyperlinks und E-Mail-Adressen}
+\subsection{Hyperlinks and E-mail Addresses}
 
-Hyperlinks (URLs) stellen für den Schriftsatz eine besondere Herausforderung
-dar, vor allem wenn es zu einem Zeilenumbruch kommt. Die Anweisung
+Hyperlinks (URLs) present a particular challenge for typesetting, especially
+when a line break occurs. The command
 %
 \begin{quote}
-    \verb!\url{!\texttt{\em Adresse}\verb!}!
+    \verb!\url{!\texttt{\em address}\verb!}!
 \end{quote}
 %
-ermöglicht Umbrüche bei bestimmten Zeichen der Adresse und sollte daher immer
-eingesetzt werden, wenn ein Hyperlink etwa im Fließtext oder innerhalb einer
-Fußnote angegeben wird.
+allows wrapping at certain address characters and should always be used when a
+hyperlink is specified in the body text or within a footnote.
 
-Für E-Mail-Adressen wurde in \texttt{hgb.sty} das Makro
+For e-mail addresses the macro
 %
 \begin{quote}
-    \verb!\email{!\texttt{\em E-Mail-Adresse}\verb!}!
+    \verb!\email{!\texttt{\em e-mail address}\verb!}!
 \end{quote}
 %
-definiert. Es erzeugt im Dokument einen korrekten Link mit
-\texttt{mailto:}-Angabe unter Zuhilfenahme von \verb|\url{}|. Die Anweisung
-kann auch innerhalb des \verb|\author{}|-Befehls in der Präambel eines
-Dokuments verwendet werden, um auf der Titelseite zusätzlich eine
-E-Mail-Adresse anzugeben:
+was defined in \texttt{hgb.sty}. It creates a correct link in the document with
+a \texttt{mailto:} prefix using \verb|\url{}|. The statement can also be used
+within the \verb|\author{}| command in the preamble of a document to
+additionally specify an e-mail address on the title page:
 %
 \begin{quote}
     \begin{verbatim}
 \author{%
-    Alex A. Schlaumeier \\%
-    \email{alex@schlaumeier.org}%
+    Alex A. Wiseguy \\%
+    \email{alex@wiseguy.org}%
 }
     \end{verbatim}
 \end{quote}
 %
 
 
-\section{Wortabstand und Interpunktion}
+\section{Word Spacing and Punctuation}
 
-Während \latex in vielen Bereichen des Schriftsatzes automatisch das
-bestmögliche Ergebnis zu erzielen versucht, ist bei der Interpunktion
-Sorgfalt von Seiten des*der Autors*Autorin gefragt.
+While \latex automatically tries to achieve the best possible result in many
+typesetting areas, punctuation requires the author's care.
 
 \subsection{\emph{French Spacing}}
 
-Im englischsprachigen Schriftsatz ist es üblich, nach jedem Satzende einen
-gegenüber dem normalen Wortzwischenraum vergrößerten Abstand einzusetzen.
-Obwohl dies im Deutschen und Französischen traditionell nicht so ist, wird es
-wegen der verbesserten Lesbarkeit auch hier manchmal verwendet (nicht in
-diesem Dokument). Falls die englische ("nicht-französische") Satztrennung mit
-zusätzlichem Abstand bevorzugt wird, ist lediglich die Zeile
+In English-language typesetting, it is customary to insert an increased space
+(compared to the usual space between words) after the end each sentence.
+Although this is not enabled by default for this document (it is also not
+traditionally done in German and French), it is sometimes preferred because of
+improved readability. If the English ("non-French") sentence separation with
+additional spacing is desired, only the line
 %
 \begin{quote}
     \verb!\nonfrenchspacing!
 \end{quote}
 %
-am Beginn des Dokuments einzusetzen. In diesem Fall sollte aber die
-Interpunktion innerhalb von Sätzen (nach .\ und :) sorgfältig beachtet werden.
-Beispielsweise schreibt sich "Dr.\ Mabuse" in der Form
+needs to be added at the beginning of the document. In this case, however, the
+punctuation within sentences (after .\ and :) should be carefully observed. For
+example, "Dr.\ Mabuse" is written in the form
 %
 \begin{quote}
-    \verb!Dr.\ Mabuse! oder \verb!Dr.~Mabuse!
+    \verb!Dr.\ Mabuse! or \verb!Dr.~Mabuse!
 \end{quote}
 %
-Im zweiten Beispiel wird mit dem \verb!~! Zeichen zudem ein Zeilenumbruch am
-Leerzeichen verhindert.
+In the second example, the \verb!~! character also prevents a line break at the
+space character.
 
-\subsection{Gedanken- und Bindestriche}
-\label{sec:gedankenstrich}
+\subsection{Dashes and Hyphens}
+\label{sec:dash}
 
-Die Verwendung der falschen Strichlängen (mit und ohne Zwischenraum) ist ganz
-allgemein eine häufige Fehlerquelle. Bewusst unterschieden werden sollte
-zwischen
+Confusing dashes with hyphens or similar punctuation marks (with and without
+spaces) are common errors. The following different types need to be
+distinguished:
 %
 \begin{itemize}
-    \item kurzen Bindestrichen (wie in "Wagner-Jauregg"), %
-    \item Minus-Zeichen, \zB\ $-7$ (erzeugt mit \verb!$-7$!), und %
-    \item echten Gedankenstrichen -- wie hier (erzeugt mit \verb!--!).
+    \item Hyphens (as in "tech-savvy").
+    \item Minus signs, \eg $-7$ (created with \verb!$-7$!).
+    \item Dashes---such as the em dash here (generated with \verb!---!).
 \end{itemize}
 %
 \noindent
-Für das Setzen von Gedankenstrichen\footnote{Für alle drei gibt es übrigens
-auch in \emph{Word} entsprechende Sonderzeichen.} gibt es eindeutige
-Konventionen:
+Dashes are used for pauses or indicating ranges. There are clear conventions
+for using them:%
+\footnote{Both versions also have corresponding special characters in
+\emph{Word}.}
 %
 \begin{enumerate}
-    \item Im \emph{Deutschen} wird üblicherweise einer von zwei
-    Leerzeichen umgebener Gedankenstrich%
-    \footnote{Halbgeviertstrich (\emph{En Dash}).} -- wie hier (in \latex\ mit {\verb*! -- !}) gesetzt.
-    Dieser wird auch für die Angabe von Zahlenintervallen (Seiten 12--19)
-    benutzt, dabei aber ohne Leerzeichen.
-%
-    \item In \emph{englischen} Texten wird ein noch längerer
-    Gedankenstrich\footnote{Geviertstrich (\emph{Em Dash}).} \emph{ohne}
-    zusätzliche Leerzeichen---\emph{as we should be knowing by now}
-    (in \latex\ mit {\verb*!---!}) verwendet.
-%
+	\item In \emph{English} texts, the \emph{em dash} is used \emph{without}
+	extra spaces---\emph{as we should know by now} (in \latex by typing
+	{\verb*!---!}).
+	\item In \emph{German}, the slightly shorter \emph{en dash} surrounded by
+	two spaces is usually used -- wie hier zu sehen (in \latex by typing
+	{\verb*! -- !})). This dash is also used in both languages to indicate
+	intervals of numbers (pages 12--19), but in this case without spaces.
 \end{enumerate}
 
-\subsection{Kommentare}
-\label{sec:kommentare}
+\subsection{Comments}
+\label{sec:comments}
 
-
-Textteile können in \latex\ zeilenweise mit \verb!%! auskommentiert werden.
-Der einem \verb!%!-Zeichen nachfolgenden Text wird bis zum nächsten
-Zeilenende überlesen:
+Text parts can be commented out line by line in \latex\ with \verb!%!. The text
+after a \verb!%! character is ignored until the subsequent end-of-line:
 %
 \begin{quote}
-    \verb!Das wird gedruckt. %Dieser Text wird ignoriert.!
+    \verb!This will be printed. %This text will be ignored.!
 \end{quote}
 %
-Häufig verwendet werden Kommentarzeichen aber auch zum Ausblenden von
-\emph{white space}, also Leerzeichen und Zeilenumbrüchen. Folgendes Beispiel
-zeigt etwa, wie mit \verb!%! am Zeilenende das Entstehen eines Leerzeichens
-vor einer nachfolgenden Fußnotenmarke vermieden werden kann:
+Comment characters are frequently used to hide \emph{white space}, \ie, spaces
+and line breaks. The following example shows how \verb!%! at the end of a line
+can be used to avoid the occurrence of a space before a subsequent footnote
+marker:
 %
 \begin{quote}
 \begin{verbatim}
-In Österreich isst man sonntags Schnitzel.%
-\footnote{Was die allgemein gute Kondition erklärt.}
+In Austria, people eat schnitzel on Sundays.%
+\footnote{Which explains the generally good condition.}
 \end{verbatim}
 \end{quote}
 %
-
-\begin{sloppypar}
-    \noindent
-    Auf ähnliche Weise kann das Entstehen von ungewolltem Absatzzwischenraum
-    durch den gezielten Einsatz von Kommentarzeilen vermieden werden, \zB\
-    vor und nach einem zentrierten Textabschnitt:
-\end{sloppypar}
+Similarly, the occurrence of unwanted paragraph space can be avoided by the
+selective use of comment lines,\eg, before and after a centered text section:
 %
 \begin{quote}
 \begin{verbatim}
-... normaler Text.
+... normal text.
 %
 \begin{center}
-   Dieser Test ist zentriert.
+   This test is centered.
 \end{center}
 %
-Und jetzt geht es normal weiter ...
+And now it continues normally ...
 \end{verbatim}
 \end{quote}
 %
-Darüber hinaus bietet die \verb!comment!-Umgebung die Möglichkeit, größere
-Text\-blöcke in einem Stück auszublenden:
+In addition, the \verb!comment! environment offers the possibility to hide
+larger text blocks in one piece:
 %
 \begin{quote}
 \begin{verbatim}
 \begin{comment}
-Dieser Text ...
-   ... wird ignoriert.
+This text ...
+   ... is ignored.
 \end{comment}
 \end{verbatim}
 \end{quote}
 
-\subsection{Anführungszeichen (Hochkommas)}
+\subsection{Quotation Marks}
 \label{sec:quotation-marks}
 
-Anführungszeichen sind eine häufige (und oft unbemerkte) Fehlerquelle und
-auch hier sind die Unterschiede zwischen Deutsch und Englisch (neben anderen
-Sprachen) zu beachten.
+Quotation marks are a common (and often unnoticed) source of error; again, the
+differences between English and German (among other languages) should be noted.
 
-\subsubsection{Variante 1: Hochkommas mit der \latex-Standardeinstellung}
+\subsubsection{Variant 1: Quotation Marks Using \latex's Default Setting}
 
-Mit der Standardeinstellung von \latex\ (\dah, \emph{ohne} Verwendung der
-hier hier eingestellten Dokumentenoption \texttt{\texttt{smartquotes}}, \su)
-muss die Eingabe von vorderen und hinteren Hochkommas exakt nach den
-entsprechenden Konventionen erfolgen. Hier die korrekte \latex-Notation für
-englische und deutsche Texte:
+With \latex's default setting (\ie, \emph{without} using the document option
+\texttt{smartquotes} set here, see below), typing the leading and trailing
+quotation marks must strictly follow the appropriate conventions. Here is the
+correct \latex notation for English and German texts:
 %
 \begin{quote}
     \verb!``English''! $\rightarrow$ ``English'',\\
     \verb!"`Deutsch"'! $\rightarrow$ {\glqq}Deutsch{\grqq}.
 \end{quote}
 %
-Man beachte die subtilen typografischen Unterschiede zwischen den beiden
-Sprachen.%
-\footnote{Manche Editoren (\zB\ \textsf{TeXstudio}) kann man so einstellen,
-    dass bei der Eingabe eines einfachen Hochkommas (\texttt{\textquotedbl})
-    die entsprechende Zeichenfolge \emph{automatisch} (kontext- und
-    sprachabhängig) eingesetzt wird. Insbesondere in \textsf{Overleaf} ist
-    das derzeit aber nicht möglich.}
+Note the subtle typographical differences between the two languages.%
+\footnote{Some editors (\eg, \textsf{TeXstudio}) can be configured to use the
+corresponding quotation marks \emph{automatically} (context- and
+language-dependent) when typing a double quote character
+(\texttt{\textquotedbl}). However, this is currently not possible in
+\textsf{Overleaf}.}
 
-\emph{Einfache} Anführungszeichen werden im Englischen analog erzeugt,
-im Deutschen werden dafür hingegen die Makros \verb!\glq! \bzw\ \verb!\grq!
-(German left/right quote) benötigt:
+\emph{Single} quotation marks are generated analogously in English. In German,
+however, the macros \verb!\glq! and \verb!\grq! (German left/right quote) are
+required:
 %
 \begin{quote}
     \verb!`English'! $\rightarrow$ `English',\\
     \verb!{\glq}Deutsch{\grq}! $\rightarrow$ {\glq}Deutsch{\grq}.
 \end{quote}
 
-\subsubsection{Variante 2: Hochkommas mit der Option \texttt{\bfseries
-smartquotes}}
+\subsubsection{Variant 2: Quotation Marks Using the Option \texttt{smartquotes}}
 
-Diese Vorlage verwendet mit der Dokumentenoption \texttt{smartquotes}
-ein \emph{spezielles Setup}, das auf dem \texttt{csquotes}-Paket%
+By setting the \texttt{smartquotes} document option, this template uses a
+\emph{particular setup} based on the \texttt{csquotes} package.%
 \footnote{\url{https://ctan.org/pkg/csquotes}}
-basiert. Der korrekte Einsatz von Hochkommas vereinfacht sich damit deutlich,
-weil abhängig von der aktuellen Spracheinstellung und der Position des
-Hochkommas das jeweils richtige Zeichen eingesetzt wird. Es genügt hier die
-Verwendung eines doppelten (geraden) Hochkommas \texttt{\textquotedbl}, wie \zB
+This significantly simplifies the right use of quotation marks because the
+correct character is used depending on the current language setting and the
+position of the quote character. It is sufficient to use a double quote
+character \texttt{\textquotedbl} to achieve this:
 %
 \begin{quote}
-    \begin{english}
-        \verb!"English"! $\rightarrow$ "English"
-    \end{english}\ (bei Spracheinstellung \texttt{english}),\\
-    \verb!"Deutsch"! $\rightarrow$ "Deutsch" (bei Spracheinstellung
-    \texttt{german}).
+	\verb!"English"! $\rightarrow$ "English" (with language setting
+	\texttt{english})\\
+	\begin{german}%
+		\verb!"Deutsch"! $\rightarrow$ "Deutsch"
+	\end{german}
+	(with language setting \texttt{german})
 \end{quote}
 %
-Dabei ist zu beachten, dass die traditionelle Eingabe von Hochkommas
-(Variante~1, \so) in diesem Fall \emph{nicht} zur Verfügung steht. Die
-gemischte Verwendung von Variante~1 und Variante~2 ist somit nicht möglich!
-Es sind mit dieser Einstellung auch alle weiteren "shorthands" des
-\texttt{babel}-Pakets%
+It should be noted that the standard input of quotation marks (variant~1, see
+above) is \emph{not} available in this case. The combined use of variant~1 and
+variant~2 is thus not possible! With this setting, also all other shorthands of
+the \texttt{babel} package%
 \footnote{\url{https://ctan.org/pkg/babel}}
-(wie \zB\ \verb!"a!, \verb!"o!, \verb!"u!) \emph{permanent deaktiviert} und
-diese können auch lokal nicht reaktiviert werden.%
-\footnote{Die hier eingestellte Verwendung des \texttt{\textquotedbl}
-Zeichens als beidseitiges "outer quote" Zeichen gilt -- \va\ in Kombination
-mit der deutschen Sprache -- als "gefährlich", weil das \texttt{babel}-Paket
-das gerade Hochkomma für spezielle \emph{shorthand}-Makros nutzt. Das nehmen
-wir mutig in Kauf, allerdings sind die \texttt{babel}-shorthands im aktuellen
-Setup generell deaktiviert um Schwierigkeiten zu vermeiden.}
+(like, e.g., \verb!"a!, \verb!"o!, \verb!"u!) are \emph{permanently disabled},
+and they cannot be reactivated locally either.%
+\footnote{The use of the \texttt{\textquotedbl} character as the double-sided
+"outer quote" character is considered "dangerous"---especially in combination
+with the German language---because the \texttt{babel} package uses the double
+quote character for special \emph{shorthand} macros. We bravely accept this,
+though the \texttt{babel}-shorthands are generally disabled in the current
+setup to avoid trouble.}
 
-\subsubsection{Zusätzliche Features des \texttt{csquotes}-Pakets}
+\subsubsection{Additional Features of the \texttt{csquotes} Package}
 
-Das (mit der Option \texttt{smartquotes} automatisch geladene)
-\texttt{csquotes}-Paket bietet zahlreiche weitere Möglichkeiten zur Eingabe
-von zitierten Texten (Zitaten), insbesondere das Makro
+The \texttt{csquotes} package (automatically loaded with the
+\texttt{smartquotes} option) provides many more possibilities for entering
+quoted text (quotations), especially the command
 %
 \begin{itemize}
     \item[] \verb!\enquote{text}!,
 \end{itemize}
 %
-das den angegebenen \texttt{text} in der jeweils korrekten Form (\ua\
-abhängig von der Sprach\-einstellung und Verschachtelungstiefe) als Zitat
-auszeichnet, zum Beispiel,
+which uses the given \texttt{text} in the correct form (among other things
+depending on the language setting and nesting depth) as a citation, \eg
 %
 \begin{itemize}
-    \item[] \verb|\enquote{Niemand hat die Absicht, eine Mauer zu bauen!}|
-    \item[] $\rightarrow$ \enquote{Niemand hat die Absicht, eine Mauer zu
-    bauen!}
+    \item[] \verb|\enquote{I have a dream.}|
+    \item[] $\rightarrow$ \enquote{I have a dream.}
 \end{itemize}
 %
-Der Vorteil dieses Konstrukts wird besonders bei \emph{geschachtelten}
-Zitaten deutlich, wie beispielsweise in
+The advantage of this construct is especially apparent in \emph{nested}
+quotations, as, for example in
 %
 \begin{itemize}
-    \item[] \verb|\enquote{Napoleon sagte nur \enquote{Weiter so!} und ging.}|
-    \item[] $\rightarrow$ \enquote{Napoleon sagte nur \enquote{Weiter so!}
-    und ging.}
+    \item[] \verb|\enquote{Napoleon just said \enquote{Keep going!} and left.}|
+    \item[] $\rightarrow$ \enquote{Napoleon just said \enquote{Keep going!} and
+    left.}
 \end{itemize}
 %
-Eine weiteres praktisches Feature ist das Makro \verb!\foreignquote!, mit dem
-man sehr einfach fremdsprachige Zitate im Text einfügen kann, ohne die
-Spracheinstellung explizit verändern zu müssen, \zB%
-\footnote{Derzeit sind nur die Spracheinstellungen \texttt{german} und
-\texttt{english} verfügbar.}
+Another handy feature is the command \verb!\foreignquote! which makes it very
+easy to insert foreign quotations in the text without explicitly changing the
+language setting, \eg%
+\footnote{Currently only the language settings \texttt{english} and
+\texttt{german} are available.}
 %
 \begin{itemize}
-    \item[] \verb|\foreignquote{english}{And God asked him: |\newline
-    \verb|   \enquote{Where is Abel thy brother?} And Cain replied: \ldots}|
-    \item[] $\rightarrow$ \foreignquote{english}{And God asked him:
-    \enquote{Where is Abel thy brother?} And Cain replied: \ldots}
+    \item[] \verb|\foreignquote{german}{Da sprach der Herr zu Kain:|\newline
+    \verb|   \enquote{Wo ist dein Bruder Abel?} Er entgegnete: \ldots}|
+    \item[] $\rightarrow$ \foreignquote{german}{Da sprach der Herr zu Kain:
+    \enquote{Wo ist dein Bruder Abel?}  Er entgegnete: \ldots}
 \end{itemize}
 
 
-\section{Abteilen (Silbentrennung, \emph{Hyphenation})}
-\label{subsec:layout-abteilen}
+\section{Hyphenation}
+\label{subsec:hyphenation}
 
-Um ein sauberes Schriftbild zu erreichen sind -- speziell im Deutschen wegen
-der großen Wortlängen -- Abteilungen unerlässlich. Die Silbentrennung erfolgt
-entweder \emph{automatisch} oder \emph{manuell} durch das Einfügen optionaler
-Trennzeichen.
+Hyphenation is essential to achieve a clean typeface, especially for long words.
+It is done either \emph{automatically} or \emph{manually} by inserting optional
+hyphens.
 
-\subsection{Automatischer Zeilenumbruch}
+\subsection{Automatic Line Break}
 
-In \latex\ wird grundsätzlich automatisch abgeteilt, wobei die Sprache am
-Beginn des Dokuments festgelegt und entsprechende Abteilungsregeln für den
-gesamten Text verwendet werden.
+In \latex, hyphenation is always performed automatically. The language is set at
+the beginning of the document, and appropriate hyphenation rules are applied to
+the entire text.
 
-Besonders bei schmalen Textspalten kann es vorkommen, dass \latex keine
-geeignete Stelle für den Zeilenumbruch findet und den Text über den rechten
-Rand hinaus laufen lässt. Das ist durchaus beabsichtigt und soll anzeigen,
-dass an dieser Stelle ein Problem besteht, das durch manuelles Eingreifen
-repariert werden muss.
+Especially for narrow text columns, \latex may not find a suitable place for the
+line break and lets the text run beyond the right margin. This is intentional
+and meant to indicate a problem that needs to be repaired through manual
+intervention.
 
-\subsection{Manueller Zeilenumbruch}
+\subsection{Manual Line Break}
 
-Generell sollte man gegenüber der automatischen Abteilung misstrauisch sein
-und das Endergebnis stets sorgfältig überprüfen. Vor allem Wörter mit
-Umlauten oder Bindestrichen (\su) werden in \latex\ oft unrichtig abgeteilt.
+Generally, one should be suspicious of the automatic hyphenation and always
+check the final result carefully. Especially words with umlauts or compound
+words with hyphens (see below) are often split incorrectly in \latex.
 
-\paragraph{Optionale Zeilenumbrüche:} Bei Bedarf können mit \verb!\-! gezielt
-zulässige Abteilungspunkte definiert werden, wie \zB\ in
+\paragraph{Optional line breaks:} If required, specific allowed hyphenation
+points can be defined with \verb!\-!, as for example in
 %
 \begin{itemize}
-    \item[] \verb!Fach\-hoch\-schul\-kon\-fe\-renz!.
+    \item[] \verb!in\-com\-pre\-hen\-si\-ble!.
 \end{itemize}
 
-\paragraph{Zusammengesetzte Wörter:} Eine unangenehme Eigenheit von \latex\
-ist, dass bei \emph{mit Bindestrichen} verbundenen Wörtern die einzelnen
-Wortteile generell \emph{nicht automatisch} getrennt werden! Das ist \va\ in
-deutschen Texten recht häufig und somit lästig; beispielsweise würde \latex\
-\emph{keinen} der beiden Teile des Worts
+\paragraph{Compound words:} An unpleasant peculiarity of \latex is that in
+\emph{hyphenated} words, the individual parts of words are generally \emph{not
+automatically} hyphenated! This is quite common, especially (but not only) in
+German texts, and thus annoying; for example, \latex will not hyphenate
+\emph{either} of the two parts of the word
 %
 \begin{itemize}
-    \item[] \verb!Arbeiter-Unfallversicherungsgesetz!
+    \item[] \verb!anti-intellectualism!
 \end{itemize}
 %
-automatisch trennen, sondern ggfs.\ ungebrochen über den Zeilenrand hinausragen
-lassen! Auch hier kann natürlich (wie oben gezeigt) durch individuelles
-Einsetzen von \verb!\-! Abhilfe geschaffen werden.
+but if necessary, let it run beyond the right margin! Manual hyphenation through
+inserting \verb!\-! can once again be helpful.
 
-\paragraph{"Schlampige" Formatierung:} In echten Problemfällen -- etwa bei
-Textelementen, die nicht umgebrochen werden dürfen oder können -- kann
-\latex\ dazu veranlasst werden, in einzelnen Absätzen etwas weniger pingelig
-zu formatieren. Das wird wie folgt erreicht:
+\paragraph{"Sloppy" formatting:} In real problem cases---for example, text
+elements that must not or cannot be wrapped---\latex\ can be told to be less
+strict about formatting specific paragraphs. This is achieved as follows:
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{sloppypar}
-        Dieser Absatz wird "schlampig" (sloppy) gesetzt ...
-    \end{sloppypar}
+\begin{sloppypar}
+    This paragraph is set "sloppy" ...
+\end{sloppypar}
 \end{LaTeXCode}
 %
-Der allerletzte Rettungsanker ist, die betreffende Passage so umzuschreiben,
-dass sich ein passabler Zeilenumbruch ergibt -- schließlich ist man ja selbst
-der*die Autor*in und niemandem (abgesehen von dem*der Betreuer*in) eine
-Rechtfertigung schuldig.%
-\footnote{Angeblich waren eigenständige Textänderungen durch Schriftsetzer*innen
-auch beim früheren Bleisatz durchaus üblich.}
+The last resort is to rewrite the passage in question in such a way that it
+results in a decent line break---after all, it is one's own work, and no
+justification is owed to anyone (apart maybe from the supervisor).%
+\footnote{It is said that independent changes to the text by typesetters were
+also quite common in the metal type days.}
 
 
-\section{Das \texttt{hagenberg-thesis}-Paket}
+\section{The \texttt{hagenberg-thesis} Package}
 
-Dieses Paket enthält mehrere \latex-Dateien, die zum Erstellen dieses
-Dokuments erforderlich sind:
+This package contains several \latex\ files that are required to create this
+document:
 %
 \begin{itemize}
-    \item \nolinkurl{hgbthesis.cls} (Class-Datei): definiert die
-    Dokumentenstruktur, Layout und den gesamten Vorspann des Dokuments
-    (Titelseite \etc).
-    \item \nolinkurl{hgb.sty} (Style-Datei): enthält zentrale Definitionen
-    und Einstellungen. Diese Datei wird von \nolinkurl{hgbthesis.cls}
-    automatisch geladen, kann aber grundsätzlich auch für andere Dokumente
-    verwendet werden.
-    \item Weitere Style-Dateien, die von \nolinkurl{hgbthesis.cls} importiert
-    werden:
+    \item \nolinkurl{hgbthesis.cls} (class file): Defines the document
+    structure, layout, and the entire preamble of the document (title page,
+    \etc).
+    \item \nolinkurl{hgb.sty} (style file): Contains central definitions and
+    settings. This file is automatically loaded by \nolinkurl{hgbthesis.cls},
+    but it can also be used for other documents.
+    \item Additional style files imported by \nolinkurl{hgbthesis.cls}:
     \begin{itemize}
-        \item[] \nolinkurl{hgbabbrev.sty} (div.\ Abkürzungen),
-        \item[] \nolinkurl{hgbalgo.sty} (Algorithmen),
-        \item[] \nolinkurl{hgbbib.sty} (Literaturverwaltung),
-        \item[] \nolinkurl{hgbheadings.sty} (Seiten-Header),
-        \item[] \nolinkurl{hgblistings.sty} (Code-Listings),
-        \item[] \nolinkurl{hgbmath.sty} (Mathematisches).
+        \item[] \nolinkurl{hgbabbrev.sty} (various abbreviations)
+        \item[] \nolinkurl{hgbalgo.sty} (algorithms)
+        \item[] \nolinkurl{hgbbib.sty} (reference management)
+        \item[] \nolinkurl{hgbheadings.sty} (page headers)
+        \item[] \nolinkurl{hgblistings.sty} (code listings)
+        \item[] \nolinkurl{hgbmath.sty} (mathematical functionalities)
     \end{itemize}
 \end{itemize}
 
 
-\subsection{Einstellungen}
-\label{sec:HagenbergEinstellungen}
+\subsection{Settings}
+\label{sec:hagenberg-settings}
 
-Alle (\verb!.tex!) Dokumente dieses Pakets beginnen mit der Anweisung
+All (\verb!.tex!) documents of this package start with the statement
 %
 \begin{itemize}
     \item[] \verb!\documentclass[!\texttt{\emph{type}},
     \texttt{\emph{language}}\verb!]{hgbthesis}!.
 \end{itemize}
 %
-Mit der \texttt{\emph{type}}-Option wird der Typ der Arbeit spezifiziert:
+The \texttt{\emph{type}} option specifies the type of document:
 %
 \begin{itemize}
-    \item[] \texttt{master} (Masterarbeit = \emph{default}),
-    \item[] \texttt{diploma} (Diplomarbeit),
-    \item[] \texttt{bachelor} (Bachelorarbeit),
-    \item[] \texttt{internship} (Praktikumsbericht),
-		\item[] \texttt{proposal} (Exposé, in Verbindung mit \texttt{bachelor} oder \texttt{master}).
+    \item[] \texttt{master} (master thesis = \emph{default})
+    \item[] \texttt{diploma} (diploma thesis)
+    \item[] \texttt{bachelor} (bachelor thesis)
+    \item[] \texttt{internship} (internship report)
+	\item[] \texttt{proposal} (exposé, in connection with \texttt{bachelor} or
+	\texttt{master})
 \end{itemize}
 %
-Mit der Option \texttt{\emph{language}} kann die Hauptsprache des Dokuments
-spezifiziert werden, die möglichen Werte dafür sind
+The \texttt{\emph{language}} option can be used to specify the primary language
+of the document; possible values are:
 %
 \begin{itemize}
-    \item[] \texttt{german} (\emph{default}),
-    \item[] \texttt{english}.
+    \item[] \texttt{german} (\emph{default})
+    \item[] \texttt{english}
 \end{itemize}
 %
-Weitere Optionen:
+Additional options:
 %
 \begin{itemize}
-    \item[] \texttt{smartquotes} (Verwendung gerader Hochkommas, s.\ Abschn
-    .~\ref{sec:quotation-marks}).
+    \item[] \texttt{smartquotes} (use of regular double quotes, see
+    Section~\ref{sec:quotation-marks}).
 \end{itemize}
 %
-Wird \emph{keine} Option angegeben, lautet die Standardeinstellung
-\texttt{[master,german]}. Der vollständige Quelltext für eine entsprechende
-\verb!.tex! Hauptdatei ist in Anhang \ref{app:latex} gelistet.
+If \emph{no} option is specified, the default is \texttt{[master,german]}. The
+full source code for a corresponding \verb!.tex! main file is listed in
+Appendix~\ref{app:latex}.
 
-\subsubsection{Angaben zur Arbeit}
+\subsubsection{Details of the Thesis or Report}
 
-Die Dokumentenklasse ist für verschiedene Arten von Arbeiten vorgesehen, die
-sich nur im Aufbau der Titelseiten unterscheiden. Abhängig vom gewählten
-Dokumententyp sind unterschiedliche Elemente für die Titelseiten erforderlich
-(siehe Tabelle \ref{tab:TitelElemente}). Folgende Basisangaben sind für
-\textbf{alle} Arten von Arbeiten erforderlich:
+The document class is intended for different types of works that differ only in
+the structure of the title pages. Different elements are required for the title
+pages depending on the selected document type (see
+Table~\ref{tab:TitleElements}). The following information is required for
+\textbf{all} document types:
 %
 \begin{itemize}
     \item[] %
-    \verb!\title{!\texttt{\em Titel der Arbeit}\verb!}!, \newline%
-    \verb!\author{!\texttt{\em Autor*in}\verb!}!, \newline%
-    \verb!\programtype{!\texttt{\em Typ des Studiums}\verb!}!, \newline%
-    \verb!\programname{!\texttt{\em Studiengang}\verb!}!, \newline%
-    \verb!\placeofstudy{!\texttt{\em Studienort}\verb!}!, \newline%
+    \verb!\title{!\texttt{\em Thesis or report title}\verb!}!, \newline%
+    \verb!\author{!\texttt{\em Author}\verb!}!, \newline%
+    \verb!\programtype{!\texttt{\em Type of program}\verb!}!, \newline%
+    \verb!\programname{!\texttt{\em Program}\verb!}!, \newline%
+    \verb!\placeofstudy{!\texttt{\em Place of study}\verb!}!, \newline%
     \verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em
     mm}\verb!}{!\texttt{\em dd}\verb!}!, \newline%
-    \verb!\advisor{!\texttt{\em Name des*der Betreuers*Betreuerin}\verb!}! --
+    \verb!\advisor{!\texttt{\em Supervisor name}\verb!}! --
     optional.
 \end{itemize}
 %
 \noindent
-Für \textbf{Praktikumsberichte} werden zusätzlich zu den Basisangaben
-folgende Elemente berücksichtigt:
+For \textbf{internship reports}, the following elements are considered in
+addition to the basic information:
 %
 \begin{itemize}
     \item[] %
-    \verb!\companyName{!\texttt{\em Name und Adresse der Firma}\verb!}!
+    \verb!\companyName{!\texttt{\em Name and address of the company}\verb!}!
     \newline%
-    \verb!\companyUrl{!\texttt{\em Website der Firma}\verb!}!
+    \verb!\companyUrl{!\texttt{\em Company website}\verb!}!
 \end{itemize}
 
 \begin{table}
-    \caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen.}
-    \label{tab:TitelElemente}
+    \caption{Elements in title pages for different document options.}
+    \label{tab:TitleElements}
     \centering\small
     \begin{tabular}{@{}lcccc@{}}
         \toprule
@@ -850,79 +807,78 @@ folgende Elemente berücksichtigt:
     \end{tabular}
 \end{table}
 
-\subsubsection{Titelseiten}
+\subsubsection{Title Pages}
 
-Die ersten Seiten der Arbeit, einschließlich der Titelseite, werden durch die
-Anweisung
+The first pages of the work, including the title page, are created by the
+command
 %
 \begin{itemize}
     \item[] \verb!\maketitle!
 \end{itemize}
 %
-automatisch generiert, abhängig von den obigen Einstellungen:
+depending on the above settings:
 %
 \begin{center}
     \begin{tabular}{@{}cl@{}}
         \toprule
-        \emph{Seite} & \emph{Inhalt} \\
+        \emph{Page} & \emph{Content} \\
         \midrule
-        \textrm{i}   & Titelseite \\
-        \textrm{ii}  & Betreuer*innenseite (nur wenn \verb!\advisor!
-                       angegeben) \\
-        \textrm{iii} & Copyright-Seite\\
-        \textrm{iv}  & Eidesstattliche Erklärung\\
+        \textrm{i}   & Title page \\
+        \textrm{ii}  & Advisor page (only when \verb!\advisor! is specified) \\
+        \textrm{iii} & Copyright page \\
+        \textrm{iv}  & Affidavit \\
         \bottomrule
     \end{tabular}
 \end{center}
 %
-Auf der Copyright-Seite%
-\footnote{Bei Verwendung der Option \texttt{proposal} werden die Seiten für Copyright und 
-Eidesstattliche Erklärung weggelassen.}
-werden auch die Bedingungen für die Nutzung und
-Weitergabe der Arbeit vermerkt. Der zugehörige Text kann durch folgenden
-Einstellungen am Beginn des Dokuments bestimmt werden:
+The copyright page%
+\footnote{If the \texttt{proposal} option is used, the pages for copyright and
+affidavit are omitted.}
+also notes the conditions for the use and distribution of the work. The
+following settings can determine the associated text at the beginning of the
+document.
 %
 \begin{description}
     \item[\normalfont\texttt{{\bs}cclicense}] ~ \newline
-    Veröffentlichung unter einer Creative Commons%
+    Publication under a Creative Commons license%
     \footnote{\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}}
-    Lizenz, die die freie Weitergabe der Arbeit unter Nennung des*der
-    Autors*Autorin, jedoch keine kommerzielle Nutzung oder Bearbeitung erlaubt.
-    Das ist die \emph{empfohlene} Standardeinstellung.
+    that permits free redistribution of the work with attribution to the author,
+    but no commercial use or adaptation. This is the \emph{recommended} default
+    setting.
     \item[\normalfont\texttt{{\bs}strictlicense}] ~ \newline
-    Traditionelle Einschränkung der Nutzungsrechte
-    (\emph{Alle Rechte vorbehalten} \bzw\ \emph{All Rights Reserved}).
-    \item[\normalfont\texttt{{\bs}license\{\emph{Lizenztext}\}}] ~ \newline
-    Damit kann alternativ ein eigener \texttt{\emph{Lizenztext}} angegeben
-    werden, falls notwendig. Solche Änderungen sollten natürlich unbedingt
-    mit der eigenen Hochschule abgestimmt werden.
+    Classic restriction of usage rights (\emph{All Rights Reserved}).
+    \item[\normalfont\texttt{{\bs}license\{\emph{License text}\}}] ~ \newline
+    If necessary, this can specify an alternative \text{\emph{license text}}.
+    Such changes should, of course, be coordinated with the university.
 \end{description}
 
-\subsection{Definierte Abkürzungen}
+\subsection{Defined Abbreviations}
 
-Es wird im \texttt{hagenberg-thesis}-Paket weiters eine Reihe von
-Abkürzungsmakros%
-\footnote{In Anlehnung an den \texttt{jkthesis}-Style von J. Küpper
-    (\url{https://ctan.org/pkg/jkthesis}).}
-definiert, die das Schreiben vereinfachen und für konsistente
-Zwisch\-en\-ab\-stän\-de sorgen (Tab.~\ref{tab:abkuerzungen}). Bei der
-Verwendung von Makros ist allgemein zu beachten, dass sie nachfolgende
-Leerzeichen manchmal "auffressen", sodass vor dem nachfolgenden Text kein
-Abstand erzeugt wird.%
-\footnote{Bei fast allen in \texttt{hgb.sty} definierten Makros wird dies
-allerdings durch den Einsatz von \texttt{\textbackslash xspace} verhindert.}
-Dies kann notfalls mit einem nachfolgenden "\verb!\ !" oder umhüllenden
-\verb!{}!-Klammern verhindert werden. Bei Verwendung von Makros mit
-abschließendem Punkt an einem Satzende sollte auch darauf geachtet werden,
-dass keine \emph{doppelten} Punkte gesetzt werden.
+There are also several abbreviation commands%
+\footnote{Similar to the \texttt{jkthesis} style by J. Küpper
+(\url{https://ctan.org/pkg/jkthesis}).}
+defined in the \texttt{hagenberg-thesis} package, which simplify writing and
+provide consistent spacing (Table~\ref{tab:abbreviations}). When using any
+command, it should generally be noted that they sometimes "gobble" trailing
+spaces so that no spacing is created before the subsequent text.%
+\footnote{However, for almost all macros defined in \texttt{hgbabbrev.sty} this
+is prevented by the use of \texttt{\textbackslash xspace}.}
+If necessary, this can be prevented with a subsequent "\verb!\ !" or by wrapping
+the expression in \verb!{}! brackets. When using commands with a trailing period
+at the end of a sentence, care should also be taken to avoid \emph{double}
+periods.
 
 
 \begin{table}
-    \caption{In \texttt{hgbabbrev.sty} definierte Abkürzungsmakros.}
-    \label{tab:abkuerzungen}
+    \caption{English and German abbreviation commands defined in
+    \texttt{hgbabbrev.sty}.}
+    \label{tab:abbreviations}
     \centering\small
     \begin{tabular}{@{}llp{2cm}ll@{}}
         \toprule
+        \verb+\ie+   & \ie   & & \verb+\eg+  & \eg  \\
+        \verb+\wrt+  & \wrt  & & \verb+\Eg+  & \Eg  \\
+        \midrule
         \verb+\bzw+  & \bzw  & & \verb+\ua+  & \ua  \\
         \verb+\bzgl+ & \bzgl & & \verb+\Ua+  & \Ua  \\
         \verb+\ca+   & \ca   & & \verb+\uae+ & \uae \\
@@ -938,117 +894,114 @@ dass keine \emph{doppelten} Punkte gesetzt werden.
     \end{tabular}
 \end{table}
 
-\subsection{Sprachumschaltung}
+\subsection{Language Switching}
 \label{sec:language-switching}
 
-Für englischsprachige Abschnitte (\zB\ das Abstract oder englische Zitate)
-sollte die \emph{Sprache} von Deutsch auf Englisch umgeschaltet werden, um
-die richtige Form der Silbentrennung zu erhalten. Damit nicht versehentlich
-auf das Rückstellen der Sprache vergessen wird, sind dafür zwei spezielle
-Umgebungen (\emph{environments}) vorgesehen:
+For German-language sections (\eg, the Kurzfassung or German quotations), the
+\emph{language} should be switched from English to German to get the correct
+hyphenation. To avoid accidentally forgetting to reset the language, two special
+\emph{environments} are provided for this purpose:
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{english}
-        This is a 1-page (maximum) summary of your work in English.
-    \end{english}
+\begin{german}
+    An dieser Stelle steht eine Zusammenfassung der Arbeit.
+\end{german}
 \end{LaTeXCode}
 %
-beziehungsweise
+or respectively
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{german}
-        Text in Deutsch (wenn die Hauptsprache auf Englisch gesetzt ist).
-    \end{german}
+\begin{english}
+    Text in English (if the main language is set to German).
+\end{english}
 \end{LaTeXCode}
 %
-Zur Kontrolle lässt sich die aktuelle Spracheinstellung mit dem Makro
-\verb!\languagename! anzeigen. An dieser Stelle ergibt das etwa
-"\texttt{\languagename}" (\emph{new german}, \dah\ neue deutsche
-Rechtschreibung).
+The current language setting can be displayed with the command
+\verb!\languagename!. At this point, this results in
+"\texttt{\languagename}".
 
 \subsection{Zusätzliche {\latex}-Pakete}
 
-Für die Verwendung dieses Dokuments ist eine Reihe von zusätzlichen
-\latex-Paketen erforderlich (Tab.~\ref{tab:packages}). Diese Pakete werden am
-Anfang durch das \texttt{hagenberg-thesis}-Paket automatisch geladen. Alle
-verwendeten Pakete sind Teil der \latex\ Standard-Installation, wie \zB in
-MikTeX, wo auch entsprechende Dokumentation gefunden werden kann (meist als
-DVI-Dateien). Die aktuellen Versionen der Pakete sind online verfügbar, \ua\
-auf den in Abschn.~\ref{sec:literatur} angegebenen CTAN-Sites.
+Several additional \latex\ packages are required to use this document
+(Table~\ref{tab:packages}). These packages are automatically loaded by the
+\texttt{hagenberg-thesis} package. All packages used are part of the \latex\
+standard installation, as, for example, in MikTeX, where corresponding
+documentation can also be found (mainly as DVI files). The current versions of
+the packages are available online on the CTAN sites given in
+Section~\ref{sec:literature}.
 
 \begin{table}
-    \caption{Die wichtigsten der im \texttt{hagenberg-thesis}-Paket
-    verwendeten \latex-Ergänzungen. Alle sind in den gängigen \latex\
-    Standardinstallationen (\zB MikTeX) bereits enthalten.}
+    \caption{The most important of the \latex extensions used in the
+    \texttt{hagenberg-thesis} package. These are already included in typical
+    \latex\ standard installations (\eg, MikTeX).}
     \label{tab:packages}
     \centering\small
     \begin{tabular}{@{}ll@{}}
         \toprule
-        \emph{Paket}          & \emph{Funktion} \\
+        \emph{Package}        & \emph{Function} \\
         \midrule
-        \texttt{algorithmicx} & Beschreibung von Algorithmen \\
+        \texttt{algorithmicx} & Description of algorithms \\
         \texttt{amsfonts},
-        \texttt{amsbsy}       & Mathematische Symbole \\
-        \texttt{amsmath}      & Mathematischer Schriftsatz \\
-        \texttt{babel}        & Sprachumschaltung \\
-        \texttt{biblatex}     & Literaturverwaltung \\
-        \texttt{caption}      & Flexiblere Captions \\
-        \texttt{csquotes}     & Kontextabhängige Hochkommas \\
-        \texttt{eurosym}      & {\euro}-Symbol (\verb!\euro!) \\
-        \texttt{exscale}      & Korrekte Schriftgrößen im Math-Modus \\
-        \texttt{fancyhdr}     & zur Gestaltung Kopfzeilen (header) \\
-        \texttt{float}        & Verbessertes Float-Handling \\
-        \texttt{fontenc}      & Verwendung der T1 (westeur.) Zeichencodierung \\
-        \texttt{graphicx}     & Einbindung Grafiken \\
-        \texttt{hyperref}     & erzeugt aktive Querverweise im PDF-Dokument\\
+        \texttt{amsbsy}       & Mathematical symbols \\
+        \texttt{amsmath}      & Mathematical typesetting \\
+        \texttt{babel}        & Language switching \\
+        \texttt{biblatex}     & Bibliography management \\
+        \texttt{caption}      & More flexible captions \\
+        \texttt{csquotes}     & Context-sensitive quotation marks \\
+        \texttt{eurosym}      & {\euro} symbol (\verb!\euro!) \\
+        \texttt{exscale}      & Correct font sizes in math mode \\
+        \texttt{fancyhdr}     & Controlling headers and footers \\
+        \texttt{float}        & Improved float handling \\
+        \texttt{fontenc}      & Use of T1 (Western European) character encoding \\
+        \texttt{graphicx}     & Including of graphics \\
+        \texttt{hyperref}     & Handling of cross-references in the PDF doucument \\
         \texttt{ifthen},
-        \texttt{xifthen}      & für logische Entscheidungen in \latex \\
-        \texttt{inputenc}     & Erweiterter Eingabezeichensatz \\
-        \texttt{listings}     & Auflistung von Programmcode \\
-        \texttt{upquote}      & Gerade Hochkommas in \texttt{verbatim}-Texten \\
-        \texttt{url}          & Behandlung von URLs im Text \\
-        \texttt{verbatim}     & Verbesserte \texttt{verbatim}-Umgebung\\
-        \texttt{xcolor}       & Farbige Textelemente und Hintergrundfarben \\
+        \texttt{xifthen}      & Conditional commands in \latex \\
+        \texttt{inputenc}     & Extended input encodings \\
+        \texttt{listings}     & Code listings \\
+        \texttt{upquote}      & Realistic quotes in \texttt{verbatim} texts \\
+        \texttt{url}          & URL handling in text \\
+        \texttt{verbatim}     & Better \texttt{verbatim} environments \\
+        \texttt{xcolor}       & Colored text elements and background colors \\
         \bottomrule
     \end{tabular}
 \end{table}
 
 
-\section{\latex-Fehlermeldungen und Warnungen}
+\section{\latex\ Error Messages and Warnings}
 
-Während des Durchlaufs gibt \latex\ Unmengen von Meldungen aus, die einen in
-ihrer Fülle zunächst nicht verwirren sollten, \zB:
+During a run \latex\ outputs tons of messages, which should not lead to
+confusion due to their abundance, e.g.:
 
 \begin{scriptsize}
 \begin{verbatim}
 ...
-Overfull \hbox (14.43593pt too wide) in paragraph at lines 105--109
-\OT1/cmr/m/n/10.95 F[]ur die Ein-bin-dung von Gra-phi-ken in L[]T[]X wird die V
-er-wen-dung des Standard-
-[10] [11]
-Overfull \hbox (5.01222pt too wide) in paragraph at lines 148--154
-\OT1/cmr/m/n/10.95 wen-di-gen Ras-te-rung kei-nen Sinn, auch bei 1200 dpi-Druck
-ern. Spe-zi-ell \OT1/cmr/m/it/10.95 Screen-
+Underfull \hbox (badness 2744) in paragraph at lines 568--572
+\T1/lmr/m/n/10.95 be-tween in-di-vid-ual
+[]
+Underfull \hbox (badness 5607) in paragraph at lines 580--581
+\T1/lmr/m/n/10.95 only as a place-
+[]
 ...
 \end{verbatim}
 \end{scriptsize}
 %
-\emph{Errors} (Fehler) müssen korrigiert werden, wobei einem \latex\ diese
-Arbeit nicht leicht macht, da manchmal (\zB\ wenn eine schließende Klammer
-\verb!}! vergessen wurde) das Problem erst viel später im Text lokalisiert
-wird. In solchen Fällen kann es nützlich sein, das erzeugte Ausgabedokument
-zu inspizieren um festzustellen, ab welcher Stelle die Ergebnisse aus dem
-Ruder laufen. Bei kapitalen Fehlern bleibt der \latex-Prozessor überhaupt
-stehen und erzeugt keine Ausgabe (in Verbindung mit einer meist kryptischen
-Fehlermeldung) -- hier hilft meist nur eine genaue Analyse des Quelltexts
-oder der gerade zuvor durchgeführten Schritte. Ein ausführliches
-Fehlerprotokoll findet sich jeweils in der \verb!.log!-Datei des Hauptdokuments.
+\emph{Errors} must be corrected, but \latex\ does not make this job easy.
+Sometimes (\eg, when a closing bracket \verb!}! was forgotten), the problem is
+not located until much later in the text. In such cases, inspecting the
+generated output document can be useful to determine at what point the results
+get out of hand. In case of capital errors, the \latex processor stops
+completely and does not generate any output (usually in connection with a mostly
+ cryptic error message). In this case, a detailed analysis of the source code or
+ the steps just performed before will usually help. A detailed error log can be
+ found in the \verb!.log! file of the main document.
 
-Falls keine Fehler mehr angezeigt werden, ist zumindest die syntaktische
-Struktur des Dokuments in Ordnung. Genauer ansehen sollte man sich die Liste
-von Meldungen jedoch spätestens beim Abschluss der Arbeit, um übrig
-gebliebene Probleme, wie überlange Textzeilen, unaufgelöste Verweise und
-ähnliche zu beseitigen. Am Ende sollte das Ergebnis jedenfalls so ausehen:
+If no errors are shown, at least the syntactical structure of the document is
+okay. However, one should take a closer look at the list of messages at the
+latest when finishing the thesis. This is highly recommended to eliminate any
+remaining problems, such as overlong lines of text (overfull boxes), unresolved
+references, or similar issues. In any case, the result should look like this in
+the end:
 %
 \begin{quote}
     \verb!LaTeX-Result: 0 Error(s), 0 Warning(s), ...!

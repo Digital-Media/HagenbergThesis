@@ -491,16 +491,18 @@ zwischen
 \end{itemize}
 %
 \noindent
-Für das Setzen von Gedankenstrichen\footnote{Für alle drei gibt es übrigens
-auch in \emph{Word} entsprechende Sonderzeichen.} gibt es eindeutige
-Konventionen:
+Gedankenstriche dienen zum Kennzeichnen von Einschüben oder für die Angabe von
+Bereichen. Es existieren dabei es eindeutige Konventionen:%
+\footnote{Für beide Varianten es übrigens auch in \emph{Word} entsprechende
+Sonderzeichen.}
 %
 \begin{enumerate}
     \item Im \emph{Deutschen} wird üblicherweise einer von zwei
     Leerzeichen umgebener Gedankenstrich%
-    \footnote{Halbgeviertstrich (\emph{En Dash}).} -- wie hier (in \latex\ mit {\verb*! -- !}) gesetzt.
-    Dieser wird auch für die Angabe von Zahlenintervallen (Seiten 12--19)
-    benutzt, dabei aber ohne Leerzeichen.
+    \footnote{Halbgeviertstrich (\emph{En Dash}).} -- wie hier (in \latex\ mit
+	{\verb*! -- !}) gesetzt. Dieser wird auch -- im Deutschen wie im Englischen
+	-- für die Angabe von Zahlenintervallen (Seiten 12--19) benutzt, dabei aber
+	ohne Leerzeichen.
 %
     \item In \emph{englischen} Texten wird ein noch längerer
     Gedankenstrich\footnote{Geviertstrich (\emph{Em Dash}).} \emph{ohne}
@@ -575,7 +577,7 @@ Sprachen) zu beachten.
 \subsubsection{Variante 1: Hochkommas mit der \latex-Standardeinstellung}
 
 Mit der Standardeinstellung von \latex\ (\dah, \emph{ohne} Verwendung der
-hier hier eingestellten Dokumentenoption \texttt{\texttt{smartquotes}}, \su)
+hier hier eingestellten Dokumentenoption \texttt{smartquotes}, \su)
 muss die Eingabe von vorderen und hinteren Hochkommas exakt nach den
 entsprechenden Konventionen erfolgen. Hier die korrekte \latex-Notation für
 englische und deutsche Texte:
@@ -602,8 +604,7 @@ im Deutschen werden dafür hingegen die Makros \verb!\glq! \bzw\ \verb!\grq!
     \verb!{\glq}Deutsch{\grq}! $\rightarrow$ {\glq}Deutsch{\grq}.
 \end{quote}
 
-\subsubsection{Variante 2: Hochkommas mit der Option \texttt{\bfseries
-smartquotes}}
+\subsubsection{Variante 2: Hochkommas mit der Option \texttt{smartquotes}}
 
 Diese Vorlage verwendet mit der Dokumentenoption \texttt{smartquotes}
 ein \emph{spezielles Setup}, das auf dem \texttt{csquotes}-Paket%
@@ -732,9 +733,9 @@ Textelementen, die nicht umgebrochen werden dürfen oder können -- kann
 zu formatieren. Das wird wie folgt erreicht:
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{sloppypar}
-        Dieser Absatz wird "schlampig" (sloppy) gesetzt ...
-    \end{sloppypar}
+\begin{sloppypar}
+	Dieser Absatz wird "schlampig" (sloppy) gesetzt ...
+\end{sloppypar}
 \end{LaTeXCode}
 %
 Der allerletzte Rettungsanker ist, die betreffende Passage so umzuschreiben,
@@ -802,8 +803,8 @@ spezifiziert werden, die möglichen Werte dafür sind
 Weitere Optionen:
 %
 \begin{itemize}
-    \item[] \texttt{smartquotes} (Verwendung gerader Hochkommas, s.\ Abschn
-    .~\ref{sec:anfuehrungszeichen}).
+    \item[] \texttt{smartquotes} (Verwendung gerader Hochkommas,
+	s.\ Abschn.~\ref{sec:anfuehrungszeichen}).
 \end{itemize}
 %
 Wird \emph{keine} Option angegeben, lautet die Standardeinstellung
@@ -890,8 +891,8 @@ automatisch generiert, abhängig von den obigen Einstellungen:
 \end{center}
 %
 Auf der Copyright-Seite%
-\footnote{Bei Verwendung der Option \texttt{proposal} werden die Seiten für Copyright und 
-Eidesstattliche Erklärung weggelassen.}
+\footnote{Bei Verwendung der Option \texttt{proposal} werden die Seiten für
+Copyright und Eidesstattliche Erklärung weggelassen.}
 werden auch die Bedingungen für die Nutzung und
 Weitergabe der Arbeit vermerkt. Der zugehörige Text kann durch folgenden
 Einstellungen am Beginn des Dokuments bestimmt werden:
@@ -923,7 +924,7 @@ Zwisch\-en\-ab\-stän\-de sorgen (Tab.~\ref{tab:abkuerzungen}). Bei der
 Verwendung von Makros ist allgemein zu beachten, dass sie nachfolgende
 Leerzeichen manchmal "auffressen", sodass vor dem nachfolgenden Text kein
 Abstand erzeugt wird.%
-\footnote{Bei fast allen in \texttt{hgb.sty} definierten Makros wird dies
+\footnote{Bei fast allen in \texttt{hgbabbrev.sty} definierten Makros wird dies
 allerdings durch den Einsatz von \texttt{\textbackslash xspace} verhindert.}
 Dies kann notfalls mit einem nachfolgenden "\verb!\ !" oder umhüllenden
 \verb!{}!-Klammern verhindert werden. Bei Verwendung von Makros mit
@@ -932,7 +933,8 @@ dass keine \emph{doppelten} Punkte gesetzt werden.
 
 
 \begin{table}
-    \caption{In \texttt{hgbabbrev.sty} definierte Abkürzungsmakros.}
+    \caption{In \texttt{hgbabbrev.sty} definierte Abkürzungsmakros für Deutsch
+	und Englisch.}
     \label{tab:abkuerzungen}
     \centering\small
     \begin{tabular}{@{}llp{2cm}ll@{}}
@@ -948,6 +950,9 @@ dass keine \emph{doppelten} Punkte gesetzt werden.
         \verb+\sa+   & \sa   & & \verb+\zB+  & \zB  \\
         \verb+\so+   & \so   & & \verb+\ZB+  & \ZB  \\
         \verb+\su+   & \su   & & \verb+\etc+ & \etc \\
+		\midrule
+		\verb+\ie+   & \ie   & & \verb+\eg+  & \eg  \\
+        \verb+\wrt+  & \wrt  & & \verb+\Eg+  & \Eg  \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -962,17 +967,17 @@ auf das Rückstellen der Sprache vergessen wird, sind dafür zwei spezielle
 Umgebungen (\emph{environments}) vorgesehen:
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{english}
-        This is a 1-page (maximum) summary of your work in English.
-    \end{english}
+\begin{english}
+	This is a 1-page (maximum) summary of your work in English.
+\end{english}
 \end{LaTeXCode}
 %
 beziehungsweise
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{german}
-        Text in Deutsch (wenn die Hauptsprache auf Englisch gesetzt ist).
-    \end{german}
+\begin{german}
+	Text in Deutsch (wenn die Hauptsprache auf Englisch gesetzt ist).
+\end{german}
 \end{LaTeXCode}
 %
 Zur Kontrolle lässt sich die aktuelle Spracheinstellung mit dem Makro
@@ -1014,14 +1019,14 @@ auf den in Abschn.~\ref{sec:literatur} angegebenen CTAN-Sites.
         \texttt{float}        & Verbessertes Float-Handling \\
         \texttt{fontenc}      & Verwendung der T1 (westeur.) Zeichencodierung \\
         \texttt{graphicx}     & Einbindung Grafiken \\
-        \texttt{hyperref}     & erzeugt aktive Querverweise im PDF-Dokument\\
+        \texttt{hyperref}     & erzeugt aktive Querverweise im PDF-Dokument \\
         \texttt{ifthen},
         \texttt{xifthen}      & für logische Entscheidungen in \latex \\
         \texttt{inputenc}     & Erweiterter Eingabezeichensatz \\
         \texttt{listings}     & Auflistung von Programmcode \\
         \texttt{upquote}      & Gerade Hochkommas in \texttt{verbatim}-Texten \\
         \texttt{url}          & Behandlung von URLs im Text \\
-        \texttt{verbatim}     & Verbesserte \texttt{verbatim}-Umgebung\\
+        \texttt{verbatim}     & Verbesserte \texttt{verbatim}-Umgebung \\
         \texttt{xcolor}       & Farbige Textelemente und Hintergrundfarben \\
         \bottomrule
     \end{tabular}
