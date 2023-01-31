@@ -495,7 +495,7 @@ source text.
         ("ragged-right") is used.}
     \label{tab:synthesis-techniques}
     \centering
-    \def\rr{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
+    \newcommand{\RR}{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
     \renewcommand{\arraystretch}{1.20}
     \small
     \begin{english}
@@ -503,26 +503,26 @@ source text.
             \toprule
             Method & Implem. & Features & Status \\
             \midrule
-            {\rr polygon shading} &
+            {\RR polygon shading} &
             SW/HW &
-                {\rr flat-shaded polygons} &
+                {\RR flat-shaded polygons} &
             \\
-            {\rr flat shading with z-buffer} &
+            {\RR flat shading with z-buffer} &
             SW/HW &
-                {\rr depth values} &
+                {\RR depth values} &
             \\
-            {\rr goraud shading with z-buffer} &
+            {\RR goraud shading with z-buffer} &
             SW/HW &
-                {\rr smooth shading, simple fog, point light sources} &
-                {\rr SGI entry models} \\
-            {\rr phong shading with z-buffer} &
+                {\RR smooth shading, simple fog, point light sources} &
+                {\RR SGI entry models} \\
+            {\RR phong shading with z-buffer} &
             SW/HW &
-                {\rr highlights} &
+                {\RR highlights} &
             \\
-            {\rr texture mapping with z-buffer} &
+            {\RR texture mapping with z-buffer} &
             SW/HW &
-                {\rr surface textures, simple shadows} &
-                {\rr SGI high end, flight simulators} \\
+                {\RR surface textures, simple shadows} &
+                {\RR SGI high end, flight simulators} \\
             \bottomrule
         \end{tabular}
     \end{english}
@@ -928,6 +928,3 @@ of comprehensive implementation code is at all useful for the reader, or
 whether this is not better provided electronically (on physical media or
 online) and only described selectively.}
 
-
-\clearpage
-\listoftables

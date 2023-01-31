@@ -522,7 +522,7 @@ strengen Abteilungsregeln zu lockern. Details dazu finden sich im zugehörigen
 	gesetzt (im "Flattersatz").}
 	\label{tab:synthesis-techniques}
 	\centering
-	\def\rr{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
+	\newcommand{\RR}{\rightskip=0pt plus1em \spaceskip=.3333em \xspaceskip=.5em\relax}
 	\renewcommand{\arraystretch}{1.20}
 	\small
 	\begin{english}
@@ -530,39 +530,46 @@ strengen Abteilungsregeln zu lockern. Details dazu finden sich im zugehörigen
 			\toprule
 			Method & Implem. & Features & Status \\
 			\midrule
-			{\rr polygon shading} &
+			{\RR polygon shading} &
 			SW/HW &
-			{\rr flat-shaded polygons} &
+			{\RR flat-shaded polygons} &
 			\\
-			{\rr flat shading with z-buffer} &
+			{\RR flat shading with z-buffer} &
 			SW/HW &
-			{\rr depth values} &
+			{\RR depth values} &
 			\\
-			{\rr goraud shading with z-buffer} &
+			{\RR goraud shading with z-buffer} &
 			SW/HW &
-			{\rr smooth shading, simple fog, point light sources} &
-			{\rr SGI entry models} \\
-			{\rr phong shading with z-buffer} &
+			{\RR smooth shading, simple fog, point light sources} &
+			{\RR SGI entry models} \\
+			{\RR phong shading with z-buffer} &
 			SW/HW &
-			{\rr highlights} &
+			{\RR highlights} &
 			\\
-			{\rr texture mapping with z-buffer} &
+			{\RR texture mapping with z-buffer} &
 			SW/HW &
-			{\rr surface textures, simple shadows} &
-			{\rr SGI high end, flight simulators} \\
+			{\RR surface textures, simple shadows} &
+			{\RR SGI high end, flight simulators} \\
 			\bottomrule
 		\end{tabular}
 	\end{english}
 \end{table}
+
 
 \subsection{Mehrseitige Tabellen}
 
 Oftmals benötigen tabellarische Informationen mehr als nur eine Seite. Hier
 wird dann das durch die \texttt{table}-Umgebung erzeugte Floating zum
 Problem, denn es verhindert Umbrüche über mehrere Seiten. Um einen
-Seitenumbruch in Tabellen zu ermöglichen, kann das \texttt{longtable}-Paket
+Seitenumbruch in Tabellen zu ermöglichen, kann das \texttt{longtable}-Paket%
+\footnote{%
+\url{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}}
 verwendet werden. Es ersetzt die \texttt{tabular}-Umgebung und benötigt kein
-umgebendes \texttt{table}-Environment.
+umgebendes \texttt{table}-Environment.%
+\footnote{Man beachte, dass ein \texttt{longtable} \emph{kein} float-Element 
+ist, sondern immer an der aktuellen Textposition eingefügt wird. Dies kann 
+zu großen Leerblöcken führen, wenn der Tabellenkopf und/oder die erste
+Tabellenzeile nicht auf die aktuelle Seite passen.}
 
 Die Tabelle wird dabei weitgehend gleich definiert, wie in Programm
 \ref{prog:programming-languages-source} gezeigt. Hinzu kommen lediglich die
@@ -572,43 +579,71 @@ Kopfbereich auf der ersten Seite \bzw\ für den Fußbereich auf der letzten
 Seite anders sein, können \verb|\endfirsthead| und \verb|\endlastfoot|
 verwendet werden.
 
-\texttt{longtable} bietet ebenfalls eine \verb|\caption|-Anweisung, die
-jedoch Teil der Tabelle ist und daher mit \verb|\\| abgeschlossen werden muss.
-\verb|\label| kann ebenfalls verwendet werden, um auf die Tabelle zu
-referenzieren. Dieses sollte jedoch nicht im wiederholenden Kopfbereich
-geschehen, da es sonst mehrfach definiert wird. Eine Platzierung im Körper
-der Tabelle oder einem mit \verb|\firsthead| definierten Kopfbereich umgeht
-dieses Problem.
 
-Tabelle \ref{tab:longtable} zeigt ein Beispiel für eine lange Tabelle. Sollen
-horizontale und vertikale Abstände vergrößert werden, müssen diese
-Anweisungen vor dem Beginn der Tabelle stehen und mit \verb|{ }| umschlossen
-werden.
+Tabelle \ref{tab:LongtableDemo} zeigt ein konkretes Beispiel für die Verwendung
+von \texttt{longtable}. Der ersten Seite wird eine spezifische Kopfzeile 
+zugewiesen, die die Hauptüberschrift und den zugehörigen Label definiert. 
+Die folgenden Seiten zeigen eine abgekürzte Kopfzeile ("\emph{Fortsetzung}")
+mit der \emph{selben} Tabellennummer, die nur einmal in der Hauptüberschrift
+definiert ist. Sollen horizontale und vertikale Abstände vergrößert werden,
+müssen diese Anweisungen vor dem Beginn der Tabelle stehen und mit 
+\verb|{|\ldots\verb|}| oder \verb|\begin{block}| \ldots \verb|\end{block}|%
+\footnote{Die Dummy-Umgebung "\texttt{block}" ist in \texttt{hgb.sty} 
+definiert. Sie hat keine Funktion, bietet aber einen begrenzten 
+Definitionsbereich für das vorübergehende Setzen (und automatische Zurücksetzen)
+von \latex\-Variablen.}
+umschlossen werden. Weitere Details finden sich im Quellcode zu diesem Dokument.
 
-{\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
-\def\arraystretch{1.50}      % vertical stretch factor (standard = 1.0)
+
+\begin{block}										 % 'block' environment is defined in hgb.sty
+\setlength{\tabcolsep}{10pt}     % separator between columns (standard = 6pt)
+\renewcommand{\arraystretch}{1.50} % vertical stretch factor (standard = 1.0)
 \begin{longtable}{@{}lp{0.23\textwidth}@{}}
-	\caption{Eine lange Tabelle, die ggfs.\ über zwei Seiten umbricht.} \\
-	\toprule
-	Erste Spalte & Zweite Spalte \\
-	\midrule\endhead
-	\label{tab:longtable}
-	Die Spalte rechts enthält viel Text. &
-	In dieser Spalte steht viel Text, der eine lange Spalte
-	erzeugt. Auch hier kann es Sinn machen, den Inhalt im Flattersatz zu
-	setzen. \texttt{longtable} bricht in solchen Spalten jedoch nicht um,
-	nur zwischen einzelnen Zeilen. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
-	\bottomrule
-\end{longtable}}
+		% -------------------------- first header ----------------------------
+    \caption{Eine lange Tabelle (mit \texttt{longtable}), die sich über zwei
+		Seiten erstreckt. Zu beachten ist, dass für die erste Seite und die
+		folgenden Seiten unterschiedliche Tabellenüberschriften definiert werden
+		und die zugehörige Bezeichnung nur einmal zugewiesen wird (mit Referenz
+		auf \emph{diese} Seite).} 
+		\label{tab:LongtableDemo}																						 \\
+    \toprule
+    Erste Spalte & Zweite Spalte                          					     \\
+    \midrule
+		\endfirsthead
+		% ---------------------- subsequent headers ---------------------------
+		\caption*{\textbf{Tabelle \getcurrentlabel} (\emph{Fortsetzung})}		 \\
+    \toprule
+    Erste Spalte & Zweite Spalte                            					   \\
+    \midrule
+		\endhead
+		% --------------------------------------------------------------------
+    Die Spalte rechts enthält viel Text. &
+		In dieser Spalte steht viel Text, der eine lange Spalte
+		erzeugt. Auch hier kann es Sinn machen, den Inhalt im Flattersatz zu
+		setzen. \texttt{longtable} bricht in solchen Spalten jedoch nicht um,
+		nur zwischen einzelnen Zeilen. 																				 \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+		Hier folgen weitere Zeilen. & Dieser Inhalt dient nur als Platzhalter. \\
+    \bottomrule
+\end{longtable}
+\end{block}
+
 
 \subsection{Spalten und Zeilen verbinden}
 
