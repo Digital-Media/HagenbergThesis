@@ -307,6 +307,18 @@
 \item[\nolinkurl{#1}\widedotfill]
 }
 
+% A generic environment that does nothing, e.g., for temporary variable settings:
+% \begin{block}
+% \setlength{\tabcolsep}{10pt}
+%    \renewcommand{\arraystretch}{1.50}
+%    ... 
+% \end{block}
+\newenvironment{block}{}{}
+
+% Gives access to the most recent label assigned (used in longtable example):
+\newcommand{\getcurrentlabel}{\@currentlabel}
+
+
 %% For inserting foreign PDF pages --------------------------------------------
 
 \RequirePackage{pdfpages}
