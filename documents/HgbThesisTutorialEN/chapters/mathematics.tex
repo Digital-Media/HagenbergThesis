@@ -1,68 +1,96 @@
-\chapter[Mathem.\ Formeln etc.]{Mathematische Formeln, Gleichungen und Algorithmen}
+\chapter[Mathematical formulas \etc]{Mathematical formulas, equations and algorithms}
 \label{cha:Mathematics}
 
-Das Setzen von mathematischen Elementen gehört sicher zu den Stär\-ken
-von \latex. Man unterscheidet zwischen mathematischen Elementen im Fließtext
-und freistehenden Gleichungen, die in der Regel fortlaufend nummeriert werden
-. Analog zu Abbildungen und Tabellen sind dadurch Querverweise zu Gleichungen
-leicht zu realisieren. Hier nur einige Beispiele und spezielle Themen, vieles
-weitere dazu findet sich \zB in \cite[Kap.\ 7]{Kopka2003} und~\cite{Voss2014}.
+
+Typesetting mathematical elements is certainly one of the strongest features of
+\latex. A distinction is made between mathematical elements in continuous text
+and free-standing equations, which are usually numbered consecutively.
+Analogous to figures and tables, this makes it easy to cross-reference equations.
+Here are only some examples and special topics, much more can be found in 
+\cite[Ch.\ 7]{Kopka2003} and~\cite{Voss2014}.
 
 
-\section{Mathematische Elemente im Fließtext}
+\section{Mathematical elements in continuous text}
 
-Mathematische Symbole, Ausdrücke, Gleichungen etc.\ werden im Fließtext durch
-paarweise \verb!$! \ldots \verb!$! markiert. Hier ein simples Beispiel:
+Mathematical symbols, expressions, equations, etc.\ are marked in the continuous
+text by pairs \verb!$! \ldots \verb!$!. Here is a simple example:
 %
 \begin{itemize}
 	\item[]
-	Der Nah-Unendlichkeitspunkt liegt bei
-	$\bar{a} = f' \cdot (f' / (K \cdot u_{\max}) + 1)$,
-	sodass bei einem auf $\infty$ eingestellten Objektiv von der Entfernung
-	$\bar{a}$ an alles scharf ist. Fokussiert man das Objektiv auf die
-	Entfernung $\bar{a}$ (\dah, $a_0 = \bar{a}$), dann wird im Bereich
-	$[\frac{\bar{a}}{2}, \infty]$ alles scharf.
+	The near infinity point is at $\bar{a} = f \cdot (f / (K \cdot u_{\max}) + 1)$, 
+	so with a lens set to $\infty$, everything is in focus from distance $\bar{a}$ on.
+	Focusing the lens to the distance $\bar{a}$ (\ie, $a_0 = \bar{a}$), everything
+	in the range $[\frac{\bar{a}}{2}, \infty]$ will be in focus.
 \end{itemize}
 %
-Dabei sollte unbedingt darauf geachtet werden, dass die Höhe der einzelnen
-Elemente im Text nicht zu groß wird.
+It is important to ensure that the height of the individual elements in the text
+does not become too large.
 
-\paragraph{Häufiger Fehler:}
-Im Fließtext wird bei einfachen Variablen oft auf die Verwendung der richtigen,
-mathematischen Zeichen vergessen, wie etwa in "X-Achse" anstelle von "$X$-Achse"
-(\verb!$X$-Achse!).
+\subsubsection{Common mistakes}
 
-\paragraph{Zeilenumbrüche:}
-Bei längeren mathematischen Elementen im Fließtext sind Probleme mit
-Zeilenumbrüchen vorprogrammiert. In der Regel ermöglicht \latex nur am "="
-einen Zeilenumbruch, an anderer Stelle kann man Umbrüche mit
-\texttt{{\bs}allowbreak} ermöglichen. Hier ein kleines Beispiel:
+In continuous text, simple variables are often typeset with plain text,
+\ie, without using correct mathematical symbols, as in "X-axis" instead of 
+"$X$-axis" (\verb!$X$-axis!).
+
+
+\subsubsection{Mathematical fonts}
+
+\latex\ uses slightly different fonts for regular text and in math mode.
+The following basic math fonts are available:
+%
+\begin{quote}
+    \begin{tabular}{lcl}
+        $\mathrm{Roman}$      & & \verb!$\mathrm{Roman}$!,      \\
+				$\mathit{Italic}$     & & \verb!$\mathit{Italic}$!,      \\
+				$\mathbf{Bold}$     	& & \verb!$\mathit{Bold}$!,      \\
+        $\mathsf{Sans Serif}$ & & \verb!$\mathsf{Sans Serif}$!, \\
+        $\mathtt{Typewriter}$ & & \verb!$\mathttt{Typewriter}$!, \\
+				$\mathcal{CALLIGRAPHIC}$ & & \verb!$\mathcal{CALLIGRAPHIC}$!,\\
+				$\mathbb{BLACKBOARD}$ & & \verb!$\mathbb{BLACKBOARD}$!,\\
+				$\mathfrak{Fraktur}$ & & \verb!$\mathfrak{Fraktur}$!.
+    \end{tabular}
+\end{quote}
+%
+In some situations, the \verb!\boldsymbol{..}! macro may come in useful. It can 
+convert any mathematical symbol into a boldface version, for example,
+$\mathbf{A}$ (\verb!$\mathbf{A}$!) denotes a matrix and $\boldsymbol{x}$ 
+(\verb!$\boldsymbol{x}$!) is a vector.
+
+
+\subsubsection{Line breaks}
+
+With longer mathematical elements in the continuous text problems with line breaks 
+are inevitable. Usually \latex allows line breaks only at the "=" operator, 
+elsewhere one can use \verb|\allowbreak| to enable line breaks. Here is a small
+example:
 %
 \begin{itemize}
-	\item[a)] Einen einfachen Zeilenvektor definiert man beispielsweise in der
-	Form $\boldsymbol{x} = (x_0, x_1, \ldots, x_{n-1})$.
-	\item[b)] Einen einfachen Zeilenvektor definiert man beispielsweise in der
-	Form $\boldsymbol{x} = (x_0,\allowbreak x_1,\allowbreak\ldots,\allowbreak
+	\item[a)] For example, (bla bla bla) a simple row vector is defined in the form
+	$\boldsymbol{x} = (x_0, x_1, \ldots, x_{n-1})$.
+	\item[b)] For example, (bla bla bla) a simple row vector is defined in the form
+	$\boldsymbol{x} = (x_0,\allowbreak x_1,\allowbreak\ldots,\allowbreak
 	x_{n-1})$.
 \end{itemize}
 %
-Die Zeile in a) sollte über den Seitenrand hinauslaufen, b) hingegen enthält
-\texttt{{\bs}allowbreak} an mehreren Stellen und sollte daher sauber umbrechen.
+The line in a) should extend beyond the page margin, but b) contains 
+\verb|\allowbreak| in several places and should therefore wrap cleanly.
 
 
-\section{Freigestellte Ausdrücke}
+\section{Displayed expressions and equations}
 
-Freigestellte mathematische Ausdrücke können in \latex\ durch \verb!\[!
-\ldots \verb!\]! erzeugt werden. Das Ergebnis wird zentriert, erhält jedoch
-keine Nummerierung. So ist \zB\ \[y = 4 x^2\] das Ergebnis von
-\verb!\[y = 4 x^2\]!.
+Displayed mathematical expressions can be generated in \latex\ by \verb!\[! \ldots 
+\verb!\]! The result will be centered, but will not be numbered.
+For example, \[y_0 = 4 x^2\] is produced by \verb!\[y_0 = 4 x^2\]!
+or, alternatively,
+\begin{quote}
+ \verb!\begin{displaymath} y_0 = 4 x^2 \end{displaymath}!
+\end{quote}
 
+\subsection{Single numbered equations}
 
-\subsection{Einfache Gleichungen}
-
-Meistens wird in solchen Fällen jedoch die \texttt{equation}-Umgebung zur
-Herstellung nummerierter Gleichungen verwendet, auf die im Text jederzeit
-verwiesen werden kann. Zum Beispiel erzeugt
+However, most often in such cases the \texttt{equation} environment is used
+to produce numbered equations that can be referred to at any time in the text.
+For example, 
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{equation}
@@ -71,51 +99,49 @@ verwiesen werden kann. Zum Beispiel erzeugt
 \end{equation}
 \end{LaTeXCode}
 %
-die Gleichung
+creates this equation:
 %
 \begin{equation}
 	f(k) = \frac{1}{N} \sum_{i=0}^{k-1} i^2 .
 	\label{eq:MyFirstEquation}
 \end{equation}
 %
-Mit \verb!\ref{eq:MyFirstEquation}! erhält man wie üblich die Nummer
-(\ref{eq:MyFirstEquation}) dieser Gleichung (siehe dazu auch Abschn.\
-\ref{sec:VerweiseAufGleichungen}). Dieselbe Gleichung \emph{ohne}
-Nummerierung kann übrigens mit der \texttt{equation*}-Umgebung erzeugt werden.
+With \verb|\ref{eq:MyFirstEquation}| you get the number (\ref{eq:MyFirstEquation})
+of this equation as usual (see also Sec.\ \ref{sec:ReferencesToEquations}).
+The same equation \emph{without} numbering can be generated with the \texttt{equation*}
+environment.
 %
 \begin{center}
 	\setlength{\fboxrule}{0.2mm}
 	\setlength{\fboxsep}{2mm}
 	\fbox{%
 		\begin{minipage}{0.9\textwidth}
-		Man beachte, dass \textbf{Gleichungen} inhaltlich ein \textbf{Teil
-		des Texts} sind und daher neben der sprachlichen
-		\textbf{Überleitung} auch die \textbf{Interpunktion} (wie in Gl.\
-		\ref{eq:MyFirstEquation} gezeigt) beachtet werden muss. Bei
-		Unsicherheiten sollte man sich passende Beispiele in einem
-		guten Mathematik\-buch ansehen.
+		Note that \textbf{equations} are a \textbf{part of the text} in terms of content, 
+		and therefore, in addition to proper linguistic \textbf{transitions},
+		\textbf{punctuation} (as shown in Eq.\ \ref{eq:MyFirstEquation}) must be observed.
+		If you are unsure, you should look at appropriate examples in a good math book.
 		\end{minipage}}
 \end{center}
 %
-Für Interessierte findet sich mehr zum Thema Mathematik und Prosa in
+For those interested, more on the subject of mathematics and prose can be found in
 \cite{Mermin1989} und \cite{Higham2020}.
 
-\subsection{Mehrzeilige Gleichungen}
 
-Für mehrzeilige Gleichungen bietet \latex\ die \verb!eqnarray!-Umgebung, die
-allerdings etwas eigenwillige Zwischenräume erzeugt. Es empfiehlt sich, dafür
-gleich auf die erweiterten Möglichkeiten des \texttt{amsmath}-Pakets%
-\footnote{American Mathematical Society (AMS). \texttt{amsmath} ist Teil der
-\latex\ Standardinstallation und wird von \texttt{hgb.sty} bereits importiert.}
-\cite{Mittelbach2022} zurückzugreifen. Hier ein Beispiel mit zwei am $=$
-Zeichen ausgerichteten Gleichungen,
+\subsection{Multiline equations}
+
+For multiline equations \latex\ offers the \verb!eqnarray! environment, which, however,
+generates somewhat idiosyncratic spaces. It is recommended to use the extended
+possibilities of the \texttt{amsmath} package%
+\footnote{American Mathematical Society (AMS). \texttt{amsmath} is part of the 
+\latex\ default installation and is automatically imported by \texttt{hgb.sty}.}
+for this right away. Here is an example with two equations aligned to the $=$ sign,
 %
 \begin{align}
 	f_1 (x,y) &= \frac{1}{1-x} + y , \label{eq:f1} \\
 	f_2 (x,y) &= \frac{1}{1+y} - x , \label{eq:f2}
 \end{align}
 %
-erzeugt mit der \texttt{align}-Umgebung aus dem \texttt{amsmath}-Paket:
+generated with the \texttt{align} environment from the \texttt{amsmath} package:
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{align}
@@ -125,42 +151,42 @@ erzeugt mit der \texttt{align}-Umgebung aus dem \texttt{amsmath}-Paket:
 \end{LaTeXCode}
 
 
-\subsection{Fallunterscheidungen}
+\subsection{Multiple-case constructs}
 
-Mit der \texttt{cases}-Umgebung aus \texttt{amsmath} sind Fallunterscheidungen,
-\ua\ innerhalb von Funktionsdefinitionen, sehr einfach zu bewerkstelligen.
-Beispielsweise wurde die rekursive Definition
+With the \texttt{cases} environment from \texttt{amsmath}, case distinctions, 
+\eg, within function definitions, are very easy to accomplish.
+For instance, the recursive definition
 %
 \begin{equation}
 	f(i) =
 	\begin{cases}
-		0             & \text{für $i = 0$,}\\
-		f(i-1) + f(i) & \text{für $i > 0$.}
+		0             & \text{for $i = 0$,}\\
+		f(i-1) + f(i) & \text{for $i > 0$.}
 	\end{cases}
 \end{equation}%
 %
-mit folgenden Anweisungen erzeugt:
+was produced with the following commands:
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{equation}
 	f(i) =
 	\begin{cases}
-	  0             & \text{für $i = 0$,}\\
-	  f(i-1) + f(i) & \text{für $i > 0$.}
+	  0             & \text{for $i = 0$,}\\
+	  f(i-1) + f(i) & \text{for $i > 0$.}
 	\end{cases}
 \end{equation}
 \end{LaTeXCode}
 %
-Man beachte dabei die Verwendung des sehr praktischen \verb!\text{..}!-Makros,
-mit dem im Mathematik-Modus gewöhnlicher Text eingefügt werden kann, sowie
-wiederum die Interpunktion innerhalb der Gleichung.
+Note the use of the very handy \verb!\text{..}! macro, which can be used
+to insert ordinary text in math mode, and again the punctuation within the
+equation.
 
 
-\subsection{Gleichungen mit Matrizen}
+\subsection{Equations with matrices}
 
-Auch hier bietet \texttt{amsmath} einige Vorteile gegenüber der Verwendung
-der \latex\ Standardkonstrukte. Dazu ein einfaches Beispiel für die
-Verwendung der \texttt{pmatrix}-Umgebung für Vektoren und Matrizen,
+Again, \texttt{amsmath} offers some advantages over using the standard \latex
+constructs. For this purpose, a simple example of using the \texttt{pmatrix}
+environment for vectors and matrices,
 %
 \begin{equation}
 	\begin{pmatrix}
@@ -177,7 +203,7 @@ Verwendung der \texttt{pmatrix}-Umgebung für Vektoren und Matrizen,
 	\end{pmatrix} ,
 \end{equation}
 %
-das mit den folgenden Anweisungen erzeugt wurde:
+generated with the following instructions:
 %
 \begin{LaTeXCode}
 \begin{equation}
@@ -187,7 +213,7 @@ das mit den folgenden Anweisungen erzeugt wurde:
 	\end{pmatrix}
 	= 
 	\begin{pmatrix}
-		  \cos \phi &           -\sin \phi \\
+		  \cos \phi &          -\sin \phi \\
 		  \sin \phi & \phantom{-}\cos \phi /+ \label{lin:phantom} +/
 	\end{pmatrix} 
 	\cdot
@@ -198,115 +224,115 @@ das mit den folgenden Anweisungen erzeugt wurde:
 \end{equation}
 \end{LaTeXCode}
 %
-Ein nützliches Detail darin ist das \tex-Makro \verb!\phantom{..}! (in Zeile
-\ref{lin:phantom}), das sein Argument unsichtbar einfügt und hier als
-Platzhalter für das darüberliegende Minuszeichen verwendet wird. Alternativ
-zu \texttt{pmatrix} kann mit der \texttt{bmatrix}-Umgebung Matrizen und
-Vektoren mit eckigen Klammern erzeugt werden. Zahlreiche weitere
-mathematische Konstrukte des \texttt{amsmath}-Pakets sind in
-\cite{Mittelbach2022} beschrieben.
+A useful detail in this is the \tex macro \verb!\phantom{..}! (in line 
+\ref{lin:phantom}), which inserts its argument invisibly and is used here
+as a placeholder for the minus sign above it.
+As an alternative to \texttt{pmatrix}, the \texttt{bmatrix} environment can
+be used to create matrices and vectors with square brackets.
+Numerous other mathematical constructs of the \texttt{amsmath} package are
+described in \cite{Mittelbach2022}.
 
 
-\subsection{Verweise auf Gleichungen}
-\label{sec:VerweiseAufGleichungen}
+\subsection{References to equations}
+\label{sec:ReferencesToEquations}
 
-Beim Verweis auf nummerierte Formeln und Gleichungen genügt grundsätzlich die
-Angabe der entsprechenden Nummer in runden Klammern, \zB\
+When referring to numbered formulas and equations, it is usually sufficient
+to indicate the corresponding number in round brackets, \eg,
+%
 \begin{center}
-	"\ldots\ wie aus (\ref{eq:f1}) abgeleitet werden kann \ldots"
+	"\ldots\ as can be derived from (\ref{eq:f1}) \ldots"
 \end{center}
 %
-Um Missverständnisse zu vermeiden, sollte aber -- \va\ in Texten mit nur
-wenigen mathematischen Elementen -- "Gleichung \ref{eq:f1}", "Gl
-.~\ref{eq:f1}" oder "Gl.~(\ref{eq:f1})" geschrieben werden (natürlich
-konsistent).
+To avoid misunderstandings, however -- especially in texts with only few
+mathematical elements -- "Equation \ref{eq:f1}", "Eq.~\ref{eq:f1}" or 
+"Eq.~(\ref{eq:f1})" should be written (consistently, of course).
 %
 \begin{center}
 	\setlength{\fboxrule}{0.2mm}
 	\setlength{\fboxsep}{2mm}
 	\fbox{%
 		\begin{minipage}{0.9\textwidth}
-			\textbf{Achtung:} Vorwärtsverweise auf (im Text weiter hinten
-			liegende) Gleichungen sind \textbf{äußerst ungewöhnlich}
-			und sollten vermieden werden! Glaubt man dennoch so etwas zu
-			benötigen, dann wurde meistens ein Fehler in der Anordnung gemacht.
+			\textbf{Note:} Forward references to equations (placed further back
+			in the text) are \textbf{extremely unusual} and should be avoided! If
+			one still believes to need such a thing, then usually a mistake was made
+			in the content structure.
 		\end{minipage}}
 \end{center}
 
 
-\section{Spezielle Symbole}
+\section{Mathematical symbols}
 
-Für einen Großteil der mathematischen Symbole werden spezielle Makros
-benötigt. Im Folgenden werden einige der gebräuchlichsten aufgelistet.
+Special macros are needed for a large part of the mathematical symbols. Some of
+the most common ones are listed below.
 
-\subsection{Zahlenmengen}
+\subsection{Number sets}
 
-Einige häufig verwendete Symbole sind leider im ursprünglichen mathematischen
-Zeichensatz von \latex nicht enthalten, \zB die Symbole für die reellen und
-natürlichen Zahlen. Im \texttt{hagenberg-thesis}-Paket sind diese Symbole als
-Makros \verb!\R!, \verb!\Z!, \verb!\N!, \verb!\Cpx!, \verb!\Q! ($\R, \Z, \N,
-\Cpx, \Q$) mithilfe der \emph{AMS Blackboard Fonts} definiert, \zB:
+Some frequently used symbols are unfortunately not included in the original 
+mathematical character set of \latex, e.g. the symbols for the real and natural 
+numbers. In the \texttt{hagenberg-thesis} package these symbols are defined
+as macros%
+\footnote{Based on the \emph{AMS Blackboard Fonts}.}
+\verb!\R!, \verb!\Z!, \verb!\N!, \verb!\Cpx!, \verb!\Q! ($\R, \Z, \N, \Cpx, \Q$),
+\eg,
 %
 \begin{center}
 	$x \in \R$ , $k \in \N_0$, $z = (a + \mathrm{i} \cdot b) \in \Cpx$.
 \end{center}
 
 
-\subsection{Operatoren}
+\subsection{Operators}
 
-In \latex\ sind Dutzende von mathematischen Operatoren für spezielle
-Anwendungen definiert. Am häufigsten werden natürlich die arithmetischen
-Operatoren $+$, $-$, $\cdot$ und $/$ benötigt. Ein dabei oft beobachteter
-Fehler (der wohl aus der Programmierpraxis resultiert) ist die Verwendung von
-$*$ für die einfache Multiplikation -- richtig ist $\cdot$ (\verb!\cdot!).%
-\footnote{Das Zeichen $*$ ist üblicherweise für den \emph{Faltungsoperator}
-vorgesehen.}
+In \latex\ dozens of mathematical operators are defined for various purposes.
+Of course, the arithmetic operators $+$, $-$, $\cdot$ and $/$ are needed most often.
+An frequent error (probably resulting from programming practice) is the use
+of $*$ for simple multiplication -- correct is $\cdot$ (\verb!\cdot!).%
+\footnote{The $*$ character is usually reserved for the \emph{convolution operator}.}
 %
-Für Angaben wie \zB\ "ein Feld mit $25 \times 70$ Metern" (aber auch fast
-\emph{nur} dafür) wird sinnvollerweise der $\times$ (\verb!\times!) Operator
-und \emph{nicht} einfach das Textzeichen~"x" verwendet!
+For statements like "a field with $25 \times 70$ meters" (but also almost
+\emph{only} for that) it makes sense to use the $\times$ (\verb!\times!) operator
+-- and \emph{not} simply the text character~"x"!
 
 
-\subsection{Variable (Symbole) mit mehreren Zeichen}
+\subsection{Variables (symbols) with multiple characters}
 
-Vor allem bei der mathematischen Spezifikation von Algorithmen und Programmen
-ist es häufig notwendig, Symbole (Variablennamen) mit mehr als einem Zeichen
-zu verwenden, \zB
+Especially in the mathematical specification of algorithms and programs
+it is often necessary to use symbols (variable names) with more than one
+character, \eg,
 %
-	\[Scalefactor\leftarrow Scalefactor^2 \cdot 1.5 \; ,\]
+	\[Scalefactor\leftarrow p^2 \cdot 1.5 \; ,\]
 %
-\textbf{fälschlicherweise} erzeugt durch
+\textbf{falsely} generated by
 %
 \begin{quote}
-	\verb!$Scalefactor \leftarrow Scalefactor^2! \verb!\cdot 1.5$!.
+	\verb!$Scalefactor \leftarrow p^2! \verb!\cdot 1.5$!.
 \end{quote}
 %
-Dabei interpretiert \latex allerdings die Zeichenkette "Scalefactor" als 11
-einzelne, aufeinanderfolgende Symbole $S$, $c$, $a$, $l$, $e$, \ldots und
-setzt dazwischen entsprechende Abstände. \textbf{Richtig} ist, diese
-Buchstaben mit \verb!\mathit{..}! zu \emph{einem} Symbol zusammenzufassen.
-Der Unterschied ist in diesem Fall deutlich sichtbar:
+The reason is that \latex interprets the character sequence "Scalefactor" as
+the product of 11 single, consecutive variables $S$, $c$, $a$, $l$, $e$, \ldots
+and inserts appropriate spaces between them.
+The \textbf{correct} way is to combine these letters with \verb!\mathit{..}! to 
+\emph{one} symbol. The difference is clearly visible in this case:
 %
 \begin{center}
 	\setlength{\tabcolsep}{4pt}
 	\begin{tabular}{llll}
-		\text{Falsch:}  & $Scalefactor^2$          & $\leftarrow$ &
+		\text{Wrong:}  & $Scalefactor^2$          & $\leftarrow$ &
 		\verb!$Scalefactor^2$!          \\
-		\text{Richtig:} & $\mathit{Scalefactor}^2$ & $\leftarrow$ &
+		\text{Correct:} & $\mathit{Scalefactor}^2$ & $\leftarrow$ &
 		\verb!$\mathit{Scalefactor}^2$!
 	\end{tabular}
 \end{center}
 %
-Grundsätzlich sollten derart lange Symbolnamen aber ohnehin vermieden und
-stattdessen möglichst kurze (gängige) Symbole verwendet werden (\zB\
-Brennweite $f = 50 \, \mathrm{mm}$ statt $\mathit{Brennweite} = 50 \,
-\mathrm{mm}$).
+Generally, such long symbol names should be avoided anyway and short symbols
+used instead wherever possible (\eg, focal length $f = 50 \, \mathrm{mm}$ 
+instead of $\mathit{focal length} = 50 \, \mathrm{mm}$).
 
-\subsection{Funktionen}
 
-Während Symbole für Variablen traditionell (und in \latex\ automatisch)
-\emph{italic} gesetzt werden, wird für die Namen von Funktionen und
-Operatoren üblicherweise \emph{roman} als Schrifttyp verwendet, wie \zB in
+\subsection{Functions and operators}
+
+While symbols for variables are traditionally (and in \latex\ automatically)
+set \emph{italic}, names of functions and operators are usually typeset in
+\emph{roman} fonts, as for example in
 %
 \begin{center}
 	\begin{tabular}{lcl}
@@ -315,10 +341,9 @@ Operatoren üblicherweise \emph{roman} als Schrifttyp verwendet, wie \zB in
 	\end{tabular}
 \end{center}
 %
-Das ist bei den bereits vordefinierten Standardfunktionen (wie \verb!\sin!,
-\verb!\cos!, \verb!\tan!, \verb!\log!, \verb!\max! \uva) automatisch der Fall.
-Diese Konvention sollte auch bei selbstdefinierten Funktionen befolgt werden,
-wie etwa in
+This happens with the already predefined standard functions (like \verb!\sin!, 
+\verb!\cos!, \verb!\tan!, \verb!\log!, \verb!\max! \uva) automatically.
+This convention should also be followed for self-defined functions, such as in
 %
 \begin{center}
 	\begin{tabular}{lcl}
@@ -328,125 +353,125 @@ wie etwa in
 \end{center}
 
 
-\subsection{Maßeinheiten und Währungen}
+\subsection{Units of measurement and currencies}
 
-Bei der Angabe von Maßeinheiten wird üblicherweise Normalschrift (keine
-Italics) verwendet, \zB:
+When specifying units of measurement, normal font is usually used (no italics) 
+should be used, \eg:
 %
 \begin{quote}
-	Die Höchstgeschwindigkeit der \textit{Bell XS-1} beträgt 345~m/s bei
-	einem Startgewicht von 15~t. Der Prototyp kostete über 25.000.000 US\$,
-	also ca.\ 19.200.000 \euro\ nach heutiger Umrechnung.
+	The maximum speed of the \textit{Bell XS-1} is 345\,m/s with a takeoff weight 
+	of 15\,t. The prototype cost over US\$ 25,000,000, or about \euro\ 19,200,000 
+	in today's conversion.
 \end{quote}
 %
-Der Abstand zwischen der Zahl und der Maßeinheit ist dabei gewollt. Das
-\$-Zeichen wird mit \verb!\$! und das Euro-Symbol (\euro) mit dem Makro
-\verb!\euro! erzeugt.%
-\footnote{Das \euro\ Zeichen ist nicht im ursprünglichen \latex-Zeichensatz
-enthalten sondern wird mit dem \texttt{eurosym}-Paket erzeugt.}
+The blank space between the number and the unit of measurement is intentional.
+The \$ sign is created with \verb!\$! and the Euro symbol (\euro) is created
+with the \verb!\euro! macro.%
+\footnote{The \euro character is not included in the original \latex character
+set but is provided by the \texttt{eurosym} package.}
 
 
-\subsection{Kommas in Dezimalzahlen (Mathematik-Modus)}
+\subsection{Commas in decimal numbers (math mode)}
 
-\latex\ setzt im Mathematik-Modus (also innerhalb von \verb!$! \ldots \verb!$!,
-\verb!\[! \ldots \verb!\]! oder in Gleichungen) nach dem angloamerikanischen
-Stil in Dezimalzahlen grundsätzlich den \emph{Punkt} (\verb!.!) als Trennsymbol
-voraus. So wird etwa mit \verb!$3.141$! normalerweise die Ausgabe "3.141"
-erzeugt. Um das in Europa übliche Komma in Dezimalzahlen zu verwenden, genügt
-es \emph{nicht}, einfach \verb!.! durch \verb!,! zu ersetzen. Das Komma wird
-in diesem Fall als \textbf{Satzzeichen} interpretiert und sieht dann so aus:
+
+In math mode (\ie, within \verb!$! \ldots \verb!$!, \verb!\[! \ldots \verb!\]! or 
+in equations) \latex\ generally follows the Anglo-American convention that 
+\emph{dot} (\verb!.!) is used as the comma sign decimal numbers.
+For example, \verb!$3.141$! produces the output "3.141", as one would expect.
+Unfortunately, to use a European comma in decimal numbers, it is \emph{not}
+sufficient to simply replace \verb!.! with \verb!,!.
+In this case the comma is interpreted as \emph{punctuation character} and 
+the result looks like this:
 %
 \begin{quote}
 	\verb!$3,141$! $\quad \rightarrow \quad 3,141$
 \end{quote}
 %
-(man beachte den Leerraum nach dem Komma). Dieses Verhalten lässt sich in
-\latex\ zwar global umdefinieren, was aber wiederum zu einer Reihe
-unangenehmer Nebeneffekte führt. Eine einfache (wenn auch nicht sehr
-elegante) Lösung ist, Kommazahlen im Mathematik-Modus so zu schreiben:
+(note the additional blank space after the comma). This behavior can be
+redefined globally in \latex\, but this in turn leads to a number of unpleasant
+side effects. A simple (though not very elegant) solution is to write decimal
+numbers in math mode like this:
 %
 \begin{quote}
 	\verb!$3{,}141$! $\quad \rightarrow \quad 3{,}141$
 \end{quote}
 
 
-\subsection{Mathematische Werkzeuge}
+\subsection{Mathematical tools}
 
-Für die Erstellung komplizierter Gleichungen ist es mitunter hilfreich, auf
-spezielle Software zurückzugreifen. Unter anderem können aus dem Microsoft
-\emph{Equation Editor} und aus {\em Mathematica} auf relativ einfache Weise
-\latex-An\-wei\-sun\-gen für mathematische Gleichungen exportiert und direkt
-(mit etwas manueller Nacharbeit) in das eigene \latex-Dokument übernommen
-werden.
+For the creation of complicated equations it is sometimes helpful to resort 
+to special software aor interactive tools. Among other things, \latex statements
+for mathematical equations can be exported from Microsoft's \emph{Equation Editor}
+or \emph{Mathematica} in a relatively simple way and copied directly (usually
+with some manual rework) into your own \latex document.
 
 
-\section{Algorithmen}
+\section{Algorithms}
 
-Die algorithmische Darstellung ist ein wichtiges Mittel zur präzisen
-Beschreibung von Berechnungsabläufen. Durch die Verwendung von
-\emph{mathematischer Notation} (Symbolen und Operatoren) einerseits und den
-aus der Programmierung gewohnten \emph{Ablaufstrukturen} (Entscheidungen,
-Schleifen, Prozeduren \etc) sind Algorithmen ein bewährtes Bindeglied
-zwischen der mathematischen Formulierung und dem zugehörigen Programmcode.
 
-Ein wesentlicher Aspekt der algorithmischen Beschreibung -- die idealerweise
-der Implementierung zumindest strukturell möglichst ähnlich sein sollte --
-ist die weitgehende \emph{Unabhängigkeit} von einer spezifischen
-Programmiersprache. Dadurch ergibt sich eine bessere Lesbarkeit, breitere
-Anwendbarkeit und erhöhte Nachhaltigkeit (möglicherweise über die Lebensdauer
-einer Programmiersprache hinaus). Bei der Formulierung von Algorithmen sollte
-man \ua\ folgendes beachten:%
-\footnote{Siehe auch
+Algorithmic representations are an important means of accurately describing
+computational processes. By using \emph{mathematical notation} (symbols and 
+operators) on the one hand and the \emph{sequence structures} (decisions, 
+loops, procedures \etc) familiar from programming, algorithms are a proven 
+link between the mathematical formulation and the associated program code.
+
+An essential aspect of an algorithmic description -- which should be
+structurally as similar as possible to the implementation -- 
+is its \emph{independence} from a specific programming language.
+This results in better readability, broader applicability, and increased
+sustainability (possibly beyond the lifetime of a programming language).
+When formulating algorithms, one should consider the following, among other
+things:%
+\footnote{See also
 \url{http://mirrors.ctan.org/macros/latex/contrib/algorithms/algorithms.pdf}
-(Abschnitt~7).}
+(Sec.~7).}
 %
 \begin{itemize}
 	\item
-	Verwende in Algorithmen die gleichen kurze Symbole (wie $a, i, x, S,
-	\alpha \ldots$), wie man sie auch in mathematischen Definitionen und
-	Gleichungen verwendet.
+	Use the same short symbols (such as $a, i, x, S, \alpha \ldots$) in
+	algorithms as you would in mathematical definitions and equations.
 	\item
-	Verwende nach Möglichkeit mathematische Operatoren, wie \zB\
-	$=$ (\verb!$=$!) statt \texttt{==},
-	$\leq$ (\verb!$\leq$!) statt \texttt{<=},
-	$\cdot$ (\verb!$\cdot$!) statt \texttt{*},
-	$\wedge$ (\verb!$\wedge$!) statt \texttt{\&\&},
-	\usw
+	If possible, use mathematical operators, such as 
+	$=$ (\verb!$=$!) for \texttt{==},
+	$\leq$ (\verb!$\leq$!) for \texttt{<=},
+	$\cdot$ (\verb!$\cdot$!) for \texttt{*},
+	$\wedge$ (\verb!$\wedge$!) for \texttt{\&\&},
+	\etc
 	\item
-	Verwende keine Elemente oder Syntax einer spezifischen Programmiersprache
-	(so ist etwa ein "\texttt{;}" am Ende einer Anweisung unnötig).
+	Do not use elements or syntax of a specific programming language (for
+	example, a "\texttt{;}" at the end of a statement is unnecessary).
 	\item
-	Wenn ein Algorithmus für eine Seite zu lang wird, überlege, wie man ihn
-	sinnvoll auf kleinere Module aufteilen kann (meist ist dann auch die
-	zugehörige Programmstruktur nicht optimal).
+	If an algorithm becomes too long for a page, consider how to divide it
+	sensibly into smaller modules (perhaps the associated program structure
+	is not optimal either).
 \end{itemize}
 
 
-Für die Notation von Algorithmen in mathematischer Form oder auch für
-Pseudo\-code ist in \latex selbst keine spezielle Unterstützung vorgesehen.
-Dazu gibt es jedoch eine Reihe von brauchbaren \latex-Paketen, \ua\
-\texttt{algorithmicx}, das wegen seiner einfachen Syntax auch hier verwendet
-wird, allerdings in der verbesserten Version \texttt{algpseudocodex}.%
-\footnote{Die Datei \nolinkurl{hgbalgo.sty} des
-\texttt{hagenberg-thesis}-Pakets erweitert die Pakete \texttt{algorithmicx}
-\bzw\ \texttt{algpseudocodex} (s.\ \url{https://ctan.org/pkg/algpseudocodex})
-durch verbesserte Einrückung, Farben \etc}
+For the notation of algorithms in mathematical form or even for pseudocode,
+no special support is provided in \latex itself. However, there are a number
+of useful \latex packages for this purpose, including \texttt{algorithmicx},
+ which is also used here because of its simple syntax, but in the improved
+version \texttt{algpseudocodex}.%
+\footnote{Style \nolinkurl{hgbalgo.sty} of \texttt{hagenberg-thesis}
+extends the packages \texttt{algorithmicx} and \texttt{algpseudocodex} 
+(see \url{https://ctan.org/pkg/algpseudocodex}) by providing improved
+indentation, colors \etc}
 %
-Das Beispiel in Alg.~\ref{alg:Example} wurde mit der Float-Umgebung
-\texttt{algorithm} und dem \texttt{algpseudocodex}-Paket erstellt (s.\
-Quellcode in Prog.\ \ref{prog:AlgExample}). Zur besseren Lesbarkeit werden
-hier vertikale Einrückungslinien verwendet (\texttt{indLines=true}) und auf
-das Schlüsselwort \texttt{end} am Ende von Blöcken wird verzichtet
-(\texttt{noEnd=true}).
+The example in Alg.~\ref{alg:Example} was created using the float environment
+\texttt{algorithm} and the \texttt{algpseudocodex} package (see the source
+code in Prog.\ \ref{prog:AlgExample}). For better readability, vertical
+rules are used (\texttt{indLines=true}) and the optional keyword 
+"\texttt{end}" at the end of blocks is omitted (\texttt{noEnd=true}).
+
 
 %%--------------------------------------------------------------------
 
 \begin{algorithm}
-\caption{Beispiel für einen mit dem Paket \texttt{algpseudocodex} gesetzten
-Algorithmus zur bikubischen Interpolation in 2D (aus \cite{BurgerBurge2022}).
-Die in den Zeilen \ref{alg:wcub1} und \ref{alg:wcub2} verwendete Funktion
-$\Call{Cubic1D}{x}$ berechnet die Gewichtung des Werts für die eindimensionale
-Position $x$.}
+\caption{Example of an algorithm for bicubic interpolation in 2D typeset 
+with the package \texttt{algpseudocodex} (from \cite{BurgerBurge2022}).
+Function $\Call{Cubic1D}{x}$, used in lines \ref{alg:wcub1} and 
+\ref{alg:wcub2}, calculates the weight given to the interpolation value at 
+some one-dimensional position $x$.}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
@@ -495,17 +520,16 @@ Position $x$.}
 %%--------------------------------------------------------------------
 
 \begin{program}
-\caption{Quellcode zu Algorithmus \ref{alg:Example}. Wie ersichtlich, können
-hier auch beliebig Leerzeilen verwendet werden, was die Lesbarkeit deutlich
-verbessert.}
+\caption{Source code for Alg.\ \ref{alg:Example}. As you can see, empty
+lines can be used here as well, which significantly improves readability.}
 \label{prog:AlgExample}
 \begin{LaTeXCode}
 \begin{algorithm}
-\caption{Beispiel für einen mit dem Paket \texttt{algpseudocodex}
-gesetzten Algorithmus zur bikubischen Interpolation in 2D (aus
-\cite{BurgerBurge2022}). Die in den Zeilen \ref{alg:wcub1} und
-\ref{alg:wcub2} verwendete Funktion $\Call{Cubic1D}{x}$ berechnet 
-die Gewichtung des Werts für die eindimensionale Position $x$.}
+\caption{Example of an algorithm for bicubic interpolation in 2D typeset 
+with the package \texttt{algpseudocodex} (from \cite{BurgerBurge2022}).
+Function $\Call{Cubic1D}{x}$, used in lines \ref{alg:wcub1} and 
+\ref{alg:wcub2}, calculates the weight given to the interpolation value at 
+some one-dimensional position $x$.}
 \label{alg:Example}
 
 \begin{algorithmic}[1]     % [1] = all lines are numbered
