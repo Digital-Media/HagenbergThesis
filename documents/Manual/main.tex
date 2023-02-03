@@ -133,15 +133,21 @@ independently of the document classes listed above:
 \texttt{hgbmath.sty}.
 
 
-\subsection{General user commands and environments(\texttt{hgb.sty})}
+\subsection{General user commands and environments (\texttt{hgb.sty})}
 
 \begin{itemize}
-    \item \textbf{\texttt{{\bs}hgbDate}}: Outputs the package version date,
+    \item \texttt{{\bs}hgbDate}: Outputs the package version date,
     \eg, ``\texttt{\hgbDate}''.
+		\item \texttt{{\bs}getcurrentlabel}: Yields the most recently assigned
+		label number.
     \item \verb!\calibrationbox{width}{height}!: Inserts a test box for
     checking the final print size (in millimeters).
-    \item \verb!\begin{english} ... \end{english}!
-    \item \verb!\begin{german} ... \end{german}!
+		\item \verb!\begin{block}...\end{block}!: Dummy environment, provides
+		a limited scope for variable/command redefinitions.
+    \item \verb!\begin{english}...\end{english}!: Temporarily switches 
+		to English language settings.
+    \item \verb!\begin{german}...\end{german}!: Temporarily switches 
+		to German language settings.
 \end{itemize}
 
 
@@ -203,10 +209,10 @@ space, \ie, they can be used without additional controls, as in
 
 \begin{itemize}
     \item
-    \textbf{\texttt{{\bs}AddBibFile}}: A wrapper to \texttt{biblatex}'s
+    \texttt{{\bs}AddBibFile}: A wrapper to \texttt{biblatex}'s
     \verb!\addbibresource! macro (for backward compatibility only).
     \item
-    \textbf{\texttt{{\bs}MakeBibliography[\emph{options}]}}: Inserts the
+    \texttt{{\bs}MakeBibliography[\emph{options}]}: Inserts the
     reference section or chapter. By default, references are automatically
     split into category subsections.%
     \footnote{Predefined reference categories are \texttt{literature},
@@ -214,16 +220,16 @@ space, \ie, they can be used without additional controls, as in
     Use the option \texttt{nosplit} to produce a traditional (\ie,
     contiguous) list of references.
     \item
-    \textbf{\texttt{{\bs}citenobr\{\emph{keys}\}}}: Analogous to the standard
+    \texttt{{\bs}citenobr\{\emph{keys}\}}: Analogous to the standard
     \texttt{{\bs}cite\{\emph{keys}\}} command but inserts no ``backref''
     page numbers in the bibliography.
     \item
-    \textbf{\texttt{{\bs}mcite%
+    \texttt{{\bs}mcite%
         [\emph{text1}]\{\emph{key1}\}%
         [\emph{text2}]\{\emph{key2}\}%
         \ldots
         [\emph{textN}]\{\emph{keyN}\}%
-    }}:
+    }:
     Analogous to \texttt{bib\-la\-tex}'s \texttt{{\bs}cites} command%
     \footnote{%
     \url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
@@ -297,7 +303,7 @@ some additional commands. It also loads the \texttt{algorithm}%
 package, which defines a compatible float container for algorithms:
 \verb!\begin{algorithm}! \verb!...! \verb!\end{algorithm}!.
 
-\paragraph{Additional user commands:}
+\paragraph{Additional algorithm commands:}
 \begin{itemize}
     \item
     \textbf{\texttt{{\bs}StateNN[<nesting>]\{<text>\}}}:
@@ -352,6 +358,8 @@ package), \eg, by
 \end{LaTeXCode}
 
 
+
+
 \section{Package dependencies}
 
 \begin{sloppypar}
@@ -385,6 +393,7 @@ packages:\newline
 \texttt{hyperref}, 
 \texttt{ifpdf}, 
 \texttt{inputenc}, 
+\texttt{lengthconvert},
 \texttt{listingsutf8}, 
 \texttt{lmodern}, 
 \texttt{moreverb}, 
