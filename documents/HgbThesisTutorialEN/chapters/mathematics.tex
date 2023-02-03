@@ -1,4 +1,4 @@
-\chapter[Mathematical formulas \etc]{Mathematical formulas, equations and algorithms}
+\chapter[Mathematical Formulas \etc]{Mathematical Formulas, Equations and Algorithms}
 \label{cha:Mathematics}
 
 
@@ -10,7 +10,7 @@ Here are only some examples and special topics, much more can be found in
 \cite[Ch.\ 7]{Kopka2003} and~\cite{Voss2014}.
 
 
-\section{Mathematical elements in continuous text}
+\section{Mathematical Elements in Continuous Text}
 
 Mathematical symbols, expressions, equations, etc.\ are marked in the continuous
 text by pairs \verb!$! \ldots \verb!$!. Here is a simple example:
@@ -26,14 +26,14 @@ text by pairs \verb!$! \ldots \verb!$!. Here is a simple example:
 It is important to ensure that the height of the individual elements in the text
 does not become too large.
 
-\subsubsection{Common mistakes}
+\subsubsection{Common Mistakes}
 
 In continuous text, simple variables are often typeset with plain text,
 \ie, without using correct mathematical symbols, as in "X-axis" instead of 
 "$X$-axis" (\verb!$X$-axis!).
 
 
-\subsubsection{Mathematical fonts}
+\subsubsection{Mathematical Fonts}
 
 \latex\ uses slightly different fonts for regular text and in math mode.
 The following basic math fonts are available:
@@ -57,7 +57,7 @@ $\mathbf{A}$ (\verb!$\mathbf{A}$!) denotes a matrix and $\boldsymbol{x}$
 (\verb!$\boldsymbol{x}$!) is a vector.
 
 
-\subsubsection{Line breaks}
+\subsubsection{Line Breaks}
 
 With longer mathematical elements in the continuous text problems with line breaks 
 are inevitable. Usually \latex allows line breaks only at the "=" operator, 
@@ -76,7 +76,7 @@ The line in a) should extend beyond the page margin, but b) contains
 \verb|\allowbreak| in several places and should therefore wrap cleanly.
 
 
-\section{Displayed expressions and equations}
+\section{Displayed Expressions and Equations}
 
 Displayed mathematical expressions can be generated in \latex\ by \verb!\[! \ldots 
 \verb!\]! The result will be centered, but will not be numbered.
@@ -86,7 +86,8 @@ or, alternatively,
  \verb!\begin{displaymath} y_0 = 4 x^2 \end{displaymath}!
 \end{quote}
 
-\subsection{Single numbered equations}
+
+\subsection{Single Numbered Equations}
 
 However, most often in such cases the \texttt{equation} environment is used
 to produce numbered equations that can be referred to at any time in the text.
@@ -124,10 +125,10 @@ environment.
 \end{center}
 %
 For those interested, more on the subject of mathematics and prose can be found in
-\cite{Mermin1989} und \cite{Higham2020}.
+\cite{Mermin1989} and \cite{Higham2020}.
 
 
-\subsection{Multiline equations}
+\subsection{Multiline Equations}
 
 For multiline equations \latex\ offers the \verb!eqnarray! environment, which, however,
 generates somewhat idiosyncratic spaces. It is recommended to use the extended
@@ -151,7 +152,7 @@ generated with the \texttt{align} environment from the \texttt{amsmath} package:
 \end{LaTeXCode}
 
 
-\subsection{Multiple-case constructs}
+\subsection{Multiple-Case Constructs}
 
 With the \texttt{cases} environment from \texttt{amsmath}, case distinctions, 
 \eg, within function definitions, are very easy to accomplish.
@@ -182,7 +183,7 @@ to insert ordinary text in math mode, and again the punctuation within the
 equation.
 
 
-\subsection{Equations with matrices}
+\subsection{Equations With Matrices}
 
 Again, \texttt{amsmath} offers some advantages over using the standard \latex
 constructs. For this purpose, a simple example of using the \texttt{pmatrix}
@@ -233,7 +234,7 @@ Numerous other mathematical constructs of the \texttt{amsmath} package are
 described in \cite{Mittelbach2022}.
 
 
-\subsection{References to equations}
+\subsection{References to Equations}
 \label{sec:ReferencesToEquations}
 
 When referring to numbered formulas and equations, it is usually sufficient
@@ -260,12 +261,13 @@ mathematical elements -- "Equation \ref{eq:f1}", "Eq.~\ref{eq:f1}" or
 \end{center}
 
 
-\section{Mathematical symbols}
+\section{Mathematical Symbols}
 
 Special macros are needed for a large part of the mathematical symbols. Some of
 the most common ones are listed below.
 
-\subsection{Number sets}
+
+\subsection{Number Sets}
 
 Some frequently used symbols are unfortunately not included in the original 
 mathematical character set of \latex, e.g. the symbols for the real and natural 
@@ -293,7 +295,7 @@ For statements like "a field with $25 \times 70$ meters" (but also almost
 -- and \emph{not} simply the text character~"x"!
 
 
-\subsection{Variables (symbols) with multiple characters}
+\subsection{Variables (Symbols) With Multiple Characters}
 
 Especially in the mathematical specification of algorithms and programs
 it is often necessary to use symbols (variable names) with more than one
@@ -328,7 +330,7 @@ used instead wherever possible (\eg, focal length $f = 50 \, \mathrm{mm}$
 instead of $\mathit{focal length} = 50 \, \mathrm{mm}$).
 
 
-\subsection{Functions and operators}
+\subsection{Functions and Operators}
 
 While symbols for variables are traditionally (and in \latex\ automatically)
 set \emph{italic}, names of functions and operators are usually typeset in
@@ -353,7 +355,7 @@ This convention should also be followed for self-defined functions, such as in
 \end{center}
 
 
-\subsection{Units of measurement and currencies}
+\subsection{Units of Measurement and Currencies}
 
 When specifying units of measurement, normal font is usually used (no italics) 
 should be used, \eg:
@@ -371,7 +373,7 @@ with the \verb!\euro! macro.%
 set but is provided by the \texttt{eurosym} package.}
 
 
-\subsection{Commas in decimal numbers (math mode)}
+\subsection{Commas in Decimal Numbers (Math Mode)}
 
 
 In math mode (\ie, within \verb!$! \ldots \verb!$!, \verb!\[! \ldots \verb!\]! or 
@@ -397,7 +399,7 @@ numbers in math mode like this:
 \end{quote}
 
 
-\subsection{Mathematical tools}
+\subsection{Mathematical Tools}
 
 For the creation of complicated equations it is sometimes helpful to resort 
 to special software aor interactive tools. Among other things, \latex statements
