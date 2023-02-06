@@ -1,15 +1,12 @@
-\chapter{Technische Informationen}
+\chapter{Technical Information}
 \label{app:TechnicalDetails}
 
-\newcommand*{\checkbox}{{\fboxsep 1pt%
-\framebox[1.30\height]{\vphantom{M}\checkmark}}}
-
-\section{Aktuelle Dateiversionen}
+\section{Current Package Version}
 
 \begin{center}
 	\begin{tabular}{@{}ll@{}}
 		\toprule
-		Datum    & Datei            \\
+		Date   & File            \\
 		\midrule
 		\hgbDate & \texttt{hgb.sty} \\
 		\bottomrule
@@ -17,54 +14,52 @@
 \end{center}
 
 
-\section{Details zur aktuellen Version}
+\section{Additional Details}
+
+This package is designed for \mbox{UTF-8} encoded source files and supports 
+\latex\ in direct PDF mode only.%
+\footnote{The "classic" DVI-PS-PDF process is no longer supported.}
 
 
-Diese Version der DA/BA-Vorlage sieht \mbox{UTF-8} kodierte Dateien vor und
-unterstützt \latex\ ausschließlich im direkten PDF-Modus.%
-\footnote{Der "klassische" DVI-PS-PDF-Modus von \latex\ wird nicht mehr
-unterstützt!}
+\subsection{Technical Requirements}
 
-\subsection{Allgemeine technische Voraussetzungen}
-
-Eine aktuelle \latex-Installation mit
+A current \latex\ installation including
 %
 \begin{itemize}
-		\item \texttt{biber}-Programm (BibTeX-Ersatz, Version $\geq 1.5$),
-		\item \texttt{biblatex}-Paket (Version $\geq 2.5$, 2013/01/10),
-		\item Latin Modern Schriften (Paket \texttt{lmodern}).%
+		\item \texttt{biber} (modern replacement for BibTeX, Version $\geq 1.5$),
+		\item \texttt{biblatex} package (version $\geq 2.5$, 2013/01/10),
+		\item Latin Modern fonts (package \texttt{lmodern}).%
 			\footnote{\url{https://ctan.org/pkg/lm},
 				\url{https://tug.org/FontCatalogue/latinmodernroman/}}
 \end{itemize}
 %
-Darüber hinaus ein Texteditor für \mbox{UTF-8} kodierte (Unicode) Dateien,
-sowie Software zum Öffnen und Betrachten von PDF-Dateien.
+In addition, a text editor for {UTF-8} encoded (Unicode) files, as well 
+as software for opening and viewing PDF files.
 
 
-\subsection{Verwendung unter Windows}
-\label{sec:VerwendungUnterWindows}
 
-Eine typische Installation unter Windows sieht folgendermaßen aus:
+\subsection{Use Under Windows}
+\label{sec:UseUnderWindows}
+
+A typical installation under Windows looks like this:
 %
 \begin{enumerate}
 \item \textbf{MikTeX}%
-	\footnote{\url{https://miktex.org/} -- \textbf{Achtung:}
-	Generell wird die \textbf{Komplettinstallation} von MikTeX ("Complete
-	MiKTeX") empfohlen, da diese bereits alle notwendigen Zusatzpakete und
-	Schriftdateien enthält. Hierzu wird der MikTeX Net Installer (im Gegensatz
-	zum Basic Installer) benötigt. Bei der Installation ist darauf zu achten,
-	dass die automatische Installation erforderlicher Packages durch
-	"\emph{Install missing packages on-the-fly: = Yes}" ermöglicht wird
-	(NICHT "\emph{Ask me first}")! Außerdem ist zu empfehlen, unmittelbar
-	nach der Installation von MikTeX sowie in weiterer Folge regelmäßig
-	mit dem Programm \texttt{MikTeX Console} ein Update der installierten
-	Pakete durchzuführen.} (\latex-Basisumgebung),
+	\footnote{\url{https://miktex.org/} -- \textbf{Note:}
+	Generally, the \textbf{complete installation} of MikTeX ("Complete MiKTeX") is 
+	recommended, as it already contains all necessary additional packages and font files.
+	During installation, make sure that the automatic installation of required packages
+	is enabled by "\emph{Install missing packages on-the-fly: = Yes}" 
+	(NOT "\emph{Ask me first}")!
+	It is also recommended to update the installed packages immediately after installing MikTeX 
+	and periodically thereafter using the \texttt{MikTeX Console} program.} 
+	(basic \latex\ environment),
 \item \textbf{TeXstudio}%
 	\footnote{\url{https://www.texstudio.org/}}
-	(Editor, unterstützt UTF-8 und beinhaltet einen integrierten PDF-Viewer).
+	(text editor, supports UTF-8 and includes an integrated PDF viewer).
 \end{enumerate}
 %
-Alternative Editoren und PDF-Viewer:
+Alternative editors and PDF viewers are:
 %
 \begin{enumerate}
 	\item TeXnicCenter,%
@@ -77,83 +72,89 @@ Alternative Editoren und PDF-Viewer:
 	\footnote{\url{https://www.tug.org/texworks/}}
 	\item WinEdt,%
 	\footnote{\url{https://www.winedt.com/}}
-	\item Sumatra PDF (\latex-freundlicher PDF-Viewer).%
+	\item Sumatra PDF ("\latex\ friendly" PDF viewer).%
 	\footnote{\url{https://www.sumatrapdfreader.org/}}
 \end{enumerate}
 
-\subsection{Verwendung unter macOS}
 
-Für macOS empfiehlt sich die folgende Konfiguration:
+\subsection{Use Under macOS}
+
+For macOS, the following configuration is recommended:
 %
 \begin{enumerate}
 \item 
 	\textbf{MacTex}%
-	\footnote{\url{https://tug.org/mactex/} -- \textbf{Achtung:} Aktuelle
-	MacTeX-Distributionen verlangen in der Regel eine weitgehend aktuelle Version
-	von macOS. Auf älteren Betriebssystemen kann alternativ TeXLive mit einem
-	speziellen Installationsscript installiert werden. Um die Pakete der
-	\LaTeX-Distribution aktuell zu halten, sollte regelmäßig das \texttt{TeX Live
-	Utility} ausgeführt werden.}
-	(\latex-Basisumgebung),
-\item \textbf{TeXstudio} (Editor, unterstützt UTF-8 und beinhaltet einen
-integrierten PDF-Viewer).
+	\footnote{\url{https://tug.org/mactex/} -- \textbf{Note:}
+	Current MacTeX distributions usually require a mostly up-to-date version of macOS. 
+	On older versions, \emph{TeXLive} can alternatively be installed with a special
+	installation script. To keep the packages of the \latex\ distribution up-to-date, the 
+	\emph{TeX Live Utility} program should be run regularly.}
+	(basic \latex\ environment),
+\item \textbf{TeXstudio} (text editor, supports UTF-8 and includes an integrated PDF viewer).
 \end{enumerate}
 %
-Alternative Editoren und PDF-Viewer:
+Alternative editors and PDF viewers are:
 %
 \begin{enumerate}
 	\item Texmaker,%
 	\item Lyx,%
 	\item TeXworks,%
-	\item Skim (\latex-freundlicher PDF-Viewer).%
+	\item Skim ("\latex\ friendly" PDF viewer).%
 	\footnote{\url{https://skim-app.sourceforge.io/}}
 \end{enumerate}
 
 
-\subsection{Verwendung unter Linux}
+\subsection{Use Under Linux}
 
-Unter Linux kann folgendes Setup zum Einsatz kommen:
+Under Linux the following setup can be used:
 %
 \begin{enumerate}
 	\item 
 	\textbf{TeX Live}%
-	\footnote{\url{https://tug.org/texlive/} -- Eine Installation unter Linux
-	erfolgt -- abhängig von der verwendeten Distribution -- am einfachsten mit
-	Hilfe des jeweiligen Paketverwaltungssystems (\zB \texttt{apt-get}).}
-	(\latex-Basisumgebung),
-	\item \textbf{TeXstudio} (Editor, unterstützt UTF-8 und beinhaltet einen
-	integrierten PDF-Viewer).
+	\footnote{\url{https://tug.org/texlive/} -- An installation under Linux is -- depending
+	on the distribution used -- most easily done with the help of the associated package
+	management system (\eg, \texttt{apt-get}).}
+	(basic \latex\ environment),
+	\item \textbf{TeXstudio} (text editor, supports UTF-8 and includes an
+	integrated PDF viewer).
 \end{enumerate}
 %
-Alternative Editoren und PDF-Viewer:
+Alternative editors and PDF viewers are:
 %
 \begin{enumerate}
 	\item Texmaker,%
 	\item Lyx,%
 	\item TeXworks,%
-	\item qpdfview (\latex-freundlicher PDF-Viewer).%
+	\item qpdfview ("\latex\ friendly" PDF viewer).%
 	\footnote{\url{https://launchpad.net/qpdfview}}
 \end{enumerate}
 
-\subsection{Verwendung von Online-Editoren}
 
-Neben einer lokalen \latex-Installation mit Editor gibt es mittlerweile auch
-Online-Editoren, die das Arbeiten mit \latex-Dokumenten im Browser
-ermöglichen. Die \latex-Basisumgebung ist dabei auf den Servern des Dienstes
-installiert, Dokumente können im Editor neu erstellt oder auch bestehende
-Vorlagen (wie etwa dieses Dokument) hochgeladen und weiter bearbeitet werden.
-Die meisten Plattformen ermöglichen darüber hinaus ein kollaboratives
-Arbeiten an einem Dokument.
+\subsection{Using Online \latex\ Environments}
 
-Der bekannteste und mit dieser Vorlage getestete Editor ist \textbf{Overleaf}%
+Besides using a local \latex installation and editor, there are now also good online 
+environments that allow to create \latex documents directly in the browser.
+The \latex environment is installed on the servers of the provider. Documents can be
+created in the online editor or existing templates (such as this document) uploaded and 
+edited. Most platforms also allow collaborative work on the same document.
+
+When using such environments, it is highly recommended to perform regular \emph{backups} of your
+online data while working, so that in the worst case you don't have to start all over 
+again.
+
+\subsubsection{Overleaf}
+
+The most popular editor (tested with this template) is \textbf{Overleaf}%.
 \footnote{\url{https://www.overleaf.com/}}.
-Um schnell Vorlagendokumente aus dem \texttt{hagenberg-thesis} Paket zu
-importieren, können die Im\-port-Links im \emph{Readme}-Abschnitt zum
-Github-Repository dieser Vorlage%
+To quickly import template documents from the \texttt{hagenberg-thesis} package, the 
+import links in the \emph{readme} section of this project's Github repository%
 \footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
-direkt verwendet werden.
+can be used directly.
 
-Alternativ existieren noch weitere Online-Editoren:
+
+\subsubsection{Other Online Services}
+
+Besides, there are other online environments for \latex\ and their number is constantly growing, for example:
 %
 \begin{enumerate}
 	\item Papeeria,%

@@ -1,10 +1,7 @@
 \chapter{Technische Informationen}
 \label{app:TechnischeInfos}
 
-\newcommand*{\checkbox}{{\fboxsep 1pt%
-\framebox[1.30\height]{\vphantom{M}\checkmark}}}
-
-\section{Aktuelle Dateiversionen}
+\section{Aktuelle Paketversion}
 
 \begin{center}
 	\begin{tabular}{@{}ll@{}}
@@ -17,15 +14,15 @@
 \end{center}
 
 
-\section{Details zur aktuellen Version}
+\section{Weitere Details}
 
 
-Diese Version der DA/BA-Vorlage sieht \mbox{UTF-8} kodierte Dateien vor und
+Dieses Paket sieht \mbox{UTF-8} kodierte Textdateien vor und
 unterstützt \latex\ ausschließlich im direkten PDF-Modus.%
 \footnote{Der "klassische" DVI-PS-PDF-Modus von \latex\ wird nicht mehr
-unterstützt!}
+unterstützt.}
 
-\subsection{Allgemeine technische Voraussetzungen}
+\subsection{Technische Voraussetzungen}
 
 Eine aktuelle \latex-Installation mit
 %
@@ -37,7 +34,7 @@ Eine aktuelle \latex-Installation mit
 				\url{https://tug.org/FontCatalogue/latinmodernroman/}}
 \end{itemize}
 %
-Darüber hinaus ein Texteditor für \mbox{UTF-8} kodierte (Unicode) Dateien,
+Darüber hinaus ein Texteditor für UTF-8 kodierte (Unicode) Dateien,
 sowie Software zum Öffnen und Betrachten von PDF-Dateien.
 
 
@@ -49,10 +46,9 @@ Eine typische Installation unter Windows sieht folgendermaßen aus:
 \begin{enumerate}
 \item \textbf{MikTeX}%
 	\footnote{\url{https://miktex.org/} -- \textbf{Achtung:}
-	Generell wird die \textbf{Komplettinstallation} von MikTeX ("Complete
+	Generell wird die \textbf{Komplettinstallation} von MikTeX ("complete
 	MiKTeX") empfohlen, da diese bereits alle notwendigen Zusatzpakete und
-	Schriftdateien enthält. Hierzu wird der MikTeX Net Installer (im Gegensatz
-	zum Basic Installer) benötigt. Bei der Installation ist darauf zu achten,
+	Schriftdateien enthält. Bei der Installation ist darauf zu achten,
 	dass die automatische Installation erforderlicher Packages durch
 	"\emph{Install missing packages on-the-fly: = Yes}" ermöglicht wird
 	(NICHT "\emph{Ask me first}")! Außerdem ist zu empfehlen, unmittelbar
@@ -77,7 +73,7 @@ Alternative Editoren und PDF-Viewer:
 	\footnote{\url{https://www.tug.org/texworks/}}
 	\item WinEdt,%
 	\footnote{\url{https://www.winedt.com/}}
-	\item Sumatra PDF (\latex-freundlicher PDF-Viewer).%
+	\item Sumatra PDF ("\latex-freundlicher" PDF-Viewer).%
 	\footnote{\url{https://www.sumatrapdfreader.org/}}
 \end{enumerate}
 
@@ -90,9 +86,9 @@ Für macOS empfiehlt sich die folgende Konfiguration:
 	\textbf{MacTex}%
 	\footnote{\url{https://tug.org/mactex/} -- \textbf{Achtung:} Aktuelle
 	MacTeX-Distributionen verlangen in der Regel eine weitgehend aktuelle Version
-	von macOS. Auf älteren Betriebssystemen kann alternativ TeXLive mit einem
+	von macOS. Auf älteren Versionen kann alternativ \emph{TeXLive} mit einem
 	speziellen Installationsscript installiert werden. Um die Pakete der
-	\LaTeX-Distribution aktuell zu halten, sollte regelmäßig das \texttt{TeX Live
+	\latex-Distribution aktuell zu halten, sollte regelmäßig das \emph{TeX Live
 	Utility} ausgeführt werden.}
 	(\latex-Basisumgebung),
 \item \textbf{TeXstudio} (Editor, unterstützt UTF-8 und beinhaltet einen
@@ -135,15 +131,21 @@ Alternative Editoren und PDF-Viewer:
 	\footnote{\url{https://launchpad.net/qpdfview}}
 \end{enumerate}
 
-\subsection{Verwendung von Online-Editoren}
+\subsection{Verwendung von Online-Umgebungen für \latex}
 
 Neben einer lokalen \latex-Installation mit Editor gibt es mittlerweile auch
-Online-Editoren, die das Arbeiten mit \latex-Dokumenten im Browser
+gute Online-Umgebungen, die das Erstellen von\latex-Dokumenten direkt im Browser
 ermöglichen. Die \latex-Basisumgebung ist dabei auf den Servern des Dienstes
-installiert, Dokumente können im Editor neu erstellt oder auch bestehende
+installiert. Dokumente können im Online-Editor erstellt oder auch bestehende
 Vorlagen (wie etwa dieses Dokument) hochgeladen und weiter bearbeitet werden.
 Die meisten Plattformen ermöglichen darüber hinaus ein kollaboratives
 Arbeiten an einem Dokument.
+
+Bei Verwendung solcher Umgebungen ist es sehr zu empfehlen, während
+der Arbeit regelmäßig \emph{Backups} der Online Daten durchzuführen, um 
+im schlimmsten Fall nicht wieder von Vorne beginnen zu müssen.
+
+\subsubsection{Overleaf}
 
 Der bekannteste und mit dieser Vorlage getestete Editor ist \textbf{Overleaf}%
 \footnote{\url{https://www.overleaf.com/}}.
@@ -153,7 +155,10 @@ Github-Repository dieser Vorlage%
 \footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
 direkt verwendet werden.
 
-Alternativ existieren noch weitere Online-Editoren:
+\subsubsection{Andere Online-Services}
+
+Daneben gibt es noch weitere Online-Umgebungen für \latex\ und ihre Zahl wächst
+beständig, \zB:
 %
 \begin{enumerate}
 	\item Papeeria,%
