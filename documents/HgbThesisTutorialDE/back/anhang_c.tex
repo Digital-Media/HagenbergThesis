@@ -24,7 +24,7 @@ ist dafür die (zurzeit) einzige Wahl und es wird mit
 %
 in der Datei \nolinkurl{hgb.sty} automatisch geladen. Das eingebundene
 PDF-Dokument (der zweiseitige Frage\-bogen) liegt in
-\nolinkurl{images/fragebogen.pdf}. Um nachfolgend alle (2) Seiten der
+\nolinkurl{images/fragebogen.pdf}. Um alle (2) Seiten der
 PDF-Datei in das aktuelle Dokument einzubinden, verwenden wir die Anweisung
 %
 \begin{LaTeXCode}[numbers=none]
@@ -53,8 +53,10 @@ Einfachsten, die Seiten einzeln zu importieren und jeweils mit einem
 \emph{Label} zu versehen, wie in diesem Beispiel:
 %
 \begin{LaTeXCode}[numbers=none]
-\includepdf[pages=1,width=\textwidth,frame=true,pagecommand={\label{PDF1}}]{images/fragebogen}
-\includepdf[pages=2,width=\textwidth,frame=true,pagecommand={\label{PDF2}}]{images/fragebogen}
+\includepdf[pages=1,width=\textwidth,frame=true,
+		pagecommand={\label{PDF1}}]{images/fragebogen}
+\includepdf[pages=2,width=\textwidth,frame=true,
+		pagecommand={\label{PDF2}}]{images/fragebogen}
 \end{LaTeXCode}
 %
 In diesem Fall könnte man beispielsweise mit \verb!\pageref{PDF2}! die
