@@ -214,24 +214,34 @@
 
 
 % Macro to produce cites with no backref entries
-% Modified from http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex-contrib/biblatex-ieee/ieee.cbx
+% Modified from 
+% http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex-contrib/biblatex-ieee/ieee.cbx
 % See also https://tex.stackexchange.com/questions/344861/biblatex-backref-option-per-entry
-%\DeclareCiteCommand{\citenobr}%	%% this version does not work with apa style!
-  %{\usebibmacro{cite:init}%
-   %\bibopenbracket
-	 %\backtrackerfalse\usebibmacro{prenote}}
-  %{\usebibmacro{citeindex}%
-   %\usebibmacro{cite:comp}}
-  %{}
-  %{\usebibmacro{cite:dump}%
-   %\usebibmacro{postnote}%
-   %\bibclosebracket
-  %}
-\DeclareCiteCommand{\citenobr}
-  {\backtrackerfalse\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \ifthenelse{\equal{\@bibstyle}{apa}}%	%% ugly kludge to adopt to APA style
-		{\usebibmacro{cite}}{\usebibmacro{cite:comp}}%
-	}%
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
+% APA style requires a specific version
+\ifthenelse{\equal{\@bibstyle}{apa}}
+{
+	\DeclareCiteCommand{\citenobr}% version for APA
+		{\backtrackerfalse%
+		 \usebibmacro{prenote}}
+		{\usebibmacro{citeindex}%
+		 \usebibmacro{cite}}%
+		{\multicitedelim}
+		{\usebibmacro{postnote}}
+}
+{
+	\DeclareCiteCommand{\citenobr}%	version for numeric-comp et al.
+		{\usebibmacro{cite:init}%
+		 \bibopenbracket%
+		 \backtrackerfalse%
+		 \usebibmacro{prenote}%
+		}
+		{\usebibmacro{citeindex}%
+		 \usebibmacro{cite:comp}}
+		{}
+		{\usebibmacro{cite:dump}%
+		 \usebibmacro{postnote}%
+		 \bibclosebracket}
+}
+	
+	
+	
