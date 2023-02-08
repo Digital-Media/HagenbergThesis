@@ -121,19 +121,22 @@ zwischen den Einträgen eingefügt. Bei der Verwendung von
 selbst um die Sortierung der Einträge kümmern, sie erfolgt nicht automatisch.
 
 
-\subsection{Unterdrückung der Rückverweise mit \texttt{\textbackslash citenobr}}
+\subsection{Unterdrückung der Rückverweise im Quellenverzeichnis}
 
 Mit dem vorliegenden Setup wird zu jedem Eintrag im Quellenverzeichnis
 automatisch eine Liste der Textseiten angefügt, auf denen die Quelle zitiert
-wurde. In seltenen Fällen ist es sinnvoll, diese \texttt{backref}-Verweise
-wegzulassen. Dazu ist das spezielle Makro%
-\footnote{\emph{Cite with no back reference} (definiert in \texttt{hgbbib.sty}).}
+wurde. In seltenen Fällen ist es sinnvoll, diese Rückverweise für einzelne 
+Zitationen zu unterdrücken, möglich durch
 %
 \begin{itemize}
-    \item[] \verb!\citenobr{!\textit{keys}\verb!}!
+    \item[] \verb!{\backtrackerfalse\cite{...}}!
 \end{itemize}
-vorgesehen, das ansonsten wie \texttt{\textbackslash cite} funktioniert
 %
+Das funktioniert auch mit \verb!\mcite! und anderen \verb!cite!-Makros;
+die äußeren Klammern sind dabei wichtig. Beispielsweise sollte im
+Literaturverzeichnis bei Quelle {\backtrackerfalse\parencite{Bezos2022}} 
+die aktuelle Seite (\the\value{page}) \emph{nicht} aufscheinen.
+
 
 \subsection{Häufige Fehler}
 
