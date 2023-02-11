@@ -37,11 +37,13 @@ jedes Element im Quellenverzeichnis auch im Text referenziert wird.
 
 \section{Quellenverweise}
 
-Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu
-verweisen, stellt \latex ein zentrales Kommando zur Verfügung.
+
+% Vielleicht ein einleitender Satz hier?
 
 \subsection{Das \texttt{\textbackslash cite} Makro}
 
+Um einen Eintrag im Quellenverzeichnis zu erstellen und im Text darauf zu
+verweisen, stellt \latex\ ein zentrales Kommando zur Verfügung.
 Für Quellenverweise im laufenden Text verwendet man die Anweisung
 %
 \begin{itemize}
@@ -139,7 +141,7 @@ die aktuelle Seite (\the\value{page}) \emph{nicht} aufscheinen.
 \subsection{Häufige Fehler}
 
 Bei der Arbeit mit Literaturquellen schleichen sich, gerade bei in dieser Sache
-unerfahrenen Personen, schnell oft gesehene Fehler ein. Diese lassen sich jedoch
+unerfahrenen Autor*innen, schnell oft gesehene Fehler ein. Diese lassen sich jedoch
 leicht vermeiden.
 
 \subsubsection{Verweise außerhalb des Satzes}
@@ -147,14 +149,14 @@ leicht vermeiden.
 Quellenverweise sollten innerhalb oder am Ende eines Satzes (\dah vor dem
 Punkt) stehen, nicht \emph{außerhalb}:
 %
-\begin{center}
+\begin{quote}
     \begin{tabular}{rl}
         \textbf{Falsch:}  & \ldots hier ist der Satz zu Ende.
         \cite{Oetiker2021} Und jetzt geht es weiter \ldots \\
         \textbf{Richtig:} & \ldots hier ist der Satz zu Ende
         \cite{Oetiker2021}. Und jetzt geht es weiter \ldots
     \end{tabular}
-\end{center}
+\end{quote}
 
 \subsubsection{Verweise ohne vorangehendes Leerzeichen}
 
@@ -162,19 +164,20 @@ Ein Quellenverweis wird \emph{immer} durch ein Leerzeichen vom vorangehenden
 Wort getrennt, niemals wird er (wie etwa eine Fußnote) direkt an das Wort
 geschrieben:
 %
-\begin{center}
+\begin{quote}
     \begin{tabular}{rl}
         \textbf{Falsch:}  & \ldots hier folgt die
         Quellenangabe\cite{Oetiker2021} und es geht weiter \ldots  \\
         \textbf{Richtig:} & \ldots hier folgt die Quellenangabe
         \cite{Oetiker2021} und es geht weiter \ldots
     \end{tabular}
-\end{center}
+\end{quote}
 
-\subsubsection{Zitate}
+
+\subsubsection{Wörtliche Zitate}
 
 Falls ein ganzer Absatz (oder mehr) aus einer Quelle zitiert wird, sollte der
-Verweis im vorlaufenden Text und nicht \emph{innerhalb} des Zitats selbst
+zugehörige Verweis im vorlaufenden Text und nicht \emph{innerhalb} des Zitats selbst
 platziert werden. Als Beispiel die folgende Passage aus \cite{Oetiker2021}:
 %
 \begin{quote}
@@ -206,7 +209,8 @@ des Zitats, welche durch die \texttt{smartquotes}-Option gesetzt werden.}
 Wenn gewünscht, kann das Innere des Zitats auch in Hochkommas verpackt
 \emph{oder} kursiv gesetzt werden -- aber nicht beides!
 
-\subsubsection{Alternative Erweiterungen (mit Dokumentenoption
+
+\subsubsection{Optionale Erweiterungen (mit Dokumentenoption
 \texttt{smartquotes})}
 
 Das (durch die Option \texttt{smartquotes} automatisch geladene)
@@ -240,37 +244,37 @@ definiert.}
 
 \subsection{Umgang mit Sekundärquellen}
 
-In seltenen Fällen kommt es vor, dass man eine Quelle \textbf{A} angeben
+In seltenen Fällen kommt es vor, dass man eine Quelle \textrm{A} angeben
 möchte (oder muss), die man zwar nicht zur Hand (und damit auch nicht selbst
 gelesen) hat, die aber in einer \emph{anderen}, vorliegenden Quelle
-\textbf{B} zitiert wird. In diesem Fall wird \textbf{A} als \emph{Original-}
-oder \emph{Primärquelle} und \textbf{B} als \emph{Sekundärquelle} bezeichnet.
+\textrm{B} zitiert wird. In diesem Fall wird \textrm{A} als \emph{Original-}
+oder \emph{Primärquelle} und \textrm{B} als \emph{Sekundärquelle} bezeichnet.
 Dabei sollten folgende Grundregeln beachtet werden:
 %
 \begin{itemize}
     \item
-    \textbf{Sekundärquellen} sollte man nach Möglichkeit überhaupt
-    \textbf{vermeiden}!
+    Sekundärquellen sollte man nach Möglichkeit überhaupt \emph{vermeiden}!
     \item
     Um eine Quelle in der üblichen Form zitieren zu können, muss man sie
-    \textbf{immer selbst eingesehen} (gelesen) haben!
+    \emph{immer selbst eingesehen} (gelesen) haben!
     \item
-    Nur wenn man die Quelle wirklich \textbf{nicht} beschaffen kann, ist ein
+    Nur wenn man die Quelle wirklich \emph{nicht} beschaffen kann, ist ein
     Verweis über eine Sekundärquelle zulässig. In diesem Fall sollten
     korrekterweise Pri\-mär- und Sekundärquelle \emph{gemeinsam} angegeben
     werden, wie im nachfolgenden Beispiel gezeigt.
     \item
-    \textbf{Wichtig:} Ins Quellenverzeichnis wird \textbf{nur die tatsächlich
-    vorliegende Quelle} (\textbf{B}) und nicht die Originalarbeit aufgenommen!
+    Wichtig: Ins Quellenverzeichnis wird \emph{nur die tatsächlich
+    vorliegende Quelle} (\textrm{B}) und nicht die Originalarbeit aufgenommen!
 \end{itemize}
 %
-\textbf{Beispiel:} Angenommen man möchte aus dem berühmten Buch \emph{Dialogo}
-von Galileo Galilei (an das man nur schwer herankommt) eine Stelle zitieren,
-die man in einem neueren Werk aus dem Jahr 1969 gefunden hat. Das könnte man
-\zB\ mit folgender Fußnote bewerkstelligen.%
+\paragraph{Beispiel:} Angenommen man möchte aus dem berühmten Buch (\textrm{A}) 
+\emph{Dialogo} von Galileo Galilei (an das man nur schwer herankommt) eine Stelle
+zitieren, die man in einem neueren Werk (\textrm{B}) aus dem Jahr 1969 gefunden 
+hat. Das könnte man \zB\ mit folgender Fußnote bewerkstelligen (alle Seitennummern
+sind frei erfunden).%
 \footnote{Galileo Galilei, \emph{Dialogo sopra i due massimi sistemi del
 mondo tolemaico e copernicano}, S.~314 (1632). Zitiert nach
-\cite[S.~59]{Hemleben1969}.} % Alle Seitennummern sind frei erfunden!
+\cite[S.~59]{Hemleben1969}.}
 Im eigentlichen Quellenverzeichnis erscheint somit nur die Sekundärquelle
 \cite{Hemleben1969}.
 
@@ -294,7 +298,7 @@ findet sich online, \zB \cite{Feder2006, Patashnik1988}.
 BibTeX-Dateien können natürlich mit einem Texteditor manuell erstellt werden
 und für viele Literaturquellen sind bereits fertige BibTeX-Einträge online
 verfügbar. Dabei sollte man allerdings vorsichtig sein, denn diese Einträge
-sind (auch bei großen Institutionen und Verlagen) \textbf{häufig falsch oder
+sind (auch bei großen Institutionen und Verlagen) \emph{häufig falsch oder
 syntaktisch fehlerhaft}! Man sollte sie daher nicht ungeprüft übernehmen und
 insbesondere die Endergebnisse genau kontrollieren. Darüber hinaus gibt es
 eigene Anwendungen zur Wartung von BibTeX-Verzeichnissen, wie beispielsweise
@@ -342,7 +346,6 @@ allerdings wird oft nur mit \texttt{{\bs}bibliography} die zugehörige
 \texttt{.bib}-Datei im File-Verzeichnis der Editor-Umgebung sichtbar.}
 auf eine Biblatex-Datei \nolinkurl{references.bib} verwiesen, welche alle
 Quelleneinträge enthält.
-
 Falls mehrere Biblatex-Dateien verwendet werden, können sie in der gleichen
 Form angegeben werden.
 
@@ -364,8 +367,8 @@ hier mit dem Titel "Quellenverzeichnis". Dabei sind zwei Varianten möglich:
 \subsection{Kategorien von Quellenangaben}
 \label{sec:BibKategorien}
 
-Für geteilte Quellenverzeichnisse sind in dieser Vorlage folgende Kategorien
-vorgesehen (s.\ Tabelle \ref{tab:QuellenUndEintragstypen}):%
+Für geteilte Quellenverzeichnisse sind im \texttt{hagenberg-thesis} Paket folgende
+Kategorien vorgesehen (s.\ Tabelle \ref{tab:QuellenUndEintragstypen}):%
 \footnote{Diese Kategorien sind in der Datei \nolinkurl{hgbbib.sty} definiert.
 Allfällige Änderungen sowie die Definition zusätzlicher Kategorien sind bei
 Bedarf relativ leicht möglich.}
@@ -502,7 +505,7 @@ einem Verlag herausgegeben wurde.
 %
 \emph{Hinweis:} Die Auflagennummer (\texttt{edition}) wird üblicherweise nur
 angegeben, wenn es \emph{mehr} als eine Ausgabe gibt -- also insbesondere
-\textbf{nicht für die 1.\ Auflage}, falls diese die einzige ist! ISBNs
+\emph{nicht für die erste Auflage}, falls diese die einzige ist! ISBNs
 kann man grundsätzlich weglassen.
 
 %%------------------------------------------------------
@@ -596,7 +599,7 @@ Missverständnisse zu vermeiden.
 \item[\cite{Mermin1989}] \fullcite{Mermin1989}
 \end{itemize}
 %
-\emph{Hinweis:} Die Angabe einer Ausgabe für \emph{mehrere} Monate (etwa bei
+Hinweis: Die Angabe einer Ausgabe für \emph{mehrere} Monate (etwa bei
 einer Doppelnummer) ist in \texttt{biblatex} nicht mit dem Feld
 \texttt{month} möglich, denn dieses darf nur \emph{eine} Zahl enthalten. Dazu
 lässt sich aber das \texttt{number}-Feld verwenden, \zB\
@@ -634,7 +637,7 @@ Alternativ können auch eigene Inhalte im Feld hinterlegt werden.
 
 \paragraph{Diplomarbeit:} ~ \newline
 Analog zur Dissertation (s.\ oben), allerdings mit
-\texttt{type=\obnh\{Diplomarbeit\}}:%
+\texttt{type=\obnh\{Diplomarbeit\}}.
 
 %%------------------------------------------------------
 
@@ -667,7 +670,7 @@ zusätzliche Kennzeichnung als URL gesetzt (mit dem \verb!\url{..}! Makro).
 
 \paragraph{Bachelorarbeit:} ~ \newline
 Bachelorarbeiten gelten in der Regel zwar nicht als "richtige" Publikationen,
-bei Bedarf müssen sie aber dennoch referenziert werden können.
+bei Bedarf müssen sie aber dennoch referenziert werden können, \zB:
 %
 \begin{itemize}
 \item[]
@@ -745,7 +748,7 @@ gedruckt existieren.
 Oft wird bei derartigen Dokumenten kein*e Autor*in genannt. Dann wird der
 Name des \emph{Unternehmens} oder der \emph{Institution} im
 \texttt{author}-Feld angegeben, allerdings innerhalb einer
-\textbf{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht
+\emph{zusätzlichen Klammer} \texttt{\{..\}}, damit das Argument nicht
 fälschlicherweise als \emph{Vornamen} + \emph{Nachname} interpretiert wird.%
 \footnote{Im Unterschied zu BibTeX wird in \texttt{biblatex} bei
 \texttt{@manual}-Einträgen das Feld \texttt{organization} nicht als Ersatz
@@ -907,7 +910,7 @@ beispielsweise auf Plattformen wie \textsf{arXiv.org}%
 \footnote{\url{https://arxiv.org/}}
 oder \textsf{researchgate.net}.%
 \footnote{\url{https://www.researchgate.net/}}
-Dabei ist zu beachten, dass die Onlinestellung formell \textbf{keine
+Dabei ist zu beachten, dass die Onlinestellung formell \emph{keine
 Publikation} darstellt, da diese Plattformen keine Publikationsmedien sind.
 Tatsächlich werden manche der (von den Autor*innen selbst hochgeladenen)
 Arbeiten \emph{nie} publiziert, etwa nicht akzeptierte Einreichungen zu
@@ -916,12 +919,12 @@ angenommen und auch publiziert wurde:
 %
 \begin{itemize}
 \item[a)]
-\textbf{Die Arbeit wurde tatsächlich publiziert:} Hier muss man grundsätzlich
+\emph{Die Arbeit wurde tatsächlich publiziert:} Hier muss man grundsätzlich
 die entsprechende Original\-publikation suchen! Die Quellenangabe erfolgt in
 herkömmlicher Form (\zB\ mit \texttt{@inproceedings} im Fall eines
 Konferenzbands), aber \emph{ohne} Verweis auf die Onlinestellung.
 \item[b)]
-\textbf{Die Arbeit wurde \emph{nicht} publiziert:} Wenn sich tatsächlich
+\emph{Die Arbeit wurde \emph{nicht} publiziert:} Wenn sich tatsächlich
 \emph{keine} Publikation (oder ein zugehöriger \emph{Technical Report}, \so)
 findet, kann man sich \evtl\ mit dem \texttt{@unpublished}-Tag abhelfen:
 \item %
@@ -938,9 +941,9 @@ findet, kann man sich \evtl\ mit dem \texttt{@unpublished}-Tag abhelfen:
 \begin{itemize}
 \item[\cite{Dai2016}] \fullcite{Dai2016}
 \end{itemize}
+\end{itemize}
 %
-\item[] %
-In diesem Fall ist die Angabe des Links (über \texttt{doi} oder alternativ
+Im letzten Fall ist die Angabe des Links (über \texttt{doi} oder alternativ
 \texttt{url}) natürlich unverzichtbar. Details zum Feld \texttt{pubstate}
 (\texttt{prepublished}) findet man in der \texttt{biblatex}-Dokumentation
 \cite[Abschn.\ 4.9.2.11]{Kime2022}. Andernfalls (wenn unbekannt oder wirklich
@@ -952,7 +955,7 @@ nicht veröffentlicht) kann anstelle von \texttt{pubstate} auch der Eintrag
 \end{itemize}
 %
 verwendet werden.
-\end{itemize}
+
 
 \subsection{Filme und audio-visuelle Medien (\textsf{avmedia})}
 \label{sec:KategorieAvmedia}
@@ -1199,8 +1202,7 @@ Zeitpunkt aktuell war. Durch die (optionale) Angabe von \texttt{urldate} (im
 \texttt{YYYY-MM-DD} Format) wird automatisch die Information eingefügt, wann
 das Online-Dokument tatsächlich eingesehen wurde.
 
-\noindent%
-\textbf{Hinweis:} Technisch ist bei Online-Quellen nur das Feld \texttt{url}
+Technisch ist bei Online-Quellen nur das Feld \texttt{url}
 erforderlich, die Angabe von weiteren Details (\zB\ \texttt{author}) ist aber
 natürlich möglich. Liegt aber \emph{kein*e} Autor*in vor, dann sollte man --
 wie in den obigen Beispielen gezeigt -- zumindest einen sinnvollen
@@ -1253,8 +1255,8 @@ spezifiziert. Es ist lediglich die Nummer selbst anzugeben, also etwa
 Quellenangabe wird in Abhängigkeit von der Spracheinstellung automatisch
 hinzugefügt (\zB\ "3.\ Auflage" oder "3rd edition"). Wie bereits auf Seite
 \pageref{sec:@book} (unter \texttt{@book}) angemerkt, sollte im Fall einer
-\textbf{1 .~Auflage} (sofern es keine andere Auflage gibt) das
-\texttt{edition}-Feld \textbf{nicht} angegeben werden!
+\emph{ersten} Auflage (sofern es keine weitere Auflage gibt) das
+\texttt{edition}-Feld \emph{nicht} angegeben werden!
 
 
 \subsubsection{Vorsicht bei der Übernahme von fertigen BibTeX-Einträgen}
@@ -1265,7 +1267,7 @@ Einträge sind häufig unvollständig, inkonsistent oder syntaktisch fehlerhaft!
 Sie sollten bei der Übernahme \emph{immer} auf Korrektheit überprüft werden!
 Besonders sollte dabei auf die richtige Angabe der Vornamen
 (\texttt{\textit{vn}}) und Nachnamen (\texttt{\textit{nn}}) geachtet werden,
-nämlich in der Form%
+wenn möglich in der Form%
 \footnote{Beachte, wie die Kommas gesetzt werden! Mit dem Schlüsselwort
 \underline{\texttt{and}} werden die Namen der einzelnen Autor*innen getrennt.}
 %
@@ -1283,7 +1285,7 @@ Nachnamen nicht korrekt zugeordnet werden können, \zB
 \texttt{author=\{van Beethoven, Ludwig \underline{and} ter Linden, Jaap\}}
 \end{itemize}
 %
-für ein (hypothetisches) Werk der Herren \emph{Ludwig van Beethoven} und
+für ein (fiktionales) Werk der Herren \emph{Ludwig van Beethoven} und
 \emph{Jaap ter Linden}.
 
 Häufig finden sich Weglassungen oder Fehler bei Einträgen von
@@ -1297,7 +1299,7 @@ eindeutigen Nummer wird von Biblatex ein Hyperlink hinterlegt, der auf die
 Quelle des Werks (meist die des veröffentlichenden Verlags) zeigt. Damit
 keine doppelten Verweise im Eintrag entstehen, wird im
 \texttt{hagenberg-thesis}-Paket das \texttt{url}-Feld bei vorhandenem DOI
-entfernt.
+automatisch entfernt.
 
 Da importierte Einträge fast immer in BibTeX- und nicht Biblatex-Notation
 angegeben sind, sollten diese angepasst werden, um ggfs.\ Typen zu
@@ -1366,7 +1368,7 @@ Hauptdatei die Dokumenten\-option "\texttt{apa}" angegeben werden, \zB
 \documentclass[master,german,smartquotes,apa]{hgbthesis}
 \end{LaTeXCode}
 %
-Um Quellen im Text zu referenzieren sind mehrere \textbf{unterschiedliche
+Um Quellen im Text zu referenzieren sind mehrere \emph{unterschiedliche
 Makros} -- abhängig von der Art der Verwendung -- notwendig, wie nachfolgend
 beschrieben.
 
@@ -1480,15 +1482,17 @@ Als \emph{Plagiat} bezeichnet man die Darstellung eines fremden Werks als
 eigene Schöpfung, in Teilen oder als Ganzes, egal ob bewusst oder unbewusst.
 Plagiarismus ist kein neues Problem im Hochschulwesen, hat sich aber durch
 die breite Verfügbarkeit elektronischer Quellen in den letzten Jahren
-dramatisch verstärkt und wird keineswegs als Kavaliersdelikt betrachtet.
+dramatisch verstärkt. 
 Viele Hochschulen bedienen sich als Gegenmaßnahme heute ebenfalls
 elektronischer Hilfsmittel (die den Studierenden zum Teil nicht zugänglich
 sind), und man sollte daher bei jeder abgegebenen Arbeit damit rechnen, dass
-sie routinemäßig auf Plagiatsstellen untersucht wird! Werden solche erst zu
-einem späteren Zeitpunkt entdeckt, kann das im schlimmsten Fall sogar zur
-nachträglichen (und endgültigen) Aberkennung des akademischen Grades führen.
-Um derartige Probleme zu vermeiden, sollte man eher übervorsichtig agieren
-und zumindest folgende Regeln beachten:
+sie routinemäßig auf Plagiatsstellen untersucht wird!
+
+Plagiarismus wird keineswegs als Kavaliersdelikt betrachtet. Auch wenn ein solches
+Vergehen erst zu einem späteren Zeitpunkt entdeckt wird, kann das im schlimmsten
+Fall sogar zur nachträglichen (und endgültigen) Aberkennung des akademischen
+Grades führen. Um derartige Probleme zu vermeiden, sollte man eher übervorsichtig
+agieren und zumindest folgende Regeln beachten:
 %
 \begin{itemize}
     \item

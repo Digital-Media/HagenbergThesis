@@ -1,53 +1,55 @@
-\chapter[Handling Literature]{Handling Literature and Other Forms of References}
+\chapter[References to Literature]{Handling References to Literature and Other Sources}
 \label{cha:Literature}
 
 \paragraph{Note:} The title of this chapter is intentionally lengthy, so it no
 longer fits in the page header. For this case, a shortened text for the header
-and the table of contents can be specified. This is done by providing an
-optional argument  \verb![..]! to the \verb!\chapter! statement:
+and the table of contents can be specified by providing an
+optional argument \verb![..]! to the \verb!\chapter! statement:
 %
 \begin{LaTeXCode}[numbers=none]
-\chapter[Handling Literature]{Handling Literature and Other Forms of References}
+\chapter[References to Literature]{Adding References to Literature and Other Sources}
 \end{LaTeXCode}
 
 
-\section{Allgemeines}
+\section{General Remarks}
 
 The correct use of references is essential when writing scientific documents
 (see also Section~\ref{sec:plagiarism}). Various guidelines are available for
-the format of references, determined by the respective field of activity or
-guidelines from publishers and universities. This template provides a scheme
-that is common in scientific and technical disciplines.%.
-\footnote{Adaptation to other specifications is relatively easy}.
-Technically, this part is based on the program \texttt{Biber}%
+the dsign of references, determined among other things by the respective 
+subject area or guidelines from publishers and universities. 
+This template provides a scheme that is common in scientific and technical
+disciplines.%
+\footnote{Adaptation to other specifications is relatively easy.}
+Technically, this part is based on the program \texttt{biber}%
 \footnote{\url{https://ctan.org/pkg/biber}}
 in combination with the \latex\ package \texttt{biblatex} \cite{Kime2022}.
 
 Reference management consists of two elements: \emph{citations} in the text
-refer to entries in the \emph{bibliography} (or in multiple bibliographies). The
-bibliography is a compilation of all references, typically at the end of the
-document. Each citation must have an associated, unique entry in the
+refer to entries in the \emph{bibliography} (or multiple bibliographies). The
+bibliography is a compilation of all references, typically placed at the end of
+the document. Each citation must have an associated, unique entry in the
 bibliography; each item in the bibliography must likewise be referenced in the
 text.
 
 
 \section{Citations}
 
-To create an entry in the bibliography and refer to it in the text, \latex\
-provides a central command.
+% Perhaps one introductory sentence here?
+
 
 \subsection{The \texttt{\textbackslash cite} Command}
 
-For citations in the running text, use the statement
+To create an entry in the bibliography and refer to it in the text, \latex\
+provides a central command. For citations in the running text, use the
+statement
 %
 \begin{itemize}
-\item[] \verb!\cite{!\textit{keys}\verb!}!
-				\quad oder \quad
-        \verb!\cite[!\textit{text}\verb!]{!\textit{keys}\verb!}!.
+\item[] \verb!\cite{!\textit{keys}\verb!}! \quad or \quad
+				\verb!\cite[!\textit{text}\verb!]{!\textit{keys}\verb!}!.
 \end{itemize}
 %
-\textit{keys} is a comma-separated listing of one or more citation keys to
-identify the corresponding entries in the bibliography. \textit{text} can
+Here \textit{keys} is a comma-separated list of one or more citation keys to
+identify the corresponding entries in the bibliography, and \textit{text} can
 specify a supplementary text to the current citation, such as chapter or page
 references for books. Below are some examples:
 %
@@ -57,14 +59,14 @@ references for books. Below are some examples:
 For further details, see \cite{Kopka2003}.
 \end{LaTeXCode}
 %
-    \item For further details, see \cite[chap.~3]{Kopka2003}.
+    \item For further details, see \cite[Ch.~3]{Kopka2003}.
 \begin{LaTeXCode}[numbers=none]
-For further details, see \cite[chap.~3]{Kopka2003}.
+For further details, see \cite[Ch.~3]{Kopka2003}.
 \end{LaTeXCode}
 %
-    \item The data in \cite[pp.~274--277]{BurgeBurger1999} appears outdated.
+    \item The data in \cite[pp.~274--277]{BurgeBurger1999} appear to be outdated.
 \begin{LaTeXCode}[numbers=none]
-The data in \cite[pp.~274--277]{BurgeBurger1999} appears outdated.
+The data in \cite[pp.~274--277]{BurgeBurger1999} appear to be  outdated.
 \end{LaTeXCode}
 %
     \item Also important are \cite{Patashnik1988,Feder2006,Duden1997}.
@@ -94,20 +96,21 @@ works similar to the \texttt{{\bs}cites} command of \texttt{biblatex}
 			\verb![!\textit{textN}\verb!]{!\textit{keyN}\verb!}!,
 \end{itemize}
 %
-where for each given citation key (\textit{key}) an associated \textit{text} can
+where, for each given citation, key (\textit{key}) an associated \textit{text} can
 also be specified, for example:
 %
 \begin{itemize}
-    \item Something similar can also be found in
-    \mcite[chap.~2]{Loimayr2019}[sec.~3.6]{Drake1948}[pp.~5--7]{Eberl1987}.
+    \item Similar results can be found in 
+    \mcite[Ch.~2]{Loimayr2019}[Sec.~3.6]{Drake1948}[pp.~5--7]{Eberl1987}.
 \begin{LaTeXCode}[numbers=none]
-Something similar can also be found in \mcite[chap.~2]{Loimayr2019}[sec.~3.6]{Drake1948}[pp.~5--7]{Eberl1987}.
+Similar results can be found in 
+\mcite[Ch.~2]{Loimayr2019}[Sec.~3.6]{Drake1948}[pp.~5--7]{Eberl1987}.
 \end{LaTeXCode}
 \end{itemize}
 %
 For better readability, the output---unlike the regular
 \texttt{\textbackslash cite}---includes a \emph{semicolon} (;) as a separator
-between the entries. However, sorting the entries (if desired) must be doneö
+between the entries. However, sorting the entries (if desired) must be done
 manually; it is not done by the \texttt{\textbackslash mcite} command.
 
 
@@ -121,47 +124,48 @@ is helpful to suppress these back references for individual citations, by using
     \item[] \verb!{\backtrackerfalse\cite{...}}!
 \end{itemize}
 %
-This also works with \verb!\mcite! and other \verb!cite! macros; the outer
-brackets are important here. For example, in the bibliography at the entry
-{\backtrackerfalse\parencite{Bezos2022}} the current page (\the\value{page})
-should \emph{not} be listed.
+This also works with \verb!\mcite! and other \verb!cite! commands; nte that 
+the outer brackets are important here. For example, in item
+{\backtrackerfalse\parencite{Bezos2022}} of the bibliography 
+the current page (\the\value{page}) should \emph{not} be listed.
 
 \subsection{Common Mistakes}
 
 Several common mistakes tend to occur when working with references, especially
-for inexperienced people. However, these can be easily avoided.
+for inexperienced authors. However, these can be easily avoided.
 
-\subsubsection{References Outside of the Sentence}
+\subsubsection{Placing References Outside Sentences}
 
-Citations should be placed within or at the end of a sentence (i.e., before the
+Citations should be placed \emph{within} or\emph{at the end} of a sentence (\ie, before the
 period), not \emph{outside}:
 %
-\begin{center}
+\begin{quote}
 	\begin{tabular}{rl}
-		\textbf{Incorrect:}  & \ldots this is the end of the sentence.
-		\cite{Oetiker2021} And now it continues \ldots \\
+		\textbf{Wrong:}  & \ldots this is the end of the sentence.
+		\cite{Oetiker2021} And here it continues \ldots \\
 		\textbf{Correct:} & \ldots this is the end of the sentence
-		\cite{Oetiker2021}. And now it continues \ldots
+		\cite{Oetiker2021}. And here it continues \ldots
 	\end{tabular}
-\end{center}
+\end{quote}
 
 \subsubsection{References Without a Preceding Space}
 
 A citation is \emph{always} separated from the preceding word by a space, never
-appended directly to the word (like a footnote):
+appended directly to the word (unlike a footnote):
 %
-\begin{center}
+\begin{quote}
 	\begin{tabular}{rl}
-		\textbf{Incorrect:}  & \ldots here goes the
+		\textbf{Wrong:}  & \ldots here goes the
 		citation\cite{Oetiker2021} and it continues \ldots  \\
 		\textbf{Correct:} & \ldots here goes the citation
 		\cite{Oetiker2021} and it continues \ldots
 	\end{tabular}
-\end{center}
+\end{quote}
 
-\subsubsection{Quotes}
+\subsubsection{Literal Quotes}
 
-If an entire paragraph (or more) is quoted from a source, the reference should
+If an entire paragraph (or more) is quoted from a source, the associated reference
+should
 be placed in the preceding text and not \emph{within} the quote itself. As an
 example, the following passage from \cite{Daniel2018}:
 %
@@ -181,8 +185,8 @@ example, the following passage from \cite{Daniel2018}:
 For the quote itself, the \texttt{quote} environment should be used; it
 demarcates the quote from one's text by employing indentations on both sides and
 thus reduces the risk of ambiguities (where is the end of the quote?). The above
-example also switches to German (see section \ref{sec:language-switching}):%
-\footnote{Pay attention to the German quotation marks within the quote, which
+example also switches to German (see Sec.\ \ref{sec:language-switching}):%
+\footnote{Note the German quotation marks inside the quote, which
 are set by the \texttt{smartquotes} option.}
 %
 \begin{itemize}
@@ -193,7 +197,7 @@ are set by the \texttt{smartquotes} option.}
 If desired, the quote can also be wrapped in quotation marks \emph{or}
 italicized, but not both!
 
-\subsubsection{Alternative Extensions (Using the Document Option
+\subsubsection{Optional Extensions (Using Document Option
 \texttt{smartquotes})}
 
 The \texttt{csquotes} package%
@@ -227,35 +231,34 @@ are defined.}
 
 \subsection{Dealing With Secondary Sources}
 
-In rare cases, it happens that one wants (or needs) to cite a source \textbf{A}
+In rare cases, it happens that one wants (or needs) to cite a source \textrm{A}
 that is not available (and thus cannot be read personally) but which is cited in
-\emph{another} available source \textbf{B}. In this case, \textbf{A} is called
-the \emph{original} or \emph{primary source}, and \textbf{B} is called the
-\emph{secondary source}. The following basic rules for such a scenario should be
-heeded:
+\emph{another} available source \textrm{B}. In this case, \textrm{A} is called
+the \emph{original} or \emph{primary source}, and \textrm{B} is called the
+\emph{secondary source}. In such a scenario the following basic rules should be
+observed:
 %
 \begin{itemize}
-    \item \textbf{Secondary sources} should be \textbf{avoided} whenever
+    \item Secondary sources should be \emph{avoided} whenever
     possible.
     \item In order to quote a source in the usual form, one must always have
-    \textbf{personally accessed} (read) it!
-    \item Only if one can absolutely \textbf{not} obtain the primary source a
+    \emph{personally accessed} (read) it!
+    \item Only if one can absolutely \emph{not} obtain the primary source, a
     reference via a secondary source is permissible. In this case, primary and
-    secondary sources should be \textbf{cited together}, as shown in the example
+    secondary sources should be \emph{cited together}, as shown in the example
     below.
-    \item \textbf{Important}: Only the available source (B) and not the original
-    work is included in the bibliography!
+    \item \emph{Important}: Only the available source (\textrm{B}) and not
+    the original work is included in the bibliography!
 \end{itemize}
 %
-\textbf{Example}: Suppose one would like to quote a passage from the famous book
-\emph{Dialogo} by Galileo Galilei (which is difficult to obtain) found in a more
-recent work from 1969. One could accomplish this \eg, with the following
-footnote.%
+\paragraph{Example:} Suppose one would like to quote a passage from the famous
+book (\textrm{A}) \emph{Dialogo} by Galileo Galilei (which is difficult to obtain),
+referenced in a more recent work from 1969 (\textrm{A}). One could accomplish this,
+\eg, with the following footnote (all page numbers are fictional).%
 \footnote{Galileo Galilei, \emph{Dialogo sopra i due massimi sistemi del
-mondo tolemaico e copernicano}, p.~314 (1632). Quoted from
-\cite[p.~59]{Hemleben1969}.} % All page numbers are fictional!
-In the actual bibliography, only the secondary source \cite{Hemleben1969} is
-included.
+mondo tolemaico e copernicano}, p.~314 (1632). Quoted from 
+\cite[p.~59]{Hemleben1969}.}
+Only the secondary source \cite{Hemleben1969} is included in the actual bibliography.
 
 
 \section{Bibliography}
@@ -265,6 +268,7 @@ traditional method is to use \texttt{BibTeX} \cite{Patashnik1988}. Another (more
 modern) approach uses \texttt{biber}%
 \footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}
 and \texttt{biblatex}, as described below.
+
 
 \subsection{Bibliographic Data in BibTeX and Biblatex}
 \label{sec:bibtex}
@@ -277,7 +281,7 @@ structure). Literature on using BibTeX can be found online, \eg,
 BibTeX files can, of course, be created manually with a text editor. For many
 references, complete BibTeX entries are already available online. However, one
 should be careful because these entries are (even when provided by large
-institutions and publishers) \textbf{often wrong or syntactically incorrect}!
+institutions and publishers) \emph{often wrong or syntactically incorrect}!
 Therefore, one should not adopt them unchecked and especially scrutinize the
 final results. Furthermore, there are specialized applications for maintaining
 BibTeX bibliographies, such as \emph{JabRef}.%
@@ -292,13 +296,13 @@ traditional BibTeX workflow and significantly extends its capabilities.%
 overhaul of the outdated BibTeX workflow and has already replaced the latter in
 many documents.}
 It adds many new entry types, which are indispensable, especially for
-referencing modern multimedia formats. However, this means that the
-bibliographic data used in \texttt{biblatex} is no longer fully backward
+referencing modern multimedia sources. However, this means that the
+bibliographic data used in \texttt{biblatex} are no longer fully backward
 compatible with BibTeX. It is, therefore, usually necessary to manually revise
 existing BibTeX data or data taken from online sources (see
-section~\ref{sec:tips-on-biblatex}).
+Sec.~\ref{sec:tips-on-biblatex}).
 
-This template's interfaces to \texttt{biblatex} are wrapped mainly in the style
+In our setup, the interface to \texttt{biblatex} is contained in the style
 file \nolinkurl{hgbbib.sty}. The typical usage in the main \latex file is as
 follows:
 %
@@ -314,19 +318,18 @@ follows:
 \end{document}
 \end{LaTeXCode}
 %
-In the "preamble" (line \ref{tex:references1}),
+In the "preamble",
 \verb!\bibliography{references}!%
 \footnote{The \texttt{{\bs}bibliography} command is actually a relic from BibTeX
 and is replaced in \texttt{biblatex} by the \texttt{{\bs}addbibresource}
 statement. Both statements are equivalent, but often only
 \texttt{{\bs}bibliography} makes the associated \texttt{.bib} file visible in
 the file structure of the editor environment.}
-refers to a Biblatex file \nolinkurl{references.bib}, which contains all the
-references.
-
+(line \ref{tex:references1}) refers to a Biblatex file \nolinkurl{references.bib},
+which holdss all references.
 If multiple Biblatex files are used, they can be specified in the same form.
 
-The \verb!\MakeBibliography! statement at the end of the document
+The \verb!\MakeBibliography! statement near the end of the document
 (line~\ref{tex:references2}) is responsible for the output of the bibliography,
 here with the title "References". Two variants are possible:
 %
@@ -343,8 +346,8 @@ here with the title "References". Two variants are possible:
 \subsection{Reference Categories}
 \label{sec:reference-categories}
 
-This template provides the following categories for split bibliographies (see
-table~\ref{tab:references-and-entry-types}):%.
+The \texttt{hagenberg-thesis} package provides the following categories for split
+bibliographies (see Table~\ref{tab:references-and-entry-types}):%.
 \footnote{These categories are defined in the file \nolinkurl{hgbbib.sty}. Any
 changes and the definition of additional categories are pretty straightforward
 if required.}
@@ -361,12 +364,15 @@ if required.}
 %
 Each reference is automatically assigned to one of these categories based on the
 specified Biblatex entry type (\texttt{@\emph{type}}) (see
-table~\ref{tab:reference-categories}). Only the most essential entry types are
+Table~\ref{tab:reference-categories}). Only the most essential entry types are
 listed here, but they should cover most cases in practice and are explained
 below by examples. All entries that are not explicitly specified are assigned to
 the category \textsf{literature}.
 
-\begin{table}
+
+%%------------------------------------------------------
+
+\begin{table}[htbp]
 \caption{Defined reference categories and recommended Biblatex entry types.}
 \label{tab:references-and-entry-types}
 \centering
@@ -413,8 +419,8 @@ the category \textsf{literature}.
 
 \begin{table}
 \caption{Reference categories and associated Biblatex entry types. In the case
-of a split bibliography, the entries of each category are combined in an
-individual section. Elements marked in gray are synonyms for the respective
+of a split bibliography, the entries of each category are combined in a
+common section. EItems marked in gray are synonyms for the respective
 types above them.}
 \label{tab:reference-categories}
 \centering
@@ -440,8 +446,7 @@ types above them.}
 \end{tabular}
 \end{table}
 
-
-%%------------------------------------------------------
+%% ----------------------------------------------------
 
 \subsection{Printed Sources (\textsf{literature})}
 \label{sec:category-literature}
@@ -475,9 +480,10 @@ and (typically) published by one publisher.
 \item[\cite{BurgerBurge2022}] \fullcite{BurgerBurge2022}
 \end{itemize}
 %
-\emph{Note}: The entry field \texttt{edition} is usually only specified if there
-is \emph{more} than one, especially \textbf{not for the 1\textsuperscript{st}
+Note: The entry field \texttt{edition} is usually only specified if there
+is \emph{more} than one, especially \emph{not for the first
 edition} if this is the only one! ISBNs can be safely omitted.
+
 
 %%------------------------------------------------------
 
@@ -516,8 +522,8 @@ the title of the collection, and \texttt{editor} the name of the editor.
 \label{sec:@inproceedings}
 
 Conference paper, individual contribution in conference proceedings. Distinguish
-between the fields \texttt{venue} to indicate the conference location and
-\texttt{location} for the location of the publication (the publisher).
+between the fields \texttt{venue} to indicate the place of the conference and
+\texttt{location} for the location of the publisher.
 %
 \begin{itemize}
 \item[]
@@ -568,7 +574,7 @@ cases to avoid misunderstandings.
 \item[\cite{Mermin1989}] \fullcite{Mermin1989}
 \end{itemize}
 %
-\emph{Note}: Specifying an issue for \emph{several} months (for example, in the
+Note: Specifying an issue for \emph{multiple} months (for example, in the
 case of a combined issue) is not possible in \texttt{biblatex} with the
 \texttt{month} field because it may only contain \emph{a single} number.
 However, the \texttt{number} field can be used for this purpose, \eg,
@@ -579,7 +585,7 @@ However, the \texttt{number} field can be used for this purpose, \eg,
 \subsubsection{\texttt{\bfseries @thesis}}
 \label{sec:@thesis}
 
-This entry type can be used for any thesis. The exact type is specified via the
+This entry type can be used for any academic thesis. The exact type is specified via the
 \texttt{type} attribute. The values \texttt{phdthesis}, \texttt{mathesis}, and
 \texttt{bathesis} indicate doctoral, master's, and bachelor's theses,
 respectively, and correctly specify the type of thesis, depending on the
@@ -606,7 +612,7 @@ this field.
 
 \paragraph{Diploma Thesis:} ~ \newline
 Equivalent to a dissertation (see above), but with
-\texttt{type=\obnh\{Diploma thesis\}}:%.
+\texttt{type=\obnh\{Diploma thesis\}}.
 
 %%------------------------------------------------------
 
@@ -632,14 +638,14 @@ Equivalent to a dissertation (see above), but with \texttt{type=\{mathesis\}}.%
 \item[\cite{Loimayr2019}] \fullcite{Loimayr2019}
 \end{itemize}
 %
-The content of the \verb!url={..}! field will be automatically set as URL
+The content of the \verb!url={..}! field will be automatically typeset as a URL
 without any additional markup (using the \verb!\url{..}! command).
 
 %%------------------------------------------------------
 
-\paragraph{Bachelorarbeit:} ~ \newline
+\paragraph{Bachelor Thesis:} ~ \newline
 Bachelor theses are not usually considered "proper" publications, but it must
-still be possible to reference them if necessary.
+still be possible to reference them if necessary, for example:
 %
 \begin{itemize}
 \item[]
@@ -667,7 +673,7 @@ reports}) from companies, university institutes, or research projects. They are
 distinguished by the \texttt{type} attribute, which can take the values
 \texttt{techreport} or \texttt{resreport}. Specifying the issuing organizational
 unit (company, institute, faculty, \etc) and address is essential. It also makes
-sense to specify the corresponding URL, if available.
+sense to provide a corresponding URL, if available.
 %
 \begin{itemize}
 \item[]
@@ -694,7 +700,7 @@ sense to specify the corresponding URL, if available.
 
 This publication type is suitable for technical or other documentation, such as
 product descriptions, manuals, presentations, white papers, \etc The
-documentation does not necessarily have to exist in printed form.
+documentation does not need to exist in printed form.
 %
 \begin{itemize}
 \item[]
@@ -713,7 +719,7 @@ documentation does not necessarily have to exist in printed form.
 %
 Often no author is named in such documents. Instead, the name of the
 \emph{company} or \emph{institution} is specified in the \texttt{author} field,
-but within \textbf{additional parentheses} \texttt{\{..\}}, so that the
+but within \emph{additional parentheses} \texttt{\{..\}}, so that the
 argument is not misinterpreted as \emph{first name} + \emph{last name}.%.
 \footnote{Unlike BibTeX, \texttt{biblatex} does not accept the
 \texttt{organization} field as a replacement for \texttt{author} in
@@ -821,8 +827,8 @@ of document is represented.
 \label{sec:sheet-music}
 
 For printed compositions (sheet music or musical scores), there is,
-unfortunately, no particular entry type in Biblatex. For an \emph{individual}
-issue, it is easiest to use the type \texttt{@book}, such as (see also
+unfortunately, no particular entry type in Biblatex. For a \emph{specific}
+edition, it is easiest to use the type \texttt{@book}, such as (see also
 \cite{HaydnCelloConcerto2,ShostakovichOp110})
 %
 \begin{itemize}
@@ -870,20 +876,20 @@ authors a long time before actual publication, for example, on platforms such as
 \footnote{\url{https://arxiv.org/}}
 or \textsf{researchgate.net}.%
 \footnote{\url{https://www.researchgate.net/}}
-It should be noted that releasing something online does \textbf{not formally
-count as a publication}, as these platforms are not publishers. Some of the
-works (uploaded by the authors) are \emph{never} officially published, \eg
+It should be noted that releasing something online does \emph{not formally
+count as a publication}, as these platforms are no publishers. Some of the
+works (uploaded by the authors) are \emph{never} officially published, \eg,
 unaccepted submissions to conferences. When citing this reference it is crucial
-to determine whether the paper was accepted and published in the end:
+to determine whether the paper was accepted and actually published:
 %
 \begin{itemize}
 \item[a)]
-\textbf{The work was actually published:} Here the corresponding original
+\emph{The work was indeed published:} Here the corresponding original
 publication must be searched and used! The citation is done in conventional form
 (\eg, with \texttt{@inproceedings} in case of a conference volume), but
 \emph{without} a reference to the online publication.
 \item[b)]
-\textbf{The work was \emph{not} published:} If indeed no publication (or an
+\emph{The work was \emph{not} published:} If indeed no publication (or an
 associated \emph{technical report}, see above) can be found, the
 \texttt{@unpublished} tag can be helpful:
 \item %
@@ -901,11 +907,12 @@ associated \emph{technical report}, see above) can be found, the
 \item[\cite{Dai2016}] \fullcite{Dai2016}
 \end{itemize}
 %
-\item[] %
-In this case, the specification of the link (via \texttt{doi} or alternatively
+\end{itemize}
+%
+In the latter case, the specification of the link (via \texttt{doi} or alternatively
 \texttt{url}) is essential. Details on the \texttt{pubstate} field
 (\texttt{prepublished}) can be found in the \texttt{biblatex} documentation
-\cite[sec.\ 4.9.2.11]{Kime2022}. Otherwise (if unknown or not published),
+\cite[Sec.\ 4.9.2.11]{Kime2022}. Otherwise (if unknown or not published),
 %
 \begin{itemize}
 \item[]\texttt{note=\{unpublished\}} \quad or
@@ -913,7 +920,7 @@ In this case, the specification of the link (via \texttt{doi} or alternatively
 \end{itemize}
 %
 can be used instead of \texttt{pubstate}.
-\end{itemize}
+
 
 \subsection{Movies and Audio-Visual Media (\textsf{avmedia})}
 \label{sec:category-avmedia}
@@ -923,7 +930,7 @@ CDs, DVDs, and VHS tapes, thus meaning works published in physical (but not
 printed) form. It does not include audio-visual creations (sound recordings,
 images, videos) that are exclusively available online---these should be
 referenced with the entry type \texttt{@online} (see
-table~\ref{tab:reference-categories} and section~\ref{sec:category-online}).
+Table~\ref{tab:reference-categories} and Sec.~\ref{sec:category-online}).
 
 The \texttt{@audio}, \texttt{@video}, and \texttt{@movie} types described below
 are \emph{not} BibTeX standard types. However, they are represented in
@@ -949,7 +956,7 @@ Here is an example of the specification of an audio CD:
 \item[\cite{Zappa1995}] \fullcite{Zappa1995}
 \end{itemize}
 %
-Instead of \verb!type={audiocd}!, \verb!howpublished={Audio-CD}! could also be used.
+Instead of \verb!type={audiocd}! one could also use \verb!howpublished={Audio CD}!.
 
 \subsubsection{\texttt{\bfseries @image}}
 \label{sec:@image}
@@ -991,7 +998,7 @@ The example below shows a link to a YouTube video:
 \end{itemize}
 
 \noindent
-Here is an example of the reference to a DVD edition:
+Here is an example of referencing a DVD edition:
 %
 \begin{itemize}
 \item[]
@@ -1018,8 +1025,8 @@ information in the \texttt{note} field, as shown in the example below.
 
 This entry type is intended for movies. No author is specified because it is
 usually not possible to name a specific author for a film production. In the
-following example (see also \cite{Psycho1960}) the relevant data is given in the
-\texttt{note} field:%
+following example (see also \cite{Psycho1960}) the relevant data are provided
+in the \texttt{note} field:%
 \footnote{By the way, \texttt{biblatex} nicely ensures that the dot at the end
 of the \texttt{note} text is not duplicated in the output.}
 %
@@ -1052,7 +1059,7 @@ similarly to the page reference in a printed work. Particularly legendary
 \end{itemize}
 %
 As an alternative to the simple timecode "T=\emph{hh}:\emph{mm}:\emph{ss}",
-it is possible to specify a the location of a specific frame by using the
+it is possible to specify the position of a specific frame by using the
 corresponding \emph{timecode} "TC=\emph{hh:mm:ss:ff}", \eg,
 \cite[TC=00:32:10:12]{Psycho1960} for frame \emph{ff}=12:
 %
@@ -1113,15 +1120,15 @@ distinguished:
     sentence, it is sufficient to use a simple footnote with
     \verb!\footnote{\url{..}}!.
 %
-    \item[B.] A printed or audio-visual work (see sections
+    \item[B.] Some piece of printed or audio-visual work (see Secs.~%
     \ref{sec:category-literature} and \ref{sec:category-avmedia}) is
     \emph{additionally} available online. In this case, however, the primary
     publication is \emph{not} "online", and it is sufficient to specify the
     associated link in the \texttt{url} field, which can be specified for any
     entry type.
 %
-    \item[C.] It is a reference in the broadest sense, but \emph{exclusively}
-    available online, such as a wiki or blog entry. The \emph{online} category
+    \item[C.] A publication in the broadest sense that is
+    \emph{exclusively} available online, such as a wiki or blog entry. The \emph{online} category
     is precisely (and \emph{only}) intended for this type of source.
 \end{itemize}
 
@@ -1129,8 +1136,8 @@ distinguished:
 \label{sec:@online-www}
 
 Due to the volume and increasing quality of these entries, their inclusion in
-the bibliography seems justified. For example, a chasse (German:
-"Reliquienschrein") is a shrine in which the relics of one or more saints are
+a bibliography seems justified. For example, a \emph{relic shrine} (German:
+"Reliquienschrein") is a case in which the relics of one or more saints are
 kept \cite{WikiReliquienschrein2022}.
 %
 \begin{itemize}
@@ -1152,17 +1159,16 @@ can specify the current version at that time. The (optional) specification of
 \texttt{urldate} (in \texttt{YYYY-MM-DD} format) automatically inserts the
 information when the online document was accessed.
 
-\noindent%
-\textbf{Note}: Technically, only the \texttt{url} field is required for online
+Technically, only the \texttt{url} field is required for online
 sources, but specifying further details (\eg, \texttt{author}) is possible.
 However, if \emph{no} author is available, then---as shown in the examples
 above---at least a meaningful \emph{title} (\texttt{title}) should be added,
-which will be used when sorting the bibliography.
+which may be used for sorting the bibliography.
 
 \subsection{Tips for Creating Biblatex Files}
 \label{sec:tips-on-biblatex}
 
-The following things should be considered for creating correct Biblatex
+The following items should be considered for creating correct Biblatex
 files.
 
 \subsubsection{\texttt{date} Attribute}
@@ -1199,8 +1205,8 @@ reference. Only the number itself has to be specified, e.g., \verb!edition={3}!
 for a third edition. The complete text is added automatically depending on the
 language setting (e.g., "3rd edition" or "3.\ Auflage"). As already described on
 page \pageref{sec:@book} (under \texttt{@book}), in case of a
-\textbf{1\textsuperscript{st} edition}, the \texttt{edition} field should
-\textbf{not} be specified if there is no other edition!
+\emph{first} edition, the \texttt{edition} field should
+\emph{not} be specified if there is no other edition!
 
 \subsubsection{Caution When Incorporating Existing Bibtex Entries}
 
@@ -1209,7 +1215,7 @@ download. However, great care should be taken because these entries are often
 incomplete, inconsistent, or syntactically incorrect! They should \emph{always}
 be checked for correctness when importing them! Particular attention should be
 paid to the correct specification of the first names (\texttt{\textit{fn}}) and
-last names (\texttt{\textit{ln}}), namely in the form%
+last names (\texttt{\textit{ln}}), preferably in the form%
 \footnote{Note how the commas are placed! The keyword \underline{\texttt{and}}
 separates the names of the individual authors.}
 %
@@ -1220,14 +1226,14 @@ separates the names of the individual authors.}
 \end{itemize}
 %
 This is especially important for multi-part surnames because otherwise, the
-first and last names cannot be correctly assigned, e.g.
+first and last names cannot be correctly assigned, \eg,
 %
 \begin{itemize}
 \item[]
 \texttt{author=\{van Beethoven, Ludwig \underline{and} ter Linden, Jaap\}}
 \end{itemize}
 %
-for a (hypothetical) opus by \emph{Ludwig van Beethoven} and \emph{Jaap ter
+for a (fictional) oeuvre by \emph{Ludwig van Beethoven} and \emph{Jaap ter
 Linden}.
 
 Omissions or errors are often found in entries of \texttt{volume},
@@ -1239,7 +1245,7 @@ redundant and should be omitted. However, a DOI (Digital Object Identifier)
 entry is useful. This unique number is assigned a hyperlink by Biblatex that
 points to the source of the work (usually that of the publisher). To avoid
 duplicate hyperlinks in the entry, the \texttt{hagenberg-thesis} package
-removes the \texttt{url} field if a DOI is present.
+automatically removes the \texttt{url} field if a DOI is present.
 
 Since imported entries are almost always in BibTeX and not Biblatex notation,
 they should be adjusted to correct types if necessary and to make use of the
@@ -1250,16 +1256,16 @@ current detail fields.
 Check the finished bibliography carefully for \emph{completeness} and
 \emph{consistency}. For each reference, is it clear how and where it was
 published? Are the details sufficient to locate the source? Here is a list of
-the most critical actions related to the bibliography:
+the most critical provisions related to the bibliography:
 %
 \begin{itemize}
-    \item Check all entries for missing or misinterpreted elements!
+    \item Check all entries for missing or misinterpreted items!
     \item Check all authors' names and first names, are the abbreviations (of
     first names) consistent?
     \item Check the capitalization and punctuation of all entries and correct
     them if necessary.
-    \item Books: Check publisher name and place of publication for completeness,
-    consistency, and redundancies.
+    \item Books: Check the publisher's name and the place of publication for 
+    completeness, consistency, and redundancies.
     \item \emph{Omit} URLs unless they are indispensable! This is especially
     true for books and conference papers. Instead, provide a DOI if
     available---it will also be linked to the source in the PDF.
@@ -1271,15 +1277,15 @@ the most critical actions related to the bibliography:
     Indicate the conference venue, and remember to specify the page numbers!
     \item For technical reports, master theses, and dissertations, the
     institution (university and department, company, \etc) \emph{must} be
-    indicated!
+    provided!
 \end{itemize}
 
 \subsubsection{Listing of All References}
 
 Using the \verb!\nocite{*}! statement---placed anywhere in the document---will
 list \emph{all} existing entries of the Biblatex file in the bibliography,
-including those for which there is no explicit \verb!\cite{}! call. This is
-useful for getting an overview of all references while writing the thesis.
+including those for which there is no explicit \verb!\cite{}! call in the text.
+This is useful for getting an overview of all references while writing the thesis.
 Normally, however, all cited sources must also be referenced in the text!
 
 
@@ -1374,7 +1380,7 @@ more comprehensive works \parencite{Oetiker2021, Kopka2003}.
 \end{itemize}
 
 
-\subsubsection{Darstellung im Quellenverzeichnis}
+\subsubsection{Appearance in the Bibliography}
 
 \begin{sloppypar}
 The references used above are displayed in the bibliography as follows:
@@ -1405,33 +1411,33 @@ Not So ShortIntroduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.} Version 6.4.
 \section{Plagiarism and Paraphrasing}
 \label{sec:plagiarism}
 
-\emph{Plagiarism} is representing another's work as one's own creation, in part
+\emph{Plagiarism} means representing somebody else's work as one's own creation, in part
 or whole, whether consciously or unconsciously. Plagiarism is not a new problem
-in higher education. However, it has increased dramatically in recent years due
-to the widespread availability of electronic sources and is by no means
-considered a trivial offense. Many universities now also use electronic
+in higher education but has increased dramatically in recent years due
+to the widespread availability of electronic sources. Many universities now also use electronic
 resources (some of which are not accessible to students) as a countermeasure.
-Therefore, one should expect any work handed in to be routinely checked for
-plagiarism! If such is discovered only at a later point, this can, in the worst
-case, lead to the subsequent (and final) revocation of the academic degree. To
-avoid such problems, one should instead act overcautiously and at least observe
-the following rules:
+Therefore, one should expect any submitted work to be routinely checked for
+plagiarism!
+
+Plagiarism is by no means considered a trivial offense. Even if discovered at some later
+point, this can, in the worst case, lead to the subsequent (and final) revocation of the
+academic degree. To avoid such problems, one should better be overcautious and at
+least observe the following rules:
 %
 \begin{itemize}
     \item
     Adopting short text passages is only permitted with correct citation,
-    whereby the text citation's scope (beginning and end) must be clear in each
+    whereby the text quotation's scope (beginning and end) must be clear in each
     case.
     \item
     In particular, it is not acceptable to mention a reference only at the
-    beginning and subsequently to repeatedly adopt uncited text passages as
+    beginning and then repeatedly adopt non-cited text passages as
     one's own creation.
     \item
-    Under no circumstances is the immediate adoption or \emph{paraphrasing} of
-    longer text passages tolerable, whether with or without citation. Passages
-    expressed indirectly or translated from another language must also be cited
-    properly!
+    Under no circumstances tolerable is to directly adopt or \emph{paraphrase}
+    longer text passages, whether with or without citation. Passages used
+    indirectly or translated from another language must also be cited properly!
 \end{itemize}
 %
 In case of doubt, more detailed rules can be found in any good book on
-scientific writing. To be safe, asking one's supervisor is always advisable.
+scientific writing. To be safe, asking your thesis advisor is never a mistake.
