@@ -43,7 +43,7 @@ automatic placement still appears unsatisfactory, interventions in
 \section{Captions}
 
 For figures, the caption is usually placed at the \emph{bottom}, while for
-tables -- depending on the adopted convention -- \emph{above} (as in this
+tables---depending on the adopted convention---\emph{above} (as in this
 document), but sometimes also at the \emph{bottom}. In \latex\ numbering of
 figures is also done automatically, as well as the entry into the (optional)
 list of figures at the end of the document.%
@@ -57,12 +57,12 @@ Captions are marked in \latex using the \verb!\label{}! statement, which must
 immediately follow the \verb!\caption{}! statement:
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{figure}
-        \centering
-        \includegraphics[width=.95\textwidth]{cola-public-domain-photo-p}
-        \caption{Coca-Cola Werbung 1940 \cite{CocaCola1940}.}
-        \label{fig:CocaCola}
-    \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=.95\textwidth]{cola-public-domain-photo-p}
+    \caption{Coca-Cola Werbung 1940 \cite{CocaCola1940}.}
+    \label{fig:CocaCola}
+\end{figure}
 \end{LaTeXCode}
 %
 The \emph{name} of the label (\texttt{fig:CocaCola}) can be chosen
@@ -296,12 +296,12 @@ is not imported with \verb!\includegraphics! but \verb!\begin{overpic}!
 \ldots \verb!\end{overpic}!, with a similar syntax:
 %
 \begin{LaTeXCode}[numbers=none]
-    \begin{overpic}[width=0.85\textwidth]{mathematica-example}
-        \put(101,14){$x$}%
-        \put(4,31){$f(x)$}%
-        \put(29.5,28){\line(1,1){2}}%
-        ...
-    \end{overpic}
+\begin{overpic}[width=0.85\textwidth]{mathematica-example}
+    \put(101,14){$x$}%
+    \put(4,31){$f(x)$}%
+    \put(29.5,28){\line(1,1){2}}%
+    ...
+\end{overpic}
 \end{LaTeXCode}
 
 \begin{figure}
@@ -356,7 +356,7 @@ example, if an illustration from a book or other citable publication is used,
 then it should be included in the bibliography and cited as usual with
 \verb!\cite{..}! as demonstrated in Fig.\ \ref{fig:Bearings}. Further details
 on this type of source citation can be found in Ch.\ \ref{cha:Literature}
-(esp.\ Section \ref{sec:KategorieOnline}).
+(esp.\ Section \ref{sec:category-online}).
 
 \begin{figure}
     \centering\small
@@ -469,12 +469,12 @@ particularly the first two determine their basic layout:
 
 The \latex package \texttt{booktabs} makes it easy to meet these requirements
 Within the \texttt{tabular} environment (which defines the actual table), the
-number of columns -- preferably set left-justified (\texttt{l} specifiers) --
-are defined first. \verb|\toprule| marks the beginning of the table, followed
-by the header, which is terminated by \verb|\midrule|. This is followed by
-the lines with the table contents. Using \verb|\bottomrule| the table is
-closed with another horizontal line. \verb|\midrule| calls can also occur
-more often to divide the table. If horizontal lines are needed that should
+number of columns---preferably set left-justified (\texttt{l}
+specifiers)--- are defined first. \verb|\toprule| marks the beginning of the
+table, followed by the header, which is terminated by \verb|\midrule|. This is
+followed by the lines with the table contents. Using \verb|\bottomrule| the
+table is closed with another horizontal line. \verb|\midrule| calls can also
+occur more often to divide the table. If horizontal lines are needed that should
 not span all columns, \verb|\cmidrule| can be used.
 
 \subsection{Long Texts in Table Columns}
@@ -825,14 +825,14 @@ For example, the following (rudimentary) Java method \texttt{extractEmail}
 searches for an e-mail address in a given string:
 %
 \begin{JavaCode}[numbers=none]
-    static String extractEmail(String line) {
-        line = line.trim(); // find the first blank
-        int i = line.indexOf(' ');
-        if (i > 0)
-        return line.substring(i).trim();
-        else
-        return null;
-    }
+static String extractEmail(String line) {
+    line = line.trim(); // find the first blank
+    int i = line.indexOf(' ');
+    if (i > 0)
+    return line.substring(i).trim();
+    else
+    return null;
+}
 \end{JavaCode}
 %
 \noindent
@@ -856,13 +856,13 @@ breaks.
 
 \subsubsection{Program Code in Float Elements}
 
-If longer code sequences are necessary, which should appear in the immediate
-vicinity of the running text, they should be treated as float elements in the
-same way as illustrations and tables. These program texts should not exceed
-the size of one page. In an emergency, up to two pages can be packed into
-consecutive float elements, each with its own caption. In \texttt{hgb.sty} a
-new float environment \texttt{program} is defined, which is used analogously
-to \texttt{table}:
+Suppose longer code sequences are necessary, which should appear near the
+running text. In that case, they should be treated as float elements in the same
+way as illustrations and tables. These program texts should not exceed the size
+of one page. In an emergency, up to two pages can be packed into consecutive
+float elements, each with its own caption. In \texttt{hgb.sty} a float
+environment \texttt{program} is defined, which is used analogously to
+\texttt{table}:
 %
 \begin{quote}
     \begin{verbatim}
@@ -888,35 +888,35 @@ numerical cross references used instead. See Programs
 
 \begin{program}
 % place caption consistently either at the top or bottom:
-    \caption{Example of a program listing (Java) as a float element.}
-    \label{prog:CodeExample}
-    \begin{JavaCode}
-        import ij.ImagePlus;
-        import ij.plugin.filter.PlugInFilter;
-        import ij.process.ImageProcessor;
+\caption{Example of a program listing (Java) as a float element.}
+\label{prog:CodeExample}
+\begin{JavaCode}
+import ij.ImagePlus;
+import ij.plugin.filter.PlugInFilter;
+import ij.process.ImageProcessor;
 
-        public class My_Inverter implements PlugInFilter {
-            int agent_velocity;
-            String title = ""; // just to test printing of double quotes
+public class My_Inverter implements PlugInFilter {
+    int agent_velocity;
+    String title = ""; // just to test printing of double quotes
 
-            public int setup (String arg, ImagePlus im) {
-                return DOES_8G;
+    public int setup (String arg, ImagePlus im) {
+        return DOES_8G;
+    }
+
+    public void run (ImageProcessor ip) {
+        int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/
+        int h = ip.getHeight();
+
+        /* iterate over all image coordinates */
+        for (int u = 0; u < w; u++) {
+            for (int v = 0; v < h; v++) {
+                int p = ip.getPixel(u, v);
+                ip.putPixel(u, v, 255 - p); // invert: /+\smash{$I'(u,v) \leftarrow (255 - I(u,v))$}\label{MathInCode}+/
             }
-
-            public void run (ImageProcessor ip) {
-                int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/
-                int h = ip.getHeight();
-
-                /* iterate over all image coordinates */
-                for (int u = 0; u < w; u++) {
-                    for (int v = 0; v < h; v++) {
-                        int p = ip.getPixel(u, v);
-                        ip.putPixel(u, v, 255 - p); // invert: /+\smash{$I'(u,v) \leftarrow (255 - I(u,v))$}\label{MathInCode}+/
-                    }
-                }
-            }
-        } // end of class /+My\_Inverter+/
-    \end{JavaCode}
+        }
+    }
+} // end of class /+My\_Inverter+/
+\end{JavaCode}
 %
 \end{program}
 

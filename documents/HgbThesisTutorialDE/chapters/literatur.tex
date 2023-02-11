@@ -26,7 +26,6 @@ Technisch basiert dieser Teil auf dem Programm \texttt{Biber}%
 \footnote{\url{https://ctan.org/pkg/biber}}
 in Kombination mit dem \latex-Paket \texttt{biblatex} \cite{Kime2022}.
 
-
 Die Verwaltung von Quellen besteht grundsätzlich aus zwei Elementen:
 \emph{Quellenverweise} im Text beziehen sich auf Einträge im
 \emph{Quellenverzeichnis} (oder in mehreren Quellenverzeichnissen). Das
@@ -50,8 +49,7 @@ Für Quellenverweise im laufenden Text verwendet man die Anweisung
 				\quad oder \quad
         \verb!\cite[!\textit{text}\verb!]{!\textit{keys}\verb!}!.
 \end{itemize}
-
-\noindent%
+%
 \textit{keys} ist eine durch Kommas getrennte Auflistung eines oder mehrerer
 Quellen-\emph{Schlüssel} zur Identifikation der entsprechenden Einträge im
 Quellenverzeichnis. Mit \textit{text} können Ergänzungstexte zum aktuellen
@@ -183,8 +181,8 @@ platziert werden. Als Beispiel die folgende Passage aus \cite{Oetiker2021}:
     \begin{english}
         Typographical design is a craft. Unskilled authors often
         commit serious formatting errors by assuming that book
-        design is mostly a question of aesthetics---``If a document
-        looks good artistically, it is well designed.'' But as a
+        design is mostly a question of aesthetics---"If a document
+        looks good artistically, it is well designed." But as a
         document has to be read and not hung up in a picture
         gallery, the readability and understandability is of much
         greater importance than the beautiful look of it.
@@ -197,8 +195,8 @@ das Zitat vom eigenen Text klar abgrenzt und damit die Gefahr von
 Unklarheiten (wo ist das Ende des Zitats?) mindert. In obigem Beispiel wird
 zudem auch auf Englisch umgeschalten (siehe Abschn.\
 \ref{sec:sprachumschaltung}):%
-\footnote{Man beachte auch die Verwendung von englischen Hochkommas innerhalb
-des Zitats.}
+\footnote{Man beachte auch die englischen Hochkommas innerhalb
+des Zitats, welche durch die \texttt{smartquotes}-Option gesetzt werden.}
 %
 \begin{itemize}
     \item[] \verb!\begin{quote}\begin{english}! \emph{quoted text \ldots}
@@ -240,7 +238,6 @@ definiert.}
     \verb!\end{foreigndisplayquote}!
 \end{itemize}
 
-
 \subsection{Umgang mit Sekundärquellen}
 
 In seltenen Fällen kommt es vor, dass man eine Quelle \textbf{A} angeben
@@ -280,13 +277,11 @@ Im eigentlichen Quellenverzeichnis erscheint somit nur die Sekundärquelle
 
 \section{Quellenverzeichnis}
 
-
 Für die Erstellung des Quellenverzeichnisses gibt es in \latex grundsätzlich
 mehrere Möglichkeiten. Die traditionelle Methode ist die Verwendung von
 \texttt{BibTeX} \cite{Patashnik1988} \bzw (moderner) mit \texttt{biber}%
 \footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}
 und \texttt{biblatex}, wie im Folgenden beschrieben.
-
 
 \subsection{Literaturdaten in BibTeX und Biblatex}
 \label{sec:bibtex}
@@ -305,7 +300,6 @@ insbesondere die Endergebnisse genau kontrollieren. Darüber hinaus gibt es
 eigene Anwendungen zur Wartung von BibTeX-Verzeichnissen, wie beispielsweise
 \emph{JabRef}.%
 \footnote{\url{https://www.jabref.org/}}
-
 
 \subsubsection{Verwendung von \texttt{biblatex} und \texttt{biber}}
 
@@ -334,7 +328,8 @@ der \latex-Haupt\-datei sieht folgendermaßen aus:
    ...
 \begin{document}
    ...
-\MakeBibliography{Quellenverzeichnis} /+\label{tex:literatur2}+/
+\MakeBibliography /+\label{tex:literatur2}+/
+   ...
 \end{document}
 \end{LaTeXCode}
 %
@@ -351,7 +346,7 @@ Quelleneinträge enthält.
 Falls mehrere Biblatex-Dateien verwendet werden, können sie in der gleichen
 Form angegeben werden.
 
-Die Anweisung \verb!\MakeBibliography{..}! am Ende des Dokuments
+Die Anweisung \verb!\MakeBibliography! am Ende des Dokuments
 (Zeile~\ref{tex:literatur2}) besorgt die Ausgabe des Quellenverzeichnisses,
 hier mit dem Titel "Quellenverzeichnis". Dabei sind zwei Varianten möglich:
 %
@@ -409,7 +404,7 @@ zugeordnet.
 	Technischer Bericht, Laborbericht & \texttt{@report} & \pageref{sec:@report}\\
 	Handbuch, Produktbeschreibung & \texttt{@manual} & \pageref{sec:@manual}\\
 	Norm, Standard & \texttt{@standard} & \pageref{sec:@standard}\\
-	Gesetzestext, Verordnung etc. & \texttt{@legislation} & \pageref{sec:@legislation}\\
+	Gesetzestext, Verordnung \etc & \texttt{@legislation} & \pageref{sec:@legislation}\\
 	Kompositionen, Musiknoten & \texttt{@book}, \texttt{@incollection} & \pageref{sec:Musiknoten}\\
 	Vorpublikation (\zB\ Konferenzeinreichung) & \texttt{@unpublished} & \pageref{sec:@unpublished}\\
 	\addlinespace
@@ -433,7 +428,7 @@ zugeordnet.
 	\midrule
 	\emph{Online-Quellen} (\textsf{online}) & & \\
 	\midrule
-	Webseite, Wiki-Eintrag, Blog etc. & \texttt{@online} & \pageref{sec:@online-www} \\
+	Webseite, Wiki-Eintrag, Blog \etc & \texttt{@online} & \pageref{sec:@online-www} \\
 	\bottomrule
 \end{tabular}
 \end{table}
@@ -507,7 +502,7 @@ einem Verlag herausgegeben wurde.
 %
 \emph{Hinweis:} Die Auflagennummer (\texttt{edition}) wird üblicherweise nur
 angegeben, wenn es \emph{mehr} als eine Ausgabe gibt -- also insbesondere
-\textbf{nicht für die 1.\ Auflage}, falls diese die einzige ist! ISBN-Nummern
+\textbf{nicht für die 1.\ Auflage}, falls diese die einzige ist! ISBNs
 kann man grundsätzlich weglassen.
 
 %%------------------------------------------------------
@@ -580,8 +575,8 @@ Verwendung des neuen Felds \texttt{venue} zur Angabe des Tagungsorts und
 Beitrag in einer Zeitschrift, einem wissenschaftlichen Journal oder einer
 Tageszeitung. Dabei steht \texttt{volume} üblicherweise für den Jahrgang und
 \texttt{number} für die Nummer innerhalb des Jahrgangs. Der Zeitschriftenname
-(\texttt{journal} oder \texttt{journaltitle}) sollte nur in begründeten Fällen
-abgekürzt werden, um Missverständnisse zu vermeiden.
+(\texttt{journaltitle}) sollte nur in begründeten Fällen abgekürzt werden, um
+Missverständnisse zu vermeiden.
 %
 \begin{itemize}
 \item[]
@@ -757,12 +752,10 @@ fälschlicherweise als \emph{Vornamen} + \emph{Nachname} interpretiert wird.%
 für \texttt{author} akzeptiert.} Dieser Trick wird \ua\ im nächsten Beispiel
 verwendet.
 
-
 %%------------------------------------------------------
 
 \subsubsection{\texttt{\bfseries @standard}}
 \label{sec:@standard}
-
 
 Verweise auf Normen (\emph{standards}) werden in \texttt{biblatex} durch den
 Typ \texttt{@standard} unterstützt. Hier ein typisches Beispiel:
@@ -842,7 +835,6 @@ für einen Gesetzestext (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 
 %%------------------------------------------------------
 
-
 \subsubsection{\texttt{\bfseries @misc}}
 \label{sec:@misc}
 
@@ -858,9 +850,7 @@ werden, der ein Textfeld \texttt{howpublished} vorsieht, in dem die Art der
 Veröffentlichung individuell angegeben werden kann. Ebenso kann mit dem Feld
 \texttt{type} spezifiziert werden, um welches Art von Dokument es sich handelt.
 
-
 %%------------------------------------------------------
-
 
 \subsubsection{Kompositionen und Musiknoten}
 \label{sec:Musiknoten}
@@ -907,8 +897,6 @@ wurden, kann man -- wie für einen Sammelband -- den Typ
 \end{GenericCode}
 \item[\cite{GershwinSummertime}] \fullcite{GershwinSummertime}
 \end{itemize}
-
-
 
 \subsubsection{\texttt{\bfseries @unpublished}}
 \label{sec:@unpublished}
@@ -966,8 +954,6 @@ nicht veröffentlicht) kann anstelle von \texttt{pubstate} auch der Eintrag
 verwendet werden.
 \end{itemize}
 
-
-
 \subsection{Filme und audio-visuelle Medien (\textsf{avmedia})}
 \label{sec:KategorieAvmedia}
 
@@ -985,7 +971,6 @@ Die nachfolgend beschriebenen Typen \texttt{@audio}, \texttt{@video} und
 \texttt{biblatex} vorgesehen (und implizit durch \texttt{@misc} ersetzt) und
 werden hier empfohlen, um die automatische Gliederung des
 Quellenverzeichnisses zu ermöglichen.
-
 
 \subsubsection{\texttt{\bfseries @audio}}
 \label{sec:@audio}
@@ -1009,7 +994,6 @@ Hier ein Beispiel für die Spezifikation einer Audio-CD:
 Anstelle von \verb!type={audiocd}! könnte auch \verb!howpublished={Audio-CD}!
 verwendet werden.
 
-
 \subsubsection{\texttt{\bfseries @image}}
 \label{sec:@image}
 
@@ -1030,8 +1014,6 @@ das auch in Abb.\ \ref{fig:CocaCola} verwendet wird:
 \end{GenericCode}
 \item[\cite{CocaCola1940}] \fullcite{CocaCola1940}
 \end{itemize}
-
-
 
 \subsubsection{\texttt{\bfseries @video}}
 \label{sec:@video}
@@ -1075,9 +1057,6 @@ kein*e eindeutige*r Autor*in namhaft gemacht werden kann, lässt man das
 \texttt{author}-Feld weg und verpackt die entsprechenden Angaben im
 \texttt{note}-Feld, wie im nachfolgenden Beispiel gezeigt.
 
-
-
-
 \subsubsection{\texttt{\bfseries @movie}}
 \label{sec:@movie}
 
@@ -1105,8 +1084,6 @@ Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
 Die Angabe \verb!howpublished={Film}! ist hier sinnvoll, um die Verwechslung
 mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
 
-
-
 \subsubsection{Zeitangaben zu Musikaufnahmen und Filmen}
 
 Einen Verweis auf eine bestimmten Stelle in einem Musikstück oder Film kann
@@ -1127,7 +1104,6 @@ man eine bestimmte Stelle auch auf den Frame genau durch den zugehörigen
     \item[] \verb!\cite[TC=00:32:10:12]{Psycho1960}!
 \end{itemize}
 
-
 \subsection{Software (\texttt{\bfseries @software})}
 \label{sec:@software}
 
@@ -1140,7 +1116,7 @@ Ermangelung eines eigenen Eintragstyps).
 @software{LegendOfZelda1998,
   author={Miyamoto, Shigeru and Aonuma, Eiji and Koizumi, Yoshiaki},
   title={The Legend of Zelda: Ocarina of Time},
-  howpublished={N64-Spielmodul},
+  howpublished={N64 Cartridge},
   publisher={Nintendo},
   date={1998-11},
   langid={english}
@@ -1257,7 +1233,6 @@ beachten, dass letzteres in \texttt{biblatex} (im Unterschied zu BibTeX)
 numerisch ist und beispielsweise einfach in der Form \verb!month={8}! (für
 den Monat August) angegeben wird.
 
-
 \subsubsection{\texttt{langid}-Attribut}
 
 Das \texttt{langid} Attribut ermöglicht den korrekten Satz mehrsprachiger
@@ -1269,7 +1244,6 @@ angegeben werden, also beispielsweise
 \end{quote}
 %
 für eine deutsch- \bzw\ englischsprachige Quelle.
-
 
 \subsubsection{\texttt{edition}-Attribut}
 
@@ -1316,8 +1290,8 @@ Häufig finden sich Weglassungen oder Fehler bei Einträgen von
 \texttt{volume}, \texttt{number} und \texttt{pages}, \va\ bei Sammelbänden
 (\texttt{@incollection}) und Konferenzbeiträgen (\texttt{@inproceedings}).
 Auch die Namen von Konferenzen und Tagungsorten werden oft nicht korrekt
-angegeben (sogar in offiziellen ACM- und IEEE-Quellen). ISBN-, und
-ISSN-Nummern sind in der Regel überflüssig und sollten weggelassen werden.
+angegeben (sogar in offiziellen ACM- und IEEE-Quellen). ISBN, und
+ISSN sind in der Regel überflüssig und sollten weggelassen werden.
 Ein DOI-Eintrag (Digital Object Identifier) ist jedoch sinnvoll. Dieser
 eindeutigen Nummer wird von Biblatex ein Hyperlink hinterlegt, der auf die
 Quelle des Werks (meist die des veröffentlichenden Verlags) zeigt. Damit
@@ -1339,32 +1313,26 @@ aufzufinden? Hier ist eine Liste der wichtigsten Maßnahmen im Zusammenhang
 mit dem Quellenverzeichnis:
 %
 \begin{itemize}
-    \item
-    Alle Einträge auf fehlende oder falsch interpretierte Elemente überprüfen!
-    \item
-    Alle Namen und Vornamen der Autor*innen überprüfen, sind die Abkürzungen
-    (der Vornamen) konsistent?
-    \item
-    Groß-/Kleinschreibung und Satzzeichen in allen Einträgen überprüfen und
-    ggfs.\ korrigieren.
-    \item
-    Bücher: Verlagsnamen und Verlagsort auf Vollständigkeit, Konsistenz und
-    allfällige Redundanzen überprüfen.
-    \item
-    URLs \emph{weglassen}, wenn sie nicht unbedingt notwendig sind! Das gilt
-    insbesondere für Bücher und Konferenzbeiträge. Stattdessen einen DOI
+    \item Alle Einträge auf fehlende oder falsch interpretierte Elemente
+	überprüfen!
+    \item Alle Namen und Vornamen der Autor*innen überprüfen, sind die
+	Abkürzungen (der Vornamen) konsistent?
+    \item Groß-/Kleinschreibung und Satzzeichen in allen Einträgen überprüfen
+	und ggfs.\ korrigieren.
+    \item Bücher: Verlagsnamen und Verlagsort auf Vollständigkeit, Konsistenz
+	und allfällige Redundanzen überprüfen.
+    \item URLs \emph{weglassen}, wenn sie nicht unbedingt notwendig sind! Das
+	gilt insbesondere für Bücher und Konferenzbeiträge. Stattdessen einen DOI
     angeben, wenn verfügbar. Dieser wird im PDF auch verlinkt.
-    \item
-    Journal-Beiträge: Den Namen des Journals immer vollständig ausschreiben,
-    \zB\ "ACM Transactions on Computer-Human Interaction" anstelle von "ACM
-    Trans.\ Comput.-Hum.\ Interact."! Seitenangaben nicht vergessen!
-    \item
-    Konferenzbände: Tagungsbände einheitlich in der Form "Proceedings of the
-    \emph{XY Conference on Something} \ldots" bezeichnen. Tagungsort angeben,
-    \item Seitenangaben nicht vergessen!
-    \item
-    Bei Techn.\ Berichten, Masterarbeiten und Dissertationen \emph{muss} die
-    \item Institution (Universität und Department, Firma \etc) angegeben sein!
+    \item Journal-Beiträge: Den Namen des Journals immer vollständig
+	ausschreiben, \zB\ "ACM Transactions on Computer-Human Interaction"
+	anstelle von "ACM Trans.\ Comput.-Hum.\ Interact."! Seitenangaben nicht
+	vergessen!
+    \item Konferenzbände: Tagungsbände einheitlich in der Form "Proceedings of
+	the \emph{XY Conference on Something} \ldots" bezeichnen. Tagungsort
+	angeben, Seitenangaben nicht vergessen!
+    \item Bei Techn.\ Berichten, Masterarbeiten und Dissertationen \emph{muss}
+	die Institution (Universität und Department, Firma \etc) angegeben sein!
 \end{itemize}
 
 \subsubsection{Listing aller Quellen}
@@ -1491,16 +1459,16 @@ Die oben verwendeten Quellen werden wie folgt im Quellenverzeichnis dargestellt:
 Daniel, M., Gundlach, P., Schmidt, W., Knappen, J., Partl, H. \& Hyna, I.
 (2018, 8. April).
 \textit{\LaTeX2e-Kurzbeschreibung.} Version 3.0c.
-\textrm{\url{http://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}.
-(Siehe S.\ 63, 64)
+\textrm{\url{http://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}
+(siehe S.\ 63, 64)
 \item
-Kopka, H. \& Daly, P. W. (2003). \textit{A guide to \LaTeX} (4. Aufl.).
+Kopka, H. \& Daly, P. W. (2003). \textit{Guide to \LaTeX} (4. Aufl.).
 Addison-Wesley. (Siehe S.\ 63, 64).
 \item
 Oetiker, T., Partl, H., Hyna, I. \& Schlegl, E. (2021, 9. März). \textit{The
 Not So ShortIntroduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.} Version 6.4.
-\url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf}. (Siehe S.\
-63, 64)
+\url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf} (siehe S.\
+63, 64).
 \end{list}
 \end{sloppypar}
 
