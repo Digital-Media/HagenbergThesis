@@ -153,9 +153,9 @@ Punkt) stehen, nicht \emph{außerhalb}:
 %
 \begin{quote}
     \begin{tabular}{rl}
-        \textbf{Falsch:}  & \ldots hier ist der Satz zu Ende.
+        \textrm{Falsch:}  & \ldots hier ist der Satz zu Ende.
         \cite{Oetiker2021} Und jetzt geht es weiter \ldots \\
-        \textbf{Richtig:} & \ldots hier ist der Satz zu Ende
+        \textrm{Richtig:} & \ldots hier ist der Satz zu Ende
         \cite{Oetiker2021}. Und jetzt geht es weiter \ldots
     \end{tabular}
 \end{quote}
@@ -168,9 +168,9 @@ geschrieben:
 %
 \begin{quote}
     \begin{tabular}{rl}
-        \textbf{Falsch:}  & \ldots hier folgt die
+        \textrm{Falsch:}  & \ldots hier folgt die
         Quellenangabe\cite{Oetiker2021} und es geht weiter \ldots  \\
-        \textbf{Richtig:} & \ldots hier folgt die Quellenangabe
+        \textrm{Richtig:} & \ldots hier folgt die Quellenangabe
         \cite{Oetiker2021} und es geht weiter \ldots
     \end{tabular}
 \end{quote}
@@ -290,7 +290,7 @@ mehrere Möglichkeiten. Die traditionelle Methode ist die Verwendung von
 \footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}
 und \texttt{biblatex}, wie im Folgenden beschrieben.
 
-\subsection{Literaturdaten in BibTeX und Biblatex}
+\subsection{Literaturdaten in BibTeX und BibLaTeX}
 \label{sec:bibtex}
 
 BibTeX ist ein eigenständiges Programm, das aus einer "Literaturdatenbank"
@@ -347,7 +347,7 @@ BibTeX und wird in \texttt{biblatex} durch die Anweisung
 \texttt{{\bs}addbibresource} ersetzt. Beide Anweisungen sind gleichwertig,
 allerdings wird oft nur mit \texttt{{\bs}bibliography} die zugehörige
 \texttt{.bib}-Datei im File-Verzeichnis der Editor-Umgebung sichtbar.}
-auf eine Biblatex-Datei \nolinkurl{references.bib} verwiesen, welche alle
+auf eine BibLaTeX-Datei \nolinkurl{references.bib} verwiesen, welche alle
 Quelleneinträge enthält.
 Falls mehrere Bibla\-tex-Dateien verwendet werden, können sie in der gleichen
 Form angegeben werden.
@@ -386,7 +386,7 @@ Bedarf relativ leicht möglich.}
     online verfügbar sind.
 \end{itemize}
 %
-Jedes Quellenobjekt wird aufgrund des angegebenen Biblatex-Eintragtyps
+Jedes Quellenobjekt wird aufgrund des angegebenen BibLaTeX-Eintragtyps
 (\texttt{@\emph{type}}) automatisch einer dieser Kategorien zugeordnet (s.\
 Tabelle~\ref{tab:BibKategorien}). Angeführt sind hier nur die wichtigsten
 Eintragstypen, die allerdings die meisten Fälle in der Praxis abdecken
@@ -395,7 +395,7 @@ angegebenen Einträge werden grundsätzlich der Kategorie \textsf{literature}
 zugeordnet.
 
 \begin{table}
-\caption{Definierte Kategorien von Quellen und empfohlene Biblatex-Eintragstypen.}
+\caption{Definierte Kategorien von Quellen und empfohlene BibLaTeX-Eintragstypen.}
 \label{tab:QuellenUndEintragstypen}
 \centering
 \begin{tabular}{@{}llc@{}}
@@ -440,7 +440,7 @@ zugeordnet.
 \end{table}
 
 \begin{table}
-\caption{Kategorien von Quellenangaben und zugehörige Biblatex-Eintragstypen.
+\caption{Kategorien von Quellenangaben und zugehörige BibLaTeX-Eintragstypen.
 Bei geteiltem Quellenverzeichnis werden die Einträge jeder Kategorie in einem
 eigenen Abschnitt gesammelt. Grau gekennzeichnete Elemente sind Synonyme für
 die jeweils darüber stehenden Typen.}
@@ -477,7 +477,7 @@ die jeweils darüber stehenden Typen.}
 Diese Kategorie umfasst alle Werke, die in gedruckter Form publiziert wurden,
 also beispielsweise in Büchern, Konferenzbänden, Zeitschriftenartikeln,
 Diplomarbeiten \usw In den folgenden Beispielen ist jeweils der
-Biblatex-Eintrag in der Datei \nolinkurl{references.bib} angegeben, gefolgt
+BibLaTeX-Eintrag in der Datei \nolinkurl{references.bib} angegeben, gefolgt
 vom zugehörigen Ergebnis im Quellenverzeichnis.
 
 
@@ -863,7 +863,7 @@ Veröffentlichung individuell angegeben werden kann. Ebenso kann mit dem Feld
 
 Für gedruckte Kompositionen%
 \footnote{Engl.\ \emph{sheet music} oder \emph{musical scores}}
-gibt es in Biblatex leider keinen speziellen Eintragstyp. Bei einer
+gibt es in BibLaTeX leider keinen speziellen Eintragstyp. Bei einer
 \emph{einzelnen} Ausgabe verwendet man am Einfachsten den Typ \texttt{@book},
 wie \zB\ (\sa\ \cite{HaydnCelloConcerto2,ShostakovichOp110})
 %
@@ -1213,17 +1213,17 @@ wie in den obigen Beispielen gezeigt -- zumindest einen sinnvollen
 Quellenverzeichnis verwendet wird.
 
 
-\subsection{Tipps zur Erstellung von Biblatex-Dateien}
+\subsection{Tipps zur Erstellung von BibLaTeX-Dateien}
 \label{sec:TippsZuBiblatex}
 
-Die folgenden Dinge sollten bei der Erstellung korrekter Biblatex-Dateien
+Die folgenden Dinge sollten bei der Erstellung korrekter BibLaTeX-Dateien
 beachtet werden.
 
 \subsubsection{\texttt{date}-Attribut}
 
 Während im klassischen BibTeX die Angaben für Jahr und Monat des
 Veröffentlichungsdatums über die Attribute \texttt{year} und \texttt{month}
-gemacht werden, bietet sich für reine Biblatex-Bibliografien (wie in diesem
+gemacht werden, bietet sich für reine BibLaTeX-Bibliografien (wie in diesem
 Dokument) das Attribut \texttt{date} an. Angaben werden im Format
 \texttt{YYYY-MM-DD} gemacht, wobei diese auch nur aus Jahr (\texttt{YYYY})
 oder auch Jahr und Monat (\texttt{YYYY-MM}) bestehen können. Ebenso können
@@ -1298,13 +1298,13 @@ Auch die Namen von Konferenzen und Tagungsorten werden oft nicht korrekt
 angegeben (sogar in offiziellen ACM- und IEEE-Quellen). ISBN, und
 ISSN sind in der Regel überflüssig und sollten weggelassen werden.
 Ein DOI-Eintrag (Digital Object Identifier) ist jedoch sinnvoll. Dieser
-eindeutigen Nummer wird von Biblatex ein Hyperlink hinterlegt, der auf die
+eindeutigen Nummer wird von BibLaTeX ein Hyperlink hinterlegt, der auf die
 Quelle des Werks (meist die des veröffentlichenden Verlags) zeigt. Damit
 keine doppelten Verweise im Eintrag entstehen, wird im
 \texttt{hagenberg-thesis}-Paket das \texttt{url}-Feld bei vorhandenem DOI
 automatisch entfernt.
 
-Da importierte Einträge fast immer in BibTeX- und nicht Biblatex-Notation
+Da importierte Einträge fast immer in BibTeX- und nicht BibLaTeX-Notation
 angegeben sind, sollten diese angepasst werden, um ggfs.\ Typen zu
 korrigieren und die aktuellen Detail-Felder zu nützen.
 
@@ -1343,7 +1343,7 @@ mit dem Quellenverzeichnis:
 \subsubsection{Listing aller Quellen}
 
 Durch die Anweisung \verb!\nocite{*}! -- an beliebiger Stelle im Dokument
-platziert -- werden \emph{alle} bestehenden Einträge der Biblatex-Datei im
+platziert -- werden \emph{alle} bestehenden Einträge der BibLaTeX-Datei im
 Quellenverzeichnis aufgelistet, also auch jene, für die es keine explizite
 \verb!\cite{}! Anweisung gibt. Das ist ganz nützlich, um während des
 Schreibens der Arbeit eine aktuelle Übersicht auszugeben. Normalerweise

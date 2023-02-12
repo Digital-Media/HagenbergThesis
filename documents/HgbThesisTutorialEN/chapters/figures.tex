@@ -3,7 +3,7 @@
 
 
 Figures and tables are usually placed together with a numbered \emph{caption}
-(see fig.~\ref{fig:CocaCola}). The main text \emph{must} contain a
+(see Figure~\ref{fig:CocaCola}). The main text \emph{must} contain a
 \emph{reference} to each figure and the actual figure should be positioned
 \emph{after} the first reference in the \latex source text.
 
@@ -124,9 +124,9 @@ subdirectories), in the case of this document in \nolinkurl{images/}. This is
 done by the following statement at the beginning of the main document
 \nolinkurl{main.tex} (see also Appendix \ref{app:latex}):
 %
-\begin{quote}
-    \verb!\graphicspath{{images/}}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\graphicspath{{images/}}
+\end{GenericCode}
 %
 The path \texttt{graphicspath} (relative to the main document) can be changed
 at any time within the document, which is quite useful if, \eg, the graphics
@@ -138,10 +138,10 @@ of individual chapters are to be stored separately in corresponding directories.
 The \emph{size} of the printed picture can be controlled by specifying a
 certain width or height or a scaling factor, \eg:
 %
-\begin{quote}
-    \verb!\includegraphics[width=.85\textwidth]{ibm-360-color}! \\
-    \verb!\includegraphics[scale=1.5]{ibm-360-color}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\includegraphics[width=.85\textwidth]{ibm-360-color}
+\includegraphics[scale=1.5]{ibm-360-color}
+\end{GenericCode}
 %
 Note that file extensions need not be explicitly specified.
 This is particularly convenient when multiple workflows with different file
@@ -153,9 +153,9 @@ types are used.
 The macro \verb!\fbox{...}! can optionally be used to create a thin frame
 around the graphic, for example:
 %
-\begin{quote}
-    \verb!\fbox{\includegraphics[height=50mm]{ibm-360-color}}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\fbox{\includegraphics[height=50mm]{ibm-360-color}}
+\end{GenericCode}
 %
 This is usually only necessary for raster images, especially if they are very
 bright towards the edge and would not be distinguishable from the background
@@ -187,8 +187,8 @@ avoided if possible, even if it makes many files much smaller. The exception
 is when the original data is only available in JPEG and has not been edited
 or resized for embedding. Otherwise, PNG should always be used.
 
-Often colorful screenshots are subjected to JPEG compression, although their
-devastating consequences should be visible to any layman (see
+Often color screenshots are subjected to JPEG compression, although its
+devastating consequences should be visible to anyone (see
 Figure~\ref{fig:jpeg-bungle}).%
 \footnote{The JPEG process is designed for \emph{natural} photos and should
 only be used for these.}
@@ -281,8 +281,8 @@ and \emph{macOS}:
     suited for German texts as well.
 \end{itemize}
 %
-Of course, these fonts must first be installed on your own PC before you can
-use them.
+Of course, these fonts must first be installed on your computer before 
+you can use them.
 
 \subsection{Grapics With \latex Overlays (Using \texttt{overpic})}
 \label{sec:GraphicOverlays}
@@ -344,7 +344,7 @@ reference to a particular part of the figure, such as the single-row roller
 bearing in Figure~\ref{fig:Bearings}\,(c), could look like this:
 %
 \begin{LaTeXCode}[numbers=none]
-... Abb.~\ref{fig:Bearings} (c) ...
+... Figure~\ref{fig:Bearings} (c) ...
 \end{LaTeXCode}
 
 \subsection{Source Citations in Captions}
@@ -636,9 +636,9 @@ additional details.
 
 To combine several columns in a table into one, the statement
 %
-\begin{quote}
-    \verb!\multicolumn{number}{format}{text}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\multicolumn{number}{format}{text}
+\end{GenericCode}
 %
 is used. Here \texttt{number} defines the set of columns to be joined.
 \texttt{format} specifies the alignment to use analogous to the specification
@@ -646,9 +646,9 @@ in \texttt{tabular}-environment and \texttt{text} is the included text.
 
 Analogously, to combine several lines into one, you can use
 %
-\begin{quote}
-    \verb!\multirow{number}{width}{text}!.
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\multirow{number}{width}{text}
+\end{GenericCode}
 %
 Here \texttt{number} represents the number of lines to be joined into one,
 \texttt{width} defines the joint column width. The same specifications are
@@ -740,13 +740,11 @@ These are also used to implement the language-specific environments listed in
 Table~\ref{tab:CodeEnvironments}. Their use is extremely simple, \eg, for
 source code in the C programming language one writes
 %
-\begin{quote}
-    \begin{verbatim}
+\begin{GenericCode}[numbers=none]
 \begin{CCode}
     ... 
 \end{CCode}
-    \end{verbatim}
-\end{quote}
+\end{GenericCode}
 %
 The source code within these environments is interpreted in the respective
 programming language, while comments are preserved. These environments can be
@@ -756,9 +754,9 @@ boundaries. With \verb!/+! \ldots \verb!+/! an escape option to \latex\ is
 provided, which is useful for setting labels for referencing individual
 program lines, \eg, with
 %
-\begin{quote}
-    \verb!int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/
+\end{GenericCode}
 %
 An example with Java is shown in Prog.~\ref{prog:CodeExample}, where the
 above label is placed in line \ref{ExampleCodeLabel}. Note that mathematical
@@ -772,28 +770,28 @@ All code environments listed in Table~\ref{tab:CodeEnvironments} can be used
 with optional arguments, which are especially useful to control the line
 numbering. In the default case (\ie, without additional specifications), with
 %
-\begin{quote}
-    \verb!\begin{!\texttt{\emph{some}Code}\verb!} ... !
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\begin{/+\emph{some}+/Code} ... 
+\end{LaTeXCode}
 %
 all code lines (including blank lines) are continuously numbered starting at
 1. For consecutive code segments it is often helpful to let the numbering
 continue from the previous section, enabled by specifying the optional argument
 \texttt{firstnumber={\obnh}last}:
 %
-\begin{quote}
-    \verb!\begin{!\texttt{\emph{some}Code}\verb!}[firstnumber=last] ... !
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\begin{/+\emph{some}+/Code}[firstnumber=last] ... 
+\end{LaTeXCode}
 %
 To disable the numbering of the code lines altogether it is sufficient to
 specify the optional argument
 \texttt{numbers={\obnh}none}:
 %
-\begin{quote}
-    \verb!\begin{!\texttt{\emph{some}Code}\verb!}[numbers=none] ... !
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\begin{/+\emph{some}+/Code}[numbers=none] ... 
+\end{LaTeXCode}
 %
-In this case, of course, the use of line labels in the code makes no sense.
+In this case, of course, the use of line labels in the code has no effect.
 
 
 \subsection{Program Code Placement}
@@ -831,18 +829,16 @@ static String extractEmail(String line) {
 \noindent
 This code segment was produced with
 %
-\begin{quote}
-    \begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \begin{JavaCode}[numbers=none]
 static String extractEmail(String line) {
     line = line.trim(); // find the first blank
     ...
 }
 \end{JavaCode}
-    \end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 %
-(see Sec.\ \ref{sec:FormattingProgramCode}). In-line program pieces should be
+(see Section \ref{sec:FormattingProgramCode}). In-line program pieces should be
 no more than a few lines long and, if possible, should not be divided by page
 breaks.
 
@@ -857,8 +853,7 @@ float elements, each with its own caption. In \texttt{hgb.sty} a float
 environment \texttt{program} is defined, which is used analogously to
 \texttt{table}:
 %
-\begin{quote}
-    \begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \begin{program}
 \caption{The title of this piece of program.}
 \label{prog:xyz}
@@ -868,8 +863,7 @@ environment \texttt{program} is defined, which is used analogously to
   }
 \end{JavaCode}
 \end{program}
-    \end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 %
 If desired, the caption can also be placed at the bottom (but in any case
 consistently and not mixed). Of course, a linear sequence in the final
@@ -921,8 +915,8 @@ appendix at the end of the document should be resorted to. For references to
 individual details, either short excerpts can be placed in the running text
 or appropriate page references can be used. Such an example is the \latex
 source code in Appendix \ref{app:latex} (page \pageref{app:latex}).%
-\footnote{In principle, it should be considered whether the printed inclusion
-of comprehensive implementation code is at all useful for the reader, or
-whether this is not better provided electronically (on physical media or
-online) and only described selectively.}
+\footnote{It is generally questionable if the printed inclusion of 
+much implementation code is at all useful for the reader or not better
+provided electronically (on physical media or online) and only described
+selectively.}
 

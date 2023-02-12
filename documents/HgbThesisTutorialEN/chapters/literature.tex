@@ -7,7 +7,7 @@ and the table of contents can be specified by providing an
 optional argument \verb![..]! to the \verb!\chapter! statement:
 %
 \begin{LaTeXCode}[numbers=none]
-\chapter[References to Literature]{Adding References to Literature and Other Sources}
+\chapter[References to Literature]{Adding References to Literature and Other ...}
 \end{LaTeXCode}
 
 
@@ -15,9 +15,9 @@ optional argument \verb![..]! to the \verb!\chapter! statement:
 
 The correct use of references is essential when writing scientific documents
 (see also Section~\ref{sec:plagiarism}). Various guidelines are available for
-the dsign of references, determined among other things by the respective 
+the design of references, determined among other things by the respective 
 subject area or guidelines from publishers and universities. 
-This template provides a scheme that is common in scientific and technical
+This template provides a scheme that is common in engineering and scientific
 disciplines.%
 \footnote{Adaptation to other specifications is relatively easy.}
 Technically, this part is based on the program \texttt{biber}%
@@ -125,7 +125,7 @@ is helpful to suppress these back references for individual citations, by using
     \item[] \verb!{\backtrackerfalse\cite{...}}!
 \end{itemize}
 %
-This also works with \verb!\mcite! and other \verb!cite! commands; nte that 
+This also works with \verb!\mcite! and other \verb!cite! commands; note that 
 the outer brackets are important here. For example, in item
 {\backtrackerfalse\parencite{Bezos2023}} of the bibliography 
 the current page (\the\value{page}) should \emph{not} be listed.
@@ -142,9 +142,9 @@ period), not \emph{outside}:
 %
 \begin{quote}
 	\begin{tabular}{rl}
-		\textbf{Wrong:}  & \ldots this is the end of the sentence.
+		\textrm{Wrong:}  & \ldots this is the end of the sentence.
 		\cite{Oetiker2021} And here it continues \ldots \\
-		\textbf{Correct:} & \ldots this is the end of the sentence
+		\textrm{Correct:} & \ldots this is the end of the sentence
 		\cite{Oetiker2021}. And here it continues \ldots
 	\end{tabular}
 \end{quote}
@@ -156,9 +156,9 @@ appended directly to the word (unlike a footnote):
 %
 \begin{quote}
 	\begin{tabular}{rl}
-		\textbf{Wrong:}  & \ldots here goes the
+		\textrm{Wrong:}  & \ldots here goes the
 		citation\cite{Oetiker2021} and it continues \ldots  \\
-		\textbf{Correct:} & \ldots here goes the citation
+		\textrm{Correct:} & \ldots here goes the citation
 		\cite{Oetiker2021} and it continues \ldots
 	\end{tabular}
 \end{quote}
@@ -226,7 +226,7 @@ are defined.}
 %
 \begin{itemize}
     \item[] \verb!\begin{foreigndisplayquote}{german}!\newline
-    \emph{quoted text \ldots}\newline
+       \verb!   !\emph{quoted text \ldots}\newline
     \verb!\end{foreigndisplayquote}!
 \end{itemize}
 
@@ -244,7 +244,7 @@ observed:
     possible.
     \item In order to quote a source in the usual form, one must always have
     \emph{personally accessed} (read) it!
-    \item Only if one can absolutely \emph{not} obtain the primary source, a
+    \item Only if one can absolutely \emph{not} get hold of the primary source, a
     reference via a secondary source is permissible. In this case, primary and
     secondary sources should be \emph{cited together}, as shown in the example
     below.
@@ -271,7 +271,7 @@ modern) approach uses \texttt{biber}%
 and \texttt{biblatex}, as described below.
 
 
-\subsection{Bibliographic Data in BibTeX and Biblatex}
+\subsection{Bibliographic Data in BibTeX and BibLaTex}
 \label{sec:bibtex}
 
 BibTeX is a stand-alone program that generates a bibliography suitable for
@@ -326,9 +326,9 @@ and is replaced in \texttt{biblatex} by the \texttt{{\bs}addbibresource}
 statement. Both statements are equivalent, but often only
 \texttt{{\bs}bibliography} makes the associated \texttt{.bib} file visible in
 the file structure of the editor environment.}
-(line \ref{tex:references1}) refers to a Biblatex file \nolinkurl{references.bib},
+(line \ref{tex:references1}) refers to a BibLaTeX file \nolinkurl{references.bib},
 which holdss all references.
-If multiple Biblatex files are used, they can be specified in the same form.
+If multiple BibLaTeX files are used, they can be specified in the same form.
 
 The \verb!\MakeBibliography! statement near the end of the document
 (line~\ref{tex:references2}) is responsible for the output of the bibliography,
@@ -364,7 +364,7 @@ if required.}
 \end{itemize}
 %
 Each reference is automatically assigned to one of these categories based on the
-specified Biblatex entry type (\texttt{@\emph{type}}) (see
+specified BibLaTeX entry type (\texttt{@\emph{type}}) (see
 Table~\ref{tab:reference-categories}). Only the most essential entry types are
 listed here, but they should cover most cases in practice and are explained
 below by examples. All entries that are not explicitly specified are assigned to
@@ -374,7 +374,7 @@ the category \textsf{literature}.
 %%------------------------------------------------------
 
 \begin{table}[htbp]
-\caption{Defined reference categories and recommended Biblatex entry types.}
+\caption{Defined reference categories and recommended BibLaTeX entry types.}
 \label{tab:references-and-entry-types}
 \centering
 \begin{tabular}{@{}llc@{}}
@@ -419,9 +419,9 @@ the category \textsf{literature}.
 \end{table}
 
 \begin{table}
-\caption{Reference categories and associated Biblatex entry types. In the case
+\caption{Reference categories and associated BibLaTeX entry types. In the case
 of a split bibliography, the entries of each category are combined in a
-common section. EItems marked in gray are synonyms for the respective
+common section. Items marked in gray are synonyms for the respective
 types above them.}
 \label{tab:reference-categories}
 \centering
@@ -454,7 +454,7 @@ types above them.}
 
 This category includes all works published in printed form, for example, in
 books, conference proceedings, journal articles, theses, etc. In the following
-examples, the Biblatex entry in the file \nolinkurl{references.bib} is given,
+examples, the BibLaTeX entry in the file \nolinkurl{references.bib} is given,
 followed by the corresponding result in the bibliography.
 
 \subsubsection{\texttt{\bfseries @book}}
@@ -828,7 +828,7 @@ of document is represented.
 \label{sec:sheet-music}
 
 For printed compositions (sheet music or musical scores), there is,
-unfortunately, no particular entry type in Biblatex. For a \emph{specific}
+unfortunately, no particular entry type in BibLaTeX. For a \emph{specific}
 edition, it is easiest to use the type \texttt{@book}, such as (see also
 \cite{HaydnCelloConcerto2,ShostakovichOp110})
 %
@@ -887,7 +887,7 @@ to determine whether the paper was accepted and actually published:
 \item[a)]
 \emph{The work was indeed published:} Here the corresponding original
 publication must be searched and used! The citation is done in conventional form
-(\eg, with \texttt{@inproceedings} in case of a conference volume), but
+(for example, with \texttt{@inproceedings} in case of a conference volume), but
 \emph{without} a reference to the online publication.
 \item[b)]
 \emph{The work was \emph{not} published:} If indeed no publication (or an
@@ -1138,7 +1138,7 @@ distinguished:
 
 Due to the volume and increasing quality of these entries, their inclusion in
 a bibliography seems justified. For example, a \emph{relic shrine} (German:
-"Reliquienschrein") is a case in which the relics of one or more saints are
+"Reliquienschrein") is a casket in which the relics of one or more saints are
 kept \cite{WikiReliquienschrein2022}.
 %
 \begin{itemize}
@@ -1166,16 +1166,16 @@ However, if \emph{no} author is available, then---as shown in the examples
 above---at least a meaningful \emph{title} (\texttt{title}) should be added,
 which may be used for sorting the bibliography.
 
-\subsection{Tips for Creating Biblatex Files}
+\subsection{Tips for Creating BibLaTex Files}
 \label{sec:tips-on-biblatex}
 
-The following items should be considered for creating correct Biblatex
+The following items should be considered for creating correct BibLaTeX
 files.
 
 \subsubsection{\texttt{date} Attribute}
 
 While in classic BibTeX, the year and month of a publication are specified using
-the attributes \texttt{year} and \texttt{month}, for pure Biblatex
+the attributes \texttt{year} and \texttt{month}, for pure BibLaTeX
 bibliographies (as in this document), the attribute \texttt{date} is better
 suited. Entries are made in the format \texttt{YYYY-MM-DD}, which can also
 consist of only the year (\texttt{YYYY}) or year and month (\texttt{YYYY-MM}).
@@ -1185,13 +1185,13 @@ publication date for, \eg, a reprint or translation), \texttt{eventdate} (date
 of a conference), and \texttt{urldate} (access date of an URL).
 
 Should \texttt{year} and \texttt{month} nevertheless be used, note that the
-latter is numeric in \texttt{biblatex} (in contrast to BibTeX) and is specified,
+latter is numeric in BibLaTeX (in contrast to BibTeX) and is specified,
 for example, in the form \verb!month={8}! (for August).
 
 \subsubsection{\texttt{langid} Attribute}
 
 The \texttt{langid} attribute enables the correct typesetting of multilingual
-bibliographies. If possible, it should be specified for every reference, \eg
+bibliographies. If possible, it should be specified for every reference, \eg,
 %
 \begin{quote}
 \verb!langid={english}! \quad or \quad \verb!langid={ngerman}!
@@ -1202,9 +1202,9 @@ for an English- or German-language source, respectively.
 \subsubsection{\texttt{edition} Attribute}
 
 The numeric \texttt{edition} field is used to specify the edition of a
-reference. Only the number itself has to be specified, e.g., \verb!edition={3}!
+reference. Only the number itself has to be specified, \eg, \verb!edition={3}!
 for a third edition. The complete text is added automatically depending on the
-language setting (e.g., "3rd edition" or "3.\ Auflage"). As already described on
+language setting (\eg, "3rd edition" or "3.\ Auflage"). As already described on
 page \pageref{sec:@book} (under \texttt{@book}), in case of a
 \emph{first} edition, the \texttt{edition} field should
 \emph{not} be specified if there is no other edition!
@@ -1234,7 +1234,7 @@ first and last names cannot be correctly assigned, \eg,
 \texttt{author=\{van Beethoven, Ludwig \underline{and} ter Linden, Jaap\}}
 \end{itemize}
 %
-for a (fictional) oeuvre by \emph{Ludwig van Beethoven} and \emph{Jaap ter
+for a (fictional) piece of joint work by \emph{Ludwig van Beethoven} and \emph{Jaap ter
 Linden}.
 
 Omissions or errors are often found in entries of \texttt{volume},
@@ -1243,12 +1243,12 @@ Omissions or errors are often found in entries of \texttt{volume},
 Also, the names of conferences and meeting venues are often not specified
 correctly (even in official ACM and IEEE sources). ISBN and ISSN are usually
 redundant and should be omitted. However, a DOI (Digital Object Identifier)
-entry is useful. This unique number is assigned a hyperlink by Biblatex that
+entry is useful. This unique number is assigned a hyperlink by BibLaTeX that
 points to the source of the work (usually that of the publisher). To avoid
 duplicate hyperlinks in the entry, the \texttt{hagenberg-thesis} package
 automatically removes the \texttt{url} field if a DOI is present.
 
-Since imported entries are almost always in BibTeX and not Biblatex notation,
+Since imported entries are almost always in BibTeX and not BibLaTeX notation,
 they should be adjusted to correct types if necessary and to make use of the
 current detail fields.
 
@@ -1284,7 +1284,7 @@ the most critical provisions related to the bibliography:
 \subsubsection{Listing of All References}
 
 Using the \verb!\nocite{*}! statement---placed anywhere in the document---will
-list \emph{all} existing entries of the Biblatex file in the bibliography,
+list \emph{all} existing entries of the BibLaTeX file in the bibliography,
 including those for which there is no explicit \verb!\cite{}! call in the text.
 This is useful for getting an overview of all references while writing the thesis.
 Normally, however, all cited sources must also be referenced in the text!

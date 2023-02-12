@@ -13,17 +13,17 @@ Here are only some examples and special topics, much more can be found in
 \section{Mathematical Elements in Continuous Text}
 
 Mathematical symbols, expressions, equations, etc.\ are marked in the continuous
-text by pairs \verb!$! \ldots \verb!$!. Here is a simple example:
+text by pairs \verb!$! \ldots \verb!$!. Here is an example:
 %
-\begin{itemize}
-	\item[]
+\begin{quote}
+	%\item[]
 	The near infinity point is at $\bar{a} = f \cdot (f / (K \cdot u_{\max}) + 1)$, 
 	so with a lens set to $\infty$, everything is in focus from distance $\bar{a}$ on.
 	Focusing the lens to the distance $\bar{a}$ (\ie, $a_0 = \bar{a}$), everything
 	in the range $[\frac{\bar{a}}{2}, \infty]$ will be in focus.
-\end{itemize}
+\end{quote}
 %
-It is important to ensure that the height of the individual elements in the text
+It is important to ensure that the height of the individual math items in the text
 does not become too large.
 
 \subsubsection{Common Mistakes}
@@ -82,12 +82,14 @@ Displayed mathematical expressions can be generated in \latex\ by \verb!\[! \ldo
 \verb!\]! The result will be centered, but will not be numbered.
 For example, \[y_0 = 4 x^2\] is produced by \verb!\[y_0 = 4 x^2\]!
 or, alternatively,
-\begin{quote}
- \verb!\begin{displaymath} y_0 = 4 x^2 \end{displaymath}!
-\end{quote}
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{displaymath} y_0 = 4 x^2 \end{displaymath}
+\end{LaTeXCode}
 
 
-\subsection{Single Numbered Equations}
+
+\subsection{Numbered Equations}
 
 However, most often in such cases the \texttt{equation} environment is used
 to produce numbered equations that can be referred to at any time in the text.
@@ -117,21 +119,21 @@ environment.
 	\setlength{\fboxsep}{2mm}
 	\fbox{%
 		\begin{minipage}{0.9\textwidth}
-		Note that \textbf{equations} are a \textbf{part of the text} in terms of content, 
-		and therefore, in addition to proper linguistic \textbf{transitions},
-		\textbf{punctuation} (as shown in Eq.\ \ref{eq:MyFirstEquation}) must be observed.
-		If you are unsure, you should look at appropriate examples in a good math book.
+		Note that \emph{equations} are a \emph{part of the main text} in terms of content, 
+		and therefore, in addition to proper linguistic \emph{transitions},
+		\emph{punctuation} (as shown in Equation \ref{eq:MyFirstEquation}) must be observed.
+		If you are unsure, you should look at suitable examples in a good math textbook.
 		\end{minipage}}
 \end{center}
 %
-For those interested, more on the subject of mathematics and prose can be found in
-\cite{Mermin1989} and \cite{Higham2020}.
+For those interested, more on the intimate connection between mathematics and prose can
+be found in \cite{Mermin1989} and \cite{Higham2020}.
 
 
 \subsection{Multiline Equations}
 
-For multiline equations \latex\ offers the \verb!eqnarray! environment, which, however,
-generates somewhat idiosyncratic spaces. It is recommended to use the extended
+For multiline equations \latex\ offers the \verb!eqnarray! environment which, however,
+generates somewhat idiosyncratic spacing. It is recommended to use the extended
 possibilities of the \texttt{amsmath} package%
 \footnote{American Mathematical Society (AMS). \texttt{amsmath} is part of the 
 \latex\ default installation and is automatically imported by \texttt{hgb.sty}.}
@@ -152,10 +154,10 @@ generated with the \texttt{align} environment from the \texttt{amsmath} package:
 \end{LaTeXCode}
 
 
-\subsection{Multiple-Case Constructs}
+\subsection{Multi-Case Constructs}
 
 With the \texttt{cases} environment from \texttt{amsmath}, case distinctions, 
-\eg, within function definitions, are very easy to accomplish.
+\eg, in function definitions, are very easy to accomplish.
 For instance, the recursive definition
 %
 \begin{equation}
@@ -253,8 +255,8 @@ mathematical elements---"Equation \ref{eq:f1}", "Eq.~\ref{eq:f1}" or
 	\setlength{\fboxsep}{2mm}
 	\fbox{%
 		\begin{minipage}{0.9\textwidth}
-			\textbf{Note:} Forward references to equations (placed further back
-			in the text) are \textbf{extremely unusual} and should be avoided! If
+			Note: Forward references to equations (placed further back
+			in the text) are \emph{extremely uncommon} and should be avoided! If
 			one still believes to need such a thing, then usually a mistake was made
 			in the content structure.
 		\end{minipage}}
@@ -264,13 +266,13 @@ mathematical elements---"Equation \ref{eq:f1}", "Eq.~\ref{eq:f1}" or
 \section{Mathematical Symbols}
 
 Special macros are needed for a large part of the mathematical symbols. Some of
-the most common ones are listed below.
+the most common ones are listed  in the following.
 
 
 \subsection{Number Sets}
 
 Some frequently used symbols are unfortunately not included in the original 
-mathematical character set of \latex, e.g. the symbols for the real and natural 
+mathematical character set of \latex, suchh as the symbols for the real and natural 
 numbers. In the \texttt{hagenberg-thesis} package these symbols are defined
 as macros%
 \footnote{Based on the \emph{AMS Blackboard Fonts}.}
@@ -286,7 +288,7 @@ as macros%
 
 In \latex\ dozens of mathematical operators are defined for various purposes.
 Of course, the arithmetic operators $+$, $-$, $\cdot$ and $/$ are needed most often.
-An frequent error (probably resulting from programming practice) is the use
+A frequent mistake (probably resulting from programming practice) is the use
 of $*$ for simple multiplication---correct is $\cdot$ (\verb!\cdot!).%
 \footnote{The $*$ character is usually reserved for the \emph{convolution operator}.}
 %
@@ -303,16 +305,16 @@ character, \eg,
 %
 	\[Scalefactor\leftarrow p^2 \cdot 1.5 \; ,\]
 %
-\textbf{falsely} generated by
+\emph{falsely} implemented by
 %
-\begin{quote}
-	\verb!$Scalefactor \leftarrow p^2! \verb!\cdot 1.5$!.
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+$Scalefactor \leftarrow Scalefactor^2! \verb!\cdot 1.5$
+\end{LaTeXCode}
 %
 The reason is that \latex interprets the character sequence "Scalefactor" as
 the product of 11 single, consecutive variables $S$, $c$, $a$, $l$, $e$, \ldots
 and inserts appropriate spaces between them.
-The \textbf{correct} way is to combine these letters with \verb!\mathit{..}! to 
+The \emph{correct} way is to combine these letters with \verb!\mathit{..}! to 
 \emph{one} symbol. The difference is clearly visible in this case:
 %
 \begin{center}
@@ -402,7 +404,7 @@ numbers in math mode like this:
 \subsection{Mathematical Tools}
 
 For the creation of complicated equations it is sometimes helpful to resort 
-to special software aor interactive tools. Among other things, \latex statements
+to special software or interactive tools. Among other things, \latex statements
 for mathematical equations can be exported from Microsoft's \emph{Equation Editor}
 or \emph{Mathematica} in a relatively simple way and copied directly (usually
 with some manual rework) into your own \latex document.
@@ -433,14 +435,18 @@ things:%
 	Use the same short symbols (such as $a, i, x, S, \alpha \ldots$) in
 	algorithms as you would in mathematical definitions and equations.
 	\item
-	If possible, use mathematical operators, such as 
-	$=$ (\verb!$=$!) for \texttt{==},
-	$\leq$ (\verb!$\leq$!) for \texttt{<=},
-	$\cdot$ (\verb!$\cdot$!) for \texttt{*},
-	$\wedge$ (\verb!$\wedge$!) for \texttt{\&\&},
-	\etc
+	If possible, use proper \emph{mathematical} operators, such as 
+  $=$, $\leq$, $\cdot$, $\wedge$ \etc,
+  instead of the associated programming constructs 
+  \texttt{==}, \texttt{<=}, \texttt{*}, \texttt{\&\&}, respectively.
+  %
+	%$=$ (\verb!$=$!) for \texttt{==}, \texttt{*}
+	%$\leq$ (\verb!$\leq$!) for \texttt{<=},
+	%$\cdot$ (\verb!$\cdot$!) for \texttt{*}, 
+	%$\wedge$ (\verb!$\wedge$!) for \texttt{\&\&},
+	%\etc
 	\item
-	Do not use elements or syntax of a specific programming language (for
+	Similarly. do not use elements or syntax of a specific programming language (for
 	example, a "\texttt{;}" at the end of a statement is unnecessary).
 	\item
 	If an algorithm becomes too long for a page, consider how to divide it
@@ -448,10 +454,10 @@ things:%
 	is not optimal either).
 \end{itemize}
 
-
+\noindent
 For the notation of algorithms in mathematical form or even for pseudocode,
-no special support is provided in \latex itself. However, there are a number
-of useful \latex packages for this purpose, including \texttt{algorithmicx},
+no special support is provided in \latex itself. However, there are several
+useful \latex packages for this purpose, including \texttt{algorithmicx},
  which is also used here because of its simple syntax, but in the improved
 version \texttt{algpseudocodex}.%
 \footnote{Style \nolinkurl{hgbalgo.sty} of \texttt{hagenberg-thesis}
@@ -469,8 +475,8 @@ rules are used (\texttt{indLines=true}) and the optional keyword
 %%--------------------------------------------------------------------
 
 \begin{algorithm}
-\caption{Example of an algorithm for bicubic interpolation in 2D typeset 
-with the package \texttt{algpseudocodex} (from \cite{BurgerBurge2022}).
+\caption{Example of an algorithm for bicubic interpolation in 2D 
+\cite{BurgerBurge2022}, typeset with package \texttt{algpseudocodex}.
 Function $\Call{Cubic1D}{x}$, used in lines \ref{alg:wcub1} and 
 \ref{alg:wcub2}, calculates the weight given to the interpolation value at 
 some one-dimensional position $x$.}

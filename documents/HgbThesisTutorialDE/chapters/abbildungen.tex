@@ -131,9 +131,9 @@ Unterverzeichnissen) abgelegt, im Fall dieses Dokuments in
 \nolinkurl{images/}. Dazu dient die folgende Anweisung am Beginn des
 Hauptdokuments \nolinkurl{main.tex} (\sa\ Anhang \ref{app:latex}):
 %
-\begin{quote}
-	\verb!\graphicspath{{images/}}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\graphicspath{{images/}}
+\end{GenericCode}
 %
 Der (zum Hauptdokument relative) Pfad \texttt{graphicspath} kann innerhalb
 des Dokuments jederzeit geändert werden, was durchaus nützlich ist, wenn \zB\
@@ -146,10 +146,10 @@ abgelegt werden sollen.
 Die Größe der Abbildung im Druck kann durch Vorgabe einer bestimmten Breite
 oder Höhe oder eines Skalierungsfaktors gesteuert werden, {\zB}:
 %
-\begin{quote}
-	\verb!\includegraphics[width=.85\textwidth]{ibm-360-color}! \\
-	\verb!\includegraphics[scale=1.5]{ibm-360-color}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\includegraphics[width=.85\textwidth]{ibm-360-color}
+\includegraphics[scale=1.5]{ibm-360-color}
+\end{GenericCode}
 %
 Man beachte, dass dabei die Dateiendung nicht explizit angegeben werden muss.
 Das ist \va\ dann praktisch, wenn verschiedene Workflows mit jeweils
@@ -161,9 +161,9 @@ unterschiedlichen Dateitypen verwendet werden.
 Mit dem Makro \verb!\fbox{...}! kann optional ein dünner Rahmen rund um die
 Grafik erzeugt werden, \zB:
 %
-\begin{quote}
-	\verb!\fbox{\includegraphics[height=50mm]{ibm-360-color}}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\fbox{\includegraphics[height=50mm]{ibm-360-color}}
+\end{GenericCode}
 %
 Das wird üblicherweise nur bei Rasterbildern nötig sein, insbesondere wenn
 sie zum Rand hin sehr hell sind und ohne Rahmen nicht vom Hintergrund
@@ -262,7 +262,7 @@ Wesentlichen an der PDF- \bzw\ SVG-Funktionalität orientieren,
 ist es möglich, Linien bzgl.\ ihrer Stärke als "Hairline" zu definieren. Dies 
 soll in der Ausgabe "möglichst dünne" Linien erzeugen. Das Ergebnis ist 
 aber ausschließlich vom jeweiligen Drucker abhängig und somit kaum 
-vorhersagbar. \textbf{Fazit:} Hairlines vermeiden und stattdessen immer 
+vorhersagbar. Fazit: Hairlines grundsätzlich \emph{vermeiden} und stattdessen immer 
 konkrete Strichstärken ($\geq 0.25\,\mathrm{pt}$) einstellen!
 
 
@@ -649,9 +649,9 @@ umschlossen werden. Weitere Details finden sich im Quellcode zu diesem Dokument.
 
 Um in einer Tabelle mehrere Spalten zu einer zusammenzufassen wird die Anweisung
 %
-\begin{quote}
-	\verb!\multicolumn{Anzahl}{Format}{Text}!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\multicolumn{number}{format}{text}
+\end{GenericCode}
 %
 verwendet. \texttt{Anzahl} definiert die Menge an Spalten, die verbunden
 werden sollen. \texttt{Format} gibt die zu verwendende Ausrichtung analog zur
@@ -660,9 +660,9 @@ Text.
 
 Um mehrere Zeilen zu einer zusammenzufassen, kann mit
 %
-\begin{quote}
-	\verb!\multirow{Anzahl}{Breite}{Text}!.
-\end{quote}
+\begin{GenericCode}[numbers=none]
+\multirow{number}{width}{text}
+\end{GenericCode}
 %
 eine ähnliche Anweisung verwendet werden. \texttt{Anzahl} repräsentiert hier
 die Anzahl an Zeilen, die zu einer verbunden werden sollen. Mit
@@ -756,13 +756,11 @@ Code-Umgebungen realisiert.
 Die Verwendung ist äußerst einfach, \zB\ für Quellcode in der
 Programmiersprache C schreibt man
 %
-\begin{quote}
-\begin{verbatim}
+\begin{GenericCode}[numbers=none]
 \begin{CCode}
     ... 
 \end{CCode}
-\end{verbatim}
-\end{quote}
+\end{GenericCode}
 %
 Der Quellcode innerhalb dieser Umgebungen wird in der jeweiligen
 Programmiersprache interpretiert, wobei Kommentare erhalten bleiben. Diese
@@ -773,9 +771,9 @@ wird der Quelltext auch über Seitengrenzen umgebrochen. Mit \verb!/+! \ldots
 Setzen von Labels für Verweise auf einzelne Programmzeilen nützlich ist, \zB\
 mit
 %
-\begin{quote}
-	\verb!int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/
+\end{GenericCode}
 %
 Ein Beispiel mit Java ist in Prog.~\ref{prog:CodeExample} gezeigt, wobei der
 oben angeführte Label in Zeile \ref{ExampleCodeLabel} steht. Man beachte,
@@ -790,9 +788,9 @@ mit optionalen Argumenten verwendet werden, die insbesondere zur Steuerung
 der Zeilennummerierung hilfreich. Im Normalfall (also ohne zusätzliche
 Angabe) mit
 %
-\begin{quote}
-	\verb!\begin{!\texttt{\emph{some}Code}\verb!} ... !
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\begin{/+\emph{some}+/Code} ... 
+\end{LaTeXCode}
 %
 werden alle Code-Zeilen (einschließlich der Leerzeilen) bei 1 beginnend und
 fortlaufend nummeriert. Bei aufeinanderfolgenden Codesegmenten ist es oft
@@ -800,16 +798,16 @@ hilfreich, die Nummerierung aus dem vorherigen Abschnitt kontinuierlich
 weiter laufen zu lassen, ermöglicht durch die Angabe des optionalen Arguments
 \texttt{firstnumber={\obnh}last}:
 %
-\begin{quote}
-	\verb!\begin{!\texttt{\emph{some}Code}\verb!}[firstnumber=last] ... !
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\begin{/+\emph{some}+/Code}[firstnumber=last] ... 
+\end{LaTeXCode}
 %
 Um die Nummerierung der Codezeilen gänzlich zu unterbinden genügt die Angabe
 des optionalen Arguments \texttt{numbers={\obnh}none}:
 %
-\begin{quote}
-	\verb!\begin{!\texttt{\emph{some}Code}\verb!}[numbers=none] ... !
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\begin{/+\emph{some}+/Code}[numbers=none] ... 
+\end{LaTeXCode}
 %
 In diesem Fall ist natürlich die Verwendung von Zeilenlabels im Code nicht
 sinnvoll.
@@ -849,16 +847,14 @@ static String extractEmail(String line) {
 \noindent
 Dieses Codestück wurde mit 
 %
-\begin{quote}
-\begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \begin{JavaCode}[numbers=none]
 static String extractEmail(String line) {
     line = line.trim(); // find the first blank
     ...
 }
 \end{JavaCode}
-\end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 %
 erstellt (siehe Abschn.\ \ref{sec:FormatierungVonProgrammcode}). In-line
 Programmstücke sollten maximal einige Zeilen lang sein und nach Möglichkeit
@@ -875,8 +871,7 @@ aufeinanderfolgende Abbildungen gepackt werden, jeweils mit eigener Caption.
 In \texttt{hgb.sty} ist eine neue Float-Umgebung \texttt{program} definiert,
 die analog zu \texttt{table} verwendet wird:
 %
-\begin{quote}
-\begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \begin{program}
 \caption{Der Titel zu diesem Programmstück.}
 \label{prog:xyz}
@@ -886,8 +881,7 @@ die analog zu \texttt{table} verwendet wird:
   }
 \end{JavaCode}
 \end{program}
-\end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 %
 Wenn gewünscht, kann die Caption auch unten angebracht werden (jedenfalls
 aber konsistent und nicht gemischt). Natürlich darf auch hier nicht mit einer

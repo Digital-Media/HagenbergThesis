@@ -209,8 +209,8 @@ Auszeichnungen zur Verfügung.
 
 \subsection{Absatztrennung}
 
-Absätze werden in {\latex}-Quelltext ausschließlich durch das Einfügen einer
-oder mehrerer \textbf{Leerzeilen} voneinander getrennt, es sind also
+Absätze werden im \latex-Quelltext ausschließlich durch das Einfügen einer
+oder mehrerer \emph{Leerzeilen} voneinander getrennt, es sind also
 \emph{keinerlei sonstige Steueranweisungen} notwendig!
 %
 \begin{center}
@@ -221,7 +221,7 @@ oder mehrerer \textbf{Leerzeilen} voneinander getrennt, es sind also
             Besonders die Verwendung von
             \texttt{\textbackslash\textbackslash} und
             \texttt{\textbackslash{newline}} Anweisungen zur Absatztrennung ist
-            ein häufig zu beobachtender \textbf{Fehler}. Vor normalen Absätzen
+            ein häufig zu beobachtender \emph{Fehler}. Vor normalen Absätzen
             auch \emph{nichts} verloren hat die Anweisung
             \texttt{\textbackslash{paragraph}\{\}} -- sie ist in \latex\ (im
             Unterschied zu HTML) eine Markierung für Überschriften mit Titel
@@ -298,16 +298,16 @@ Blocksatz formatiert, was für den Fließtext wegen der großen Zeilenlänge
 vorteilhaft ist. Innerhalb von Tabellen kommt es wegen der geringen
 Spaltenbreite jedoch häufig zu Problemen mit Abteilungen und Blocksatz,
 weshalb dort ohne schlechtes Gewissen zum Flattersatz ("ragged right")
-gegriffen werden sollte (wie \zB\ in Tab.~\ref{tab:synthesis-techniques} auf
+gegriffen werden sollte (wie \zB\ in Tabelle~\ref{tab:synthesis-techniques} auf
 Seite \pageref{tab:synthesis-techniques}).
 
 \subsection{Fußnoten}
 Fußnoten können in \latex\ an beinahe jeder beliebigen Stelle, jedenfalls
 aber in normalen Absätzen, durch die Anweisung
 %
-\begin{quote}
-    \verb!\footnote{!\texttt{\em Fußnotentext}\verb!}!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\footnote{/+\emph{Fußnotentext}+/}
+\end{LaTeXCode}
 %
 gesetzt werden. Zwischen der \verb!\footnote!-Marke und dem davor liegenden
 Text sollte grundsätzlich \emph{kein Leerzeichen} entstehen (eventuelle
@@ -322,13 +322,11 @@ weil die Fußnote in einer Überschrift nur an Ort und Stelle aufscheinen darf,
 nicht aber im \emph{Inhaltsverzeichnis}! Ein konkretes Beispiel dafür ist die
 Überschrift zu Kapitel~\ref{cha:Schluss}, die folgendermaßen definiert ist:
 %
-\begin{quote}
-    \begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \chapter[Schlussbemerkungen]%
         {Schlussbemerkungen%
         \protect\footnote{Diese Anmerkung ....}}%
-    \end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 %
 Dabei ist der erste (optionale) Titel \verb![Schlussbemerkungen]! der Eintrag
 im Inhaltsverzeichnis und im Seitenkopf. Der zweite (gleich lautende) Titel
@@ -337,7 +335,7 @@ auch den \verb!\footnote{}! Eintrag, der allerdings an dieser Stelle durch
 die Direktive \verb!\protect! "geschützt" werden muss. Die \verb!%!-Zeichen
 sind hier übrigens notwendig, um eventuelle Leerzeichen, die durch
 Zeilenumbrüche im Quelltext entstehen, zu eliminieren (dieser Trick wird in
-\latex\ häufig benötigt, s.\ Abschn.~\ref{sec:kommentare}). Ziemlich
+\latex\ häufig benötigt, s.\ Abschnitt~\ref{sec:kommentare}). Ziemlich
 kompliziert also, und damit ein weiterer Grund, Fußnoten an solchen Stellen
 überhaupt zu vermeiden.
 
@@ -358,9 +356,9 @@ Zur Verwaltung von Querverweisen innerhalb eines Dokuments stellt \latex\
 einen sehr einfachen Mechanismus zur Verfügung. Zunächst muss jede Stelle
 (Kapitel, Abschnitt, Abbildung, Tabelle etc.) durch
 %
-\begin{quote}
-    \verb!\label{!\texttt{\em key}\verb!}!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\label{/+\emph{key}+/}
+\end{LaTeXCode}
 %
 markiert werden, wobei \texttt{\em key} ein gültiges \latex-Symbol sein muss.
 Damit Labels (die nur Zahlen sind) nicht verwechselt werden, ist es üblich,
@@ -387,27 +385,25 @@ sie je nach Bedeutung mit einer unterschiedlichen Prefix zu versehen, \zB\
 Beispiele:\ \verb!\label{cha:Einleitung}! oder \verb!\label{fig:Screen-1}!.
 Mit den Anweisungen
 %
-\begin{quote}
-    \verb!\ref{!\texttt{\emph{key}}\verb!}!
-    \hspace{1em} oder \hspace{1em}
-    \verb!\pageref{!\texttt{\emph{key}}\verb!}!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\ref{/+\emph{key}+/} /+\quad oder \quad+/ \pageref{/+\emph{key}+/}
+\end{LaTeXCode}
 %
 kann an beliebiger Stelle im Dokument die zu \texttt{\emph{key}} gehörige
 Nummer bzw.\ Seitennummer eingesetzt werden, \zB\
 %
-\begin{quote}
-    \verb!.. wie in Kap.~\ref{cha:Einleitung} erwähnt ..!\\
-    \verb!.. der Screenshot auf Seite \pageref{fig:Screen-1} ..!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+.. wie in Kap.~\ref{cha:Einleitung} erwähnt ..
+.. der Screenshot auf Seite \pageref{fig:Screen-1} ..
+\end{LaTeXCode}
 %
 Übrigens werden die Bezeichnungen \emph{Kapitel} und \emph{Abschnitt} sehr
 häufig falsch verwendet -- Kapitel haben ausschließlich "ungebrochene" Nummern:
 %
 \begin{quote}
     \begin{tabular}{ll}
-        \textrm{Richtig:\ } & Kapitel 7 oder Abschnitt 2.3.4 \\
-        \textbf{Falsch:\ }  & Kapitel 7.2 oder Abschnitt 5
+        \textrm{Richtig:\ } & Kapitel 7 oder Abschnitt 2.3.4,\\
+        \textrm{Falsch:\ }  & Kapitel 7.2 oder Abschnitt 5.
     \end{tabular}
 \end{quote}
 
@@ -416,19 +412,19 @@ häufig falsch verwendet -- Kapitel haben ausschließlich "ungebrochene" Nummern
 Hyperlinks (URLs) stellen für den Schriftsatz eine besondere Herausforderung
 dar, vor allem wenn es zu einem Zeilenumbruch kommt. Die Anweisung
 %
-\begin{quote}
-    \verb!\url{!\texttt{\em Adresse}\verb!}!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\url{/+\texttt{\emph{address}}+/}
+\end{LaTeXCode}
 %
 ermöglicht Umbrüche bei bestimmten Zeichen der Adresse und sollte daher immer
 eingesetzt werden, wenn ein Hyperlink etwa im Fließtext oder innerhalb einer
 Fußnote angegeben wird.
-
+%
 Für E-Mail-Adressen wurde in \texttt{hgb.sty} das Makro
 %
-\begin{quote}
-    \verb!\email{!\texttt{\em E-Mail-Adresse}\verb!}!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\email{/+\texttt{\emph{e-mail address}}+/}
+\end{LaTeXCode}
 %
 definiert. Es erzeugt im Dokument einen korrekten Link mit
 \texttt{mailto:}-Angabe unter Zuhilfenahme von \verb|\url{}|. Die Anweisung
@@ -436,15 +432,12 @@ kann auch innerhalb des \verb|\author{}|-Befehls in der Präambel eines
 Dokuments verwendet werden, um auf der Titelseite zusätzlich eine
 E-Mail-Adresse anzugeben:
 %
-\begin{quote}
-    \begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \author{%
-    Alex A. Schlaumeier \\%
-    \email{alex@schlaumeier.org}%
+    Alex A. Wiseguy \\%
+    \email{alex@wiseguy.org}%
 }
-    \end{verbatim}
-\end{quote}
-%
+\end{LaTeXCode}
 
 
 \section{Wortabstand und Interpunktion}
@@ -462,17 +455,17 @@ wegen der verbesserten Lesbarkeit auch hier manchmal verwendet (nicht in
 diesem Dokument). Falls die englische ("nicht-französische") Satztrennung mit
 zusätzlichem Abstand bevorzugt wird, ist lediglich die Zeile
 %
-\begin{quote}
-    \verb!\nonfrenchspacing!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+\nonfrenchspacing
+\end{LaTeXCode}
 %
 am Beginn des Dokuments einzusetzen. In diesem Fall sollte aber die
 Interpunktion innerhalb von Sätzen (nach .\ und :) sorgfältig beachtet werden.
 Beispielsweise schreibt sich "Dr.\ Mabuse" in der Form
 %
-\begin{quote}
-    \verb!Dr.\ Mabuse! oder \verb!Dr.~Mabuse!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+Dr.\ Mabuse! /+\quad\textrm{or}\quad+/ Dr.~Mabuse
+\end{LaTeXCode}
 %
 Im zweiten Beispiel wird mit dem \verb!~! Zeichen zudem ein Zeilenumbruch am
 Leerzeichen verhindert.
@@ -519,21 +512,19 @@ Textteile können in \latex\ zeilenweise mit \verb!%! auskommentiert werden.
 Der einem \verb!%!-Zeichen nachfolgenden Text wird bis zum nächsten
 Zeilenende überlesen:
 %
-\begin{quote}
-    \verb!Das wird gedruckt. %Dieser Text wird ignoriert.!
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+Das wird gedruckt. % Und dieser Text wird ignoriert.
+\end{LaTeXCode}
 %
 Häufig verwendet werden Kommentarzeichen aber auch zum Ausblenden von
 \emph{white space}, also Leerzeichen und Zeilenumbrüchen. Folgendes Beispiel
 zeigt etwa, wie mit \verb!%! am Zeilenende das Entstehen eines Leerzeichens
 vor einer nachfolgenden Fußnotenmarke vermieden werden kann:
 %
-\begin{quote}
-\begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 In Österreich isst man sonntags Schnitzel.%
 \footnote{Was die allgemein gute Kondition erklärt.}
-\end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 %
 
 \begin{sloppypar}
@@ -543,8 +534,7 @@ In Österreich isst man sonntags Schnitzel.%
     vor und nach einem zentrierten Textabschnitt:
 \end{sloppypar}
 %
-\begin{quote}
-\begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 ... normaler Text.
 %
 \begin{center}
@@ -552,20 +542,17 @@ In Österreich isst man sonntags Schnitzel.%
 \end{center}
 %
 Und jetzt geht es normal weiter ...
-\end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 %
 Darüber hinaus bietet die \verb!comment!-Umgebung die Möglichkeit, größere
 Text\-blöcke in einem Stück auszublenden:
 %
-\begin{quote}
-\begin{verbatim}
+\begin{LaTeXCode}[numbers=none]
 \begin{comment}
 Dieser Text ...
    ... wird ignoriert.
 \end{comment}
-\end{verbatim}
-\end{quote}
+\end{LaTeXCode}
 
 \subsection{Anführungszeichen (Hochkommas)}
 \label{sec:anfuehrungszeichen}
@@ -804,7 +791,7 @@ Weitere Optionen:
 %
 \begin{itemize}
     \item[] \texttt{smartquotes} (Verwendung gerader Hochkommas,
-	s.\ Abschn.~\ref{sec:anfuehrungszeichen}).
+	s.\ Abschnitt~\ref{sec:anfuehrungszeichen}).
 \end{itemize}
 %
 Wird \emph{keine} Option angegeben, lautet die Standardeinstellung
@@ -817,7 +804,7 @@ Die Dokumentenklasse ist für verschiedene Arten von Arbeiten vorgesehen, die
 sich nur im Aufbau der Titelseiten unterscheiden. Abhängig vom gewählten
 Dokumententyp sind unterschiedliche Elemente für die Titelseiten erforderlich
 (siehe Tabelle \ref{tab:TitelElemente}). Folgende Basisangaben sind für
-\textbf{alle} Arten von Arbeiten erforderlich:
+\emph{alle} Arten von Arbeiten erforderlich:
 %
 \begin{itemize}
     \item[] %
@@ -833,14 +820,14 @@ Dokumententyp sind unterschiedliche Elemente für die Titelseiten erforderlich
 \end{itemize}
 %
 \noindent
-Für \textbf{Praktikumsberichte} werden zusätzlich zu den Basisangaben
+Für \emph{Praktikumsberichte} werden zusätzlich zu den Basisangaben
 folgende Elemente berücksichtigt:
 %
 \begin{itemize}
     \item[] %
-    \verb!\companyName{!\texttt{\em Name und Adresse der Firma}\verb!}!
+    \verb!\companyName{!\texttt{\em Name und Adresse der Firma}\verb!}!,
     \newline%
-    \verb!\companyUrl{!\texttt{\em Website der Firma}\verb!}!
+    \verb!\companyUrl{!\texttt{\em Website der Firma}\verb!}!.
 \end{itemize}
 
 \begin{table}
@@ -926,7 +913,7 @@ Leerzeichen manchmal "auffressen", sodass vor dem nachfolgenden Text kein
 Abstand erzeugt wird.%
 \footnote{Bei fast allen in \texttt{hgbabbrev.sty} definierten Makros wird dies
 allerdings durch den Einsatz von \texttt{\textbackslash xspace} verhindert.}
-Dies kann notfalls mit einem nachfolgenden "\verb!\ !" oder umhüllenden
+Dies kann notfalls mit einem nachfolgenden "\verb*!\ !" oder umhüllenden
 \verb!{}!-Klammern verhindert werden. Bei Verwendung von Makros mit
 abschließendem Punkt an einem Satzende sollte auch darauf geachtet werden,
 dass keine \emph{doppelten} Punkte gesetzt werden.
@@ -1038,8 +1025,7 @@ auf den in Abschn.~\ref{sec:literatur} angegebenen CTAN-Sites.
 Während des Durchlaufs gibt \latex\ Unmengen von Meldungen aus, die einen in
 ihrer Fülle zunächst nicht verwirren sollten, \zB:
 
-\begin{scriptsize}
-\begin{verbatim}
+\begin{GenericCode}[numbers=none]
 ...
 Overfull \hbox (14.43593pt too wide) in paragraph at lines 105--109
 \OT1/cmr/m/n/10.95 F[]ur die Ein-bin-dung von Gra-phi-ken in L[]T[]X wird die V
@@ -1049,9 +1035,9 @@ Overfull \hbox (5.01222pt too wide) in paragraph at lines 148--154
 \OT1/cmr/m/n/10.95 wen-di-gen Ras-te-rung kei-nen Sinn, auch bei 1200 dpi-Druck
 ern. Spe-zi-ell \OT1/cmr/m/it/10.95 Screen-
 ...
-\end{verbatim}
-\end{scriptsize}
-%
+\end{GenericCode}
+
+\noindent
 \emph{Errors} (Fehler) müssen korrigiert werden, wobei einem \latex\ diese
 Arbeit nicht leicht macht, da manchmal (\zB\ wenn eine schließende Klammer
 \verb!}! vergessen wurde) das Problem erst viel später im Text lokalisiert
@@ -1069,6 +1055,6 @@ von Meldungen jedoch spätestens beim Abschluss der Arbeit, um übrig
 gebliebene Probleme, wie überlange Textzeilen, unaufgelöste Verweise und
 ähnliche zu beseitigen. Am Ende sollte das Ergebnis jedenfalls so ausehen:
 %
-\begin{quote}
-    \verb!LaTeX-Result: 0 Error(s), 0 Warning(s), ...!
-\end{quote}
+\begin{GenericCode}[numbers=none]
+LaTeX-Result: 0 Error(s), 0 Warning(s), ...
+\end{GenericCode}

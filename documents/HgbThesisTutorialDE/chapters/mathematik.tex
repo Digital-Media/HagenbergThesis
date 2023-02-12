@@ -12,17 +12,16 @@ weitere dazu findet sich \zB in \cite[Kap.\ 7]{Kopka2003} und~\cite{Voss2014}.
 \section{Mathematische Elemente im Fließtext}
 
 Mathematische Symbole, Ausdrücke, Gleichungen etc.\ werden im Fließtext durch
-paarweise \verb!$! \ldots \verb!$! markiert. Hier ein simples Beispiel:
+paarweise \verb!$! \ldots \verb!$! markiert. Hier ein Beispiel:
 %
-\begin{itemize}
-	\item[]
+\begin{quote}
 	Der Nah-Unendlichkeitspunkt liegt bei
 	$\bar{a} = f \cdot (f / (K \cdot u_{\max}) + 1)$,
 	sodass bei einem auf $\infty$ eingestellten Objektiv von der Entfernung
 	$\bar{a}$ an alles scharf ist. Fokussiert man das Objektiv auf die
 	Entfernung $\bar{a}$ (\dah, $a_0 = \bar{a}$), dann wird im Bereich
 	$[\frac{\bar{a}}{2}, \infty]$ alles scharf.
-\end{itemize}
+\end{quote}
 %
 Dabei sollte unbedingt darauf geachtet werden, dass die Höhe der einzelnen
 Elemente im Text nicht zu groß wird.
@@ -83,9 +82,10 @@ Freigestellte mathematische Ausdrücke können in \latex\ durch \verb!\[!
 \ldots \verb!\]! erzeugt werden. Das Ergebnis wird zentriert, erhält jedoch
 keine Nummerierung. So ist \zB\ \[y_0 = 4 x^2\] das Ergebnis von
 \verb!\[y_0 = 4 x^2\]! oder alternativ
-\begin{quote}
- \verb!\begin{displaymath} y_0 = 4 x^2 \end{displaymath}!
-\end{quote}
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{displaymath} y_0 = 4 x^2 \end{displaymath}
+\end{LaTeXCode}
 
 
 \subsection{Einzelne nummerierte Gleichungen}
@@ -118,9 +118,9 @@ Nummerierung kann übrigens mit der \texttt{equation*}-Umgebung erzeugt werden.
 	\setlength{\fboxsep}{2mm}
 	\fbox{%
 		\begin{minipage}{0.9\textwidth}
-		Man beachte, dass \textbf{Gleichungen} inhaltlich ein \textbf{Teil
+		Man beachte, dass \emph{Gleichungen} inhaltlich ein \emph{Teil
 		des Texts} sind und daher neben der sprachlichen
-		\textbf{Überleitung} auch die \textbf{Interpunktion} (wie in Gl.\
+		\emph{Überleitung} auch die \emph{Interpunktion} (wie in Gl.\
 		\ref{eq:MyFirstEquation} gezeigt) beachtet werden muss. Bei
 		Unsicherheiten sollte man sich passende Beispiele in einem
 		guten Mathematik\-buch ansehen.
@@ -256,8 +256,8 @@ konsistent).
 	\setlength{\fboxsep}{2mm}
 	\fbox{%
 		\begin{minipage}{0.9\textwidth}
-			\textbf{Achtung:} Vorwärtsverweise auf (im Text weiter hinten
-			liegende) Gleichungen sind \textbf{äußerst ungewöhnlich}
+			Achtung: Vorwärtsverweise auf (im Text weiter hinten
+			liegende) Gleichungen sind \emph{äußerst ungewöhnlich}
 			und sollten vermieden werden! Glaubt man dennoch so etwas zu
 			benötigen, dann wurde meistens ein Fehler in der Anordnung gemacht.
 		\end{minipage}}
@@ -307,16 +307,16 @@ zu verwenden, \zB
 %
 	\[Scalefactor\leftarrow Scalefactor^2 \cdot 1.5 \; ,\]
 %
-\textbf{fälschlicherweise} erzeugt durch
+\emph{fälschlicherweise} erzeugt durch
 %
-\begin{quote}
-	\verb!$Scalefactor \leftarrow Scalefactor^2! \verb!\cdot 1.5$!.
-\end{quote}
+\begin{LaTeXCode}[numbers=none]
+$Scalefactor \leftarrow Scalefactor^2! \verb!\cdot 1.5$
+\end{LaTeXCode}
 %
 Dabei interpretiert \latex allerdings die Zeichenkette "Scalefactor" als 
 Produkt von 11 einzelnen, aufeinanderfolgenden Symbolen $S$, $c$, $a$, $l$,
 $e$, \ldots und setzt dazwischen entsprechende Abstände. 
-\textbf{Richtig} ist, diese Buchstaben mit \verb!\mathit{..}! zu \emph{einem}
+\emph{Richtig} ist, diese Buchstaben mit \verb!\mathit{..}! zu \emph{einem}
 Symbol zusammenzufassen. Der Unterschied ist in diesem Fall deutlich sichtbar:
 %
 \begin{center}
@@ -438,12 +438,10 @@ man \ua\ folgendes beachten:%
 	\alpha \ldots$), wie man sie auch in mathematischen Definitionen und
 	Gleichungen verwendet.
 	\item
-	Verwende nach Möglichkeit mathematische Operatoren, wie \zB\
-	$=$ (\verb!$=$!) statt \texttt{==},
-	$\leq$ (\verb!$\leq$!) statt \texttt{<=},
-	$\cdot$ (\verb!$\cdot$!) statt \texttt{*},
-	$\wedge$ (\verb!$\wedge$!) statt \texttt{\&\&},
-	\usw
+	Verwende nach Möglichkeit \emph{mathematische} Operatoren, wie
+  $=$, $\leq$, $\cdot$, $\wedge$, \usw
+  anstelle der entsprechenden Programmkonstrukte
+  \texttt{==}, \texttt{<=}, \texttt{*}, \texttt{\&\&}.
 	\item
 	Verwende keine Elemente oder Syntax einer spezifischen Programmiersprache
 	(so ist etwa ein "\texttt{;}" am Ende einer Anweisung unnötig).
