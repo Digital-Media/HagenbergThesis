@@ -71,9 +71,9 @@ arbitrarily. The specific tag "\texttt{fig:}" is (as mentioned in Section
 label types when writing.
 
 The length of the captions can be very different. Depending on the
-application and style, sometimes a very short caption (Fig
-.~\ref{fig:CocaCola}) or a longer one (Fig.~\ref{fig:ibm360}) results. Note
-how short captions are \emph{centered} while long captions use
+application and style, sometimes a very short caption
+(Figure~\ref{fig:CocaCola}) or a longer one (Figure~\ref{fig:ibm360}) results.
+Note how short captions are \emph{centered} while long captions use
 \emph{justified} formatting (\latex does this automatically). Captions should
 \emph{always} end with a period.%
 \footnote{Interestingly, some instructions call for the exact opposite,
@@ -189,7 +189,7 @@ or resized for embedding. Otherwise, PNG should always be used.
 
 Often colorful screenshots are subjected to JPEG compression, although their
 devastating consequences should be visible to any layman (see
-Fig.~\ref{fig:jpeg-bungle}).%
+Figure~\ref{fig:jpeg-bungle}).%
 \footnote{The JPEG process is designed for \emph{natural} photos and should
 only be used for these.}
 
@@ -289,7 +289,7 @@ use them.
 
 Sometimes it is necessary to overlay an existing image or graphic with
 \latex's own (vector) elements, \eg, for markers or labels. A typical example
-is shown in Fig.~\ref{fig:overpic-example} where a PDF graphic created with
+is shown in Figure~\ref{fig:overpic-example} where a PDF graphic created with
 \emph{Mathematica} is annotated with mathematical text elements. This is
 accomplished using the \texttt{overpic} package, where the underlying graphic
 is not imported with \verb!\includegraphics! but \verb!\begin{overpic}!
@@ -329,7 +329,7 @@ is not imported with \verb!\includegraphics! but \verb!\begin{overpic}!
 The \texttt{overpic} environment also forms a \texttt{picture} environment%
 \footnote{\url{https://www.overleaf.com/learn/latex/Picture_environment}}
 where \latex drawing instructions (such as \verb!\put! and the like) can be
-placed, as shown in Fig.~\ref{fig:overpic-example}.%
+placed, as shown in Figure~\ref{fig:overpic-example}.%
 \footnote{The default drawing instructions in \latex are quite restrictive,
 so the \texttt{pict2e} package is additionally used (see
 \url{https://ctan.org/pkg/pict2e}).}
@@ -339,12 +339,12 @@ details can be found in the source code.
 \subsection{Figures With Multiple Elements}
 
 If multiple images or graphics are combined into one figure, a common caption
-is typically used, as shown in Fig.~\ref{fig:Bearings}. In the main text, a
+is typically used, as shown in Figure~\ref{fig:Bearings}. In the main text, a
 reference to a particular part of the figure, such as the single-row roller
-bearing in Fig.~\ref{fig:Bearings}\,(c), could look like this:
+bearing in Figure~\ref{fig:Bearings}\,(c), could look like this:
 %
 \begin{LaTeXCode}[numbers=none]
-    ... Abb.~\ref{fig:Bearings} (c) ...
+... Abb.~\ref{fig:Bearings} (c) ...
 \end{LaTeXCode}
 
 \subsection{Source Citations in Captions}
@@ -355,8 +355,8 @@ must be made clear in any case, and preferably directly in the caption. For
 example, if an illustration from a book or other citable publication is used,
 then it should be included in the bibliography and cited as usual with
 \verb!\cite{..}! as demonstrated in Fig.\ \ref{fig:Bearings}. Further details
-on this type of source citation can be found in Ch.\ \ref{cha:Literature}
-(esp.\ Section \ref{sec:category-online}).
+on this type of source citation can be found in Chapter~\ref{cha:Literature}
+(esp.\ Section~\ref{sec:category-online}).
 
 \begin{figure}
     \centering\small
@@ -385,9 +385,9 @@ the source code). Image source~\cite{Faires1934}.}
 \label{sec:Tables}
 
 Tables are often used to present numerical relationships, test results, etc.\
-in a clear form. A simple example is Tab.~\ref{tab:programming-languages},
+in a clear form. A simple example is Table~\ref{tab:programming-languages},
 the associated \latex source can be found in 
-Prog.~\ref{prog:programming-languages-source}.
+Program~\ref{prog:programming-languages-source}.
 
 As arguments of the \texttt{tabular} environment the alignments of the
 individual columns are specified. The number of arguments thus determines the
@@ -407,7 +407,7 @@ the (usually unwanted) margin at the left and right table borders.
     \renewcommand{\arraystretch}{1.25}	% vertical stretch factor (standard = 1.0)
     \begin{tabular}{@{}llll@{}}
         \toprule
-        Language & Type        & Typical Use      & Standards          \\
+        Language   & Type        & Typical Use      & Standards          \\
         \midrule
         C++        & Compiled    & Applications     & ISO/IEC 14882:2020 \\
         COBOL      & Compiled    & Business         & ISO/IEC 1989:2014  \\
@@ -420,36 +420,29 @@ the (usually unwanted) margin at the left and right table borders.
 \begin{program}
 % place caption consistently either at the top or bottom:
     \caption{\latex\ source code for Table \ref{tab:programming-languages}.
-    The generation of the displayed listing itself is described in Sec
-    .~\ref{sec:program-texts}.}
+    The generation of the displayed listing itself is described in
+    Section~\ref{sec:program-texts}.}
     \label{prog:programming-languages-source}
 %
-    \begin{LaTeXCode}[numbers=none]
-        \begin{table}
-            \caption{Programming languages at a glance.}
-            \label{tab:programming-languages}
-            \centering
-            \setlength{\tabcolsep}{10pt} % separator between columns
-            (standard = 6pt)
-            \renewcommand{\arraystretch}{1.25} % vertical stretch factor (standard
-            = 1.0)
-            \begin{tabular}{@{}llll@{}}
-                \toprule
-                Language & Type        & Typical Use      & Standards
-                \\
-                \midrule
-                C++        & Compiled    & Applications     & ISO/IEC
-                14882:2020 \\
-                COBOL      & Compiled    & Business         & ISO/IEC
-                1989:2014  \\
-                JavaScript & Interpreted & Web              & ECMA-262
-                \\
-                Python     & Interpreted & Machine Learning & PEPs
-                \\
-                \bottomrule
-            \end{tabular}
-        \end{table}
-    \end{LaTeXCode}
+\begin{LaTeXCode}[numbers=none]
+\begin{table}
+    \caption{Programming languages at a glance.}
+    \label{tab:programming-languages}
+    \centering
+    \setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
+    \renewcommand{\arraystretch}{1.25} % vertical stretch factor (standard = 1.0)
+    \begin{tabular}{@{}llll@{}}
+        \toprule
+        Language   & Type        & Typical Use      & Standards          \\
+        \midrule
+        C++        & Compiled    & Applications     & ISO/IEC 14882:2020 \\
+        COBOL      & Compiled    & Business         & ISO/IEC 1989:2014  \\
+        JavaScript & Interpreted & Web              & ECMA-262           \\
+        Python     & Interpreted & Machine Learning & PEPs               \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\end{LaTeXCode}
 %
 \end{program}
 
