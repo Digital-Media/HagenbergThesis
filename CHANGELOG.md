@@ -1,10 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/), and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+### Added
+
+### Changed
+
+### Fixed
+
+## [2023/02/13]
 
 ### Added
 
@@ -13,9 +20,10 @@ and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
 - 2021/01/29: [#114](https://github.com/Digital-Media/HagenbergThesis/issues/114): Added a section in `HgbThesisTutorial` about APA with instructions on how to enable it and an overview of the citation commands and the resulting reference list.
 - 2021/03/02: [#119](https://github.com/Digital-Media/HagenbergThesis/discussions/119): Added `\email` macro in `hgb.sty` to print correct email addresses in documents and the preamble.
 - 2021/06/24: [#127](https://github.com/Digital-Media/HagenbergThesis/issues/127): Added `\backmatter` section to `main.tex` to avoid things like a list of figures or acronyms being treated as appendices.
-- 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Expanded the table section in `HgbThesisTutorial` to include more information on how to create tables, multi-page tables, and connecting rows and columns.
+- 2022/12/28: [#138](https://github.com/Digital-Media/HagenbergThesis/issues/138): Expanded the table section in `HgbThesisTutorial` to include more information on creating tables, multi-page tables, and connecting rows and columns.
 - 2023/01/03: [#146](https://github.com/Digital-Media/HagenbergThesis/issues/146): Include DOIs in references. Clear `url` field if a `doi` entry is present to avoid duplicate entries.
 - 2023/01/16: [#155](https://github.com/Digital-Media/HagenbergThesis/issues/155): Added the option `proposal` for `hgbthesis` class documents with either the `bachelor` or `master` option active. Provided the two example documents, `HgbThesisDE-proposal` and `HgbThesisEN-proposal`, with an example exposé for a bachelor's thesis.
+- 2023/02/13: [#140](https://github.com/Digital-Media/HagenbergThesis/issues/140): Added an English translation for the thesis tutorial. The documents are now called `HgbThesisTutorialEN` and `HgbThesisTutorialDE`. The documents have also been revised in terms of formatting and content.
 
 ### Changed
 
@@ -134,7 +142,8 @@ replacing obsolete CD/DVD by cloud archive submission.
 This is the first release on GitHub. Future versions will now be published on this repository.
 This version has also been ported to Overleaf for online editing.
 
-[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2020/10/29...HEAD
+[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2023/02/13...HEAD
+[2023/02/13]: https://github.com/Digital-Media/HagenbergThesis/compare/2020/10/29...2023/02/13
 [2020/10/29]: https://github.com/Digital-Media/HagenbergThesis/compare/2019/05/16...2020/10/29
 [2019/05/16]: https://github.com/Digital-Media/HagenbergThesis/compare/2018/11/28...2019/05/16
 [2018/11/28]: https://github.com/Digital-Media/HagenbergThesis/compare/2017/11/05...2018/11/28
