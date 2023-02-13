@@ -18,25 +18,26 @@ Your name*
 Wilhelm Burger
 
 Your email*
-wilbur@ieee.org (was wilhelm.burger@fh-hagenberg.at)
-	
-Summary description*
-Collection of LaTeX classes, style files and example documents for academic manuscripts
-
-Suggested CTAN directory*	
-macros/latex/contrib
+wilbur@ieee.org
 
 Type of Upload*
-New package
+Update
+	
+Summary*
+Collection of LaTeX classes, style files and example documents for academic manuscripts
 
 Description
 A collection of modern LaTeX classes, style files and example documents for authoring Bachelor, Master or Diploma theses and related academic manuscripts in English and German. Includes comprehensive tutorials (in English and German) with detailed instructions and authoring guidelines.
+
+Suggested CTAN directory*	
+/macros/latex/contrib/hagenberg-thesis
 	
 Administrative notes (to the CTAN maintainers)
 Source: https://github.com/Digital-Media/HagenbergThesis/tree/master/ctan
 Documentation in doc/
    Package documentation: doc/hagenberg-thesis.pdf
    Example document / Tutorial (German): doc/hagenberg-thesis-tutorial.pdf
+   
 List of changes: 
    https://github.com/Digital-Media/HagenbergThesis/releases/tag/2019%2F05%2F16
 	
