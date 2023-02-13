@@ -1,0 +1,94 @@
+%%% Dateikodierung: UTF-8
+%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
+
+%%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = de_DE
+% !BIB program = biber
+
+\documentclass[master,german,smartquotes]{hgbthesis}
+% Zulässige Optionen in [..]: 
+%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
+%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
+%    Hauptsprache: 'german' (default), 'english'
+%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
+%    APA Zitierstil: 'apa'
+%%%-----------------------------------------------------------------------------
+
+\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
+
+\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
+\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
+\bibliography{references} % BibLaTeX-Literaturdatei (references.bib)
+
+%%%-----------------------------------------------------------------------------
+\begin{document}
+%%%-----------------------------------------------------------------------------
+
+%%%-----------------------------------------------------------------------------
+% Angaben für die Titelei (Titelseite, Erklärung etc.)
+%%%-----------------------------------------------------------------------------
+
+\title{Partielle Lösungen zur allgemeinen Problematik}
+\author{Alex A.\ Schlaumeier}
+\programname{Universal Computing}
+
+%\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
+\programtype{Fachhochschul-Masterstudiengang}
+
+\placeofstudy{Hagenberg}
+\dateofsubmission{2023}{06}{27} % {YYYY}{MM}{DD}
+
+\advisor{Dr. Alois B.~Treuer} % optional
+
+%\strictlicense % restriktive Lizenz anstatt Creative Commons (nicht empfohlen!)
+
+%%%-----------------------------------------------------------------------------
+\frontmatter                                       % Titelei (röm. Seitenzahlen)
+%%%-----------------------------------------------------------------------------
+
+\maketitle
+\tableofcontents
+
+\include{front/vorwort} % Ein Vorwort ist optional
+\include{front/kurzfassung}		
+\include{front/abstract}			
+
+%%%-----------------------------------------------------------------------------
+\mainmatter                             % Hauptteil (ab hier arab. Seitenzahlen)
+%%%-----------------------------------------------------------------------------
+
+\include{chapters/einleitung}
+\include{chapters/abschlussarbeit}
+\include{chapters/latex}
+\include{chapters/abbildungen}
+\include{chapters/mathematik}
+\include{chapters/literatur}
+\include{chapters/drucken}
+\include{chapters/schluss}
+
+%%%-----------------------------------------------------------------------------
+\appendix                                                               % Anhang 
+%%%-----------------------------------------------------------------------------
+
+\include{back/anhang_a} % Technische Ergänzungen
+\include{back/anhang_b} % Materialien zur elektronischen Einreichung
+\include{back/anhang_c} % Einbindung eines fremden PDF-Dokuments
+\include{back/anhang_d} % Quelltext dieses Dokuments
+
+%%%-----------------------------------------------------------------------------
+\backmatter                          % Schlussteil (Quellenverzeichnis und dgl.)
+%%%-----------------------------------------------------------------------------
+
+\MakeBibliography % Quellenverzeichnis
+
+%%%-----------------------------------------------------------------------------
+% Messbox zur Druckkontrolle
+%%%-----------------------------------------------------------------------------
+
+\include{back/messbox}
+
+%%%-----------------------------------------------------------------------------
+\end{document}
+%%%-----------------------------------------------------------------------------
