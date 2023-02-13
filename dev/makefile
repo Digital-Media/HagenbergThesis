@@ -101,7 +101,8 @@ ctan :
 	@echo "  copying manual/tutorial source and PDFs to $(CTANDIR)/doc/"
 	@cp -u $(DOCUMENTSDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
 	@cp -u $(DOCUMENTSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
-	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorial/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial.pdf
+	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorialEN/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial-en.pdf
+	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorialDE/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial-de.pdf
 #	Update version number in package README file:
 	@echo "  updating version number in package README.md"
 	@$(shell sed -i 's|$(READMEVERSIONTAG).*|$(READMEVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANPKG)/README.md)
