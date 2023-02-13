@@ -5,7 +5,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2023/01/16]%%AUTO
+\ProvidesPackage{hgbbib}[2023/02/13]%%AUTO
 
 \newcommand{\@bibstyle}{numeric-comp}	%% default bibliography style is 'numeric-comp'
 \DeclareOption{apa}{\renewcommand{\@bibstyle}{apa}}
@@ -214,24 +214,33 @@
 
 
 % Macro to produce cites with no backref entries
-% Modified from http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex-contrib/biblatex-ieee/ieee.cbx
-% See also https://tex.stackexchange.com/questions/344861/biblatex-backref-option-per-entry
-%\DeclareCiteCommand{\citenobr}%	%% this version does not work with apa style!
-  %{\usebibmacro{cite:init}%
-   %\bibopenbracket
-	 %\backtrackerfalse\usebibmacro{prenote}}
-  %{\usebibmacro{citeindex}%
-   %\usebibmacro{cite:comp}}
-  %{}
-  %{\usebibmacro{cite:dump}%
-   %\usebibmacro{postnote}%
-   %\bibclosebracket
-  %}
-\DeclareCiteCommand{\citenobr}
-  {\backtrackerfalse\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \ifthenelse{\equal{\@bibstyle}{apa}}%	%% ugly kludge to adopt to APA style
-		{\usebibmacro{cite}}{\usebibmacro{cite:comp}}%
-	}%
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
+% NOTE: \citenobr is DEPRECATED, use ... {\backtrackerfalse\cite{...}} instead!
+\ifthenelse{\equal{\@bibstyle}{apa}}
+{
+	\DeclareCiteCommand{\citenobr}% version for APA
+		{\PackageWarning{hgb}{Macro \protect\citenobr\space is deprecated, use \protect\backtrackerfalse\space instead!}
+		 \backtrackerfalse%
+		 \usebibmacro{prenote}}
+		{\usebibmacro{citeindex}%
+		 \usebibmacro{cite}}%
+		{\multicitedelim}
+		{\usebibmacro{postnote}}
+}
+{
+	\DeclareCiteCommand{\citenobr}%	version for numeric-comp et al.
+		{\PackageWarning{hgb}{Macro \protect\citenobr\space is deprecated, use \protect\backtrackerfalse\space instead!}
+		 \usebibmacro{cite:init}%
+		 \bibopenbracket%
+		 \backtrackerfalse%
+		 \usebibmacro{prenote}%
+		}
+		{\usebibmacro{citeindex}%
+		 \usebibmacro{cite:comp}}
+		{}
+		{\usebibmacro{cite:dump}%
+		 \usebibmacro{postnote}%
+		 \bibclosebracket}
+}
+	
+	
+	
