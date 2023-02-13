@@ -9,6 +9,7 @@ Version number*
 2018-11-28
 2019-05-16
 2020-10-29
+2023-02-13
 	
 Maintainer*
 Wilhelm Burger, Wolfgang Hochleitner
@@ -17,7 +18,7 @@ Your name*
 Wilhelm Burger
 
 Your email*
-wilhelm.burger@fh-hagenberg.at
+wilbur@ieee.org (was wilhelm.burger@fh-hagenberg.at)
 	
 Summary description*
 Collection of LaTeX classes, style files and example documents for academic manuscripts
