@@ -711,13 +711,16 @@ The \texttt{hagenberg-thesis} package provides several \latex\ files that are
 required for this document:
 %
 \begin{itemize}
-    \item \nolinkurl{hgbthesis.cls} (class file): Defines the document
+  \item \nolinkurl{hgbthesis.cls} (class file): Defines the document
     structure, layout, and the entire preamble of the document (title page,
     \etc).
-    \item \nolinkurl{hgb.sty} (style file): Contains central definitions and
+  \item \nolinkurl{hgbpdfa.sty} (style file): Definitions for producing
+    PDF/A-compliant output (see Sec.\ \ref{sec:PDFA}). Must be loaded by the main document before
+    the \verb!\documentclass! command.
+  \item \nolinkurl{hgb.sty} (style file): Contains central definitions and
     settings. This file is automatically loaded by \nolinkurl{hgbthesis.cls},
     but it can also be used for other documents.
-    \item Additional style files imported by \nolinkurl{hgbthesis.cls}:
+  \item Additional style files imported by \nolinkurl{hgbthesis.cls}:
     \begin{itemize}
         \item[] \nolinkurl{hgbabbrev.sty} (various abbreviations),
         \item[] \nolinkurl{hgbalgo.sty} (algorithms),
@@ -727,7 +730,6 @@ required for this document:
         \item[] \nolinkurl{hgbmath.sty} (mathematical functionalities).
     \end{itemize}
 \end{itemize}
-
 
 
 \subsection{Settings}
