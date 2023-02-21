@@ -546,8 +546,6 @@ This work is published under the conditions of the
 	\@declarationpage
 }
 
-
-
 \renewcommand{\@internshiptitlepages}{
 	\@makeinternshiptitle
 	\@companypage
@@ -555,7 +553,8 @@ This work is published under the conditions of the
 	\@declarationpage
 }
 
-\newcommand{\@warnmultipleauthors}{\PackageWarning{hagenberg-thesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
+\newcommand{\@warnmultipleauthors}%
+{\PackageWarning{hagenberg-thesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
 
 % Add PDF meta data and create title pages
 \renewcommand{\maketitle}{	%replace standard LaTeX-command
