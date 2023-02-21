@@ -11,6 +11,78 @@ in the past). In modern environments (\eg, \emph{TeXstudio} or \emph{Overleaf})
 this works automatically without any further configuration effort.
 
 
+\subsection{PDF Archive Format (PDF/A)}
+\label{sec:PDFA}
+
+Many institutions require theses to be submitted in PDF/A format, which is a
+standardized variant of PDF for archiving and long-term preservation.%
+\footnote{\url{https://en.wikipedia.org/wiki/PDF/A}}
+This document is rendered in PDF/A format by default (PDF/A-2b to be exact),
+caused by
+%
+\begin{LaTeXCode}[numbers=none]
+\RequirePackage{hgbpdfa}
+\end{LaTeXCode}
+%
+at the beginning of file \verb!main.tex! (loading \verb!hgbpdfa.sty!).
+Note that this must be placed \emph{before} the \verb!\begin{document}!
+statement. Required meta-data (\eg, author and title) are automatically 
+derived from the document settings and inserted into the output PDF.%
+\footnote{This setup builds on new functionality currently being added to
+the \texttt{pdflatex} kernel and requires package \texttt{pdfmanagement-testphase}
+version 0.95s (2022-09-26) or higher. With older versions (\eg, on \emph{Overleaf}
+at this time), a package warning is issued and no PDF/A is produced.}
+
+
+\subsection{PDF/A Issues}
+\label{sec:PDFA-issues}
+
+Activating the PDF/A option creates an output file that \emph{claims} to be 
+PDF/A-compliant but this does not imply that is actually \emph{is}.
+Although \emph{this} document produces a compliant PDF/A, any derived document
+may not do so. It is therefore important to \emph{validate} the resulting PDF file
+before submission using one of the options described below. Most violations
+of the PDF/A standard arise from the inclusion of other PDF files, particularly 
+graphics. Typical issues are related to the use of non-embedded fonts
+and incorrect or unwanted color spaces. This setup assumes sRGB colors, 
+which should also be used when creating your own illustrations.
+
+Problems with imported PDF files may be difficult to locate in the final (composite)
+document. Once the troubling file is known and cannot be regenerated, it may be fixed using 
+other tools such as Adobe \emph{Acrobat} (\emph{Distiller}) or \emph{Ghostscript}.%
+\footnote{\url{https://ghostscript.com/}}
+
+
+\subsection{PDF/A Validation}
+\label{sec:PDFA-validation}
+
+A straightforward (and free) method to validate PDF/A compliance is provided by
+\textsf{veraPDF}, which includes
+%
+\begin{itemize}
+\item an open-source validation client%
+  \footnote{\url{https://verapdf.org/software} (Windows, macOS, Linux)} and
+\item an online validation service.%
+  \footnote{\url{https://demo.verapdf.org}}
+\end{itemize}
+%
+See Figure \ref{fig:verapdf-report} for an example.
+A similar service is offered by \textsf{pdf-online.com},%
+\footnote{\url{https://www.pdf-online.com/osa/validate.aspx}}
+unfortunately announced to be retired in 2023.
+Of course, PDF/A validation is also contained in the toolset of Adobe \emph{Acrobat}.
+
+\begin{figure}[htbp]
+    \centering
+    \fbox{\includegraphics[width=.60\textwidth]{verapdf-report}}
+    \caption{Report produced by the \textsf{veraPDF} client after successful validation
+    of \emph{this} document. Note that this screenshot was imported as a PDF 
+    which itself is \emph{not} PDF/A-compliant.}
+    \label{fig:verapdf-report}
+\end{figure}
+
+
+
 \section{Printing}
 
 Before printing the manuscript, it is advisable to consider a few things in
@@ -34,7 +106,7 @@ in quality is---especially for pictures and graphics---usually significant.
 \subsection{Print Size}
 
 First of all, make sure that the paper size set in the final PDF file is really
-\textrm{A4}! This can be done, for example, with \emph{Adobe Acrobat} or 
+\textrm{A4}! This can be done, for example, with Adobe \emph{Acrobat} or 
 \emph{SumatraPDF} via \texttt{File} $\rightarrow$ \texttt{Properties} 
 to show the document's paper size:
 %
