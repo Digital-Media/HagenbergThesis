@@ -64,9 +64,8 @@ Note that, while the *orginal* documents are indeed PDF/A-compliant, any *derive
 It is therefore important to <strong>validate</strong> the resulting PDF file before submission using one of the options listed below.
 Most violations of the PDF/A standard arise from the inclusion of other PDF files, particularly graphics. 
 Typical issues are related to the use of non-embedded fonts and incorrect or unwanted color spaces. This setup assumes sRGB colors, which should also be used when creating your own illustrations. Here are some <strong>PDF/A validation software and services</strong>:
-* [veraPDF (free validation client)](https://verapdf.org/software),
-* [veraPDF (online validation service)](https://demo.verapdf.org),
-* [pdf-online (validation service)](https://www.pdf-online.com/osa/validate.aspx).
+* **veraPDF:** [online validation service](https://demo.verapdf.org) or [downloadable validation client](https://verapdf.org/software),
+* **pdf-online:** [online validation service](https://www.pdf-online.com/osa/validate.aspx).
 
 Note that PDF/A generation is not yet functional on Overleaf!
 
