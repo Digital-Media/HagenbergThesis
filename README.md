@@ -61,7 +61,7 @@ To use the [APA 7th edition style for citations and references](https://apastyle
 
 All documents in this collection are set up to optionally create PDF/A-compliant output files (PDF/A-2b to be exact).
 Note that, while the *orginal* documents are indeed PDF/A-compliant, any *derived* document may *not* be so. 
-It is therefore important to \emph{validate} the resulting PDF file before submission using one of the options listed below.
+It is therefore important to <strong>validate</strong> the resulting PDF file before submission using one of the options listed below.
 Most violations of the PDF/A standard arise from the inclusion of other PDF files, particularly graphics. 
 Typical issues are related to the use of non-embedded fonts and incorrect or unwanted color spaces. This setup assumes sRGB colors, which should also be used when creating your own illustrations. Here are some <strong>PDF/A validation software and services</strong>:
 * [veraPDF (free validation client)](https://verapdf.org/software),
