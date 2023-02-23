@@ -354,6 +354,13 @@ package), \eg, by
 \end{LaTeXCode}
 
 
+\subsection{PDF/A generation (\texttt{hgbpdfa.sty})}
+
+Package \texttt{hgbpdfa} contains definitions for generating PDF/A-compliant 
+output files. It is based on the \texttt{pdfmanagement-testphase} package
+(requires version 0.95s or higher) and must be loaded before the
+\verb!\begin{document}! command in the main document.
+If omitted, a plain PDF (non PDF/A-compliant) file is generated.
 
 
 \section{Package dependencies}
@@ -378,7 +385,7 @@ packages:\newline
 \texttt{datetime2}, 
 \texttt{enumitem}, 
 \texttt{epstopdf}, 
-\texttt{eurosym}, 
+%\texttt{eurosym}, 
 \texttt{exscale}, 
 \texttt{fancyhdr}, 
 \texttt{float}, 
@@ -391,7 +398,8 @@ packages:\newline
 \texttt{inputenc}, 
 \texttt{lengthconvert},
 \texttt{listingsutf8}, 
-\texttt{lmodern}, 
+\texttt{lmodern},
+\texttt{marvosym}, 
 \texttt{moreverb}, 
 \texttt{overpic}, 
 \texttt{pdfpages}, 
