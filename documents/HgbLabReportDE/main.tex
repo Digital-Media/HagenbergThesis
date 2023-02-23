@@ -8,6 +8,7 @@
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
+\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}      % PDF/A output
 
 \documentclass[german,notitlepage,smartquotes]{hgbreport}
@@ -18,17 +19,10 @@
 %    Erzeuge keine separate Titelseite: 'notitlepage'
 %%%-----------------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
-
 \renewcommand{\chapter}[1]{} % Deaktiviere den \chapter Befehl
 \graphicspath{{images/}}     % Verzeichnis mit Bildern und Grafiken
 \bibliography{references}    % Biblatex-Literaturdatei (references.bib)
 \ExecuteBibliographyOptions{backref=false} % Keine Rückreferenzen bei Quellen
-
-\author{Alex A.\ Schlaumeier}                  % Name
-\title{MET2UE Media Technology II -- SS 2023\\ % Name der Übung
-				Übungsabgabe \arabic{chapter}}
-\date{\today}
 
 %%%-----------------------------------------------------------------------------
 \setcounter{chapter}{3}	% <----- Auf die Übungsnummer setzen
@@ -36,6 +30,10 @@
 \begin{document}
 %%%-----------------------------------------------------------------------------
 
+\author{Alex A.\ Schlaumeier}                  % Name
+\title{MET2UE Media Technology II -- SS 2023\\ % Name der Übung
+				Übungsabgabe \arabic{chapter}}
+\date{\today}
 
 %%%-----------------------------------------------------------------------------
 \maketitle

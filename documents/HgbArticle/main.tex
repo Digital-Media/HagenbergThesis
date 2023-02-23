@@ -8,7 +8,8 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
-%\RequirePackage{hgbpdfa}      % PDF/A output
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
+\RequirePackage{hgbpdfa}      % PDF/A output
 
 \documentclass[english,twocolumn,smartquotes]{hgbarticle}
 % Valid options in [..]: 
@@ -18,12 +19,14 @@
 %    Typeset the text in two columns: 'twocolumn'
 %%%-----------------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
-
 \usepackage{lipsum}       % Create lorem ipsum dummy text (can be removed)
 \flushbottom              % Add vertical space where necessary to fill the page
 \graphicspath{{images/}}  % Location of images and graphics
 \bibliography{references} % Biblatex bibliography file (references.bib)
+
+%%%-----------------------------------------------------------------------------
+\begin{document}
+%%%-----------------------------------------------------------------------------
 
 \author{
 	Alex A.\ Wiseguy\\ 
@@ -34,10 +37,6 @@
 }
 \title{Reasoning About the Unreasonable}
 \date{}
-
-%%%-----------------------------------------------------------------------------
-\begin{document}
-%%%-----------------------------------------------------------------------------
 
 %%%-----------------------------------------------------------------------------
 \maketitle

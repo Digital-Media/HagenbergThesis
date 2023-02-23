@@ -8,6 +8,7 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}      % PDF/A output
 
 \documentclass[english,notitlepage,smartquotes]{hgbreport}
@@ -18,23 +19,21 @@
 %    Do not create a separate title page: 'notitlepage'
 %%%-----------------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
-
 \renewcommand{\chapter}[1]{} % Disable \chapter command
 \graphicspath{{images/}}     % Location of images and graphics
 \bibliography{references}    % Biblatex bibliography file (references.bib)
 \ExecuteBibliographyOptions{backref=false} % No back references in bibliography
-
-\author{Alex A.\ Wiseguy}                      % Your name
-\title{MET2UE Media Technology II -- SS 2023\\ % Name of the course
-				Lab Report \arabic{chapter}}
-\date{\today}
 
 %%%-----------------------------------------------------------------------------
 \setcounter{chapter}{3}	% <----- set to assignment number!
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
+
+\author{Alex A.\ Wiseguy}                      % Your name
+\title{MET2UE Media Technology II -- SS 2023\\ % Name of the course
+				Lab Report \arabic{chapter}}
+\date{\today}
 
 %%%-----------------------------------------------------------------------------
 \maketitle

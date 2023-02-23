@@ -7,6 +7,7 @@
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}      % PDF/A output
 
 \documentclass[bachelor,english,smartquotes,proposal]{hgbthesis}
@@ -18,12 +19,9 @@
 %    APA bibliography style: 'apa'
 %%%-----------------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
-
 \graphicspath{{images/}}  % Location of images and graphics
 \logofile{logo}           % Logo file: images/logo.pdf (no logo: \logofile{})
 \bibliography{references} % Biblatex bibliography file (references.bib)
-
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
