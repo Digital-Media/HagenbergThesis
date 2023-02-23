@@ -103,7 +103,8 @@
 %% ------------------------------------------------------
 
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
-\RequirePackage{eurosym}			% provides \euro - conflict with marvosym on \EUR!
+\RequirePackage{marvosym}
+\providecommand{\euro}[0]{\EUR\xspace}  % for compatibility with 'eurosym' macro
 
 \RequirePackage{graphicx}
 \RequirePackage[percent]{overpic}	% to allow text/graphics overlays on pictures
@@ -130,15 +131,14 @@
 
 
 %% hyperref Setup -------------------------------------------------------------
-
 \RequirePackage[unicode]{hyperref}	% utf8-change
 \hypersetup{
-	linktocpage = true,				% make page number, not text, be link on TOC, LOF and LOT 
-	colorlinks = false,				% don't uses colored links (because this shows up in printing!) 
-	pdfborder = {0 0 0.5},			% use a thinner (0.5pt) border around all PDF links
-	allbordercolors = {0 0 0.8},	% dark blue border for all types of links
-	breaklinks = true				% allow links to break over lines by making links over multiple lines
-}	%see https://www.tug.org/applications/hyperref/manual.html
+	linktocpage=true,				  % make page number, not text, be link on TOC, LOF and LOT 
+	colorlinks=false,				  % don't uses colored links (because this shows up in printing!) 
+	pdfborder={0 0 0.5},			% use a thinner (0.5pt) border around all PDF links
+	allbordercolors={blue},	  % this only works with a named color, any effect?
+	%breaklinks = true				% allow links to break over lines by making links over multiple lines (obsolete)
+}
 
 % Redefine certain commands for bookmarks and meta-data
 \let\oldand\and
