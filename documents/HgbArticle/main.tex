@@ -8,6 +8,8 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
+\RequirePackage{hgbpdfa}      % PDF/A output
+
 \documentclass[english,twocolumn,smartquotes]{hgbarticle}
 % Valid options in [..]: 
 %    Main language: 'german' (default), 'english'
@@ -23,10 +25,6 @@
 \graphicspath{{images/}}  % Location of images and graphics
 \bibliography{references} % Biblatex bibliography file (references.bib)
 
-%%%-----------------------------------------------------------------------------
-\begin{document}
-%%%-----------------------------------------------------------------------------
-
 \author{
 	Alex A.\ Wiseguy\\ 
 	\email{wiseguy@gmail.com}
@@ -36,6 +34,10 @@
 }
 \title{Reasoning About the Unreasonable}
 \date{}
+
+%%%-----------------------------------------------------------------------------
+\begin{document}
+%%%-----------------------------------------------------------------------------
 
 %%%-----------------------------------------------------------------------------
 \maketitle
