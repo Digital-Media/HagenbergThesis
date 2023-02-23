@@ -37,10 +37,19 @@
 
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
 
-
-%% Set title font to SF
+%% Set title font to SF and inject PDF meta-data
 \RequirePackage{titling}
-\renewcommand{\maketitlehooka}{\sffamily}
+\renewcommand{\maketitlehooka}{%
+  \sffamily%
+  \hypersetup{
+		pdftitle={\@title},
+		pdfauthor={\@author},
+		pdfsubject={},
+		pdfcreator={LaTeX using class hgbreport [\hgbDate]},
+		pdfproducer={pdflatex},
+		pdfkeywords={}
+	}%
+}
 
 %% Set abstract name to bold (single column format only)
 \if@twocolumn%
@@ -48,20 +57,6 @@
 \RequirePackage{abstract}
 \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
 \fi%
-
-% Add PDF meta data
-
-\AtBeginDocument{%
-	\hypersetup{
-		pdftitle={\@title},
-		pdfauthor={\@author},
-		pdfsubject={},
-		pdfcreator={LaTeX using class hgbarticle [\hgbDate]},
-		pdfproducer={pdflatex},
-		pdfkeywords={}
-	}%
-}%
-
 
 %% Additional Hagenberg packages ----------------------------------------------
 
