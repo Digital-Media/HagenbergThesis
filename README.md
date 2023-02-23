@@ -57,6 +57,19 @@ To use the [APA 7th edition style for citations and references](https://apastyle
 \*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**.
 
 
+### PDF/A Generation and Validation
+
+All documents in this collection are set up to optionally create PDF/A-compliant output files (PDF/A-2b to be exact).
+Note that, while the *orginal* documents are indeed PDF/A-compliant, any *derived* document may *not* be so. 
+It is therefore important to \emph{validate} the resulting PDF file before submission using one of the options listed below.
+Most violations of the PDF/A standard arise from the inclusion of other PDF files, particularly graphics. 
+Typical issues are related to the use of non-embedded fonts and incorrect or unwanted color spaces. This setup assumes sRGB colors, which should also be used when creating your own illustrations. Here are some <strong>PDF/A validation software and services</strong>:
+* [veraPDF (free validation client)](https://verapdf.org/software),
+* [veraPDF (online validation service)](https://demo.verapdf.org),
+* [pdf-online (validation service)](https://www.pdf-online.com/osa/validate.aspx).
+
+Note that PDF/A generation is not yet functional on Overleaf!
+
 ## Additional Features
 
 The **hagenberg-thesis** classes and styles try to provide as much functionality out-of-the-box as possible while still being easy to use. Additional functionality that did not permanently find its way into the files is documented in the [wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki).
