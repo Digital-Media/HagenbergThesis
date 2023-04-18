@@ -1,0 +1,95 @@
+%%% File encoding: UTF-8
+%%% äöüÄÖÜß  <-- no German umlauts here? Use an UTF-8 compatible editor!
+
+%%% Magic comments for setting the correct parameters in compatible IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = en_US
+% !BIB program = biber
+
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
+\RequirePackage{hgbpdfa}      % PDF/A output
+
+\documentclass[master,english,smartquotes]{hgbthesis}
+% Valid options in [..]: 
+%    Type of work: 'diploma', 'master' (default), 'bachelor', 'internship' 
+%    Additionally for a thesis exposé: 'proposal (for 'bachelor' and 'master')
+%    Main language: 'german' (default), 'english'
+%    Turn on smart quote handling: 'smartquotes'
+%    APA bibliography style: 'apa'
+%%%-----------------------------------------------------------------------------
+
+\graphicspath{{images/}}  % Location of images and graphics
+\logofile{logo}           % Logo file: images/logo.pdf (no logo: \logofile{})
+\bibliography{references} % BibLaTeX bibliography file (references.bib)
+
+%%%-----------------------------------------------------------------------------
+\begin{document}
+%%%-----------------------------------------------------------------------------
+
+%%%-----------------------------------------------------------------------------
+% Title page entries
+%%%-----------------------------------------------------------------------------
+
+\title{Partial Solutions to Universal Problems}
+\author{Alex A.\ Wiseguy}
+\programname{Universal Computing}
+
+%\programtype{Fachhochschul-Bachelorstudiengang} % select/edit
+\programtype{Fachhochschul-Masterstudiengang}
+
+\placeofstudy{Hagenberg}
+\dateofsubmission{2023}{06}{27} % {YYYY}{MM}{DD}
+
+\advisor{Roger K.~Putnik, M.Sc.} % optional
+
+%\strictlicense % restrictive license instead of Creative Commons (discouraged!)
+
+%%%-----------------------------------------------------------------------------
+\frontmatter                                   % Front part (roman page numbers)
+%%%-----------------------------------------------------------------------------
+
+\maketitle
+\tableofcontents
+
+\include{front/preface} % A preface is optional
+\include{front/abstract}
+\include{front/kurzfassung}
+
+%%%-----------------------------------------------------------------------------
+\mainmatter                                    % Main part (arabic page numbers)
+%%%-----------------------------------------------------------------------------
+
+\include{chapters/introduction}
+\include{chapters/thethesis}
+\include{chapters/latex}
+\include{chapters/figures}
+\include{chapters/mathematics}
+\include{chapters/literature}
+\include{chapters/printing}
+\include{chapters/closing}
+
+%%%-----------------------------------------------------------------------------
+\appendix                                                             % Appendix
+%%%-----------------------------------------------------------------------------
+
+\include{back/appendix_a} % Technical supplements
+\include{back/appendix_b} % Contents for electronic submission
+\include{back/appendix_c} % Included other PDF document
+\include{back/appendix_d} % Source text of this document
+
+%%%-----------------------------------------------------------------------------
+\backmatter                           % Back part (bibliography, glossary, etc.)
+%%%-----------------------------------------------------------------------------
+
+\MakeBibliography % References
+
+%%%-----------------------------------------------------------------------------
+% Special page for checking print size
+%%%-----------------------------------------------------------------------------
+
+\include{back/printbox}
+
+%%%-----------------------------------------------------------------------------
+\end{document}
+%%%-----------------------------------------------------------------------------

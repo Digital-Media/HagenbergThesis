@@ -1,0 +1,164 @@
+\chapter{Technical Information}
+\label{app:TechnicalDetails}
+
+\section{Current Package Version}
+
+\begin{center}
+	\begin{tabular}{@{}ll@{}}
+		\toprule
+		Date   & File            \\
+		\midrule
+		\hgbDate & \texttt{hgb.sty} \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+
+\section{Additional Details}
+
+This package is designed for \mbox{UTF-8} encoded source files and supports 
+\latex\ in direct PDF mode only.%
+\footnote{The "classic" DVI-PS-PDF process is no longer supported.}
+
+
+\subsection{Technical Requirements}
+
+A current \latex\ installation including
+%
+\begin{itemize}
+		\item \texttt{biber} (modern replacement for BibTeX, Version $\geq 1.5$),
+		\item \texttt{biblatex} package (version $\geq 2.5$, 2013/01/10),
+		\item Latin Modern fonts (package \texttt{lmodern}).%
+			\footnote{\url{https://ctan.org/pkg/lm},
+				\url{https://tug.org/FontCatalogue/latinmodernroman/}}
+\end{itemize}
+%
+In addition, a text editor for {UTF-8} encoded (Unicode) files, as well 
+as software for opening and viewing PDF files.
+
+
+
+\subsection{Use Under Windows}
+\label{sec:UseUnderWindows}
+
+A typical installation under Windows looks like this:
+%
+\begin{enumerate}
+\item \textbf{MikTeX}%
+	\footnote{\url{https://miktex.org/} -- 
+  Generally, the \emph{complete installation} of MikTeX ("Complete MiKTeX") is 
+	recommended, as it already contains all necessary additional packages and font files.
+	During installation, make sure that the automatic installation of required packages
+	is enabled by "\emph{Install missing packages on-the-fly: = Yes}" 
+	(NOT "\emph{Ask me first}")!
+	It is also recommended to update the installed packages immediately after installing MikTeX 
+	and periodically thereafter using the \texttt{MikTeX Console} program.} 
+	(basic \latex\ environment),
+\item \textbf{TeXstudio}%
+	\footnote{\url{https://www.texstudio.org/}}
+	(text editor, supports UTF-8 and includes an integrated PDF viewer).
+\end{enumerate}
+%
+Alternative editors and PDF viewers are:
+%
+\begin{enumerate}
+	\item TeXnicCenter,%
+	\footnote{\url{https://www.texniccenter.org/}}
+	\item Texmaker,%
+	\footnote{\url{https://www.xm1math.net/texmaker/}}
+	\item Lyx,%
+	\footnote{\url{https://www.lyx.org/}}
+	\item TeXworks,%
+	\footnote{\url{https://www.tug.org/texworks/}}
+	\item WinEdt,%
+	\footnote{\url{https://www.winedt.com/}}
+	\item Sumatra PDF ("\latex\ friendly" PDF viewer).%
+	\footnote{\url{https://www.sumatrapdfreader.org/}}
+\end{enumerate}
+
+
+\subsection{Use Under macOS}
+
+For macOS, the following configuration is recommended:
+%
+\begin{enumerate}
+\item 
+	\textbf{MacTex}%
+	\footnote{\url{https://tug.org/mactex/} -- 
+	Current MacTeX distributions usually require a mostly up-to-date version of macOS. 
+	On older versions, \emph{TeXLive} can alternatively be installed with a special
+	installation script. To keep the packages of the \latex\ distribution up-to-date, the 
+	\emph{TeX Live Utility} program should be run regularly.}
+	(basic \latex\ environment),
+\item \textbf{TeXstudio} (text editor, supports UTF-8 and includes an integrated PDF viewer).
+\end{enumerate}
+%
+Alternative editors and PDF viewers are:
+%
+\begin{enumerate}
+	\item Texmaker,%
+	\item Lyx,%
+	\item TeXworks,%
+	\item Skim ("\latex\ friendly" PDF viewer).%
+	\footnote{\url{https://skim-app.sourceforge.io/}}
+\end{enumerate}
+
+
+\subsection{Use Under Linux}
+
+Under Linux the following setup can be used:
+%
+\begin{enumerate}
+	\item 
+	\textbf{TeX Live}%
+	\footnote{\url{https://tug.org/texlive/} -- An installation under Linux is---depending
+	on the distribution used---most easily done with the help of the associated package
+	management system (\eg, \texttt{apt-get}).}
+	(basic \latex\ environment),
+	\item \textbf{TeXstudio} (text editor, supports UTF-8 and includes an
+	integrated PDF viewer).
+\end{enumerate}
+%
+Alternative editors and PDF viewers are:
+%
+\begin{enumerate}
+	\item Texmaker,%
+	\item Lyx,%
+	\item TeXworks,%
+	\item qpdfview ("\latex\ friendly" PDF viewer).%
+	\footnote{\url{https://launchpad.net/qpdfview}}
+\end{enumerate}
+
+
+\subsection{Using Online \latex\ Environments}
+
+Besides using a local \latex installation and editor, there are now also good online 
+environments that allow to create \latex documents directly in the browser.
+The \latex environment is installed on the servers of the provider. Documents can be
+created in the online editor or existing templates (such as this document) uploaded and 
+edited. Most platforms also allow collaborative work on the same document.
+
+When using such environments, it is highly recommended to perform regular \emph{backups} of your
+online data while working, so that in the worst case you don't have to start all over 
+again.
+
+\subsubsection{Overleaf}
+
+The most popular editor (tested with this template) is \emph{Overleaf}%.
+\footnote{\url{https://www.overleaf.com/}}.
+To quickly import template documents from the \texttt{hagenberg-thesis} package, the 
+import links in the \emph{readme} section of this project's Github repository%
+\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
+can be used directly.
+
+
+\subsubsection{Other Online Services}
+
+Besides, there are other online environments for \latex\ and their number is constantly growing, for example:
+%
+\begin{enumerate}
+	\item Papeeria,%
+	\footnote{\url{https://papeeria.com/}}
+	\item CoCalc.%
+	\footnote{\url{https://cocalc.com/}}
+\end{enumerate}
