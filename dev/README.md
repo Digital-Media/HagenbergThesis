@@ -1,8 +1,10 @@
 # Hagenberg Thesis Development Directory
 
+This is mainly a notebook for the developers of `HagenbergThesis` and probably not relevant for average users.
+
 ## What You Find Here
 
-This is the development directory for the [HagenbergThesis](https://github.com/Digital-Media/HagenbergThesis) package. It contains the following in the respective directories:
+`/dev`is the development directory for the [HagenbergThesis](https://github.com/Digital-Media/HagenbergThesis) package. It contains the following in the respective directories:
 
 - `latex`: Master style files, classes, and bibliography for the package.
 - `ctan`: Distribution files for hagenberg-thesis on [CTAN](https://ctan.org/pkg/hagenberg-thesis).
@@ -14,7 +16,8 @@ This is the development directory for the [HagenbergThesis](https://github.com/D
 
 Make your edits to the style files and classes in the `latex` directory. If the changes are substantial, create a branch and suggest them by opening a pull request.
 
-Do *not* edit the version/date strings in the files. These are all set to the last build date and will be replaced with the current date in the build process.
+Do *not* edit the version/date strings in `.cls`, `.sty` and `.tex` files. 
+These are marked `%%AUTO` and are automatically replaced with the current date during the build process.
 
 ### Building and Distributing the Files
 
@@ -29,8 +32,8 @@ The `makefile` in this directory does the following:
 
 This requires 'make' and 'zip' to be installed. This setup uses the GNU Win32 implementations.
 
-1. Download [GnuWin Make](http://gnuwin32.sourceforge.net/downlinks/make.php). This installs make.exe in `C:\Program Files (x86)\GnuWin32\bin`. When using [Chocolatey](https://chocolatey.org/), run `choco install make`.
-2. Download [GnuWin Zip](http://gnuwin32.sourceforge.net/downlinks/zip.php). This installs zip.exe in `C:\Program Files (x86)\GnuWin32\bin`. For Chocolatey, run `choco install zip`.
+1. Download [GnuWin Make](http://gnuwin32.sourceforge.net/downlinks/make.php). This installs `make.exe` in `C:\Program Files (x86)\GnuWin32\bin`. When using [Chocolatey](https://chocolatey.org/), run `choco install make`.
+2. Download [GnuWin Zip](http://gnuwin32.sourceforge.net/downlinks/zip.php). This installs `zip.exe` in `C:\Program Files (x86)\GnuWin32\bin`. For Chocolatey, run `choco install zip`.
 3. Add `C:\Program Files (x86)\GnuWin32\bin` to the Windows PATH using Control Panel -> System -> Advanced system settings -> Environment variables. If the tools were installed using Chocolatey, they were added to the path in the process.
 4. To verify if the install is working, start the 'GitBash' shell (part of the Windows GIT installation) and run `which make` and `which zip`. This should show the location of the make executable:
 ```
@@ -71,7 +74,7 @@ Use the shell (`Git Bash`) to perform the following steps:
 
 - ``$ git clone --mirror https://github.com/Digital-Media/HagenbergThesis.git`` (this creates a bare repo in folder ``HagenbergThesis.git``)
 - Make a backup copy of ``HagenbergThesis.git`` to be safe.
-- ``$ java -jar bfg.jar --delete-files {main.pdf,hag*.zip,Hgb*.zip,Manual.zip} HagenbergThesis.git``
+- ``$ java -jar bfg.jar --delete-files 'main.pdf,hagenberg*.zip,Hgb*.zip,Manual.zip' HagenbergThesis.git``
 - ``$ cd HagenbergThesis.git``
 - ``$ git reflog expire --expire=now --all && git gc --prune=now --aggressive``
 - ``$ git push``

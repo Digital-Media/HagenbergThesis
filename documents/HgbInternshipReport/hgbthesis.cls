@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2023/02/13]%%AUTO
+\ProvidesClass{hgbthesis}[2023/02/23]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -546,8 +546,6 @@ This work is published under the conditions of the
 	\@declarationpage
 }
 
-
-
 \renewcommand{\@internshiptitlepages}{
 	\@makeinternshiptitle
 	\@companypage
@@ -555,7 +553,8 @@ This work is published under the conditions of the
 	\@declarationpage
 }
 
-\newcommand{\@warnmultipleauthors}{\PackageWarning{hagenberg-thesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
+\newcommand{\@warnmultipleauthors}%
+{\PackageWarning{hagenberg-thesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
 
 % Add PDF meta data and create title pages
 \renewcommand{\maketitle}{	%replace standard LaTeX-command
@@ -564,7 +563,7 @@ This work is published under the conditions of the
 	\hypersetup{
 			pdftitle={\@title},
 			pdfauthor={\@author},
-			pdfsubject={\@programtype \@programname, \@placeofstudy},
+			pdfsubject={\@programtype~\@programname,~\@placeofstudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
 			pdfkeywords={},

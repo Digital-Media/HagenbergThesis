@@ -739,14 +739,18 @@ Dieses Paket enthält mehrere \latex-Dateien, die zum Erstellen dieses
 Dokuments erforderlich sind:
 %
 \begin{itemize}
-    \item \nolinkurl{hgbthesis.cls} (Class-Datei): definiert die
+  \item \nolinkurl{hgbthesis.cls} (Class-Datei): definiert die
     Dokumentenstruktur, Layout und den gesamten Vorspann des Dokuments
     (Titelseite \etc).
-    \item \nolinkurl{hgb.sty} (Style-Datei): enthält zentrale Definitionen
+  \item \nolinkurl{hgbpdfa.sty} (Style-Datei): Definitionen zur
+    Erzeugung von PDF/A-konformer Ausgabe. Diese Datei muss vor
+    der \verb!\documentclass! Anweisung geladen werden (siehe auch Abschnitt 
+    \ref{sec:PDFA}).
+  \item \nolinkurl{hgb.sty} (Style-Datei): enthält zentrale Definitionen
     und Einstellungen. Diese Datei wird von \nolinkurl{hgbthesis.cls}
     automatisch geladen, kann aber grundsätzlich auch für andere Dokumente
     verwendet werden.
-    \item Weitere Style-Dateien, die von \nolinkurl{hgbthesis.cls} importiert
+  \item Weitere Style-Dateien, die von \nolinkurl{hgbthesis.cls} importiert
     werden:
     \begin{itemize}
         \item[] \nolinkurl{hgbabbrev.sty} (div.\ Abkürzungen),
@@ -1000,7 +1004,7 @@ auf den in Abschn.~\ref{sec:literatur} angegebenen CTAN-Sites.
         \texttt{biblatex}     & Literaturverwaltung \\
         \texttt{caption}      & Flexiblere Captions \\
         \texttt{csquotes}     & Kontextabhängige Hochkommas \\
-        \texttt{eurosym}      & {\euro}-Symbol (\verb!\euro!) \\
+        \texttt{marvosym}      & {\euro}-Symbol (\verb!\euro!) \\
         \texttt{exscale}      & Korrekte Schriftgrößen im Math-Modus \\
         \texttt{fancyhdr}     & zur Gestaltung Kopfzeilen (header) \\
         \texttt{float}        & Verbessertes Float-Handling \\

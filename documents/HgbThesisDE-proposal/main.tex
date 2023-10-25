@@ -7,6 +7,9 @@
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
+\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
+\RequirePackage{hgbpdfa}      % PDF/A output
+
 \documentclass[bachelor,german,smartquotes,proposal]{hgbthesis}
 % Zulässige Optionen in [..]: 
 %    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
@@ -16,12 +19,9 @@
 %    APA Zitierstil: 'apa'
 %%%-----------------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
-
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
 \logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
-
 
 %%%-----------------------------------------------------------------------------
 \begin{document}

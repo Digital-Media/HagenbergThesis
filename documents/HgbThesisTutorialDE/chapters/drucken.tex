@@ -5,10 +5,85 @@
 \section{PDF-Workflow}
 \label{sec:pdf}
 
-Heutzutage wird \latex\ praktisch immer so benutzt, dass damit direkt
-PDF-Dokumente (ohne den früher üblichen Umweg über DVI und PostScript) erzeugt werden.
-In modernen Editoren (\zB \emph{TeXstudio} oder \emph{Overleaf}) funktioniert dies ohne
-weiteren Konfigurationsaufwand.
+Heutzutage wird \latex\ praktisch immer so benutzt, dass damit direkt PDF-Dokumente
+(ohne den früher üblichen Umweg über DVI und PostScript) erzeugt werden.
+In modernen Editoren (\zB \emph{TeXstudio} oder \emph{Overleaf}) funktioniert dies
+ohne weiteren Konfigurationsaufwand.
+
+
+\subsection{PDF Archivformat (PDF/A)}
+\label{sec:PDFA}
+
+Viele Institutionen verlangen die Abgabe von Abschlussarbeiten im PDF/A-Format, einer
+standardisierten Variante von PDF für die Langzeitarchivierung.%
+\footnote{\url{https://de.wikipedia.org/wiki/PDF/A}}
+Dieses Dokument wird standardmäßig im PDF/A-Format (PDF/A-2b, um genau zu sein),
+aufgrund der Anweisung
+%
+\begin{LaTeXCode}[numbers=none]
+\RequirePackage{hgbpdfa}
+\end{LaTeXCode}
+%
+am Beginn der Datei \verb!main.tex! (wodurch \verb!hgbpdfa.sty! geladen wird).
+Man beachte, dass diese Anweisung \emph{vor} der \verb!\documentclass!-Deklaration
+platziert werden muss. Erforderliche Meta\-daten (\zB Autor und Titel) werden
+automatisch aus den Dokumenteinstellungen übernommen und in das Ausgabe-PDF eingefügt.%
+\footnote{Dieses Setup basiert auf neuer Funktionalität, die aktuell in den
+\texttt{pdflatex}-Kern eingebaut wird und erfordert das Paket 
+\texttt{pdfmanagement-testphase} in Version 0.95s (2022-09-26) oder höher.
+Bei älteren Versionen (\zB zurzeit noch auf \emph{Overleaf}) wird eine Warnung
+ausgegeben und keine PDF/A-konforme Ausgabe erzeugt.}
+
+
+\subsection{PDF/A Problemstellen}
+\label{sec:PDFA-issues}
+
+Die Aktivierung der PDF/A-Option erzeugt eine Ausgabedatei, die \emph{vorgibt},
+PDF/A-konform zu sein, was aber nicht bedeutet, dass sie es tatsächlich \emph{ist}.
+Obwohl dieses Dokument ein PDF/A-konformes Dokument erzeugt, ist dies bei abgeleiteten
+Dokumenten möglicherweise nicht der Fall. Es ist daher wichtig, die resultierende
+PDF-Datei vor der Abgabe mit einer der unten beschriebenen Methoden zu 
+\emph{validieren}. Die meisten Verletzungen des PDF/A-Standards entstehen durch 
+die Einbindung anderer PDF-Dateien, insbesondere von Grafiken. Typische Probleme 
+sind die Verwendung von nicht eingebetteten Schriftarten und falschen oder 
+unerwünschten Farbräumen. Im aktuellen Setup wird von sRGB-Farben ausgegangen, die man
+grundsätzlich auch bei der Erstellung eigener Illustrationen verwenden sollte.
+
+Probleme mit importierten PDF-Dateien können im finalen (zusammengesetzten) Dokument
+schwer zu lokalisieren sein. Wenn die problematische Datei bekannt ist und nicht 
+neu generiert werden kann, lässt sie sich eventuell mit anderen Tools wie Adobe \emph{Acrobat} 
+(\emph{Distiller}) oder \emph{Ghostscript}%
+\footnote{\url{https://ghostscript.com/}}
+reparieren.
+
+
+\subsection{PDF/A Validierung}
+\label{sec:PDFA-validation}
+
+Eine einfache (und kostenlose) Methode zur Überprüfung der PDF/A-Konformität bietet
+\textsf{veraPDF} in zwei Varianten:
+%
+\begin{itemize}
+\item eine Open-Source-Validierungssoftware%
+  \footnote{\url{https://verapdf.org/software} (Windows, macOS, Linux)} sowie
+\item ein Online-Validierungsservice.%
+  \footnote{\url{https://demo.verapdf.org}}
+\end{itemize}
+%
+Abbildung \ref{fig:verapdf-report} zeigt ein Beispiel. Ein ähnliches Service bietet
+auch \textsf{pdf-online.com},%
+\footnote{\url{https://www.pdf-online.com/osa/validate.aspx}}
+dessen Einstellung leider für 2023 angekündigt ist.
+Natürlich ist die PDF/A-Validierung auch im Werkzeugsatz von Adobe \emph{Acrobat} enthalten.
+
+\begin{figure}[htbp]
+    \centering
+    \fbox{\includegraphics[width=.60\textwidth]{verapdf-report}}
+    \caption{Bericht, der vom \textsf{veraPDF}-Client nach erfolgreicher Validierung 
+    \emph{dieses} Dokuments erstellt wurde. Man beachte, dass der als PDF importierte Screenshot 
+    selbst \emph{nicht} PDF/A-konform ist.}
+    \label{fig:verapdf-report}
+\end{figure}
 
 
 \section{Drucken}

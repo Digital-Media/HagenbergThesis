@@ -5,10 +5,10 @@
 This is a collection of modern LaTeX classes, style files, and example documents for authoring **Bachelor, Master, or Diploma theses** and related academic manuscripts in English and German.
 Pre-configured English and German documents are available, easy to use even for LaTeX beginners, and compatible with LaTeX distributions for Windows, Mac OS, and Linux. The document classes are immediately usable and convenient to customize.
 
-The main document, '[**HgbThesisTutorialEN**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN/main.pdf)' or '[**HgbThesisTutorialDE**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE/main.pdf)', serves both as a **template** and **tutorial** for authoring a bachelor, master, or diploma thesis with LaTeX. 
+The main document, [**HgbThesisTutorialEN**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN/main.pdf) or [**HgbThesisTutorialDE**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE/main.pdf), serves both as a **template** and **tutorial** for authoring a bachelor, master, or diploma thesis with LaTeX. 
 Developed initially as an internal standard at the Upper Austria University of Applied Sciences in Hagenberg, this setup has become popular at several other (mostly German-speaking) institutions over the last few years.
 
-This site is the main repository for the **hagenberg-thesis** package, which is also available on [CTAN](https://ctan.org/pkg/hagenberg-thesis) and shared by popular package repositories such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texlive/).
+This site is the main repository for the **hagenberg-thesis** package, which is also available on **[CTAN](https://ctan.org/pkg/hagenberg-thesis)** and shared by popular package repositories such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texlive/).
 Note that the **most recent versions are always found *here***, while only periodic [releases](https://github.com/Digital-Media/HagenbergThesis/releases) are submitted to CTAN.
 
 
@@ -56,6 +56,18 @@ To use the [APA 7th edition style for citations and references](https://apastyle
 
 \*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**.
 
+
+### PDF/A Generation and Validation
+
+All documents in this collection are set up to optionally create PDF/A-compliant output files (PDF/A-2b to be exact).
+Note that, while the *orginal* documents are indeed PDF/A-compliant, any *derived* document may *not* be so. 
+It is therefore important to <strong>validate</strong> the resulting PDF file before submission using one of the options listed below.
+Most violations of the PDF/A standard arise from the inclusion of other PDF files, particularly graphics. 
+Typical issues are related to the use of non-embedded fonts and incorrect or unwanted color spaces. This setup assumes sRGB colors, which should also be used when creating your own illustrations. Here are some <strong>PDF/A validation software and services</strong>:
+* **veraPDF:** [online validation service](https://demo.verapdf.org) or [downloadable validation client](https://verapdf.org/software),
+* **pdf-online:** [online validation service](https://www.pdf-online.com/osa/validate.aspx).
+
+Note that PDF/A generation is not yet functional on Overleaf!
 
 ## Additional Features
 

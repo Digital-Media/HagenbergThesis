@@ -8,6 +8,9 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
+\RequirePackage{hgbpdfa}      % PDF/A output
+
 \documentclass[english,twocolumn,smartquotes]{hgbarticle}
 % Valid options in [..]: 
 %    Main language: 'german' (default), 'english'
@@ -15,8 +18,6 @@
 %    APA bibliography style: 'apa'
 %    Typeset the text in two columns: 'twocolumn'
 %%%-----------------------------------------------------------------------------
-
-\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 
 \usepackage{lipsum}       % Create lorem ipsum dummy text (can be removed)
 \flushbottom              % Add vertical space where necessary to fill the page

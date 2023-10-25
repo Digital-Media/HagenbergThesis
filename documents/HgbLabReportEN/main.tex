@@ -8,6 +8,9 @@
 % !TeX spellcheck = en_US
 % !BIB program = biber
 
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
+\RequirePackage{hgbpdfa}      % PDF/A output
+
 \documentclass[english,notitlepage,smartquotes]{hgbreport}
 % Valid options in [..]: 
 %    Main language: 'german' (default), 'english'
@@ -15,8 +18,6 @@
 %    APA bibliography style: 'apa'
 %    Do not create a separate title page: 'notitlepage'
 %%%-----------------------------------------------------------------------------
-
-\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 
 \renewcommand{\chapter}[1]{} % Disable \chapter command
 \graphicspath{{images/}}     % Location of images and graphics
