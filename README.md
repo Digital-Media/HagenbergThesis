@@ -67,7 +67,6 @@ Typical issues are related to the use of non-embedded fonts and incorrect or unw
 * **veraPDF:** [online validation service](https://demo.verapdf.org) or [downloadable validation client](https://verapdf.org/software),
 * **pdf-online:** [online validation service](https://www.pdf-online.com/osa/validate.aspx).
 
-Note that PDF/A generation is not yet functional on Overleaf!
 
 ## Additional Features
 

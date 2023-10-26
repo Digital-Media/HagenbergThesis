@@ -6,7 +6,7 @@ For additional information and examples visit the main repository on GitHub.
 
 ## Package information
 
-### Version: 2023/02/23
+### Version: 2023/10/26
 
 ### Authors:
 W. Burger, W. Hochleitner

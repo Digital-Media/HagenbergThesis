@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ### Added
 
+- 2023/10/26: [#132](https://github.com/Digital-Media/HagenbergThesis/issues/132): Setup added to produce PDF/A compliant documents, which is the default now. Added related instructions in `HgbThesisTutorialEN` and `HgbThesisTutorialDE`.
+
 ### Changed
 
 ### Fixed
