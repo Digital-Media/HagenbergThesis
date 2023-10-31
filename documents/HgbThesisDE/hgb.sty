@@ -82,7 +82,7 @@
 }
 
 \PackageToDTMdate{\hgbDate}{hgbPackageDate}	% converts package date to DTM format: \DTMusedate{hgbPackageDate}
-\DTMsavenoparsedate{hgbToday}{\the\year}{\the\month}{\the\day}{-1} % today's date in DTM format: \DTMusedate{hgbToday}
+\DTMsavenow{hgbToday} % today's date in DTM format: \DTMusedate{hgbToday}
 
 \newcounter{hgbAgeLimit}\setcounter{hgbAgeLimit}{365}	% warn if package is older than 1 year
 \newcount\hgbAge

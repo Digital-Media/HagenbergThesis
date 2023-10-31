@@ -120,6 +120,8 @@
 
 % Submission Date
 
+\DTMsavenow{@dateofsubmission}  % default submission date is today
+
 \newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}
   \DTMsavenoparsedate{@dateofsubmission}{#1}{#2}{#3}{-1}
 }
