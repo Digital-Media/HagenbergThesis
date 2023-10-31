@@ -46,9 +46,9 @@ all : setdates build ctan
 
 setdates :
 # Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
-#	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty files:
+#	Replaces any date of the form [yyyy/mm/dd] in *.cls, *.sty and *.tex files:
 	@echo Updating release date in all sty/cls files to [$(RELEASEDATE)]
-	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls)
+	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(SOURCEDIR)/*.tex)
 	@echo ""
 
 build : $(EXAMPLES)
