@@ -81,18 +81,6 @@
 	\renewcommand{\@advisor}{#1}		
 }
 
-%\newcommand{\thesisnumber}[1]{%
-	%\ClassWarning{hgbthesis}{command '\protect\thesisnumber' is not supported any longer.}
-%}
-%
-%\newcommand{\coursetitle}[1]{%
-	%\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
-%}
-%
-%\newcommand{\semester}[1]{%
-	%\ClassWarning{hgbthesis}{command '\protect\semester' is not supported any longer.}
-%}
-
 \newcommand{\@logofile}[0]{}
 \newcommand{\logofile}[1]{%
 	\renewcommand{\@logofile}{#1}
