@@ -24,16 +24,6 @@
   % \@placeofstudy
   % @dateofsubmission
 
-\newcommand{\@bachelortitlefinal}{
-	% use language switch to add english term
-	\@addspaces{BACHELORARBEIT}%
-}
-
-\newcommand{\@bachelortitleproposal}{
-	% use language switch to add english term
-	\@addspaces{BACHELORARBEIT} \space (\@addspaces{EXPOS{\`E}})%
-}
-
 \newcommand{\@makebachelortitlepage}{%
 \begin{titlepage}%
 	\begin{german}
@@ -53,9 +43,9 @@
 			\makelogo%
 			\vskip 15mm%
 			%
-			\ifthenelse{\boolean{hgb@isProposal}}%
-					{\Large{\@bachelortitleproposal}}%
-					{\Large{\@bachelortitlefinal}}%
+      {\Large \@addspaces{BACHELORARBEIT}%
+        \ifthenelse{\boolean{hgb@isProposal}}{\space\space(\@addspaces{EXPOS{\`E}})}{}%
+      }
 			\vskip 4mm%
 			%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
