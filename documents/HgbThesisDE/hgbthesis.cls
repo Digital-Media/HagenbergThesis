@@ -54,7 +54,12 @@
 
 %% Setup for Pages in the Front Matter ----------------------------------------
 
-% General Commands
+% General Thesis Parameters
+
+\newcommand{\@institution}{\@MissingArg{Name of institution not specified!}}
+\newcommand{\institution}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@institution}{#1}}
+}
 
 \newcommand{\@programtype}{\@MissingArg{Type of degree program not specified!}}
 \newcommand{\programtype}[1]{%
@@ -76,17 +81,17 @@
 	\renewcommand{\@advisor}{#1}		
 }
 
-\newcommand{\thesisnumber}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\thesisnumber' is not supported any longer.}
-}
-
-\newcommand{\coursetitle}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
-}
-
-\newcommand{\semester}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\semester' is not supported any longer.}
-}
+%\newcommand{\thesisnumber}[1]{%
+	%\ClassWarning{hgbthesis}{command '\protect\thesisnumber' is not supported any longer.}
+%}
+%
+%\newcommand{\coursetitle}[1]{%
+	%\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
+%}
+%
+%\newcommand{\semester}[1]{%
+	%\ClassWarning{hgbthesis}{command '\protect\semester' is not supported any longer.}
+%}
 
 \newcommand{\@logofile}[0]{}
 \newcommand{\logofile}[1]{%
@@ -100,6 +105,7 @@
 }
 
 % Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
+
 \newcommand{\@proposalsetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
 	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
@@ -116,6 +122,10 @@
 	\counterwithout{algorithm}{chapter}
 	% remove chapter number from header (fancyhdr):
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+}
+
+\AtBeginDocument{
+  \ifthenelse{\boolean{hgb@isProposal}}{\@proposalsetup}{}%
 }
 
 % Submission Date
@@ -337,7 +347,7 @@ This work is published under the conditions of the
 	\@makebachelortitlepage%
 	\ifthenelse{\boolean{hgb@isProposal}}%
 		{%	thesis proposal:
-			\@proposalsetup%
+			%\@proposalsetup%
 			\@advisorpage%
 			%no copyright page for proposals
 			%no declaration page for proposals
@@ -353,7 +363,7 @@ This work is published under the conditions of the
 	\@makemastertitlepage
 	\ifthenelse{\boolean{hgb@isProposal}}%
 		{%	thesis proposal:
-			\@proposalsetup%
+			%\@proposalsetup%
 			\@advisorpage%
 			%no copyright page for proposals
 			%no declaration page for proposals
