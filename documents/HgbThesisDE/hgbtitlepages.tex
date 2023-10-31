@@ -12,8 +12,18 @@
 
 %% This is to be loaded from within a .sty file, thus no \makeatletter ... \makeatother needed!
 
+%% checking class options: \@ifclasswith (https://tex.stackexchange.com/a/110300)
 
 %% Bachelor Thesis --------------------------------------------------------------
+
+% required parameters:
+  % \@titlepagefont
+  % hgb@isProposal (boolean)
+  % \@programtype
+  % \@programname
+  % \@placeofstudy
+  % @monthofsubmission
+  % @yearofsubmission
 
 \newcommand{\@bachelortitlefinal}{
 	% use language switch to add english term
@@ -25,7 +35,7 @@
 	\@addspaces{BACHELORARBEIT} \space (\@addspaces{EXPOS{\`E}})%
 }
 
-\newcommand{\@makebachelortitlepage}{%
+\newcommand{\@makebachelortitlepage}{%  
 \begin{titlepage}%
 	\begin{german}
 		\rule{0mm}{1mm}%
@@ -55,7 +65,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -104,8 +114,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -140,8 +149,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}
@@ -178,8 +186,7 @@
 			\vskip 4mm%
 			{\large in \@placeofstudy}%
 			\vskip 16mm%
-			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
 		\end{center}%
 		\vfil%
 	\end{german}

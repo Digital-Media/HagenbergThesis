@@ -118,20 +118,10 @@
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
 }
 
-% Submission Commands
+% Submission Date
 
-\newcounter{@dayofsubmission}
-\newcounter{@monthofsubmission}
-\newcounter{@yearofsubmission}
-
-\setcounter{@dayofsubmission}{\the\day}
-\setcounter{@monthofsubmission}{\the\month}
-\setcounter{@yearofsubmission}{\the\year}
-
-\newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
-	\setcounter{@yearofsubmission}{#1}
-	\setcounter{@monthofsubmission}{#2}
-	\setcounter{@dayofsubmission}{#3}
+\newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}
+  \DTMsavenoparsedate{@dateofsubmission}{#1}{#2}{#3}{-1}
 }
 
 % Internship Report Commands
@@ -219,7 +209,7 @@ This work is published under the conditions of the
 \rule{0mm}{1mm}
 \vspace*{75mm}
 \begin{center}
-\textsf{\copyright\ Copyright\ \arabic{@yearofsubmission}\ \@author}
+\textsf{\copyright\ Copyright\ \DTMfetchyear{@dateofsubmission} \@author}
 \end{center}
 \vspace{8mm}
 \@makelicense
@@ -301,8 +291,7 @@ This work is published under the conditions of the
 		\par
 		\vspace{10mm}
 		\noindent
-		%\@placeofstudy, am \formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}
-		\@placeofstudy, am \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
+		\@placeofstudy, am \DTMusedate{@dateofsubmission}
 		\par
 		\vspace{12mm}
 		\noindent
@@ -325,9 +314,7 @@ This work is published under the conditions of the
 		\par
 		\vspace{10mm}
 		\noindent
-		%\@placeofstudy, \the\year-\leadingzero{\month}-\leadingzero{\day} %http://de.wikibooks.org/wiki/LaTeX-W%F6rterbuch:_today 
-		%\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
-		\@placeofstudy, \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
+		\@placeofstudy, \DTMusedate{@dateofsubmission}
 		\par
 		\vspace{12mm}
 		\noindent
