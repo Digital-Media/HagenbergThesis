@@ -12,9 +12,8 @@
 
 %% This is to be loaded from within a .sty file, thus no \makeatletter ... \makeatother needed!
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Definitions migrated from 'hgbthesis.cls'
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Bachelor Thesis --------------------------------------------------------------
 
 \newcommand{\@bachelortitlefinal}{
 	% use language switch to add english term
@@ -26,7 +25,7 @@
 	\@addspaces{BACHELORARBEIT} \space (\@addspaces{EXPOS{\`E}})%
 }
 
-\newcommand{\@makebachelortitle}{%
+\newcommand{\@makebachelortitlepage}{%
 \begin{titlepage}%
 	\begin{german}
 		\rule{0mm}{1mm}%
@@ -63,6 +62,8 @@
 \end{titlepage}%
 }
 
+%% Master Thesis --------------------------------------------------------------
+
 \newcommand{\@mastertitlefinal}{
 	% use language switch to add english term
 	\@addspaces{MASTERARBEIT}%
@@ -73,7 +74,7 @@
 	\@addspaces{MASTERARBEIT} \space (\@addspaces{EXPOS{\`E}})%
 }
 
-\newcommand{\@makemastertitle}{%
+\newcommand{\@makemastertitlepage}{%
 \begin{titlepage}%
 	\begin{german}
 		\rule{0mm}{1mm}%
@@ -111,7 +112,9 @@
 \end{titlepage}%
 }
 
-\newcommand{\@makediplomatitle}{%
+%% Diploma Thesis --------------------------------------------------------------
+
+\newcommand{\@makediplomatitlepage}{%
 \begin{titlepage}%
 	\begin{german}
 		\rule{0mm}{1mm}
@@ -145,7 +148,9 @@
 \end{titlepage}%
 }
 
-\newcommand{\@makeinternshiptitle}{%
+%% Internship Report --------------------------------------------------------------
+
+\newcommand{\@makeinternshiptitlepage}{%
 \begin{titlepage}%
 	\begin{german}
 		\rule{0mm}{1mm}
@@ -181,5 +186,4 @@
 \end{titlepage}%
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

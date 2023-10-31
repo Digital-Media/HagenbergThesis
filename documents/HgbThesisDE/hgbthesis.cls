@@ -345,7 +345,7 @@ This work is published under the conditions of the
 %% Assembly of title pages ----------------------------------------------------
 
 \renewcommand{\@bachelortitlepages}{
-	\@makebachelortitle%
+	\@makebachelortitlepage%
 	\ifthenelse{\boolean{hgb@isProposal}}%
 		{%	thesis proposal:
 			\@proposalsetup%
@@ -361,7 +361,7 @@ This work is published under the conditions of the
 }
 
 \renewcommand{\@mastertitlepages}{
-	\@makemastertitle
+	\@makemastertitlepage
 	\ifthenelse{\boolean{hgb@isProposal}}%
 		{%	thesis proposal:
 			\@proposalsetup%
@@ -377,7 +377,7 @@ This work is published under the conditions of the
 }
 
 \renewcommand{\@diplomatitlepages}{
-	\@makediplomatitle
+	\@makediplomatitlepage
 	%\ifthenelse{\equal{\@advisor}{}}%
 			%{}{\@advisorpage}%
 	\@advisorpage
@@ -386,7 +386,7 @@ This work is published under the conditions of the
 }
 
 \renewcommand{\@internshiptitlepages}{
-	\@makeinternshiptitle
+	\@makeinternshiptitlepage
 	\@companypage
 	\@copyrightpage
 	\@declarationpage
