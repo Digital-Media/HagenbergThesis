@@ -24,7 +24,8 @@
 \newcommand{\@diplomatitlepages}{}
 \newcommand{\@bachelortitlepages}{}
 \newcommand{\@internshiptitlepages}{}
-\newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
+%\newcommand{\hgb@makefrontpages}{\@mastertitlepages}  %Default: Master's thesis
+%\newcommand{\hgb@makefrontpages}{\errmessage{hgbthesis: *** makefrontpages command undefined! ***}}
 
 \newboolean{@hgbisproposal}
 \setboolean{@hgbisproposal}{false}
@@ -33,10 +34,11 @@
 
 %% Handling class options --------------------------------------------------------------
 
-\DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
-\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
-\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
-\DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
+\DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
+\DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
+\DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
+\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}
+
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 \DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor' or 'master' option
 % pass all other options to hgb.sty
@@ -155,14 +157,7 @@
   }\negthinspace%
 }
 
-
-%% Commands for Creating the Title Pages --------------------------------------
-
-\input{hgbtitlepages} %% load setup for various title pages from 'hgbtitlepages.tex'
-
-
-
-% Copyright and License Page --------------------------------------------------
+% Default Copyright and License Page --------------------------------------------------
 
 \newcommand{\strictlicense}{%
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
@@ -215,33 +210,7 @@ This work is published under the conditions of the
 \@makelicense
 }
 
-
-%% Company Page for Internship Report -----------------------------------------
-
-\newcommand{\@companypage}{%
-\newpage
-\setcounter{page}{2}
-\thispagestyle{plain}
-\rule{0mm}{1mm}
-\begin{center}
-\vspace{25mm} 
-{Praktikumsstelle:}
-\\
-\vspace{3mm}
-{\Large\sf\@companyName\\ \mbox{}}
-\\
-{\sf \@companyUrl}
-\\
-\vspace{45mm} 
-{Kontaktperson:}
-\\
-\vspace{3mm}
-{\Large\sf\@advisor\\ \mbox{}}
-\end{center}
-}
-
-
-%% Advisor Page ----------------------------------------
+%% Default Advisor Page ----------------------------------------
 
 \newcommand{\@advisorheaderfinal}{
 	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
@@ -274,9 +243,7 @@ This work is published under the conditions of the
 		}
 }
 
-%% Declaration Pages in German and English ------------------------------------
-
-% German
+%% Default Declaration Pages in German and English ------------------------------------
 
 \newcommand{\@declarationpageDe}{%
 	\begin{german}
@@ -298,10 +265,6 @@ This work is published under the conditions of the
 		\@author
 	\end{german}
 }
-
-% English
-
-\newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
 
 \newcommand{\@declarationpageEn}{%
 	\begin{english}
@@ -329,54 +292,19 @@ This work is published under the conditions of the
 }
 
 
-%% Assembly of title pages ----------------------------------------------------
+%% Default arrangement of front pages (may be redefined by theme styles) -----------------------------------
 
-\renewcommand{\@bachelortitlepages}{
-	\@makebachelortitlepage%
-	\ifthenelse{\boolean{@hgbisproposal}}%
-		{%	thesis proposal:
-			%\@proposalsetup%
+\newcommand{\hgb@makefrontpages}{
+	\@maketitlepage%  
+	\ifthenelse{\boolean{@hgbisproposal}}
+    {% proposal
 			\@advisorpage%
-			%no copyright page for proposals
-			%no declaration page for proposals
-		}%			
-		{%	final thesis:
+			%no copyright/declaration page for proposals
+		}{% final document
 			\@advisorpage%
 			\@copyrightpage%
 			\@declarationpage%
 		}%
-}
-
-\renewcommand{\@mastertitlepages}{
-	\@makemastertitlepage
-	\ifthenelse{\boolean{@hgbisproposal}}%
-		{%	thesis proposal:
-			%\@proposalsetup%
-			\@advisorpage%
-			%no copyright page for proposals
-			%no declaration page for proposals
-		}%			
-		{%	final thesis:
-			\@advisorpage%
-			\@copyrightpage%
-			\@declarationpage%
-		}%
-}
-
-\renewcommand{\@diplomatitlepages}{
-	\@makediplomatitlepage
-	%\ifthenelse{\equal{\@advisor}{}}%
-			%{}{\@advisorpage}%
-	\@advisorpage
-	\@copyrightpage
-	\@declarationpage
-}
-
-\renewcommand{\@internshiptitlepages}{
-	\@makeinternshiptitlepage
-	\@companypage
-	\@copyrightpage
-	\@declarationpage
 }
 
 \newcommand{\@warnmultipleauthors}%
@@ -395,7 +323,7 @@ This work is published under the conditions of the
 			pdfkeywords={},
 			pageanchor=false	% disable hyperref page anchors in frontmatter pages
 	}%
-	\@maketitlepages
+	\hgb@makefrontpages
 	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
 }
 
@@ -407,5 +335,7 @@ This work is published under the conditions of the
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
+
+
 
 \endinput
