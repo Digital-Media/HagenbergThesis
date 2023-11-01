@@ -20,11 +20,6 @@
 %% Commands for Title Pages (used in class options) ---------------------------
 
 \newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
-\newcommand{\@mastertitlepages}{}
-\newcommand{\@diplomatitlepages}{}
-\newcommand{\@bachelortitlepages}{}
-\newcommand{\@internshiptitlepages}{}
-\newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
 
 \newboolean{@hgbisproposal}
 \setboolean{@hgbisproposal}{false}
@@ -33,12 +28,14 @@
 
 %% Handling class options --------------------------------------------------------------
 
-\DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
-\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
-\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
-\DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
+\DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
+\DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
+\DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
+\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}
+
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 \DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor' or 'master' option
+
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
@@ -87,9 +84,9 @@
 }
 
 \newcommand{\makelogo}[0]{%
-\ifthenelse{\equal{\@logofile}{}}%
-	{\vspace*{30mm}}%
-	{\includegraphics[height=30mm]{\@logofile}}%
+\ifthenelse{\equal{\@logofile}{}}%	check if \@logofile is empty (unspecified)
+	{\vspace*{30mm}}%			skip logo
+	{\includegraphics[height=30mm]{\@logofile}}%	insert logo
 }
 
 % Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
@@ -124,29 +121,7 @@
   \DTMsavenoparsedate{@dateofsubmission}{#1}{#2}{#3}{-1}
 }
 
-% Internship Report Commands
-
-\newcommand{\@companyName}{\@MissingArg{Company not specified!}}
-\newcommand{\companyName}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
-}
-
-\newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
-\newcommand{\companyUrl}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
-}
-
-\newcommand{\companyPhone}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\companyPhone' is not supported any longer.}
-}
-
 %% ----------------------------------------------------------------------------
-
-\newcommand{\@license}{\@MissingArg{License information is missing!}}
-\newcommand{\license}[1]{%
-	\renewcommand{\@license}{#1}
-}
-
 
 %% dirty trick: adds blank space after each letter (https://stackoverflow.com/a/3951837)
 \newcommand{\@addspaces}[1]{%  
@@ -155,20 +130,20 @@
   }\negthinspace%
 }
 
+% Default Copyright and License Page --------------------------------------------------
 
-%% Commands for Creating the Title Pages --------------------------------------
-
-\input{hgbtitlepages} %% load setup for various title pages from 'hgbtitlepages.tex'
-
-
-
-% Copyright and License Page --------------------------------------------------
+\newcommand{\@license}{\@MissingArg{License information is missing!}}
+\newcommand{\license}[1]{%
+	\renewcommand{\@license}{#1}
+}
 
 \newcommand{\strictlicense}{%
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
 	{\license{Alle Rechte vorbehalten}}%
 	{\license{All Rights Reserved}}
 }
+
+% ----------------
 
 \newcommand{\@ccLicenseAt}{%
 Diese Arbeit wird unter den Bedingungen der 
@@ -202,6 +177,8 @@ This work is published under the conditions of the
 	\fi
 }
 
+% ----------------
+
 \newcommand{\@copyrightpage}{%
 \newpage
 %\setcounter{page}{2}
@@ -215,33 +192,7 @@ This work is published under the conditions of the
 \@makelicense
 }
 
-
-%% Company Page for Internship Report -----------------------------------------
-
-\newcommand{\@companypage}{%
-\newpage
-\setcounter{page}{2}
-\thispagestyle{plain}
-\rule{0mm}{1mm}
-\begin{center}
-\vspace{25mm} 
-{Praktikumsstelle:}
-\\
-\vspace{3mm}
-{\Large\sf\@companyName\\ \mbox{}}
-\\
-{\sf \@companyUrl}
-\\
-\vspace{45mm} 
-{Kontaktperson:}
-\\
-\vspace{3mm}
-{\Large\sf\@advisor\\ \mbox{}}
-\end{center}
-}
-
-
-%% Advisor Page ----------------------------------------
+%% Default Advisor Page ----------------------------------------
 
 \newcommand{\@advisorheaderfinal}{
 	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
@@ -256,7 +207,7 @@ This work is published under the conditions of the
 }
 
 \newcommand{\@advisorpage}{%
-	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor not defined 
+	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor is undefined 
 		{}{%
 		\newpage
 		\setcounter{page}{2}
@@ -274,15 +225,12 @@ This work is published under the conditions of the
 		}
 }
 
-%% Declaration Pages in German and English ------------------------------------
+%% Default Declaration Pages in German and English ------------------------------------
 
-% German
-
-\newcommand{\@declarationpageDe}{%
+\newcommand{\@declarationpageDe}{% tandardfassung der FH-OOe ab 04.04.2012
 	\begin{german}
 		\chapter{Erkl\"arung}
 		\noindent
-		%Standardfassung der FH-OOe ab 04.04.2012:
 		Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
 		andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
 		solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen 
@@ -298,10 +246,6 @@ This work is published under the conditions of the
 		\@author
 	\end{german}
 }
-
-% English
-
-\newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
 
 \newcommand{\@declarationpageEn}{%
 	\begin{english}
@@ -328,61 +272,26 @@ This work is published under the conditions of the
 	{\@declarationpageEn}
 }
 
+%% Default arrangement of thesis front pages (may be redefined by theme styles) -----------------------------------
 
-%% Assembly of title pages ----------------------------------------------------
-
-\renewcommand{\@bachelortitlepages}{
-	\@makebachelortitlepage%
-	\ifthenelse{\boolean{@hgbisproposal}}%
-		{%	thesis proposal:
-			%\@proposalsetup%
+\newcommand{\hgb@makefrontpages}{
+	\@maketitlepage%  
+	\ifthenelse{\boolean{@hgbisproposal}}
+    {% proposal
 			\@advisorpage%
-			%no copyright page for proposals
-			%no declaration page for proposals
-		}%			
-		{%	final thesis:
+			%no copyright/declaration page for proposals
+		}{% final document
 			\@advisorpage%
 			\@copyrightpage%
 			\@declarationpage%
 		}%
-}
-
-\renewcommand{\@mastertitlepages}{
-	\@makemastertitlepage
-	\ifthenelse{\boolean{@hgbisproposal}}%
-		{%	thesis proposal:
-			%\@proposalsetup%
-			\@advisorpage%
-			%no copyright page for proposals
-			%no declaration page for proposals
-		}%			
-		{%	final thesis:
-			\@advisorpage%
-			\@copyrightpage%
-			\@declarationpage%
-		}%
-}
-
-\renewcommand{\@diplomatitlepages}{
-	\@makediplomatitlepage
-	%\ifthenelse{\equal{\@advisor}{}}%
-			%{}{\@advisorpage}%
-	\@advisorpage
-	\@copyrightpage
-	\@declarationpage
-}
-
-\renewcommand{\@internshiptitlepages}{
-	\@makeinternshiptitlepage
-	\@companypage
-	\@copyrightpage
-	\@declarationpage
 }
 
 \newcommand{\@warnmultipleauthors}%
 {\PackageWarning{hagenberg-thesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
 
 % Add PDF meta data and create title pages
+
 \renewcommand{\maketitle}{	%replace standard LaTeX-command
 	\def\and{\@warnmultipleauthors}% suppress \and inside \author{..}
 	\renewcommand{\thanks}[1]{}% suppress \thanks{..} inside \author{..}
@@ -395,7 +304,7 @@ This work is published under the conditions of the
 			pdfkeywords={},
 			pageanchor=false	% disable hyperref page anchors in frontmatter pages
 	}%
-	\@maketitlepages
+	\hgb@makefrontpages
 	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
 }
 
@@ -407,5 +316,7 @@ This work is published under the conditions of the
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
+
+
 
 \endinput

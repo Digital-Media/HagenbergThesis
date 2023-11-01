@@ -1,0 +1,101 @@
+%% hgbtheme-bachelor.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgbtheme-internship}[2023/10/26]%%AUTO
+
+%% This is a 'theme' file which specifies the layout and arrangement of the
+%% document's front pages.
+
+% required parameters:
+  % \@titlepagefont
+  % \@programtype
+  % \@programname
+  % \@placeofstudy
+  % @dateofsubmission
+  % @hgbisproposal (boolean)
+
+% Specific Internship Report Parameters (to be specified by author in main document):
+
+\newcommand{\@companyName}{\@MissingArg{Company not specified!}}
+\newcommand{\companyName}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
+}
+
+\newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
+\newcommand{\companyUrl}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
+}
+
+%% Arrangement of front pages:
+
+\renewcommand{\hgb@makefrontpages}{
+	\@maketitlepage%
+	\@companypage%
+	\@copyrightpage%
+	\@declarationpage%
+}
+
+%% REQUIRED - Specifies the contents and layout of the title page:
+
+\newcommand{\@maketitlepage}{%
+\begin{titlepage}%
+	\begin{german}
+		\rule{0mm}{1mm}
+		\vspace*{0mm}
+		\begin{center}%
+			\@titlepagefont %\normalfont
+			\setlength{\unitlength}{1cm}
+			\parbox[c][5cm][c]{12cm}{%
+				\centering\LARGE\bfseries%
+				\setlength{\baselineskip}{25pt}%
+				\@title%
+			}
+			\vskip 15mm%
+			{\large\@author}%{\large\scshape\@author}%
+			\vskip 15mm%
+			\makelogo%
+			\vskip 15mm%
+			{\Large\uppercase{\@addspaces{PRAKTIKUMSBERICHT}}}%
+			\vskip 4mm%
+			%{\large Nr.~\@thesisnumber}
+			%\vskip 4mm%
+			{\large eingereicht am} \vskip 1mm {\@programtype}%
+			\vskip 4mm%
+			{\large\@programname}%
+			\vskip 4mm%
+			{\large in \@placeofstudy}%
+			\vskip 16mm%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
+		\end{center}%
+		\vfil%
+	\end{german}
+\end{titlepage}%
+}
+
+%% Company Page for Internship Report -----------------------------------------
+
+\newcommand{\@companypage}{%
+\newpage
+\setcounter{page}{2}
+\thispagestyle{plain}
+\rule{0mm}{1mm}
+\begin{center}
+\vspace{25mm} 
+{Praktikumsstelle:}
+\\
+\vspace{3mm}
+{\Large\sf\@companyName\\ \mbox{}}
+\\
+{\sf \@companyUrl}
+\\
+\vspace{45mm} 
+{Kontaktperson:}
+\\
+\vspace{3mm}
+{\Large\sf\@advisor\\ \mbox{}}
+\end{center}
+}
