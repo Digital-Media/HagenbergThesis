@@ -18,7 +18,7 @@
 
 % required parameters:
   % \@titlepagefont
-  % hgb@isProposal (boolean)
+  % @hgbisproposal (boolean)
   % \@programtype
   % \@programname
   % \@placeofstudy
@@ -44,7 +44,7 @@
 			\vskip 15mm%
 			%
       {\Large \@addspaces{BACHELORARBEIT}%
-        \ifthenelse{\boolean{hgb@isProposal}}{\space\space(\@addspaces{EXPOS{\`E}})}{}%
+        \ifthenelse{\boolean{@hgbisproposal}}{\space\space(\@addspaces{EXPOS{\`E}})}{}%
       }
 			\vskip 4mm%
 			%
@@ -83,7 +83,7 @@
 			\vskip 15mm%
 			%
 			{\Large \@addspaces{MASTERARBEIT}%
-        \ifthenelse{\boolean{hgb@isProposal}}{\space\space(\@addspaces{EXPOS{\`E}})}{}%
+        \ifthenelse{\boolean{@hgbisproposal}}{\space\space(\@addspaces{EXPOS{\`E}})}{}%
       }
 			%
 			\vskip 4mm%

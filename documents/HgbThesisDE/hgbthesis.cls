@@ -26,8 +26,8 @@
 \newcommand{\@internshiptitlepages}{}
 \newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
 
-\newboolean{hgb@isProposal}
-\setboolean{hgb@isProposal}{false}
+\newboolean{@hgbisproposal}
+\setboolean{@hgbisproposal}{false}
 
 \newcommand{\@titlepagefont}{\sffamily}
 
@@ -38,7 +38,7 @@
 \DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
 \DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-\DeclareOption{proposal}{\setboolean{hgb@isProposal}{true}}	% use with 'bachelor' or 'master' option
+\DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor' or 'master' option
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
@@ -113,7 +113,7 @@
 }
 
 \AtBeginDocument{
-  \ifthenelse{\boolean{hgb@isProposal}}{\@proposalsetup}{}%
+  \ifthenelse{\boolean{@hgbisproposal}}{\@proposalsetup}{}%
 }
 
 % Submission Date
@@ -264,7 +264,7 @@ This work is published under the conditions of the
 		\rule{0mm}{1mm}
 		\vspace{90mm}
 		\begin{center}
-			\ifthenelse{\boolean{hgb@isProposal}}%
+			\ifthenelse{\boolean{@hgbisproposal}}%
 				{\@advisorheaderproposal:}%
 				{\@advisorheaderfinal:}%
 			\\
@@ -333,7 +333,7 @@ This work is published under the conditions of the
 
 \renewcommand{\@bachelortitlepages}{
 	\@makebachelortitlepage%
-	\ifthenelse{\boolean{hgb@isProposal}}%
+	\ifthenelse{\boolean{@hgbisproposal}}%
 		{%	thesis proposal:
 			%\@proposalsetup%
 			\@advisorpage%
@@ -349,7 +349,7 @@ This work is published under the conditions of the
 
 \renewcommand{\@mastertitlepages}{
 	\@makemastertitlepage
-	\ifthenelse{\boolean{hgb@isProposal}}%
+	\ifthenelse{\boolean{@hgbisproposal}}%
 		{%	thesis proposal:
 			%\@proposalsetup%
 			\@advisorpage%
