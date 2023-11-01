@@ -63,16 +63,6 @@
 
 %% Master Thesis --------------------------------------------------------------
 
-\newcommand{\@mastertitlefinal}{
-	% use language switch to add english term
-	\@addspaces{MASTERARBEIT}%
-}
-
-\newcommand{\@mastertitleproposal}{
-	% use language switch to add english term
-	\@addspaces{MASTERARBEIT} \space (\@addspaces{EXPOS{\`E}})%
-}
-
 \newcommand{\@makemastertitlepage}{%
 \begin{titlepage}%
 	\begin{german}
@@ -92,9 +82,9 @@
 			\makelogo%
 			\vskip 15mm%
 			%
-			\ifthenelse{\boolean{hgb@isProposal}}%
-					{\Large{\@mastertitleproposal}}%
-					{\Large{\@mastertitlefinal}}%
+			{\Large \@addspaces{MASTERARBEIT}%
+        \ifthenelse{\boolean{hgb@isProposal}}{\space\space(\@addspaces{EXPOS{\`E}})}{}%
+      }
 			%
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
@@ -130,7 +120,7 @@
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Diplomarbeit}}}%
+			{\Large\uppercase{\@addspaces{DIPLOMARBEIT}}}%
 			\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
@@ -165,7 +155,7 @@
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Praktikumsbericht}}}%
+			{\Large\uppercase{\@addspaces{PRAKTIKUMSBERICHT}}}%
 			\vskip 4mm%
 			%{\large Nr.~\@thesisnumber}
 			%\vskip 4mm%
