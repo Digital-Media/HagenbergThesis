@@ -10,7 +10,7 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}      % PDF/A output
 
-\documentclass[internship,german,smartquotes]{hgbthesis}
+\documentclass[master,german,smartquotes,proposal]{hgbthesis}
 % Zulässige Optionen in [..]: 
 %    Typ der Arbeit: 'master' (default), 'bachelor', 'diploma', 'internship'
 %		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
@@ -35,6 +35,7 @@
 \author{Alex A.\ Schlaumeier}
 \programname{Universal Computing}
 \institution{Fachhochschule Oberösterreich}
+\titlelanguage{english}
 
 %\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
 \programtype{Fachhochschul-Masterstudiengang}
@@ -45,12 +46,12 @@
 \advisor{Dr. Alois B.~Treuer} % optional
 
 % for internship - remove!!
-\companyName{%
-   Mogulovich International Media GmbH\\
-   Online Division\\
-   Hubertusgasse 3a, 1020 Wien
-}
-\companyUrl{www.mogul.at}
+%\companyName{%
+   %Mogulovich International Media GmbH\\
+   %Online Division\\
+   %Hubertusgasse 3a, 1020 Wien
+%}
+%\companyUrl{www.mogul.at}
 
 %\strictlicense % restriktive Lizenz anstatt Creative Commons (nicht empfohlen!)
 
@@ -63,7 +64,7 @@
 
 \include{front/vorwort} % Ein Vorwort ist optional
 \include{front/kurzfassung}		
-\include{front/abstract}			
+\include{front/abstract}
 
 %%%-----------------------------------------------------------------------------
 \mainmatter                             % Hauptteil (ab hier arab. Seitenzahlen)

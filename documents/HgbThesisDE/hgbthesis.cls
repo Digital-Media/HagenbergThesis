@@ -92,6 +92,16 @@
 
 % General Thesis Parameters
 
+ %% wilbur: check again, this should perhaps be a class option!
+\newcommand{\hgb@TitleLanguage}{\@MissingArg{Title language not specified!}}
+\newcommand{\titlelanguage}[1]{%
+  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
+    {\renewcommand{\hgb@TitleLanguage}{#1}}%
+    {\ClassError{hgbthesis}{Unknown title language: '#1' (use 'german' or 'english')}{}}
+}
+\titlelanguage{german}  %% set title language to german by default (for backward compatibility only)
+
+
 \newcommand{\@institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@institution}{#1}}
@@ -127,6 +137,10 @@
 	{\vspace*{30mm}}%			skip logo
 	{\includegraphics[height=30mm]{\@logofile}}%	insert logo
 }
+
+% Variables to be used in theme files:
+
+\newcommand{\hgb@ThesisName}
 
 % Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
 

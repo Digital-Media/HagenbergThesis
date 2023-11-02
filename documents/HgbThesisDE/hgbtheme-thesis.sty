@@ -20,6 +20,12 @@
 
 %% OPTIONAL - Modifies the arrangement of various front pages:
 
+\renewcommand{\hgb@ThesisName}{
+  \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+      {\hgbThesisNameDE}%
+      {\hgbThesisNameEN}
+}
+  
 \renewcommand{\hgb@makefrontpages}{  %% rename without @ to indicate it is documented
   \@maketitlepage%
 	\ifthenelse{\boolean{@hgbisproposal}}%
@@ -55,7 +61,8 @@
 			\makelogo%
 			\vskip 15mm%
 			%
-      \ifthenelse{\boolean{@hgbisproposal}}%
+     
+      \ifthenelse{\boolean{@hgbisproposal}}%  %% wilbur: check why this is not working with \hgb@ThesisName!!!
         {\Large \@addspaces{\MakeUppercase{\hgbThesisNameDE\space (\hgbProposalNameDE)}}}%
         {\Large \@addspaces{\MakeUppercase{\hgbThesisNameDE}}}%
       %
