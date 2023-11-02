@@ -26,7 +26,22 @@
 
 \newcommand{\@titlepagefont}{\sffamily}
 
-%% Handling class options --------------------------------------------------------------
+%% Standard title designations -------------------------------------------------
+
+\newcommand{\hgbBachelorThesisNameDE}{Bachelorarbeit}
+\newcommand{\hgbBachelorThesisNameEN}{Bachelor Thesis}
+
+\newcommand{\hgbMasterThesisNameDE}{Masterarbeit}
+\newcommand{\hgbMasterThesisNameEN}{Master Thesis}
+
+\newcommand{\hgbDiplomaThesisNameDE}{Diplomarbeit}
+\newcommand{\hgbDiplomaThesisNameEN}{Diploma Thesis}
+
+\newcommand{\hgbProposalNameDE}{Expos{\`e}}
+\newcommand{\hgbProposalNameEN}{Proposal}
+
+
+%% Handling class options ------------------------------------------------------
 
 \DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
 \DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
@@ -124,11 +139,12 @@
 %% ----------------------------------------------------------------------------
 
 %% dirty trick: adds blank space after each letter (https://stackoverflow.com/a/3951837)
-\newcommand{\@addspaces}[1]{%  
-  \@tfor\letter:=#1\do{%
-    \letter\thinspace%	%\space
-  }\negthinspace%
-}
+% REPLACED by \so command from 'soul' package!
+%\newcommand{\@addspaces}[1]{%  
+  %\@tfor\letter:=#1\do{%
+    %\letter\thinspace%	%\space
+  %}\negthinspace%
+%}
 
 % Default Copyright and License Page --------------------------------------------------
 
@@ -227,7 +243,7 @@ This work is published under the conditions of the
 
 %% Default Declaration Pages in German and English ------------------------------------
 
-\newcommand{\@declarationpageDe}{% tandardfassung der FH-OOe ab 04.04.2012
+\newcommand{\@declarationpageDe}{% Standardfassung der FH-OOe ab 04.04.2012
 	\begin{german}
 		\chapter{Erkl\"arung}
 		\noindent

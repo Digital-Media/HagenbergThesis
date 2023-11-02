@@ -55,9 +55,10 @@
 			\makelogo%
 			\vskip 15mm%
 			%
-      {\Large \@addspaces{MASTERARBEIT}%
-        \ifthenelse{\boolean{@hgbisproposal}}{\space\space(\@addspaces{EXPOS{\`E}})}{}%
-      }
+      \ifthenelse{\boolean{@hgbisproposal}}%
+        {\Large \@addspaces{\MakeUppercase{\hgbMasterThesisNameDE\space (\hgbProposalNameDE)}}}%
+        {\Large \@addspaces{\MakeUppercase{\hgbMasterThesisNameDE}}}%
+      %
 			\vskip 4mm%
 			%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%

@@ -18,7 +18,7 @@
   % @dateofsubmission
   % @hgbisproposal (boolean)
 
-% Specific Internship Report Parameters (to be specified by author in main document):
+% Specific Internship Report Parameters (to be specified by author in main document): - should this be here??
 
 \newcommand{\@companyName}{\@MissingArg{Company not specified!}}
 \newcommand{\companyName}[1]{%
@@ -29,6 +29,8 @@
 \newcommand{\companyUrl}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
 }
+
+\newcommand{\hgbInternshipReportNameDE}{Praktikumsbericht}
 
 %% Arrangement of front pages:
 
@@ -59,15 +61,13 @@
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{PRAKTIKUMSBERICHT}}}%
+      {\Large \@addspaces{\MakeUppercase{\hgbInternshipReportNameDE}}}
 			\vskip 4mm%
-			%{\large Nr.~\@thesisnumber}
-			%\vskip 4mm%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
-			{\large in \@placeofstudy}%
+			{\large der \@institution\ in \@placeofstudy}%
 			\vskip 16mm%
       {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
 		\end{center}%

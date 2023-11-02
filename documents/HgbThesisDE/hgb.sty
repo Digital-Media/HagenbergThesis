@@ -30,7 +30,6 @@
 
 %% Required Packages ----------------------------------------------------------
 
-
 \RequirePackage{lmodern}				% use Latin Modern Fonts
 \RequirePackage{cmap}						% make generated PDF files "searchable and copyable"
 \RequirePackage[utf8]{inputenc}
@@ -105,6 +104,10 @@
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
 \RequirePackage{marvosym}
 \providecommand{\euro}[0]{\EUR\xspace}  % for compatibility with 'eurosym' macro
+
+\RequirePackage{soul}           % for inserting additional space between letters
+  \let\@addspaces\so            % rename soul's \so command to \letterspace
+  \let\so\relax                 % shadow \so command (already defined in hgbabbrev.sty)
 
 \RequirePackage{graphicx}
 \RequirePackage[percent]{overpic}	% to allow text/graphics overlays on pictures
@@ -330,7 +333,6 @@
 \RequirePackage{booktabs}
 \RequirePackage{longtable}
 \RequirePackage{multirow}
-
 
 %% Prevent subfigure package from being loaded -------------------------------
 
