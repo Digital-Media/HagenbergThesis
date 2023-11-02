@@ -28,6 +28,9 @@
 
 %% Standard title designations -------------------------------------------------
 
+\newcommand{\hgbThesisNameDE}{UNDEFINED}
+\newcommand{\hgbThesisNameEN}{UNDEFINED}
+
 \newcommand{\hgbBachelorThesisNameDE}{Bachelorarbeit}
 \newcommand{\hgbBachelorThesisNameEN}{Bachelor Thesis}
 
@@ -43,10 +46,31 @@
 
 %% Handling class options ------------------------------------------------------
 
-\DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
-\DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
-\DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
-\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}
+\DeclareOption{bachelor}{
+  \renewcommand{\hgbThesisNameDE}{Bachelorarbeit}
+  \renewcommand{\hgbThesisNameEN}{Bachelor Thesis}
+  \AtEndOfPackage{\RequirePackage{hgbtheme-thesis}}
+}
+
+\DeclareOption{master}{
+  \renewcommand{\hgbThesisNameDE}{Masterarbeit}
+  \renewcommand{\hgbThesisNameEN}{Master Thesis}
+  \AtEndOfPackage{\RequirePackage{hgbtheme-thesis}}
+}
+
+\DeclareOption{diploma}{
+  \renewcommand{\hgbThesisNameDE}{Diplomarbeit}
+  \renewcommand{\hgbThesisNameEN}{Diploma Thesis}
+  \AtEndOfPackage{\RequirePackage{hgbtheme-thesis}}
+}
+
+\DeclareOption{internship}{
+  \AtEndOfPackage{\RequirePackage{hgbtheme-internship}}
+ }
+
+\DeclareOption{custom}{
+  \AtEndOfPackage{\RequirePackage{hgbtheme-custom}}
+}
 
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 \DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor' or 'master' option
