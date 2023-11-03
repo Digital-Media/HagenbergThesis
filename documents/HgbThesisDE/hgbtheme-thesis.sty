@@ -95,7 +95,7 @@
 	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor is undefined 
 		{}{%
 		\newpage
-		\setcounter{page}{2}
+		%\setcounter{page}{2}
 		\thispagestyle{plain}
 		\rule{0mm}{1mm}
 		\vspace{90mm}
@@ -134,17 +134,6 @@
 	{\begin{english}\@ccLicenseEN\end{english}} % english CC license text (default)
 }
 
-%% The supplied text is formatted either justified or centered, depending on its length
-\newcommand{\@JustifyOrCenter}[1]{
-	\sbox\@tempboxa{#1}%
-	\ifdim \wd\@tempboxa >\hsize
-		\begin{sloppypar}\noindent#1\end{sloppypar}  % long text, format as block
-	\else
-		\global \@minipagefalse
-		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%  % short text, format centered
-	\fi
-}
-
 \renewcommand{\@copyrightpage}{%
   \newpage
   \thispagestyle{plain}
@@ -154,9 +143,8 @@
   \textsf{\copyright\ Copyright\ \DTMfetchyear{@dateofsubmission} \@author}
   \end{center}
   \vspace{8mm}
-  \@JustifyOrCenter{\@ccLicense}
+  \JustifyOrCenter{\@ccLicense} % defined in hgb.sty
 }
-
 
 %% Default Declaration Page ----------------------------------------
 
