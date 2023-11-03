@@ -140,7 +140,11 @@
 
 % Variables to be used in theme files:
 
-\newcommand{\hgb@ThesisName}
+\newcommand{\hgb@ThesisName}{*** undefined ***}
+\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+  {\edef\hgb@ThesisName{\hgbThesisNameDE}}%     % we fully expand by \edef to make \MakeUppercase and \@addspaces work
+  {\edef\hgb@ThesisName{\hgbThesisNameEN}}
+
 
 % Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
 
@@ -197,7 +201,6 @@
 	{\license{All Rights Reserved}}
 }
 
-% ----------------
 
 \newcommand{\@ccLicenseAt}{%
 Diese Arbeit wird unter den Bedingungen der 
@@ -233,98 +236,98 @@ This work is published under the conditions of the
 
 % ----------------
 
-\newcommand{\@copyrightpage}{%
-\newpage
-%\setcounter{page}{2}
-\thispagestyle{plain}
-\rule{0mm}{1mm}
-\vspace*{75mm}
-\begin{center}
-\textsf{\copyright\ Copyright\ \DTMfetchyear{@dateofsubmission} \@author}
-\end{center}
-\vspace{8mm}
-\@makelicense
-}
+%\newcommand{\@copyrightpage}{%
+%\newpage
+%%\setcounter{page}{2}
+%\thispagestyle{plain}
+%\rule{0mm}{1mm}
+%\vspace*{75mm}
+%\begin{center}
+%\textsf{\copyright\ Copyright\ \DTMfetchyear{@dateofsubmission} \@author}
+%\end{center}
+%\vspace{8mm}
+%\@makelicense
+%}
 
-%% Default Advisor Page ----------------------------------------
+%%% Default Advisor Page ----------------------------------------
+%
+%\newcommand{\@advisorheaderfinal}{
+	%\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			%{Betreuung}%
+			%{Advisor}%
+%}
+%
+%\newcommand{\@advisorheaderproposal}{
+	%\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+			%{Betreuung (Vorschlag)}%
+			%{Proposed Advisor}%
+%}
+%
+%\newcommand{\@advisorpage}{%
+	%\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor is undefined 
+		%{}{%
+		%\newpage
+		%\setcounter{page}{2}
+		%\thispagestyle{plain}
+		%\rule{0mm}{1mm}
+		%\vspace{90mm}
+		%\begin{center}
+			%\ifthenelse{\boolean{@hgbisproposal}}%
+				%{\@advisorheaderproposal:}%
+				%{\@advisorheaderfinal:}%
+			%\\
+			%\vspace{3mm} 
+			%{\Large\sf \@advisor\\ \mbox{}}
+		%\end{center}
+		%}
+%}
 
-\newcommand{\@advisorheaderfinal}{
-	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-			{Betreuung}%
-			{Advisor}%
-}
-
-\newcommand{\@advisorheaderproposal}{
-	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-			{Betreuung (Vorschlag)}%
-			{Proposed Advisor}%
-}
-
-\newcommand{\@advisorpage}{%
-	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor is undefined 
-		{}{%
-		\newpage
-		\setcounter{page}{2}
-		\thispagestyle{plain}
-		\rule{0mm}{1mm}
-		\vspace{90mm}
-		\begin{center}
-			\ifthenelse{\boolean{@hgbisproposal}}%
-				{\@advisorheaderproposal:}%
-				{\@advisorheaderfinal:}%
-			\\
-			\vspace{3mm} 
-			{\Large\sf \@advisor\\ \mbox{}}
-		\end{center}
-		}
-}
-
-%% Default Declaration Pages in German and English ------------------------------------
-
-\newcommand{\@declarationpageDe}{% Standardfassung der FH-OOe ab 04.04.2012
-	\begin{german}
-		\chapter{Erkl\"arung}
-		\noindent
-		Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
-		andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
-		solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen 
-		Pr\"ufungsbeh\"orde vorgelegt.
-		Die vorliegende, gedruckte Arbeit ist mit dem elektronisch \"ubermittelten Textdokument identisch.
-		\par
-		\vspace{10mm}
-		\noindent
-		\@placeofstudy, am \DTMusedate{@dateofsubmission}
-		\par
-		\vspace{12mm}
-		\noindent
-		\@author
-	\end{german}
-}
-
-\newcommand{\@declarationpageEn}{%
-	\begin{english}
-		\chapter{Declaration}
-		\noindent
-		I hereby declare and confirm that this thesis is entirely the result of my own original work. 
-		Where other sources of information have been used, they have been indicated as such and properly 
-		acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
-		This printed copy is identical to the submitted electronic version.
-		\par
-		\vspace{10mm}
-		\noindent
-		\@placeofstudy, \DTMusedate{@dateofsubmission}
-		\par
-		\vspace{12mm}
-		\noindent
-		\@author
-	\end{english}
-}
-
-\newcommand{\@declarationpage}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\@declarationpageDe}%
-	{\@declarationpageEn}
-}
+%%% Default Declaration Pages in German and English ------------------------------------
+%
+%\newcommand{\@declarationpageDe}{% Standardfassung der FH-OOe ab 04.04.2012
+	%\begin{german}
+		%\chapter{Erkl\"arung}
+		%\noindent
+		%Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
+		%andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
+		%solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen 
+		%Pr\"ufungsbeh\"orde vorgelegt.
+		%Die vorliegende, gedruckte Arbeit ist mit dem elektronisch \"ubermittelten Textdokument identisch.
+		%\par
+		%\vspace{10mm}
+		%\noindent
+		%\@placeofstudy, am \DTMusedate{@dateofsubmission}
+		%\par
+		%\vspace{12mm}
+		%\noindent
+		%\@author
+	%\end{german}
+%}
+%
+%\newcommand{\@declarationpageEn}{%
+	%\begin{english}
+		%\chapter{Declaration}
+		%\noindent
+		%I hereby declare and confirm that this thesis is entirely the result of my own original work. 
+		%Where other sources of information have been used, they have been indicated as such and properly 
+		%acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
+		%This printed copy is identical to the submitted electronic version.
+		%\par
+		%\vspace{10mm}
+		%\noindent
+		%\@placeofstudy, \DTMusedate{@dateofsubmission}
+		%\par
+		%\vspace{12mm}
+		%\noindent
+		%\@author
+	%\end{english}
+%}
+%
+%\newcommand{\@declarationpage}{%
+%\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	%{\@declarationpageDe}%
+	%{\@declarationpageEn}
+%}
 
 %% Default arrangement of thesis front pages (may be redefined by theme styles) -----------------------------------
 
