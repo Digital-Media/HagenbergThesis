@@ -191,6 +191,17 @@
 \newcommand{\ShowParameter}[1]{\the#1\showthe#1} % to display TeX parameters
 %Beispiel: clubpenalty = \ShowParameter{\clubpenalty}
 
+% The supplied text is formatted either justified or centered, depending on its length
+% (modeled after internal \@makecaption macro).
+\newcommand{\JustifyOrCenter}[1]{
+	\sbox\@tempboxa{#1}%
+	\ifdim \wd\@tempboxa >\hsize
+		\begin{sloppypar}\noindent#1\end{sloppypar}  % long text, format as block
+	\else
+		\global \@minipagefalse
+		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%  % short text, format centered
+	\fi
+}
 
 %% Layout Settings ------------------------------------------------------------
 
