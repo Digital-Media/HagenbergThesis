@@ -3,7 +3,7 @@
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
-%% File encoding: ASCII
+%% File encoding: UTF-8
 
 %% Package Information --------------------------------------------------------
 
@@ -40,7 +40,7 @@
 \newcommand{\hgbDiplomaThesisNameDE}{Diplomarbeit}
 \newcommand{\hgbDiplomaThesisNameEN}{Diploma Thesis}
 
-\newcommand{\hgbProposalNameDE}{Expos{\`e}}
+\newcommand{\hgbProposalNameDE}{Exposè}
 \newcommand{\hgbProposalNameEN}{Proposal}
 
 
@@ -170,16 +170,19 @@
 }
 
 \newcommand{\cclicense}{% for backward compatibility, use \license{cc} instead
+  \ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cc} instead!}%
   \license{cc}%
  }
 
 \newcommand{\strictlicense}{% for backward compatibility, use \license{strict} instead
+  \ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strict} instead!}%
   \license{strict}%
  }
 
 % Command stubs for generating the document's front pages (to be redefined by theme styles):
 
 \providecommand{\hgb@makefrontpages}{\relax}  % TODO: throw errors if undefined!
+\providecommand{\@maketitlepage}{\relax}
 \providecommand{\@advisorpage}{\relax}
 \providecommand{\@copyrightpage}{\relax}
 \providecommand{\@declarationpage}{\relax}
@@ -187,7 +190,7 @@
 %% -----------------------
 
 \newcommand{\@warnmultipleauthors}%
-  {\ClassWarning{hgbthesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
+  {\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
 
 % Create title pages and add PDF meta data:
 

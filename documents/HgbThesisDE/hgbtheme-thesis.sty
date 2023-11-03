@@ -2,12 +2,12 @@
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
-%% File encoding: ASCII
+%% File encoding: UTF-8
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{hgbtheme-thesis}[2023/10/26]%%AUTO
 
-%% This is a 'theme' file which specifies the layout and arrangement of the
+%% This is a 'theme' file which specifies the layout and structure of the
 %% document's front pages.
 
 % required parameters:
@@ -35,13 +35,11 @@
 		}%
 }
 
-%% -----------------------
 
-%% REQUIRED - Specifies the contents and layout of the title page:
+%% Title page ---------------------------------------------------
 
-\newcommand{\@maketitlepage}{%
+\renewcommand{\@maketitlepage}{%
 \begin{titlepage}%
-	\begin{german}
 		\rule{0mm}{1mm}%
 		\vspace*{0mm}%
 		\begin{center}%
@@ -57,11 +55,15 @@
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%
-			%
-      {\Large \@addspaces{\MakeUppercase{\hgb@ThesisName}}%
-        \ifthenelse{\boolean{@hgbisproposal}}{\MakeUppercase{\space (\hgbProposalNameDE)}}{}%
-      }
-      %
+			% ---------------------------------
+      \ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+        {\def\tmp@ThesisName{\hgbThesisNameDE} % fully expand by \edef to make \MakeUppercase and \@addspaces work!
+         \def\tmp@ProposalName{\hgbProposalNameDE}}
+        {\def\tmp@ThesisName{\hgbThesisNameEN}
+         \def\tmp@ProposalName{\hgbProposalNameEN}}
+      {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
+        \ifthenelse{\boolean{@hgbisproposal}}{\space\space(\MakeUppercase{\tmp@ProposalName})}{}}
+      % ---------------------------------
 			\vskip 4mm%
 			%
 			{\large eingereicht am} \vskip 1mm {\@programtype}%
@@ -73,20 +75,19 @@
       {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
 		\end{center}%
 		\vfil%
-	\end{german}
 \end{titlepage}%
 }
 
 % Default Advisor Page ----------------------------------------
 
 \newcommand{\@advisorheaderfinal}{
-	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
 			{Betreuung}%
 			{Advisor}%
 }
 
 \newcommand{\@advisorheaderproposal}{
-	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
 			{Betreuung (Vorschlag)}%
 			{Proposed Advisor}%
 }
@@ -104,8 +105,8 @@
 				{\@advisorheaderproposal:}%
 				{\@advisorheaderfinal:}%
 			\\
-			\vspace{3mm} 
-			{\Large\sf \@advisor\\ \mbox{}}
+			\vspace{5mm} 
+      {\Large\sffamily\@advisor}
 		\end{center}
 		}
 }

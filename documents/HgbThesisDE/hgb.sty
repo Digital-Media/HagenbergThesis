@@ -2,7 +2,7 @@
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
-%% File encoding: ASCII
+%% File encoding: UTF-8
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{hgb}[2023/10/26]%%AUTO
@@ -25,7 +25,7 @@
 \DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{smartquotes}{\setboolean{hgb@SmartQuotesOn}{true}}
 \DeclareOption{noUpdateCheck}{\setboolean{hgb@noUpdateCheck}{true}}
-\DeclareOption*{\ClassWarning{hgb}{Unknown option '\CurrentOption'.}}
+\DeclareOption*{\PackageWarning{hgb}{Unknown option '\CurrentOption'.}}
 \ProcessOptions*
 
 %% Required Packages ----------------------------------------------------------

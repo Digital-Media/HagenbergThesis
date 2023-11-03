@@ -23,6 +23,8 @@
 \logofile{logo.pdf}       % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
+%\usepackage{hgbtheme-custom}
+
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
@@ -31,11 +33,12 @@
 % Angaben für die Titelei (Titelseite, Erklärung etc.)
 %%%-----------------------------------------------------------------------------
 
-\title{Partielle Lösungen zur allgemeinen Problematik}
+\title{Partielle Lösungen zur "allgemeinen" Problematik}
 \author{Alex A.\ Schlaumeier}
 \programname{Universal Computing}
 \institution{Fachhochschule Oberösterreich}
-\titlelanguage{english}
+
+%\titlelanguage{english} % specify the language used in front pages (default is the main laguage)
 
 %\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
 \programtype{Fachhochschul-Masterstudiengang}
@@ -53,7 +56,8 @@
 %}
 %\companyUrl{www.mogul.at}
 
-%\strictlicense % restriktive Lizenz anstatt Creative Commons (nicht empfohlen!)
+\license{cc}        % publish under Creative Commons License (recommended)
+%\license{strict}   % restrictive clause 
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)
