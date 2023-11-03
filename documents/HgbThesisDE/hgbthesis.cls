@@ -19,12 +19,12 @@
 
 %% Commands for Title Pages (used in class options) ---------------------------
 
-\newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
+% The document's main language, specified by a class option (passed to hgb.sty);
+\newcommand{\hgb@MainLanguage}{german}	
 
+% Boolean indication if this document is a proposal (true) or final thesis (false).
 \newboolean{@hgbisproposal}
 \setboolean{@hgbisproposal}{false}
-
-\newcommand{\@titlepagefont}{\sffamily}
 
 %% Standard title designations -------------------------------------------------
 
@@ -72,6 +72,8 @@
   \AtEndOfPackage{\RequirePackage{hgbtheme-custom}}
 }
 
+%% -------------
+
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 \DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor' or 'master' option
 
@@ -79,28 +81,17 @@
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
 
-
 %% Paper Options and Style File -----------------------------------------------
 
 \LoadClass[a4paper,11pt,oneside]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
- 
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\newcommand{\@titlepagefont}{\sffamily}
 
 
 %% Setup for Pages in the Front Matter ----------------------------------------
 
 % General Thesis Parameters
-
- %% wilbur: check again, this should perhaps be a class option!
-\newcommand{\hgb@TitleLanguage}{\@MissingArg{Title language not specified!}}
-\newcommand{\titlelanguage}[1]{%
-  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
-    {\renewcommand{\hgb@TitleLanguage}{#1}}%
-    {\ClassError{hgbthesis}{Unknown title language: '#1' (use 'german' or 'english')}{}}
-}
-\titlelanguage{german}  %% set title language to german by default (for backward compatibility only)
-
 
 \newcommand{\@institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
@@ -137,14 +128,6 @@
 	{\vspace*{30mm}}%			skip logo
 	{\includegraphics[height=30mm]{\@logofile}}%	insert logo
 }
-
-% Variables to be used in theme files:
-
-\newcommand{\hgb@ThesisName}{*** undefined ***}
-\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-  {\edef\hgb@ThesisName{\hgbThesisNameDE}}%     % we fully expand by \edef to make \MakeUppercase and \@addspaces work
-  {\edef\hgb@ThesisName{\hgbThesisNameEN}}
-
 
 % Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
 
