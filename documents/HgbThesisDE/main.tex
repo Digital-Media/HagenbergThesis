@@ -7,23 +7,21 @@
 % !TeX spellcheck = de_DE
 % !BIB program = biber
 
-\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
-\RequirePackage{hgbpdfa}      % PDF/A output
+\RequirePackage[utf8]{inputenc} % remove if using lualatex or xelatex!
+\RequirePackage{hgbpdfa}      	% generate PDF/A-compliant output
 
-\documentclass[master,german,smartquotes,proposal]{hgbthesis}
-% Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'master' (default), 'bachelor', 'diploma', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
+\documentclass[custom,english,smartquotes]{hgbthesis}
+% Supported options in [..]: 
+%    Type of thesis: 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
+%		 Thesis proposal: 'proposal'
+%    Main text language: 'german' (default), 'english'
+%    Use automatic quotation marks: 'smartquotes'
+%    Use APA citation style: 'apa'
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
 \logofile{logo.pdf}       % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
-
-%\usepackage{hgbtheme-custom} % select a custom front page layout
 
 %%%-----------------------------------------------------------------------------
 \begin{document}

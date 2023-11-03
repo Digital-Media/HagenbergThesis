@@ -22,60 +22,30 @@
 % The document's main language, specified by a class option (passed to hgb.sty);
 \newcommand{\hgb@MainLanguage}{german}	
 
-% Boolean indication if this document is a proposal (true) or final thesis (false).
-\newboolean{@hgbisproposal}
-\setboolean{@hgbisproposal}{false}
-
 %% Standard title designations -------------------------------------------------
 
 \newcommand{\hgbThesisNameDE}{UNDEFINED}
 \newcommand{\hgbThesisNameEN}{UNDEFINED}
 
-\newcommand{\hgbBachelorThesisNameDE}{Bachelorarbeit}
-\newcommand{\hgbBachelorThesisNameEN}{Bachelor Thesis}
-
-\newcommand{\hgbMasterThesisNameDE}{Masterarbeit}
-\newcommand{\hgbMasterThesisNameEN}{Master Thesis}
-
-\newcommand{\hgbDiplomaThesisNameDE}{Diplomarbeit}
-\newcommand{\hgbDiplomaThesisNameEN}{Diploma Thesis}
-
 \newcommand{\hgbProposalNameDE}{Exposè}
 \newcommand{\hgbProposalNameEN}{Proposal}
 
+\newboolean{@hgbisproposal} % indicates if this document is a proposal (true) or final thesis (false).
+\setboolean{@hgbisproposal}{false}
 
 %% Handling class options ------------------------------------------------------
 
-\DeclareOption{bachelor}{
-  \renewcommand{\hgbThesisNameDE}{Bachelorarbeit}
-  \renewcommand{\hgbThesisNameEN}{Bachelor Thesis}
-  \AtEndOfPackage{\RequirePackage{hgbtheme-thesis}}
-}
-
-\DeclareOption{master}{
-  \renewcommand{\hgbThesisNameDE}{Masterarbeit}
-  \renewcommand{\hgbThesisNameEN}{Master Thesis}
-  \AtEndOfPackage{\RequirePackage{hgbtheme-thesis}}
-}
-
-\DeclareOption{diploma}{
-  \renewcommand{\hgbThesisNameDE}{Diplomarbeit}
-  \renewcommand{\hgbThesisNameEN}{Diploma Thesis}
-  \AtEndOfPackage{\RequirePackage{hgbtheme-thesis}}
-}
-
-\DeclareOption{internship}{
-  \AtEndOfPackage{\RequirePackage{hgbtheme-internship}}
- }
-
-\DeclareOption{custom}{
-  \AtEndOfPackage{\RequirePackage{hgbtheme-custom}}
-}
+\DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
+\DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
+\DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
+\DeclareOption{phd}{\AtEndOfPackage{\RequirePackage{hgbtheme-phd}}}
+\DeclareOption{custom}{\AtEndOfPackage{\RequirePackage{hgbtheme-custom}}}
+\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}	% may be removed
 
 %% -------------
 
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-\DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor' or 'master' option
+\DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor', 'master', 'diploma', 'phd' options
 
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
@@ -87,7 +57,6 @@
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
 \newcommand{\@titlepagefont}{\sffamily}
-
 
 %% Setup for Pages in the Front Matter ----------------------------------------
 
