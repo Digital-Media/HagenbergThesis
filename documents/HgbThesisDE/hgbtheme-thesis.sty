@@ -112,26 +112,42 @@
 
 %% Default Copyright/License page ----------------------------------------
 
+
+\newcommand{\@strictLicenseDE}{Alle Rechte vorbehalten}
+\newcommand{\@strictLicenseEN}{All Rights Reserved}
+
+\newcommand{\@strictLicense}{%
+\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+	{\begin{german}\@strictLicenseDE\end{german}}
+	{\begin{english}\@strictLicenseEN\end{english}}
+}
+
+%% ------
+
 \newcommand{\@ccLicenseDE}{%
-  Diese Arbeit wird unter den Bedingungen der 
-  \textsf{Creative Commons Lizenz} 
-  \emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
-  (CC BY-NC-ND 4.0) ver\"offentlicht --
-  siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
- }
+Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
+\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
+veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+}
 
 \newcommand{\@ccLicenseEN}{%
-  This work is published under the conditions of the 
-  \textsf{Creative Commons License} 
-  \emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
-  (CC BY-NC-ND 4.0)---see
-  \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
- }
+This work is published under the conditions of the \textsf{Creative Commons License} 
+\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
+---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+}
 
 \newcommand{\@ccLicense}{%
 \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-	{\begin{german}\@ccLicenseDE\end{german}} % german CC license text
-	{\begin{english}\@ccLicenseEN\end{english}} % english CC license text (default)
+	{\begin{german}\@ccLicenseDE\end{german}}
+	{\begin{english}\@ccLicenseEN\end{english}}
+}
+
+%% ------
+
+\newcommand{\@TheLicense}{%
+\ifthenelse{\equal{\@license}{strict}}%
+  {\@strictLicense}%
+  {\@ccLicense}%
 }
 
 \renewcommand{\@copyrightpage}{%
@@ -143,7 +159,7 @@
   \textsf{\copyright\ Copyright\ \DTMfetchyear{@dateofsubmission} \@author}
   \end{center}
   \vspace{8mm}
-  \JustifyOrCenter{\@ccLicense} % defined in hgb.sty
+  \JustifyOrCenter{\@TheLicense} % defined in hgb.sty
 }
 
 %% Default Declaration Page ----------------------------------------
