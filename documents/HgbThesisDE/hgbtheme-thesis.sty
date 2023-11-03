@@ -16,6 +16,7 @@
   % \@programname
   % \@placeofstudy
   % @dateofsubmission
+  % \hgb@TitleLanguage
   % @hgbisproposal (boolean)
 
 %% -----------------------
@@ -90,7 +91,7 @@
 			{Proposed Advisor}%
 }
 
-\newcommand{\@advisorpage}{%
+\renewcommand{\@advisorpage}{%
 	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor is undefined 
 		{}{%
 		\newpage
@@ -111,7 +112,7 @@
 
 %% Default Copyright page ----------------------------------------
 
-\newcommand{\@copyrightpage}{%
+\renewcommand{\@copyrightpage}{%
   \newpage
   %\setcounter{page}{2}
   \thispagestyle{plain}
@@ -125,50 +126,62 @@
 }
 
 
-%% Default Declaration Pages in German and English ------------------------------------
+%% Default Declaration Page ----------------------------------------
 
+\newcommand{\hgb@DeclarationTitleDE}{Erklärung}
+\newcommand{\hgb@DeclarationTextDE}{%
+  Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
+  andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
+  solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
+  Prüfungsbehörde vorgelegt.
+  Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
+}
 
-\newcommand{\@declarationpageDe}{% Standardfassung der FH-OOe ab 04.04.2012
-	\begin{german}
-		\chapter{Erkl\"arung}
-		\noindent
-		Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
-		andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
-		solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen 
-		Pr\"ufungsbeh\"orde vorgelegt.
-		Die vorliegende, gedruckte Arbeit ist mit dem elektronisch \"ubermittelten Textdokument identisch.
+\newcommand{\hgb@DeclarationTitleEN}{Declaration}
+\newcommand{\hgb@DeclarationTextEN}{%
+  I hereby declare and confirm that this thesis is entirely the result of my own original work. 
+  Where other sources of information have been used, they have been indicated as such and properly 
+  acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
+  This printed copy is identical to the submitted electronic version.
+}
+
+%% TODO: again this does not work because of expansion issuses in \chapter
+%\newcommand{\hgb@DeclarationTitle}{
+  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}  %\hgb@TitleLanguage
+    %{\hgb@DeclarationTitleDE}%
+    %{\hgb@DeclarationTitleEN}
+%}
+%
+%\newcommand{\hgb@DeclarationText}{
+  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}
+    %{\hgb@DeclarationTextDE}
+    %{\hgb@DeclarationTextEN}
+%}
+
+\renewcommand{\@declarationpage}{
+		%\chapter{\hgb@DeclarationTitleEN}%   expansion issuses!
+    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+      {\chapter{\hgb@DeclarationTitleDE}}
+      {\chapter{\hgb@DeclarationTitleEN}}
+		\noindent%
+    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+      {\begin{german}\hgb@DeclarationTextDE\end{german}}
+      {\begin{english}\hgb@DeclarationTextEN\end{english}}
 		\par
 		\vspace{10mm}
 		\noindent
-		\@placeofstudy, am \DTMusedate{@dateofsubmission}
+    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+      {\@placeofstudy, am 
+        \DTMfetchday{@dateofsubmission}.~%
+        \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}}~%
+        \DTMfetchyear{@dateofsubmission}}
+      {\@placeofstudy, 
+        \DTMfetchday{@dateofsubmission}~%
+        \DTMenglishmonthname{\DTMfetchmonth{@dateofsubmission}}~%
+        \DTMfetchyear{@dateofsubmission}}
 		\par
 		\vspace{12mm}
 		\noindent
 		\@author
-	\end{german}
 }
 
-\newcommand{\@declarationpageEn}{%
-	\begin{english}
-		\chapter{Declaration}
-		\noindent
-		I hereby declare and confirm that this thesis is entirely the result of my own original work. 
-		Where other sources of information have been used, they have been indicated as such and properly 
-		acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
-		This printed copy is identical to the submitted electronic version.
-		\par
-		\vspace{10mm}
-		\noindent
-		\@placeofstudy, \DTMusedate{@dateofsubmission}
-		\par
-		\vspace{12mm}
-		\noindent
-		\@author
-	\end{english}
-}
-
-\newcommand{\@declarationpage}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\@declarationpageDe}%
-	{\@declarationpageEn}
-}
