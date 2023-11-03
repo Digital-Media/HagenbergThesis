@@ -54,13 +54,13 @@
 % Switch from German to English (babel)
 \newenvironment{english}%
 {\begin{otherlanguage}{english}%
-	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%
 {\end{otherlanguage}\ignorespacesafterend}% 
 
 % Switch from English to German (babel)
 \newenvironment{german}%
 {\begin{otherlanguage}{ngerman}%
-	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%
 {\end{otherlanguage}}%
 
 
