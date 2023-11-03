@@ -66,11 +66,20 @@
       % ---------------------------------
 			\vskip 4mm%
 			%
-			{\large eingereicht am} \vskip 1mm {\@programtype}%
+			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+          {eingereicht am}%
+          {submitted to the}}
+      \vskip 1mm 
+      {\large \@programtype}%
 			\vskip 4mm%
 			{\large\@programname}%
 			\vskip 4mm%
-			{\large der \@institution\ in \@placeofstudy}%
+      % -------------------
+			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+          {\@institution\ in \@placeofstudy}%
+          {\@institution\ at \@placeofstudy}%
+      }%
+      % -------------------
 			\vskip 16mm%
       {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
 		\end{center}%
