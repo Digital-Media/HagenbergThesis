@@ -202,39 +202,46 @@
 }
 
 
-\newcommand{\@ccLicenseAt}{%
-Diese Arbeit wird unter den Bedingungen der 
-\textsf{Creative Commons Lizenz} 
-\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
-(CC BY-NC-ND 4.0) ver\"offentlicht --
-siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.}
+%\newcommand{\@ccLicenseDE}{%
+  %Diese Arbeit wird unter den Bedingungen der 
+  %\textsf{Creative Commons Lizenz} 
+  %\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
+  %(CC BY-NC-ND 4.0) ver\"offentlicht --
+  %siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+ %}
+%
+%\newcommand{\@ccLicenseEN}{%
+  %This work is published under the conditions of the 
+  %\textsf{Creative Commons License} 
+  %\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
+  %(CC BY-NC-ND 4.0)---see
+  %\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+ %}
 
-\newcommand{\@ccLicenseEn}{%
-This work is published under the conditions of the 
-\textsf{Creative Commons License} 
-\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
-(CC BY-NC-ND 4.0)---see
-\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.}
-
-\newcommand{\cclicense}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\license{\@ccLicenseAt}} % german CC license text
-	{\license{\@ccLicenseEn}} % english CC license text (default)
-}
+%\newcommand{\cclicense}{%
+%\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+	%{\license{\@ccLicenseDE}} % german CC license text
+	%{\license{\@ccLicenseEN}} % english CC license text (default)
+%}
 	
-\cclicense	% Creative Commons License (default)
+%\cclicense	% Creative Commons License (default)
 
-\newcommand{\@makelicense}{ 
-	\sbox\@tempboxa{\@license}%
-	\ifdim \wd\@tempboxa >\hsize
-		\begin{sloppypar}\noindent\@license\end{sloppypar}
-	\else
-		\global \@minipagefalse
-		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-	\fi
-}
+%\newcommand{\@makelicense}{ 
+	%\sbox\@tempboxa{\@license}%
+	%\ifdim \wd\@tempboxa >\hsize
+		%\begin{sloppypar}\noindent\@license\end{sloppypar}
+	%\else
+		%\global \@minipagefalse
+		%\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+	%\fi
+%}
 
-% ----------------
+% Command stubs for generating the document's front pages:
+
+\providecommand{\@advisorpage}{\relax}
+\providecommand{\@copyrightpage}{\relax}
+\providecommand{\@declarationpage}{\relax}
+
 
 %\newcommand{\@copyrightpage}{%
 %\newpage
