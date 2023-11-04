@@ -96,19 +96,13 @@
     {\ClassError{hgbthesis}{Unknown title language: '#1' (use 'german' or 'english')}{}}
 }
 
-\newcommand{\@logofile}[0]{}
+% Specify the institution's logo in 'images/' ('logo.pdf' by default)
+\newcommand{\@logofile}{logo.pdf}
 \newcommand{\logofile}[1]{%
 	\renewcommand{\@logofile}{#1}
 }
 
-\newcommand{\makelogo}[0]{%
-\ifthenelse{\equal{\@logofile}{}}%	check if \@logofile is empty (unspecified)
-	{\vspace*{30mm}}%			skip logo
-	{\includegraphics[height=30mm]{\@logofile}}%	insert logo
-}
-
-% Special sectioning setup for thesis proposals:
-
+% Special sectioning setup for thesis proposals: 
 \newcommand{\@proposalsetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
 	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}

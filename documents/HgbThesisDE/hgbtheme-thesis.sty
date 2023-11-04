@@ -53,7 +53,7 @@
 			\vskip 15mm%
 			{\large\theauthor}% \theauthor is defined by titling package (instead of \@author)
 			\vskip 15mm%
-			\makelogo%
+			\@makelogo%
 			\vskip 15mm%
 			% ---------------------------------
       \ifthenelse{\equal{\hgb@TitleLanguage}{german}}
@@ -62,7 +62,7 @@
         {\def\tmp@ThesisName{\hgbThesisNameEN}
          \def\tmp@ProposalName{\hgbProposalNameEN}}
       {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
-        \ifthenelse{\boolean{@hgbisproposal}}{\space\space(\MakeUppercase{\tmp@ProposalName})}{}}
+        \ifthenelse{\boolean{@hgbisproposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
       % ---------------------------------
 			\vskip 4mm%
 			%
@@ -85,6 +85,17 @@
 		\end{center}%
 		\vfil%
 \end{titlepage}%
+}
+
+%% -----------------------------
+
+\newlength{\@logoheight}
+\setlength{\@logoheight}{30mm}
+
+\newcommand{\@makelogo}[0]{%
+\ifthenelse{\equal{\@logofile}{}}%	check if \@logofile is empty (unspecified)
+	{\vspace*{\@logoheight}}%			skip logo
+	{\includegraphics[height=\@logoheight]{\@logofile}}%	insert logo
 }
 
 % Default Advisor Page ----------------------------------------
