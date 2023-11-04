@@ -7,7 +7,7 @@
 
 %% Package Information --------------------------------------------------------
 
-\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
 \ProvidesClass{hgbthesis}[2023/10/26]%%AUTO
 
 \RequirePackage{xifthen}
@@ -35,21 +35,40 @@
 
 %% Handling class options ------------------------------------------------------
 
-\DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
-\DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
-\DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
-\DeclareOption{phd}{\AtEndOfPackage{\RequirePackage{hgbtheme-phd}}}
-\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}
-\DeclareOption{custom}{\AtEndOfPackage{\RequirePackage{hgbtheme-custom}}}
+%\DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
+%\DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
+%\DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
+%\DeclareOption{phd}{\AtEndOfPackage{\RequirePackage{hgbtheme-phd}}}
+%\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}
+%\DeclareOption{custom}{\AtEndOfPackage{\RequirePackage{hgbtheme-custom}}}
+%
+%\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
+%\DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor', 'master', 'diploma', 'phd' options
+%
+%% pass all other options to hgb.sty
+%\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
+%\ProcessOptions*
 
-%% -------------
+%% New version allowing key/value options (provided by recent LaTeX2e kernel):
 
-\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-\DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor', 'master', 'diploma', 'phd' options
+\DeclareKeys{
+  bachelor.code = \AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}},
+  master.code = \AtEndOfPackage{\RequirePackage{hgbtheme-master}},
+  diploma.code = \AtEndOfPackage{\RequirePackage{hgbtheme-diploma}},
+  phd.code = \AtEndOfPackage{\RequirePackage{hgbtheme-phd}},
+  internship.code = \AtEndOfPackage{\RequirePackage{hgbtheme-internship}},
+  custom.code = \AtEndOfPackage{\RequirePackage{hgbtheme-custom}},
+  %
+  proposal.code = \setboolean{@hgbisproposal}{true},
+  %
+  apa.code = \PassOptionsToPackage{\CurrentOption}{hgbbib}
+}
 
-% pass all other options to hgb.sty
-\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\ProcessOptions*
+\DeclareUnknownKeyHandler[hgbthesis]{
+    \PassOptionsToPackage{\CurrentOption}{hgb}
+}
+
+\ProcessKeyOptions
 
 %% Paper Options and Style File -----------------------------------------------
 
