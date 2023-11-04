@@ -54,10 +54,10 @@
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
 				\setlength{\baselineskip}{25pt}%
-				\@title%
+				\thetitle%  \thetitle is defined by titling package (instead of \@title)
 			}
 			\vskip 15mm%
-			{\large\@author}%{\large\scshape\@author}%
+			{\large\theauthor}% \theauthor is defined by titling package (instead of \@author)
 			\vskip 15mm%
 			\makelogo%
 			\vskip 15mm%

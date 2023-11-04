@@ -98,7 +98,7 @@
 	{\includegraphics[height=30mm]{\@logofile}}%	insert logo
 }
 
-% Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
+% Special sectioning setup for thesis proposals:
 
 \newcommand{\@proposalsetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
@@ -163,12 +163,13 @@
 
 % Create title pages and add PDF meta data:
 
-\renewcommand{\maketitle}{%           redefine standard LaTeX-command
-	\def\and{\@warnmultipleauthors}%    suppress \and inside \author{..}
-	\renewcommand{\thanks}[1]{\relax}%  suppress \thanks{..} inside \author{..}
+\RequirePackage{titling}
+\renewcommand{\maketitle}{%                     redefine standard LaTeX-command
+	\renewcommand{\and}{\@warnmultipleauthors}%   suppress \and inside \author{..}
+	\renewcommand{\thanks}[1]{\relax}%            suppress \thanks{..} inside \author{..}
 	\hypersetup{
-			pdftitle={\@title},
-			pdfauthor={\@author},
+			pdftitle={\thetitle},%      \thetitle is defined by titling package (instead of \@title)
+      pdfauthor={\theauthor},%    \theauthor is defined by titling package (instead of \@author)
 			pdfsubject={\@programtype~\@programname,~\@placeofstudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
