@@ -20,7 +20,8 @@
 %% Commands for Title Pages (used in class options) ---------------------------
 
 % The document's main language, specified by a class option (passed to hgb.sty);
-\newcommand{\hgb@MainLanguage}{german}	
+\newcommand{\hgb@MainLanguage}{german}
+\newcommand{\hgb@ThesisType}{master}	
 
 %% Standard title designations -------------------------------------------------
 
@@ -51,13 +52,40 @@
 
 %% New version allowing key/value options (provided by recent LaTeX2e kernel):
 
+\newcommand{\@WarnDeprecatedOption}[2]{% #1 = obsolete option, #2 = suggested replacement
+	\ClassWarning{hgbthesis}{Class option '\string#1' is deprecated, use '\string#2' instead!}}%
+
+\newcommand{\@ThemePackage}{}
+\newcommand{\@ThemeFile}{}
+
+\newcommand{\@SelectThemeFile}[1]{%
+	\renewcommand{\@ThemePackage}{hgbtheme-#1}%
+	\renewcommand{\@ThemeFile}{\@ThemePackage.sty}%
+	%\typeout{ThemeFile = \@ThemeFile}
+	\IfFileExists{\@ThemeFile}%
+		{\AtEndOfPackage{\RequirePackage{\@ThemePackage}}		 }%
+		{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}} 
+}
+
+% Set the language to be used for the front pages, which may be different from
+% the document's main language (specified by a class option).
+\newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}
+\newcommand{\titlelanguage}[1]{%
+  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
+    {\renewcommand{\hgb@TitleLanguage}{#1}}%
+    {\ClassError{hgbthesis}{Unknown title language: '#1' (use 'german' or 'english')}{}}
+}
+
+
 \DeclareKeys{
-  bachelor.code 	= \AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}},
-  master.code 		= \AtEndOfPackage{\RequirePackage{hgbtheme-master}},
-  diploma.code 		= \AtEndOfPackage{\RequirePackage{hgbtheme-diploma}},
-  phd.code 				= \AtEndOfPackage{\RequirePackage{hgbtheme-phd}},
-  internship.code = \AtEndOfPackage{\RequirePackage{hgbtheme-internship}},
-  custom.code 		= \AtEndOfPackage{\RequirePackage{hgbtheme-custom}},
+  bachelor.code 	= {\@WarnDeprecatedOption{bachelor}{type=bachelor}\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}},
+  master.code 		= {\@WarnDeprecatedOption{master}{type=master}\AtEndOfPackage{\RequirePackage{hgbtheme-master}}},
+  diploma.code 		= {\@WarnDeprecatedOption{diploma}{type=diploma}\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}},
+	internship.code = {\@WarnDeprecatedOption{internship}{type=internship}\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}},
+	%% new options
+	%
+	type.code 			= \@SelectThemeFile{#1},
+	titlelanguage.code = \titlelanguage{#1},
   %
   proposal.code 	= \setboolean{@hgbisproposal}{true},
   %
@@ -106,14 +134,6 @@
 	\renewcommand{\@advisor}{#1}		
 }
 
-% Set the language to be used for the front pages, which may be different from
-% the document's main language (specified by a class option).
-\newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}
-\newcommand{\titlelanguage}[1]{%
-  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
-    {\renewcommand{\hgb@TitleLanguage}{#1}}%
-    {\ClassError{hgbthesis}{Unknown title language: '#1' (use 'german' or 'english')}{}}
-}
 
 % Specify the institution's logo in 'images/' ('logo.pdf' by default)
 \newcommand{\@logofile}{logo.pdf}
