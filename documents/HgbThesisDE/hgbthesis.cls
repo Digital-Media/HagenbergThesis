@@ -52,16 +52,16 @@
 %% New version allowing key/value options (provided by recent LaTeX2e kernel):
 
 \DeclareKeys{
-  bachelor.code = \AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}},
-  master.code = \AtEndOfPackage{\RequirePackage{hgbtheme-master}},
-  diploma.code = \AtEndOfPackage{\RequirePackage{hgbtheme-diploma}},
-  phd.code = \AtEndOfPackage{\RequirePackage{hgbtheme-phd}},
+  bachelor.code 	= \AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}},
+  master.code 		= \AtEndOfPackage{\RequirePackage{hgbtheme-master}},
+  diploma.code 		= \AtEndOfPackage{\RequirePackage{hgbtheme-diploma}},
+  phd.code 				= \AtEndOfPackage{\RequirePackage{hgbtheme-phd}},
   internship.code = \AtEndOfPackage{\RequirePackage{hgbtheme-internship}},
-  custom.code = \AtEndOfPackage{\RequirePackage{hgbtheme-custom}},
+  custom.code 		= \AtEndOfPackage{\RequirePackage{hgbtheme-custom}},
   %
-  proposal.code = \setboolean{@hgbisproposal}{true},
+  proposal.code 	= \setboolean{@hgbisproposal}{true},
   %
-  apa.code = \PassOptionsToPackage{\CurrentOption}{hgbbib}
+  apa.code 				= \PassOptionsToPackage{\CurrentOption}{hgbbib}
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
