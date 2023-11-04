@@ -87,6 +87,15 @@
 	\renewcommand{\@advisor}{#1}		
 }
 
+% Set the language to be used for the front pages, which may be different from
+% the document's main language (specified by a class option).
+\newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}
+\newcommand{\titlelanguage}[1]{%
+  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
+    {\renewcommand{\hgb@TitleLanguage}{#1}}%
+    {\ClassError{hgbthesis}{Unknown title language: '#1' (use 'german' or 'english')}{}}
+}
+
 \newcommand{\@logofile}[0]{}
 \newcommand{\logofile}[1]{%
 	\renewcommand{\@logofile}{#1}
