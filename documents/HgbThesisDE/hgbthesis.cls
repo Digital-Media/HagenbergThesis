@@ -39,8 +39,8 @@
 \DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
 \DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
 \DeclareOption{phd}{\AtEndOfPackage{\RequirePackage{hgbtheme-phd}}}
+\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}
 \DeclareOption{custom}{\AtEndOfPackage{\RequirePackage{hgbtheme-custom}}}
-\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}	% may be removed
 
 %% -------------
 
