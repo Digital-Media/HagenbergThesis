@@ -11,39 +11,38 @@
 %% document's front pages.
 
 % required parameters:
-  % \@titlepagefont
-  % \@programtype
-  % \@programname
-  % \@placeofstudy
-  % @dateofsubmission
+  % \hgb@TitlePageFont
+  % \hgb@ProgramType
+  % \hgb@ProgramName
+  % \hgb@PlaceOfStudy
+  % hgb@DateOfSubmission
   % \hgb@TitleLanguage
-  % @hgbisproposal (boolean)
+  % hgb@IsProposal (boolean)
 
 %% -----------------------
   
-\renewcommand{\hgb@makefrontpages}{  %% rename without @ to indicate it is documented
-  \@maketitlepage%
-	\ifthenelse{\boolean{@hgbisproposal}}%
+\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
+  \hgb@MakeTitlePage%
+	\ifthenelse{\boolean{hgb@IsProposal}}%
 		{%	thesis proposal:
-			\@advisorpage%      predefined in hgbthesis.cls
-			%no copyright/declaration page for proposals
+			\hgb@MakeAdvisorPage%     no copyright/declaration page for proposals
 		}%			
 		{%	final thesis:
-			\@advisorpage%      predefined in hgbthesis.cls
-			\@copyrightpage%    predefined in hgbthesis.cls
-			\@declarationpage%  predefined in hgbthesis.cls
+			\hgb@MakeAdvisorPage%
+			\hgb@MakeCopyrightPage%
+			\hgb@MakeDeclarationPage%
 		}%
 }
 
 
 %% Title page ---------------------------------------------------
 
-\renewcommand{\@maketitlepage}{%
+\newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
 		\rule{0mm}{1mm}%
 		\vspace*{0mm}%
 		\begin{center}%
-			\@titlepagefont%
+			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
@@ -53,16 +52,16 @@
 			\vskip 15mm%
 			{\large\theauthor}% \theauthor is defined by titling package (instead of \@author)
 			\vskip 15mm%
-			\@makelogo%
+			\hgb@MakeLogo%
 			\vskip 15mm%
 			% ---------------------------------
       \ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-        {\def\tmp@ThesisName{\hgbThesisNameDE} % fully expand by \edef to make \MakeUppercase and \@addspaces work!
-         \def\tmp@ProposalName{\hgbProposalNameDE}}
-        {\def\tmp@ThesisName{\hgbThesisNameEN}
-         \def\tmp@ProposalName{\hgbProposalNameEN}}
+        {\def\tmp@ThesisName{\hgb@ThesisNameDE} % fully expand by \edef to make \MakeUppercase and \@addspaces work!
+         \def\tmp@ProposalName{\hgb@ProposalNameDE}}
+        {\def\tmp@ThesisName{\hgb@ThesisNameEN}
+         \def\tmp@ProposalName{\hgb@ProposalNameEN}}
       {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
-        \ifthenelse{\boolean{@hgbisproposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
+        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
       % ---------------------------------
 			\vskip 4mm%
 			%
@@ -70,50 +69,50 @@
           {eingereicht am}%
           {submitted to the}}
       \vskip 1mm 
-      {\large \@programtype}%
+      {\large \hgb@ProgramType}%
 			\vskip 4mm%
-			{\large\@programname}%
+			{\large\hgb@ProgramName}%
 			\vskip 4mm%
       % -------------------
 			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-          {\@institution\ in \@placeofstudy}%
-          {\@institution\ at \@placeofstudy}%
+          {\hgb@Institution\ in \hgb@PlaceOfStudy}%
+          {\hgb@Institution\ at \hgb@PlaceOfStudy}%
       }%
       % -------------------
 			\vskip 16mm%
-      {\large im \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}} \DTMfetchyear{@dateofsubmission}}%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}} \DTMfetchyear{hgb@DateOfSubmission}}%
 		\end{center}%
 		\vfil%
 \end{titlepage}%
 }
 
-%% -----------------------------
+%% Generation of logo ----------------------------------------
 
-\newlength{\@logoheight}
-\setlength{\@logoheight}{30mm}
+\newlength{\hgb@LogoHeight}
+\setlength{\hgb@LogoHeight}{30mm}
 
-\newcommand{\@makelogo}[0]{%
-\ifthenelse{\equal{\@logofile}{}}%	check if \@logofile is empty (unspecified)
-	{\vspace*{\@logoheight}}%			skip logo
-	{\includegraphics[height=\@logoheight]{\@logofile}}%	insert logo
+\newcommand{\hgb@MakeLogo}[0]{%
+\ifthenelse{\equal{\hgb@LogoFile}{}}%	check if \hgb@LogoFile is empty (unspecified)
+	{\vspace*{\hgb@LogoHeight}}%			skip logo
+	{\includegraphics[height=\hgb@LogoHeight]{\hgb@LogoFile}}%	insert logo
 }
 
 % Default Advisor Page ----------------------------------------
 
-\newcommand{\@advisorheaderfinal}{
+\newcommand{\hgb@AdvisorHeaderFinal}{
 	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
 			{Betreuung}%
 			{Advisor}%
 }
 
-\newcommand{\@advisorheaderproposal}{
+\newcommand{\hgb@AdvisorHeaderProposal}{
 	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
 			{Betreuung (Vorschlag)}%
 			{Proposed Advisor}%
 }
 
-\renewcommand{\@advisorpage}{%
-	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor is undefined 
+\newcommand{\hgb@MakeAdvisorPage}{%
+	\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
 		{}{%
 		\newpage
 		%\setcounter{page}{2}
@@ -121,12 +120,12 @@
 		\rule{0mm}{1mm}
 		\vspace{90mm}
 		\begin{center}
-			\ifthenelse{\boolean{@hgbisproposal}}%
-				{\@advisorheaderproposal:}%
-				{\@advisorheaderfinal:}%
+			\ifthenelse{\boolean{hgb@IsProposal}}%
+				{\hgb@AdvisorHeaderProposal:}%
+				{\hgb@AdvisorHeaderFinal:}%
 			\\
 			\vspace{5mm} 
-      {\Large\sffamily\@advisor}
+      {\Large\sffamily\hgb@Advisor}
 		\end{center}
 		}
 }
@@ -134,58 +133,59 @@
 %% Default Copyright/License page ----------------------------------------
 
 
-\newcommand{\@strictLicenseDE}{Alle Rechte vorbehalten}
-\newcommand{\@strictLicenseEN}{All Rights Reserved}
+\newcommand{\hgb@StrictLicenseDE}{Alle Rechte vorbehalten}
+\newcommand{\hgb@StrictLicenseEN}{All Rights Reserved}
 
-\newcommand{\@strictLicense}{%
+\newcommand{\hgb@StrictLicense}{%
 \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-	{\begin{german}\@strictLicenseDE\end{german}}
-	{\begin{english}\@strictLicenseEN\end{english}}
+	{\begin{german}\hgb@StrictLicenseDE\end{german}}
+	{\begin{english}\hgb@StrictLicenseEN\end{english}}
 }
 
 %% ------
 
-\newcommand{\@ccLicenseDE}{%
+\newcommand{\hgb@ccLicenseDE}{%
 Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
 \emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
 veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
 }
 
-\newcommand{\@ccLicenseEN}{%
+\newcommand{\hgb@ccLicenseEN}{%
 This work is published under the conditions of the \textsf{Creative Commons License} 
 \emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
 ---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
 }
 
-\newcommand{\@ccLicense}{%
+\newcommand{\hgb@ccLicense}{%
 \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-	{\begin{german}\@ccLicenseDE\end{german}}
-	{\begin{english}\@ccLicenseEN\end{english}}
+	{\begin{german}\hgb@ccLicenseDE\end{german}}
+	{\begin{english}\hgb@ccLicenseEN\end{english}}
 }
 
 %% ------
 
-\newcommand{\@TheLicense}{%
-\ifthenelse{\equal{\@license}{strict}}%
-  {\@strictLicense}%
-  {\@ccLicense}%
+\newcommand{\hgb@TheLicense}{%
+\ifthenelse{\equal{\hgb@license}{strict}}%
+  {\hgb@StrictLicense}%
+  {\hgb@ccLicense}%
 }
 
-\renewcommand{\@copyrightpage}{%
+\newcommand{\hgb@MakeCopyrightPage}{%
   \newpage
   \thispagestyle{plain}
   \rule{0mm}{1mm}
   \vspace*{75mm}
   \begin{center}
-  \textsf{\copyright\ Copyright\ \DTMfetchyear{@dateofsubmission} \theauthor}
+  \textsf{\copyright\ Copyright\ \DTMfetchyear{hgb@DateOfSubmission} \theauthor}
   \end{center}
   \vspace{8mm}
-  \JustifyOrCenter{\@TheLicense} % defined in hgb.sty
+  \hgbJustifyOrCenter{\hgb@TheLicense} % defined in hgb.sty
 }
 
 %% Default Declaration Page ----------------------------------------
 
 \newcommand{\hgb@DeclarationTitleDE}{Erklärung}
+
 \newcommand{\hgb@DeclarationTextDE}{%
   Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
   andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
@@ -195,6 +195,7 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 }
 
 \newcommand{\hgb@DeclarationTitleEN}{Declaration}
+
 \newcommand{\hgb@DeclarationTextEN}{%
   I hereby declare and confirm that this thesis is entirely the result of my own original work. 
   Where other sources of information have been used, they have been indicated as such and properly 
@@ -215,7 +216,7 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
     %{\hgb@DeclarationTextEN}
 %}
 
-\renewcommand{\@declarationpage}{
+\newcommand{\hgb@MakeDeclarationPage}{
 		%\chapter{\hgb@DeclarationTitleEN}%   expansion issuses!
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
       {\chapter{\hgb@DeclarationTitleDE}}
@@ -228,14 +229,14 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 		\vspace{10mm}
 		\noindent
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-      {\@placeofstudy, am 
-        \DTMfetchday{@dateofsubmission}.~%
-        \DTMgermanmonthname{\DTMfetchmonth{@dateofsubmission}}~%
-        \DTMfetchyear{@dateofsubmission}}
-      {\@placeofstudy, 
-        \DTMfetchday{@dateofsubmission}~%
-        \DTMenglishmonthname{\DTMfetchmonth{@dateofsubmission}}~%
-        \DTMfetchyear{@dateofsubmission}}
+      {\hgb@PlaceOfStudy, am 
+        \DTMfetchday{hgb@DateOfSubmission}.~%
+        \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
+        \DTMfetchyear{hgb@DateOfSubmission}}
+      {\hgb@PlaceOfStudy, 
+        \DTMfetchday{hgb@DateOfSubmission}~%
+        \DTMenglishmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
+        \DTMfetchyear{hgb@DateOfSubmission}}
 		\par
 		\vspace{12mm}
 		\noindent

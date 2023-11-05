@@ -5,9 +5,10 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-% Preferences for the choice of macro (command/variable) names:
-% * internal macros (used in hgb *.cls and *.sty files): \hgb@macroname
-% * public macros (used within user documents): \hgbMacroName (using capital letters)
+% Preferences for the naming macros (commands/variables):
+% * internal, undocumented macros (used in release *.cls and *.sty files):   \@macroname or \@MacroName
+% * documented internal macros for customizing (eg in theme *.sty files):    \hgb@MacroName or \hgb@macroname
+% * documented public macros (available in user documents):                  \hgbMacroName (preferred), \MacroName or \macroname
 
 
 %% Package Information --------------------------------------------------------
@@ -30,14 +31,14 @@
 
 %% Standard title designations -------------------------------------------------
 
-\newcommand{\hgbThesisNameDE}{UNDEFINED}
-\newcommand{\hgbThesisNameEN}{UNDEFINED}
+\newcommand{\hgb@ThesisNameDE}{UNDEFINED}
+\newcommand{\hgb@ThesisNameEN}{UNDEFINED}
 
-\newcommand{\hgbProposalNameDE}{Exposè}
-\newcommand{\hgbProposalNameEN}{Proposal}
+\newcommand{\hgb@ProposalNameDE}{Exposè}
+\newcommand{\hgb@ProposalNameEN}{Proposal}
 
-\newboolean{@hgbisproposal} % indicates if this document is a proposal (true) or final thesis (false).
-\setboolean{@hgbisproposal}{false}
+\newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
+\setboolean{hgb@IsProposal}{false}
 
 %% Handling class options ------------------------------------------------------
 
@@ -49,7 +50,7 @@
 %\DeclareOption{custom}{\AtEndOfPackage{\RequirePackage{hgbtheme-custom}}}
 %
 %\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-%\DeclareOption{proposal}{\setboolean{@hgbisproposal}{true}}	% use with 'bachelor', 'master', 'diploma', 'phd' options
+%\DeclareOption{proposal}{\setboolean{hgb@IsProposal}{true}}	% use with 'bachelor', 'master', 'diploma', 'phd' options
 %
 %% pass all other options to hgb.sty
 %\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
@@ -96,7 +97,7 @@
 	type.code 			= \@SelectTheme{#1},
 	titlelanguage.code = \titlelanguage{#1},
   %
-  proposal.code 	= \setboolean{@hgbisproposal}{true},
+  proposal.code 	= \setboolean{hgb@IsProposal}{true},
   %
   apa.code 				= \PassOptionsToPackage{\CurrentOption}{hgbbib}
 }
@@ -112,42 +113,41 @@
 \LoadClass[a4paper,11pt,oneside]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
-\newcommand{\@titlepagefont}{\sffamily}
+\newcommand{\hgb@TitlePageFont}{\sffamily}
 
 %% Setup for Pages in the Front Matter ----------------------------------------
 
 % General Thesis Parameters
 
-\newcommand{\@institution}{\@MissingArg{Name of institution not specified!}}
+\newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@institution}{#1}}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@Institution}{#1}}
 }
 
-\newcommand{\@programtype}{\@MissingArg{Type of degree program not specified!}}
+\newcommand{\hgb@ProgramType}{\@MissingArg{Type of degree program not specified!}}
 \newcommand{\programtype}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programtype}{#1}}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@ProgramType}{#1}}
 }
 
-\newcommand{\@programname}{\@MissingArg{Name of degree program not specified!}}
+\newcommand{\hgb@ProgramName}{\@MissingArg{Name of degree program not specified!}}
 \newcommand{\programname}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@ProgramName}{#1}}
 }
 
-\newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
+\newcommand{\hgb@PlaceOfStudy}{\@MissingArg{Place of study not specified!}}
 \newcommand{\placeofstudy}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 }
 
-\newcommand{\@advisor}{}					% empty by default
+\newcommand{\hgb@Advisor}{}					% empty by default
 \newcommand{\advisor}[1]{%
-	\renewcommand{\@advisor}{#1}		
+	\renewcommand{\hgb@Advisor}{#1}		
 }
-
 
 % Specify the institution's logo in 'images/' ('logo.pdf' by default)
-\newcommand{\@logofile}{logo.pdf}
+\newcommand{\hgb@LogoFile}{logo.pdf}
 \newcommand{\logofile}[1]{%
-	\renewcommand{\@logofile}{#1}
+	\renewcommand{\hgb@LogoFile}{#1}
 }
 
 % Special sectioning setup for thesis proposals: 
@@ -170,23 +170,23 @@
 }
 
 \AtBeginDocument{
-  \ifthenelse{\boolean{@hgbisproposal}}{\@proposalsetup}{}%
+  \ifthenelse{\boolean{hgb@IsProposal}}{\@proposalsetup}{}%
 }
 
 % Submission Date
 
-\DTMsavenow{@dateofsubmission}  % default submission date is today
+\DTMsavenow{hgb@DateOfSubmission}  % default submission date is today
 
 \newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}
-  \DTMsavenoparsedate{@dateofsubmission}{#1}{#2}{#3}{-1}
+  \DTMsavenoparsedate{hgb@DateOfSubmission}{#1}{#2}{#3}{-1}
 }
 
 % Copyright/License Settings --------------------------------------------------
 
-\newcommand{\@license}{cc}
+\newcommand{\hgb@license}{cc}
 
 \newcommand{\license}[1]{%
-	\renewcommand{\@license}{#1}
+	\renewcommand{\hgb@license}{#1}
 }
 
 \newcommand{\cclicense}{% for backward compatibility, use \license{cc} instead
@@ -199,13 +199,8 @@
   \license{strict}%
  }
 
-% Command stubs for generating the document's front pages (to be redefined by theme styles):
-
-\providecommand{\hgb@makefrontpages}{\relax}  % TODO: throw errors if undefined!
-\providecommand{\@maketitlepage}{\relax}
-\providecommand{\@advisorpage}{\relax}
-\providecommand{\@copyrightpage}{\relax}
-\providecommand{\@declarationpage}{\relax}
+% Generate the front pages (to be defined by theme .sty files)
+\newcommand{\hgb@MakeFrontPages}{\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}}
 
 %% -----------------------
 
@@ -221,13 +216,13 @@
 	\hypersetup{
 			pdftitle={\thetitle},%      \thetitle is defined by titling package (instead of \@title)
       pdfauthor={\theauthor},%    \theauthor is defined by titling package (instead of \@author)
-			pdfsubject={\@programtype~\@programname,~\@placeofstudy},
+			pdfsubject={\hgb@ProgramType~\hgb@ProgramName,~\hgb@PlaceOfStudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
 			pdfkeywords={},
-			pageanchor=false	% disable hyperref page anchors in frontmatter pages
+			pageanchor=false	% disable hyperref page anchors in front pages
 	}%
-	\hgb@makefrontpages
+	\hgb@MakeFrontPages   % generate front pages
 	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
 }
 

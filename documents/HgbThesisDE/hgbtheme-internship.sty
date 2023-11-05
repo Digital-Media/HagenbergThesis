@@ -11,8 +11,8 @@
 %% This is a 'theme' file which specifies the layout and arrangement of the
 %% document's front pages.
 
-\renewcommand{\hgbThesisNameDE}{Praktikumsbericht}
-\renewcommand{\hgbThesisNameEN}{Internship Report}
+\renewcommand{\hgb@ThesisNameDE}{Praktikumsbericht}
+\renewcommand{\hgb@ThesisNameEN}{Internship Report}
 
 % Specific Internship Report Parameters (to be specified by author in main document):
 
@@ -28,11 +28,11 @@
 
 %% Modified arrangement of front pages:
 
-\renewcommand{\hgb@makefrontpages}{
-	\@maketitlepage%    as defined by 'hgbtheme-thesis' 
+\renewcommand{\hgb@MakeFrontPages}{
+	\hgb@MakeTitlePage%    as defined by 'hgbtheme-thesis' 
 	\@companypage%      defined below
-	\@copyrightpage%    defined by 'hgbtheme-thesis'
-	\@declarationpage%s defined by 'hgbtheme-thesis'
+	\hgb@MakeCopyrightPage%    defined by 'hgbtheme-thesis'
+	\hgb@MakeDeclarationPage%s defined by 'hgbtheme-thesis'
 }
 
 %% Company Page for Internship Report -----------------------------------------
@@ -52,6 +52,6 @@
   \\[45mm]
   {Kontaktperson:}%
   \\[5mm]
-  {\Large\sffamily\@advisor}
+  {\Large\sffamily\hgb@Advisor}
 \end{center}
 }

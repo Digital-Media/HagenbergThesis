@@ -16,15 +16,15 @@
 \newboolean{hgb@SmartQuotesOn}
 \setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
 
-\newboolean{hgb@noUpdateCheck}
-\setboolean{hgb@noUpdateCheck}{false}	% update check is perfomed by default
+\newboolean{hgb@NoUpdateCheck}
+\setboolean{hgb@NoUpdateCheck}{false}	% update check is perfomed by default
 
 % Handle package options passed from the class file
 \DeclareOption{english}{\renewcommand{\hgb@MainLanguage}{english}}
 \DeclareOption{german}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}}
 \DeclareOption{smartquotes}{\setboolean{hgb@SmartQuotesOn}{true}}
-\DeclareOption{noUpdateCheck}{\setboolean{hgb@noUpdateCheck}{true}}
+\DeclareOption{noUpdateCheck}{\setboolean{hgb@NoUpdateCheck}{true}}
 \DeclareOption*{\PackageWarning{hgb}{Unknown option '\CurrentOption'.}}
 \ProcessOptions*
 
@@ -80,14 +80,16 @@
     %\DTMdate{\myYear-\myMonth-\myDay}%
 }
 
-\PackageToDTMdate{\hgbDate}{hgbPackageDate}	% converts package date to DTM format: \DTMusedate{hgbPackageDate}
-\DTMsavenow{hgbToday} % today's date in DTM format: \DTMusedate{hgbToday}
+\PackageToDTMdate{\hgbDate}{hgb@PackageDate}	% converts package date to DTM format: \DTMusedate{hgbPackageDate}
+\DTMsavenow{hgb@Today} % today's date in DTM format: \DTMusedate{hgbToday}
 
-\newcounter{hgbAgeLimit}\setcounter{hgbAgeLimit}{365}	% warn if package is older than 1 year
+\newcounter{hgb@AgeLimit}
+\setcounter{hgb@AgeLimit}{365}	% warn if package is older than 1 year
+
 \newcount\hgbAge
-\DTMsaveddatediff{hgbToday}{hgbPackageDate}{\hgbAge}
+\DTMsaveddatediff{hgb@Today}{hgb@PackageDate}{\hgbAge}
 
-\newcommand{\hgbWarnOldPackage}[1]{\PackageWarning{hagenberg-thesis}{%
+\newcommand{\hgb@WarnOldPackage}[1]{\PackageWarning{hagenberg-thesis}{%
 ^^J****************************************************************
 ^^JNOTE: 'hagenberg-thesis' is #1 days old - pls. check for updates 
 ^^Jat https://github.com/Digital-Media/HagenbergThesis
@@ -95,8 +97,8 @@
 ^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
 }
 
-\ifthenelse{\hgbAge>\value{hgbAgeLimit} \AND \NOT \boolean{hgb@noUpdateCheck}}%
-	{\hgbWarnOldPackage{\the\hgbAge}}{}
+\ifthenelse{\hgbAge>\value{hgb@AgeLimit} \AND \NOT \boolean{hgb@NoUpdateCheck}}%
+	{\hgb@WarnOldPackage{\the\hgbAge}}{}
 
 
 %% ------------------------------------------------------
@@ -193,7 +195,7 @@
 
 % The supplied text is formatted either justified or centered, depending on its length
 % (modeled after internal \@makecaption macro).
-\newcommand{\JustifyOrCenter}[1]{
+\newcommand{\hgbJustifyOrCenter}[1]{
 	\sbox\@tempboxa{#1}%
 	\ifdim \wd\@tempboxa >\hsize
 		\begin{sloppypar}\noindent#1\end{sloppypar}  % long text, format as block
@@ -276,7 +278,7 @@
 \floatstyle{plain}
 \restylefloat*{program}
 	
-\ifthenelse{\equal{\bbl@main@language}{german} \or \equal{\bbl@main@language}{ngerman}}%
+\ifthenelse{\equal{\bbl@main@language}{german} \or \equal{\bbl@main@language}{ngerman}}% TODO: change to \hgb@MainLanguage
 	{\floatname{program}{Programm}}{}%
 
 \ifthenelse{\equal{\bbl@main@language}{english}}%
