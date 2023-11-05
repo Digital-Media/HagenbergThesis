@@ -76,7 +76,10 @@ In addition, the following class-specific options are accepted:
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}}:
-    \texttt{master}, \texttt{diploma}, \texttt{bachelor}, \texttt{internship}, \texttt{custom}, \texttt{proposal};
+    \texttt{type=}%
+    \{\texttt{bachelor}, \texttt{master}, \texttt{diploma}, \texttt{phd}, \texttt{internship}, \texttt{custom}\},\newline
+    \texttt{titlelanguage=}\{\texttt{english}, \texttt{german}\},
+    \texttt{proposal};
     \item \textbf{\texttt{hgbreport}}: \texttt{notitlepage};
     \item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}.
 \end{itemize}
@@ -84,43 +87,54 @@ In addition, the following class-specific options are accepted:
 For example, to start a master's thesis in German, simply place
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[master,german,smartquotes]{hgbthesis}
+\documentclass[type=master,german,smartquotes]{hgbthesis}
 \end{LaTeXCode}
 %
 at the beginning of the document.
 
-The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'') and is 
-only effective in \emph{conjunction} with the \texttt{bachelor} and \texttt{master} 
-options, \eg,
+The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'' or ``Proposal'' ) and is 
+only effective in \emph{conjunction} with the main thesis types, \eg,
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[bachelor,proposal,german,smartquotes]{hgbthesis}
+\documentclass[type=bachelor,proposal,english,titlelanguage=german]{hgbthesis}
 \end{LaTeXCode}
 %
-This option is meant for a short exposé, containing only one chapter. Thus,
+The result is a short exposé that contains only one chapter. Thus,
 chapter numbers are not displayed. Remove the \texttt{proposal} option to
-migrate a proposal document to the final thesis (and restore the usual
+migrate a proposal document straight to the final thesis (and restore the usual
 numbering scheme).
 
 \subsection{Thesis parameters (class \texttt{hgbthesis})}
 
 \texttt{hgbthesis} supports several types of thesis documents. The following
-parameters must be specified for \emph{all} types:
+parameters must be specified for \emph{all} types at the beginning of the
+main document:
 %
 \begin{itemize}
     \item \verb!\title{...}!,
     \item \verb!\author{...}!,
     \item \verb!\programtype{...}!,
     \item \verb!\programname{...}!,
+    \item \verb!\institution{...}!,
     \item \verb!\placeofstudy{...}!,
     \item \verb!\dateofsubmission{yyyy}{mm}{dd}!,
-    \item \verb!\advisor{...}! (optional).
+    \item \verb!\advisor{...}! (optional),
 \end{itemize}
 %
 Note that \texttt{hgbthesis} only supports a \emph{single author} inside the
 \verb!\author{...}! macro argument (commands \verb!\and! and
 \verb!\thanks{...}! are deactivated)!
 
+
+Other (optional) settings for \texttt{hgbthesis} include:
+\begin{itemize}
+    \item \verb!\license{cc|strict}!\newline
+    Use the Creative Commons License (\texttt{cc} = default) or strict terms
+      (``all rights reserved'');
+    \item \verb!\logofile{xxx.pdf}!\newline
+    Specifies a custom logo image for the title page, to be placed in \verb!images/xxx.pdf!
+    (default is \texttt{logo.pdf}).
+\end{itemize}
 
 \section{Style files and user commands}
 
@@ -137,18 +151,19 @@ independently of the document classes listed above:
 \subsection{General user commands and environments (\texttt{hgb.sty})}
 
 \begin{itemize}
-    \item \texttt{{\bs}hgbDate}: Outputs the package version date,
+    \item \textbf{\texttt{{\bs}hgbDate}}\newline
+    Outputs the package version date,
     \eg, ``\texttt{\hgbDate}''.
-		\item \texttt{{\bs}getcurrentlabel}: Yields the most recently assigned
-		label number.
-    \item \verb!\calibrationbox{width}{height}!: Inserts a test box for
-    checking the final print size (in millimeters).
-		\item \verb!\begin{block}...\end{block}!: Dummy environment, provides
-		a limited scope for variable/command redefinitions.
-    \item \verb!\begin{english}...\end{english}!: Temporarily switches 
-		to English language settings.
-    \item \verb!\begin{german}...\end{german}!: Temporarily switches 
-		to German language settings.
+		\item \textbf{\texttt{{\bs}getcurrentlabel}}\newline
+    Yields the most recently assigned label number.
+    \item \textbf{\texttt{{\bs}calibrationbox}}\verb!{width}{height}!\newline
+    Inserts a test box for checking the final print size (in millimeters).
+		\item \verb!\begin{block}...\end{block}!\newline
+    Dummy environment, provides a limited scope for variable/command redefinitions.
+    \item \verb!\begin{english}...\end{english}!\newline
+    Temporarily switches to English language settings.
+    \item \verb!\begin{german}...\end{german}!\newline
+    Temporarily switches to German language settings.
 \end{itemize}
 
 
@@ -209,11 +224,13 @@ space, \ie, they can be used without additional controls, as in
 \subsection{Bibliography commands (\texttt{hgbbib.sty})}
 
 \begin{itemize}
+    \item 
+    \textbf{\texttt{{\bs}AddBibFile}}\newline
+    A wrapper to \texttt{biblatex}'s \verb!\addbibresource! macro (for backward compatibility only).
     \item
-    \texttt{{\bs}AddBibFile}: A wrapper to \texttt{biblatex}'s
-    \verb!\addbibresource! macro (for backward compatibility only).
-    \item
-    \texttt{{\bs}MakeBibliography[\emph{options}]}: Inserts the
+    \textbf{\texttt{{\bs}MakeBibliography}}[\emph{options}]
+    \newline
+    Inserts the
     reference section or chapter. By default, references are automatically
     split into category subsections.%
     \footnote{Predefined reference categories are \texttt{literature},
@@ -221,12 +238,12 @@ space, \ie, they can be used without additional controls, as in
     Use the option \texttt{nosplit} to produce a traditional (\ie,
     contiguous) list of references.
     \item
-    \texttt{{\bs}mcite%
+    \textbf{\texttt{{\bs}mcite}}%
         [\emph{text1}]\{\emph{key1}\}%
         [\emph{text2}]\{\emph{key2}\}%
         \ldots
         [\emph{textN}]\{\emph{keyN}\}%
-    }:
+    \newline
     Analogous to \texttt{bib\-la\-tex}'s \texttt{{\bs}cites} command%
     \footnote{%
     \url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
@@ -265,6 +282,7 @@ package, thus any valid \texttt{listings}%
 \footnote{\url{https://ctan.org/pkg/listings}}
 option may be used; for example, the option \texttt{numbers=none} to suppress
 line numbers:
+%
 \begin{LaTeXCode}[numbers=none]
     \begin{JavaCode}[numbers=none]
     ... // Java code comes here
@@ -355,7 +373,7 @@ package), \eg, by
 \end{LaTeXCode}
 
 
-\subsection{PDF/A generation (\texttt{hgbpdfa.sty})}
+\section{PDF/A generation (\texttt{hgbpdfa.sty})}
 
 Package \texttt{hgbpdfa} contains definitions for generating PDF/A-compliant 
 output files. It is based on the \texttt{pdfmanagement-testphase} package
@@ -367,11 +385,117 @@ output files. It is based on the \texttt{pdfmanagement-testphase} package
 If omitted, a plain PDF (non PDF/A-compliant) file is generated.
 
 
+\section{Customizing thesis title pages}
+
+The content and structure of the title pages generated for the various thesis types
+(\texttt{bachelor}, \texttt{master} \etc) may be customized to meet the specific
+requirements of different institutions or departments.
+Thus customization is usually done at the institutional level and not
+be the individual student.
+
+\subsection{Standard title page setups (\emph{themes})}
+
+The various front page arrangements are called \emph{themes} in the following.
+Technically, each theme is associated with a particular \texttt{.sty} (\latex\ package) file, \ie,  
+\begin{itemize}
+  \item[] \texttt{hgbtheme-bachelor.sty},
+  \item[] \texttt{hgbtheme-master.sty},
+  \item[] \texttt{hgbtheme-diploma.sty},
+  \item[] \texttt{hgbtheme-phd.sty},
+  \item[] \texttt{hgbtheme-internship.sty}.
+  %\item[] \texttt{hgbtheme-custom.sty}.
+\end{itemize}
+%
+All these ``inherit'' from a parent theme file
+%
+\begin{itemize}
+  \item[] \texttt{hgbtheme-thesis.sty},
+\end{itemize}
+%
+which contains the bulk of the definitions, while derived themes typically contain only 
+a small number of specific settings.
+
+
+\subsection{Custom title page themes}
+
+To customize the title pages to their needs, authors (or administrators) should 
+\emph{not} modify any of the standard theme files, since these may not be local but loaded
+from a package distribution.
+There are two recommended ways instead:
+
+\subsubsection{Option 1: Adapt \texttt{hgbtheme-custom.sty}}
+
+File \texttt{hgbtheme-custom.sty} (which is part of this distribution) is 
+a blank theme file that may be freely edited.
+Like all standard themes it inherits from \texttt{hgbtheme-thesis.sty},
+whose commands are all visible and may be redefined
+(see Sec.\ \ref{sec:ThemeStyleCommands} for available commands).
+To activate the associated theme simply use \texttt{custom} as the document type,
+\ie,
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[type=custom,...]{hgbthesis}
+\end{LaTeXCode}
+%
+This should be sufficient if only a \emph{single} custom theme is needed.
+
+\subsubsection{Option 2: Create multiple custom themes}
+
+Thesis administrator may find it useful to define multiple custom themes for their
+institution or department.
+For this puropose, simply copy file \texttt{hgbtheme-custom.sty} to,\eg, a new file
+\texttt{hgbtheme-physics.sty},%
+\footnote{To be placed in the same directory as the main document. Note the naming conventions!}
+and modify it accordingly. The associated theme can then be activated by
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[type=physics,...]{hgbthesis}
+\end{LaTeXCode}
+%
+An error will be raised if the associated \texttt{.sty} file cannot be found.
+
+
+
+\subsection{Commands and variables available to custom theme styles}
+\label{sec:ThemeStyleCommands}
+
+The following macros and variables are assured to be available for defining custom themes
+(see \texttt{hgbtheme-thesis.sty} for their typical usage):
+
+Page generation commands:
+\begin{itemize}
+  \item \verb!\hgb@MakeFrontPages!
+  \item \verb!\hgb@MakeTitlePage!
+  \item \verb!\hgb@MakeAdvisorPage!
+  \item \verb!\hgb@MakeCopyrightPage!
+  \item \verb!\hgb@MakeDeclarationPage!
+\end{itemize}
+
+Variables:
+\begin{itemize}
+  \item \verb!\hgb@TitlePageFont!
+  \item \verb!\hgb@TitleLanguage!
+  \item \verb!\hgb@ThesisNameDE!, \verb!\hgb@ThesisNameEN!
+  \item \verb!\hgb@ProposalNameDE!, \verb!\hgb@ProposalNameEN!
+  \item \verb!\hgb@IsProposal!
+  \item \verb!\hgb@Institution!
+  \item \verb!\hgb@PlaceOfStudy!
+  \item \verb!\hgb@LogoHeight!
+  \item \verb!\hgb@LogoFile!
+  \item \verb!\hgb@Advisor!
+  \item \verb!\hgb@StrictLicenseDE!, \verb!\hgb@StrictLicenseEN!, \verb!\hgb@StrictLicense!
+  \item \verb!\hgb@ccLicenseDE!, \verb!\hgb@ccLicenseEN!, \verb!\hgb@ccLicense!
+  \item \verb!\hgb@TheLicense!
+  \item \verb!\theauthor!
+  \item \verb!\hgb@DeclarationTitleDE!, \verb!\hgb@DeclarationTitleEN!
+  \item \verb!\hgb@DeclarationTextDE!, \verb!\hgb@DeclarationTextEN!
+  \item \verb!hgb@DateOfSubmission! (DTM date)
+\end{itemize}
+
 \section{Package dependencies}
 
 \begin{sloppypar}
-The \texttt{hagenberg-thesis} package builds on the following \latex\
-packages:\newline
+The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\newline
 \texttt{abstract}, 
 \texttt{algorithm}, 
 \texttt{algorithmicx}, 
