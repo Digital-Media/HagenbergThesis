@@ -52,19 +52,25 @@
 
 %% New version allowing key/value options (provided by recent LaTeX2e kernel):
 
-\newcommand{\@WarnDeprecatedOption}[2]{% #1 = obsolete option, #2 = suggested replacement
-	\ClassWarning{hgbthesis}{Class option '\string#1' is deprecated, use '\string#2' instead!}}%
+\newcommand{\@WarnDeprecatedTypeOption}[1]{% #1 = obsolete option
+	\ClassWarning{hgbthesis}{Class option '#1' is deprecated, use 'type=#1' instead!}}%
 
 \newcommand{\@ThemePackage}{}
 \newcommand{\@ThemeFile}{}
 
-\newcommand{\@SelectThemeFile}[1]{%
-	\renewcommand{\@ThemePackage}{hgbtheme-#1}%
-	\renewcommand{\@ThemeFile}{\@ThemePackage.sty}%
-	%\typeout{ThemeFile = \@ThemeFile}
-	\IfFileExists{\@ThemeFile}%
-		{\AtEndOfPackage{\RequirePackage{\@ThemePackage}}		 }%
-		{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}} 
+\newcommand{\@SelectTheme}[1]{%
+  \ifthenelse{\equal{\@ThemePackage}{}}%      %% \isempty{\@ThemePackage} not working?
+    { 
+      \renewcommand{\@ThemePackage}{hgbtheme-#1}%
+      \renewcommand{\@ThemeFile}{\@ThemePackage.sty}%
+      %\typeout{ThemeFile = \@ThemeFile}
+      \IfFileExists{\@ThemeFile}%
+        {\AtEndOfPackage{\RequirePackage{\@ThemePackage}}		 }%
+        {\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}} 
+    }%
+    {
+      \ClassWarning{hgbthesis}{Multiple declaration of thesis type, ignoring option '#1'}
+    }
 }
 
 % Set the language to be used for the front pages, which may be different from
@@ -73,18 +79,16 @@
 \newcommand{\titlelanguage}[1]{%
   \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
     {\renewcommand{\hgb@TitleLanguage}{#1}}%
-    {\ClassError{hgbthesis}{Unknown title language: '#1' (use 'german' or 'english')}{}}
+    {\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
 }
 
-
 \DeclareKeys{
-  bachelor.code 	= {\@WarnDeprecatedOption{bachelor}{type=bachelor}\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}},
-  master.code 		= {\@WarnDeprecatedOption{master}{type=master}\AtEndOfPackage{\RequirePackage{hgbtheme-master}}},
-  diploma.code 		= {\@WarnDeprecatedOption{diploma}{type=diploma}\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}},
-	internship.code = {\@WarnDeprecatedOption{internship}{type=internship}\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}},
+  bachelor.code 	= {\@SelectTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
+  master.code 		= {\@SelectTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
+  diploma.code 		= {\@SelectTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	internship.code = {\@SelectTheme{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
 	%% new options
-	%
-	type.code 			= \@SelectThemeFile{#1},
+	type.code 			= \@SelectTheme{#1},
 	titlelanguage.code = \titlelanguage{#1},
   %
   proposal.code 	= \setboolean{@hgbisproposal}{true},
