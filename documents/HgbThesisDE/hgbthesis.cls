@@ -5,6 +5,11 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
+% Preferences for the choice of macro (command/variable) names:
+% * internal macros (used in hgb *.cls and *.sty files): \hgb@macroname
+% * public macros (used within user documents): \hgbMacroName (using capital letters)
+
+
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
