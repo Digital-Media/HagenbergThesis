@@ -5,6 +5,9 @@
 *.blg
 *.log
 *.out
+*.ind
+*.ilg
+*.idx
 *.run.xml
 *.synctex
 *.synctex.gz
