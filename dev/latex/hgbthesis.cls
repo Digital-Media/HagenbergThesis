@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2023/10/26]%%AUTO
+\ProvidesClass{hgbthesis}[2023/11/06]%%AUTO
 
 \RequirePackage{xifthen}
 

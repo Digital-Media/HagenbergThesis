@@ -22,7 +22,7 @@ disciplines.%
 \footnote{Adaptation to other specifications is relatively easy.}
 Technically, this part is based on the program \texttt{biber}%
 \footnote{\url{https://ctan.org/pkg/biber}}
-in combination with the \latex\ package \texttt{biblatex} \cite{Kime2022}.
+in combination with the \latex\ package \texttt{biblatex} \cite{Kime2023}.
 
 Reference management consists of two elements: \emph{citations} in the text
 refer to entries in the \emph{bibliography} (or multiple bibliographies). The
@@ -706,16 +706,16 @@ documentation does not need to exist in printed form.
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{Mittelbach2022,
+@manual{Mittelbach2023,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
-  date={2022-04-08},
-  version={2.17n},
+  date={2023-05-13},
+  version={2.17o},
   url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
   langid={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2022}] \fullcite{Mittelbach2022}
+\item[\cite{Mittelbach2023}] \fullcite{Mittelbach2023}
 \end{itemize}
 %
 Often no author is named in such documents. Instead, the name of the
@@ -743,7 +743,7 @@ type \texttt{@standard}. Here is a typical example:
   shortauthor={WHATWG},
   title={HTML},
   titleaddon={Living Standard},
-  date={2023-02-06},
+  date={2023-11-06},
   url={https://html.spec.whatwg.org/multipage/},
   langid={english}
 }
@@ -814,7 +814,7 @@ the application for a legal text (see also \cite{FhStG1993} and
 
 If the entry types for printed publications listed so far do not suffice, one
 should first look at the other types (not described in detail here) in the
-\texttt{biblatex} manual \cite{Kime2022}. For example, \texttt{@collection} for
+\texttt{biblatex} manual \cite{Kime2023}. For example, \texttt{@collection} for
 a complete collection (\ie, not just a single contribution).
 
 If none of them fit, then the \texttt{@misc} type can be used. It provides a
@@ -913,7 +913,7 @@ associated \emph{technical report}, see above) can be found, the
 In the latter case, the specification of the link (via \texttt{doi} or alternatively
 \texttt{url}) is essential. Details on the \texttt{pubstate} field
 (\texttt{prepublished}) can be found in the \texttt{biblatex} documentation
-\cite[Sec.\ 4.9.2.11]{Kime2022}. Otherwise (if unknown or not published),
+\cite[Sec.\ 4.9.2.11]{Kime2023}. Otherwise (if unknown or not published),
 %
 \begin{itemize}
 \item[]\texttt{note=\{unpublished\}} \quad or
@@ -1139,20 +1139,20 @@ distinguished:
 Due to the volume and increasing quality of these entries, their inclusion in
 a bibliography seems justified. For example, a \emph{relic shrine} (German:
 "Reliquienschrein") is a casket in which the relics of one or more saints are
-kept \cite{WikiReliquienschrein2022}.
+kept \cite{WikiReliquienschrein2023}.
 %
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@online{WikiReliquienschrein2022,
+@online{WikiReliquienschrein2023,
   title={Reliquienschrein},
   url={https://de.wikipedia.org/wiki/Reliquienschrein},
-  date={2022-08-29},
-  urldate={2023-02-11},
+  date={2023-09-22},
+  urldate={2023-11-06},
   langid={ngerman}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2022}] \fullcite{WikiReliquienschrein2022}
+\item[\cite{WikiReliquienschrein2023}] \fullcite{WikiReliquienschrein2023}
 \end{itemize}
 %
 In this case, the reference consists mainly of a URL. With \texttt{date}, one
