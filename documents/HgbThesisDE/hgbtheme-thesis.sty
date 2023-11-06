@@ -44,10 +44,12 @@
 		\begin{center}%
 			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
-			\parbox[c][5cm][c]{12cm}{%
+			\parbox[c][5cm][c]{\textwidth}{%
 				\centering\LARGE\bfseries%
 				\setlength{\baselineskip}{25pt}%
-				\thetitle%    \thetitle is defined by titling package (instead of \@title)
+				\hgb@Title%\thetitle%    \thetitle is defined by titling package (instead of \@title)
+				\\[10pt]
+				\hgb@SubTitle
 			}
 			\vskip 15mm%
 			{\large\theauthor}% \theauthor is defined by titling package (instead of \@author)

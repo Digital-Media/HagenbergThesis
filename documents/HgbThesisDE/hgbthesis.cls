@@ -119,6 +119,14 @@
 
 % General Thesis Parameters
 
+\newcommand{\hgb@Title}{Document title not specified!}	
+% initialized by \renewcommand{\maketitle} below
+
+\newcommand{\hgb@SubTitle}{}
+\newcommand{\subtitle}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@SubTitle}{#1}}
+}
+
 \newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@Institution}{#1}}
@@ -211,6 +219,7 @@
 
 \RequirePackage{titling}
 \renewcommand{\maketitle}{%                     redefine standard LaTeX-command
+	\renewcommand{\hgb@Title}{\thetitle}%					defined by 'titling' package
 	\renewcommand{\and}{\@warnmultipleauthors}%   suppress \and inside \author{..}
 	\renewcommand{\thanks}[1]{\relax}%            suppress \thanks{..} inside \author{..}
 	\hypersetup{
