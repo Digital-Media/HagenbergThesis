@@ -1,0 +1,245 @@
+%% hgbtheme-bachelor.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgbtheme-thesis-legacy}[2023/10/26]%%AUTO
+
+%% This is a 'theme' file which specifies the layout and structure of the
+%% document's front pages.
+
+% required parameters:
+  % \hgb@TitlePageFont
+  % \hgb@ProgramType
+  % \hgb@ProgramName
+  % \hgb@PlaceOfStudy
+  % hgb@DateOfSubmission
+  % \hgb@TitleLanguage
+  % hgb@IsProposal (boolean)
+
+%% -----------------------
+  
+\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
+  \hgb@MakeTitlePage%
+	\ifthenelse{\boolean{hgb@IsProposal}}%
+		{%	thesis proposal:
+			\hgb@MakeAdvisorPage%     no copyright/declaration page for proposals
+		}%			
+		{%	final thesis:
+			\hgb@MakeAdvisorPage%
+			\hgb@MakeCopyrightPage%
+			\hgb@MakeDeclarationPage%
+		}%
+}
+
+
+%% Title page ---------------------------------------------------
+
+\newcommand{\hgb@MakeTitlePage}{%
+\begin{titlepage}%
+		\rule{0mm}{1mm}%
+		\vspace*{0mm}%
+		\begin{center}%
+			\hgb@TitlePageFont%
+			\setlength{\unitlength}{1cm}%
+			\parbox[c][5cm][c]{12cm}{%
+				\centering\LARGE\bfseries%
+				\setlength{\baselineskip}{25pt}%
+				\hgb@Title%\thetitle%    \thetitle is defined by titling package (instead of \@title)
+			}
+			\vskip 15mm%
+			{\large\theauthor}% \theauthor is defined by titling package (instead of \@author)
+			\vskip 15mm%
+			\hgb@MakeLogo%
+			\vskip 15mm%
+			% ---------------------------------
+      \ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+        {\def\tmp@ThesisName{\hgb@ThesisNameDE} % fully expand by \edef to make \MakeUppercase and \@addspaces work!
+         \def\tmp@ProposalName{\hgb@ProposalNameDE}}
+        {\def\tmp@ThesisName{\hgb@ThesisNameEN}
+         \def\tmp@ProposalName{\hgb@ProposalNameEN}}
+      {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
+        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
+      % ---------------------------------
+			\vskip 4mm%
+			%
+			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+          {eingereicht am}%
+          {submitted to the}}
+      \vskip 1mm 
+      {\large \hgb@ProgramType}%
+			\vskip 4mm%
+			{\large\hgb@ProgramName}%
+			\vskip 4mm%
+      % -------------------
+			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+          {in \hgb@PlaceOfStudy}%
+          {at \hgb@PlaceOfStudy}%
+      }%
+      % -------------------
+			\vskip 16mm%
+      {\large\DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}} \DTMfetchyear{hgb@DateOfSubmission}}%
+		\end{center}%
+		\vfil%
+\end{titlepage}%
+}
+
+%% Generation of logo ----------------------------------------
+
+\newlength{\hgb@LogoHeight}
+\setlength{\hgb@LogoHeight}{30mm}
+
+\newcommand{\hgb@MakeLogo}[0]{%
+\ifthenelse{\equal{\hgb@LogoFile}{}}%	check if \hgb@LogoFile is empty (unspecified)
+	{\vspace*{\hgb@LogoHeight}}%			skip logo
+	{\includegraphics[height=\hgb@LogoHeight]{\hgb@LogoFile}}%	insert logo
+}
+
+% Default Advisor Page ----------------------------------------
+
+\newcommand{\hgb@AdvisorHeaderFinal}{
+	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+			{Betreuung}%
+			{Advisor}%
+}
+
+\newcommand{\hgb@AdvisorHeaderProposal}{
+	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+			{Betreuung (Vorschlag)}%
+			{Proposed Advisor}%
+}
+
+\newcommand{\hgb@MakeAdvisorPage}{%
+	\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
+		{}{%
+		\newpage
+		%\setcounter{page}{2}
+		\thispagestyle{plain}
+		\rule{0mm}{1mm}
+		\vspace{90mm}
+		\begin{center}
+			\ifthenelse{\boolean{hgb@IsProposal}}%
+				{\hgb@AdvisorHeaderProposal:}%
+				{\hgb@AdvisorHeaderFinal:}%
+			\\
+			\vspace{5mm} 
+      {\Large\sffamily\hgb@Advisor}
+		\end{center}
+		}
+}
+
+%% Default Copyright/License page ----------------------------------------
+
+
+\newcommand{\hgb@StrictLicenseDE}{Alle Rechte vorbehalten}
+\newcommand{\hgb@StrictLicenseEN}{All Rights Reserved}
+
+\newcommand{\hgb@StrictLicense}{%
+\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+	{\begin{german}\hgb@StrictLicenseDE\end{german}}
+	{\begin{english}\hgb@StrictLicenseEN\end{english}}
+}
+
+%% ------
+
+\newcommand{\hgb@ccLicenseDE}{%
+Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
+\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
+veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+}
+
+\newcommand{\hgb@ccLicenseEN}{%
+This work is published under the conditions of the \textsf{Creative Commons License} 
+\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
+---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+}
+
+\newcommand{\hgb@ccLicense}{%
+\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+	{\begin{german}\hgb@ccLicenseDE\end{german}}
+	{\begin{english}\hgb@ccLicenseEN\end{english}}
+}
+
+%% ------
+
+\newcommand{\hgb@TheLicense}{%
+\ifthenelse{\equal{\hgb@license}{strict}}%
+  {\hgb@StrictLicense}%
+  {\hgb@ccLicense}%
+}
+
+\newcommand{\hgb@MakeCopyrightPage}{%
+  \newpage
+  \thispagestyle{plain}
+  \rule{0mm}{1mm}
+  \vspace*{75mm}
+  \begin{center}
+  \textsf{\copyright\ Copyright\ \DTMfetchyear{hgb@DateOfSubmission} \theauthor}
+  \end{center}
+  \vspace{8mm}
+  \hgbJustifyOrCenter{\hgb@TheLicense} % defined in hgb.sty
+}
+
+%% Default Declaration Page ----------------------------------------
+
+\newcommand{\hgb@DeclarationTitleDE}{Erklärung}
+
+\newcommand{\hgb@DeclarationTextDE}{%
+  Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
+  andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
+  solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
+  Prüfungsbehörde vorgelegt.
+  Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
+}
+
+\newcommand{\hgb@DeclarationTitleEN}{Declaration}
+
+\newcommand{\hgb@DeclarationTextEN}{%
+  I hereby declare and confirm that this thesis is entirely the result of my own original work. 
+  Where other sources of information have been used, they have been indicated as such and properly 
+  acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
+  This printed copy is identical to the submitted electronic version.
+}
+
+%% TODO: again this does not work because of expansion issuses in \chapter
+%\newcommand{\hgb@DeclarationTitle}{
+  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}  %\hgb@TitleLanguage
+    %{\hgb@DeclarationTitleDE}%
+    %{\hgb@DeclarationTitleEN}
+%}
+%
+%\newcommand{\hgb@DeclarationText}{
+  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}
+    %{\hgb@DeclarationTextDE}
+    %{\hgb@DeclarationTextEN}
+%}
+
+\newcommand{\hgb@MakeDeclarationPage}{
+		%\chapter{\hgb@DeclarationTitleEN}%   expansion issuses!
+    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+      {\chapter{\hgb@DeclarationTitleDE}}
+      {\chapter{\hgb@DeclarationTitleEN}}
+		\noindent%
+    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+      {\begin{german}\hgb@DeclarationTextDE\end{german}}
+      {\begin{english}\hgb@DeclarationTextEN\end{english}}
+		\par
+		\vspace{10mm}
+		\noindent
+    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+      {\hgb@PlaceOfStudy, am 
+        \DTMfetchday{hgb@DateOfSubmission}.~%
+        \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
+        \DTMfetchyear{hgb@DateOfSubmission}}
+      {\hgb@PlaceOfStudy, 
+        \DTMfetchday{hgb@DateOfSubmission}~%
+        \DTMenglishmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
+        \DTMfetchyear{hgb@DateOfSubmission}}
+		\par
+		\vspace{12mm}
+		\noindent
+		\theauthor
+}
+
