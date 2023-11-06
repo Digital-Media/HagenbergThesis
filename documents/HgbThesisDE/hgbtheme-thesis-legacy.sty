@@ -47,10 +47,10 @@
 			\parbox[c][5cm][c]{12cm}{%
 				\centering\LARGE\bfseries%
 				\setlength{\baselineskip}{25pt}%
-				\hgb@Title%\thetitle%    \thetitle is defined by titling package (instead of \@title)
+				\hgb@Title%
 			}
 			\vskip 15mm%
-			{\large\theauthor}% \theauthor is defined by titling package (instead of \@author)
+			{\large\hgb@Author}%
 			\vskip 15mm%
 			\hgb@MakeLogo%
 			\vskip 15mm%
@@ -176,7 +176,7 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
   \rule{0mm}{1mm}
   \vspace*{75mm}
   \begin{center}
-  \textsf{\copyright\ Copyright\ \DTMfetchyear{hgb@DateOfSubmission} \theauthor}
+  \textsf{\copyright\ Copyright\ \DTMfetchyear{hgb@DateOfSubmission} \hgb@Author}
   \end{center}
   \vspace{8mm}
   \hgbJustifyOrCenter{\hgb@TheLicense} % defined in hgb.sty
@@ -240,6 +240,6 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 		\par
 		\vspace{12mm}
 		\noindent
-		\theauthor
+		\hgb@Author
 }
 

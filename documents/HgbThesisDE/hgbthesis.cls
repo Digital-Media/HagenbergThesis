@@ -119,6 +119,8 @@
 
 % General Thesis Parameters
 
+\newcommand{\hgb@Author}{\theauthor}%	\theauthor is defined by titling package (instead of \@author)
+
 \newcommand{\hgb@Title}{Document title not specified!}	
 % initialized by \renewcommand{\maketitle} below
 
@@ -189,6 +191,13 @@
   \DTMsavenoparsedate{hgb@DateOfSubmission}{#1}{#2}{#3}{-1}
 }
 
+\newcommand{\hgb@SubmissionYear}{\DTMfetchyear{hgb@DateOfSubmission}}
+\newcommand{\hgb@SubmissionMonth}{\DTMfetchmonth{hgb@DateOfSubmission}}
+\newcommand{\hgb@SubmissionDay}{\DTMfetchday{hgb@DateOfSubmission}}
+
+\newcommand{\hgb@SubmissionMonthNameDE}{\DTMgermanmonthname{\hgb@SubmissionMonth}}
+\newcommand{\hgb@SubmissionMonthNameEN}{\DTMenglishmonthname{\hgb@SubmissionMonth}}
+
 % Copyright/License Settings --------------------------------------------------
 
 \newcommand{\hgb@license}{cc}
@@ -223,8 +232,8 @@
 	\renewcommand{\and}{\@warnmultipleauthors}%   suppress \and inside \author{..}
 	\renewcommand{\thanks}[1]{\relax}%            suppress \thanks{..} inside \author{..}
 	\hypersetup{
-			pdftitle={\thetitle},%      \thetitle is defined by titling package (instead of \@title)
-      pdfauthor={\theauthor},%    \theauthor is defined by titling package (instead of \@author)
+			pdftitle={\hgb@Title},%			TODO: add optional subtitle!
+      pdfauthor={\hgb@Author},%
 			pdfsubject={\hgb@ProgramType~\hgb@ProgramName,~\hgb@PlaceOfStudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
