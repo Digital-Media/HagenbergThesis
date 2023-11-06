@@ -39,24 +39,26 @@
 
 \newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
-		\rule{0mm}{1mm}%
+		\rule{0mm}{10mm}%
 		\vspace*{0mm}%
 		\begin{center}%
 			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
+			% author --------------------------------------------------
+			{\Large\hgb@Author}%
+			\vskip 8mm%
+			% title --------------------------------------------------
 			\parbox[c][5cm][c]{\textwidth}{%
-				\centering\LARGE\bfseries%
-				\setlength{\baselineskip}{25pt}%
-				\hgb@Title%
-				\\[10pt]
-				\hgb@SubTitle
+				\centering%
+				{\LARGE\bfseries\setlength{\baselineskip}{25pt}\hgb@Title}%
+				\vskip 8mm%
+				{\Large\bfseries\setlength{\baselineskip}{20pt}\hgb@SubTitle}%
 			}
-			\vskip 15mm%
-			{\large\hgb@Author}%
-			\vskip 15mm%
+			\vskip 10mm%
+			% logo --------------------------------------------------
 			\hgb@MakeLogo%
 			\vskip 15mm%
-			% ---------------------------------
+			% thesis type ---------------------------------------------
       \ifthenelse{\equal{\hgb@TitleLanguage}{german}}
         {\def\tmp@ThesisName{\hgb@ThesisNameDE} % fully expand by \edef to make \MakeUppercase and \@addspaces work!
          \def\tmp@ProposalName{\hgb@ProposalNameDE}}
@@ -64,25 +66,28 @@
          \def\tmp@ProposalName{\hgb@ProposalNameEN}}
       {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
         \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
-      % ---------------------------------
 			\vskip 4mm%
-			%
-			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-          {eingereicht am}%
-          {submitted to the}}
-      \vskip 1mm 
-      {\large \hgb@ProgramType}%
-			\vskip 4mm%
+			% ---------------------------------
+			%{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
+          %{eingereicht am}%
+          %{submitted to the}}
+      %\vskip 1mm 
+			% program type ---------------------------------
+      %{\large \hgb@ProgramType}%
+			%\vskip 4mm%
+			% program name ---------------------------------
 			{\large\hgb@ProgramName}%
 			\vskip 4mm%
-      % -------------------
-			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-          {\hgb@Institution\ in \hgb@PlaceOfStudy}%
-          {\hgb@Institution\ at \hgb@PlaceOfStudy}%
-      }%
-      % -------------------
+      % place of study  ---------------------------------
+			{\large\hgb@Institution}%
+			\vskip 4mm%
+      {\large\hgb@PlaceOfStudy}%
+			\vskip 8mm%
+			% advisors(s) ---------------------------------
+			{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
 			\vskip 16mm%
-      {\large im \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}} \DTMfetchyear{hgb@DateOfSubmission}}%
+      % submission date ---------------------------------
+      {\large\hgb@SubmissionYear}%
 		\end{center}%
 		\vfil%
 \end{titlepage}%
