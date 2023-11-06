@@ -1,9 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/), and this project DOES NOT adhere to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project DOES NOT adhere to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
+
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+## [2023/11/06]
 
 ### Added
 
@@ -11,7 +23,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/), and this 
 
 ### Changed
 
-### Fixed
+- 2023/11/06: Updated the content of `references.bib`. Updated versions of various manuals and online sources. Adapted linked references in the documents accordingly.
+- 2023/11/06: Updated the deadlines and semesters in the main files of all documents.
 
 ## [2023/02/13]
 
@@ -144,7 +157,8 @@ replacing obsolete CD/DVD by cloud archive submission.
 This is the first release on GitHub. Future versions will now be published on this repository.
 This version has also been ported to Overleaf for online editing.
 
-[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2023/02/13...HEAD
+[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2023/11/06...HEAD
+[2023/11/06]: https://github.com/Digital-Media/HagenbergThesis/compare/2023/02/13...2023/11/06
 [2023/02/13]: https://github.com/Digital-Media/HagenbergThesis/compare/2020/10/29...2023/02/13
 [2020/10/29]: https://github.com/Digital-Media/HagenbergThesis/compare/2019/05/16...2020/10/29
 [2019/05/16]: https://github.com/Digital-Media/HagenbergThesis/compare/2018/11/28...2019/05/16
