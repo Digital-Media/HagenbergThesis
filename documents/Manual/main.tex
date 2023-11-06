@@ -391,7 +391,7 @@ The content and structure of the title pages generated for the various thesis ty
 (\texttt{bachelor}, \texttt{master} \etc) may be customized to meet the specific
 requirements of different institutions or departments.
 Thus customization is usually done at the institutional level and not
-be the individual student.
+by the individual author (student).
 
 \subsection{Standard title page setups (\emph{themes})}
 
@@ -402,10 +402,11 @@ Technically, each theme is associated with a particular \texttt{.sty} (\latex\ p
   \item[] \texttt{hgbtheme-master.sty},
   \item[] \texttt{hgbtheme-diploma.sty},
   \item[] \texttt{hgbtheme-phd.sty},
-  \item[] \texttt{hgbtheme-internship.sty}.
+  \item[] \texttt{hgbtheme-internship.sty},
   %\item[] \texttt{hgbtheme-custom.sty}.
 \end{itemize}
 %
+respectively, for each of the pre-defined thesis types.
 All these ``inherit'' from a parent theme file
 %
 \begin{itemize}
@@ -428,8 +429,9 @@ There are two recommended ways instead:
 File \texttt{hgbtheme-custom.sty} (which is part of this distribution) is 
 a blank theme file that may be freely edited.
 Like all standard themes it inherits from \texttt{hgbtheme-thesis.sty},
-whose commands are all visible and may be redefined
-(see Sec.\ \ref{sec:ThemeStyleCommands} for available commands).
+whose commands are all visible and may be redefined,
+typically by \verb!\renewcommand!. 
+See Sec.\ \ref{sec:ThemeStyleCommands} for available commands.
 To activate the associated theme simply use \texttt{custom} as the document type,
 \ie,
 %
@@ -437,13 +439,13 @@ To activate the associated theme simply use \texttt{custom} as the document type
 \documentclass[type=custom,...]{hgbthesis}
 \end{LaTeXCode}
 %
-This should be sufficient if only a \emph{single} custom theme is needed.
+This is the simplest approach if only a \emph{single} custom theme is needed.
 
 \subsubsection{Option 2: Create multiple custom themes}
 
-Thesis administrator may find it useful to define multiple custom themes for their
-institution or department.
-For this puropose, simply copy file \texttt{hgbtheme-custom.sty} to,\eg, a new file
+Thesis administrator may find it useful to define \emph{multiple} custom themes for their
+institution or department(s).
+For this puropose, simply copy file \texttt{hgbtheme-custom.sty} to a new file, \eg, 
 \texttt{hgbtheme-physics.sty},%
 \footnote{To be placed in the same directory as the main document. Note the naming conventions!}
 and modify it accordingly. The associated theme can then be activated by
@@ -456,7 +458,7 @@ An error will be raised if the associated \texttt{.sty} file cannot be found.
 
 
 
-\subsection{Commands and variables available to custom theme styles}
+\subsection{Commands and variables available to custom theme styles ({\color{red} UNFINISHED})}
 \label{sec:ThemeStyleCommands}
 
 The following macros and variables are assured to be available for defining custom themes
