@@ -25,8 +25,7 @@
 
 %% Commands for Title Pages (used in class options) ---------------------------
 
-% The document's main language, specified by a class option (passed to hgb.sty);
-%\newcommand{\hgb@MainLanguage}{german}
+% Type of thesis (theme name):
 \newcommand{\hgb@ThesisType}{master}	
 
 %% Standard title designations -------------------------------------------------
@@ -81,7 +80,7 @@
 
 % Sets the main language for this document:
 \newcommand{\hgb@MainLanguage}{german}
-\newcommand{\mainlanguage}[1]{%
+\newcommand{\@setMainlLanguage}[1]{%
   \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
     {\renewcommand{\hgb@MainLanguage}{#1}}%
     {\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
@@ -90,21 +89,30 @@
 % Sets the language to be used for the front pages, which may be different from
 % the document's main language (specified by a class option):
 \newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}
-\newcommand{\titlelanguage}[1]{%
+\newcommand{\@setTitleLanguage}[1]{%
   \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
     {\renewcommand{\hgb@TitleLanguage}{#1}}%
     {\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
 }
 
+% See source2e documentation (p. 956)
+% See https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
-  % legacy options (deprecated)
+  % legacy options (deprecated):
   bachelor.code 	= {\@SelectTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
   master.code 		= {\@SelectTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
   diploma.code 		= {\@SelectTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
 	internship.code = {\@SelectTheme{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
+  %
+  % catch old-style language options: for some reason they are still passed to hgb.sty!
+  german.code     = {\@setMainlLanguage{german}}, % currently no warnings!
+  english.code    = {\@setMainlLanguage{english}},
+  %
 	%% new options
 	type.code 			= \@SelectTheme{#1},
-	titlelanguage.code = \titlelanguage{#1},
+  %
+  language.code      = \@setMainlLanguage{#1},
+	titlelanguage.code = \@setTitleLanguage{#1},
   %
   proposal.code 	= \setboolean{hgb@IsProposal}{true},
   %
@@ -112,10 +120,11 @@
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
+    \typeout{hgbthesis.cls: unknown option \CurrentOption}%
     \PassOptionsToPackage{\CurrentOption}{hgb}
 }
 
-\ProcessKeyOptions
+\ProcessKeyOptions[hgbthesis]
 
 %% Paper Options and Style File -----------------------------------------------
 
