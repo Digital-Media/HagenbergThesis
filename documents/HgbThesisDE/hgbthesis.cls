@@ -170,7 +170,7 @@
 
 \newcommand{\hgb@Advisor}{}					% empty by default
 \newcommand{\advisor}[1]{%
-	\renewcommand{\hgb@Advisor}{#1}		
+	\renewcommand{\hgb@Advisor}{#1}	
 }
 
 % Specify the institution's logo in 'images/' ('logo.pdf' by default)
