@@ -5,19 +5,11 @@
 %% File encoding: UTF-8
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{hgbtheme-thesis-legacy}[2023/10/26]%%AUTO
+\ProvidesPackage{hgbtheme-legacy}[2023/10/26]%%AUTO
 
 %% This is a 'theme' file which specifies the layout and structure of the
 %% document's front pages.
 
-% required parameters:
-  % \hgb@TitlePageFont
-  % \hgb@ProgramType
-  % \hgb@ProgramName
-  % \hgb@PlaceOfStudy
-  % hgb@DateOfSubmission
-  % \hgb@TitleLanguage
-  % hgb@IsProposal (boolean)
 
 %% -----------------------
   
@@ -34,11 +26,11 @@
 		}%
 }
 
-
 %% Title page ---------------------------------------------------
 
 \newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
+	\begin{german}
 		\rule{0mm}{1mm}%
 		\vspace*{0mm}%
 		\begin{center}%
@@ -54,35 +46,24 @@
 			\vskip 15mm%
 			\hgb@MakeLogo%
 			\vskip 15mm%
-			% ---------------------------------
-      \ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-        {\def\tmp@ThesisName{\hgb@ThesisNameDE} % fully expand by \edef to make \MakeUppercase and \@addspaces work!
-         \def\tmp@ProposalName{\hgb@ProposalNameDE}}
-        {\def\tmp@ThesisName{\hgb@ThesisNameEN}
-         \def\tmp@ProposalName{\hgb@ProposalNameEN}}
-      {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
-        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
+			% ---------------------------------         
+      {\Large\@addspaces{\MakeUppercase{\hgb@ThesisNameDE}}%
+        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalNameDE}})}{}}
       % ---------------------------------
 			\vskip 4mm%
 			%
-			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-          {eingereicht am}%
-          {submitted to the}}
-      \vskip 1mm 
-      {\large \hgb@ProgramType}%
+			{\large eingereicht am} \vskip 1mm {\hgb@ProgramType}%
 			\vskip 4mm%
 			{\large\hgb@ProgramName}%
 			\vskip 4mm%
       % -------------------
-			{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-          {in \hgb@PlaceOfStudy}%
-          {at \hgb@PlaceOfStudy}%
-      }%
+      {\large in \hgb@PlaceOfStudy}%
       % -------------------
 			\vskip 16mm%
-      {\large\DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}} \DTMfetchyear{hgb@DateOfSubmission}}%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}} \DTMfetchyear{hgb@DateOfSubmission}}%
 		\end{center}%
 		\vfil%
+  \end{german}
 \end{titlepage}%
 }
 
@@ -124,7 +105,7 @@
 				{\hgb@AdvisorHeaderProposal:}%
 				{\hgb@AdvisorHeaderFinal:}%
 			\\
-			\vspace{5mm} 
+			\vspace{3mm} 
       {\Large\sffamily\hgb@Advisor}
 		\end{center}
 		}
@@ -187,34 +168,25 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 \newcommand{\hgb@DeclarationTitleDE}{Erklärung}
 
 \newcommand{\hgb@DeclarationTextDE}{%
+  \begin{german}%
   Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
   andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
   solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
   Prüfungsbehörde vorgelegt.
   Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
+  \end{german}
 }
 
 \newcommand{\hgb@DeclarationTitleEN}{Declaration}
 
 \newcommand{\hgb@DeclarationTextEN}{%
+  \begin{english}%
   I hereby declare and confirm that this thesis is entirely the result of my own original work. 
   Where other sources of information have been used, they have been indicated as such and properly 
   acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
   This printed copy is identical to the submitted electronic version.
+  \end{english}
 }
-
-%% TODO: again this does not work because of expansion issuses in \chapter
-%\newcommand{\hgb@DeclarationTitle}{
-  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}  %\hgb@TitleLanguage
-    %{\hgb@DeclarationTitleDE}%
-    %{\hgb@DeclarationTitleEN}
-%}
-%
-%\newcommand{\hgb@DeclarationText}{
-  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}
-    %{\hgb@DeclarationTextDE}
-    %{\hgb@DeclarationTextEN}
-%}
 
 \newcommand{\hgb@MakeDeclarationPage}{
 		%\chapter{\hgb@DeclarationTitleEN}%   expansion issuses!
@@ -234,8 +206,8 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
         \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
         \DTMfetchyear{hgb@DateOfSubmission}}
       {\hgb@PlaceOfStudy, 
-        \DTMfetchday{hgb@DateOfSubmission}~%
         \DTMenglishmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
+        \DTMfetchday{hgb@DateOfSubmission},
         \DTMfetchyear{hgb@DateOfSubmission}}
 		\par
 		\vspace{12mm}
