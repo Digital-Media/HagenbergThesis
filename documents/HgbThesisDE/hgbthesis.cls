@@ -26,7 +26,7 @@
 %% Commands for Title Pages (used in class options) ---------------------------
 
 % The document's main language, specified by a class option (passed to hgb.sty);
-\newcommand{\hgb@MainLanguage}{german}
+%\newcommand{\hgb@MainLanguage}{german}
 \newcommand{\hgb@ThesisType}{master}	
 
 %% Standard title designations -------------------------------------------------
@@ -79,8 +79,16 @@
     }
 }
 
-% Set the language to be used for the front pages, which may be different from
-% the document's main language (specified by a class option).
+% Sets the main language for this document:
+\newcommand{\hgb@MainLanguage}{german}
+\newcommand{\mainlanguage}[1]{%
+  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
+    {\renewcommand{\hgb@MainLanguage}{#1}}%
+    {\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
+}
+
+% Sets the language to be used for the front pages, which may be different from
+% the document's main language (specified by a class option):
 \newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}
 \newcommand{\titlelanguage}[1]{%
   \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
@@ -89,6 +97,7 @@
 }
 
 \DeclareKeys{
+  % legacy options (deprecated)
   bachelor.code 	= {\@SelectTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
   master.code 		= {\@SelectTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
   diploma.code 		= {\@SelectTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},

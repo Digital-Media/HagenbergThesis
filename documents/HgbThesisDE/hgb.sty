@@ -37,7 +37,7 @@
 
 % Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\RequirePackage[english,main=ngerman]{babel}}{}
+	{\RequirePackage[main=ngerman,english]{babel}}{}
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}%
 	{\RequirePackage[main=english,ngerman]{babel}}{}
 
