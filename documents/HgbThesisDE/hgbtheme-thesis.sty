@@ -106,36 +106,36 @@
 
 % Default Advisor Page ----------------------------------------
 
-\newcommand{\hgb@AdvisorHeaderFinal}{
-	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			{Betreuung}%
-			{Advisor}%
-}
-
-\newcommand{\hgb@AdvisorHeaderProposal}{
-	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			{Betreuung (Vorschlag)}%
-			{Proposed Advisor}%
-}
-
-\newcommand{\hgb@MakeAdvisorPage}{%
-	\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
-		{}{%
-		\newpage
-		%\setcounter{page}{2}
-		\thispagestyle{plain}
-		\rule{0mm}{1mm}
-		\vspace{90mm}
-		\begin{center}
-			\ifthenelse{\boolean{hgb@IsProposal}}%
-				{\hgb@AdvisorHeaderProposal:}%
-				{\hgb@AdvisorHeaderFinal:}%
-			\\
-			\vspace{5mm} 
-      {\Large\sffamily\hgb@Advisor}
-		\end{center}
-		}
-}
+%\newcommand{\hgb@AdvisorHeaderFinal}{
+	%\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+			%{Betreuung}%
+			%{Advisor}%
+%}
+%
+%\newcommand{\hgb@AdvisorHeaderProposal}{
+	%\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+			%{Betreuung (Vorschlag)}%
+			%{Proposed Advisor}%
+%}
+%
+%\newcommand{\hgb@MakeAdvisorPage}{%
+	%\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
+		%{}{%
+		%\newpage
+		%%\setcounter{page}{2}
+		%\thispagestyle{plain}
+		%\rule{0mm}{1mm}
+		%\vspace{90mm}
+		%\begin{center}
+			%\ifthenelse{\boolean{hgb@IsProposal}}%
+				%{\hgb@AdvisorHeaderProposal:}%
+				%{\hgb@AdvisorHeaderFinal:}%
+			%\\
+			%\vspace{5mm} 
+      %{\Large\sffamily\hgb@Advisor}
+		%\end{center}
+		%}
+%}
 
 %% Default Copyright/License page ----------------------------------------
 
@@ -250,5 +250,17 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 		\vspace{12mm}
 		\noindent
 		\hgb@Author
+    
+    \vspace{20mm}
+    \hrule
+    \showDebugText
 }
 
+\newcommand{\showDebugText}{
+\noindent
+\textbf{Debugging:}\\
+%
+hgb@MainLanguage=\hgb@MainLanguage\\
+hgb@TitleLanguage=\hgb@TitleLanguage\\
+languagename=\languagename\\
+}
