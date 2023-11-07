@@ -106,6 +106,7 @@
   %
   % catch old-style language options: for some reason they are still passed to hgb.sty!
   german.code     = {\@setMainlLanguage{german}}, % currently no warnings!
+  ngerman.code    = {\@setMainlLanguage{german}}, % currently no warnings!
   english.code    = {\@setMainlLanguage{english}},
   %
 	%% new options
