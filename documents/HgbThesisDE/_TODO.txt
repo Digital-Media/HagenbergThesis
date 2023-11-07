@@ -1,0 +1,15 @@
+
+Support multiple adivsors:
+	Allow more than one \advisor{..}?
+	Specifiy individual role, e.g., ?
+		\advisor[Supervisor/First Reviewer]{B. Treuer}
+		\advisor[Second Reviewer]{T. Other, Associate Professor}
+	Allow commas in parameter!
+
+Use key/value maps for defining various properties, eg 
+	\setValue{strictlicense}{german}{Alle Rechte vorbehalten}
+	\setValue{strictlicense}{english}{All Rights Reserved}
+	..
+	\getValue{strictlicense}{\hgb@TitleLanguage}
+
+	This would open things for additional languages, among others.
