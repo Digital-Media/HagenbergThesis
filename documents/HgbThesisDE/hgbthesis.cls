@@ -69,8 +69,9 @@
       \renewcommand{\@ThemePackage}{hgbtheme-#1}%
       \renewcommand{\@ThemeFile}{\@ThemePackage.sty}%
       %\typeout{ThemeFile = \@ThemeFile}
+      %\typeout{hgbthesis.cls: \string\@SelectTheme}
       \IfFileExists{\@ThemeFile}%
-        {\AtEndOfPackage{\RequirePackage{\@ThemePackage}}		 }%
+        {\AtEndOfPackage{\RequirePackage{\@ThemePackage}}}%
         {\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}} 
     }%
     {
@@ -121,7 +122,7 @@
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
-    \typeout{hgbthesis.cls: unknown option \CurrentOption}%
+    %\typeout{hgbthesis.cls: unknown option \CurrentOption}%
     \PassOptionsToPackage{\CurrentOption}{hgb}
 }
 
@@ -169,14 +170,16 @@
 }
 
 \newcommand{\hgb@Advisor}{}					% empty by default
-\newcommand{\advisor}[1]{%
-	\renewcommand{\hgb@Advisor}{#1}	
+\newcommand{\hgb@AdvisorRole}{}			% empty by default
+\newcommand{\advisor}[2][]{%        % e.g., \advisor[Betreuerin]{Prof.~Marie Curie, PhD}
+	\renewcommand{\hgb@Advisor}{#2}%
+  \renewcommand{\hgb@AdvisorRole}{#1}%
 }
 
 % Specify the institution's logo in 'images/' ('logo.pdf' by default)
 \newcommand{\hgb@LogoFile}{logo.pdf}
 \newcommand{\logofile}[1]{%
-	\renewcommand{\hgb@LogoFile}{#1}
+	\renewcommand{\hgb@LogoFile}{#1}%
 }
 
 % Special sectioning setup for thesis proposals: 
@@ -245,6 +248,8 @@
 
 % Create title pages and add PDF meta data:
 
+\newcommand{\hgb@InitTheme}{} % called by \maketitle, to be redefined by the styles, 
+
 \RequirePackage{titling}
 \renewcommand{\maketitle}{%                     redefine standard LaTeX-command
 	\renewcommand{\hgb@Title}{\thetitle}%					defined by 'titling' package
@@ -259,6 +264,7 @@
 			pdfkeywords={},
 			pageanchor=false	% disable hyperref page anchors in front pages
 	}%
+  \hgb@InitTheme%       % to finalize all required title page fields from input data
 	\hgb@MakeFrontPages   % generate front pages
 	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
 }

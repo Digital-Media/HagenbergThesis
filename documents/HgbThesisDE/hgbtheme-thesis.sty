@@ -10,16 +10,28 @@
 %% This is a 'theme' file which specifies the layout and structure of the
 %% document's front pages.
 
-% required parameters:
-  % \hgb@TitlePageFont
-  % \hgb@ProgramType
-  % \hgb@ProgramName
-  % \hgb@PlaceOfStudy
-  % hgb@DateOfSubmission
-  % \hgb@TitleLanguage
-  % hgb@IsProposal (boolean)
 
 %% -----------------------
+
+\providecommand{\hgb@AdvisorRoleDefaultDE}{Betreuung}
+\providecommand{\hgb@AdvisorRoleDefaultEN}{Supervisor}
+
+\renewcommand{\hgb@InitTheme}{%  called by hgbthesis.cls at \maketitle, all final fields should be initialized here
+  % set the final thesis name:
+  \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+    {%
+      \def\tmp@ThesisName{\hgb@ThesisNameDE}% fully expand by \edef to make \MakeUppercase and \@addspaces work!
+      \def\tmp@ProposalName{\hgb@ProposalNameDE}%
+      \ifthenelse{\equal{\hgb@AdvisorRole}{}}%
+        {\renewcommand{\hgb@AdvisorRole}{\hgb@AdvisorRoleDefaultDE}}{}%
+    }
+    {%
+      \def\tmp@ThesisName{\hgb@ThesisNameEN}%
+      \def\tmp@ProposalName{\hgb@ProposalNameEN}%
+      \ifthenelse{\equal{\hgb@AdvisorRole}{}}%
+        {\renewcommand{\hgb@AdvisorRole}{\hgb@AdvisorRoleDefaultEN}}{}
+    }%
+}
   
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
   \hgb@MakeTitlePage%
@@ -33,7 +45,6 @@
 			\hgb@MakeDeclarationPage%
 		}%
 }
-
 
 %% Title page ---------------------------------------------------
 
@@ -59,11 +70,6 @@
 			\hgb@MakeLogo%
 			\vskip 15mm%
 			% thesis type ---------------------------------------------
-      \ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-        {\def\tmp@ThesisName{\hgb@ThesisNameDE} % fully expand by \edef to make \MakeUppercase and \@addspaces work!
-         \def\tmp@ProposalName{\hgb@ProposalNameDE}}
-        {\def\tmp@ThesisName{\hgb@ThesisNameEN}
-         \def\tmp@ProposalName{\hgb@ProposalNameEN}}
       {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
         \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
 			\vskip 4mm%
@@ -84,7 +90,12 @@
       {\large\hgb@PlaceOfStudy}%
 			\vskip 8mm%
 			% advisors(s) ---------------------------------
-			{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
+      {\large\tabcolsep0.25em
+        \begin{tabular}{rl}
+          \hgb@AdvisorRole: & \hgb@Advisor
+        \end{tabular}
+      }
+			%{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
 			\vskip 16mm%
       % submission date ---------------------------------
       {\large\hgb@SubmissionYear}%
@@ -192,7 +203,6 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 %% Default Declaration Page ----------------------------------------
 
 \newcommand{\hgb@DeclarationTitleDE}{Erklärung}
-
 \newcommand{\hgb@DeclarationTextDE}{%
   Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
   andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
@@ -202,7 +212,6 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 }
 
 \newcommand{\hgb@DeclarationTitleEN}{Declaration}
-
 \newcommand{\hgb@DeclarationTextEN}{%
   I hereby declare and confirm that this thesis is entirely the result of my own original work. 
   Where other sources of information have been used, they have been indicated as such and properly 

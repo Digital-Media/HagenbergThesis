@@ -1,7 +1,7 @@
 
 Support multiple adivsors:
 	Allow more than one \advisor{..}?
-	Specifiy individual role, e.g., ?
+	Specifiy individual role, e.g., ? -- DONE
 		\advisor[Supervisor/First Reviewer]{B. Treuer}
 		\advisor[Second Reviewer]{T. Other, Associate Professor}
 	Allow commas in parameter!
