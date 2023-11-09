@@ -17,6 +17,7 @@
 \ProvidesClass{hgbthesis}[2023/10/26]%%AUTO
 
 \RequirePackage{xifthen}
+\RequirePackage{functional}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
 \ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
@@ -169,11 +170,28 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 }
 
-\newcommand{\hgb@Advisor}{}					% empty by default
-\newcommand{\hgb@AdvisorRole}{}			% empty by default
+% Advisor -------------------------------------------------------------------
+
+\newcommand{\hgb@Advisor}{}					% obsolete!
+\newcommand{\hgb@AdvisorRole}{}			% obsolete!
+\seqNew{\gHgbAdvisorRoles}          % empty sequence of roles ('functional')
+\seqNew{\gHgbAdvisorNames}          % empty sequence of names ('functional')
+
 \newcommand{\advisor}[2][]{%        % e.g., \advisor[Betreuerin]{Prof.~Marie Curie, PhD}
-	\renewcommand{\hgb@Advisor}{#2}%
-  \renewcommand{\hgb@AdvisorRole}{#1}%
+	\renewcommand{\hgb@Advisor}{#2}%      % obsolete!
+  \renewcommand{\hgb@AdvisorRole}{#1}%  % obsolete!
+  \seqPutRight{\gHgbAdvisorRoles}{#1}
+  \seqPutRight{\gHgbAdvisorNames}{#2}
+}
+
+\newcommand{\getAdvisorRole}[1]{%
+  \tlSet{\tmpRole}{\seqVarItem{\gHgbAdvisorRoles}{#1}}%
+  \tmpRole
+}
+
+\newcommand{\getAdvisorName}[1]{%
+  \tlSet{\tmpName}{\seqVarItem{\gHgbAdvisorNames}{#1}}%
+  \tmpName
 }
 
 % Specify the institution's logo in 'images/' ('logo.pdf' by default)

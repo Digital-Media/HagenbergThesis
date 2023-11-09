@@ -6,6 +6,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{hgbtheme-thesis}[2023/10/26]%%AUTO
+\RequirePackage{functional}
 
 %% This is a 'theme' file which specifies the layout and structure of the
 %% document's front pages.
@@ -89,12 +90,22 @@
 			\vskip 4mm%
       {\large\hgb@PlaceOfStudy}%
 			\vskip 8mm%
-			% advisors(s) ---------------------------------
+      % advisors (new) ---------------------------------
       {\large\tabcolsep0.25em
+        %Roles: \seqVarCount{\gHgbAdvisorRoles}, Names: \seqVarCount{\gHgbAdvisorNames}\\ % debug
         \begin{tabular}{rl}
-          \hgb@AdvisorRole: & \hgb@Advisor
+          \intStepOneInline{1}{\seqVarCount{\gHgbAdvisorRoles}} {
+            \gdef\Idx{##1}%
+            \getAdvisorRole{\Idx}: & \getAdvisorName{\Idx} \\[4pt]
+            } % works
         \end{tabular}
       }
+			% advisors (intermediate) ---------------------------------
+      %{\large\tabcolsep0.25em
+        %\begin{tabular}{rl}
+          %\hgb@AdvisorRole: & \hgb@Advisor
+        %\end{tabular}
+      %}
 			%{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
 			\vskip 16mm%
       % submission date ---------------------------------
