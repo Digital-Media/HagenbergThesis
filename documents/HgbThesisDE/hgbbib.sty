@@ -27,20 +27,32 @@
 	
 \RequirePackage{csquotes}				% recommended for biblatex
 
-%% titles of reference section + 3 categories of references:
-\newcommand{\@bibtitle}{Quellenverzeichnis}
-\newcommand{\@bibtitleLiteratur}{Literatur}
-\newcommand{\@bibtitleMedia}{Medien}
-\newcommand{\@bibtitleOnline}{Online-Quellen}
-\newcommand{\@bibtitleSoftware}{Software}	
+%% set up dictionary terms
 
-\ifthenelse{\equal{\hgb@MainLanguage}{english}}{%
-	\renewcommand{\@bibtitle}{References}
-	\renewcommand{\@bibtitleLiteratur}{Literature}
-	\renewcommand{\@bibtitleMedia}{Media}
-	\renewcommand{\@bibtitleOnline}{Online sources}	
-	\renewcommand{\@bibtitleSoftware}{Software}
-}{}
+\RequirePackage{hgbdict}
+
+\hgbDictionarySet{bibtitle}{english}{References}
+\hgbDictionarySet{bibtitle}{german}{Quellenverzeichnis}
+
+\hgbDictionarySet{bibtitleLiterature}{english}{Literature}
+\hgbDictionarySet{bibtitleLiterature}{german}{Literatur}
+
+\hgbDictionarySet{bibtitleMedia}{english}{Media}
+\hgbDictionarySet{bibtitleMedia}{german}{Medien}
+
+\hgbDictionarySet{bibtitleOnline}{english}{Online sources}
+\hgbDictionarySet{bibtitleOnline}{german}{Online-Quellen}
+
+\hgbDictionarySet{bibtitleSoftware}{english}{Software}
+\hgbDictionarySet{bibtitleSoftware}{german}{Software}
+
+%% titles of reference section + 3 categories of references:
+
+\newcommand{\@bibtitle}{\hgbDictionaryGet{bibtitle}{\hgb@TitleLanguage}}
+\newcommand{\@bibtitleLiterature}{\hgbDictionaryGet{bibtitleLiterature}{\hgb@TitleLanguage}}
+\newcommand{\@bibtitleMedia}{\hgbDictionaryGet{bibtitleMedia}{\hgb@TitleLanguage}}
+\newcommand{\@bibtitleOnline}{\hgbDictionaryGet{bibtitleOnline}{\hgb@TitleLanguage}}
+\newcommand{\@bibtitleSoftware}{\hgbDictionaryGet{bibtitleSoftware}{\hgb@TitleLanguage}}
 
 %% categories for a split bibliography (order of declaration is important!)
 \DeclareBibliographyCategory{literature}
@@ -51,8 +63,8 @@
 %% headings for the bibliography categories
 \defbibheading{literature}{%
 	\phantomsection%
-	\section*{\@bibtitleLiteratur}%
-	\addcontentsline{toc}{section}{\@bibtitleLiteratur}%
+	\section*{\@bibtitleLiterature}%
+	\addcontentsline{toc}{section}{\@bibtitleLiterature}%
 }
 
 \defbibheading{media}{%
