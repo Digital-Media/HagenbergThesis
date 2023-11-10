@@ -17,7 +17,6 @@
 \ProvidesClass{hgbthesis}[2023/10/26]%%AUTO
 
 \RequirePackage{xifthen}
-\RequirePackage{functional}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
 \ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
@@ -174,25 +173,33 @@
 
 \newcommand{\hgb@Advisor}{}					% obsolete!
 \newcommand{\hgb@AdvisorRole}{}			% obsolete!
-\seqNew{\gHgbAdvisorRoles}          % empty sequence of roles ('functional')
-\seqNew{\gHgbAdvisorNames}          % empty sequence of names ('functional')
 
-\newcommand{\advisor}[2][]{%        % e.g., \advisor[Betreuerin]{Prof.~Marie Curie, PhD}
-	\renewcommand{\hgb@Advisor}{#2}%      % obsolete!
-  \renewcommand{\hgb@AdvisorRole}{#1}%  % obsolete!
-  \seqPutRight{\gHgbAdvisorRoles}{#1}
-  \seqPutRight{\gHgbAdvisorNames}{#2}
+\newcounter{@advisorctr}
+\setcounter{@advisorctr}{0}
+
+% Returns the number of advisers specified 
+\newcommand{\hgb@AdvisorCount}{
+	\the@advisorctr
 }
 
-\newcommand{\getAdvisorRole}[1]{%
-  \tlSet{\tmpRole}{\seqVarItem{\gHgbAdvisorRoles}{#1}}%
-  \tmpRole
+% Returns the 'role' of adviser with the given number (#1 = 1,...,\hgb@AdvisorCount)
+\newcommand{\hgb@getAdvisorRole}[1]{
+	\csname advisorrole-#1\endcsname
 }
 
-\newcommand{\getAdvisorName}[1]{%
-  \tlSet{\tmpName}{\seqVarItem{\gHgbAdvisorNames}{#1}}%
-  \tmpName
+% Returns the 'name' of adviser with the given number (#1 = 1,...,\hgb@AdvisorCount)
+\newcommand{\hgb@getAdvisorName}[1]{
+	\csname advisorname-#1\endcsname
 }
+
+% User command to specify the role(optional) and name of one advisor: \advisor[<role>]{<name>}
+\newcommand{\advisor}[2][]{%        % e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
+	\stepcounter{@advisorctr}%
+	\expandafter\def\csname advisorrole-\the@advisorctr\endcsname{#1}
+	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
+}
+
+% ---------------------------------------------------------------------------
 
 % Specify the institution's logo in 'images/' ('logo.pdf' by default)
 \newcommand{\hgb@LogoFile}{logo.pdf}

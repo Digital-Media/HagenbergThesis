@@ -6,7 +6,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{hgbtheme-thesis}[2023/10/26]%%AUTO
-\RequirePackage{functional}
+\RequirePackage{forloop}
 
 %% This is a 'theme' file which specifies the layout and structure of the
 %% document's front pages.
@@ -14,24 +14,20 @@
 
 %% -----------------------
 
-\providecommand{\hgb@AdvisorRoleDefaultDE}{Betreuung}
-\providecommand{\hgb@AdvisorRoleDefaultEN}{Supervisor}
-
 \renewcommand{\hgb@InitTheme}{%  called by hgbthesis.cls at \maketitle, all final fields should be initialized here
   % set the final thesis name:
   \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
     {%
       \def\tmp@ThesisName{\hgb@ThesisNameDE}% fully expand by \edef to make \MakeUppercase and \@addspaces work!
       \def\tmp@ProposalName{\hgb@ProposalNameDE}%
-      \ifthenelse{\equal{\hgb@AdvisorRole}{}}%
-        {\renewcommand{\hgb@AdvisorRole}{\hgb@AdvisorRoleDefaultDE}}{}%
     }
     {%
       \def\tmp@ThesisName{\hgb@ThesisNameEN}%
       \def\tmp@ProposalName{\hgb@ProposalNameEN}%
-      \ifthenelse{\equal{\hgb@AdvisorRole}{}}%
-        {\renewcommand{\hgb@AdvisorRole}{\hgb@AdvisorRoleDefaultEN}}{}
     }%
+  %\ifthenelse{\equal{\hgb@AdvisorCount}{0}}%
+    %{\advisor[No = \hgb@AdvisorCount]{No Advisor Name}}%
+    %{\advisor[No = \hgb@AdvisorCount]{bar}}
 }
   
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
@@ -90,22 +86,18 @@
 			\vskip 4mm%
       {\large\hgb@PlaceOfStudy}%
 			\vskip 8mm%
-      % advisors (new) ---------------------------------
-      {\large\tabcolsep0.25em
-        %Roles: \seqVarCount{\gHgbAdvisorRoles}, Names: \seqVarCount{\gHgbAdvisorNames}\\ % debug
+      % advisors(s) -------------------------------------
+      \parbox[c][3cm][c]{\textwidth}{%
+				\centering\large\tabcolsep0.25em%
+        \ifthenelse{\hgb@AdvisorCount = 0}
+          {\color{red}No advisor(s) specified!\\}{}
         \begin{tabular}{rl}
-          \intStepOneInline{1}{\seqVarCount{\gHgbAdvisorRoles}} {
-            \gdef\Idx{##1}%
-            \getAdvisorRole{\Idx}: & \getAdvisorName{\Idx} \\[4pt]
-            } % works
+          \newcounter{@k}
+          \forloop{@k}{1}{\not{\value{@k} > \hgb@AdvisorCount}}{
+            \hgb@getAdvisorRole{\the@k}: & \hgb@getAdvisorName{\the@k} \\
+          }
         \end{tabular}
       }
-			% advisors (intermediate) ---------------------------------
-      %{\large\tabcolsep0.25em
-        %\begin{tabular}{rl}
-          %\hgb@AdvisorRole: & \hgb@Advisor
-        %\end{tabular}
-      %}
 			%{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
 			\vskip 16mm%
       % submission date ---------------------------------
@@ -270,17 +262,4 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 		\vspace{12mm}
 		\noindent
 		\hgb@Author
-    %% ------------------------------------- REMOVE!!
-    \vspace{20mm}
-    \hrule
-    \showDebugText
-}
-
-\newcommand{\showDebugText}{
-\noindent
-\textbf{Debugging:}\\
-%
-hgb@MainLanguage=\hgb@MainLanguage\\
-hgb@TitleLanguage=\hgb@TitleLanguage\\
-languagename=\languagename\\
 }
