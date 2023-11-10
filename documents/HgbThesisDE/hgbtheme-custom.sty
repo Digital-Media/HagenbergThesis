@@ -10,5 +10,7 @@
 \ProvidesPackage{hgbtheme-custom}[2023/10/26]%%AUTO
 \usepackage{hgbtheme-thesis}	% parent theme, most definitions are inherited from here
 
-\renewcommand{\hgb@ThesisNameDE}{Sonderarbeit}
-\renewcommand{\hgb@ThesisNameEN}{Custom Thesis}
+\hgbDictionarySet{special-thesis}{english}{Specialarbeit}
+\hgbDictionarySet{special-thesis}{german}{Special Thesis}
+
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{special-thesis}{\hgb@TitleLanguage}}

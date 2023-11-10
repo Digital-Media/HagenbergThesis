@@ -47,8 +47,9 @@
 			\hgb@MakeLogo%
 			\vskip 15mm%
 			% ---------------------------------         
-      {\Large\@addspaces{\MakeUppercase{\hgb@ThesisNameDE}}%
-        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalNameDE}})}{}}
+      {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
+        \ifthenelse{\boolean{hgb@IsProposal}}
+          {\space\space(\@addspaces{\MakeUppercase{\hgbDictionaryGet{master-thesis}{\hgb@TitleLanguage}}})}{}}
       % ---------------------------------
 			\vskip 4mm%
 			%
@@ -165,8 +166,6 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 
 %% Default Declaration Page ----------------------------------------
 
-\newcommand{\hgb@DeclarationTitleDE}{Erklärung}
-
 \newcommand{\hgb@DeclarationTextDE}{%
   \begin{german}%
   Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
@@ -176,8 +175,6 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
   Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
   \end{german}
 }
-
-\newcommand{\hgb@DeclarationTitleEN}{Declaration}
 
 \newcommand{\hgb@DeclarationTextEN}{%
   \begin{english}%
@@ -189,10 +186,7 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 }
 
 \newcommand{\hgb@MakeDeclarationPage}{
-		%\chapter{\hgb@DeclarationTitleEN}%   expansion issuses!
-    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-      {\chapter{\hgb@DeclarationTitleDE}}
-      {\chapter{\hgb@DeclarationTitleEN}}
+    \chapter{\hgbDictionaryGet{declaration}{\hgb@TitleLanguage}}
 		\noindent%
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
       {\begin{german}\hgb@DeclarationTextDE\end{german}}

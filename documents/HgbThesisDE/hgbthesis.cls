@@ -23,18 +23,34 @@
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
+%% Add thesis-relevant dictionary terms ---------------------------------------
+
+\RequirePackage{hgbdict}
+
+\hgbDictionarySet{bachelor-thesis}{english}{Bachelor Thesis}
+\hgbDictionarySet{bachelor-thesis}{german}{Bachelorarbeit}
+
+\hgbDictionarySet{master-thesis}{english}{Master's Thesis}
+\hgbDictionarySet{master-thesis}{german}{Masterarbeit}
+
+\hgbDictionarySet{diploma-thesis}{english}{Diploma Thesis}
+\hgbDictionarySet{diploma-thesis}{german}{Diplomarbeit}
+
+\hgbDictionarySet{internship-report}{english}{Internship Report}
+\hgbDictionarySet{internship-report}{german}{Praktikumsbericht}
+
+\hgbDictionarySet{proposal}{english}{Proposal}
+\hgbDictionarySet{proposal}{german}{Exposè}
+
+\hgbDictionarySet{declaration}{english}{Declaration}
+\hgbDictionarySet{declaration}{german}{Erklärung}
+
 %% Commands for Title Pages (used in class options) ---------------------------
 
 % Type of thesis (theme name):
 \newcommand{\hgb@ThesisType}{master}	
 
-%% Standard title designations -------------------------------------------------
-
-\newcommand{\hgb@ThesisNameDE}{UNDEFINED}
-\newcommand{\hgb@ThesisNameEN}{UNDEFINED}
-
-\newcommand{\hgb@ProposalNameDE}{Exposè}
-\newcommand{\hgb@ProposalNameEN}{Proposal}
+%% Setup for proposals ------------------------------------------------------
 
 \newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
 \setboolean{hgb@IsProposal}{false}
@@ -171,8 +187,8 @@
 
 % Advisor -------------------------------------------------------------------
 
-\newcommand{\hgb@Advisor}{}					% obsolete!
-\newcommand{\hgb@AdvisorRole}{}			% obsolete!
+\newcommand{\hgb@Advisor}{}					% obsolete?
+\newcommand{\hgb@AdvisorRole}{}			% obsolete?
 
 \newcounter{@advisorctr}
 \setcounter{@advisorctr}{0}
@@ -197,6 +213,8 @@
 	\stepcounter{@advisorctr}%
 	\expandafter\def\csname advisorrole-\the@advisorctr\endcsname{#1}
 	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
+  \renewcommand{\hgb@Advisor}{#2}     % keeps the last advisor (obsolete?)
+  \renewcommand{\hgb@AdvisorRole}{#1} % keeps the last advisor (obsolete?)
 }
 
 % ---------------------------------------------------------------------------
@@ -224,10 +242,6 @@
 	\counterwithout{algorithm}{chapter}
 	% remove chapter number from header (fancyhdr):
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
-}
-
-\AtBeginDocument{
-  \ifthenelse{\boolean{hgb@IsProposal}}{\@proposalsetup}{}%
 }
 
 % Submission Date
@@ -292,6 +306,14 @@
   \hgb@InitTheme%       % to finalize all required title page fields from input data
 	\hgb@MakeFrontPages   % generate front pages
 	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
+}
+
+%% Set various terms for title pages:
+
+\newcommand{\hgb@ThesisName}{UNDEFINED}
+
+\AtBeginDocument{
+  \ifthenelse{\boolean{hgb@IsProposal}}{\@proposalsetup}{}%
 }
 
 %% Additional Hagenberg packages ----------------------------------------------

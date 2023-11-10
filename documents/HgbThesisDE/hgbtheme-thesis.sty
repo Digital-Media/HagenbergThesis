@@ -15,19 +15,6 @@
 %% -----------------------
 
 \renewcommand{\hgb@InitTheme}{%  called by hgbthesis.cls at \maketitle, all final fields should be initialized here
-  % set the final thesis name:
-  \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-    {%
-      \def\tmp@ThesisName{\hgb@ThesisNameDE}% fully expand by \edef to make \MakeUppercase and \@addspaces work!
-      \def\tmp@ProposalName{\hgb@ProposalNameDE}%
-    }
-    {%
-      \def\tmp@ThesisName{\hgb@ThesisNameEN}%
-      \def\tmp@ProposalName{\hgb@ProposalNameEN}%
-    }%
-  %\ifthenelse{\equal{\hgb@AdvisorCount}{0}}%
-    %{\advisor[No = \hgb@AdvisorCount]{No Advisor Name}}%
-    %{\advisor[No = \hgb@AdvisorCount]{bar}}
 }
   
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
@@ -67,7 +54,7 @@
 			\hgb@MakeLogo%
 			\vskip 15mm%
 			% thesis type ---------------------------------------------
-      {\Large\@addspaces{\MakeUppercase{\tmp@ThesisName}}%
+      {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
         \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
 			\vskip 4mm%
 			% ---------------------------------
@@ -92,9 +79,9 @@
         \ifthenelse{\hgb@AdvisorCount = 0}
           {\color{red}No advisor(s) specified!\\}{}
         \begin{tabular}{rl}
-          \newcounter{@k}
-          \forloop{@k}{1}{\not{\value{@k} > \hgb@AdvisorCount}}{
-            \hgb@getAdvisorRole{\the@k}: & \hgb@getAdvisorName{\the@k} \\
+          \newcounter{C}
+          \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{
+            \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC} \\
           }
         \end{tabular}
       }
@@ -205,7 +192,6 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 
 %% Default Declaration Page ----------------------------------------
 
-\newcommand{\hgb@DeclarationTitleDE}{Erklärung}
 \newcommand{\hgb@DeclarationTextDE}{%
   Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
   andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
@@ -214,7 +200,6 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
   Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
 }
 
-\newcommand{\hgb@DeclarationTitleEN}{Declaration}
 \newcommand{\hgb@DeclarationTextEN}{%
   I hereby declare and confirm that this thesis is entirely the result of my own original work. 
   Where other sources of information have been used, they have been indicated as such and properly 
@@ -222,24 +207,8 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
   This printed copy is identical to the submitted electronic version.
 }
 
-%% TODO: again this does not work because of expansion issuses in \chapter
-%\newcommand{\hgb@DeclarationTitle}{
-  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}  %\hgb@TitleLanguage
-    %{\hgb@DeclarationTitleDE}%
-    %{\hgb@DeclarationTitleEN}
-%}
-%
-%\newcommand{\hgb@DeclarationText}{
-  %\ifthenelse{\equal{\hgb@MainLanguage}{german}}
-    %{\hgb@DeclarationTextDE}
-    %{\hgb@DeclarationTextEN}
-%}
-
 \newcommand{\hgb@MakeDeclarationPage}{
-		%\chapter{\hgb@DeclarationTitleEN}%   expansion issuses!
-    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-      {\chapter{\hgb@DeclarationTitleDE}}
-      {\chapter{\hgb@DeclarationTitleEN}}
+		\chapter{\hgbDictionaryGet{declaration}{\hgb@TitleLanguage}}
 		\noindent%
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
       {\begin{german}\hgb@DeclarationTextDE\end{german}}

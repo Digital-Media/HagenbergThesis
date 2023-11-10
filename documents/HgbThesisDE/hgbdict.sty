@@ -1,0 +1,24 @@
+%% hgbmath.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+%% This package defines a simple dictionary mechanism for terms used in title pages.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgbdict}[2023/11/06]%%AUTO
+
+% Usage: \hgbDictionarySet{bachelor-thesis}{english}{Bachelor Thesis}
+% Note: previously existing entry for the same key are replaced!
+\newcommand{\hgbDictionarySet}[3]{%  #1=key, #2=lang, #3=term
+  \expandafter\def\csname hgb@dict-#1-#2\endcsname{#3}
+}
+
+% Usage: \hgbDictionaryGet{bachelor-thesis}{english}
+\newcommand{\hgbDictionaryGet}[2]{%  #1=key, #2=lang
+\ifcsname hgb@dict-#1-#2\endcsname% \ifdefined, \@ifundefined
+  \csname hgb@dict-#1-#2\endcsname%
+  \else Term '#1' undefined for language '#2'!%
+  \fi
+}

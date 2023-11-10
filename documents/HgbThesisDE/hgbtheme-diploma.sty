@@ -10,7 +10,4 @@
 \ProvidesPackage{hgbtheme-diploma}[2023/10/26]%%AUTO
 \usepackage{hgbtheme-thesis}	% parent theme, most definitions are inherited from here
 
-\renewcommand{\hgb@ThesisNameDE}{Diplomarbeit}
-\renewcommand{\hgb@ThesisNameEN}{Diploma Thesis}
-
-
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{diploma-thesis}{\hgb@TitleLanguage}}
