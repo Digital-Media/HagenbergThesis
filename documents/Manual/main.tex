@@ -62,7 +62,8 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report}, and
 All document classes accept the following general options:
 %
 \begin{itemize}
-    \item \texttt{english} or \texttt{german} (select the primary language),
+    \item \texttt{english} or \texttt{german} 
+        (select the primary document language),
     \item \texttt{smartquotes} (use smart quotes replacement),
     \item \texttt{apa} (use \texttt{apa} bibliography style instead of
     \texttt{numeric-comp}),
@@ -75,19 +76,22 @@ All document classes accept the following general options:
 In addition, the following class-specific options are accepted:
 %
 \begin{itemize}
-    \item \textbf{\texttt{hgbthesis}}:
-    \texttt{type=}%
-    \{\texttt{bachelor}, \texttt{master}, \texttt{diploma}, \texttt{phd}, \texttt{internship}, \texttt{custom}\},\newline
-    \texttt{titlelanguage=}\{\texttt{english}, \texttt{german}\},
-    \texttt{proposal};
-    \item \textbf{\texttt{hgbreport}}: \texttt{notitlepage};
-    \item \textbf{\texttt{hgbarticle}}: \texttt{twocolumn}.
+    \item \textbf{\texttt{hgbthesis}}:\\
+      \texttt{type=}%
+      \{\texttt{bachelor}, \texttt{master}, \texttt{diploma}, \texttt{phd}, \texttt{internship}, \texttt{custom}\},\newline
+      \texttt{language=}\{\texttt{english}, \texttt{german}\} (language in main document),\\
+      \texttt{titlelanguage=}\{\texttt{english}, \texttt{german}\} (language on title pages, defaults to main language),\\
+      \texttt{proposal} (flag to indicate proposal documents);
+    \item \textbf{\texttt{hgbreport}}:\\
+      \texttt{notitlepage};
+    \item \textbf{\texttt{hgbarticle}}\\
+      \texttt{twocolumn}.
 \end{itemize}
 %
 For example, to start a master's thesis in German, simply place
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[type=master,german,smartquotes]{hgbthesis}
+\documentclass[type=master,language=german,smartquotes]{hgbthesis}
 \end{LaTeXCode}
 %
 at the beginning of the document.
@@ -96,7 +100,7 @@ The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé
 only effective in \emph{conjunction} with the main thesis types, \eg,
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[type=bachelor,proposal,english,titlelanguage=german]{hgbthesis}
+\documentclass[type=bachelor,language=english,titlelanguage=german,proposal]{hgbthesis}
 \end{LaTeXCode}
 %
 The result is a short exposé that contains only one chapter. Thus,
@@ -107,25 +111,34 @@ numbering scheme).
 \subsection{Thesis parameters (class \texttt{hgbthesis})}
 
 \texttt{hgbthesis} supports several types of thesis documents. The following
-parameters must be specified for \emph{all} types at the beginning of the
-main document:
+parameters must be specified at the beginning of the main document:
 %
 \begin{itemize}
     \item \verb!\title{...}!,
+    \item \verb!\subtitle{...}! (optional),
     \item \verb!\author{...}!,
-    \item \verb!\programtype{...}!,
+    \item \verb!\programtype{...}! (optional), 
     \item \verb!\programname{...}!,
     \item \verb!\institution{...}!,
     \item \verb!\placeofstudy{...}!,
     \item \verb!\dateofsubmission{yyyy}{mm}{dd}!,
-    \item \verb!\advisor{...}! (optional),
+    \item \verb!\advisor[]{...}! (optional, multiple \verb!\advisor! statements allowed),
 \end{itemize}
 %
 Note that \texttt{hgbthesis} only supports a \emph{single author} inside the
 \verb!\author{...}! macro argument (commands \verb!\and! and
 \verb!\thanks{...}! are deactivated)!
 
+The command \verb!\advisor[role]{name}! accepts an optional argument to associate a \emph{role} 
+with the advisor's \emph{name}, \eg, \verb!\advisor[Supervisor]{Prof.~Marie Curie, PhD}!.
+Multiple advisors can be specified, for example
+\begin{LaTeXCode}[numbers=none]
+  \advisor[1.~Betreuerin]{Professor Frida K.~Putnik, PhD}
+  \advisor[2.~Betreuer]{Franz Grillparzer, TU Wien}
+  \advisor[Gutachter]{Dr.~B.\,Rutal, MIT}
+\end{LaTeXCode}
 
+\noindent
 Other (optional) settings for \texttt{hgbthesis} include:
 \begin{itemize}
     \item \verb!\license{cc|strict}!\newline
@@ -140,13 +153,17 @@ Other (optional) settings for \texttt{hgbthesis} include:
 
 The package comes with a set of style (\texttt{*.sty}) files that can be used
 independently of the document classes listed above:
-\texttt{hgb.sty},
-\texttt{hgbabbrev.sty},
-\texttt{hgbbib.sty},
-\texttt{hgbheadings.sty},
-\texttt{hgblistings.sty},
-\texttt{hgbmath.sty}.
-
+\begin{itemize}
+  \item \texttt{hgb.sty} (language, date setup, custom commands;
+  \item \texttt{hgbabbrev.sty}: various abbreviation commands;
+  \item \texttt{hgbalgo.sty}: additions to \texttt{algpseudocodex} package;
+  \item \texttt{hgbbib.sty}: bibliography setup;
+  \item \texttt{hgbdict.sty}: language dictionary functions;
+  \item \texttt{hgbheadings.sty}: definition of page headers;
+  \item \texttt{hgblistings.sty}: setup for code listings;
+  \item \texttt{hgbmath.sty}: setup and commands for math typesetting;
+  \item \texttt{hgbpdfa.sty}: setup for PDF/A generation.
+\end{itemize}
 
 \subsection{General user commands and environments (\texttt{hgb.sty})}
 
@@ -375,7 +392,7 @@ package), \eg, by
 
 \section{PDF/A generation (\texttt{hgbpdfa.sty})}
 
-The package \texttt{hgbpdfa} contains definitions for generating PDF/A-compliant 
+Package \texttt{hgbpdfa} contains definitions for generating PDF/A-compliant 
 (PDF/A-2b) output files. It is based on the \texttt{pdfmanagement-testphase}
 package (requires version 0.95s or higher) and must be loaded before the
 \verb!\documentclass! statement in the main document, for example, by
@@ -458,41 +475,76 @@ An error will be raised if the associated \texttt{.sty} file cannot be found.
 
 
 
-\subsection{Commands and variables available to custom theme styles ({\color{red} UNFINISHED})}
+\subsection{Commands and variables available to custom theme styles}
 \label{sec:ThemeStyleCommands}
 
-The following macros and variables are assured to be available for defining custom themes
-(see \texttt{hgbtheme-thesis.sty} for their typical usage):
-
-Page generation commands:
+Any theme style must (re)define the \verb!\hgb@MakeFrontPages! command, which 
+is invoked by \verb!\maketitle!. 
+This command is predefined by the \verb!hgbtheme-thesis! theme template, but 
+may be redefined by inheriting themes if needed, \eg:
+%
+\begin{LaTeXCode}[numbers=none]
+\usepackage{hgbtheme-thesis}%  /+ parent theme (in 'hgbtheme-thesis.sty')+/
+...
+\renewcommand{\hgb@MakeFrontPages}{...}
+\end{LaTeXCode}
+%
+In addition, the template theme \texttt{hgbtheme-thesis.sty} defines the following
+commands for generating individual title pages:
+%
 \begin{itemize}
-  \item \verb!\hgb@MakeFrontPages!
+  \item \verb!\hgb@ThesisName!
   \item \verb!\hgb@MakeTitlePage!
-  \item \verb!\hgb@MakeAdvisorPage!
+  %\item \verb!\hgb@MakeAdvisorPage!
   \item \verb!\hgb@MakeCopyrightPage!
   \item \verb!\hgb@MakeDeclarationPage!
 \end{itemize}
+%
+Each of these may be redefined by inheriting themes.
 
-Variables:
+Moreover, the following macros and variables are assured to be available for defining custom themes
+(see \texttt{hgbtheme-thesis.sty} for their typical usage).
+These are defined in \texttt{hgbthesis.cls} and should \emph{not} be redefined:
+%
 \begin{itemize}
-  \item \verb!\hgb@TitlePageFont!
-  \item \verb!\hgb@TitleLanguage!
-  \item \verb!\hgb@ThesisNameDE!, \verb!\hgb@ThesisNameEN!
-  \item \verb!\hgb@ProposalNameDE!, \verb!\hgb@ProposalNameEN!
-  \item \verb!\hgb@IsProposal!
+  \item \verb!\hgb@Author!
+  \item \verb!\hgb@Title!
+  \item \verb!\hgb@SubTitle!
   \item \verb!\hgb@Institution!
+  \item \verb!\hgb@ProgramType!
+  \item \verb!\hgb@ProgramName!
   \item \verb!\hgb@PlaceOfStudy!
-  \item \verb!\hgb@LogoHeight!
+  \item \verb!\hgb@IsProposal!
+\medskip
+  \item \verb!\hgb@AdvisorCount!
+  \item \verb!\hgb@getAdvisorRole{<number>}!
+  \item \verb!\hgb@getAdvisorName{<number>}!
+\medskip
+  \item \verb!\hgb@TitleLanguage!
+  \item \verb!\hgb@MainLanguage!
+  \item \verb!\hgb@TitlePageFont!
   \item \verb!\hgb@LogoFile!
-  \item \verb!\hgb@Advisor!
-  \item \verb!\hgb@StrictLicenseDE!, \verb!\hgb@StrictLicenseEN!, \verb!\hgb@StrictLicense!
-  \item \verb!\hgb@ccLicenseDE!, \verb!\hgb@ccLicenseEN!, \verb!\hgb@ccLicense!
+\medskip 
+  %\item \verb!\hgb@Advisor!
+  \item \verb!\hgb@SubmissionYear!
+  \item \verb!\hgb@SubmissionMonth!
+  \item \verb!\hgb@SubmissionDay!
+  \item \verb!\hgb@GetMonthName{<language>}{<monthnumber>}!
+\medskip
+  \item \verb!\hgb@StrictLicense!
+  \item \verb!\hgb@ccLicense!
   \item \verb!\hgb@TheLicense!
-  \item \verb!\theauthor!
-  \item \verb!\hgb@DeclarationTitleDE!, \verb!\hgb@DeclarationTitleEN!
-  \item \verb!\hgb@DeclarationTextDE!, \verb!\hgb@DeclarationTextEN!
-  \item \verb!hgb@DateOfSubmission! (DTM date)
 \end{itemize}
+%
+\noindent
+The \verb!\maketitle! command also invokes the command
+\begin{itemize}
+  \item \verb!\hgb@InitTheme!
+\end{itemize}
+(with no parameters), which initially does nothing but may be redefined inside theme styles, \eg,
+to initialize certain variables.%
+\footnote{This may be replaced by a call hook in the future.}
+
 
 \section{Package dependencies}
 
@@ -518,7 +570,8 @@ The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\
 \texttt{exscale}, 
 \texttt{fancyhdr}, 
 \texttt{float}, 
-\texttt{fontenc}, 
+\texttt{fontenc},
+\texttt{forloop},
 \texttt{geometry}, 
 \texttt{graphicx}, 
 \texttt{hypcap}, 
