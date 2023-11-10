@@ -256,6 +256,10 @@
 \newcommand{\hgb@SubmissionMonth}{\DTMfetchmonth{hgb@DateOfSubmission}}
 \newcommand{\hgb@SubmissionDay}{\DTMfetchday{hgb@DateOfSubmission}}
 
+\newcommand{\hgb@GetMonthName}[2]{% #1=language #2=month, 
+  \csname DTM#1monthname\endcsname{#2}% brittle?
+}
+
 \newcommand{\hgb@SubmissionMonthNameDE}{\DTMgermanmonthname{\hgb@SubmissionMonth}}
 \newcommand{\hgb@SubmissionMonthNameEN}{\DTMenglishmonthname{\hgb@SubmissionMonth}}
 

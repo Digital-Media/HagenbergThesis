@@ -216,16 +216,17 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 		\par
 		\vspace{10mm}
 		\noindent
+    \def\@monthname{\hgb@GetMonthName{\hgb@TitleLanguage}{\hgb@SubmissionMonth}}%
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
       {\hgb@PlaceOfStudy, am 
-        \hgb@SubmissionDay.~%						\DTMfetchday{hgb@DateOfSubmission}.~%
-        \hgb@SubmissionMonthNameDE~%		\DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
-        \hgb@SubmissionYear%						\DTMfetchyear{hgb@DateOfSubmission}
+        \hgb@SubmissionDay.~%
+        \@monthname~%
+        \hgb@SubmissionYear%
 			}
       {\hgb@PlaceOfStudy, 
-        \hgb@SubmissionDay~%						\DTMfetchday{hgb@DateOfSubmission}~%
-        \hgb@SubmissionMonthNameEN~%		\DTMenglishmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
-        \hgb@SubmissionYear%						\DTMfetchyear{hgb@DateOfSubmission}
+        \hgb@SubmissionDay~%
+        \@monthname~%
+        \hgb@SubmissionYear%
 			}
 		\par
 		\vspace{12mm}
