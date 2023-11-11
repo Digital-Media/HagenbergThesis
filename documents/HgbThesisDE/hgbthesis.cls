@@ -168,6 +168,10 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@SubTitle}{#1}}
 }
 
+% Full title (title + subtitle) where a combination of both is required:
+\newcommand{\hgb@FullTitle}{}
+\ifthenelse{\isempty{\hgb@SubTitle}}{\renewcommand{\hgb@FullTitle}{\hgb@Title}}{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}
+
 \newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@Institution}{#1}}
@@ -302,7 +306,7 @@
 	\renewcommand{\and}{\@warnmultipleauthors}%   suppress \and inside \author{..}
 	\renewcommand{\thanks}[1]{\relax}%            suppress \thanks{..} inside \author{..}
 	\hypersetup{
-			pdftitle={\hgb@Title},%			TODO: add optional subtitle!
+			pdftitle={\hgb@FullTitle},%			TODO: add optional subtitle!
       pdfauthor={\hgb@Author},%
 			pdfsubject={\hgb@ProgramType~\hgb@ProgramName,~\hgb@PlaceOfStudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
