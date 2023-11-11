@@ -45,6 +45,9 @@
 \hgbDictionarySet{declaration}{english}{Declaration}
 \hgbDictionarySet{declaration}{german}{Erklärung}
 
+\hgbDictionarySet{advisor}{english}{Advisor}
+\hgbDictionarySet{advisor}{german}{Betreuer*in}
+
 %% Commands for Title Pages (used in class options) ---------------------------
 
 % Type of thesis (theme name):
@@ -209,7 +212,7 @@
 }
 
 % User command to specify the role(optional) and name of one advisor: \advisor[<role>]{<name>}
-\newcommand{\advisor}[2][]{%        % e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
+\newcommand{\advisor}[2][\hgbDictionaryGet{advisor}{\hgb@TitleLanguage}]{% % e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
 	\stepcounter{@advisorctr}%
 	\expandafter\def\csname advisorrole-\the@advisorctr\endcsname{#1}
 	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
