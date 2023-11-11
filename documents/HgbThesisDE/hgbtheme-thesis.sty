@@ -76,14 +76,9 @@
       % advisors(s) -------------------------------------
       \parbox[c][3cm][c]{\textwidth}{%
 				\centering\large\tabcolsep0.25em%
-        \ifthenelse{\hgb@AdvisorCount = 0}
-          {\color{red}No advisor(s) specified!\\}{}
-        \begin{tabular}{rl}
-          \newcounter{C}
-          \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{
-            \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC} \\
-          }
-        \end{tabular}
+        \ifthenelse{\hgb@AdvisorCount > 0}%
+          {\@makeAdvisorTable}% defined below
+          {\color{red}No advisor(s) specified!\\}%
       }
 			%{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
 			\vskip 16mm%
@@ -92,6 +87,16 @@
 		\end{center}%
 		\vfil%
 \end{titlepage}%
+}
+
+\newcommand{\@makeAdvisorTable}{%
+  \newcounter{C}%
+  \begin{tabular}{rl}%
+    \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
+      \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
+      \ifthenelse{\value{C} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
+    }%
+  \end{tabular}%
 }
 
 %% Generation of logo ----------------------------------------
