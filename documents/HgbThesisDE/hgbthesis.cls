@@ -193,13 +193,18 @@
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 }
 
-% Advisor -------------------------------------------------------------------
-
-\newcommand{\hgb@Advisor}{}					% obsolete?
-\newcommand{\hgb@AdvisorRole}{}			% obsolete?
+% Advisor(s) -------------------------------------------------------------------
 
 \newcounter{@advisorctr}
 \setcounter{@advisorctr}{0}
+
+% User command to specify the role(optional) and name of one advisor: \advisor[<role>]{<name>}
+% Repeat to specify multiple advisors.
+\newcommand{\advisor}[2][\hgbDictionaryGet{advisor}{\hgb@TitleLanguage}]{% e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
+	\stepcounter{@advisorctr}%
+	\expandafter\def\csname advisorrole-\the@advisorctr\endcsname{#1}
+	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
+}
 
 % Returns the number of advisers specified 
 \newcommand{\hgb@AdvisorCount}{
@@ -216,14 +221,8 @@
 	\csname advisorname-#1\endcsname
 }
 
-% User command to specify the role(optional) and name of one advisor: \advisor[<role>]{<name>}
-\newcommand{\advisor}[2][\hgbDictionaryGet{advisor}{\hgb@TitleLanguage}]{% % e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
-	\stepcounter{@advisorctr}%
-	\expandafter\def\csname advisorrole-\the@advisorctr\endcsname{#1}
-	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
-  \renewcommand{\hgb@Advisor}{#2}     % keeps the last advisor (obsolete?)
-  \renewcommand{\hgb@AdvisorRole}{#1} % keeps the last advisor (obsolete?)
-}
+% Legacy cmommand, returns the first advisor's name
+\newcommand{\hgb@Advisor}{\hgb@getAdvisorName{1}}
 
 % Submission Date ---------------------------------------------------------------
 
