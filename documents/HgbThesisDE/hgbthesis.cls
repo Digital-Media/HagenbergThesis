@@ -279,8 +279,10 @@
 	{\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}
 }
 
-\newcommand{\hgb@InitTheme}{} % called by \maketitle, to be redefined by the styles,
- 
+\NewHook{hgb@InitThemeHook}
+\newcommand{\@InitTheme}{\UseHook{hgb@InitThemeHook}}% called by \maketitle, to be redefined by the styles,
+
+
 \renewcommand{\maketitle}{% redefine standard \maketitle command
 	\hypersetup{
 			pdftitle={\hgb@FullTitle},%
@@ -303,14 +305,14 @@
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
 	\ifthenelse{\boolean{hgb@IsProposal}}%
-		{\@proposalsetup}{}%
-	\hgb@InitTheme%       to finalize all required title page fields from input data
+		{\@ProposalSetup}{}%
+	\@InitTheme%       initialize all required title page fields from input data
 }
 
 % ---------------------------------------------------------------------------
 
 % Special sectioning setup for thesis proposals: 
-\newcommand{\@proposalsetup}[0]{%
+\newcommand{\@ProposalSetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
 	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
 	% define an empty entry format for the TOC chapter numbering (tocbasic)

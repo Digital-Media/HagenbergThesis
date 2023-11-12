@@ -537,13 +537,18 @@ These are defined in \texttt{hgbthesis.cls} and should \emph{not} be redefined:
 \end{itemize}
 %
 \noindent
-The \verb!\maketitle! command also invokes the command
+Document class \texttt{hgbthesis.cls} also defines a special \emph{hook}
 \begin{itemize}
-  \item \verb!\hgb@InitTheme!
+\item \verb!hgb@InitThemeHook!
 \end{itemize}
-(with no parameters), which initially does nothing but may be redefined inside theme styles, \eg,
-to initialize certain variables.%
-\footnote{This may be replaced by a call hook in the future.}
+for adding custom initialization code for the current theme in the form
+%
+\begin{LaTeXCode}[numbers=none]
+\AddToHook{hgb@InitThemeHook}{<initialization code>},
+\end{LaTeXCode}
+%
+typically placed at the beginning of the theme file. The collected code for
+this hook is executed immediately before \verb!\maketitle!.
 
 
 \section{Package dependencies}

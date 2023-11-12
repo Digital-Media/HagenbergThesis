@@ -12,19 +12,20 @@
 %% document's front pages.
 
 
-%% -----------------------
+%% Initialization (optional) ----------------------.....-----------------------
 
-\renewcommand{\hgb@InitTheme}{%  called by hgbthesis.cls at \maketitle, all final fields should be initialized here
-}
-  
+\AddToHook{hgb@InitThemeHook}{%
+	\typeout{hgbtheme-thesis: initializing theme}%
+	% add initialization code if needed
+}%
+
+%% Structure of front pages ---------------------------------------------------
+
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
   \hgb@MakeTitlePage%
 	\ifthenelse{\boolean{hgb@IsProposal}}%
-		{%	thesis proposal:
-			%\hgb@MakeAdvisorPage%     no copyright/declaration page for proposals
-		}%			
-		{%	final thesis:
-			%\hgb@MakeAdvisorPage%    advisor info is now on title page
+		{}%
+		{%
 			\hgb@MakeCopyrightPage%
 			\hgb@MakeDeclarationPage%
 		}%
@@ -57,11 +58,6 @@
       {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
         \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
 			\vskip 4mm%
-			% ---------------------------------
-			%{\large\ifthenelse{\equal{\hgb@TitleLanguage}{german}}
-          %{eingereicht am}%
-          %{submitted to the}}
-      %\vskip 1mm 
 			% program type ---------------------------------
       %{\large \hgb@ProgramType}%
 			%\vskip 4mm%
