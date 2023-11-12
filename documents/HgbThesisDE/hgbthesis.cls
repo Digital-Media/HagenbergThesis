@@ -79,18 +79,18 @@
 \newcommand{\@WarnDeprecatedTypeOption}[1]{% #1 = obsolete option
 	\ClassWarning{hgbthesis}{Class option '#1' is deprecated, use 'type=#1' instead!}}%
 
-\newcommand{\@ThemePackage}{}
-\newcommand{\@ThemeFile}{}
+\newcommand{\@ThemePackage}{}						% = hgbtheme-xxx
+\newcommand{\@ThemeFile}{}							% = hgbtheme-xxx.sty
+\newcommand{\@ThemeDirectory}{themes} 	% = ./themes/ relative to main document directory (this is fixed!)
 
 \newcommand{\@SelectTheme}[1]{%
-	\ifthenelse{\equal{\@ThemePackage}{}}%      %% \isempty{\@ThemePackage} not working?
+	\ifthenelse{\equal{\@ThemePackage}{}}% \isempty{\@ThemePackage} not working?
 		{ 
 			\renewcommand{\@ThemePackage}{hgbtheme-#1}%
-			\renewcommand{\@ThemeFile}{\@ThemePackage.sty}%
-			%\typeout{ThemeFile = \@ThemeFile}
-			%\typeout{hgbthesis.cls: \string\@SelectTheme}
+			\renewcommand{\@ThemeFile}{\@ThemeDirectory/\@ThemePackage.sty}%
+			\typeout{ThemeFile = \@ThemeFile}
 			\IfFileExists{\@ThemeFile}%
-				{\AtEndOfPackage{\RequirePackage{\@ThemePackage}}}%
+				{\AtEndOfPackage{\usepackage{\@ThemeDirectory/\@ThemePackage}}}%
 				{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}}%
 		}%
 		{
