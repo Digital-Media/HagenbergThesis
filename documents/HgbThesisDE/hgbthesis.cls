@@ -152,25 +152,26 @@
 \LoadClass[a4paper,11pt,oneside]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\RequirePackage{titling}
 \newcommand{\hgb@TitlePageFont}{\sffamily}
 
-%% Setup for Pages in the Front Matter ----------------------------------------
+%% Setup for Pages in the Front Matter:
 
-% General Thesis Parameters
+% General Thesis Parameters ----------------------------------------
 
-\newcommand{\hgb@Author}{\theauthor}%	\theauthor is defined by titling package (instead of \@author)
+%	Initialized from standard '\author{}' parameter (by \maketitle hook below)
+\newcommand{\hgb@Author}{Author undefined!}
 
-\newcommand{\hgb@Title}{Document title not specified!}	
-% initialized by \renewcommand{\maketitle} below
+\newcommand{\@warnmultipleauthors}%
+	{\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
+
+
+\newcommand{\hgb@Title}{Document title undefined!}% derived from \title (initialized in \maketitle hook)
 
 \newcommand{\hgb@SubTitle}{}
-\newcommand{\subtitle}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@SubTitle}{#1}}
-}
+\newcommand{\subtitle}[1]{\renewcommand{\hgb@SubTitle}{#1}}
 
-% Full title (title + subtitle) where a combination of both is required:
-\newcommand{\hgb@FullTitle}{}
-\ifthenelse{\isempty{\hgb@SubTitle}}{\renewcommand{\hgb@FullTitle}{\hgb@Title}}{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}
+\newcommand{\hgb@FullTitle}{}% = title + subtitle (initialized in \maketitle hook)
 
 \newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
@@ -224,34 +225,7 @@
   \renewcommand{\hgb@AdvisorRole}{#1} % keeps the last advisor (obsolete?)
 }
 
-% ---------------------------------------------------------------------------
-
-% Specify the institution's logo in 'images/' ('logo.pdf' by default)
-\newcommand{\hgb@LogoFile}{logo.pdf}
-\newcommand{\logofile}[1]{%
-	\renewcommand{\hgb@LogoFile}{#1}%
-}
-
-% Special sectioning setup for thesis proposals: 
-\newcommand{\@proposalsetup}[0]{%
-	% remove "Kapitel 1" (titlesec):
-	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
-	% define an empty entry format for the TOC chapter numbering (tocbasic)
-	\newcommand\noentrynumber[1]{}
-	% set empty number and remove indentation for chapter numbering in TOC (tocbasic)
-	\DeclareTOCStyleEntry[entrynumberformat=\noentrynumber,numwidth=0pt]{tocline}{chapter}
-	 % remove chapter number from sections and figures (basic LaTeX):
-	\counterwithout{section}{chapter}
-	\counterwithout{figure}{chapter}
-	\counterwithout{table}{chapter}
-	\counterwithout{equation}{chapter}
-	\counterwithout{program}{chapter}
-	\counterwithout{algorithm}{chapter}
-	% remove chapter number from header (fancyhdr):
-	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
-}
-
-% Submission Date
+% Submission Date ---------------------------------------------------------------
 
 \DTMsavenow{hgb@DateOfSubmission}  % default submission date is today
 
@@ -288,25 +262,29 @@
   \license{strict}%
  }
 
-% Generate the front pages (to be defined by theme .sty files)
-\newcommand{\hgb@MakeFrontPages}{\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}}
+%% Logo -------------------------------------------------------------------------
+
+% Specify the institution's logo in 'images/' ('logo.pdf' by default):
+\newcommand{\hgb@LogoFile}{logo.pdf}
+\newcommand{\logofile}[1]{%
+	\renewcommand{\hgb@LogoFile}{#1}%
+}
 
 %% -----------------------
 
-\newcommand{\@warnmultipleauthors}%
-  {\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
 
 % Create title pages and add PDF meta data:
 
-\newcommand{\hgb@InitTheme}{} % called by \maketitle, to be redefined by the styles, 
+% Generate the front pages (to be redefined by theme .sty files)
+\newcommand{\hgb@MakeFrontPages}%
+  {\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}
+}
 
-\RequirePackage{titling}
-\renewcommand{\maketitle}{%                     redefine standard LaTeX-command
-	\renewcommand{\hgb@Title}{\thetitle}%					defined by 'titling' package
-	\renewcommand{\and}{\@warnmultipleauthors}%   suppress \and inside \author{..}
-	\renewcommand{\thanks}[1]{\relax}%            suppress \thanks{..} inside \author{..}
+\newcommand{\hgb@InitTheme}{} % called by \maketitle, to be redefined by the styles,
+ 
+\renewcommand{\maketitle}{% redefine standard \maketitle command
 	\hypersetup{
-			pdftitle={\hgb@FullTitle},%			TODO: add optional subtitle!
+			pdftitle={\hgb@FullTitle},%
       pdfauthor={\hgb@Author},%
 			pdfsubject={\hgb@ProgramType~\hgb@ProgramName,~\hgb@PlaceOfStudy},
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
@@ -314,18 +292,47 @@
 			pdfkeywords={},
 			pageanchor=false	% disable hyperref page anchors in front pages
 	}%
-  \hgb@InitTheme%       % to finalize all required title page fields from input data
 	\hgb@MakeFrontPages   % generate front pages
 	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
 }
 
-%% Set various terms for title pages:
+% Add hook to initialize remaining parameters before running \maketitle:
+\AddToHook{cmd/maketitle/before}{%
+  \renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
+  \renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
+  \ifthenelse{\isempty{\hgb@SubTitle}}%
+    {\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
+    {\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
+  \ifthenelse{\boolean{hgb@IsProposal}}%
+    {\@proposalsetup}{}%
+  \hgb@InitTheme%       to finalize all required title page fields from input data
+}
+
+% ---------------------------------------------------------------------------
+
+% Special sectioning setup for thesis proposals: 
+\newcommand{\@proposalsetup}[0]{%
+	% remove "Kapitel 1" (titlesec):
+	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
+	% define an empty entry format for the TOC chapter numbering (tocbasic)
+	\newcommand\noentrynumber[1]{}
+	% set empty number and remove indentation for chapter numbering in TOC (tocbasic)
+	\DeclareTOCStyleEntry[entrynumberformat=\noentrynumber,numwidth=0pt]{tocline}{chapter}
+	 % remove chapter number from sections and figures (basic LaTeX):
+	\counterwithout{section}{chapter}
+	\counterwithout{figure}{chapter}
+	\counterwithout{table}{chapter}
+	\counterwithout{equation}{chapter}
+	\counterwithout{program}{chapter}
+	\counterwithout{algorithm}{chapter}
+	% remove chapter number from header (fancyhdr):
+	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+}
+
+%% Set various terms to be redefined by title page themes:
 
 \newcommand{\hgb@ThesisName}{UNDEFINED}
 
-\AtBeginDocument{
-  \ifthenelse{\boolean{hgb@IsProposal}}{\@proposalsetup}{}%
-}
 
 %% Additional Hagenberg packages ----------------------------------------------
 
