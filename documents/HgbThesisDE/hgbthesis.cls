@@ -83,61 +83,61 @@
 \newcommand{\@ThemeFile}{}
 
 \newcommand{\@SelectTheme}[1]{%
-  \ifthenelse{\equal{\@ThemePackage}{}}%      %% \isempty{\@ThemePackage} not working?
-    { 
-      \renewcommand{\@ThemePackage}{hgbtheme-#1}%
-      \renewcommand{\@ThemeFile}{\@ThemePackage.sty}%
-      %\typeout{ThemeFile = \@ThemeFile}
-      %\typeout{hgbthesis.cls: \string\@SelectTheme}
-      \IfFileExists{\@ThemeFile}%
-        {\AtEndOfPackage{\RequirePackage{\@ThemePackage}}}%
-        {\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}} 
-    }%
-    {
-      \ClassWarning{hgbthesis}{Multiple declaration of thesis type, ignoring option '#1'}
-    }
+	\ifthenelse{\equal{\@ThemePackage}{}}%      %% \isempty{\@ThemePackage} not working?
+		{ 
+			\renewcommand{\@ThemePackage}{hgbtheme-#1}%
+			\renewcommand{\@ThemeFile}{\@ThemePackage.sty}%
+			%\typeout{ThemeFile = \@ThemeFile}
+			%\typeout{hgbthesis.cls: \string\@SelectTheme}
+			\IfFileExists{\@ThemeFile}%
+				{\AtEndOfPackage{\RequirePackage{\@ThemePackage}}}%
+				{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}}%
+		}%
+		{
+			\ClassWarning{hgbthesis}{Multiple declaration of thesis type, ignoring option '#1'}%
+		}
 }
 
 % Sets the main language for this document:
 \newcommand{\hgb@MainLanguage}{german}
 \newcommand{\@setMainlLanguage}[1]{%
-  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
-    {\renewcommand{\hgb@MainLanguage}{#1}}%
-    {\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
+	\ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
+		{\renewcommand{\hgb@MainLanguage}{#1}}%
+		{\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
 }
 
 % Sets the language to be used for the front pages, which may be different from
 % the document's main language (specified by a class option):
 \newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}
 \newcommand{\@setTitleLanguage}[1]{%
-  \ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
-    {\renewcommand{\hgb@TitleLanguage}{#1}}%
-    {\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
+	\ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
+		{\renewcommand{\hgb@TitleLanguage}{#1}}%
+		{\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
 }
 
 % See source2e documentation (p. 956)
 % See https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
-  % legacy options (deprecated):
-  bachelor.code 	= {\@SelectTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
-  master.code 		= {\@SelectTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
-  diploma.code 		= {\@SelectTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	% legacy options (deprecated):
+	bachelor.code 	= {\@SelectTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	master.code 		= {\@SelectTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	diploma.code 		= {\@SelectTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
 	internship.code = {\@SelectTheme{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
-  %
-  % catch old-style language options: for some reason they are still passed to hgb.sty!
-  german.code     = {\@setMainlLanguage{german}}, % currently no warnings!
-  ngerman.code    = {\@setMainlLanguage{german}}, % currently no warnings!
-  english.code    = {\@setMainlLanguage{english}},
-  %
+	%
+	% catch old-style language options: for some reason they are still passed to hgb.sty!
+	german.code     = {\@setMainlLanguage{german}}, % currently no warnings!
+	ngerman.code    = {\@setMainlLanguage{german}}, % currently no warnings!
+	english.code    = {\@setMainlLanguage{english}},
+	%
 	%% new options
 	type.code 			= \@SelectTheme{#1},
-  %
-  language.code      = \@setMainlLanguage{#1},
+	%
+	language.code      = \@setMainlLanguage{#1},
 	titlelanguage.code = \@setTitleLanguage{#1},
-  %
-  proposal.code 	= \setboolean{hgb@IsProposal}{true},
-  %
-  apa.code 				= \PassOptionsToPackage{\CurrentOption}{hgbbib}
+	%
+	proposal.code 	= \setboolean{hgb@IsProposal}{true},
+	%
+	apa.code 				= \PassOptionsToPackage{\CurrentOption}{hgbbib}
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -229,7 +229,7 @@
 \DTMsavenow{hgb@DateOfSubmission}  % default submission date is today
 
 \newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}
-  \DTMsavenoparsedate{hgb@DateOfSubmission}{#1}{#2}{#3}{-1}
+	\DTMsavenoparsedate{hgb@DateOfSubmission}{#1}{#2}{#3}{-1}
 }
 
 \newcommand{\hgb@SubmissionYear}{\DTMfetchyear{hgb@DateOfSubmission}}
@@ -237,7 +237,7 @@
 \newcommand{\hgb@SubmissionDay}{\DTMfetchday{hgb@DateOfSubmission}}
 
 \newcommand{\hgb@GetMonthName}[2]{% #1=language #2=month, 
-  \csname DTM#1monthname\endcsname{#2}% brittle?
+	\csname DTM#1monthname\endcsname{#2}% brittle?
 }
 
 \newcommand{\hgb@SubmissionMonthNameDE}{\DTMgermanmonthname{\hgb@SubmissionMonth}}
@@ -252,14 +252,14 @@
 }
 
 \newcommand{\cclicense}{% for backward compatibility, use \license{cc} instead
-  \ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cc} instead!}%
-  \license{cc}%
- }
+	\ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cc} instead!}%
+	\license{cc}%
+}
 
 \newcommand{\strictlicense}{% for backward compatibility, use \license{strict} instead
-  \ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strict} instead!}%
-  \license{strict}%
- }
+	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strict} instead!}%
+	\license{strict}%
+}
 
 %% Logo -------------------------------------------------------------------------
 
@@ -276,7 +276,7 @@
 
 % Generate the front pages (to be redefined by theme .sty files)
 \newcommand{\hgb@MakeFrontPages}%
-  {\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}
+	{\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}
 }
 
 \newcommand{\hgb@InitTheme}{} % called by \maketitle, to be redefined by the styles,
@@ -297,14 +297,14 @@
 
 % Add hook to initialize remaining parameters before running \maketitle:
 \AddToHook{cmd/maketitle/before}{%
-  \renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
-  \renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
-  \ifthenelse{\isempty{\hgb@SubTitle}}%
-    {\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
-    {\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
-  \ifthenelse{\boolean{hgb@IsProposal}}%
-    {\@proposalsetup}{}%
-  \hgb@InitTheme%       to finalize all required title page fields from input data
+	\renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
+	\renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
+	\ifthenelse{\isempty{\hgb@SubTitle}}%
+		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
+		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
+	\ifthenelse{\boolean{hgb@IsProposal}}%
+		{\@proposalsetup}{}%
+	\hgb@InitTheme%       to finalize all required title page fields from input data
 }
 
 % ---------------------------------------------------------------------------
