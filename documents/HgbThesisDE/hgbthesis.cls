@@ -280,7 +280,7 @@
 }
 
 \NewHook{hgb@InitThemeHook}
-\newcommand{\@InitTheme}{\UseHook{hgb@InitThemeHook}}% called by \maketitle, to be redefined by the styles,
+\newcommand{\@InitTheme}{\UseHook{hgb@InitThemeHook}}% called by 'cmd/maketitle/before' hook
 
 
 \renewcommand{\maketitle}{% redefine standard \maketitle command
