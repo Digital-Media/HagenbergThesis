@@ -1,17 +1,18 @@
-%% hgbtheme-bachelor.sty
-%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% This file is part of the Hagenberg Thesis package
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
+%%
+%% This file defines the parent theme for all thesis types (legacy version).
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{themes/hgbtheme-legacy}[2023/10/26]%%AUTO
+%% Initialization (optional) ----------------------.....-----------------------
 
-%% This is a 'theme' file which specifies the layout and structure of the
-%% document's front pages.
+\AddToHook{hgb@InitThemeHook}{%
+	\typeout{legacy-thesis: initializing theme}%
+	% add initialization code if needed
+}%
 
-
-%% -----------------------
+%% Structure of front pages ---------------------------------------------------
   
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
   \hgb@MakeTitlePage%

@@ -1,17 +1,14 @@
-%% hgbtheme-bachelor.sty
-%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% This file is part of the Hagenberg Thesis package
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 %%
 %% This 'theme' file defines the front pages of Bachelor theses.
-%% Note: This is a legacy theme and should not be used for new document!
+%% Note: This is a legacy theme and should not be used for new documents!
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{themes/hgbtheme-legacy-bachelor}[2023/10/26]%%AUTO
-\usepackage{themes/hgbtheme-legacy}	% parent theme, most definitions are inherited from here
+\hgb@UseTheme{legacy-thesis}% parent theme
 
 %\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{bachelor-thesis}{\hgb@TitleLanguage}}
-\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{bachelor-thesis}{german}}
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{bachelor-thesis}{german}}% always German
 
 

@@ -36,6 +36,9 @@
 \hgbDictionarySet{diploma-thesis}{english}{Diploma Thesis}
 \hgbDictionarySet{diploma-thesis}{german}{Diplomarbeit}
 
+\hgbDictionarySet{phd-thesis}{english}{Doctoral Thesis}
+\hgbDictionarySet{phd-thesis}{german}{Dissertation}
+
 \hgbDictionarySet{internship-report}{english}{Internship Report}
 \hgbDictionarySet{internship-report}{german}{Praktikumsbericht}
 
@@ -79,23 +82,19 @@
 \newcommand{\@WarnDeprecatedTypeOption}[1]{% #1 = obsolete option
 	\ClassWarning{hgbthesis}{Class option '#1' is deprecated, use 'type=#1' instead!}}%
 
-\newcommand{\@ThemePackage}{}						% = hgbtheme-xxx
-\newcommand{\@ThemeFile}{}							% = hgbtheme-xxx.sty
-\newcommand{\@ThemeDirectory}{themes} 	% = ./themes/ relative to main document directory (this is fixed!)
+%% Load thesis theme style ---------------------------------------------------
 
-\newcommand{\@SelectTheme}[1]{%
-	\ifthenelse{\equal{\@ThemePackage}{}}% \isempty{\@ThemePackage} not working?
-		{ 
-			\renewcommand{\@ThemePackage}{hgbtheme-#1}%
-			\renewcommand{\@ThemeFile}{\@ThemeDirectory/\@ThemePackage.sty}%
-			\typeout{ThemeFile = \@ThemeFile}
-			\IfFileExists{\@ThemeFile}%
-				{\AtEndOfPackage{\usepackage{\@ThemeDirectory/\@ThemePackage}}}%
-				{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}}%
-		}%
-		{
-			\ClassWarning{hgbthesis}{Multiple declaration of thesis type, ignoring option '#1'}%
-		}
+\newcommand{\@ThemeDirectory}{themes}%		= ./themes/ (relative to main document directory)
+\newcommand{\@ThemePrefix}{hgbtheme}%			alltheme files are named % = hgbtheme-<themename>.sty
+
+% Selects the 'theme' for setting up front pages:
+\newcommand{\hgb@UseTheme}[1]{%
+	\def\@ThemeName{\@ThemePrefix-#1}
+	\def\@ThemeFile{\@ThemeDirectory/\@ThemeName.sty}		
+	\typeout{ThemeFile = \@ThemeFile}
+	\IfFileExists{\@ThemeFile}%
+		{\AtEndOfPackage{\usepackage{\@ThemeDirectory/\@ThemeName}}}%
+		{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}}%
 }
 
 % Sets the main language for this document:
@@ -119,10 +118,10 @@
 % See https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
 	% legacy options (deprecated):
-	bachelor.code 	= {\@SelectTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	master.code 		= {\@SelectTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	diploma.code 		= {\@SelectTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	internship.code = {\@SelectTheme{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	bachelor.code 	= {\hgb@UseTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	master.code 		= {\hgb@UseTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	diploma.code 		= {\hgb@UseTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	internship.code = {\hgb@UseTheme{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
 	%
 	% catch old-style language options: for some reason they are still passed to hgb.sty!
 	german.code     = {\@setMainlLanguage{german}}, % currently no warnings!
@@ -130,7 +129,7 @@
 	english.code    = {\@setMainlLanguage{english}},
 	%
 	%% new options
-	type.code 			= \@SelectTheme{#1},
+	type.code 			= \hgb@UseTheme{#1},
 	%
 	language.code      = \@setMainlLanguage{#1},
 	titlelanguage.code = \@setTitleLanguage{#1},
