@@ -88,13 +88,13 @@
 \newcommand{\@ThemePrefix}{hgbtheme}%			alltheme files are named % = hgbtheme-<themename>.sty
 
 % Selects the 'theme' for setting up front pages:
-\newcommand{\hgb@UseTheme}[1]{%
-	\def\@ThemeName{\@ThemePrefix-#1}
+\newcommand{\hgb@UseTheme}[2][]{%		#1 = options passed to theme style file, #2 = theme name
+	\def\@ThemeName{\@ThemePrefix-#2}
 	\def\@ThemeFile{\@ThemeDirectory/\@ThemeName.sty}		
 	\typeout{ThemeFile = \@ThemeFile}
 	\IfFileExists{\@ThemeFile}%
-		{\AtEndOfPackage{\usepackage{\@ThemeDirectory/\@ThemeName}}}%
-		{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#1'}}%
+		{\AtEndOfPackage{\usepackage[#1]{\@ThemeDirectory/\@ThemeName}}}%
+		{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#2'}}%
 }
 
 % Sets the main language for this document:
