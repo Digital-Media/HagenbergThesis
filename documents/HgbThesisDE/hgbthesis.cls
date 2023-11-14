@@ -84,17 +84,16 @@
 
 %% Load thesis theme style ---------------------------------------------------
 
-\newcommand{\@ThemeDirectory}{themes}%		= ./themes/ (relative to main document directory)
-\newcommand{\@ThemePrefix}{hgbtheme}%			alltheme files are named % = hgbtheme-<themename>.sty
+\newcommand{\@ThemePrefix}{hgbtheme}%			all theme files are named % = hgbtheme-<themename>.sty
 
-% Selects the 'theme' for setting up front pages:
+% Selects the specified 'theme' for setting up front pages:
 \newcommand{\hgb@UseTheme}[2][]{%		#1 = options passed to theme style file, #2 = theme name
 	\def\@ThemeName{\@ThemePrefix-#2}
-	\def\@ThemeFile{\@ThemeDirectory/\@ThemeName.sty}		
-	\typeout{ThemeFile = \@ThemeFile}
-	\IfFileExists{\@ThemeFile}%
-		{\AtEndOfPackage{\usepackage[#1]{\@ThemeDirectory/\@ThemeName}}}%
-		{\ClassError{hgbthesis}{Could not find theme file '\@ThemeFile' for option 'type=#2'}}%
+	\def\@ThemeFile{\@ThemeName.sty}
+	%\typeout{ThemeFile = \@ThemeFile}
+	\IfFileExists{\@ThemeFile}%		true if LaTeX can find this file (need not be local!)
+		{\AtEndOfPackage{\usepackage[#1]{\@ThemeName}}}%
+		{\ClassError{hgbthesis}{Theme style '\@ThemeFile' could not be found}}%
 }
 
 % Sets the main language for this document:
