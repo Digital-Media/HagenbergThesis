@@ -7,6 +7,7 @@
 %% This file defines the parent theme for all thesis types.
 
 \RequirePackage{forloop}
+\RequirePackage{tikz}
 
 %% Initialization (optional) ----------------------.....-----------------------
 
@@ -31,59 +32,73 @@
 
 \newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
-		\rule{0mm}{10mm}%
-		\vspace*{0mm}%
-		\begin{center}%
+		\newgeometry{top=0mm,bottom=14mm,right=14mm,left=14mm}
+		\setlength{\parindent}{0pt}
+		% background image -----------------------------------------
+		\AddToHookNext{shipout/background}{
+			\begin{tikzpicture}[remember picture,overlay]
+				\node at (current page.center) {
+		  			\includegraphics{fhooe-cover}
+				};
+			\end{tikzpicture}
+		}
+
+		%\rule{0mm}{10mm}%
+		\vspace*{98mm}%
+		%\begin{center}%
 			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
 			% author --------------------------------------------------
 			{\Large\hgb@Author}%
-			\vskip 8mm%
+			\vskip 14mm%
 			% title --------------------------------------------------
-			\parbox[c][5cm][c]{\textwidth}{%
-				\centering%
-				{\LARGE\bfseries\setlength{\baselineskip}{25pt}\hgb@Title}%
-				\vskip 8mm%
-				{\Large\bfseries\setlength{\baselineskip}{20pt}\hgb@SubTitle}%
+			\parbox[c][56mm][t]{140mm}{%
+				%\centering%
+				{\huge\bfseries\setlength{\baselineskip}{25pt}\hgb@Title}%
+				\vskip 7mm%
+				{\LARGE\bfseries\setlength{\baselineskip}{20pt}\hgb@SubTitle}%
 			}
-			\vskip 10mm%
+			%\vskip 10mm%
 			% logo --------------------------------------------------
-			\hgb@MakeLogo%
-			\vskip 15mm%
+			%\hgb@MakeLogo%
+			\vskip 0mm%
 			% thesis type ---------------------------------------------
       {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
         \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
-			\vskip 4mm%
+			\vskip 14mm%
 			% program type ---------------------------------
       %{\large \hgb@ProgramType}%
 			%\vskip 4mm%
 			% program name ---------------------------------
 			{\large\hgb@ProgramName}%
-			\vskip 4mm%
+			\vskip 0mm%
       % place of study  ---------------------------------
 			{\large\hgb@Institution}%
 			\vskip 4mm%
-      {\large\hgb@PlaceOfStudy}%
+      		{\large\hgb@PlaceOfStudy}%
 			\vskip 8mm%
+			{\large\hgb@SubmissionYear}%
+			\vskip 0mm%
       % advisors(s) -------------------------------------
-      \parbox[c][3cm][c]{\textwidth}{%
-				\centering\large\tabcolsep0.25em%
+      \parbox[c][28mm][b]{\textwidth}{%
+				%\centering\large\tabcolsep0.25em%
         \ifthenelse{\hgb@AdvisorCount > 0}%
           {\@makeAdvisorTable}% defined below
           {\color{red}No advisor(s) specified!\\}%
       }
 			%{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
-			\vskip 16mm%
+			%\vskip 14mm%
       % submission date ---------------------------------
-      {\large\hgb@SubmissionYear}%
-		\end{center}%
-		\vfil%
+      
+		%\end{center}%
+		%\vfil%
+	\restoregeometry%
 \end{titlepage}%
 }
 
 \newcommand{\@makeAdvisorTable}{%
   \newcounter{C}%
-  \begin{tabular}{rl}%
+  \begin{tabular}{@{}ll@{}}%
     \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
       \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
       \ifthenelse{\value{C} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
