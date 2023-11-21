@@ -49,14 +49,15 @@
 			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
 			% author --------------------------------------------------
-			{\Large\hgb@Author}%
+			{\Large\hgb@Author\par}%
 			\vskip 14mm%
 			% title --------------------------------------------------
 			\parbox[c][56mm][t]{140mm}{%
+				\raggedright%
 				%\centering%
-				{\huge\bfseries\setlength{\baselineskip}{25pt}\hgb@Title}%
+				{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
 				\vskip 7mm%
-				{\LARGE\bfseries\setlength{\baselineskip}{20pt}\hgb@SubTitle}%
+				{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
 			}
 			%\vskip 10mm%
 			% logo --------------------------------------------------
@@ -64,20 +65,20 @@
 			\vskip 0mm%
 			% thesis type ---------------------------------------------
       {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
-        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}}
+        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}\par}
 			\vskip 14mm%
 			% program type ---------------------------------
       %{\large \hgb@ProgramType}%
 			%\vskip 4mm%
 			% program name ---------------------------------
-			{\large\hgb@ProgramName}%
+			{\large\hgb@ProgramName\par}%
 			\vskip 0mm%
       % place of study  ---------------------------------
-			{\large\hgb@Institution}%
+			{\large\hgb@Institution\par}%
 			\vskip 4mm%
-      		{\large\hgb@PlaceOfStudy}%
+				{\large\hgb@PlaceOfStudy\par}%
 			\vskip 8mm%
-			{\large\hgb@SubmissionYear}%
+				{\large\hgb@SubmissionYear\par}%
 			\vskip 0mm%
       % advisors(s) -------------------------------------
       \parbox[c][28mm][b]{\textwidth}{%
