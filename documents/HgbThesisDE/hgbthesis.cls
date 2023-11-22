@@ -117,10 +117,10 @@
 % See https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
 	% legacy options (deprecated):
-	bachelor.code 	= {\hgb@UseTheme{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	master.code 		= {\hgb@UseTheme{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	diploma.code 		= {\hgb@UseTheme{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	internship.code = {\hgb@UseTheme{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	bachelor.code 	= {\renewcommand{\hgb@ThesisType}{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	master.code 		= {\renewcommand{\hgb@ThesisType}{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	diploma.code 		= {\renewcommand{\hgb@ThesisType}{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
 	%
 	% catch old-style language options: for some reason they are still passed to hgb.sty!
 	german.code     = {\@setMainlLanguage{german}}, % currently no warnings!
@@ -128,7 +128,8 @@
 	english.code    = {\@setMainlLanguage{english}},
 	%
 	%% new options
-	type.code 			= \hgb@UseTheme{#1},
+	type.code 			= \renewcommand{\hgb@ThesisType}{#1},
+	theme.code 			= \hgb@UseTheme{#1},
 	%
 	language.code      = \@setMainlLanguage{#1},
 	titlelanguage.code = \@setTitleLanguage{#1},

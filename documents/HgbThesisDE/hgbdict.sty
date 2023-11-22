@@ -19,6 +19,6 @@
 \newcommand{\hgbDictionaryGet}[2]{%  #1=key, #2=lang
 \ifcsname hgb@dict-#1-#2\endcsname% \ifdefined, \@ifundefined
   \csname hgb@dict-#1-#2\endcsname%
-  \else Term '#1' undefined for language '#2'!%
+  \else Term '#1' is undefined for language '#2'!%
   \fi
 }
