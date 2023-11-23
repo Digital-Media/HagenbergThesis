@@ -85,7 +85,7 @@
 %% Load thesis theme style ---------------------------------------------------
 
 \newcommand{\@ThemePrefix}{hgbtheme}%			all theme files are named % = hgbtheme-<themename>.sty
-\newcommand{\@ThemeID}{base}%							use theme 'hgbtheme-base' of no theme specified
+\newcommand{\@ThemeID}{default}%							use theme 'hgbtheme-base' of no theme specified
 
 
 % Selects the specified 'theme' for setting up front pages:
