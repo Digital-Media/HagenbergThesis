@@ -79,62 +79,80 @@
 
 %% New version allowing key/value options (provided by recent LaTeX2e kernel):
 
-\newcommand{\@WarnDeprecatedTypeOption}[1]{% #1 = obsolete option
-	\ClassWarning{hgbthesis}{Class option '#1' is deprecated, use 'type=#1' instead!}}%
+\newcommand{\@WarnDeprecatedOption}[2]{% #1=obsolete option, #2=replacement option
+	\ClassWarning{hgbthesis}{option '#1' is deprecated, use '#2' instead!}}%
 
 %% Load thesis theme style ---------------------------------------------------
 
 \newcommand{\@ThemePrefix}{hgbtheme}%			all theme files are named % = hgbtheme-<themename>.sty
+\newcommand{\@ThemeID}{base}%							use theme 'hgbtheme-base' of no theme specified
+
 
 % Selects the specified 'theme' for setting up front pages:
-\newcommand{\hgb@UseTheme}[2][]{%		#1 = options passed to theme style file, #2 = theme name
+\newcommand{\hgb@UseTheme}[2][]{%		#1=options passed to theme style file, #2=themeID
 	\def\@ThemeName{\@ThemePrefix-#2}
 	\def\@ThemeFile{\@ThemeName.sty}
 	%\typeout{ThemeFile = \@ThemeFile}
 	\IfFileExists{\@ThemeFile}%		true if LaTeX can find this file (need not be local!)
 		{\AtEndOfPackage{\usepackage[#1]{\@ThemeName}}}%
-		{\ClassError{hgbthesis}{Theme style '\@ThemeFile' could not be found}}%
+		{\ClassError{hgbthesis}{style file '\@ThemeFile' for theme '#2' could not be found}\relax}%
 }
 
-% Sets the main language for this document:
-\newcommand{\hgb@MainLanguage}{german}
-\newcommand{\@setMainlLanguage}[1]{%
-	\ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
-		{\renewcommand{\hgb@MainLanguage}{#1}}%
-		{\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
+\newcommand{\hgb@MainLanguage}{german}%								the main language for this document:
+\newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}%		the language to be used for the front pages
+
+% Utility for validating key/value class options:
+
+% Usage example: \@RegisterClassOption{type}{master}
+\newcommand{\@RegisterClassOption}[2]{%  #1=option key, #2=option value
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
 }
 
-% Sets the language to be used for the front pages, which may be different from
-% the document's main language (specified by a class option):
-\newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}
-\newcommand{\@setTitleLanguage}[1]{%
-	\ifthenelse{\equal{#1}{german} \or \equal{#1}{english}}%
-		{\renewcommand{\hgb@TitleLanguage}{#1}}%
-		{\ClassError{hgbthesis}{Unknown title language: '\string#1' (use 'german' or 'english')}{}}
+% Usage example: \@ValidateClassOption{type}{master}
+\newcommand{\@ValidateClassOption}[2]{%  #1=option key, #2=option value
+\ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+  {}%
+  \else \ClassError{hgbthesis}{illegal key/value option: #1=#2}\relax%
+  \fi
 }
+
+% Register permissible key/value option pairs:
+
+\@RegisterClassOption{type}{bachelor}
+\@RegisterClassOption{type}{master}
+\@RegisterClassOption{type}{diploma}
+\@RegisterClassOption{type}{phd}
+
+\@RegisterClassOption{language}{english}
+\@RegisterClassOption{language}{german}
+
+\@RegisterClassOption{titlelanguage}{english}
+\@RegisterClassOption{titlelanguage}{german}
+
+% -------------------------------------------------------------
 
 % See source2e documentation (p. 956)
 % See https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
 	% legacy options (deprecated):
-	bachelor.code 	= {\renewcommand{\hgb@ThesisType}{bachelor}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	master.code 		= {\renewcommand{\hgb@ThesisType}{master}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	diploma.code 		= {\renewcommand{\hgb@ThesisType}{diploma}\@WarnDeprecatedTypeOption{\CurrentOption}},
-	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedTypeOption{\CurrentOption}},
+	bachelor.code 	= {\renewcommand{\hgb@ThesisType}{bachelor}\@WarnDeprecatedOption{bachelor}{type=bachelor}},
+	master.code 		= {\renewcommand{\hgb@ThesisType}{master}\@WarnDeprecatedOption{master}{type=master}},
+	diploma.code 		= {\renewcommand{\hgb@ThesisType}{diploma}\@WarnDeprecatedOption{diploma}{type=diploma}},
+	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedOption{internship}{**deprecated**}},
 	%
 	% catch old-style language options: for some reason they are still passed to hgb.sty!
-	german.code     = {\@setMainlLanguage{german}}, % currently no warnings!
-	ngerman.code    = {\@setMainlLanguage{german}}, % currently no warnings!
-	english.code    = {\@setMainlLanguage{english}},
+	german.code     = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{german}{language=german}},
+	ngerman.code    = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{ngerman}{language=german}},
+	english.code    = {\renewcommand{\hgb@MainLanguage}{english}\@WarnDeprecatedOption{english}{language=english}},
 	%
 	%% new options
-	type.code 			= \renewcommand{\hgb@ThesisType}{#1},
-	theme.code 			= \hgb@UseTheme{#1},
+	type.code 			= {\@ValidateClassOption{type}{#1}\renewcommand{\hgb@ThesisType}{#1}},
+	theme.code 			= \renewcommand{\@ThemeID}{#1},
 	%
-	language.code      = \@setMainlLanguage{#1},
-	titlelanguage.code = \@setTitleLanguage{#1},
+	language.code      = {\@ValidateClassOption{language}{#1}\renewcommand{\hgb@MainLanguage}{#1}},
+	titlelanguage.code = {\@ValidateClassOption{titlelanguage}{#1}\renewcommand{\hgb@TitleLanguage}{#1}},
 	%
-	proposal.code 	= \setboolean{hgb@IsProposal}{true},
+	proposal.code 	= \setboolean{hgb@IsProposal}{true},	% TODO: allow proposal=true
 	%
 	apa.code 				= \PassOptionsToPackage{\CurrentOption}{hgbbib}
 }
@@ -274,8 +292,8 @@
 % Create title pages and add PDF meta data:
 
 % Generate the front pages (to be redefined by theme .sty files)
-\newcommand{\hgb@MakeFrontPages}%
-	{\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}
+\newcommand{\hgb@MakeFrontPages}{%
+	\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}\relax%
 }
 
 \NewHook{hgb@InitThemeHook}
@@ -303,6 +321,7 @@
 	\ifthenelse{\isempty{\hgb@SubTitle}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
+	\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-thesis}{\hgb@TitleLanguage}}
 	\ifthenelse{\boolean{hgb@IsProposal}}%
 		{\@ProposalSetup}{}%
 	\@InitTheme%       initialize all required title page fields from input data
@@ -332,7 +351,7 @@
 %% Set various terms to be redefined by title page themes:
 
 \newcommand{\hgb@ThesisName}{UNDEFINED}
-
+\hgb@UseTheme{\@ThemeID}%
 
 %% Additional Hagenberg packages ----------------------------------------------
 
@@ -342,6 +361,5 @@
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
-
 
 \endinput
