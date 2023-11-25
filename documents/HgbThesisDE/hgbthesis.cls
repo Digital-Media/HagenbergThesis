@@ -41,9 +41,6 @@
 \hgbDictionarySet{phd-thesis}{english}{Doctoral Thesis}
 \hgbDictionarySet{phd-thesis}{german}{Dissertation}
 
-\hgbDictionarySet{internship-report}{english}{Internship Report}
-\hgbDictionarySet{internship-report}{german}{Praktikumsbericht}	% obsolete
-
 \hgbDictionarySet{proposalname}{english}{Proposal}
 \hgbDictionarySet{proposalname}{german}{Exposè}
 
@@ -137,7 +134,7 @@
 	\def\@ThemeFile{\@ThemeName.sty}
 	%\typeout{ThemeFile = \@ThemeFile}
 	\IfFileExists{\@ThemeFile}%		true if LaTeX can find this file (need not be local!)
-		{\AtEndOfPackage{\usepackage[#1]{\@ThemeName}}}%
+		{\RequirePackage[#1]{\@ThemeName}}%  must load immediately, was {\AtEndOfPackage{\usepackage[#1]{\@ThemeName}}}%
 		{\ClassError{hgbthesis}{style file '\@ThemeFile' for theme '#2' could not be found}\relax}%
 }
 
@@ -164,7 +161,7 @@
 	bachelor.code 	= {\renewcommand{\hgb@ThesisType}{bachelor}\@WarnDeprecatedOption{bachelor}{type=bachelor}},
 	master.code 		= {\renewcommand{\hgb@ThesisType}{master}\@WarnDeprecatedOption{master}{type=master}},
 	diploma.code 		= {\renewcommand{\hgb@ThesisType}{diploma}\@WarnDeprecatedOption{diploma}{type=diploma}},
-	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedOption{internship}{**deprecated**}},
+	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedOption{internship}{type=internship}},
 	% catch old-style language options (for some reason they are still passed to hgb.sty!)
 	german.code     = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{german}{language=german}},
 	ngerman.code    = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{ngerman}{language=german}},
@@ -297,6 +294,11 @@
 	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strictlicense} instead!}%
 	\license{strict}%
 }
+
+% Legacy commands, keep for internship reports:
+\newcommand{\companyName}{}%		
+\newcommand{\companyUrl}{}%
+
 
 %% Logo -------------------------------------------------------------------------
 
