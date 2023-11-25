@@ -117,44 +117,6 @@
 
 %% Default Copyright/License page ----------------------------------------
 
-
-\newcommand{\hgb@StrictLicenseDE}{Alle Rechte vorbehalten}
-\newcommand{\hgb@StrictLicenseEN}{All Rights Reserved}
-
-\newcommand{\hgb@StrictLicense}{%
-\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-	{\begin{german}\hgb@StrictLicenseDE\end{german}}
-	{\begin{english}\hgb@StrictLicenseEN\end{english}}
-}
-
-%% ------
-
-\newcommand{\hgb@ccLicenseDE}{%
-Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
-\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
-veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
-}
-
-\newcommand{\hgb@ccLicenseEN}{%
-This work is published under the conditions of the \textsf{Creative Commons License} 
-\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
----see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
-}
-
-\newcommand{\hgb@ccLicense}{%
-\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-	{\begin{german}\hgb@ccLicenseDE\end{german}}
-	{\begin{english}\hgb@ccLicenseEN\end{english}}
-}
-
-%% ------
-
-\newcommand{\hgb@TheLicense}{%
-\ifthenelse{\equal{\hgb@license}{strict}}%
-  {\hgb@StrictLicense}%
-  {\hgb@ccLicense}%
-}
-
 \newcommand{\hgb@MakeCopyrightPage}{%
   \newpage
   \thispagestyle{plain}
@@ -164,36 +126,15 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
   \textsf{\copyright\ Copyright\ \DTMfetchyear{hgb@DateOfSubmission} \hgb@Author}
   \end{center}
   \vspace{8mm}
-  \hgbJustifyOrCenter{\hgb@TheLicense} % defined in hgb.sty
+  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}} % defined above
 }
 
 %% Default Declaration Page ----------------------------------------
 
-\newcommand{\hgb@DeclarationTextDE}{%
-  \begin{german}%
-  Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
-  andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
-  solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
-  Prüfungsbehörde vorgelegt.
-  Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
-  \end{german}
-}
-
-\newcommand{\hgb@DeclarationTextEN}{%
-  \begin{english}%
-  I hereby declare and confirm that this thesis is entirely the result of my own original work. 
-  Where other sources of information have been used, they have been indicated as such and properly 
-  acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
-  This printed copy is identical to the submitted electronic version.
-  \end{english}
-}
-
 \newcommand{\hgb@MakeDeclarationPage}{
-    \chapter{\hgbDictionaryGet{declaration}{\hgb@TitleLanguage}}
+    \chapter{\hgbDictionaryGet{declarationtitle}{\hgb@TitleLanguage}}
 		\noindent%
-    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-      {\begin{german}\hgb@DeclarationTextDE\end{german}}
-      {\begin{english}\hgb@DeclarationTextEN\end{english}}
+		\hgbDictionaryGet{declarationtext}{\hgb@TitleLanguage}
 		\par
 		\vspace{10mm}
 		\noindent

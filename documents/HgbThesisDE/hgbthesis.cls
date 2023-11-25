@@ -27,6 +27,8 @@
 
 \RequirePackage{hgbdict}
 
+% Front page terms:
+
 \hgbDictionarySet{bachelor-thesis}{english}{Bachelor Thesis}
 \hgbDictionarySet{bachelor-thesis}{german}{Bachelorarbeit}
 
@@ -45,11 +47,53 @@
 \hgbDictionarySet{proposal}{english}{Proposal}
 \hgbDictionarySet{proposal}{german}{Exposè}
 
-\hgbDictionarySet{declaration}{english}{Declaration}
-\hgbDictionarySet{declaration}{german}{Erklärung}
-
 \hgbDictionarySet{advisor}{english}{Advisor}
 \hgbDictionarySet{advisor}{german}{Betreuer*in}
+
+% License texts: 
+
+\hgbDictionarySet{strictlicense}{english}{All Rights Reserved}
+\hgbDictionarySet{strictlicense}{german}{Alle Rechte vorbehalten}
+
+\hgbDictionarySet{cclicense}{english}{%
+	\begin{english}%
+	This work is published under the conditions of the \textsf{Creative Commons License} 
+	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
+	---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+	\end{english}%
+}
+
+\hgbDictionarySet{cclicense}{german}{%
+	\begin{german}%
+	Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
+	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
+	veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+	\end{german}%
+}
+
+% Declarations:
+
+\hgbDictionarySet{declarationtitle}{english}{Declaration}
+\hgbDictionarySet{declarationtitle}{german}{Erklärung}
+
+\hgbDictionarySet{declarationtext}{english}{%
+	\begin{english}%
+	I hereby declare and confirm that this thesis is entirely the result of my own original work. 
+	Where other sources of information have been used, they have been indicated as such and properly 
+	acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
+	This printed copy is identical to the submitted electronic version.
+	\end{english}%
+}
+
+\hgbDictionarySet{declarationtext}{german}{%
+	\begin{german}%
+	Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
+	andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
+	solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
+	Prüfungsbehörde vorgelegt.
+	Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
+	\end{german}%
+}
 
 
 %% Commands for Title Pages (used in class options) ---------------------------
@@ -236,19 +280,21 @@
 
 % Copyright/License Settings --------------------------------------------------
 
-\newcommand{\hgb@license}{cc}
+\newcommand{\hgb@License}{cclicense}
 
 \newcommand{\license}[1]{%
-	\renewcommand{\hgb@license}{#1}
+	\renewcommand{\hgb@License}{#1}
+	\ifthenelse{\equal{#1}{cc}}{\renewcommand{\hgb@License}{cclicense}}{}%
+	\ifthenelse{\equal{#1}{strict}}{\renewcommand{\hgb@License}{strictlicense}}{}%
 }
 
 \newcommand{\cclicense}{% for backward compatibility, use \license{cc} instead
-	\ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cc} instead!}%
+	\ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cclicense} instead!}%
 	\license{cc}%
 }
 
 \newcommand{\strictlicense}{% for backward compatibility, use \license{strict} instead
-	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strict} instead!}%
+	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strictlicense} instead!}%
 	\license{strict}%
 }
 
