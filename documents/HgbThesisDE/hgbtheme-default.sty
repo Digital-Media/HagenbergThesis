@@ -65,7 +65,8 @@
 			\vskip 0mm%
 			% thesis type ---------------------------------------------
       {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
-        \ifthenelse{\boolean{hgb@IsProposal}}{\space\space(\@addspaces{\MakeUppercase{\tmp@ProposalName}})}{}\par}
+        \ifthenelse{\boolean{hgb@IsProposal}}%
+					{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
 			\vskip 14mm%
 			% program type ---------------------------------
       %{\large \hgb@ProgramType}%

@@ -61,6 +61,7 @@
 
 \newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
 \setboolean{hgb@IsProposal}{false}
+\newcommand{\hgb@ProposalName}{UNDEFINED}
 
 %% Utilities for handling class options -------------------------------------
 
@@ -111,15 +112,16 @@
 \@RegisterClassOption{titlelanguage}{english}
 \@RegisterClassOption{titlelanguage}{german}
 
-% See source2e documentation (p. 956)
-% See https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
+% We are using the 
+% See http://mirrors.ctan.org/macros/latex/base/source2e.pdf (p. 956),
+% https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
 	% legacy options (deprecated):
 	bachelor.code 	= {\renewcommand{\hgb@ThesisType}{bachelor}\@WarnDeprecatedOption{bachelor}{type=bachelor}},
 	master.code 		= {\renewcommand{\hgb@ThesisType}{master}\@WarnDeprecatedOption{master}{type=master}},
 	diploma.code 		= {\renewcommand{\hgb@ThesisType}{diploma}\@WarnDeprecatedOption{diploma}{type=diploma}},
 	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedOption{internship}{**deprecated**}},
-	% catch old-style language options: for some reason they are still passed to hgb.sty!
+	% catch old-style language options (for some reason they are still passed to hgb.sty!)
 	german.code     = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{german}{language=german}},
 	ngerman.code    = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{ngerman}{language=german}},
 	english.code    = {\renewcommand{\hgb@MainLanguage}{english}\@WarnDeprecatedOption{english}{language=english}},
@@ -128,8 +130,10 @@
 	theme.code 				= \renewcommand{\@ThemeID}{#1},
 	language.code			= {\@ValidateClassOption{language}{#1}\renewcommand{\hgb@MainLanguage}{#1}},
 	titlelanguage.code = {\@ValidateClassOption{titlelanguage}{#1}\renewcommand{\hgb@TitleLanguage}{#1}},
-	proposal.code			= \setboolean{hgb@IsProposal}{true},	% TODO: allow proposal=true
-	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib}
+	proposal.code			= \setboolean{hgb@IsProposal}{#1},
+	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
+	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
+	apa.default:n			= true,	% TODO: check if default value is properly passed!
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -256,7 +260,6 @@
 	\renewcommand{\hgb@LogoFile}{#1}%
 }
 
-
 %% Create title pages -------------------------------------
 
 % Generate the front pages (to be redefined by theme .sty files)
@@ -264,7 +267,7 @@
 	\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}\relax%
 }
 
-% Add PDF meta data
+% Redefine LaTeX's \maketitle to add PDF meta data
 \renewcommand{\maketitle}{% redefine standard \maketitle command
 	\hypersetup{
 			pdftitle={\hgb@FullTitle},%
@@ -281,10 +284,10 @@
 
 % Define new hook to be used in theme style files for various initializations: 
 % Usage: \AddToHook{hgb@InitThemeHook}{...}
-% Invoked by \maketitle (redefined above).
+% Invoked before \maketitle (by hook code below).
 \NewHook{hgb@InitThemeHook}
 
-% Add hook to initialize remaining parameters before running \maketitle:
+% Initialize remaining parameters before running \maketitle:
 \AddToHook{cmd/maketitle/before}{%
 	\renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
 	\renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
@@ -297,10 +300,10 @@
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
 	%
 	\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-thesis}{\hgb@TitleLanguage}}
+	\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal}{\hgb@TitleLanguage}}
 	%
-	\ifthenelse{\boolean{hgb@IsProposal}}%
-		{\@ProposalSetup}{}%
-	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook
+	\ifthenelse{\boolean{hgb@IsProposal}}{\@ProposalSetup}{}%
+	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook (if any)
 }
 
 % Special sectioning setup for thesis proposals: ----------------------------
