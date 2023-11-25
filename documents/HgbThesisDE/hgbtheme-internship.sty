@@ -1,0 +1,64 @@
+%% This file is part of the Hagenberg Thesis package
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\hgb@UseTheme{default}% parent theme
+
+\AddToHook{hgb@InitThemeHook}{%
+	% add initialization code if needed
+}%
+
+% Internship Report User Commands:
+
+\newcommand{\@companyName}{\@MissingArg{Company not specified!}}
+\renewcommand{\companyName}[1]{\renewcommand{\@companyName}{#1}}
+
+\newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
+\renewcommand{\companyUrl}[1]{\renewcommand{\@companyUrl}{#1}}
+
+% ------------------------------
+
+\hgbDictionarySet{internship-report}{english}{Internship Report}
+\hgbDictionarySet{internship-report}{german}{Praktikumsbericht}
+
+\hgbDictionarySet{internship}{english}{Internship}
+\hgbDictionarySet{internship}{german}{Praktikumsstelle}
+
+\hgbDictionarySet{internship-contact}{english}{Supervisor}
+\hgbDictionarySet{internship-contact}{german}{Kontaktperson}
+
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{internship-report}{\hgb@TitleLanguage}}
+
+%% Structure of front pages ---------------------------------------------------
+
+\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
+  \hgb@MakeTitlePage%				defined in hgbtheme-default.sty
+	\hgb@MakeCompanyPage%			defined below
+	\hgb@MakeCopyrightPage%		defined in hgbtheme-default.sty
+	\hgb@MakeDeclarationPage%	defined in hgbtheme-default.sty
+}
+
+%% Company Page for Internship Report -----------------------------------------
+
+\newcommand{\hgb@MakeCompanyPage}{%
+	\newpage
+	%\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+	\vspace{25mm} 
+	{\hgbDictionaryGet{internship}{\hgb@TitleLanguage}:}
+	\\
+	\vspace{3mm}
+	{\Large\sf\@companyName\\ \mbox{}}
+	\\
+	{\sf \@companyUrl}
+	\\
+	\vspace{45mm} 
+	{\hgbDictionaryGet{internship-contact}{\hgb@TitleLanguage}:}
+	\\
+	\vspace{3mm}
+	{\Large\sf\hgb@Advisor\\ \mbox{}}
+	\end{center}
+}
