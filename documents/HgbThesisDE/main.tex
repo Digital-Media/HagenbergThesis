@@ -11,7 +11,7 @@
 \RequirePackage{hgbpdfa}      	% generate PDF/A-compliant output
 
 %\documentclass[custom,english,smartquotes]{hgbthesis}
-\documentclass[type=bachelor,theme=default,language=english,titlelanguage=german,smartquotes]{hgbthesis}
+\documentclass[type=bachelor,theme=default,language=english,smartquotes]{hgbthesis}%titlelanguage=german,
 % Supported options in [..]: 
 %		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
 %		Theme (layout of title pages): theme=default
@@ -23,7 +23,6 @@
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo.pdf}       % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
 %%%-----------------------------------------------------------------------------
@@ -39,6 +38,7 @@
 \author{Alex A.\ Schlaumeier}
 \programname{Universal Computing}
 \institution{Fachhochschule Oberösterreich}
+%\logofile{}	% deprecated, to be set in theme file!
 
 %\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
 \programtype{Fachhochschul-Masterstudiengang}

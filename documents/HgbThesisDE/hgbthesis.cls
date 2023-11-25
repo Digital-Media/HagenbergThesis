@@ -254,10 +254,11 @@
 
 %% Logo -------------------------------------------------------------------------
 
-% Specify the institution's logo in 'images/' ('logo.pdf' by default):
-\newcommand{\hgb@LogoFile}{logo.pdf}
+% Specify the institution's logo - DEPRECATED - logo is now handled in theme files only!
+\newcommand{\hgb@LogoFile}{@unspecified}	% 
 \newcommand{\logofile}[1]{%
-	\renewcommand{\hgb@LogoFile}{#1}%
+	\ClassWarning{hgbthesis}{Command \string\logofile\space is deprecated, logo should be specified in theme file!}%
+	\renewcommand{\hgb@LogoFile}{#1}
 }
 
 %% Create title pages -------------------------------------
@@ -291,16 +292,9 @@
 \AddToHook{cmd/maketitle/before}{%
 	\renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
 	\renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
-	%
-	\ifthenelse{\equal{\hgb@TitleLanguage}{}}%
-		{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
-	%
 	\ifthenelse{\equal{\hgb@SubTitle}{}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
-	%
-	\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-thesis}{\hgb@TitleLanguage}}
-	\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal}{\hgb@TitleLanguage}}
 	%
 	\ifthenelse{\boolean{hgb@IsProposal}}{\@ProposalSetup}{}%
 	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook (if any)
@@ -328,7 +322,13 @@
 
 %% Set various terms to be redefined by title page themes
 
-\hgb@UseTheme{\@ThemeID}%
+\ifthenelse{\equal{\hgb@TitleLanguage}{}}%
+		{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
+
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-thesis}{\hgb@TitleLanguage}}%
+\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal}{\hgb@TitleLanguage}}%
+
+\hgb@UseTheme{\@ThemeID}%		load theme style file
 
 %% Additional Hagenberg packages ----------------------------------------------
 

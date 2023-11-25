@@ -1,28 +1,29 @@
-
 %% This file is part of the Hagenberg Thesis package
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
-%%
-%% This file defines the parent theme for all thesis types.
 
-\RequirePackage{forloop}
-\RequirePackage{tikz}
+%% Initialization (optional) --------------------------------------------------
 
-%% Initialization (optional) ----------------------.....-----------------------
+% Set logo file if unspecified (and not empty):
+\ifthenelse{\equal{\hgb@LogoFile}{@unspecified}}%
+	{\renewcommand{\hgb@LogoFile}{hgbtheme-default-logo.pdf}}{}%
 
 \AddToHook{hgb@InitThemeHook}{%
-	\typeout{hgbtheme-default: initializing theme}%
-	% add initialization code if needed
+	\typeout{hgbtheme-legacy: initializing theme}%
+	% add initialization code if neede
 }%
 
 %% Structure of front pages ---------------------------------------------------
-
+  
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
   \hgb@MakeTitlePage%
 	\ifthenelse{\boolean{hgb@IsProposal}}%
-		{}%
-		{%
+		{%	thesis proposal:
+			\hgb@MakeAdvisorPage%     no copyright/declaration page for proposals
+		}%			
+		{%	final thesis:
+			\hgb@MakeAdvisorPage%
 			\hgb@MakeCopyrightPage%
 			\hgb@MakeDeclarationPage%
 		}%
@@ -32,80 +33,42 @@
 
 \newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
-		\newgeometry{top=0mm,bottom=14mm,right=14mm,left=14mm}
-		\setlength{\parindent}{0pt}
-		% background image -----------------------------------------
-		\AddToHookNext{shipout/background}{
-			\begin{tikzpicture}[remember picture,overlay]
-				\node at (current page.center) {
-		  			\includegraphics{hgbtheme-default-coverbackground.pdf} % was 'fhooe-cover'
-				};
-			\end{tikzpicture}
-		}
-
-		%\rule{0mm}{10mm}%
-		\vspace*{98mm}%
-		%\begin{center}%
+	\begin{german}
+		\rule{0mm}{1mm}%
+		\vspace*{0mm}%
+		\begin{center}%
 			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
-			% author --------------------------------------------------
-			{\Large\hgb@Author\par}%
-			\vskip 14mm%
-			% title --------------------------------------------------
-			\parbox[c][56mm][t]{140mm}{%
-				\raggedright%
-				%\centering%
-				{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
-				\vskip 7mm%
-				{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
+			\parbox[c][5cm][c]{12cm}{%
+				\centering\LARGE\bfseries%
+				\setlength{\baselineskip}{25pt}%
+				\hgb@Title%
 			}
-			%\vskip 10mm%
-			% logo --------------------------------------------------
-			%\hgb@MakeLogo%
-			\vskip 0mm%
-			% thesis type ---------------------------------------------
+			\vskip 15mm%
+			{\large\hgb@Author}%
+			\vskip 15mm%
+			\hgb@MakeLogo%
+			\vskip 15mm%
+			% ---------------------------------         
       {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
-        \ifthenelse{\boolean{hgb@IsProposal}}%
-					{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
-			\vskip 14mm%
-			% program type ---------------------------------
-      %{\large \hgb@ProgramType}%
-			%\vskip 4mm%
-			% program name ---------------------------------
-			{\large\hgb@ProgramName\par}%
-			\vskip 0mm%
-      % place of study  ---------------------------------
-			{\large\hgb@Institution\par}%
+        \ifthenelse{\boolean{hgb@IsProposal}}
+          {\space\space(\@addspaces{\MakeUppercase{\hgbDictionaryGet{proposal}{\hgb@TitleLanguage}}})}{}}
+      % ---------------------------------
 			\vskip 4mm%
-				{\large\hgb@PlaceOfStudy\par}%
-			\vskip 8mm%
-				{\large\hgb@SubmissionYear\par}%
-			\vskip 0mm%
-      % advisors(s) -------------------------------------
-      \parbox[c][28mm][b]{\textwidth}{%
-				%\centering\large\tabcolsep0.25em%
-        \ifthenelse{\hgb@AdvisorCount > 0}%
-          {\@makeAdvisorTable}% defined below
-          {\color{red}No advisor(s) specified!\\}%
-      }
-			%{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
-			%\vskip 14mm%
-      % submission date ---------------------------------
-      
-		%\end{center}%
-		%\vfil%
-	\restoregeometry%
+			%
+			{\large eingereicht am} \vskip 1mm {\hgb@ProgramType}%
+			\vskip 4mm%
+			{\large\hgb@ProgramName}%
+			\vskip 4mm%
+      % -------------------
+      {\large in \hgb@PlaceOfStudy}%
+      % -------------------
+			\vskip 16mm%
+      {\large im \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}} \DTMfetchyear{hgb@DateOfSubmission}}%
+		\end{center}%
+		\vfil%
+  \end{german}
 \end{titlepage}%
-}
-
-\newcommand{\@makeAdvisorTable}{%
-  \newcounter{C}%
-  \begin{tabular}{@{}ll@{}}%
-    \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
-      \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
-      \ifthenelse{\value{C} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
-    }%
-  \end{tabular}%
 }
 
 %% Generation of logo ----------------------------------------
@@ -121,36 +84,36 @@
 
 % Default Advisor Page ----------------------------------------
 
-%\newcommand{\hgb@AdvisorHeaderFinal}{
-	%\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			%{Betreuung}%
-			%{Advisor}%
-%}
-%
-%\newcommand{\hgb@AdvisorHeaderProposal}{
-	%\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			%{Betreuung (Vorschlag)}%
-			%{Proposed Advisor}%
-%}
-%
-%\newcommand{\hgb@MakeAdvisorPage}{%
-	%\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
-		%{}{%
-		%\newpage
-		%%\setcounter{page}{2}
-		%\thispagestyle{plain}
-		%\rule{0mm}{1mm}
-		%\vspace{90mm}
-		%\begin{center}
-			%\ifthenelse{\boolean{hgb@IsProposal}}%
-				%{\hgb@AdvisorHeaderProposal:}%
-				%{\hgb@AdvisorHeaderFinal:}%
-			%\\
-			%\vspace{5mm} 
-      %{\Large\sffamily\hgb@Advisor}
-		%\end{center}
-		%}
-%}
+\newcommand{\hgb@AdvisorHeaderFinal}{
+	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+			{Betreuung}%
+			{Advisor}%
+}
+
+\newcommand{\hgb@AdvisorHeaderProposal}{
+	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
+			{Betreuung (Vorschlag)}%
+			{Proposed Advisor}%
+}
+
+\newcommand{\hgb@MakeAdvisorPage}{%
+	\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
+		{}{%
+		\newpage
+		%\setcounter{page}{2}
+		\thispagestyle{plain}
+		\rule{0mm}{1mm}
+		\vspace{90mm}
+		\begin{center}
+			\ifthenelse{\boolean{hgb@IsProposal}}%
+				{\hgb@AdvisorHeaderProposal:}%
+				{\hgb@AdvisorHeaderFinal:}%
+			\\
+			\vspace{3mm} 
+      {\Large\sffamily\hgb@Advisor}
+		\end{center}
+		}
+}
 
 %% Default Copyright/License page ----------------------------------------
 
@@ -198,7 +161,7 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
   \rule{0mm}{1mm}
   \vspace*{75mm}
   \begin{center}
-  \textsf{\copyright\ Copyright\ \hgb@SubmissionYear\ \hgb@Author}
+  \textsf{\copyright\ Copyright\ \DTMfetchyear{hgb@DateOfSubmission} \hgb@Author}
   \end{center}
   \vspace{8mm}
   \hgbJustifyOrCenter{\hgb@TheLicense} % defined in hgb.sty
@@ -207,22 +170,26 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 %% Default Declaration Page ----------------------------------------
 
 \newcommand{\hgb@DeclarationTextDE}{%
+  \begin{german}%
   Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
   andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
   solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
   Prüfungsbehörde vorgelegt.
   Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
+  \end{german}
 }
 
 \newcommand{\hgb@DeclarationTextEN}{%
+  \begin{english}%
   I hereby declare and confirm that this thesis is entirely the result of my own original work. 
   Where other sources of information have been used, they have been indicated as such and properly 
   acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
   This printed copy is identical to the submitted electronic version.
+  \end{english}
 }
 
 \newcommand{\hgb@MakeDeclarationPage}{
-		\chapter{\hgbDictionaryGet{declaration}{\hgb@TitleLanguage}}
+    \chapter{\hgbDictionaryGet{declaration}{\hgb@TitleLanguage}}
 		\noindent%
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
       {\begin{german}\hgb@DeclarationTextDE\end{german}}
@@ -230,20 +197,18 @@ This work is published under the conditions of the \textsf{Creative Commons Lice
 		\par
 		\vspace{10mm}
 		\noindent
-    \def\@monthname{\hgb@GetMonthName{\hgb@TitleLanguage}{\hgb@SubmissionMonth}}%
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
       {\hgb@PlaceOfStudy, am 
-        \hgb@SubmissionDay.~%
-        \@monthname~%
-        \hgb@SubmissionYear%
-			}
+        \DTMfetchday{hgb@DateOfSubmission}.~%
+        \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
+        \DTMfetchyear{hgb@DateOfSubmission}}
       {\hgb@PlaceOfStudy, 
-        \hgb@SubmissionDay~%
-        \@monthname~%
-        \hgb@SubmissionYear%
-			}
+        \DTMenglishmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
+        \DTMfetchday{hgb@DateOfSubmission},
+        \DTMfetchyear{hgb@DateOfSubmission}}
 		\par
 		\vspace{12mm}
 		\noindent
 		\hgb@Author
 }
+

@@ -2,8 +2,6 @@
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
-%%
-%% This 'theme' file defines the front pages of custom theses, to be defined by individual institutions.
 
 \hgb@UseTheme{default}% parent theme
 
@@ -11,3 +9,7 @@
 \hgbDictionarySet{special-thesis}{german}{Spezialarbeit}%		edit!
 
 \renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{special-thesis}{\hgb@TitleLanguage}}
+
+\AddToHook{hgb@InitThemeHook}{%
+	% add initialization code if needed
+}%
