@@ -23,7 +23,7 @@
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
-%% Add thesis-relevant dictionary terms ---------------------------------------
+%% Add thesis-relevant dictionary items ---------------------------------------
 
 \RequirePackage{hgbdict}
 
@@ -40,7 +40,7 @@
 \hgbDictionarySet{phd-thesis}{german}{Dissertation}
 
 \hgbDictionarySet{internship-report}{english}{Internship Report}
-\hgbDictionarySet{internship-report}{german}{Praktikumsbericht}
+\hgbDictionarySet{internship-report}{german}{Praktikumsbericht}	% obsolete
 
 \hgbDictionarySet{proposal}{english}{Proposal}
 \hgbDictionarySet{proposal}{german}{Exposè}
@@ -51,44 +51,42 @@
 \hgbDictionarySet{advisor}{english}{Advisor}
 \hgbDictionarySet{advisor}{german}{Betreuer*in}
 
+
 %% Commands for Title Pages (used in class options) ---------------------------
 
-% Type of thesis (theme name):
-\newcommand{\hgb@ThesisType}{master}	
+\newcommand{\hgb@ThesisType}{master}%									type of thesis (theme name)						
 
-%% Setup for proposals ------------------------------------------------------
+\newcommand{\hgb@MainLanguage}{german}%								the main language for this document:
+\newcommand{\hgb@TitleLanguage}{}%										the language to be used for the front pages
 
 \newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
 \setboolean{hgb@IsProposal}{false}
 
-%% Handling class options ------------------------------------------------------
+%% Utilities for handling class options -------------------------------------
 
-%\DeclareOption{bachelor}{\AtEndOfPackage{\RequirePackage{hgbtheme-bachelor}}}
-%\DeclareOption{master}{\AtEndOfPackage{\RequirePackage{hgbtheme-master}}}
-%\DeclareOption{diploma}{\AtEndOfPackage{\RequirePackage{hgbtheme-diploma}}}
-%\DeclareOption{phd}{\AtEndOfPackage{\RequirePackage{hgbtheme-phd}}}
-%\DeclareOption{internship}{\AtEndOfPackage{\RequirePackage{hgbtheme-internship}}}
-%\DeclareOption{custom}{\AtEndOfPackage{\RequirePackage{hgbtheme-custom}}}
-%
-%\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-%\DeclareOption{proposal}{\setboolean{hgb@IsProposal}{true}}	% use with 'bachelor', 'master', 'diploma', 'phd' options
-%
-%% pass all other options to hgb.sty
-%\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
-%\ProcessOptions*
-
-%% New version allowing key/value options (provided by recent LaTeX2e kernel):
-
+% Issue warning when using deprecated options:
 \newcommand{\@WarnDeprecatedOption}[2]{% #1=obsolete option, #2=replacement option
 	\ClassWarning{hgbthesis}{option '#1' is deprecated, use '#2' instead!}}%
+	
+% Register permissible key/value option, e.g.: \@RegisterClassOption{type}{master}
+\newcommand{\@RegisterClassOption}[2]{%  #1=optionKey, #2=optionValue
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
+}
 
-%% Load thesis theme style ---------------------------------------------------
+% Check if key/value option is permissible, e.g.: \@ValidateClassOption{type}{master}
+\newcommand{\@ValidateClassOption}[2]{%  #1=optionKey, #2=optionValue
+\ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+  {}%
+  \else \ClassError{hgbthesis}{illegal key/value option: #1=#2}\relax%
+  \fi%
+}
 
-\newcommand{\@ThemePrefix}{hgbtheme}%			all theme files are named % = hgbtheme-<themename>.sty
-\newcommand{\@ThemeID}{default}%							use theme 'hgbtheme-base' of no theme specified
+%% Specifiying/loading thesis theme styles ---------------------------------------------------
 
+\newcommand{\@ThemeID}{default}%			use theme 'hgbtheme-default' if no theme is specified
+\newcommand{\@ThemePrefix}{hgbtheme}%	fixed, all theme files are named 'hgbtheme-<themeID>.sty'
 
-% Selects the specified 'theme' for setting up front pages:
+% The .sty file for the specified theme (#2) is loaded if it exists, otherwise throws an error:
 \newcommand{\hgb@UseTheme}[2][]{%		#1=options passed to theme style file, #2=themeID
 	\def\@ThemeName{\@ThemePrefix-#2}
 	\def\@ThemeFile{\@ThemeName.sty}
@@ -98,26 +96,10 @@
 		{\ClassError{hgbthesis}{style file '\@ThemeFile' for theme '#2' could not be found}\relax}%
 }
 
-\newcommand{\hgb@MainLanguage}{german}%								the main language for this document:
-\newcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}%		the language to be used for the front pages
 
-% Utility for validating key/value class options:
+% Class option handling --------------------------------------------------
 
-% Usage example: \@RegisterClassOption{type}{master}
-\newcommand{\@RegisterClassOption}[2]{%  #1=option key, #2=option value
-  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
-}
-
-% Usage example: \@ValidateClassOption{type}{master}
-\newcommand{\@ValidateClassOption}[2]{%  #1=option key, #2=option value
-\ifcsname hgb@keyvalueoption-#1-#2\endcsname%
-  {}%
-  \else \ClassError{hgbthesis}{illegal key/value option: #1=#2}\relax%
-  \fi
-}
-
-% Register permissible key/value option pairs:
-
+% Specifiy permissible key/value options:
 \@RegisterClassOption{type}{bachelor}
 \@RegisterClassOption{type}{master}
 \@RegisterClassOption{type}{diploma}
@@ -129,8 +111,6 @@
 \@RegisterClassOption{titlelanguage}{english}
 \@RegisterClassOption{titlelanguage}{german}
 
-% -------------------------------------------------------------
-
 % See source2e documentation (p. 956)
 % See https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
@@ -139,22 +119,17 @@
 	master.code 		= {\renewcommand{\hgb@ThesisType}{master}\@WarnDeprecatedOption{master}{type=master}},
 	diploma.code 		= {\renewcommand{\hgb@ThesisType}{diploma}\@WarnDeprecatedOption{diploma}{type=diploma}},
 	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedOption{internship}{**deprecated**}},
-	%
 	% catch old-style language options: for some reason they are still passed to hgb.sty!
 	german.code     = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{german}{language=german}},
 	ngerman.code    = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{ngerman}{language=german}},
 	english.code    = {\renewcommand{\hgb@MainLanguage}{english}\@WarnDeprecatedOption{english}{language=english}},
-	%
-	%% new options
-	type.code 			= {\@ValidateClassOption{type}{#1}\renewcommand{\hgb@ThesisType}{#1}},
-	theme.code 			= \renewcommand{\@ThemeID}{#1},
-	%
-	language.code      = {\@ValidateClassOption{language}{#1}\renewcommand{\hgb@MainLanguage}{#1}},
+	% new options
+	type.code 				= {\@ValidateClassOption{type}{#1}\renewcommand{\hgb@ThesisType}{#1}},
+	theme.code 				= \renewcommand{\@ThemeID}{#1},
+	language.code			= {\@ValidateClassOption{language}{#1}\renewcommand{\hgb@MainLanguage}{#1}},
 	titlelanguage.code = {\@ValidateClassOption{titlelanguage}{#1}\renewcommand{\hgb@TitleLanguage}{#1}},
-	%
-	proposal.code 	= \setboolean{hgb@IsProposal}{true},	% TODO: allow proposal=true
-	%
-	apa.code 				= \PassOptionsToPackage{\CurrentOption}{hgbbib}
+	proposal.code			= \setboolean{hgb@IsProposal}{true},	% TODO: allow proposal=true
+	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib}
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -182,13 +157,14 @@
 \newcommand{\@warnmultipleauthors}%
 	{\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
 
-
-\newcommand{\hgb@Title}{Document title undefined!}% derived from \title (initialized in \maketitle hook)
+\newcommand{\hgb@Title}{Undefined document title!}% derived from \title (initialized in \maketitle hook)
 
 \newcommand{\hgb@SubTitle}{}
 \newcommand{\subtitle}[1]{\renewcommand{\hgb@SubTitle}{#1}}
 
 \newcommand{\hgb@FullTitle}{}% = title + subtitle (initialized in \maketitle hook)
+
+\newcommand{\hgb@ThesisName}{Undefined thesis name!}%
 
 \newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
@@ -196,19 +172,13 @@
 }
 
 \newcommand{\hgb@ProgramType}{\@MissingArg{Type of degree program not specified!}}
-\newcommand{\programtype}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@ProgramType}{#1}}
-}
+\newcommand{\programtype}[1]{\renewcommand{\hgb@ProgramType}{#1}}
 
 \newcommand{\hgb@ProgramName}{\@MissingArg{Name of degree program not specified!}}
-\newcommand{\programname}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@ProgramName}{#1}}
-}
+\newcommand{\programname}[1]{\renewcommand{\hgb@ProgramName}{#1}}
 
 \newcommand{\hgb@PlaceOfStudy}{\@MissingArg{Place of study not specified!}}
-\newcommand{\placeofstudy}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@PlaceOfStudy}{#1}}
-}
+\newcommand{\placeofstudy}[1]{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 
 % Advisor(s) -------------------------------------------------------------------
 
@@ -286,20 +256,15 @@
 	\renewcommand{\hgb@LogoFile}{#1}%
 }
 
-%% -----------------------
 
-
-% Create title pages and add PDF meta data:
+%% Create title pages -------------------------------------
 
 % Generate the front pages (to be redefined by theme .sty files)
 \newcommand{\hgb@MakeFrontPages}{%
 	\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}\relax%
 }
 
-\NewHook{hgb@InitThemeHook}
-\newcommand{\@InitTheme}{\UseHook{hgb@InitThemeHook}}% called by 'cmd/maketitle/before' hook
-
-
+% Add PDF meta data
 \renewcommand{\maketitle}{% redefine standard \maketitle command
 	\hypersetup{
 			pdftitle={\hgb@FullTitle},%
@@ -314,22 +279,32 @@
 	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
 }
 
+% Define new hook to be used in theme style files for various initializations: 
+% Usage: \AddToHook{hgb@InitThemeHook}{...}
+% Invoked by \maketitle (redefined above).
+\NewHook{hgb@InitThemeHook}
+
 % Add hook to initialize remaining parameters before running \maketitle:
 \AddToHook{cmd/maketitle/before}{%
 	\renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
 	\renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
-	\ifthenelse{\isempty{\hgb@SubTitle}}%
+	%
+	\ifthenelse{\equal{\hgb@TitleLanguage}{}}%
+		{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
+	%
+	\ifthenelse{\equal{\hgb@SubTitle}{}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
+	%
 	\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-thesis}{\hgb@TitleLanguage}}
+	%
 	\ifthenelse{\boolean{hgb@IsProposal}}%
 		{\@ProposalSetup}{}%
-	\@InitTheme%       initialize all required title page fields from input data
+	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook
 }
 
-% ---------------------------------------------------------------------------
+% Special sectioning setup for thesis proposals: ----------------------------
 
-% Special sectioning setup for thesis proposals: 
 \newcommand{\@ProposalSetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
 	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
@@ -348,9 +323,8 @@
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
 }
 
-%% Set various terms to be redefined by title page themes:
+%% Set various terms to be redefined by title page themes
 
-\newcommand{\hgb@ThesisName}{UNDEFINED}
 \hgb@UseTheme{\@ThemeID}%
 
 %% Additional Hagenberg packages ----------------------------------------------
