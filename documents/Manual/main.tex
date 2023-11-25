@@ -413,17 +413,34 @@ by the individual author (student).
 \subsection{Standard title page setups (\emph{themes})}
 
 The various front page arrangements are called \emph{themes} in the following.
-Technically, each theme is associated with a particular \texttt{.sty} (\latex\ package) file, \ie,  
+Each theme is identified by a unique \texttt{themeID} and associated with a 
+particular style (\latex\ package) file named \verb!hgbtheme-<themeID>.sty!.
+For example, the \texttt{default} theme  is defined by file
 \begin{itemize}
-  \item[] \texttt{hgbtheme-bachelor.sty},
-  \item[] \texttt{hgbtheme-master.sty},
-  \item[] \texttt{hgbtheme-diploma.sty},
-  \item[] \texttt{hgbtheme-phd.sty},
-  \item[] \texttt{hgbtheme-internship.sty},
+  \item[] \texttt{hgbtheme-default.sty},
   %\item[] \texttt{hgbtheme-custom.sty}.
 \end{itemize}
 %
-respectively, for each of the pre-defined thesis types.
+Additional resources required by a theme (such as graphics files) must be named with the 
+complete \emph{theme name} (\verb!hgbtheme-<themeID>!) as a prefix, for example,%
+\footnote{This is to avoid file name conflicts since themes are part of the 
+CTAN distribution and thus all theme-related files will eventually end up in a single, 
+flat directory.}
+\begin{itemize}
+	\item[] \texttt{hgbtheme-default-logo.pdf}
+\end{itemize}
+%
+which contains the logo graphics used by that theme.
+
+To \emph{use} a specific theme, option \verb!theme=<themeID>! is added to the 
+\verb!\documentclass! command, for example,
+\begin{itemize}
+	\item[] \verb!\documentclass[theme=default,...]{hgbthesis}!
+\end{itemize}
+%All theme sources are stored in `/dev/themes` (perhaps with individual subdirectories?).
+%\hgb@UseTheme{default}%
+
+
 All these ``inherit'' from a parent theme file
 %
 \begin{itemize}
@@ -434,26 +451,30 @@ which contains the bulk of the definitions, while derived themes typically conta
 a small number of specific settings.
 
 
-\subsection{Custom title page themes}
+\subsection{Customizing themes}
 
-To customize the title pages to their needs, authors (or administrators) should 
+To customize the title page setup to their needs, authors (or administrators) should 
 \emph{not} modify any of the standard theme files, since these may not be local but loaded
 from a package distribution.
 There are two recommended ways instead:
 
 \subsubsection{Option 1: Adapt \texttt{hgbtheme-custom.sty}}
 
-File \texttt{hgbtheme-custom.sty} (which is part of this distribution) is 
-a blank theme file that may be freely edited.
-Like all standard themes it inherits from \texttt{hgbtheme-thesis.sty},
-whose commands are all visible and may be redefined,
-typically by \verb!\renewcommand!. 
-See Sec.\ \ref{sec:ThemeStyleCommands} for available commands.
-To activate the associated theme simply use \texttt{custom} as the document type,
+Copy the theme file\texttt{hgbtheme-custom.sty} (which is part of this distribution) to the 
+\emph{main document directory} (if not there already) and open it in your LaTeX editor.
+It defines \texttt{hgbtheme-default.sty} as the parent theme by the initial command
+\begin{LaTeXCode}[numbers=none]
+\hgb@UseTheme{default}
+\end{LaTeXCode}
+%
+All commands defined in the parent theme are visible and may be redefined,
+typically by \verb!\renewcommand! (see Sec.\ \ref{sec:ThemeStyleCommands}
+for available commands).
+To activate the associated theme simply use \texttt{custom} as the theme ID,
 \ie,
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[type=custom,...]{hgbthesis}
+\documentclass[theme=custom,...]{hgbthesis}
 \end{LaTeXCode}
 %
 This is the simplest approach if only a \emph{single} custom theme is needed.
@@ -462,13 +483,13 @@ This is the simplest approach if only a \emph{single} custom theme is needed.
 
 Thesis administrator may find it useful to define \emph{multiple} custom themes for their
 institution or department(s).
-For this puropose, simply copy file \texttt{hgbtheme-custom.sty} to a new file, \eg, 
-\texttt{hgbtheme-physics.sty},%
-\footnote{To be placed in the same directory as the main document. Note the naming conventions!}
+For this purpose, simply copy file \texttt{hgbtheme-default.sty} or \texttt{hgbtheme-custom.sty}
+to a new file, \eg, \texttt{hgbtheme-physics.sty},%
+\footnote{To be placed in the main document directory. Note the naming conventions!}
 and modify it accordingly. The associated theme can then be activated by
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[type=physics,...]{hgbthesis}
+\documentclass[theme=physics,...]{hgbthesis}
 \end{LaTeXCode}
 %
 An error will be raised if the associated \texttt{.sty} file cannot be found.
@@ -478,68 +499,62 @@ An error will be raised if the associated \texttt{.sty} file cannot be found.
 \subsection{Commands and variables available to custom theme styles}
 \label{sec:ThemeStyleCommands}
 
-Any theme style must (re)define the \verb!\hgb@MakeFrontPages! command, which 
-is invoked by \verb!\maketitle!. 
-This command is predefined by the \verb!hgbtheme-thesis! theme template, but 
-may be redefined by inheriting themes if needed, \eg:
+Any theme style must at least \emph{redefine} the
+\begin{itemize}
+  \item[] \verb!\hgb@MakeFrontPages{..}!
+\end{itemize}
+command, which is pre-defined (as throwing an error) in \texttt{hgbthesis.cls}
+and invoked by \verb!\maketitle!.
+If \texttt{default} is used as the parent theme, \verb!\hgb@MakeFrontPages! 
+is already set up properly and redefinition is optional, \ie,
 %
 \begin{LaTeXCode}[numbers=none]
-\usepackage{hgbtheme-thesis}%  /+ parent theme (in 'hgbtheme-thesis.sty')+/
-...
-\renewcommand{\hgb@MakeFrontPages}{...}
+\hgb@UseTheme{default}		% parent theme
+\renewcommand{\hgb@MakeFrontPages}{..}	% optional
 \end{LaTeXCode}
 %
-In addition, the template theme \texttt{hgbtheme-thesis.sty} defines the following
-commands for generating individual title pages:
-%
-\begin{itemize}
-  \item \verb!\hgb@ThesisName!
-  \item \verb!\hgb@MakeTitlePage!
-  %\item \verb!\hgb@MakeAdvisorPage!
-  \item \verb!\hgb@MakeCopyrightPage!
-  \item \verb!\hgb@MakeDeclarationPage!
-\end{itemize}
-%
-Each of these may be redefined by inheriting themes.
 
+\noindent
 Moreover, the following macros and variables are assured to be available for defining custom themes
-(see \texttt{hgbtheme-thesis.sty} for their typical usage).
+(see \texttt{hgbtheme-default.sty} for their typical usage).
 These are defined in \texttt{hgbthesis.cls} and should \emph{not} be redefined:
 %
 \begin{itemize}
-  \item \verb!\hgb@Author!
-  \item \verb!\hgb@Title!
-  \item \verb!\hgb@SubTitle!
-  \item \verb!\hgb@Institution!
-  \item \verb!\hgb@ProgramType!
-  \item \verb!\hgb@ProgramName!
-  \item \verb!\hgb@PlaceOfStudy!
-  \item \verb!\hgb@IsProposal!
+  \item[] \verb!\hgb@Author!
+  \item[] \verb!\hgb@Title!
+  \item[] \verb!\hgb@SubTitle!
+  \item[] \verb!\hgb@Institution!
+  \item[] \verb!\hgb@ProgramType!
+  \item[] \verb!\hgb@ProgramName!
+  \item[] \verb!\hgb@PlaceOfStudy!
 \medskip
-  \item \verb!\hgb@AdvisorCount!
-  \item \verb!\hgb@getAdvisorRole{<number>}!
-  \item \verb!\hgb@getAdvisorName{<number>}!
+	\item[] \verb!\hgb@ThesisName!
+	\item[] \verb!\hgb@ProposalName!
 \medskip
-  \item \verb!\hgb@TitleLanguage!
-  \item \verb!\hgb@MainLanguage!
-  \item \verb!\hgb@TitlePageFont!
-  \item \verb!\hgb@LogoFile!
+  \item[] \verb!\hgb@AdvisorCount!
+  \item[] \verb!\hgb@getAdvisorRole{<number>}!
+  \item[] \verb!\hgb@getAdvisorName{<number>}!
+\medskip
+  \item[] \verb!\hgb@MainLanguage!
+  \item[] \verb!\hgb@TitleLanguage!
+  \item[] \verb!\hgb@TitlePageFont!
+  %\item[] \verb!\hgb@LogoFile!
 \medskip 
-  %\item \verb!\hgb@Advisor!
-  \item \verb!\hgb@SubmissionYear!
-  \item \verb!\hgb@SubmissionMonth!
-  \item \verb!\hgb@SubmissionDay!
-  \item \verb!\hgb@GetMonthName{<language>}{<monthnumber>}!
+  %\item[] \verb!\hgb@Advisor!
+  \item[] \verb!\hgb@SubmissionYear!
+  \item[] \verb!\hgb@SubmissionMonth!
+  \item[] \verb!\hgb@SubmissionDay!
+  \item[] \verb!\hgb@GetMonthName{<language>}{<monthnumber>}!
 \medskip
-  \item \verb!\hgb@StrictLicense!
-  \item \verb!\hgb@ccLicense!
-  \item \verb!\hgb@TheLicense!
+	\item[] \verb!\hgb@License!
+\medskip
+  \item[] \verb!hgb@IsProposal! (\emph{boolean}, without \verb!\!)
 \end{itemize}
-%
+
 \noindent
-Document class \texttt{hgbthesis.cls} also defines a special \emph{hook}
+Class \texttt{hgbthesis.cls} also defines a special \emph{hook}
 \begin{itemize}
-\item \verb!hgb@InitThemeHook!
+\item[] \verb!hgb@InitThemeHook!
 \end{itemize}
 for adding custom initialization code for the current theme in the form
 %
@@ -550,6 +565,18 @@ for adding custom initialization code for the current theme in the form
 typically placed at the beginning of the theme file. The collected code for
 this hook is executed immediately before \verb!\maketitle!.
 
+
+In addition, theme \texttt{hgbtheme-default.sty} defines the following
+commands for generating individual title pages:
+%
+\begin{itemize}
+  \item[] \verb!\hgb@MakeTitlePage!
+  \item[] \verb!\hgb@MakeAdvisorPage!
+  \item[] \verb!\hgb@MakeCopyrightPage!
+  \item[] \verb!\hgb@MakeDeclarationPage!
+\end{itemize}
+%
+Each of these may be redefined by inheriting themes.
 
 \section{Package dependencies}
 
