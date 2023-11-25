@@ -5,13 +5,15 @@
 
 %% Initialization (optional) --------------------------------------------------
 
+\hgbDictionarySet{submitted-to}{german}{eingereicht am}%
+\hgbDictionarySet{submitted-to}{english}{submitted to the}%
+
 % Set logo file if unspecified (and not empty):
 \ifthenelse{\equal{\hgb@LogoFile}{@unspecified}}%
 	{\renewcommand{\hgb@LogoFile}{hgbtheme-default-logo.pdf}}{}%
 
 \AddToHook{hgb@InitThemeHook}{%
-	\typeout{hgbtheme-legacy: initializing theme}%
-	% add initialization code if neede
+	% add initialization code if needed
 }%
 
 %% Structure of front pages ---------------------------------------------------
@@ -56,7 +58,9 @@
       % ---------------------------------
 			\vskip 4mm%
 			%
-			{\large eingereicht am} \vskip 1mm {\hgb@ProgramType}%
+			{\large\hgbDictionaryGet{submitted-to}{\hgb@TitleLanguage}}
+			\vskip 1mm 
+			{\hgb@ProgramType}%
 			\vskip 4mm%
 			{\large\hgb@ProgramName}%
 			\vskip 4mm%
@@ -64,7 +68,7 @@
       {\large in \hgb@PlaceOfStudy}%
       % -------------------
 			\vskip 16mm%
-      {\large im \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}} \DTMfetchyear{hgb@DateOfSubmission}}%
+      {\large\hgb@GetMonthName{\hgb@TitleLanguage}{\hgb@SubmissionMonth} \hgb@SubmissionYear}%
 		\end{center}%
 		\vfil%
   \end{german}
@@ -112,7 +116,7 @@
   \rule{0mm}{1mm}
   \vspace*{75mm}
   \begin{center}
-  \textsf{\copyright\ Copyright\ \DTMfetchyear{hgb@DateOfSubmission} \hgb@Author}
+  \textsf{\copyright\ Copyright\ \hgb@SubmissionYear\ \hgb@Author}
   \end{center}
   \vspace{8mm}
   \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}} % defined above
