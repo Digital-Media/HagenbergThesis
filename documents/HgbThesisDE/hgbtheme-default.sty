@@ -52,7 +52,7 @@
 			% ---------------------------------         
       {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
         \ifthenelse{\boolean{hgb@IsProposal}}
-          {\space\space(\@addspaces{\MakeUppercase{\hgbDictionaryGet{proposal}{\hgb@TitleLanguage}}})}{}}
+          {\space\space(\@addspaces{\MakeUppercase{\hgbDictionaryGet{proposalname}{\hgb@TitleLanguage}}})}{}}
       % ---------------------------------
 			\vskip 4mm%
 			%
@@ -84,18 +84,6 @@
 
 % Default Advisor Page ----------------------------------------
 
-\newcommand{\hgb@AdvisorHeaderFinal}{
-	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			{Betreuung}%
-			{Advisor}%
-}
-
-\newcommand{\hgb@AdvisorHeaderProposal}{
-	\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			{Betreuung (Vorschlag)}%
-			{Proposed Advisor}%
-}
-
 \newcommand{\hgb@MakeAdvisorPage}{%
 	\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
 		{}{%
@@ -105,12 +93,13 @@
 		\rule{0mm}{1mm}
 		\vspace{90mm}
 		\begin{center}
-			\ifthenelse{\boolean{hgb@IsProposal}}%
-				{\hgb@AdvisorHeaderProposal:}%
-				{\hgb@AdvisorHeaderFinal:}%
+			\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}%
+			%\ifthenelse{\boolean{hgb@IsProposal}}%
+				%{\hgb@AdvisorHeaderProposal:}%
+				%{\hgb@AdvisorHeaderFinal:}%
 			\\
 			\vspace{3mm} 
-      {\Large\sffamily\hgb@Advisor}
+      {\Large\sffamily\hgb@Advisor}	% TODO: list multiple advisors!
 		\end{center}
 		}
 }

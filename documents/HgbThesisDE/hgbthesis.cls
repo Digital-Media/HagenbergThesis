@@ -44,11 +44,11 @@
 \hgbDictionarySet{internship-report}{english}{Internship Report}
 \hgbDictionarySet{internship-report}{german}{Praktikumsbericht}	% obsolete
 
-\hgbDictionarySet{proposal}{english}{Proposal}
-\hgbDictionarySet{proposal}{german}{Exposè}
+\hgbDictionarySet{proposalname}{english}{Proposal}
+\hgbDictionarySet{proposalname}{german}{Exposè}
 
-\hgbDictionarySet{advisor}{english}{Advisor}
-\hgbDictionarySet{advisor}{german}{Betreuer*in}
+\hgbDictionarySet{advisorheader}{english}{Supervisor}
+\hgbDictionarySet{advisorheader}{german}{Betreuer*in}
 
 % License texts: 
 
@@ -235,7 +235,7 @@
 
 % User command to specify the role(optional) and name of one advisor: \advisor[<role>]{<name>}
 % Repeat to specify multiple advisors.
-\newcommand{\advisor}[2][\hgbDictionaryGet{advisor}{\hgb@TitleLanguage}]{% e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
+\newcommand{\advisor}[2][\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}]{% e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
 	\stepcounter{@advisorctr}%
 	\expandafter\def\csname advisorrole-\the@advisorctr\endcsname{#1}
 	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
@@ -372,7 +372,7 @@
 		{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
 
 \renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-thesis}{\hgb@TitleLanguage}}%
-\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal}{\hgb@TitleLanguage}}%
+\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposalname}{\hgb@TitleLanguage}}%
 
 \hgb@UseTheme{\@ThemeID}%		load theme style file
 
