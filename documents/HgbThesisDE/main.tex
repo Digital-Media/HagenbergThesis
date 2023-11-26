@@ -11,26 +11,26 @@
 \RequirePackage{hgbpdfa}      	% generate PDF/A-compliant output
 
 %\documentclass[custom,english,smartquotes]{hgbthesis}
-\documentclass[type=internship,theme=fhooe24,language=english,smartquotes]{hgbthesis}
+\documentclass[type=bachelor,theme=default,language=english,titlelanguage=german,smartquotes]{hgbthesis}
 % Supported options in [..]: 
 %		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
 %		Theme (layout of title pages): theme=default
-%		Thesis proposal: 'proposal'
+%		Thesis proposal: 'proposal' or 'proposal=true' 
 %		Main text language: language = 'german' (default), 'english'
 %		Title page language: titlelanguage = 'german', 'english' (default is main language)
 %		Use automatic quotation marks: 'smartquotes'
 %		Use APA citation style: 'apa'
 %%%-----------------------------------------------------------------------------
 
-\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\bibliography{references} % Biblatex-Literaturdatei (references.bib)
+\graphicspath{{images/}}  % directory for user images and graphics
+\bibliography{references} % biblatex literature file (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
 
 %%%-----------------------------------------------------------------------------
-% Angaben für die Titelei (Titelseite, Erklärung etc.)
+% Settings for items placed on title pages
 %%%-----------------------------------------------------------------------------
 
 \title{Partielle Lösungen zur "allgemeinen" Problematik}
@@ -55,6 +55,7 @@
 \license{cclicense} 			% publish under Creative Commons License (recommended)
 %\license{strictlicense}	% restrictive clause - "all rights reserved"
 
+% Specific settings for internship reports (this may disappear!):
 \companyName{%
    Mogulovich International Media GmbH\\
    Online Division\\
