@@ -53,10 +53,13 @@
 		\begin{center}%
 			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
-			\parbox[c][5cm][c]{12cm}{%
-				\centering\LARGE\bfseries%
-				\setlength{\baselineskip}{25pt}%
-				\hgb@Title%
+			\parbox[c][5cm][c]{\textwidth}{%
+				\centering\LARGE\bfseries\linespread{1.0}\selectfont%
+				\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+					\hgb@Title%
+					\par\vskip 4mm%
+					\hgb@SubTitle%
+				\end{SwitchLanguage}%
 			}
 			\vskip 15mm%
 			{\large\hgb@Author}%

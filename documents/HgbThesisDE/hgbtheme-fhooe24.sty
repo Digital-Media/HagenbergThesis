@@ -62,9 +62,11 @@
 	\parbox[c][56mm][t]{140mm}{%
 		\raggedright%
 		%\centering%
-		{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
-		\vskip 7mm%
-		{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
+		\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+			{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
+			\vskip 7mm%
+			{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
+		\end{SwitchLanguage}%
 	}
 	\vskip 0mm%
 	% thesis type ---------------------------------------------
