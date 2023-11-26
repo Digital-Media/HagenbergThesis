@@ -64,19 +64,15 @@
 \hgbDictionarySet{strictlicense}{german}{Alle Rechte vorbehalten}
 
 \hgbDictionarySet{cclicense}{english}{%
-	\begin{english}%
 	This work is published under the conditions of the \textsf{Creative Commons License} 
 	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
-	---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
-	\end{english}%
+	---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
 }
 
 \hgbDictionarySet{cclicense}{german}{%
-	\begin{german}%
 	Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
 	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
-	veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
-	\end{german}%
+	veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
 }
 
 % Declarations:
@@ -269,22 +265,19 @@
 
 % Submission Date ---------------------------------------------------------------
 
-\DTMsavenow{hgb@DateOfSubmission}  % default submission date is today
+\DTMsavenow{hgb@SubmissionDate}  % default submission date is today
 
 \newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}
-	\DTMsavenoparsedate{hgb@DateOfSubmission}{#1}{#2}{#3}{-1}
+	\DTMsavenoparsedate{hgb@SubmissionDate}{#1}{#2}{#3}{-1}
 }
 
-\newcommand{\hgb@SubmissionYear}{\DTMfetchyear{hgb@DateOfSubmission}}
-\newcommand{\hgb@SubmissionMonth}{\DTMfetchmonth{hgb@DateOfSubmission}}
-\newcommand{\hgb@SubmissionDay}{\DTMfetchday{hgb@DateOfSubmission}}
+\newcommand{\hgb@SubmissionYear}{\DTMfetchyear{hgb@SubmissionDate}}
+\newcommand{\hgb@SubmissionMonth}{\DTMfetchmonth{hgb@SubmissionDate}}
+\newcommand{\hgb@SubmissionDay}{\DTMfetchday{hgb@SubmissionDate}}
 
-\newcommand{\hgb@GetMonthName}[2]{% #1=language #2=month, 
+\newcommand{\hgb@GetMonthName}[2]{% #1=language #2=monthNumber,
 	\csname DTM#1monthname\endcsname{#2}% brittle?
 }
-
-\newcommand{\hgb@SubmissionMonthNameDE}{\DTMgermanmonthname{\hgb@SubmissionMonth}}
-\newcommand{\hgb@SubmissionMonthNameEN}{\DTMenglishmonthname{\hgb@SubmissionMonth}}
 
 % Copyright/License Settings --------------------------------------------------
 
@@ -339,10 +332,12 @@
 			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
 			pdfproducer={pdflatex},
 			pdfkeywords={},
-			pageanchor=false	% disable hyperref page anchors in front pages
+			pageanchor=false%					disable hyperref page anchors in front pages
 	}%
-	\hgb@MakeFrontPages   % generate front pages
-	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
+	\SetLanguage{\hgb@TitleLanguage}
+	\hgb@MakeFrontPages%						generate front pages
+	\SetLanguage{\hgb@MainLanguage}
+	\hypersetup{pageanchor=true}%		enable hyperref page anchors in the main document
 }
 
 % Define new hook to be used in theme style files for various initializations: 
