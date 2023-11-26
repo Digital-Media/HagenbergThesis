@@ -81,10 +81,10 @@
 
 % Declarations:
 
-\hgbDictionarySet{declarationtitle}{english}{Declaration}
-\hgbDictionarySet{declarationtitle}{german}{Erklärung}
+\hgbDictionarySet{declaration-title}{english}{Declaration}
+\hgbDictionarySet{declaration-title}{german}{Erklärung}
 
-\hgbDictionarySet{declarationtext}{english}{%
+\hgbDictionarySet{declaration-text}{english}{%
 	\begin{english}%
 	I hereby declare and confirm that this thesis is entirely the result of my own original work. 
 	Where other sources of information have been used, they have been indicated as such and properly 
@@ -93,7 +93,7 @@
 	\end{english}%
 }
 
-\hgbDictionarySet{declarationtext}{german}{%
+\hgbDictionarySet{declaration-text}{german}{%
 	\begin{german}%
 	Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
 	andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
@@ -148,7 +148,6 @@
 		{\RequirePackage[#1]{\@ThemeName}}%  must load immediately, was {\AtEndOfPackage{\usepackage[#1]{\@ThemeName}}}%
 		{\ClassError{hgbthesis}{style file '\@ThemeFile' for theme '#2' could not be found}\relax}%
 }
-
 
 % Class option handling --------------------------------------------------
 
@@ -401,5 +400,6 @@
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
+
 
 \endinput

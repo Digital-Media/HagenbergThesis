@@ -4,8 +4,20 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
+\RequirePackage{hgbdict}
 \RequirePackage{forloop}
 \RequirePackage{tikz}
+
+% use \@currname to retrieve theme name?
+
+
+%% Define various language-dependent text chunks to be used below -------------
+
+\hgbDictionarySet{declaration-date}{english}%
+	{\hgb@GetMonthName{english}{\hgb@SubmissionMonth} \hgb@SubmissionDay, \hgb@SubmissionYear}%
+	
+\hgbDictionarySet{declaration-date}{german}%
+	{am \hgb@SubmissionDay.~\hgb@GetMonthName{german}{\hgb@SubmissionMonth} \hgb@SubmissionYear}%
 
 %% Initialization (optional) --------------------------------------------------
 
@@ -16,82 +28,70 @@
 
 %% Structure of front pages ---------------------------------------------------
 
-\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
+\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls
   \hgb@MakeTitlePage%
 	\ifthenelse{\boolean{hgb@IsProposal}}%
-		{}%
+		{}% no copyright/declaration pages for proposals
 		{%
 			\hgb@MakeCopyrightPage%
 			\hgb@MakeDeclarationPage%
 		}%
 }
-
+		
 %% Title page ---------------------------------------------------
 
 \newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
-		\newgeometry{top=0mm,bottom=14mm,right=14mm,left=14mm}
-		\setlength{\parindent}{0pt}
-		% background image -----------------------------------------
-		\AddToHookNext{shipout/background}{
-			\begin{tikzpicture}[remember picture,overlay]
-				\node at (current page.center) {
-		  			\includegraphics{hgbtheme-fhooe24-coverbackground.pdf} % was 'fhooe-cover'
-				};
-			\end{tikzpicture}
-		}
-
-		%\rule{0mm}{10mm}%
-		\vspace*{98mm}%
-		%\begin{center}%
-			\hgb@TitlePageFont%
-			\setlength{\unitlength}{1cm}%
-			% author --------------------------------------------------
-			{\Large\hgb@Author\par}%
-			\vskip 14mm%
-			% title --------------------------------------------------
-			\parbox[c][56mm][t]{140mm}{%
-				\raggedright%
-				%\centering%
-				{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
-				\vskip 7mm%
-				{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
-			}
-			%\vskip 10mm%
-			% logo --------------------------------------------------
-			%\hgb@MakeLogo%
-			\vskip 0mm%
-			% thesis type ---------------------------------------------
-      {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
-        \ifthenelse{\boolean{hgb@IsProposal}}%
-					{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
-			\vskip 14mm%
-			% program type ---------------------------------
-      %{\large \hgb@ProgramType}%
-			%\vskip 4mm%
-			% program name ---------------------------------
-			{\large\hgb@ProgramName\par}%
-			\vskip 0mm%
-      % place of study  ---------------------------------
-			{\large\hgb@Institution\par}%
-			\vskip 4mm%
-				{\large\hgb@PlaceOfStudy\par}%
-			\vskip 8mm%
-				{\large\hgb@SubmissionYear\par}%
-			\vskip 0mm%
-      % advisors(s) -------------------------------------
-      \parbox[c][28mm][b]{\textwidth}{%
-				%\centering\large\tabcolsep0.25em%
-        \ifthenelse{\hgb@AdvisorCount > 0}%
-          {\@makeAdvisorTable}% defined below
-          {\color{red}No advisor(s) specified!\\}%
-      }
-			%{\large Betreuung:}\\[2mm]{\Large\hgb@Advisor}%
-			%\vskip 14mm%
-      % submission date ---------------------------------
-      
-		%\end{center}%
-		%\vfil%
+	\newgeometry{top=0mm,bottom=14mm,right=14mm,left=14mm}
+	\setlength{\parindent}{0pt}
+	% background image -----------------------------------------
+	\AddToHookNext{shipout/background}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node at (current page.center) {
+					\includegraphics{hgbtheme-fhooe24-coverbackground.pdf} % was 'fhooe-cover'
+			};
+		\end{tikzpicture}
+	}
+	\vspace*{98mm}%
+	\hgb@TitlePageFont%
+	\setlength{\unitlength}{1cm}%
+	% author --------------------------------------------------
+	{\Large\hgb@Author\par}%
+	\vskip 14mm%
+	% title --------------------------------------------------
+	\parbox[c][56mm][t]{140mm}{%
+		\raggedright%
+		%\centering%
+		{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
+		\vskip 7mm%
+		{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
+	}
+	\vskip 0mm%
+	% thesis type ---------------------------------------------
+	{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
+		\ifthenelse{\boolean{hgb@IsProposal}}%
+			{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
+	\vskip 14mm%
+	% program type ---------------------------------
+	%{\large \hgb@ProgramType}%
+	%\vskip 4mm%
+	% program name ---------------------------------
+	{\large\hgb@ProgramName\par}%
+	\vskip 0mm%
+	% place of study  ---------------------------------
+	{\large\hgb@Institution\par}%
+	\vskip 4mm%
+		{\large\hgb@PlaceOfStudy\par}%
+	\vskip 8mm%
+		{\large\hgb@SubmissionYear\par}%
+	\vskip 0mm%
+	% advisors(s) -------------------------------------
+	\parbox[c][28mm][b]{\textwidth}{%
+		%\centering\large\tabcolsep0.25em%
+		\ifthenelse{\hgb@AdvisorCount > 0}%
+			{\@makeAdvisorTable}% defined below
+			{\color{red}No advisor(s) specified!\\}%
+	}
 	\restoregeometry%
 \end{titlepage}%
 }
@@ -106,51 +106,7 @@
   \end{tabular}%
 }
 
-%% Generation of logo ----------------------------------------
-
-%\newlength{\hgb@LogoHeight}
-%\setlength{\hgb@LogoHeight}{30mm}
-%
-%\newcommand{\hgb@MakeLogo}[0]{%
-%\ifthenelse{\equal{\hgb@LogoFile}{}}%	check if \hgb@LogoFile is empty (unspecified)
-	%{\vspace*{\hgb@LogoHeight}}%			skip logo
-	%{\includegraphics[height=\hgb@LogoHeight]{\hgb@LogoFile}}%	insert logo
-%}
-
-% Default Advisor Page ----------------------------------------
-
-%\newcommand{\hgb@AdvisorHeaderFinal}{
-	%\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			%{Betreuung}%
-			%{Advisor}%
-%}
-%
-%\newcommand{\hgb@AdvisorHeaderProposal}{
-	%\ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-			%{Betreuung (Vorschlag)}%
-			%{Proposed Advisor}%
-%}
-%
-%\newcommand{\hgb@MakeAdvisorPage}{%
-	%\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
-		%{}{%
-		%\newpage
-		%%\setcounter{page}{2}
-		%\thispagestyle{plain}
-		%\rule{0mm}{1mm}
-		%\vspace{90mm}
-		%\begin{center}
-			%\ifthenelse{\boolean{hgb@IsProposal}}%
-				%{\hgb@AdvisorHeaderProposal:}%
-				%{\hgb@AdvisorHeaderFinal:}%
-			%\\
-			%\vspace{5mm} 
-      %{\Large\sffamily\hgb@Advisor}
-		%\end{center}
-		%}
-%}
-
-%% Default Copyright/License page ----------------------------------------
+%% Copyright/License Page ----------------------------------------
 
 \newcommand{\hgb@MakeCopyrightPage}{%
   \newpage
@@ -161,32 +117,21 @@
   \textsf{\copyright\ Copyright\ \hgb@SubmissionYear\ \hgb@Author}
   \end{center}
   \vspace{8mm}
-  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}} % defined in hgb.sty
+  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}}% defined in hgb.sty
 }
 
-%% Default Declaration Page ----------------------------------------
+%% Declaration Page ----------------------------------------
 
 \newcommand{\hgb@MakeDeclarationPage}{
-		\chapter{\hgbDictionaryGet{declarationtitle}{\hgb@TitleLanguage}}
-		\noindent%
-    \hgbDictionaryGet{declarationtext}{\hgb@TitleLanguage}
-		\par
-		\vspace{10mm}
-		\noindent
-    \def\@monthname{\hgb@GetMonthName{\hgb@TitleLanguage}{\hgb@SubmissionMonth}}%
-    \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
-      {\hgb@PlaceOfStudy, am 
-        \hgb@SubmissionDay.~%
-        \@monthname~%
-        \hgb@SubmissionYear%
-			}
-      {\hgb@PlaceOfStudy, 
-        \hgb@SubmissionDay~%
-        \@monthname~%
-        \hgb@SubmissionYear%
-			}
-		\par
-		\vspace{12mm}
-		\noindent
-		\hgb@Author
+	\chapter{\hgbDictionaryGet{declaration-title}{\hgb@TitleLanguage}}
+	\noindent%
+	\hgbDictionaryGet{declaration-text}{\hgb@TitleLanguage}%
+	\par
+	\vspace{10mm}
+	\noindent
+	{\hgb@PlaceOfStudy, \hgbDictionaryGet{declaration-date}{\hgb@TitleLanguage}}%
+	\par
+	\vspace{12mm}
+	\noindent
+	\hgb@Author
 }
