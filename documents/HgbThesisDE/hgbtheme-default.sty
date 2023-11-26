@@ -20,16 +20,21 @@
   
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
   \hgb@MakeTitlePage%
-	\ifthenelse{\boolean{hgb@IsProposal}}%
-		{%	thesis proposal:
-			\hgb@MakeAdvisorPage%     no copyright/declaration page for proposals
-		}%			
-		{%	final thesis:
-			\hgb@MakeAdvisorPage%
-			\hgb@MakeCopyrightPage%
-			\hgb@MakeDeclarationPage%
+	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+		{\hgb@MakeCompanyPage}%
+		{\hgb@MakeAdvisorPage}% 
+	\ifthenelse{\boolean{hgb@IsProposal}}{}{% no copyright/declaration page for proposals
+		\hgb@MakeCopyrightPage%
+		\hgb@MakeDeclarationPage%
 		}%
 }
+
+%\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls, must be redefined here!
+  %\hgb@MakeTitlePage%				defined in hgbtheme-default.sty
+	%\hgb@MakeCompanyPage%			defined below
+	%\hgb@MakeCopyrightPage%		defined in hgbtheme-default.sty
+	%\hgb@MakeDeclarationPage%	defined in hgbtheme-default.sty
+%}
 
 %% Title page ---------------------------------------------------
 
@@ -54,7 +59,7 @@
 			% ---------------------------------         
       {\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
         \ifthenelse{\boolean{hgb@IsProposal}}
-          {\space\space(\@addspaces{\MakeUppercase{\hgbDictionaryGet{proposalname}{\hgb@TitleLanguage}}})}{}}
+          {\space\space(\@addspaces{\MakeUppercase{\hgbDictionaryGet{proposal-name}{\hgb@TitleLanguage}}})}{}}
       % ---------------------------------
 			\vskip 4mm%
 			%
@@ -92,15 +97,11 @@
 	\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
 		{}{%
 		\newpage
-		%\setcounter{page}{2}
 		\thispagestyle{plain}
 		\rule{0mm}{1mm}
 		\vspace{90mm}
 		\begin{center}
 			\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}%
-			%\ifthenelse{\boolean{hgb@IsProposal}}%
-				%{\hgb@AdvisorHeaderProposal:}%
-				%{\hgb@AdvisorHeaderFinal:}%
 			\\
 			\vspace{3mm} 
       {\Large\sffamily\hgb@Advisor}	% TODO: list multiple advisors!
@@ -108,7 +109,7 @@
 		}
 }
 
-%% Default Copyright/License page ----------------------------------------
+% Copyright/License page ----------------------------------------
 
 \newcommand{\hgb@MakeCopyrightPage}{%
   \newpage
@@ -122,7 +123,7 @@
   \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}} % defined above
 }
 
-%% Default Declaration Page ----------------------------------------
+% Declaration Page ----------------------------------------
 
 \newcommand{\hgb@MakeDeclarationPage}{
     \chapter{\hgbDictionaryGet{declarationtitle}{\hgb@TitleLanguage}}
@@ -133,7 +134,7 @@
 		\noindent
     \ifthenelse{\equal{\hgb@TitleLanguage}{german}}%
       {\hgb@PlaceOfStudy, am 
-        \DTMfetchday{hgb@DateOfSubmission}.~%
+        \DTMfetchday{hgb@DateOfSubmission}.~%		TODO
         \DTMgermanmonthname{\DTMfetchmonth{hgb@DateOfSubmission}}~%
         \DTMfetchyear{hgb@DateOfSubmission}}
       {\hgb@PlaceOfStudy, 
@@ -144,5 +145,29 @@
 		\vspace{12mm}
 		\noindent
 		\hgb@Author
+}
+
+%% Company Page for Internship Reports ------------------------------
+
+\newcommand{\hgb@MakeCompanyPage}{%
+	\newpage
+	%\setcounter{page}{2}
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+	\vspace{25mm} 
+	{\hgbDictionaryGet{internship}{\hgb@TitleLanguage}:}
+	\\
+	\vspace{3mm}
+	{\Large\sf\hgb@CompanyName\\ \mbox{}}
+	\\
+	{\sf \hgb@CompanyUrl}
+	\\
+	\vspace{45mm} 
+	{\hgbDictionaryGet{internship-contact}{\hgb@TitleLanguage}:}
+	\\
+	\vspace{3mm}
+	{\Large\sf\hgb@Advisor\\ \mbox{}}
+	\end{center}
 }
 

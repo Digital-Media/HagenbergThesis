@@ -29,23 +29,34 @@
 
 % Front page terms:
 
-\hgbDictionarySet{bachelor-thesis}{english}{Bachelor Thesis}
-\hgbDictionarySet{bachelor-thesis}{german}{Bachelorarbeit}
+\hgbDictionarySet{bachelor-docname}{english}{Bachelor Thesis}
+\hgbDictionarySet{bachelor-docname}{german}{Bachelorarbeit}
 
-\hgbDictionarySet{master-thesis}{english}{Master's Thesis}
-\hgbDictionarySet{master-thesis}{german}{Masterarbeit}
+\hgbDictionarySet{master-docname}{english}{Master's Thesis}
+\hgbDictionarySet{master-docname}{german}{Masterarbeit}
 
-\hgbDictionarySet{diploma-thesis}{english}{Diploma Thesis}
-\hgbDictionarySet{diploma-thesis}{german}{Diplomarbeit}
+\hgbDictionarySet{diploma-docname}{english}{Diploma Thesis}
+\hgbDictionarySet{diploma-docname}{german}{Diplomarbeit}
 
-\hgbDictionarySet{phd-thesis}{english}{Doctoral Thesis}
-\hgbDictionarySet{phd-thesis}{german}{Dissertation}
+\hgbDictionarySet{phd-docname}{english}{Doctoral Thesis}
+\hgbDictionarySet{phd-docname}{german}{Dissertation}
 
-\hgbDictionarySet{proposalname}{english}{Proposal}
-\hgbDictionarySet{proposalname}{german}{Exposè}
+\hgbDictionarySet{proposal-name}{english}{Proposal}
+\hgbDictionarySet{proposal-name}{german}{Exposè}
 
 \hgbDictionarySet{advisorheader}{english}{Supervisor}
 \hgbDictionarySet{advisorheader}{german}{Betreuer*in}
+
+% Internship-related terms
+
+\hgbDictionarySet{internship-docname}{english}{Internship Report}
+\hgbDictionarySet{internship-docname}{german}{Praktikumsbericht}
+
+\hgbDictionarySet{internship}{english}{Internship}
+\hgbDictionarySet{internship}{german}{Praktikumsstelle}
+
+\hgbDictionarySet{internship-contact}{english}{Supervisor}
+\hgbDictionarySet{internship-contact}{german}{Kontaktperson}
 
 % License texts: 
 
@@ -146,6 +157,7 @@
 \@RegisterClassOption{type}{master}
 \@RegisterClassOption{type}{diploma}
 \@RegisterClassOption{type}{phd}
+\@RegisterClassOption{type}{internship}
 
 \@RegisterClassOption{language}{english}
 \@RegisterClassOption{language}{german}
@@ -296,8 +308,11 @@
 }
 
 % Legacy commands, keep for internship reports:
-\newcommand{\companyName}{}%		
-\newcommand{\companyUrl}{}%
+\newcommand{\hgb@CompanyName}{\@MissingArg{Company not specified!}}
+\newcommand{\companyName}[1]{\renewcommand{\hgb@CompanyName}{#1}}
+
+\newcommand{\hgb@CompanyUrl}{\@MissingArg{Company URL not specified!}}
+\newcommand{\companyUrl}[1]{\renewcommand{\hgb@CompanyUrl}{#1}}
 
 
 %% Logo -------------------------------------------------------------------------
@@ -373,8 +388,8 @@
 \ifthenelse{\equal{\hgb@TitleLanguage}{}}%
 		{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
 
-\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-thesis}{\hgb@TitleLanguage}}%
-\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposalname}{\hgb@TitleLanguage}}%
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-docname}{\hgb@TitleLanguage}}%
+\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal-name}{\hgb@TitleLanguage}}%
 
 \hgb@UseTheme{\@ThemeID}%		load theme style file
 
