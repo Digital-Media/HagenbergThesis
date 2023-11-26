@@ -51,19 +51,36 @@
 	\MakeOuterQuote{"}%
 	\EnableQuotes}{}
 
-%% Language environments ------------------------------------------------------
+%% Language setting commands and environments (babel) -------------------------
 
-% Switch from German to English (babel)
+% Switch to English (obsolete?)
 \newenvironment{english}%
 {\begin{otherlanguage}{english}%
-	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%
-{\end{otherlanguage}\ignorespacesafterend}% 
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%		needed!
+{\end{otherlanguage}\ignorespacesafterend}%
 
-% Switch from English to German (babel)
+% Switch to German (obsolete?)  
 \newenvironment{german}%
 {\begin{otherlanguage}{ngerman}%
-	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%		needed!
 {\end{otherlanguage}\ignorespacesafterend}%
+
+% Switch to the specified language. This is only a wrapper around babel's \selectlanguage{} command,
+% replacing 'german' by 'ngerman'.
+\newcommand{\SetLanguage}[1]{% usage example: \SetLanguage{english} 
+	\def\@tmpLang{#1}%
+	\ifthenelse{\equal{\@tmpLang}{german}}{\def\@tmpLang{ngerman}}{}%	 needed to make babel treat 'german' as 'ngerman'
+	\selectlanguage{\@tmpLang}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces%		needed!
+}
+
+% Temporarily switch to another language
+\newenvironment{SwitchLanguage}[1]% usage example: \begin{SwitchLanguage}{english} ... \end{SwitchLanguage}
+{	\def\@tmpLang{#1}%
+	\ifthenelse{\equal{\@tmpLang}{german}}{\def\@tmpLang{ngerman}}{}%	 needed to make babel treat 'german' as 'ngerman'
+	\begin{otherlanguage}{\@tmpLang}%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%	needed!
+{	\end{otherlanguage}\ignorespacesafterend}%
 
 
 %% Date-related stuff ---------------------------------------------------------
@@ -231,7 +248,6 @@
 	\renewcommand{\footnote}[1]{\@WarnFootnoteInCaption\relax}#1}
 \captionsetup{textformat=nofootnotes}
 
-
 % Make float placement easier    
 \renewcommand{\floatpagefraction}{.9}	% previously: .5
 \renewcommand{\textfraction}{.1}		% previously: .2
@@ -277,11 +293,11 @@
 \floatstyle{plain}
 \restylefloat*{program}
 	
-\ifthenelse{\equal{\bbl@main@language}{german} \or \equal{\bbl@main@language}{ngerman}}% TODO: change to \hgb@MainLanguage
-	{\floatname{program}{Programm}}{}%
+\RequirePackage{hgbdict}
+\hgbDictionarySet{program-env-name}{english}{Program}
+\hgbDictionarySet{program-env-name}{german}{Programm}
 
-\ifthenelse{\equal{\bbl@main@language}{english}}%
-	{\floatname{program}{Program}}{}%
+\AtBeginDocument{\floatname{program}{\hgbDictionaryGet{program-env-name}{\hgb@MainLanguage}}}
 
 %% Experimental items ---------------------------------------------------------
 
