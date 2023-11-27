@@ -4,6 +4,7 @@
 %% File encoding: UTF-8
 
 \RequirePackage{hgbdict}
+\RequirePackage{forloop}
 
 %% Define various language-dependent text chunks to be used below -------------
 
@@ -54,11 +55,11 @@
 			\hgb@TitlePageFont%
 			\setlength{\unitlength}{1cm}%
 			\parbox[c][5cm][c]{\textwidth}{%
-				\centering\LARGE\bfseries\linespread{1.0}\selectfont%
+				\centering%\LARGE\bfseries\linespread{1.0}\selectfont%
 				\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
-					\hgb@Title%
+					{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
 					\par\vskip 4mm%
-					\hgb@SubTitle%
+					{\Large\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
 				\end{SwitchLanguage}%
 			}
 			\vskip 15mm%
@@ -103,20 +104,46 @@
 
 % Default Advisor Page ----------------------------------------
 
+\hgbDictionarySet{advisorstitlesingle}{english}{Supervisor}
+\hgbDictionarySet{advisorstitlesingle}{german}{Betreuung}
+
+\hgbDictionarySet{advisorstitlemultiple}{english}{Supervisors}
+\hgbDictionarySet{advisorstitlemultiple}{german}{Betreuung}
+
+
 \newcommand{\hgb@MakeAdvisorPage}{%
-	\ifthenelse{\equal{\hgb@Advisor}{}}%	does nothing if advisor is undefined 
-		{}{%
-		\newpage
-		\thispagestyle{plain}
-		\rule{0mm}{1mm}
-		\vspace{90mm}
-		\begin{center}
-			\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}%
-			\\
-			\vspace{3mm} 
-      {\Large\sffamily\hgb@Advisor}	% TODO: list multiple advisors!
-		\end{center}
-		}
+	\newpage
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\vspace{90mm}
+	\begin{center}
+		\ifthenelse{\hgb@AdvisorCount < 1}%
+			{\color{red}No advisor(s) specified!}{}%
+		%
+		\ifthenelse{\hgb@AdvisorCount = 1}%
+			{	\hgb@getAdvisorRole{1}: %\hgbDictionaryGet{advisorstitlesingle}{\hgb@TitleLanguage}:%
+				\par\vspace{6mm}%
+				\large\sffamily\hgb@getAdvisorName{1}%
+			}{}%
+		%
+		\ifthenelse{\hgb@AdvisorCount > 1}%
+			{	\hgbDictionaryGet{advisorstitlemultiple}{\hgb@TitleLanguage}:%
+				\par\vspace{6mm}%
+				\large\sffamily\@makeAdvisorTable% defined below
+			}{}%
+	\end{center}
+}
+
+\newcommand{\@makeAdvisorTable}{%
+  \newcounter{C}%
+	\renewcommand{\arraystretch}{1.25}%
+	\setlength{\tabcolsep}{0.4em}%
+  \begin{tabular}{ll}%
+    \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
+      \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
+      \ifthenelse{\value{C} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
+    }%
+  \end{tabular}%
 }
 
 % Copyright/License Page ----------------------------------------

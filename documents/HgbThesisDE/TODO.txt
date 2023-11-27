@@ -1,7 +1,4 @@
-hgbtheme-default: list advisors if multiple present
 
 Update hgb.sty to use key/value parameters.
-
-Migrate internship report from hgbthesis.cls. - NOT DONE, but integrated into hgbtheme-default
 
 Revise the build process.

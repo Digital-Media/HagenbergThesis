@@ -100,6 +100,7 @@
 
 \newcommand{\@makeAdvisorTable}{%
   \newcounter{C}%
+	\renewcommand{\arraystretch}{1.25}%
   \begin{tabular}{@{}ll@{}}%
     \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
       \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
