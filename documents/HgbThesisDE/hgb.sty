@@ -53,18 +53,6 @@
 
 %% Language setting commands and environments (babel) -------------------------
 
-% Switch to English (obsolete?)
-\newenvironment{english}%
-{\begin{otherlanguage}{english}%
-	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%		needed!
-{\end{otherlanguage}\ignorespacesafterend}%
-
-% Switch to German (obsolete?)  
-\newenvironment{german}%
-{\begin{otherlanguage}{ngerman}%
-	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%		needed!
-{\end{otherlanguage}\ignorespacesafterend}%
-
 % Switch to the specified language. This is only a wrapper around babel's \selectlanguage{} command,
 % replacing 'german' by 'ngerman'.
 \newcommand{\SetLanguage}[1]{% usage example: \SetLanguage{english} 
@@ -81,6 +69,16 @@
 	\begin{otherlanguage}{\@tmpLang}%
 	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\EnableQuotes}{}\ignorespaces}%	needed!
 {	\end{otherlanguage}\ignorespacesafterend}%
+
+% Temporarily switch to English (legacy env., use '\begin{SwitchLanguage}{english} ... \end{SwitchLanguage}' instead
+\newenvironment{english}%
+	{\begin{SwitchLanguage}{english}}%
+	{\end{SwitchLanguage}\ignorespacesafterend}%
+
+% Temporarily switch to German (legacy env., use '\begin{SwitchLanguage}{german} ... \end{SwitchLanguage}' instead
+\newenvironment{german}%
+	{\begin{SwitchLanguage}{german}}%
+	{\end{SwitchLanguage}\ignorespacesafterend}%
 
 
 %% Date-related stuff ---------------------------------------------------------
