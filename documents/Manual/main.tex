@@ -79,7 +79,10 @@ In addition, the following class-specific options are accepted:
     \item \textbf{\texttt{hgbthesis}}:\\
       \texttt{type=}%
       \{\texttt{bachelor}, \texttt{master}, \texttt{diploma}, \texttt{phd}, \texttt{internship}, \texttt{custom}\},\newline
-      \texttt{language=}\{\texttt{english}, \texttt{german}\} (language in main document),\\
+      \texttt{language=}\{\texttt{english}, \texttt{german}\} (language in main document),%
+				\footnote{Note: The \texttt{german} option implicitly loads Babel's \texttt{ngerman} setup. 
+				When switching languages (see Sec.~\ref{sec:LanguageSwitchingCommands}) only \texttt{german} should be used.}
+			\\
       \texttt{titlelanguage=}\{\texttt{english}, \texttt{german}\} (language on title pages, defaults to main language),\\
       \texttt{proposal} (flag to indicate proposal documents);
     \item \textbf{\texttt{hgbreport}}:\\
@@ -166,22 +169,40 @@ independently of the document classes listed above:
 \end{itemize}
 
 \subsection{General user commands and environments (\texttt{hgb.sty})}
+\label{sec:GeneralUserCommands}
 
 \begin{itemize}
-    \item \textbf{\texttt{{\bs}hgbDate}}\newline
+   \item \textbf{\texttt{{\bs}hgbDate}}\newline
     Outputs the package version date,
     \eg, ``\texttt{\hgbDate}''.
-		\item \textbf{\texttt{{\bs}getcurrentlabel}}\newline
+	\item \textbf{\texttt{{\bs}getcurrentlabel}}\newline
     Yields the most recently assigned label number.
-    \item \textbf{\texttt{{\bs}calibrationbox}}\verb!{width}{height}!\newline
+   \item \textbf{\texttt{{\bs}calibrationbox}}\verb!{width}{height}!\newline
     Inserts a test box for checking the final print size (in millimeters).
-		\item \verb!\begin{block}...\end{block}!\newline
+	\item \verb!\begin{block}...\end{block}!\newline
     Dummy environment, provides a limited scope for variable/command redefinitions.
-    \item \verb!\begin{english}...\end{english}!\newline
-    Temporarily switches to English language settings.
-    \item \verb!\begin{german}...\end{german}!\newline
-    Temporarily switches to German language settings.
 \end{itemize}
+
+
+\subsection{Language switching commands (\texttt{hgb.sty})}
+\label{sec:LanguageSwitchingCommands}
+
+\begin{itemize}
+	\item \verb!\SetLanguage{<language>}!\newline
+    Switches to the specified language.
+		This and the other language switching commands listed below
+		also refresh the \texttt{smartquotes} settings (if activated).
+	\item \verb!\begin{SwitchLanguage}{<language>}...\end{SwitchLanguage}!\newline
+    Temporarily switches to the specified language and reverts to the current language 
+		afterwards. 
+   \item \verb!\begin{english}...\end{english}!\newline
+    Temporarily switches to English language settings -- short for\newline
+		\verb!\begin{SwitchLanguage}{english}..!.
+   \item \verb!\begin{german}...\end{german}!\newline
+    Temporarily switches to German language settings -- short for\newline
+		\verb!\begin{SwitchLanguage}{german}..!.
+\end{itemize}
+
 
 
 \subsection{Text commands (\texttt{hgbabbrev.sty})}
