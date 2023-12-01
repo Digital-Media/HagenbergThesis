@@ -10,19 +10,19 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}        % Creates a PDF/A-2b compliant document
 
-\documentclass[bachelor,english,smartquotes,proposal]{hgbthesis}
-% Valid options in [..]: 
-%    Type of work: 'diploma', 'master' (default), 'bachelor', 'internship' 
-%		 Additionally for a thesis exposé: 'proposal (for 'bachelor' and 'master')
-%    Main language: 'german' (default), 'english'
-%    Turn on smart quote handling: 'smartquotes'
-%    APA bibliography style: 'apa'
+\documentclass[type=bachelor,theme=default,language=english,smartquotes,proposal]{hgbthesis}
+% Supported options in [..]: 
+%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
+%		Theme (layout of title pages): theme=default
+%		Thesis proposal: 'proposal' or 'proposal=true' 
+%		Main text language: language = 'german' (default), 'english'
+%		Title page language: titlelanguage = 'german', 'english' (default is main language)
+%		Use automatic quotation marks: 'smartquotes'
+%		Use APA citation style: 'apa'
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Location of images and graphics
-\logofile{logo}           % Logo file: images/logo.pdf (no logo: \logofile{})
 \bibliography{references} % Biblatex bibliography file (references.bib)
-
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
@@ -36,12 +36,18 @@
 \programname{Medientechnik und -design}
 
 \programtype{Fachhochschul-Bachelorstudiengang}
-%\programtype{Fachhochschul-Masterstudiengang} % select/edit
+\institution{Fachhochschule Oberösterreich}
+
+%\logofile{}	% deprecated, to be set in theme file!
 
 \placeofstudy{Hagenberg}
 \dateofsubmission{2024}{06}{25} % {YYYY}{MM}{DD}
 
 \advisor{Dr. Alois B.~Treuer} % optional
+
+\license{cclicense} 			% publish under Creative Commons License (recommended)
+%\license{strictlicense}	% restrictive clause - "all rights reserved"
+
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                   % Front part (roman page numbers)

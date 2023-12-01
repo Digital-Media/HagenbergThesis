@@ -10,17 +10,18 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-\documentclass[bachelor,german,smartquotes,proposal]{hgbthesis}
-% Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
+\documentclass[type=bachelor,theme=default,language=german,smartquotes,proposal]{hgbthesis}
+% Supported options in [..]: 
+%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
+%		Theme (layout of title pages): theme=default
+%		Thesis proposal: 'proposal' or 'proposal=true' 
+%		Main text language: language = 'german' (default), 'english'
+%		Title page language: titlelanguage = 'german', 'english' (default is main language)
+%		Use automatic quotation marks: 'smartquotes'
+%		Use APA citation style: 'apa'
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
 %%%-----------------------------------------------------------------------------

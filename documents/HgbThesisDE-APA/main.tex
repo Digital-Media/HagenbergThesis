@@ -10,40 +10,46 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-\documentclass[master,german,smartquotes,apa]{hgbthesis}
-% Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
+%\documentclass[master,german,smartquotes,apa]{hgbthesis}
+\documentclass[type=master,theme=default,language=german,smartquotes,apa]{hgbthesis}
+% Supported options in [..]: 
+%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
+%		Theme (layout of title pages): theme=default
+%		Thesis proposal: 'proposal' or 'proposal=true' 
+%		Main text language: language = 'german' (default), 'english'
+%		Title page language: titlelanguage = 'german', 'english' (default is main language)
+%		Use automatic quotation marks: 'smartquotes'
+%		Use APA citation style: 'apa'
 %%%-----------------------------------------------------------------------------
 
-\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
-\bibliography{references} % Biblatex-Literaturdatei (references.bib)
+\graphicspath{{images/}}  % directory for user images and graphics
+\bibliography{references} % biblatex literature file (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
 
 %%%-----------------------------------------------------------------------------
-% Angaben für die Titelei (Titelseite, Erklärung etc.)
+% Settings for items placed on title pages
 %%%-----------------------------------------------------------------------------
 
-\title{Partielle Lösungen zur allgemeinen Problematik (APA-Version)}
+\title{Partielle Lösungen zur "allgemeinen" Problematik (APA-Version)}
+%\subtitle{Eine grundlegende Einführung}
 \author{Alex A.\ Schlaumeier}
+\programtype{Fachhochschul-Masterstudiengang}%		or Fachhochschul-Bachelorstudiengang
+%\programtype{Master's Degree Program}
 \programname{Universal Computing}
+\institution{Fachhochschule Oberösterreich}
 
-%\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
-\programtype{Fachhochschul-Masterstudiengang}
+%\logofile{}	% deprecated, to be set in theme file!
 
 \placeofstudy{Hagenberg}
 \dateofsubmission{2024}{06}{25} % {YYYY}{MM}{DD}
 
 \advisor{Dr. Alois B.~Treuer} % optional
 
-%\strictlicense % restriktive Lizenz anstatt Creative Commons (nicht empfohlen!)
+\license{cclicense} 			% publish under Creative Commons License (recommended)
+%\license{strictlicense}	% restrictive clause - "all rights reserved"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)

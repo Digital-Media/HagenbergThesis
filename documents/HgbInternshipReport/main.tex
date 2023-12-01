@@ -10,18 +10,19 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-\documentclass[internship,german,smartquotes]{hgbthesis}
-% Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
+\documentclass[type=internship,theme=default,language=german,smartquotes]{hgbthesis}
+% Supported options in [..]: 
+%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
+%		Theme (layout of title pages): theme=default
+%		Thesis proposal: 'proposal' or 'proposal=true' 
+%		Main text language: language = 'german' (default), 'english'
+%		Title page language: titlelanguage = 'german', 'english' (default is main language)
+%		Use automatic quotation marks: 'smartquotes'
+%		Use APA citation style: 'apa'
 %%%-----------------------------------------------------------------------------
 
-\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
-\bibliography{references} % Biblatex-Literaturdatei (references.bib)
+\graphicspath{{images/}}  % directory for user images and graphics
+\bibliography{references} % biblatex literature file (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
@@ -36,6 +37,7 @@
 
 \programtype{Fachhochschul-Bachelorstudiengang}
 \programname{Medientechnik und -design}
+\institution{Fachhochschule Oberösterreich}
 \placeofstudy{Hagenberg}
 
 \dateofsubmission{2024}{06}{25}
@@ -46,6 +48,9 @@
    Hubertusgasse 3a, 1020 Wien
 }
 \companyUrl{www.mogul.at}
+
+\license{cclicense} 			% publish under Creative Commons License (recommended)
+%\license{strictlicense}	% restrictive clause - "all rights reserved"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)

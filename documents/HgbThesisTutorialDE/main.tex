@@ -10,17 +10,18 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-\documentclass[master,german,smartquotes]{hgbthesis}
-% Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
+\documentclass[type=master,language=german,smartquotes]{hgbthesis}
+% Supported options in [..]: 
+%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship', 'custom'
+%		Theme (layout of title pages): theme=default
+%		Thesis proposal: 'proposal' or 'proposal=true' 
+%		Main text language: language = 'german' (default), 'english'
+%		Title page language: titlelanguage = 'german', 'english' (default is main language)
+%		Use automatic quotation marks: 'smartquotes'
+%		Use APA citation style: 'apa'
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % BibLaTeX-Literaturdatei (references.bib)
 
 %%%-----------------------------------------------------------------------------
@@ -37,13 +38,17 @@
 
 %\programtype{Fachhochschul-Bachelorstudiengang} % auswählen/editieren
 \programtype{Fachhochschul-Masterstudiengang}
+\institution{Fachhochschule Oberösterreich}
+
+%\logofile{}	% deprecated, to be set in theme file!
 
 \placeofstudy{Hagenberg}
 \dateofsubmission{2024}{06}{25} % {YYYY}{MM}{DD}
 
 \advisor{Dr. Alois B.~Treuer} % optional
 
-%\strictlicense % restriktive Lizenz anstatt Creative Commons (nicht empfohlen!)
+\license{cclicense} 			% publish under Creative Commons License (recommended)
+%\license{strictlicense}	% restrictive clause - "all rights reserved"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)
