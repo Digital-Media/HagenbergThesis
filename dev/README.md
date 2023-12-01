@@ -10,7 +10,8 @@ This is mainly a notebook for the developers of `HagenbergThesis` and probably n
 - `ctan`: Distribution files for hagenberg-thesis on [CTAN](https://ctan.org/pkg/hagenberg-thesis).
 - `latex-foreign`: Third-party packages, which are to be included with the example documents because certain (older) LaTeX distributions do not have this package or the required version.
 
-`/dev` can be used as a local TEXMF root directory for development.
+`/dev` is set up as a local TEXMF root directory for development (see https://miktex.org/kb/tds).
+It holds all common .sty, .cls, and .bib files.
 
 ## How to Use
 
