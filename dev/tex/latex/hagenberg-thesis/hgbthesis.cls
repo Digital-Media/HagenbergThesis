@@ -302,7 +302,7 @@
 
 %% Set various terms to be redefined by title page themes
 
-\ifthenelse{\equal{\hgb@TitleLanguage}{}}%
+\ifthenelse{\equal{\hgb@TitleLanguage}{}}%	duplicate in 'hgb.sty'!
 		{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
 
 \renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-docname}{\hgb@TitleLanguage}}%
