@@ -1,0 +1,140 @@
+
+%% This file is part of the Hagenberg Thesis package
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\RequirePackage{hgbdict}
+\RequirePackage{forloop}
+\RequirePackage{tikz}
+
+% use \@currname to retrieve theme name?
+
+
+%% Define various language-dependent text chunks to be used below -------------
+
+\hgbDictionarySet{declaration-date}{english}%
+	{\hgb@GetMonthName{english}{\hgb@SubmissionMonth} \hgb@SubmissionDay, \hgb@SubmissionYear}%
+	
+\hgbDictionarySet{declaration-date}{german}%
+	{am \hgb@SubmissionDay.~\hgb@GetMonthName{german}{\hgb@SubmissionMonth} \hgb@SubmissionYear}%
+
+%% Initialization (optional) --------------------------------------------------
+
+\AddToHook{hgb@InitThemeHook}{%
+	\typeout{hgbtheme-default: initializing theme}%
+	% add initialization code if needed
+}%
+
+%% Structure of front pages ---------------------------------------------------
+
+\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls
+  \hgb@MakeTitlePage%
+	\ifthenelse{\boolean{hgb@IsProposal}}%
+		{}% no copyright/declaration pages for proposals
+		{%
+			\hgb@MakeCopyrightPage%
+			\hgb@MakeDeclarationPage%
+		}%
+}
+		
+%% Title page ---------------------------------------------------
+
+\newcommand{\hgb@MakeTitlePage}{%
+\begin{titlepage}%
+	\newgeometry{top=0mm,bottom=14mm,right=14mm,left=14mm}
+	\setlength{\parindent}{0pt}
+	% background image -----------------------------------------
+	\AddToHookNext{shipout/background}{
+		\begin{tikzpicture}[remember picture,overlay]
+			\node at (current page.center) {
+					\includegraphics{hgbtheme-fhooe24-coverbackground.pdf} % was 'fhooe-cover'
+			};
+		\end{tikzpicture}
+	}
+	\vspace*{98mm}%
+	\hgb@TitlePageFont%
+	\setlength{\unitlength}{1cm}%
+	% author --------------------------------------------------
+	{\Large\hgb@Author\par}%
+	\vskip 14mm%
+	% title --------------------------------------------------
+	\parbox[c][56mm][t]{140mm}{%
+		\raggedright%
+		%\centering%
+		\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+			{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
+			\vskip 7mm%
+			{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
+		\end{SwitchLanguage}%
+	}
+	\vskip 0mm%
+	% thesis type ---------------------------------------------
+	{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
+		\ifthenelse{\boolean{hgb@IsProposal}}%
+			{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
+	\vskip 14mm%
+	% program type ---------------------------------
+	%{\large \hgb@ProgramType}%
+	%\vskip 4mm%
+	% program name ---------------------------------
+	{\large\hgb@ProgramName\par}%
+	\vskip 0mm%
+	% place of study  ---------------------------------
+	{\large\hgb@Institution\par}%
+	\vskip 4mm%
+		{\large\hgb@PlaceOfStudy\par}%
+	\vskip 8mm%
+		{\large\hgb@SubmissionYear\par}%
+	\vskip 0mm%
+	% advisors(s) -------------------------------------
+	\parbox[c][28mm][b]{\textwidth}{%
+		%\centering\large\tabcolsep0.25em%
+		\ifthenelse{\hgb@AdvisorCount > 0}%
+			{\@makeAdvisorTable}% defined below
+			{\color{red}No advisor(s) specified!\\}%
+	}
+	\restoregeometry%
+\end{titlepage}%
+}
+
+\newcommand{\@makeAdvisorTable}{%
+  \newcounter{C}%
+	\renewcommand{\arraystretch}{1.25}%
+  \begin{tabular}{@{}ll@{}}%
+    \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
+      \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
+      \ifthenelse{\value{C} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
+    }%
+  \end{tabular}%
+}
+
+%% Copyright/License Page ----------------------------------------
+
+\newcommand{\hgb@MakeCopyrightPage}{%
+  \newpage
+  \thispagestyle{plain}
+  \rule{0mm}{1mm}
+  \vspace*{75mm}
+  \begin{center}
+  \textsf{\copyright\ Copyright\ \hgb@SubmissionYear\ \hgb@Author}
+  \end{center}
+  \vspace{8mm}
+  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}}% defined in hgb.sty
+}
+
+%% Declaration Page ----------------------------------------
+
+\newcommand{\hgb@MakeDeclarationPage}{
+	\chapter{\hgbDictionaryGet{declaration-title}{\hgb@TitleLanguage}}
+	\noindent%
+	\hgbDictionaryGet{declaration-text}{\hgb@TitleLanguage}%
+	\par
+	\vspace{10mm}
+	\noindent
+	{\hgb@PlaceOfStudy, \hgbDictionaryGet{declaration-date}{\hgb@TitleLanguage}}%
+	\par
+	\vspace{12mm}
+	\noindent
+	\hgb@Author
+}

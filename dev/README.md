@@ -4,11 +4,13 @@ This is mainly a notebook for the developers of `HagenbergThesis` and probably n
 
 ## What You Find Here
 
-`/dev`is the development directory for the [HagenbergThesis](https://github.com/Digital-Media/HagenbergThesis) package. It contains the following in the respective directories:
+`/dev` is the development directory for the [HagenbergThesis](https://github.com/Digital-Media/HagenbergThesis) package. It contains the following in the respective directories:
 
-- `latex`: Master style files, classes, and bibliography for the package.
+- `tex/latex`: Master style files, classes, and bibliography for the package (input when used as a local TEXMF root directory, see below).
 - `ctan`: Distribution files for hagenberg-thesis on [CTAN](https://ctan.org/pkg/hagenberg-thesis).
 - `latex-foreign`: Third-party packages, which are to be included with the example documents because certain (older) LaTeX distributions do not have this package or the required version.
+
+`/dev` can be used as a local TEXMF root directory for development.
 
 ## How to Use
 

@@ -1,0 +1,24 @@
+%% hgbpdfa.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: ASCII
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgbpdfa}[2023/11/06]%%AUTO
+
+%% Setup for producing 	PDF/A-2B compliant output using the new LaTeX-internal
+%% PDF metadata management features 
+%% (see https://ctan.org/tex-archive/macros/latex/contrib/pdfmanagement-testphase).
+%% NOTE: This package must be loaded before the \documentclass statement!
+
+\pdfmajorversion=1
+\pdfminorversion=7  % PDF Version 1.7 (Acrobat 8.x)
+
+\RequirePackage{pdfmanagement-testphase} % only needed before LaTeX 2022-06-01
+\IfPackageAtLeastTF{pdfmanagement-testphase}{2022-09-26}% (Version 0.95s)
+  {}%
+  {\PackageWarning{hgbpdfa}{Package 'pdfmanagement-testphase' 0.95s or higher required, output may not be PDF/A!}}
+  
+\DocumentMetadata{pdfstandard=A-2b}
+%% Specification of color profiles may follow here!
