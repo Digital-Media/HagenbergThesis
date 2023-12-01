@@ -45,20 +45,21 @@
 
 %% Setup for smart quotes (csquotes package) ----------------------------------
 
-\newcommand{\SmartquotesActive}{'csquotes' not loaded}
+\newcommand{\SmartQuotesActive}{'csquotes' not loaded}
+
+% Turn smartquotes on depending on document settings:
+\newcommand{\@SmartQuotesRefresh}{%
+	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\@enablequotes}{}%	instead of '\EnableQuotes' to allow smartquotes in preamble
+}
 
 \ifthenelse{\boolean{hgb@SmartQuotesOn}}{%
 	\languageshorthands{none}%			%% turn off babel's shorthands (permanently)
 	\usepackage[autostyle=true,german=quotes]{csquotes}%
 	\MakeOuterQuote{"}%
-	\renewcommand{\SmartquotesActive}{\iftoggle{csq@active}{true}{false}}%
-	\@enablequotes}%	replaced user command \EnableQuotes to allow smartquotes in preamble
+	\renewcommand{\SmartQuotesActive}{\iftoggle{csq@active}{true}{false}}%
+	\@SmartQuotesRefresh}%
 {}%
 
-% Turn smartquotes on depending on document settings:
-\newcommand{\RefreshSmartquotes}{%
-	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\@enablequotes}{}%
-}
 
 %% Language setting commands and environments (babel) -------------------------
 
@@ -69,7 +70,7 @@
 	\ifthenelse{\equal{\@tmpLang}{german}}{\def\@tmpLang{ngerman}}{}%	 needed to make babel treat 'german' as 'ngerman'
 	\selectlanguage{\@tmpLang}%
 	%\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\@enablequotes}{}
-	\RefreshSmartquotes\ignorespaces%		needed!
+	\@SmartQuotesRefresh\ignorespaces%		needed!
 }
 
 % Temporarily switch to another language
@@ -78,7 +79,7 @@
 	\ifthenelse{\equal{\@tmpLang}{german}}{\def\@tmpLang{ngerman}}{}%	 needed to make babel treat 'german' as 'ngerman'
 	\begin{otherlanguage}{\@tmpLang}%
 	%\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\@enablequotes}{}%
-	\RefreshSmartquotes\ignorespaces% 	needed!
+	\@SmartQuotesRefresh\ignorespaces% 	needed!
 }%
 {\end{otherlanguage}\ignorespacesafterend}%
 

@@ -184,7 +184,7 @@ independently of the document classes listed above:
 \end{itemize}
 
 
-\subsection{Language switching commands (\texttt{hgb.sty})}
+\subsection{Language switching commands and smart quotes (\texttt{hgb.sty})}
 \label{sec:LanguageSwitchingCommands}
 
 \begin{itemize}
@@ -195,14 +195,16 @@ independently of the document classes listed above:
 	\item \verb!\begin{SwitchLanguage}{<language>}...\end{SwitchLanguage}!\newline
     Temporarily switches to the specified language and reverts to the current language 
 		afterwards. 
-   \item \verb!\begin{english}...\end{english}!\newline
+	\item \verb!\begin{english}...\end{english}!\newline
     Temporarily switches to English language settings -- short for\newline
 		\verb!\begin{SwitchLanguage}{english}..!.
-   \item \verb!\begin{german}...\end{german}!\newline
+	\item \verb!\begin{german}...\end{german}!\newline
     Temporarily switches to German language settings -- short for\newline
 		\verb!\begin{SwitchLanguage}{german}..!.
+	\item \verb!\SmartquotesActive!\newline
+		For debugging only. Returns \texttt{true}/\texttt{false} if smart quotes are activated in
+		the current context (or an appropriate message if the \texttt{csquotes} package was not loaded at all).
 \end{itemize}
-
 
 
 \subsection{Text commands (\texttt{hgbabbrev.sty})}
