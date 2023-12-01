@@ -23,83 +23,6 @@
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
-%% Add thesis-relevant dictionary items ---------------------------------------
-
-\RequirePackage{hgbdict}
-
-% Front page terms:
-
-\hgbDictionarySet{bachelor-docname}{english}{Bachelor Thesis}
-\hgbDictionarySet{bachelor-docname}{german}{Bachelorarbeit}
-
-\hgbDictionarySet{master-docname}{english}{Master's Thesis}
-\hgbDictionarySet{master-docname}{german}{Masterarbeit}
-
-\hgbDictionarySet{diploma-docname}{english}{Diploma Thesis}
-\hgbDictionarySet{diploma-docname}{german}{Diplomarbeit}
-
-\hgbDictionarySet{phd-docname}{english}{Doctoral Thesis}
-\hgbDictionarySet{phd-docname}{german}{Dissertation}
-
-\hgbDictionarySet{proposal-name}{english}{Proposal}
-\hgbDictionarySet{proposal-name}{german}{Exposè}
-
-\hgbDictionarySet{advisorheader}{english}{Supervisor}
-\hgbDictionarySet{advisorheader}{german}{Betreuer*in}
-
-% Internship-related terms
-
-\hgbDictionarySet{internship-docname}{english}{Internship Report}
-\hgbDictionarySet{internship-docname}{german}{Praktikumsbericht}
-
-\hgbDictionarySet{internship}{english}{Internship}
-\hgbDictionarySet{internship}{german}{Praktikumsstelle}
-
-\hgbDictionarySet{internship-contact}{english}{Supervisor}
-\hgbDictionarySet{internship-contact}{german}{Kontaktperson}
-
-% License texts: 
-
-\hgbDictionarySet{strictlicense}{english}{All Rights Reserved}
-\hgbDictionarySet{strictlicense}{german}{Alle Rechte vorbehalten}
-
-\hgbDictionarySet{cclicense}{english}{%
-	This work is published under the conditions of the \textsf{Creative Commons License} 
-	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
-	---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
-}
-
-\hgbDictionarySet{cclicense}{german}{%
-	Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
-	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
-	veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
-}
-
-% Declarations:
-
-\hgbDictionarySet{declaration-title}{english}{Declaration}
-\hgbDictionarySet{declaration-title}{german}{Erklärung}
-
-\hgbDictionarySet{declaration-text}{english}{%
-	\begin{english}%
-	I hereby declare and confirm that this thesis is entirely the result of my own original work. 
-	Where other sources of information have been used, they have been indicated as such and properly 
-	acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
-	This printed copy is identical to the submitted electronic version.
-	\end{english}%
-}
-
-\hgbDictionarySet{declaration-text}{german}{%
-	\begin{german}%
-	Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
-	andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
-	solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
-	Prüfungsbehörde vorgelegt.
-	Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
-	\end{german}%
-}
-
-
 %% Commands for Title Pages (used in class options) ---------------------------
 
 \newcommand{\hgb@ThesisType}{master}%									type of thesis (theme name)						
@@ -385,7 +308,7 @@
 \renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-docname}{\hgb@TitleLanguage}}%
 \renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal-name}{\hgb@TitleLanguage}}%
 
-\hgb@UseTheme{\@ThemeID}%		load theme style file
+
 
 %% Additional Hagenberg packages ----------------------------------------------
 
@@ -396,5 +319,83 @@
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
 
+
+%% Add thesis-relevant dictionary items ---------------------------------------
+
+\RequirePackage{hgbdict}
+
+% Front page terms:
+
+\hgbDictionarySet{bachelor-docname}{english}{Bachelor Thesis}
+\hgbDictionarySet{bachelor-docname}{german}{Bachelorarbeit}
+
+\hgbDictionarySet{master-docname}{english}{Master's Thesis}
+\hgbDictionarySet{master-docname}{german}{Masterarbeit}
+
+\hgbDictionarySet{diploma-docname}{english}{Diploma Thesis}
+\hgbDictionarySet{diploma-docname}{german}{Diplomarbeit}
+
+\hgbDictionarySet{phd-docname}{english}{Doctoral Thesis}
+\hgbDictionarySet{phd-docname}{german}{Dissertation}
+
+\hgbDictionarySet{proposal-name}{english}{Proposal}
+\hgbDictionarySet{proposal-name}{german}{Exposè}
+
+\hgbDictionarySet{advisorheader}{english}{Supervisor}
+\hgbDictionarySet{advisorheader}{german}{Betreuer*in}
+
+% Internship-related terms
+
+\hgbDictionarySet{internship-docname}{english}{Internship Report}
+\hgbDictionarySet{internship-docname}{german}{Praktikumsbericht}
+
+\hgbDictionarySet{internship}{english}{Internship}
+\hgbDictionarySet{internship}{german}{Praktikumsstelle}
+
+\hgbDictionarySet{internship-contact}{english}{Supervisor}
+\hgbDictionarySet{internship-contact}{german}{Kontaktperson}
+
+% License texts: 
+
+\hgbDictionarySet{strictlicense}{english}{All Rights Reserved}
+\hgbDictionarySet{strictlicense}{german}{Alle Rechte vorbehalten}
+
+\hgbDictionarySet{cclicense}{english}{%
+	This work is published under the conditions of the \textsf{Creative Commons License} 
+	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
+	---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
+}
+
+\hgbDictionarySet{cclicense}{german}{%
+	Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
+	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
+	veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
+}
+
+% Declarations:
+
+\hgbDictionarySet{declaration-title}{english}{Declaration}
+\hgbDictionarySet{declaration-title}{german}{Erklärung}
+
+\hgbDictionarySet{declaration-text}{english}{%
+\begin{english}
+	I hereby declare and confirm that this thesis is entirely the result of my own original work. 
+	Where other sources of information have been used, they have been indicated as such and properly 
+	acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
+	This printed copy is identical to the submitted electronic version.
+\end{english}
+}
+
+\hgbDictionarySet{declaration-text}{german}{%
+\begin{german}
+	Ich erkläre "eidesstattlich", dass ich die vorliegende Arbeit selbstständig und ohne fremde Hilfe verfasst, 
+	andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
+	solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen 
+	Prüfungsbehörde vorgelegt.
+	Die vorliegende, gedruckte Arbeit ist mit dem elektronisch übermittelten Textdokument identisch.
+\end{german}
+}
+
+\hgb@UseTheme{\@ThemeID}%		load theme style file
 
 \endinput
