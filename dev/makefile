@@ -15,7 +15,9 @@ MKFILELATEX := $(realpath makefile-latex)
 
 # -----------------------------------------------------------------------
 # directory where we keep the original .cls and .sty files
-SOURCEDIR=latex
+SOURCEDIR=tex/latex/hagenberg-thesis
+# directory where we keep the original .bib files
+BIBTEXDIR=bibtex/bib
 # directory for holding .sty files from other packages if needed
 SOURCEDIRFOREIGN=latex-foreign
 # Target directory for the compiled documents (examples):
@@ -46,9 +48,9 @@ all : setdates build ctan
 
 setdates :
 # Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
-#	Replaces any date of the form [yyyy/mm/dd] in *.cls, *.sty and *.tex files:
+#	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty *.tex files:
 	@echo Updating release date in all sty/cls files to [$(RELEASEDATE)]
-	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(SOURCEDIR)/*.tex)
+	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(BIBTEXDIR)/*.bib)
 	@echo ""
 
 build : $(EXAMPLES)
