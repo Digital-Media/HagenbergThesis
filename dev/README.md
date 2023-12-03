@@ -6,18 +6,24 @@ This is mainly a notebook for the developers of `HagenbergThesis` and probably n
 
 `/dev` is the development directory for the [HagenbergThesis](https://github.com/Digital-Media/HagenbergThesis) package. It contains the following in the respective directories:
 
-- `tex/latex`: Master style files, classes, and bibliography for the package (input when used as a local TEXMF root directory, see below).
+- `/dev/texmf/tex/latex`: Master style files, classes, and bibliography for the package (input when used as a local TEXMF root directory, see below).
+- `/dev/texmf/bibtex/bib`: Master bibliography files input when used as a local TEXMF root directory, see below).
 - `ctan`: Distribution files for hagenberg-thesis on [CTAN](https://ctan.org/pkg/hagenberg-thesis).
-- `latex-foreign`: Third-party packages, which are to be included with the example documents because certain (older) LaTeX distributions do not have this package or the required version.
 
-`/dev` is set up as a local TEXMF root directory for development (see https://miktex.org/kb/tds).
-It holds all common .sty, .cls, and .bib files.
+`/dev/texmf` can be used as a local TEXMF root directory for development (see https://miktex.org/kb/tds), using 
+```
+	initexmf --register-root=<path to /dev/texmf>
+	initexmf --update-fndb --verbose
+```
+or using the MikTeX Console (`Settings/Directories/Add root directory` followed by `Tasks/Refresh file name database`).
+It holds all common `.sty`, `.cls`, and `.bib` files, which (if properly set up) need not be copied to document
+subdirectories to build individual documents manually.
 
 ## How to Use
 
 ### Editing Styles and Classes
 
-Make your edits to the style files and classes in the `latex` directory. If the changes are substantial, create a branch and suggest them by opening a pull request.
+Make your edits to the style files and classes in the `/dev/texmf/tex/latex` directory. If the changes are substantial, create a branch and suggest them by opening a pull request.
 
 Do *not* edit the version/date strings in `.cls`, `.sty` and `.tex` files. 
 These are marked `%%AUTO` and are automatically replaced with the current date during the build process.
@@ -30,13 +36,14 @@ The `makefile` in this directory does the following:
 - It runs a multi-pass LaTeX, and Biber/BibLaTeX build using `latexmk` on each example document in the `documents` directory to build and create the corresponding PDF files. This is only done if necessary, e.g., when files are outdated or missing.
 - It compresses each document into a ZIP file in the `documents` directory for easy distribution and use with [Overleaf](https://www.overleaf.com/).
 - It assembles all the files necessary for submission on CTAN (styles and classes, documentation, and examples) with the correct directory structure.
+- All `.cls`, `.sty` and `.bib` files (and all auxiliary files) are finally removed from the individual documents directories.
 
 #### Preparing the Build Process for Windows
 
 This requires 'make' and 'zip' to be installed. This setup uses the GNU Win32 implementations.
 
 1. Download [GnuWin Make](http://gnuwin32.sourceforge.net/downlinks/make.php). This installs `make.exe` in `C:\Program Files (x86)\GnuWin32\bin`. When using [Chocolatey](https://chocolatey.org/), run `choco install make`.
-2. Download [GnuWin Zip](http://gnuwin32.sourceforge.net/downlinks/zip.php). This installs `zip.exe` in `C:\Program Files (x86)\GnuWin32\bin`. For Chocolatey, run `choco install zip`.
+2. Download [GnuWin Zip](http://gnuwin32.sourceforge.net/downlinks/zip.php). This installs `zip.exe` in `C:\Program Files (x86)\GnuWin32\bin`. For Chocolatey, run `choco install zip`. Note that MikTeX already installs a zip executable, thus this step can be skipped under MikTeX.
 3. Add `C:\Program Files (x86)\GnuWin32\bin` to the Windows PATH using Control Panel -> System -> Advanced system settings -> Environment variables. If the tools were installed using Chocolatey, they were added to the path in the process.
 4. To verify if the install is working, start the 'GitBash' shell (part of the Windows GIT installation) and run `which make` and `which zip`. This should show the location of the make executable:
 ```
@@ -58,6 +65,8 @@ Relax and maybe grab a coffee.
 
 It is also possible to execute specific parts of the build process. Call `make` with the appropriate parameters:
 
+- `make showsetup`: Lists the variables and values used in this setup.
+- `make inittex`: Adds `/dev/texmf` as a TEXMF root directory for manual building (not exectuted in a full make).
 - `make setdate`: Sets the current date for all the style and class files.
 - `make build`: Builds all the example documents in the `documents` directory.
 - `make [DocumentName]`: Builds a single example document. Replace `[DocumentName]` with the respective document's directory name. E.g., use `make HgbThesisTutorial` to build the thesis tutorial document or `make HgbArticle` to build the article template.
@@ -65,7 +74,7 @@ It is also possible to execute specific parts of the build process. Call `make` 
 
 ### Testing Changes
 
-To test and review your changes, open one of the example documents in the `documents` directory (e.g., `HgbThesisTutorial`) after a complete or partial build process. It will include the updated style files and classes, which can then be tested and evaluated. Keep in mind to make further changes only to the style and class files in the `dev/latex` directory. The build process will override any changes to the style or class files of the example documents.
+To test and review your changes, open one of the example documents in the `documents` directory (e.g., `HgbThesisTutorial`) after a complete or partial build process. It will include the updated style files and classes, which can then be tested and evaluated. Keep in mind to make further changes only to the style and class files in the `/dev/texmf/tex/latex` directory. The build process will override any changes to the style or class files of the example documents.
 
 ### GIT Repository Cleanup
 
