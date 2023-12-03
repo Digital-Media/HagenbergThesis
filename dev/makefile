@@ -19,7 +19,7 @@ SOURCEDIR=tex/latex/hagenberg-thesis
 # directory where we keep the original .bib files
 BIBTEXDIR=bibtex/bib
 # directory for holding .sty files from other packages if needed
-SOURCEDIRFOREIGN=latex-foreign
+SOURCEDIRFOREIGN=tex/latex-foreign
 # Target directory for the compiled documents (examples):
 DOCUMENTSDIR := ../documents
 # Collect all subdirectories (examples) in DOCUMENTSDIR:
