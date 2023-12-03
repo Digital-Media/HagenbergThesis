@@ -3,12 +3,18 @@
 %% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
-%% File encoding: ASCII
+%% File encoding: UTF-8
+
+% Preferences for the naming macros (commands/variables):
+% * internal, undocumented macros (used in release *.cls and *.sty files):   \@macroname or \@MacroName
+% * documented internal macros for customizing (eg in theme *.sty files):    \hgb@MacroName or \hgb@macroname
+% * documented public macros (available in user documents):                  \hgbMacroName (preferred), \MacroName or \macroname
+
 
 %% Package Information --------------------------------------------------------
 
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbthesis}[2023/11/06]%%AUTO
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
+\ProvidesClass{hgbthesis}[2023/12/03]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -19,88 +25,264 @@
 
 %% Commands for Title Pages (used in class options) ---------------------------
 
-\newcommand{\hgb@MainLanguage}{german}	% also referenced in hgb.sty
-\newcommand{\@mastertitlepages}{}
-\newcommand{\@diplomatitlepages}{}
-\newcommand{\@bachelortitlepages}{}
-\newcommand{\@internshiptitlepages}{}
-\newcommand{\@maketitlepages}{\@mastertitlepages}  %Default: Master's thesis
+\newcommand{\hgb@ThesisType}{master}%									type of thesis (theme name)						
 
-\newboolean{hgb@isProposal}
-\setboolean{hgb@isProposal}{false}
+\newcommand{\hgb@MainLanguage}{german}%								the main language for this document:
+\newcommand{\hgb@TitleLanguage}{}%										the language to be used for the front pages
 
-\newcommand{\@titlepagefont}{\sffamily}
+\newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
+\setboolean{hgb@IsProposal}{false}
+\newcommand{\hgb@ProposalName}{UNDEFINED}
 
-%% Handling class options --------------------------------------------------------------
+%% Utilities for handling class options -------------------------------------
 
-\DeclareOption{bachelor}{\renewcommand{\@maketitlepages}{\@bachelortitlepages}}
-\DeclareOption{master}{\renewcommand{\@maketitlepages}{\@mastertitlepages}}
-\DeclareOption{diploma}{\renewcommand{\@maketitlepages}{\@diplomatitlepages}}
-\DeclareOption{internship}{\renewcommand{\@maketitlepages}{\@internshiptitlepages}}
-\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-\DeclareOption{proposal}{\setboolean{hgb@isProposal}{true}}	% use with 'bachelor' or 'master' option
-% pass all other options to hgb.sty
-\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\ProcessOptions*
+% Issue warning when using deprecated options:
+\newcommand{\@WarnDeprecatedOption}[2]{% #1=obsolete option, #2=replacement option
+	\ClassWarning{hgbthesis}{option '#1' is deprecated, use '#2' instead!}}%
+	
+% Register permissible key/value option, e.g.: \@RegisterClassOption{type}{master}
+\newcommand{\@RegisterClassOption}[2]{%  #1=optionKey, #2=optionValue
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
+}
 
+% Check if key/value option is permissible, e.g.: \@ValidateClassOption{type}{master}
+\newcommand{\@ValidateClassOption}[2]{%  #1=optionKey, #2=optionValue
+\ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+  {}%
+  \else \ClassError{hgbthesis}{illegal key/value option: #1=#2}\relax%
+  \fi%
+}
+
+%% Specifiying/loading thesis theme styles ---------------------------------------------------
+
+\newcommand{\@ThemeID}{default}%			use theme 'hgbtheme-default' if no theme is specified
+\newcommand{\@ThemePrefix}{hgbtheme}%	fixed, all theme files are named 'hgbtheme-<themeID>.sty'
+
+% The .sty file for the specified theme (#2) is loaded if it exists, otherwise throws an error:
+\newcommand{\hgb@UseTheme}[2][]{%		#1=options passed to theme style file, #2=themeID
+	\def\@ThemeName{\@ThemePrefix-#2}
+	\def\@ThemeFile{\@ThemeName.sty}
+	%\typeout{ThemeFile = \@ThemeFile}
+	\IfFileExists{\@ThemeFile}%		true if LaTeX can find this file (need not be local!)
+		{\RequirePackage[#1]{\@ThemeName}}%  must load immediately, was {\AtEndOfPackage{\usepackage[#1]{\@ThemeName}}}%
+		{\ClassError{hgbthesis}{style file '\@ThemeFile' for theme '#2' could not be found}\relax}%
+}
+
+% Class option handling --------------------------------------------------
+
+% Specifiy permissible key/value options:
+\@RegisterClassOption{type}{bachelor}
+\@RegisterClassOption{type}{master}
+\@RegisterClassOption{type}{diploma}
+\@RegisterClassOption{type}{phd}
+\@RegisterClassOption{type}{internship}
+
+\@RegisterClassOption{language}{english}
+\@RegisterClassOption{language}{german}
+
+\@RegisterClassOption{titlelanguage}{english}
+\@RegisterClassOption{titlelanguage}{german}
+
+% We are using the 
+% See http://mirrors.ctan.org/macros/latex/base/source2e.pdf (p. 956),
+% https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
+\DeclareKeys{
+	% legacy options (deprecated):
+	bachelor.code 	= {\renewcommand{\hgb@ThesisType}{bachelor}\@WarnDeprecatedOption{bachelor}{type=bachelor}},
+	master.code 		= {\renewcommand{\hgb@ThesisType}{master}\@WarnDeprecatedOption{master}{type=master}},
+	diploma.code 		= {\renewcommand{\hgb@ThesisType}{diploma}\@WarnDeprecatedOption{diploma}{type=diploma}},
+	internship.code = {\renewcommand{\hgb@ThesisType}{internship}\@WarnDeprecatedOption{internship}{type=internship}},
+	% catch old-style language options (for some reason they are still passed to hgb.sty!)
+	german.code     = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{german}{language=german}},
+	ngerman.code    = {\renewcommand{\hgb@MainLanguage}{german}\@WarnDeprecatedOption{ngerman}{language=german}},
+	english.code    = {\renewcommand{\hgb@MainLanguage}{english}\@WarnDeprecatedOption{english}{language=english}},
+	% new options
+	type.code 				= {\@ValidateClassOption{type}{#1}\renewcommand{\hgb@ThesisType}{#1}},
+	theme.code 				= \renewcommand{\@ThemeID}{#1},
+	language.code			= {\@ValidateClassOption{language}{#1}\renewcommand{\hgb@MainLanguage}{#1}},
+	titlelanguage.code = {\@ValidateClassOption{titlelanguage}{#1}\renewcommand{\hgb@TitleLanguage}{#1}},
+	proposal.code			= \setboolean{hgb@IsProposal}{#1},
+	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
+	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
+	apa.default:n			= true,	% TODO: check if default value is properly passed!
+}
+
+\DeclareUnknownKeyHandler[hgbthesis]{
+    %\typeout{hgbthesis.cls: unknown option \CurrentOption}%
+    \PassOptionsToPackage{\CurrentOption}{hgb}
+}
+
+\ProcessKeyOptions[hgbthesis]
 
 %% Paper Options and Style File -----------------------------------------------
 
 \LoadClass[a4paper,11pt,oneside]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
- 
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\RequirePackage{titling}
+\newcommand{\hgb@TitlePageFont}{\sffamily}
 
+%% Setup for Pages in the Front Matter:
 
-%% Setup for Pages in the Front Matter ----------------------------------------
+% General Thesis Parameters ----------------------------------------
 
-% General Commands
+%	Initialized from standard '\author{}' parameter (by \maketitle hook below)
+\newcommand{\hgb@Author}{Author undefined!}
 
-\newcommand{\@programtype}{\@MissingArg{Type of degree program not specified!}}
-\newcommand{\programtype}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programtype}{#1}}
+\newcommand{\@warnmultipleauthors}%
+	{\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
+
+\newcommand{\hgb@Title}{Undefined document title!}% derived from \title (initialized in \maketitle hook)
+
+\newcommand{\hgb@SubTitle}{}
+\newcommand{\subtitle}[1]{\renewcommand{\hgb@SubTitle}{#1}}
+
+\newcommand{\hgb@FullTitle}{}% = title + subtitle (initialized in \maketitle hook)
+
+\newcommand{\hgb@ThesisName}{Undefined thesis name!}%
+
+\newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
+\newcommand{\institution}[1]{%
+	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@Institution}{#1}}
 }
 
-\newcommand{\@programname}{\@MissingArg{Name of degree program not specified!}}
-\newcommand{\programname}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@programname}{#1}}
+\newcommand{\hgb@ProgramType}{\@MissingArg{Type of degree program not specified!}}
+\newcommand{\programtype}[1]{\renewcommand{\hgb@ProgramType}{#1}}
+
+\newcommand{\hgb@ProgramName}{\@MissingArg{Name of degree program not specified!}}
+\newcommand{\programname}[1]{\renewcommand{\hgb@ProgramName}{#1}}
+
+\newcommand{\hgb@PlaceOfStudy}{\@MissingArg{Place of study not specified!}}
+\newcommand{\placeofstudy}[1]{\renewcommand{\hgb@PlaceOfStudy}{#1}}
+
+% Advisor(s) -------------------------------------------------------------------
+
+\newcounter{@advisorctr}
+\setcounter{@advisorctr}{0}
+
+% User command to specify the role(optional) and name of one advisor: \advisor[<role>]{<name>}
+% Repeat to specify multiple advisors.
+\newcommand{\advisor}[2][\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}]{% e.g., \advisor[Supervisor]{Prof.~Marie Curie, PhD}
+	\stepcounter{@advisorctr}%
+	\expandafter\def\csname advisorrole-\the@advisorctr\endcsname{#1}
+	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
 }
 
-\newcommand{\@placeofstudy}{\@MissingArg{Place of study not specified!}}
-\newcommand{\placeofstudy}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@placeofstudy}{#1}}
+% Returns the number of advisers specified 
+\newcommand{\hgb@AdvisorCount}{
+	\the@advisorctr
 }
 
-\newcommand{\@advisor}{}					% empty by default
-\newcommand{\advisor}[1]{%
-	\renewcommand{\@advisor}{#1}		
+% Returns the 'role' of adviser with the given number (#1 = 1,...,\hgb@AdvisorCount)
+\newcommand{\hgb@getAdvisorRole}[1]{
+	\csname advisorrole-#1\endcsname
 }
 
-\newcommand{\thesisnumber}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\thesisnumber' is not supported any longer.}
+% Returns the 'name' of adviser with the given number (#1 = 1,...,\hgb@AdvisorCount)
+\newcommand{\hgb@getAdvisorName}[1]{
+	\csname advisorname-#1\endcsname
 }
 
-\newcommand{\coursetitle}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\coursetitle' is not supported any longer.}
+% Legacy cmommand, returns the first advisor's name
+\newcommand{\hgb@Advisor}{\hgb@getAdvisorName{1}}
+
+% Submission Date ---------------------------------------------------------------
+
+\DTMsavenow{hgb@SubmissionDate}  % default submission date is today
+
+\newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}
+	\DTMsavenoparsedate{hgb@SubmissionDate}{#1}{#2}{#3}{-1}
 }
 
-\newcommand{\semester}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\semester' is not supported any longer.}
+\newcommand{\hgb@SubmissionYear}{\DTMfetchyear{hgb@SubmissionDate}}
+\newcommand{\hgb@SubmissionMonth}{\DTMfetchmonth{hgb@SubmissionDate}}
+\newcommand{\hgb@SubmissionDay}{\DTMfetchday{hgb@SubmissionDate}}
+
+\newcommand{\hgb@GetMonthName}[2]{% #1=language #2=monthNumber,
+	\csname DTM#1monthname\endcsname{#2}% brittle?
 }
 
-\newcommand{\@logofile}[0]{}
+% Copyright/License Settings --------------------------------------------------
+
+\newcommand{\hgb@License}{cclicense}
+
+\newcommand{\license}[1]{%
+	\renewcommand{\hgb@License}{#1}
+	\ifthenelse{\equal{#1}{cc}}{\renewcommand{\hgb@License}{cclicense}}{}%
+	\ifthenelse{\equal{#1}{strict}}{\renewcommand{\hgb@License}{strictlicense}}{}%
+}
+
+\newcommand{\cclicense}{% for backward compatibility, use \license{cc} instead
+	\ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cclicense} instead!}%
+	\license{cc}%
+}
+
+\newcommand{\strictlicense}{% for backward compatibility, use \license{strict} instead
+	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strictlicense} instead!}%
+	\license{strict}%
+}
+
+% Legacy commands, keep for internship reports:
+\newcommand{\hgb@CompanyName}{\@MissingArg{Company not specified!}}
+\newcommand{\companyName}[1]{\renewcommand{\hgb@CompanyName}{#1}}
+
+\newcommand{\hgb@CompanyUrl}{\@MissingArg{Company URL not specified!}}
+\newcommand{\companyUrl}[1]{\renewcommand{\hgb@CompanyUrl}{#1}}
+
+
+%% Logo -------------------------------------------------------------------------
+
+% Specify the institution's logo - DEPRECATED - logo is now handled in theme files only!
+\newcommand{\hgb@LogoFile}{@unspecified}	% 
 \newcommand{\logofile}[1]{%
-	\renewcommand{\@logofile}{#1}
+	\ClassWarning{hgbthesis}{Command \string\logofile\space is deprecated, logo should be specified in theme file!}%
+	\renewcommand{\hgb@LogoFile}{#1}
 }
 
-\newcommand{\makelogo}[0]{%
-\ifthenelse{\equal{\@logofile}{}}%
-	{\vspace*{30mm}}%
-	{\includegraphics[height=30mm]{\@logofile}}%
+%% Create title pages -------------------------------------
+
+% Generate the front pages (to be redefined by theme .sty files)
+\newcommand{\hgb@MakeFrontPages}{%
+	\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}\relax%
 }
 
-% Special sectioning setup for thesis proposals (called in \@bachelortitlepages):
-\newcommand{\@proposalsetup}[0]{%
+% Redefine LaTeX's \maketitle to add PDF meta data
+\renewcommand{\maketitle}{% redefine standard \maketitle command
+	\hypersetup{
+			pdftitle={\hgb@FullTitle},%
+      pdfauthor={\hgb@Author},%
+			pdfsubject={\hgb@ProgramType~\hgb@ProgramName,~\hgb@PlaceOfStudy},
+			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
+			pdfproducer={pdflatex},
+			pdfkeywords={},
+			pageanchor=false%					disable hyperref page anchors in front pages
+	}%
+	\SetLanguage{\hgb@TitleLanguage}
+	\hgb@MakeFrontPages%						generate front pages
+	\SetLanguage{\hgb@MainLanguage}
+	\hypersetup{pageanchor=true}%		enable hyperref page anchors in the main document
+}
+
+% Define new hook to be used in theme style files for various initializations: 
+% Usage: \AddToHook{hgb@InitThemeHook}{...}
+% Invoked before \maketitle (by hook code below).
+\NewHook{hgb@InitThemeHook}
+
+% Initialize remaining parameters before running \maketitle:
+\AddToHook{cmd/maketitle/before}{%
+	\renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
+	\renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
+	\ifthenelse{\equal{\hgb@SubTitle}{}}%
+		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
+		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
+	%
+	\ifthenelse{\boolean{hgb@IsProposal}}{\@ProposalSetup}{}%
+	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook (if any)
+}
+
+% Special sectioning setup for thesis proposals: ----------------------------
+
+\newcommand{\@ProposalSetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
 	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
 	% define an empty entry format for the TOC chapter numbering (tocbasic)
@@ -118,460 +300,14 @@
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
 }
 
-% Submission Commands
+%% Set various terms to be redefined by title page themes
 
-\newcounter{@dayofsubmission}
-\newcounter{@monthofsubmission}
-\newcounter{@yearofsubmission}
+\ifthenelse{\equal{\hgb@TitleLanguage}{}}%	duplicate in 'hgb.sty'!
+		{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
 
-\setcounter{@dayofsubmission}{\the\day}
-\setcounter{@monthofsubmission}{\the\month}
-\setcounter{@yearofsubmission}{\the\year}
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-docname}{\hgb@TitleLanguage}}%
+\renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal-name}{\hgb@TitleLanguage}}%
 
-\newcommand{\dateofsubmission}[3]{%	%\dateofsubmission{yyyy}{mm}{dd}
-	\setcounter{@yearofsubmission}{#1}
-	\setcounter{@monthofsubmission}{#2}
-	\setcounter{@dayofsubmission}{#3}
-}
-
-% Internship Report Commands
-
-\newcommand{\@companyName}{\@MissingArg{Company not specified!}}
-\newcommand{\companyName}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyName}{#1}}
-}
-
-\newcommand{\@companyUrl}{\@MissingArg{Company URL not specified!}}
-\newcommand{\companyUrl}[1]{%
-	\ifthenelse{\isempty{#1}}{}{\renewcommand{\@companyUrl}{#1}}
-}
-
-\newcommand{\companyPhone}[1]{%
-	\ClassWarning{hgbthesis}{command '\protect\companyPhone' is not supported any longer.}
-}
-
-%% ----------------------------------------------------------------------------
-
-\newcommand{\@license}{\@MissingArg{License information is missing!}}
-\newcommand{\license}[1]{%
-	\renewcommand{\@license}{#1}
-}
-
-%% Commands for Creating the Title Pages --------------------------------------
-
-%% dirty trick: adds blank space after each letter (https://stackoverflow.com/a/3951837)
-\newcommand{\@addspaces}[1]{%  
-  \@tfor\letter:=#1\do{%
-    \letter\thinspace%	%\space
-  }\negthinspace%
-}
-
-
-\newcommand{\@bachelortitlefinal}{
-	% use language switch to add english term
-	\@addspaces{BACHELORARBEIT}%
-}
-
-\newcommand{\@bachelortitleproposal}{
-	% use language switch to add english term
-	\@addspaces{BACHELORARBEIT} \space (\@addspaces{EXPOS{É}})%
-}
-
-\newcommand{\@makebachelortitle}{%
-\begin{titlepage}%
-	\begin{german}
-		\rule{0mm}{1mm}%
-		\vspace*{0mm}%
-		\begin{center}%
-			\@titlepagefont%
-			\setlength{\unitlength}{1cm}%
-			\parbox[c][5cm][c]{12cm}{%
-				\centering\LARGE\bfseries%
-				\setlength{\baselineskip}{25pt}%
-				\@title%
-			}
-			\vskip 15mm%
-			{\large\@author}%
-			\vskip 15mm%
-			\makelogo%
-			\vskip 15mm%
-			%
-			\ifthenelse{\boolean{hgb@isProposal}}%
-					{\Large{\@bachelortitleproposal}}%
-					{\Large{\@bachelortitlefinal}}%
-			\vskip 4mm%
-			%
-			{\large eingereicht am} \vskip 1mm {\@programtype}%
-			\vskip 4mm%
-			{\large\@programname}%
-			\vskip 4mm%
-			{\large in \@placeofstudy}%
-			\vskip 16mm%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
-		\end{center}%
-		\vfil%
-	\end{german}
-\end{titlepage}%
-}
-
-\newcommand{\@mastertitlefinal}{
-	% use language switch to add english term
-	\@addspaces{MASTERARBEIT}%
-}
-
-\newcommand{\@mastertitleproposal}{
-	% use language switch to add english term
-	\@addspaces{MASTERARBEIT} \space (\@addspaces{EXPOS{É}})%
-}
-
-\newcommand{\@makemastertitle}{%
-\begin{titlepage}%
-	\begin{german}
-		\rule{0mm}{1mm}%
-		\vspace*{0mm}%
-		\begin{center}%
-			\@titlepagefont %\normalfont
-			\setlength{\unitlength}{1cm}%
-			\parbox[c][5cm][c]{12cm}{%
-				\centering\LARGE\bfseries%%
-				\setlength{\baselineskip}{25pt}%
-				\@title%
-			}
-			\vskip 15mm%
-			{\large\@author}%{\large\scshape\@author}%
-			\vskip 15mm%
-			\makelogo%
-			\vskip 15mm%
-			%
-			\ifthenelse{\boolean{hgb@isProposal}}%
-					{\Large{\@mastertitleproposal}}%
-					{\Large{\@mastertitlefinal}}%
-			%
-			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {\@programtype}%
-			\vskip 4mm%
-			{\large\@programname}%
-			\vskip 4mm%
-			{\large in \@placeofstudy}%
-			\vskip 16mm%
-			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
-		\end{center}%
-		\vfil%
-	\end{german}
-\end{titlepage}%
-}
-
-\newcommand{\@makediplomatitle}{%
-\begin{titlepage}%
-	\begin{german}
-		\rule{0mm}{1mm}
-		\vspace*{0mm}
-		\begin{center}%
-			\@titlepagefont %\normalfont
-			\setlength{\unitlength}{1cm}
-			\parbox[c][5cm][c]{12cm}{%
-				\centering\LARGE\bfseries%
-				\setlength{\baselineskip}{25pt}%
-				\@title%
-			}
-			\vskip 15mm%
-			{\large\@author}%{\large\scshape\@author}%
-			\vskip 15mm%
-			\makelogo%
-			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Diplomarbeit}}}%
-			\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {\@programtype}%
-			\vskip 4mm%
-			{\large\@programname}%
-			\vskip 4mm%
-			{\large in \@placeofstudy}%
-			\vskip 16mm%
-			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
-		\end{center}%
-		\vfil%
-	\end{german}
-\end{titlepage}%
-}
-
-\newcommand{\@makeinternshiptitle}{%
-\begin{titlepage}%
-	\begin{german}
-		\rule{0mm}{1mm}
-		\vspace*{0mm}
-		\begin{center}%
-			\@titlepagefont %\normalfont
-			\setlength{\unitlength}{1cm}
-			\parbox[c][5cm][c]{12cm}{%
-				\centering\LARGE\bfseries%
-				\setlength{\baselineskip}{25pt}%
-				\@title%
-			}
-			\vskip 15mm%
-			{\large\@author}%{\large\scshape\@author}%
-			\vskip 15mm%
-			\makelogo%
-			\vskip 15mm%
-			{\Large\uppercase{\@addspaces{Praktikumsbericht}}}%
-			\vskip 4mm%
-			%{\large Nr.~\@thesisnumber}
-			%\vskip 4mm%
-			{\large eingereicht am} \vskip 1mm {\@programtype}%
-			\vskip 4mm%
-			{\large\@programname}%
-			\vskip 4mm%
-			{\large in \@placeofstudy}%
-			\vskip 16mm%
-			%{\large im \monthname[\value{@monthofsubmission}] \arabic{@yearofsubmission}}%
-			{\large im \DTMgermanmonthname{\value{@monthofsubmission}} \arabic{@yearofsubmission}}%
-		\end{center}%
-		\vfil%
-	\end{german}
-\end{titlepage}%
-}
-
-
-% Copyright and License Page --------------------------------------------------
-
-\newcommand{\strictlicense}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\license{Alle Rechte vorbehalten}}%
-	{\license{All Rights Reserved}}
-}
-
-\newcommand{\@ccLicenseAt}{%
-Diese Arbeit wird unter den Bedingungen der 
-\textsf{Creative Commons Lizenz} 
-\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
-(CC BY-NC-ND 4.0) ver\"offentlicht --
-siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.}
-
-\newcommand{\@ccLicenseEn}{%
-This work is published under the conditions of the 
-\textsf{Creative Commons License} 
-\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} 
-(CC BY-NC-ND 4.0)---see
-\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.}
-
-\newcommand{\cclicense}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\license{\@ccLicenseAt}} % german CC license text
-	{\license{\@ccLicenseEn}} % english CC license text (default)
-}
-	
-\cclicense	% Creative Commons License (default)
-
-\newcommand{\@makelicense}{ 
-	\sbox\@tempboxa{\@license}%
-	\ifdim \wd\@tempboxa >\hsize
-		\begin{sloppypar}\noindent\@license\end{sloppypar}
-	\else
-		\global \@minipagefalse
-		\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
-	\fi
-}
-
-\newcommand{\@copyrightpage}{%
-\newpage
-%\setcounter{page}{2}
-\thispagestyle{plain}
-\rule{0mm}{1mm}
-\vspace*{75mm}
-\begin{center}
-\textsf{\copyright\ Copyright\ \arabic{@yearofsubmission}\ \@author}
-\end{center}
-\vspace{8mm}
-\@makelicense
-}
-
-
-%% Company Page for Internship Report -----------------------------------------
-
-\newcommand{\@companypage}{%
-\newpage
-\setcounter{page}{2}
-\thispagestyle{plain}
-\rule{0mm}{1mm}
-\begin{center}
-\vspace{25mm} 
-{Praktikumsstelle:}
-\\
-\vspace{3mm}
-{\Large\sf\@companyName\\ \mbox{}}
-\\
-{\sf \@companyUrl}
-\\
-\vspace{45mm} 
-{Kontaktperson:}
-\\
-\vspace{3mm}
-{\Large\sf\@advisor\\ \mbox{}}
-\end{center}
-}
-
-
-%% Advisor Page ----------------------------------------
-
-\newcommand{\@advisorheaderfinal}{
-	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-			{Betreuung}%
-			{Advisor}%
-}
-
-\newcommand{\@advisorheaderproposal}{
-	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-			{Betreuung (Vorschlag)}%
-			{Proposed Advisor}%
-}
-
-\newcommand{\@advisorpage}{%
-	\ifthenelse{\equal{\@advisor}{}}%	does nothing if advisor not defined 
-		{}{%
-		\newpage
-		\setcounter{page}{2}
-		\thispagestyle{plain}
-		\rule{0mm}{1mm}
-		\vspace{90mm}
-		\begin{center}
-			\ifthenelse{\boolean{hgb@isProposal}}%
-				{\@advisorheaderproposal:}%
-				{\@advisorheaderfinal:}%
-			\\
-			\vspace{3mm} 
-			{\Large\sf \@advisor\\ \mbox{}}
-		\end{center}
-		}
-}
-
-%% Declaration Pages in German and English ------------------------------------
-
-% German
-
-\newcommand{\@declarationpageDe}{%
-	\begin{german}
-		\chapter{Erkl\"arung}
-		\noindent
-		%Standardfassung der FH-OOe ab 04.04.2012:
-		Ich erkl\"are eidesstattlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne fremde Hilfe verfasst, 
-		andere als die angegebenen Quellen nicht benutzt und die den benutzten Quellen entnommenen Stellen als 
-		solche gekennzeichnet habe. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen 
-		Pr\"ufungsbeh\"orde vorgelegt.
-		Die vorliegende, gedruckte Arbeit ist mit dem elektronisch \"ubermittelten Textdokument identisch.
-		\par
-		\vspace{10mm}
-		\noindent
-		%\@placeofstudy, am \formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}
-		\@placeofstudy, am \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
-		\par
-		\vspace{12mm}
-		\noindent
-		\@author
-	\end{german}
-}
-
-% English
-
-\newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
-
-\newcommand{\@declarationpageEn}{%
-	\begin{english}
-		\chapter{Declaration}
-		\noindent
-		I hereby declare and confirm that this thesis is entirely the result of my own original work. 
-		Where other sources of information have been used, they have been indicated as such and properly 
-		acknowledged. I further declare that this or similar work has not been submitted for credit elsewhere.
-		This printed copy is identical to the submitted electronic version.
-		\par
-		\vspace{10mm}
-		\noindent
-		%\@placeofstudy, \the\year-\leadingzero{\month}-\leadingzero{\day} %http://de.wikibooks.org/wiki/LaTeX-W%F6rterbuch:_today 
-		%\@placeofstudy, {\usdate\formatdate{\value{@dayofsubmission}}{\value{@monthofsubmission}}{\value{@yearofsubmission}}}
-		\@placeofstudy, \DTMdate{\value{@yearofsubmission}-\value{@monthofsubmission}-\value{@dayofsubmission}}
-		\par
-		\vspace{12mm}
-		\noindent
-		\@author
-	\end{english}
-}
-
-\newcommand{\@declarationpage}{%
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\@declarationpageDe}%
-	{\@declarationpageEn}
-}
-
-
-%% Assembly of title pages ----------------------------------------------------
-
-\renewcommand{\@bachelortitlepages}{
-	\@makebachelortitle%
-	\ifthenelse{\boolean{hgb@isProposal}}%
-		{%	thesis proposal:
-			\@proposalsetup%
-			\@advisorpage%
-			%no copyright page for proposals
-			%no declaration page for proposals
-		}%			
-		{%	final thesis:
-			\@advisorpage%
-			\@copyrightpage%
-			\@declarationpage%
-		}%
-}
-
-\renewcommand{\@mastertitlepages}{
-	\@makemastertitle
-	\ifthenelse{\boolean{hgb@isProposal}}%
-		{%	thesis proposal:
-			\@proposalsetup%
-			\@advisorpage%
-			%no copyright page for proposals
-			%no declaration page for proposals
-		}%			
-		{%	final thesis:
-			\@advisorpage%
-			\@copyrightpage%
-			\@declarationpage%
-		}%
-}
-
-\renewcommand{\@diplomatitlepages}{
-	\@makediplomatitle
-	%\ifthenelse{\equal{\@advisor}{}}%
-			%{}{\@advisorpage}%
-	\@advisorpage
-	\@copyrightpage
-	\@declarationpage
-}
-
-\renewcommand{\@internshiptitlepages}{
-	\@makeinternshiptitle
-	\@companypage
-	\@copyrightpage
-	\@declarationpage
-}
-
-\newcommand{\@warnmultipleauthors}%
-{\PackageWarning{hagenberg-thesis}{Multiple authors are not supported ('\@backslashchar and' is ignored)!}}%
-
-% Add PDF meta data and create title pages
-\renewcommand{\maketitle}{	%replace standard LaTeX-command
-	\def\and{\@warnmultipleauthors}% suppress \and inside \author{..}
-	\renewcommand{\thanks}[1]{}% suppress \thanks{..} inside \author{..}
-	\hypersetup{
-			pdftitle={\@title},
-			pdfauthor={\@author},
-			pdfsubject={\@programtype~\@programname,~\@placeofstudy},
-			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
-			pdfproducer={pdflatex},
-			pdfkeywords={},
-			pageanchor=false	% disable hyperref page anchors in frontmatter pages
-	}%
-	\@maketitlepages
-	\hypersetup{pageanchor=true}	% enable hyperref page anchors in the main document
-}
 
 %% Additional Hagenberg packages ----------------------------------------------
 
@@ -581,5 +317,8 @@ This work is published under the conditions of the
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
+\RequirePackage{hgbdict}
+
+\hgb@UseTheme{\@ThemeID}%		load theme style file
 
 \endinput

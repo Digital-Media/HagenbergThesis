@@ -5,7 +5,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbbib}[2023/11/06]%%AUTO
+\ProvidesPackage{hgbbib}[2023/12/03]%%AUTO
 
 \newcommand{\@bibstyle}{numeric-comp}	%% default bibliography style is 'numeric-comp'
 \DeclareOption{apa}{\renewcommand{\@bibstyle}{apa}}
@@ -27,20 +27,32 @@
 	
 \RequirePackage{csquotes}				% recommended for biblatex
 
-%% titles of reference section + 3 categories of references:
-\newcommand{\@bibtitle}{Quellenverzeichnis}
-\newcommand{\@bibtitleLiteratur}{Literatur}
-\newcommand{\@bibtitleMedia}{Medien}
-\newcommand{\@bibtitleOnline}{Online-Quellen}
-\newcommand{\@bibtitleSoftware}{Software}	
+%% set up dictionary terms
 
-\ifthenelse{\equal{\hgb@MainLanguage}{english}}{%
-	\renewcommand{\@bibtitle}{References}
-	\renewcommand{\@bibtitleLiteratur}{Literature}
-	\renewcommand{\@bibtitleMedia}{Media}
-	\renewcommand{\@bibtitleOnline}{Online sources}	
-	\renewcommand{\@bibtitleSoftware}{Software}
-}{}
+\RequirePackage{hgbdict}
+
+\hgbDictionarySet{bibtitle}{english}{References}
+\hgbDictionarySet{bibtitle}{german}{Quellenverzeichnis}
+
+\hgbDictionarySet{bibtitleLiterature}{english}{Literature}
+\hgbDictionarySet{bibtitleLiterature}{german}{Literatur}
+
+\hgbDictionarySet{bibtitleMedia}{english}{Media}
+\hgbDictionarySet{bibtitleMedia}{german}{Medien}
+
+\hgbDictionarySet{bibtitleOnline}{english}{Online sources}
+\hgbDictionarySet{bibtitleOnline}{german}{Online-Quellen}
+
+\hgbDictionarySet{bibtitleSoftware}{english}{Software}
+\hgbDictionarySet{bibtitleSoftware}{german}{Software}
+
+%% titles of reference section + 3 categories of references:
+
+\newcommand{\@bibtitle}{\hgbDictionaryGet{bibtitle}{\hgb@MainLanguage}}
+\newcommand{\@bibtitleLiterature}{\hgbDictionaryGet{bibtitleLiterature}{\hgb@MainLanguage}}
+\newcommand{\@bibtitleMedia}{\hgbDictionaryGet{bibtitleMedia}{\hgb@MainLanguage}}
+\newcommand{\@bibtitleOnline}{\hgbDictionaryGet{bibtitleOnline}{\hgb@MainLanguage}}
+\newcommand{\@bibtitleSoftware}{\hgbDictionaryGet{bibtitleSoftware}{\hgb@MainLanguage}}
 
 %% categories for a split bibliography (order of declaration is important!)
 \DeclareBibliographyCategory{literature}
@@ -51,8 +63,8 @@
 %% headings for the bibliography categories
 \defbibheading{literature}{%
 	\phantomsection%
-	\section*{\@bibtitleLiteratur}%
-	\addcontentsline{toc}{section}{\@bibtitleLiteratur}%
+	\section*{\@bibtitleLiterature}%
+	\addcontentsline{toc}{section}{\@bibtitleLiterature}%
 }
 
 \defbibheading{media}{%

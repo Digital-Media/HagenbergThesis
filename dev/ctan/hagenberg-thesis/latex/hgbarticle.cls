@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2023/11/06]%%AUTO
+\ProvidesClass{hgbarticle}[2023/12/03]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -42,8 +42,8 @@
 \renewcommand{\maketitlehooka}{%
   \sffamily%
   \hypersetup{
-		pdftitle={\@title},
-		pdfauthor={\@author},
+		pdftitle={\thetitle},   % \thetitle is defined by titling package (instead of \@title)
+		pdfauthor={\theauthor}, % \theauthor is defined by titling package (instead of \@author)
 		pdfsubject={},
 		pdfcreator={LaTeX using class hgbreport [\hgbDate]},
 		pdfproducer={pdflatex},
