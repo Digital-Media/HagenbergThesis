@@ -1,4 +1,0 @@
-
-Update hgb.sty to use key/value parameters.
-
-Revise the build process.

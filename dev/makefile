@@ -90,43 +90,44 @@ $(DOCSLIST) :
 #	Builds and zips every document (directory) in DOCSLIST
 	@echo "+++ Processing document \"$@\" +++"
 #	Copy all .sty .cls *.bib files to the document directory:
-	@echo "Temporarily copying .sty, .cls files from $(SOURCEDIR) and $(SOURCEDIRFOREIGN)"
-	@find $(SOURCEDIR)/ -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
-	@find $(SOURCEDIR)/ -type f -name "*.cls" -exec cp -u {} $(DOCSDIR)/$@ \;
-	@find $(SOURCEDIRFOREIGN)/ -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
-	@echo "Temporarily copying .bib files from $(BIBTEXDIR)"
-	@find $(BIBTEXDIR)/ -type f -name "*.bib" -exec cp -u {} $(DOCSDIR)/$@ \;
-#
+	@echo "Temporarily copying cls/sty/pdf files from $(SOURCEDIR) and $(SOURCEDIRFOREIGN)"
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.cls" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.pdf" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(SOURCEDIRFOREIGN)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(BIBTEXDIR)/ -maxdepth 1 -type f -name "*.bib" -exec cp -u {} $(DOCSDIR)/$@ \;
 #	Run the LaTeX build in a sub-makefile:
 	@make --silent -C $(DOCSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
 	@echo "Creating document ZIP file $@.zip"
 	@cd $(DOCSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
 #	Remove all local .sty .cls *.bib files from the document directory:
-	@echo "Final cleanup in $(DOCSDIR)/$@: deleting .sty, .cls, .bib files"
-	@find $(DOCSDIR)/$@ -name "*.sty" -type f -delete
-	@find $(DOCSDIR)/$@ -name "*.cls" -type f -delete
-	@find $(DOCSDIR)/$@ -name "*.bib" -type f -delete
+	@echo "Final cleanup in $(DOCSDIR)/$@"
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.sty" -delete
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.cls" -delete
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.bib" -delete
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.pdf" -and -not -name "main.pdf" -delete
 	@echo ""
 	
 ctan :
 #	Builds the CTAN distribution
 	@echo "" 
 	@echo "Building CTAN bundle ..."
-#	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
-	@echo "  copying .sty and .cls files from $(SOURCEDIR)/"
-	@find $(CTANDIR)/$(CTANBUNDLE)/latex -name "*.sty" -type f -delete
-	@find $(CTANDIR)/$(CTANBUNDLE)/latex -name "*.cls" -type f -delete
-	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANBUNDLE)/latex
-#	Copy all .bib to ctan/hagenberg-thesis/bibtex/
+#	Clear CTAN /latex/ and /bibtex/ directories
+	@find $(CTANDIR)/$(CTANBUNDLE)/latex  -maxdepth 1 -type f -name "*.*" -delete
+	@find $(CTANDIR)/$(CTANBUNDLE)/bibtex -maxdepth 1 -type f -name "*.*" -delete
+#	@find $(CTANDIR)/$(CTANBUNDLE)/latex -maxdepth 1 -type f -name "*.cls" -delete
+#	@find $(CTANDIR)/$(CTANBUNDLE)/latex -maxdepth 1 -type f -name "*.sty" -delete
+#	@find $(CTANDIR)/$(CTANBUNDLE)/latex -maxdepth 1 -type f -name "*.pdf" -delete
+#	Copy all files to ctan/hagenberg-thesis/latex/
+	@echo "  copying cls/sty/pdf files from $(SOURCEDIR)/"
+	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(SOURCEDIR)/*.pdf $(CTANDIR)/$(CTANBUNDLE)/latex
 	@echo "  copying .bib files from $(BIBTEXDIR)/"
-	@find $(CTANDIR)/$(CTANBUNDLE)/bibtex -name "*.bib" -type f -delete
 	@cp -u $(BIBTEXDIR)/*.bib $(CTANDIR)/$(CTANBUNDLE)/bibtex
 #
 #	Copy manual/tutorial source and PDFs to ctan/hagenberg-thesis/doc/
+	@find $(CTANDIR)/$(CTANBUNDLE)/doc -maxdepth 1 -name "*.*" -type f -delete
 	@echo "  Copying manual/tutorial source and PDFs to $(CTANDIR)/doc/"
-	@find $(CTANDIR)/$(CTANBUNDLE)/doc -name "*.tex" -type f -delete
-	@find $(CTANDIR)/$(CTANBUNDLE)/doc -name "*.pdf" -type f -delete
 	@cp -u $(DOCSDIR)/Manual/main.tex $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).tex
 	@cp -u $(DOCSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).pdf
 	@cp -u $(DOCSDIR)/HgbThesisTutorialEN/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE)-tutorial-en.pdf
