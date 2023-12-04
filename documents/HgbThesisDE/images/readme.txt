@@ -1,1 +1,0 @@
-Place document images (.pfd, .png ...) in this folder.
