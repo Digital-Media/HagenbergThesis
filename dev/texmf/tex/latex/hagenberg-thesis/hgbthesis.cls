@@ -14,7 +14,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
-\ProvidesClass{hgbthesis}[2023/12/03]%%AUTO
+\ProvidesClass{hgbthesis}[2023/12/04]%%AUTO
 
 \RequirePackage{xifthen}
 
