@@ -96,7 +96,8 @@ $(DOCSLIST) :
 	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.pdf" -exec cp -u {} $(DOCSDIR)/$@ \;
 	@find $(SOURCEDIRFOREIGN)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
 	@find $(BIBTEXDIR)/ -maxdepth 1 -type f -name "*.bib" -exec cp -u {} $(DOCSDIR)/$@ \;
-#	Run the LaTeX build in a sub-makefile:
+#	Run the LaTeX build in a sub-makefile (removes main.pdf first, i.e., runs always):
+	rm -f $(DOCSDIR)/$@/main.pdf
 	@make --silent -C $(DOCSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
 	@echo "Creating document ZIP file $@.zip"
@@ -116,13 +117,10 @@ ctan :
 #	Clear CTAN /latex/ and /bibtex/ directories
 	@find $(CTANDIR)/$(CTANBUNDLE)/latex  -maxdepth 1 -type f -name "*.*" -delete
 	@find $(CTANDIR)/$(CTANBUNDLE)/bibtex -maxdepth 1 -type f -name "*.*" -delete
-#	@find $(CTANDIR)/$(CTANBUNDLE)/latex -maxdepth 1 -type f -name "*.cls" -delete
-#	@find $(CTANDIR)/$(CTANBUNDLE)/latex -maxdepth 1 -type f -name "*.sty" -delete
-#	@find $(CTANDIR)/$(CTANBUNDLE)/latex -maxdepth 1 -type f -name "*.pdf" -delete
 #	Copy all files to ctan/hagenberg-thesis/latex/
-	@echo "  copying cls/sty/pdf files from $(SOURCEDIR)/"
+	@echo "  Copying cls/sty/pdf files from $(SOURCEDIR)/"
 	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(SOURCEDIR)/*.pdf $(CTANDIR)/$(CTANBUNDLE)/latex
-	@echo "  copying .bib files from $(BIBTEXDIR)/"
+	@echo "  Copying .bib files from $(BIBTEXDIR)/"
 	@cp -u $(BIBTEXDIR)/*.bib $(CTANDIR)/$(CTANBUNDLE)/bibtex
 #
 #	Copy manual/tutorial source and PDFs to ctan/hagenberg-thesis/doc/
@@ -134,7 +132,7 @@ ctan :
 	@cp -u $(DOCSDIR)/HgbThesisTutorialDE/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE)-tutorial-de.pdf
 #
 #	Update version number in package README file:
-	@echo "  Updating version number in package README.md"
+	@echo "  Updating version number in package $(CTANDIR)/$(CTANBUNDLE)/README.md"
 	@$(shell sed -i 's|$(READMEVERSIONTAG).*|$(READMEVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANBUNDLE)/README.md)
 #	Make a ZIP of the complete CTAN bundle:
 	@echo "  ZIPing the complete CTAN bundle"
