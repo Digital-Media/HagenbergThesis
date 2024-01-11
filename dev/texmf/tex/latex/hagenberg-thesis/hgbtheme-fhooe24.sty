@@ -8,6 +8,16 @@
 \RequirePackage{hgbdict}
 \RequirePackage{forloop}
 \RequirePackage{tikz}
+\RequirePackage[absolute]{textpos}
+%\RequirePackage[absolute,showboxes]{textpos}
+
+% FH OÖ CD defines 15 square boxes horizontally on the page, thus one is 14mm wide
+\setlength{\TPHorizModule}{14mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+
+% Theres a margin of one box/module in the CD so we set the origin to that to avoid offset
+\textblockorigin{\TPHorizModule}{\TPHorizModule}
+\setlength{\parindent}{0pt}
 
 % use \@currname to retrieve theme name?
 
@@ -23,7 +33,7 @@
 %% Initialization (optional) --------------------------------------------------
 
 \AddToHook{hgb@InitThemeHook}{%
-	\typeout{hgbtheme-default: initializing theme}%
+	\typeout{hgbtheme-fhooe24: initializing theme}%
 	% add initialization code if needed
 }%
 
@@ -43,8 +53,6 @@
 
 \newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
-	\newgeometry{top=0mm,bottom=14mm,right=14mm,left=14mm}
-	\setlength{\parindent}{0pt}
 	% background image -----------------------------------------
 	\AddToHookNext{shipout/background}{
 		\begin{tikzpicture}[remember picture,overlay]
@@ -53,49 +61,52 @@
 			};
 		\end{tikzpicture}
 	}
-	\vspace*{98mm}%
+
 	\hgb@TitlePageFont%
-	\setlength{\unitlength}{1cm}%
 	% author --------------------------------------------------
-	{\Large\hgb@Author\par}%
-	\vskip 14mm%
+	\begin{textblock}{10}[0,1](0,7)
+		{\Large\hgb@Author\par}%
+	\end{textblock}
 	% title --------------------------------------------------
-	\parbox[c][56mm][t]{140mm}{%
-		\raggedright%
-		%\centering%
-		\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+	\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+		\begin{textblock}{10}(0,8)
+			\raggedright% set ragged right to avoid hyphenation
 			{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
-			\vskip 7mm%
+		\end{textblock}
+		\begin{textblock}{10}[0,1](0,10)
+			\raggedright% set ragged right to avoid hyphenation
 			{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
-		\end{SwitchLanguage}%
-	}
-	\vskip 0mm%
+		\end{textblock}
+	\end{SwitchLanguage}%
 	% thesis type ---------------------------------------------
-	{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
+	\begin{textblock}{10}[0,1](0,12)
+		{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
 		\ifthenelse{\boolean{hgb@IsProposal}}%
 			{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
-	\vskip 14mm%
+	\end{textblock}
 	% program type ---------------------------------
-	%{\large \hgb@ProgramType}%
-	%\vskip 4mm%
-	% program name ---------------------------------
-	{\large\hgb@ProgramName\par}%
-	\vskip 0mm%
-	% place of study  ---------------------------------
-	{\large\hgb@Institution\par}%
-	\vskip 4mm%
+	\begin{textblock}{10}(0,13)
+		{\large \hgb@ProgramType}%
+	\end{textblock}
+	% program name, institution, place of study ---------------------------------------------
+	\begin{textblock}{10}(0,14)
+		{\large\hgb@ProgramName\par}%
+		{\large\hgb@Institution\par}%
 		{\large\hgb@PlaceOfStudy\par}%
-	\vskip 8mm%
+	\end{textblock}
+	% submission year  ---------------------------------
+	\begin{textblock}{10}[0,1](0,16)
 		{\large\hgb@SubmissionYear\par}%
-	\vskip 0mm%
+	\end{textblock}
 	% advisors(s) -------------------------------------
-	\parbox[c][28mm][b]{\textwidth}{%
-		%\centering\large\tabcolsep0.25em%
+	\begin{textblock}{10}(0,17)
 		\ifthenelse{\hgb@AdvisorCount > 0}%
 			{\@makeAdvisorTable}% defined below
 			{\color{red}No advisor(s) specified!\\}%
-	}
-	\restoregeometry%
+	\end{textblock}
+
+	% since everything is positioned absolutely, we need to manuelly insert a page break
+	\null\newpage
 \end{titlepage}%
 }
 
