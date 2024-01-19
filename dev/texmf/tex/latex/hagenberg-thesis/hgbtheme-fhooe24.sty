@@ -63,10 +63,12 @@
 	}
 
 	\hgb@TitlePageFont%
+
 	% author --------------------------------------------------
 	\begin{textblock}{10}[0,1](0,7)
 		{\Large\hgb@Author\par}%
 	\end{textblock}
+
 	% title --------------------------------------------------
 	\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
 		\begin{textblock}{10}(0,8)
@@ -78,26 +80,31 @@
 			{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
 		\end{textblock}
 	\end{SwitchLanguage}%
+
 	% thesis type ---------------------------------------------
 	\begin{textblock}{10}[0,1](0,12)
 		{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
 		\ifthenelse{\boolean{hgb@IsProposal}}%
 			{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
 	\end{textblock}
+
 	% program type ---------------------------------
 	\begin{textblock}{10}(0,13)
 		{\large \hgb@ProgramType}%
 	\end{textblock}
+
 	% program name, institution, place of study ---------------------------------------------
 	\begin{textblock}{10}(0,14)
 		{\large\hgb@ProgramName\par}%
 		{\large\hgb@Institution\par}%
 		{\large\hgb@PlaceOfStudy\par}%
 	\end{textblock}
+
 	% submission year  ---------------------------------
 	\begin{textblock}{10}[0,1](0,16)
 		{\large\hgb@SubmissionYear\par}%
 	\end{textblock}
+
 	% advisors(s) -------------------------------------
 	\begin{textblock}{10}(0,17)
 		\ifthenelse{\hgb@AdvisorCount > 0}%
@@ -109,6 +116,7 @@
 \end{titlepage}%
 }
 
+%% Advisor Table ----------------------------------------
 \newcommand{\@makeAdvisorTable}{%
   \newcounter{C}%
 	\renewcommand{\arraystretch}{1.25}%

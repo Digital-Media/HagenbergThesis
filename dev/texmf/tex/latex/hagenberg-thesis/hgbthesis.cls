@@ -168,18 +168,18 @@
 	\expandafter\def\csname advisorname-\the@advisorctr\endcsname{#2}
 }
 
-% Returns the number of advisers specified 
-\newcommand{\hgb@AdvisorCount}{
+% Returns the number of advisors specified 
+\newcommand{\hgb@AdvisorCount}{%
 	\the@advisorctr
 }
 
-% Returns the 'role' of adviser with the given number (#1 = 1,...,\hgb@AdvisorCount)
-\newcommand{\hgb@getAdvisorRole}[1]{
+% Returns the 'role' of advisor with the given number (#1 = 1,...,\hgb@AdvisorCount)
+\newcommand{\hgb@getAdvisorRole}[1]{%
 	\csname advisorrole-#1\endcsname
 }
 
-% Returns the 'name' of adviser with the given number (#1 = 1,...,\hgb@AdvisorCount)
-\newcommand{\hgb@getAdvisorName}[1]{
+% Returns the 'name' of advisor with the given number (#1 = 1,...,\hgb@AdvisorCount)
+\newcommand{\hgb@getAdvisorName}[1]{%
 	\csname advisorname-#1\endcsname
 }
 
