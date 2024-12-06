@@ -406,6 +406,13 @@ keepspaces=true,%
 	#1}}%
 {}
 
+% Code Enivornmente for Scala
+\lstnewenvironment{ScalaCode}[1][]
+{\lstset{%
+	language=Scala,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
 
 % Language Definition and Code Environment for Swift
 \lstdefinelanguage{Swift}
