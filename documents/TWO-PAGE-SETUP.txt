@@ -1,0 +1,22 @@
+Here is a quick patch to switch to 'twopage' format in the current hgbthesis setup:
+
+1) File 'hgbthesis.cls':
+	Change 
+		\LoadClass[a4paper,11pt,oneside]{book}
+	to
+		\LoadClass[a4paper,11pt,twoside]{book}
+		
+2) File 'hgbheadings.sty':
+	Change
+		\fancyhead[R]{\sffamily\thepage}
+		\fancyhead[L]{\sffamily\nouppercase{\leftmark}}
+	to
+		\fancyhead[RO,LE]{\sffamily\thepage} 
+		\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}
+		\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
+
+This will show 
+	on EVEN (left-side) pages: the current page number + chapter title,
+	on ODD (right-side) pages: the current section title + page number.
+
+Header contents can be customized by modifying \leftmark and \rightmark (e.g., using the \markboth command).
