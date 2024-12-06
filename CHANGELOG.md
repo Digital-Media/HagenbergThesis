@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- 2024/12/06: [#165](https://github.com/Digital-Media/HagenbergThesis/pull/165): Added a code environment for Scala. Thanks to [@marcelhas](https://github.com/marcelhas).
+
 ### Changed
 
 ### Deprecated
