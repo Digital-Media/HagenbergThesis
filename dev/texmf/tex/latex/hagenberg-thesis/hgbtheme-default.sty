@@ -95,14 +95,16 @@
 	% program type, program name, institution, place of study ---------------------------------
 	\begin{textblock}{15}(3,18)
 		\centering
-		{\large\hgbDictionaryGet{submitted-to}{\hgb@TitleLanguage}}
+		{\hgbDictionaryGet{submitted-to}{\hgb@TitleLanguage}}
 		\vskip 1mm 
-		{\hgb@ProgramType}%
-		\vskip 4mm%
-		{\large\hgb@ProgramName}%
+		{\large \hgb@ProgramType}%
 		\vskip 1mm%
-		{\large\hgbDictionaryGet{at-place-of-study}{\hgb@TitleLanguage} \hgb@Institution\par}%
+		{\large\hgb@ProgramName}%
 		\vskip 4mm%
+		{\hgbDictionaryGet{at-place-of-study}{\hgb@TitleLanguage}}%
+		\vskip 1mm%
+		{\large\hgb@Institution\par}%
+		\vskip 1mm%
 		{\large in \hgb@PlaceOfStudy\par}%
 	\end{textblock}
 
