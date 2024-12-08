@@ -81,7 +81,7 @@
 
 % Temporarily switch to another language
 \newenvironment{SwitchLanguage}[1]{% usage example: \begin{SwitchLanguage}{english} ... \end{SwitchLanguage}
-	\edef\@tmpLang{#1}%
+	\edef\@tmpLang{#1}%	must expand argument!
 	\ifthenelse{\equal{\@tmpLang}{german}}{\def\@tmpLang{ngerman}}{}%	 needed to make babel treat 'german' as 'ngerman'
 	\begin{otherlanguage}{\@tmpLang}%
 	%\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\@enablequotes}{}%
