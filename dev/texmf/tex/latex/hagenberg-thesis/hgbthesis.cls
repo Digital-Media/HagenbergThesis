@@ -13,7 +13,7 @@
 
 %% Package Information --------------------------------------------------------
 
-\NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
+\NeedsTeXFormat{LaTeX2e}[2021/06/01]  % LaTeX kernel version (must support \DocumentMetadata)
 \ProvidesClass{hgbthesis}[2023/12/04]%%AUTO
 
 \RequirePackage{xifthen}
