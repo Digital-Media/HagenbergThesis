@@ -44,7 +44,7 @@ $ which zip
 ```
 
 #### Starting a Complete Build
-
+In directory `dev/` enter
 ```
 $ make
 ```
@@ -55,7 +55,8 @@ Relax and maybe grab a coffee.
 
 It is also possible to execute specific parts of the build process. Call `make` with the appropriate parameters:
 
-- `make setdate`: Sets the current date for all the style and class files.
+- `make inittex`: Adds `/dev/texmf/` as a TEXMF root directory. This should be run before building documents locally in `/documents/` (not executed in a full make).
+- `make setdate`: Sets the version number to the current date in all `.sty` and `.cls` files.
 - `make build`: Builds all the example documents in the `documents` directory.
 - `make [DocumentName]`: Builds a single example document. Replace `[DocumentName]` with the respective document's directory name. E.g., use `make HgbThesisTutorial` to build the thesis tutorial document or `make HgbArticle` to build the article template.
 - `make ctan`: Builds and gathers all the files for the CTAN package (located in the `ctan` directory).
