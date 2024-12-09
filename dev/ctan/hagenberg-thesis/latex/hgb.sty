@@ -314,7 +314,24 @@
 \hgbDictionarySet{program-env-name}{english}{Program}
 \hgbDictionarySet{program-env-name}{german}{Programm}
 
-\AtBeginDocument{\floatname{program}{\hgbDictionaryGet{program-env-name}{\hgb@MainLanguage}}}
+
+%% Complete \DocumentMetadata settings ---------------------------------------
+%% This may only be called in the document preamble!
+\newcommand{\hgb@SetDocumentMetadata}{%
+	%% TODO: complete for other languages
+	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+		{\DocumentMetadata{lang=de}}%
+		{\DocumentMetadata{lang=en}}%
+}
+
+\AtBeginDocument{%
+  \hgb@SetDocumentMetadata%
+}%
+
+\AtBeginDocument{%
+	\floatname{program}{\hgbDictionaryGet{program-env-name}{\hgb@MainLanguage}}%
+}%
+
 
 %% Experimental items ---------------------------------------------------------
 
