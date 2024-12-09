@@ -3,6 +3,8 @@
 *.bbl
 *.bcf
 *.blg
+*.fdb_latexmk
+*.fls
 *.log
 *.out
 *.ind
@@ -14,4 +16,3 @@
 *.toc
 *.tps
 *.tcp
-
