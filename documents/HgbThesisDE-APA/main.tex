@@ -1,5 +1,4 @@
 %%% Dateikodierung: UTF-8
-%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 %%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
 % !TeX encoding = utf8
@@ -10,20 +9,19 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-%\documentclass[master,german,smartquotes,apa]{hgbthesis}
-\documentclass[type=master,theme=default,language=german,smartquotes,apa]{hgbthesis}
-% Supported options in [..]: 
-%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
-%		Theme (layout of title pages): theme=default
-%		Thesis proposal: 'proposal' or 'proposal=true' 
-%		Main text language: language = 'german' (default), 'english'
-%		Title page language: titlelanguage = 'german', 'english' (default is main language)
-%		Use automatic quotation marks: 'smartquotes'
-%		Use APA citation style: 'apa'
+\documentclass[type=master,theme=default,language=german,titlelanguage=german,smartquotes,apa]{hgbthesis}
+% Zulässige Optionen in [..]: 
+%		Typ der Arbeit (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
+%		Theme der Titelseite (theme=): 'default' (default), 'fhooe24'
+%		Als Exposé verwenden: 'proposal' oder 'proposal=true' 
+%		Hauptsprache im Dokument (language=): 'german' (default), 'english'
+%		Sprache der Titelseite (titlelanguage=): 'german', 'english' (default is main language)
+%		Umwandlung in typografische Anführungszeichen: 'smartquotes'
+%		APA Zitierstil: 'apa'
 %%%-----------------------------------------------------------------------------
 
-\graphicspath{{images/}}  % directory for user images and graphics
-\bibliography{references} % biblatex literature file (references.bib)
+\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
+\bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
@@ -34,22 +32,22 @@
 %%%-----------------------------------------------------------------------------
 
 \title{Partielle Lösungen zur "allgemeinen" Problematik (APA-Version)}
-%\subtitle{Eine grundlegende Einführung}
+\subtitle{Eine grundlegende Einführung}
 \author{Alex A.\ Schlaumeier}
-\programtype{Fachhochschul-Masterstudiengang}%		or Fachhochschul-Bachelorstudiengang
-%\programtype{Master's Degree Program}
+
+\programtype{Fachhochschul-Masterstudiengang} % oder Fachhochschul-Bachelorstudiengang
 \programname{Universal Computing}
 \institution{Fachhochschule Oberösterreich}
 
-%\logofile{}	% deprecated, to be set in theme file!
-
 \placeofstudy{Hagenberg}
-\dateofsubmission{2024}{06}{25} % {YYYY}{MM}{DD}
+\dateofsubmission{2025}{07}{01} % {JJJJ}{MM}{TT}
 
-\advisor{Dr. Alois B.~Treuer} % optional
+% Liste der Betreuungspersonen, bis zu 4 sind möglich, Titel in [] ist optional
+\advisor{Dr.~Alois B.~Treuer}
+%\advisor[Zweitbetreuerin]{FH-Prof.\textsuperscript{in} Susanna A.~D. Visor, PhD}
 
-\license{cclicense} 			% publish under Creative Commons License (recommended)
-%\license{strictlicense}	% restrictive clause - "all rights reserved"
+\license{cclicense}      % Unter Creative Commons Lizenz veröffentlichen (empfohlen)
+%\license{strictlicense} % Restriktieve Lizenz, "Alle Rechte vorbehalten"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)
