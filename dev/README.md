@@ -58,7 +58,7 @@ It is also possible to execute specific parts of the build process. Call `make` 
 - `make inittex`: Adds `/dev/texmf/` as a TEXMF root directory. This should be run before building documents locally in `/documents/` (not executed in a full make).
 - `make setdate`: Sets the version number to the current date in all `.sty` and `.cls` files.
 - `make build`: Builds all the example documents in the `documents` directory.
-- `make [DocumentName]`: Builds a single example document. Replace `[DocumentName]` with the respective document's directory name. E.g., use `make HgbThesisTutorial` to build the thesis tutorial document or `make HgbArticle` to build the article template.
+- `make [DocumentName]`: Builds a single example document. Replace `[DocumentName]` with the respective document's directory name. E.g., use `make HgbThesisTutorialDE` to build the thesis tutorial document or `make HgbArticle` to build the article template.
 - `make ctan`: Builds and gathers all the files for the CTAN package (located in the `ctan` directory).
 
 ### Testing Changes
