@@ -14,6 +14,7 @@
 
 
 \RequirePackage{xifthen}
+\RequirePackage{hgbdict}
 
 \newboolean{hgb@SmartQuotesOn}
 \setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
@@ -309,22 +310,30 @@
 
 \floatstyle{plain}
 \restylefloat*{program}
-	
-\RequirePackage{hgbdict}
+
 \hgbDictionarySet{program-env-name}{english}{Program}
 \hgbDictionarySet{program-env-name}{german}{Programm}
 
-%% Complete \DocumentMetadata settings ---------------------------------------
-%% This may only be called in the document preamble!
+
+%% Add \DocumentMetadata settings ---------------------------------------
+
+\hgbDictionarySet{iso-language-code}{english}{en}
+\hgbDictionarySet{iso-language-code}{german}{de}
+\hgbDictionarySet{iso-language-code}{ngerman}{de}
+\hgbDictionarySet{iso-language-code}{french}{fr}
+% ... etc.
+
 \newcommand{\hgb@SetDocumentMetadata}{%
-	%% TODO: complete for other languages
-	\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-		{\DocumentMetadata{lang=de}}%
-		{\DocumentMetadata{lang=en}}%
+	\def\theLang{\hgbDictionaryGet{iso-language-code}{\hgb@MainLanguage}}%
+	\ifthenelse{\equal{\theLang}{\hgbDictionaryUndefined}}%
+		{\PackageWarning{hgb}{Unknown main document language '\hgb@MainLanguage' (set to 'en').}%
+		 \DocumentMetadata{lang=en}}%			use en as default
+		{\DocumentMetadata{lang=\theLang}}%
+	% there may be more settings to come ...
 }
 
 \AtBeginDocument{%
-  \hgb@SetDocumentMetadata%
+  \hgb@SetDocumentMetadata%		This may only be called in the document preamble!
 }%
 
 \AtBeginDocument{%
