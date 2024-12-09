@@ -26,6 +26,9 @@ Pre-configured document templates for English and German manuscripts and a
 complete tutorial are available on the package's home repository.
 \end{abstract}
 
+\clearpage
+\tableofcontents
+\clearpage
 
 \section{Introduction}
 
@@ -111,7 +114,7 @@ chapter numbers are not displayed. Remove the \texttt{proposal} option to
 migrate a proposal document straight to the final thesis (and restore the usual
 numbering scheme).
 
-\subsection{Thesis parameters (class \texttt{hgbthesis})}
+\subsection{Thesis settings (class \texttt{hgbthesis})}
 
 \texttt{hgbthesis} supports several types of thesis documents. The following
 parameters must be specified at the beginning of the main document:
@@ -148,10 +151,10 @@ Other (optional) settings for \texttt{hgbthesis} include:
     Use the Creative Commons License (\texttt{cc} = default) or strict terms
       (``all rights reserved'');
     \item \verb!\logofile{xxx.pdf}! -- \emph{deprecated}\newline
-    Specifies a custom logo image for the title page, to be placed in \verb!images/xxx.pdf!
-    (default is \texttt{logo.pdf}).%
-		\footnote{\texttt{{\bs}logofile} is deprecated, the thesis logo should be specified in the associated \emph{theme} 
-		file (see Sec.~\ref{sec:Themes})!}
+    %Specifies a custom logo image for the title page, to be placed in \verb!images/xxx.pdf!
+    %(default is \texttt{logo.pdf}). 
+		This command is \textbf{deprecated} -- the thesis logo 
+		should be specified in the associated \emph{theme} file instead (see Sec.~\ref{sec:Themes}).
 \end{itemize}
 
 \section{Style files and user commands}
@@ -436,7 +439,7 @@ requirements of different institutions or departments.
 Typically customization is done at the institutional level and not
 by the individual author (student).
 
-\subsection{Standard title page setups (\emph{themes})}
+\subsection{Preconfigured themes}
 
 The various front page arrangements are called \emph{themes} in the following.
 Each theme is identified by a unique \texttt{themeID} and associated with a 
