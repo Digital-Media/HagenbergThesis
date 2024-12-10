@@ -25,7 +25,6 @@
 \hgbDictionarySet{declaration-date}{german}%
 	{am \hgb@SubmissionDay.~\hgb@GetMonthName{german}{\hgb@SubmissionMonth} \hgb@SubmissionYear}%
 
-
 %% Use the default logo if unspecified (and not empty):
 
 \ifthenelse{\equal{\hgb@LogoFile}{@unspecified}}%
@@ -50,7 +49,7 @@
 			\hgb@MakeCopyrightPage%
 			\hgb@MakeDeclarationPage%
 		}%
-}
+}%
 
 %% Title page ---------------------------------------------------
 
@@ -66,7 +65,7 @@
 			\ifthenelse{\equal{\hgb@SubTitle}{}}%
 				{}% no subtitle defined
 				{%
-					\par\vskip 4mm% separating space between title and subtitle		
+					\par\vspace{4mm}% separating space between title and subtitle		
 					{\Large\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
 				}%
 		\end{textblock}
@@ -95,16 +94,16 @@
 	% program type, program name, institution, place of study ---------------------------------
 	\begin{textblock}{15}(3,18)
 		\centering
-		{\hgbDictionaryGet{submitted-to}{\hgb@TitleLanguage}}
-		\vskip 1mm 
-		{\large \hgb@ProgramType}%
-		\vskip 1mm%
-		{\large\hgb@ProgramName}%
-		\vskip 4mm%
-		{\hgbDictionaryGet{at-place-of-study}{\hgb@TitleLanguage}}%
-		\vskip 1mm%
+		{\hgbDictionaryGet{submitted-to}{\hgb@TitleLanguage}\par}%
+		\vspace{1mm}%
+		{\large \hgb@ProgramType\par}%
+		\vspace{1mm}%
+		{\large\hgb@ProgramName\par}%
+		\vspace{4mm}%
+		{\hgbDictionaryGet{at-place-of-study}{\hgb@TitleLanguage}\par}%
+		\vspace{1mm}%
 		{\large\hgb@Institution\par}%
-		\vskip 1mm%
+		\vspace{1mm}%
 		{\large in \hgb@PlaceOfStudy\par}%
 	\end{textblock}
 
@@ -134,7 +133,8 @@
 \end{titlepage}%
 }
 
-%% Generation of logo ----------------------------------------
+%% Logo Generation ----------------------------------------
+
 \newlength{\hgb@LogoHeight}
 \setlength{\hgb@LogoHeight}{3\TPVertModule} % logo is 3 grid fields (30mm) high
 
@@ -145,6 +145,7 @@
 }
 
 %% Advisor Table ----------------------------------------
+
 \newcommand{\@makeAdvisorTable}{%
   \newcounter{C}%
 	\renewcommand{\arraystretch}{1.25}%
@@ -217,7 +218,7 @@
 		\par\vspace{6mm}%
 		\ifthenelse{\hgb@AdvisorCount > 0}%
 			{%
-				\Large\sffamily\@makeAdvisorTable% defined above
+				\large\sffamily\@makeAdvisorTable% defined above
 			}%
 			{%
 				\color{red}No advisor(s) specified!\\
