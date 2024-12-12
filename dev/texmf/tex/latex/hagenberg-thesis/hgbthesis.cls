@@ -34,6 +34,8 @@
 \setboolean{hgb@IsProposal}{false}
 \newcommand{\hgb@ProposalName}{UNDEFINED}
 
+\newcommand{\hgb@@pagelayout}{oneside}		% default to 'oneside' (used locally only in this file!)
+
 %% Utilities for handling class options -------------------------------------
 
 % Issue warning when using deprecated options:
@@ -105,6 +107,13 @@
 	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
 	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
 	apa.default:n			= true,	% TODO: check if default value is properly passed!
+	%
+	%	works, but default should be 'oneside' for backward compatibility ('twoside' is default for cass 'book')
+	%oneside.code			= \PassOptionsToClass{\CurrentOption}{book},
+	%twoside.code			= \PassOptionsToClass{\CurrentOption}{book},
+	% instead, we define 
+	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}},
+	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}}, 
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -116,7 +125,8 @@
 
 %% Paper Options and Style File -----------------------------------------------
 
-\LoadClass[a4paper,11pt,oneside]{book}
+%\LoadClass[a4paper,11pt,oneside]{book}
+\LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
 \RequirePackage{titling}

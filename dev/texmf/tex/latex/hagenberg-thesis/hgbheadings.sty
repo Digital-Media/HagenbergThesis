@@ -7,6 +7,7 @@
 
 \ProvidesPackage{hgbheadings}[2023/12/04]%%AUTO
 
+%% wilbur: this setup may be too general to be used by all classes. move header setup to class files?
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 
@@ -23,21 +24,40 @@
 \addtolength{\headheight}{\baselineskip}
 \renewcommand{\headrulewidth}{0pt}		% thin line under header
 \renewcommand{\footrulewidth}{0pt}
-\fancyhf{}                            	% clear all fields.
-%\fancyhead[R]{\sffamily\thepage} %{\bf \rightmark}
-%\fancyhead[L]{\sffamily\nouppercase{\leftmark}}  %{\slshape \leftmark}
+\fancyhf{}                            	% clear header and footer
+%\fancyhead{} 														% clear header only
+
+% oneside header setup:
+	%\fancyhead[R]{\sffamily\thepage} %{\bf \rightmark}
+	%\fancyhead[L]{\sffamily\nouppercase{\leftmark}}  %{\slshape \leftmark}
 %
+
+% twoside header setup:
+	%\fancyhead[RO,LE]{\sffamily\thepage} 
+	%\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}
+	%\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
 %
-\fancyhead{} % clear all header fields
-\fancyhead[RO,LE]{\sffamily\thepage} 
-\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}
-\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
+% twoside footer setup:
 %\fancyhead[RO,LE]{\textbf{The performance of new graduates}} 
 %\fancyfoot{} % clear all footer fields 
 %\fancyfoot[LE,RO]{\thepage} 
 %\fancyfoot[LO,CE]{From: K. Grant} 
 %\fancyfoot[CO,RE]{To: Dean A. Smith}
+%
 
+% wilbur: added for oneside/twoside option
+\ifthenelse{\boolean{@twoside}}%								% boolean @twoside defined by LaTeX kernel
+{% twopside:
+	\typeout{******************* twoside ***************************}%
+		\fancyhead[RO,LE]{\sffamily\thepage}%
+		\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}%
+		\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}%
+}%
+{% oneside
+	\typeout{******************* oneside ***************************}%
+		\fancyhead[R]{\sffamily\thepage} 									%{\bf \rightmark}
+		\fancyhead[L]{\sffamily\nouppercase{\leftmark}}		%{\slshape \leftmark}
+}%
 
 \fancypagestyle{plain}{%
 	\fancyhf{}							% clear all header and footer fields

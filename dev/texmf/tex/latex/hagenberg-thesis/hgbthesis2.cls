@@ -14,13 +14,13 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
-\ProvidesClass{hgbthesis}[2023/12/04]%%AUTO
+\ProvidesClass{hgbthesis2}[2023/12/04]%%AUTO
 
 \RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
-\ifpdf{}% \typeout{hgbthesis: *** LaTeX in PDF mode ***}
-\else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
+\ifpdf{}% \typeout{hgbthesis2: *** LaTeX in PDF mode ***}
+\else{\errmessage{hgbthesis2: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
 %% Commands for Title Pages (used in class options) ---------------------------
@@ -34,11 +34,13 @@
 \setboolean{hgb@IsProposal}{false}
 \newcommand{\hgb@ProposalName}{UNDEFINED}
 
+\newcommand{\hgb@@pagelayout}{oneside}		% default to 'oneside' (used locally only in this file!)
+
 %% Utilities for handling class options -------------------------------------
 
 % Issue warning when using deprecated options:
 \newcommand{\@WarnDeprecatedOption}[2]{% #1=obsolete option, #2=replacement option
-	\ClassWarning{hgbthesis}{option '#1' is deprecated, use '#2' instead!}}%
+	\ClassWarning{hgbthesis2}{option '#1' is deprecated, use '#2' instead!}}%
 	
 % Register permissible key/value option, e.g.: \@RegisterClassOption{type}{master}
 \newcommand{\@RegisterClassOption}[2]{%  #1=optionKey, #2=optionValue
@@ -49,7 +51,7 @@
 \newcommand{\@ValidateClassOption}[2]{%  #1=optionKey, #2=optionValue
 \ifcsname hgb@keyvalueoption-#1-#2\endcsname%
   {}%
-  \else \ClassError{hgbthesis}{illegal key/value option: #1=#2}\relax%
+  \else \ClassError{hgbthesis2}{illegal key/value option: #1=#2}\relax%
   \fi%
 }
 
@@ -65,7 +67,7 @@
 	%\typeout{ThemeFile = \@ThemeFile}
 	\IfFileExists{\@ThemeFile}%		true if LaTeX can find this file (need not be local!)
 		{\RequirePackage[#1]{\@ThemeName}}%  must load immediately, was {\AtEndOfPackage{\usepackage[#1]{\@ThemeName}}}%
-		{\ClassError{hgbthesis}{style file '\@ThemeFile' for theme '#2' could not be found}\relax}%
+		{\ClassError{hgbthesis2}{style file '\@ThemeFile' for theme '#2' could not be found}\relax}%
 }
 
 % Class option handling --------------------------------------------------
@@ -105,19 +107,30 @@
 	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
 	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
 	apa.default:n			= true,	% TODO: check if default value is properly passed!
+	%
+	%	works, but default should be 'oneside' for backward compatibility ('twoside' is default for cass 'book')
+	%oneside.code			= \PassOptionsToClass{\CurrentOption}{book},
+	%twoside.code			= \PassOptionsToClass{\CurrentOption}{book},
+	% instead, we define 
+	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}},
+	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}}, 
 }
 
-\DeclareUnknownKeyHandler[hgbthesis]{
+\DeclareUnknownKeyHandler[hgbthesis2]{
     %\typeout{hgbthesis.cls: unknown option \CurrentOption}%
     \PassOptionsToPackage{\CurrentOption}{hgb}
 }
 
-\ProcessKeyOptions[hgbthesis]
+\ProcessKeyOptions[hgbthesis2]
 
 %% Paper Options and Style File -----------------------------------------------
 
+
+
 %\LoadClass[a4paper,11pt,oneside]{book}
-\LoadClass[a4paper,11pt,twoside]{book}
+%\LoadClass[a4paper,11pt]{book}
+\LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
+%
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
 \RequirePackage{titling}
@@ -131,7 +144,7 @@
 \newcommand{\hgb@Author}{Author undefined!}
 
 \newcommand{\@warnmultipleauthors}%
-	{\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
+	{\ClassWarning{hgbthesis2}{Multiple authors are not supported ('\string\and' is ignored)!}}%
 
 \newcommand{\hgb@Title}{Undefined document title!}% derived from \title (initialized in \maketitle hook)
 
@@ -214,12 +227,12 @@
 }
 
 \newcommand{\cclicense}{% for backward compatibility, use \license{cc} instead
-	\ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cclicense} instead!}%
+	\ClassWarning{hgbthesis2}{\string\cclicense\space command is deprecated, use \string\license{cclicense} instead!}%
 	\license{cc}%
 }
 
 \newcommand{\strictlicense}{% for backward compatibility, use \license{strict} instead
-	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strictlicense} instead!}%
+	\ClassWarning{hgbthesis2}{\string\strictlicense\space command is deprecated, use \string\license{strictlicense} instead!}%
 	\license{strict}%
 }
 
@@ -236,7 +249,7 @@
 % Specify the institution's logo - DEPRECATED - logo is now handled in theme files only!
 \newcommand{\hgb@LogoFile}{@unspecified}	% 
 \newcommand{\logofile}[1]{%
-	\ClassWarning{hgbthesis}{Command \string\logofile\space is deprecated, logo should be specified in theme file!}%
+	\ClassWarning{hgbthesis2}{Command \string\logofile\space is deprecated, logo should be specified in theme file!}%
 	\renewcommand{\hgb@LogoFile}{#1}
 }
 
@@ -244,7 +257,7 @@
 
 % Generate the front pages (to be redefined by theme .sty files)
 \newcommand{\hgb@MakeFrontPages}{%
-	\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}\relax%
+	\ClassError{hgbthesis2}{Command \string\hgb@MakeFrontPages\space is not defined!}\relax%
 }
 
 % Redefine LaTeX's \maketitle to add PDF meta data
@@ -253,7 +266,7 @@
 			pdftitle={\hgb@FullTitle},%
       pdfauthor={\hgb@Author},%
 			pdfsubject={\hgb@ProgramType~\hgb@ProgramName,~\hgb@PlaceOfStudy},
-			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
+			pdfcreator={LaTeX using class hgbthesis2 [\hgbDate]},
 			pdfproducer={pdflatex},
 			pdfkeywords={},
 			pageanchor=false%					disable hyperref page anchors in front pages
@@ -314,7 +327,7 @@
 
 \RequirePackage{hgbmath}
 \RequirePackage{hgbalgo}
-\RequirePackage{hgbheadings}
+\RequirePackage{hgbheadings}	% wilbur: how to pass 'twoside' option? better setup headings in THIS file?
 \RequirePackage{hgbabbrev}
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
