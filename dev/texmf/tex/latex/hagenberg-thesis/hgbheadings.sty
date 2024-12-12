@@ -48,13 +48,16 @@
 % wilbur: added for oneside/twoside option
 \ifthenelse{\boolean{@twoside}}%								% boolean @twoside defined by LaTeX kernel
 {% twopside:
-	\typeout{******************* twoside ***************************}%
+	%\typeout{******************* twoside ***************************}%
+		%\fancyhead[LE,RO]{\sffamily\nouppercase{\rightmark}}%	% fancyhdr standard setup
+		%\fancyhead[LO,RE]{\sffamily\nouppercase{\leftmark}}%
+		%\fancyfoot[C]{\thepage}%
 		\fancyhead[RO,LE]{\sffamily\thepage}%
 		\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}%
 		\fancyhead[RE]{\sffamily\nouppercase{\leftmark}}%
 }%
 {% oneside
-	\typeout{******************* oneside ***************************}%
+	%\typeout{******************* oneside ***************************}%
 		\fancyhead[R]{\sffamily\thepage} 									%{\bf \rightmark}
 		\fancyhead[L]{\sffamily\nouppercase{\leftmark}}		%{\slshape \leftmark}
 }%
