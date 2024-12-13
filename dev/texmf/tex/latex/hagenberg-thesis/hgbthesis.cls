@@ -286,7 +286,7 @@
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
 	%
-	\ifthenelse{\boolean{hgb@IsProposal}}{\@ProposalSetup}{}%
+	\ifthenelse{\boolean{hgb@IsProposal}}{\@ProposalSetup}{}% wilbur: change to AtBeginDocument?
 	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook (if any)
 }
 
