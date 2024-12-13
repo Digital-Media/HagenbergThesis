@@ -34,7 +34,7 @@
 \setboolean{hgb@IsProposal}{false}
 \newcommand{\hgb@ProposalName}{UNDEFINED}
 
-\newcommand{\hgb@@pagelayout}{oneside}		% default to 'oneside' (used locally only in this file!)
+\newcommand{\hgb@@pagelayout}{oneside}% default to 'oneside' (used locally only in this file!)
 
 %% Utilities for handling class options -------------------------------------
 
@@ -291,7 +291,13 @@
 }
 
 % Special sectioning setup for thesis proposals: ----------------------------
-
+% wilbur: this should be simplified and removed from here! (TODO)
+%
+% Provides a special chapter/section configuration for thesis proposals:
+% The idea is to use the regular 'hgbthesis' class but to have only a single 
+% (unnumbered) chapter with a couple of sections. All float elements and equations
+% are numbered without the chapter count:
+%
 \newcommand{\@ProposalSetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
 	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
@@ -307,7 +313,7 @@
 	\counterwithout{program}{chapter}
 	\counterwithout{algorithm}{chapter}
 	% remove chapter number from header (fancyhdr):
-	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}% wilbur: move to 'hgbheadings.sty'??
 }
 
 %% Set various terms to be redefined by title page themes

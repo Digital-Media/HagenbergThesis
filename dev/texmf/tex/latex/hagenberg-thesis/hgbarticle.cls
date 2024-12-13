@@ -19,6 +19,8 @@
 
 %% Handling class options --------------------------------------------------------------
 
+\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 % pass all other options to hgb.sty
