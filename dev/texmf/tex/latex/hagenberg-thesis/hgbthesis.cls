@@ -13,7 +13,7 @@
 
 %% Package Information --------------------------------------------------------
 
-\NeedsTeXFormat{LaTeX2e}[2021/06/01]  % LaTeX kernel version (must support \DocumentMetadata)
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
 \ProvidesClass{hgbthesis}[2023/12/04]%%AUTO
 
 \RequirePackage{xifthen}
@@ -33,6 +33,8 @@
 \newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
 \setboolean{hgb@IsProposal}{false}
 \newcommand{\hgb@ProposalName}{UNDEFINED}
+
+\newcommand{\hgb@@pagelayout}{oneside}% default to 'oneside' (used locally only in this file!)
 
 %% Utilities for handling class options -------------------------------------
 
@@ -105,6 +107,13 @@
 	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
 	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
 	apa.default:n			= true,	% TODO: check if default value is properly passed!
+	%
+	%	This works, but default should be 'oneside' for backward compatibility ('twoside' is default for class 'book')
+	%oneside.code			= \PassOptionsToClass{\CurrentOption}{book},
+	%twoside.code			= \PassOptionsToClass{\CurrentOption}{book},
+	% Instead we define 
+	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}},
+	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}},
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -116,7 +125,8 @@
 
 %% Paper Options and Style File -----------------------------------------------
 
-\LoadClass[a4paper,11pt,oneside]{book}
+%\LoadClass[a4paper,11pt,oneside]{book}
+\LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
 \RequirePackage{titling}
@@ -276,15 +286,23 @@
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
 	%
-	\ifthenelse{\boolean{hgb@IsProposal}}{\@ProposalSetup}{}%
+	%\ifthenelse{\boolean{hgb@IsProposal}}{\hgb@ProposalSetup}{}% wilbur: moved to \AtBeginDocument
 	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook (if any)
 }
 
 % Special sectioning setup for thesis proposals: ----------------------------
-
-\newcommand{\@ProposalSetup}[0]{%
-	% remove "Kapitel 1" (titlesec):
-	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
+% wilbur: should be simplified and moved elsewhere (TODO)
+%
+% Provides a special chapter/section configuration for thesis proposals:
+% The idea is to use the regular 'hgbthesis' class but to have only a single 
+% (unnumbered) chapter with a couple of sections. All float elements and equations
+% are numbered without the chapter count:
+%
+\newcommand{\hgb@ProposalSetup}[0]{%
+	% remove "Kapitel X"/"Chapter X" from chapter titles:
+	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}% from 'titlesec' package loaded by 'hgbheadings'
+	% remove chapter number from header:
+	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}% wilbur: from 'fancyhdr' package loaded by 'hgbheadings'
 	% define an empty entry format for the TOC chapter numbering (tocbasic)
 	\newcommand\noentrynumber[1]{}
 	% set empty number and remove indentation for chapter numbering in TOC (tocbasic)
@@ -296,8 +314,10 @@
 	\counterwithout{equation}{chapter}
 	\counterwithout{program}{chapter}
 	\counterwithout{algorithm}{chapter}
-	% remove chapter number from header (fancyhdr):
-	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}
+}
+
+\AtBeginDocument{%
+	\ifthenelse{\boolean{hgb@IsProposal}}{\hgb@ProposalSetup}{}%
 }
 
 %% Set various terms to be redefined by title page themes
