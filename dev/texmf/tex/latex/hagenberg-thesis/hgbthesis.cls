@@ -286,7 +286,7 @@
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
 	%
-	\ifthenelse{\boolean{hgb@IsProposal}}{\@ProposalSetup}{}% wilbur: change to AtBeginDocument?
+	%\ifthenelse{\boolean{hgb@IsProposal}}{\hgb@ProposalSetup}{}% wilbur: moved to \AtBeginDocument
 	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook (if any)
 }
 
@@ -298,7 +298,7 @@
 % (unnumbered) chapter with a couple of sections. All float elements and equations
 % are numbered without the chapter count:
 %
-\newcommand{\@ProposalSetup}[0]{%
+\newcommand{\hgb@ProposalSetup}[0]{%
 	% remove "Kapitel 1" (titlesec):
 	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
 	% define an empty entry format for the TOC chapter numbering (tocbasic)
@@ -314,6 +314,10 @@
 	\counterwithout{algorithm}{chapter}
 	% remove chapter number from header (fancyhdr):
 	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}% wilbur: move to 'hgbheadings.sty'??
+}
+
+\AtBeginDocument{%
+	\ifthenelse{\boolean{hgb@IsProposal}}{\hgb@ProposalSetup}{}%
 }
 
 %% Set various terms to be redefined by title page themes
