@@ -108,12 +108,12 @@
 	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
 	apa.default:n			= true,	% TODO: check if default value is properly passed!
 	%
-	%	works, but default should be 'oneside' for backward compatibility ('twoside' is default for cass 'book')
+	%	This works, but default should be 'oneside' for backward compatibility ('twoside' is default for class 'book')
 	%oneside.code			= \PassOptionsToClass{\CurrentOption}{book},
 	%twoside.code			= \PassOptionsToClass{\CurrentOption}{book},
-	% instead, we define 
+	% Instead we define 
 	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}},
-	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}}, 
+	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}},
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -291,7 +291,7 @@
 }
 
 % Special sectioning setup for thesis proposals: ----------------------------
-% wilbur: this should be simplified and removed from here! (TODO)
+% wilbur: should be simplified and moved elsewhere (TODO)
 %
 % Provides a special chapter/section configuration for thesis proposals:
 % The idea is to use the regular 'hgbthesis' class but to have only a single 
@@ -299,8 +299,10 @@
 % are numbered without the chapter count:
 %
 \newcommand{\hgb@ProposalSetup}[0]{%
-	% remove "Kapitel 1" (titlesec):
-	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}
+	% remove "Kapitel X"/"Chapter X" from chapter titles:
+	\titleformat{\chapter}[display]{\sffamily}{}{0pt}{\Huge}% from 'titlesec' package loaded by 'hgbheadings'
+	% remove chapter number from header:
+	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}% wilbur: from 'fancyhdr' package loaded by 'hgbheadings'
 	% define an empty entry format for the TOC chapter numbering (tocbasic)
 	\newcommand\noentrynumber[1]{}
 	% set empty number and remove indentation for chapter numbering in TOC (tocbasic)
@@ -312,8 +314,6 @@
 	\counterwithout{equation}{chapter}
 	\counterwithout{program}{chapter}
 	\counterwithout{algorithm}{chapter}
-	% remove chapter number from header (fancyhdr):
-	\renewcommand{\chaptermark}[1]{\markboth{##1}{}}% wilbur: move to 'hgbheadings.sty'??
 }
 
 \AtBeginDocument{%
