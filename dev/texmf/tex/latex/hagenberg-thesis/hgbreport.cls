@@ -21,6 +21,8 @@
 
 %% Handling class options --------------------------------------------------------------
 
+\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{report}}	%default
+\DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{report}}
 \DeclareOption{notitlepage}{\PassOptionsToClass{\CurrentOption}{report}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 % pass all other options to hgb.sty
@@ -30,7 +32,7 @@
 
 %% Paper options and style file -----------------------------------------------
 
-\LoadClass[a4paper,11pt,onecolumn]{report}
+\LoadClass[a4paper,11pt]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above

@@ -19,7 +19,7 @@
 
 %% Handling class options --------------------------------------------------------------
 
-\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{article}}	% default
 \DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
