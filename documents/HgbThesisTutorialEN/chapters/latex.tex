@@ -738,8 +738,8 @@ required for this document:
 All sample (\verb!.tex!) documents of this package start with the statement
 %
 \begin{itemize}
-    \item[] \verb!\documentclass[!\texttt{\emph{type}},
-    \texttt{\emph{language}}\verb!]{hgbthesis}!.
+    \item[] \verb!\documentclass[!\texttt{type=\emph{type}},%
+    \texttt{language=\emph{language}}\verb!]{hgbthesis}!.
 \end{itemize}
 %
 The \texttt{\emph{type}} option specifies the type of document:
@@ -748,9 +748,7 @@ The \texttt{\emph{type}} option specifies the type of document:
     \item[] \texttt{master} (master thesis = \emph{default}),
     \item[] \texttt{diploma} (diploma thesis),
     \item[] \texttt{bachelor} (bachelor thesis),
-    \item[] \texttt{internship} (internship report),
-	\item[] \texttt{proposal} (exposé, in connection with \texttt{bachelor} or
-	\texttt{master}).
+    \item[] \texttt{internship} (internship report).
 \end{itemize}
 %
 The \texttt{\emph{language}} option can be used to specify the primary language
@@ -764,13 +762,21 @@ of the document; possible values are:
 Additional options:
 %
 \begin{itemize}
-    \item[] \texttt{smartquotes} (use of regular double quotes, see
-    Section~\ref{sec:quotation-marks}).
+		\item[] \texttt{proposal} (exposé, in connection with 
+			\texttt{type=bachelor} or \texttt{master}).
+    \item[] \texttt{smartquotes} (use of upright double quotes, see
+			Section~\ref{sec:quotation-marks}).
+		\item[] \texttt{oneside} (\emph{default}) or \texttt{twoside} for 
+			a one- or two-page document layout, respectively.
 \end{itemize}
 %
-If \emph{no} option is specified, the default is \texttt{[master,german]}. The
-full source code for a corresponding \verb!.tex! main file is listed in
-Appendix~\ref{app:latex}.
+If \emph{none} of the above options is specified, the default settings are 
+\begin{itemize}
+	\item[] \texttt{[type=master,language=german,oneside]} % theme=default,
+\end{itemize}
+are used.%
+\footnote{The full source code for a corresponding \texttt{.tex} main file is listed in
+Appendix~\ref{app:latex}.}
 
 
 
@@ -912,6 +918,7 @@ periods.
         \verb+\sa+   & \sa   & & \verb+\zB+  & \zB  \\
         \verb+\so+   & \so   & & \verb+\ZB+  & \ZB  \\
         \verb+\su+   & \su   & & \verb+\etc+ & \etc \\
+				\verb+\oa+   & \oa   & &   									\\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -919,10 +926,10 @@ periods.
 \subsection{Language Switching}
 \label{sec:language-switching}
 
-For German-language sections (\eg, the Kurzfassung or German quotations), the
-\emph{language} should be switched from English to German to get the correct
+For German-language sections (\eg, the \emph{Kurzfassung} or German quotations), the
+language should be switched from English to German to get the correct
 hyphenation. To avoid accidentally forgetting to reset the language, two special
-\emph{environments} are provided for this purpose:
+\latex\ environments are provided for this purpose:
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{german}
