@@ -50,9 +50,9 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report}, and
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}} (\texttt{book}):
-    for bachelor's, master's, and diploma theses;
+    for bachelor's, master's, and diploma theses,
     \item \textbf{\texttt{hgbreport}} (\texttt{report}):
-    for project and term reports;
+    for project and term reports,
     \item \textbf{\texttt{hgbarticle}} (\texttt{article}):
     for drafting journal articles.
 \end{itemize}
@@ -65,10 +65,10 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report}, and
 All document classes accept the following general options:
 %
 \begin{itemize}
-    \item \texttt{english} or \texttt{german} 
-        (select the primary document language),
-	  \item \texttt{oneside} or \texttt{twoside} (document layout, default is \texttt{oneside}),
-    \item \texttt{smartquotes} (use smart quotes replacement),
+    \item \texttt{english}|\texttt{german}: specifies the main document language,%
+		\footnote{With class \texttt{hgbthesis} this is equivalent to \texttt{language=english|german}.}
+	  \item \texttt{oneside}|\texttt{twoside}: document layout (default is \texttt{oneside}),
+    \item \texttt{smartquotes}: use smart quotes replacement (\verb!"!...\verb!"! $\rightarrow$ ``...''),
     \item \texttt{apa} (use \texttt{apa} bibliography style instead of
     \texttt{numeric-comp}),
     \item \texttt{noUpdateCheck} (suppress check of package release date).
@@ -78,23 +78,32 @@ All document classes accept the following general options:
 \subsubsection{Class-specific options}
 
 In addition, the following class-specific options are accepted:
-%
-\begin{itemize}
-    \item \textbf{\texttt{hgbthesis}}:\\
-      \texttt{type=}%
-      \{\texttt{bachelor}, \texttt{master}, \texttt{diploma}, \texttt{phd}, \texttt{internship}, \texttt{custom}\},\newline
-      \texttt{language=}\{\texttt{english}, \texttt{german}\} (language in main document),%
+
+\noindent\textbf{\texttt{hgbthesis}}:
+	\begin{itemize}
+		\item \texttt{type=}%
+			\{\texttt{bachelor}|\texttt{master}|\texttt{diploma}|\texttt{phd}|\texttt{internship}|\texttt{custom}\}:
+				thesis type,
+		\item \texttt{language=}\{\texttt{english}|\texttt{german}\}: main document language,%
 			\footnote{Note: The \texttt{german} option implicitly loads Babel's \texttt{ngerman} setup. 
-			When switching languages (see Sec.~\ref{sec:LanguageSwitchingCommands}) only \texttt{german} should be used.}
-			\\
-      \texttt{titlelanguage=}\{\texttt{english}, \texttt{german}\} (language on title pages, defaults to main language),\\
-      \texttt{proposal} (flag to indicate proposal documents);
-    \item \textbf{\texttt{hgbreport}}:\\
-      \texttt{notitlepage};
-    \item \textbf{\texttt{hgbarticle}}\\
-      \texttt{twocolumn}.
-\end{itemize}
-%
+			When switching languages (see Sec.~\ref{sec:LanguageSwitchingCommands}) only \texttt{german}
+			should be used.}
+		\item \texttt{titlelanguage=}\{\texttt{english}|\texttt{german}\}: 
+			language on title pages, defaults to main document language if omitted,
+		\item \texttt{proposal}: flag to indicate proposal documents.
+	\end{itemize}
+
+\noindent\textbf{\texttt{hgbreport}}:
+	\begin{itemize}
+		\item \texttt{notitlepage}: no separate title page.
+	\end{itemize}
+		
+\noindent\textbf{\texttt{hgbarticle}}:
+	\begin{itemize}
+		\item \texttt{twocolumn}: two-column page layout.
+	\end{itemize}
+
+\noindent
 For example, to start a master's thesis in German, simply place
 %
 \begin{LaTeXCode}[numbers=none]
@@ -139,6 +148,7 @@ Note that \texttt{hgbthesis} only supports a \emph{single author} inside the
 The command \verb!\advisor[role]{name}! accepts an optional argument to associate a \emph{role} 
 with the advisor's \emph{name}, \eg, \verb!\advisor[Supervisor]{Prof.~Marie Curie, PhD}!.
 Multiple advisors can be specified, for example
+%
 \begin{LaTeXCode}[numbers=none]
   \advisor[1.~Betreuerin]{Professor Frida K.~Putnik, PhD}
   \advisor[2.~Betreuer]{Franz Grillparzer, TU Wien}
@@ -148,10 +158,10 @@ Multiple advisors can be specified, for example
 \noindent
 Other (optional) settings for \texttt{hgbthesis} include:
 \begin{itemize}
-    \item \verb!\license{cc|strict}!\newline
-    Use the Creative Commons License (\texttt{cc} = default) or strict terms
-      (``all rights reserved'');
-    \item \verb!\logofile{xxx.pdf}! -- \emph{deprecated}\newline
+    \item \verb!\license{cc|strict}!:
+    Use the \emph{Creative Commons License} (\texttt{cc} = default) or strict license terms
+      (``all rights reserved'').
+    \item \verb!\logofile{xxx.pdf}!:
     %Specifies a custom logo image for the title page, to be placed in \verb!images/xxx.pdf!
     %(default is \texttt{logo.pdf}). 
 		This command is \textbf{deprecated} -- the thesis logo 
@@ -163,8 +173,8 @@ Other (optional) settings for \texttt{hgbthesis} include:
 The package comes with a set of style (\texttt{*.sty}) files that can be used
 independently of the document classes listed above:
 \begin{itemize}
-  \item \texttt{hgb.sty} (language, date setup, custom commands;
-  \item \texttt{hgbabbrev.sty}: various abbreviation commands;
+  \item \texttt{hgb.sty}: language and date setup, custom commands;
+  \item \texttt{hgbabbrev.sty}: various abbreviation macros;
   \item \texttt{hgbalgo.sty}: additions to \texttt{algpseudocodex} package;
   \item \texttt{hgbbib.sty}: bibliography setup;
   \item \texttt{hgbdict.sty}: language dictionary functions;
@@ -178,15 +188,14 @@ independently of the document classes listed above:
 \label{sec:GeneralUserCommands}
 
 \begin{itemize}
-   \item \textbf{\texttt{{\bs}hgbDate}}\newline
-    Outputs the package version date,
+   \item \textbf{\texttt{{\bs}hgbDate}}: Outputs the package version date,
     \eg, ``\texttt{\hgbDate}''.
-	\item \textbf{\texttt{{\bs}getcurrentlabel}}\newline
-    Yields the most recently assigned label number.
-   \item \textbf{\texttt{{\bs}calibrationbox}}\verb!{width}{height}!\newline
-    Inserts a test box for checking the final print size (in millimeters).
-	\item \verb!\begin{block}...\end{block}!\newline
-    Dummy environment, provides a limited scope for variable/command redefinitions.
+	\item \textbf{\texttt{{\bs}getcurrentlabel}}:
+			Yields the most recently assigned label number.
+   \item \textbf{\texttt{{\bs}calibrationbox}}\verb!{width}{height}!:
+			Inserts a test box for checking the final print size (in millimeters).
+	\item \verb!\begin{block}...\end{block}!:
+			Dummy environment, provides a limited scope for variable/command redefinitions.
 \end{itemize}
 
 
@@ -194,20 +203,20 @@ independently of the document classes listed above:
 \label{sec:LanguageSwitchingCommands}
 
 \begin{itemize}
-	\item \verb!\SetLanguage{<language>}!\newline
+	\item \verb!\SetLanguage{<language>}!:
     Switches to the specified language.
 		This and the other language switching commands listed below
 		also refresh the \texttt{smartquotes} settings (if activated).
-	\item \verb!\begin{SwitchLanguage}{<language>}...\end{SwitchLanguage}!\newline
+	\item \verb!\begin{SwitchLanguage}{<language>}...\end{SwitchLanguage}!:
     Temporarily switches to the specified language and reverts to the current language 
 		afterwards. 
-	\item \verb!\begin{english}...\end{english}!\newline
-    Temporarily switches to English language settings -- short for\newline
+	\item \verb!\begin{english}...\end{english}!:
+    Temporarily switches to English language settings, short for
 		\verb!\begin{SwitchLanguage}{english}..!.
-	\item \verb!\begin{german}...\end{german}!\newline
-    Temporarily switches to German language settings -- short for\newline
+	\item \verb!\begin{german}...\end{german}!:
+    Temporarily switches to German language settings, short for
 		\verb!\begin{SwitchLanguage}{german}..!.
-	\item \verb!\SmartquotesActive!\newline
+	\item \verb!\SmartquotesActive!:
 		For debugging only. Returns \texttt{true}/\texttt{false} if smart quotes are activated in
 		the current context (or an appropriate message if the \texttt{csquotes} package was not loaded at all).
 \end{itemize}
@@ -407,9 +416,8 @@ example:
 
 \paragraph{Defined algorithm colors:}
 \begin{itemize}
-    \item \textbf{\texttt{AlgKeywordColor}} (for algorithm keywords),
-    \item \textbf{\texttt{AlgProcedureColor}} (for procedure and function
-    names).
+    \item \textbf{\texttt{AlgKeywordColor}}: for algorithm keywords,
+    \item \textbf{\texttt{AlgProcedureColor}}: for procedure and function names.
 \end{itemize}
 These colors can be redefined at any time (see the \texttt{xcolor}%
 \footnote{\url{https://ctan.org/pkg/xcolor}}
@@ -438,14 +446,14 @@ If omitted, a plain PDF (non-PDF/A-compliant) file is generated.
 The content and structure of the title pages generated for the various thesis types
 (\texttt{bachelor}, \texttt{master} \etc) may be customized to meet the specific
 requirements of different institutions or departments.
-Typically customization is done at the institutional level and not
+Note that customization is typically done at the institutional level and not
 by the individual author (student).
 
 \subsection{Preconfigured themes}
 
 The various front page arrangements are called \emph{themes} in the following.
 Each theme is identified by a unique \texttt{themeID} and associated with a 
-particular style (\latex\ package) file named \verb!hgbtheme-<themeID>.sty!.
+particular style file (\latex\ package) named \verb!hgbtheme-<themeID>.sty!.
 For example, the \texttt{default} theme  is defined by file
 \begin{itemize}
   \item[] \texttt{hgbtheme-default.sty},
@@ -468,18 +476,6 @@ To \emph{use} a specific theme, option \verb!theme=<themeID>! is added to the
 \begin{itemize}
 	\item[] \verb!\documentclass[theme=default,...]{hgbthesis}!
 \end{itemize}
-%All theme sources are stored in `/dev/themes` (perhaps with individual subdirectories?).
-%\hgb@UseTheme{default}%
-
-
-All these ``inherit'' from a parent theme file
-%
-\begin{itemize}
-  \item[] \texttt{hgbtheme-thesis.sty},
-\end{itemize}
-%
-which contains the bulk of the definitions, while derived themes typically contain only 
-a small number of specific settings.
 
 
 \subsection{Customizing themes}
@@ -492,7 +488,7 @@ There are two recommended ways instead:
 
 \subsubsection{Option 1: Adapt \texttt{hgbtheme-custom.sty}}
 
-Copy the theme file\texttt{hgbtheme-custom.sty} (which is part of this distribution) to the 
+Copy the theme file \texttt{hgbtheme-custom.sty} (which is part of this distribution) to the 
 \emph{main document directory} (if not there already) and open it in your LaTeX editor.
 It defines \texttt{hgbtheme-default.sty} as the parent theme by the initial command
 \begin{LaTeXCode}[numbers=none]
@@ -502,8 +498,8 @@ It defines \texttt{hgbtheme-default.sty} as the parent theme by the initial comm
 All commands defined in the parent theme are visible and may be redefined,
 typically by \verb!\renewcommand! (see Sec.\ \ref{sec:ThemeStyleCommands}
 for available commands).
-To activate the associated theme simply use \texttt{custom} as the theme ID,
-\ie,
+To activate the associated theme simply use \texttt{custom} as the theme ID
+in the associated document option, \ie,
 %
 \begin{LaTeXCode}[numbers=none]
 \documentclass[theme=custom,...]{hgbthesis}
@@ -513,7 +509,7 @@ This is the simplest approach if only a \emph{single} custom theme is needed.
 
 \subsubsection{Option 2: Create multiple custom themes}
 
-Thesis administrator may find it useful to define \emph{multiple} custom themes for their
+Thesis administrators may find it useful to define \emph{multiple} custom themes for their
 institution or department(s).
 For this purpose, simply copy file \texttt{hgbtheme-default.sty} or \texttt{hgbtheme-custom.sty}
 to a new file, \eg, \texttt{hgbtheme-physics.sty},%
@@ -531,7 +527,7 @@ An error will be raised if the associated \texttt{.sty} file cannot be found.
 \subsection{Commands and variables available to custom theme styles}
 \label{sec:ThemeStyleCommands}
 
-Any theme style must at least \emph{redefine} the
+Any theme style must at least define the
 \begin{itemize}
   \item[] \verb!\hgb@MakeFrontPages{..}!
 \end{itemize}
@@ -631,7 +627,8 @@ The \texttt{hagenberg-thesis} package builds on the following \latex\ packages:\
 \texttt{datetime2}, 
 \texttt{enumitem}, 
 \texttt{epstopdf}, 
-\texttt{exscale}, 
+\texttt{exscale},
+\texttt{extramarks},
 \texttt{fancyhdr}, 
 \texttt{float}, 
 \texttt{fontenc},
