@@ -1,5 +1,4 @@
 %%% File encoding: UTF-8
-%%% äöüÄÖÜß  <-- no German umlauts here? Use an UTF-8 compatible editor!
 
 %%% Magic comments for setting the correct parameters in compatible IDEs
 % !TeX encoding = utf8
@@ -12,12 +11,12 @@
 
 \documentclass[type=bachelor,theme=default,language=english,titlelanguage=english,smartquotes,apa]{hgbthesis}
 % Supported options in [..]: 
-%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
-%		Theme (layout of title pages): theme=default
-%		Thesis proposal: 'proposal' or 'proposal=true' 
-%		Main text language: language = 'german' (default), 'english'
-%		Title page language: titlelanguage = 'german', 'english' (default is main language)
-%		Use automatic quotation marks: 'smartquotes'
+%		Type of work (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
+%		Title page theme (theme=): 'default' (default), 'fhooe24'
+%		Use as thesis proposal: 'proposal' or 'proposal=true' 
+%		Main document language (language=): 'german' (default), 'english'
+%		Title page language (titlelanguage=): 'german', 'english' (default is main language)
+%		Conversion to typographic quotation marks: 'smartquotes'
 %		Use APA citation style: 'apa'
 %		Page layout: 'oneside' (single-sided, default), 'twoside' (double-sided)
 %%%-----------------------------------------------------------------------------
@@ -33,24 +32,23 @@
 % Title page entries
 %%%-----------------------------------------------------------------------------
 
-\title{Partial Solutions to Universal Problems (APA Version)}
+\title{Partial Solutions to Universal Problems (APA~Version)}
+\subtitle{A Fundamental Introduction}
 \author{Alex A.\ Wiseguy}
+
+\programtype{Master's Degree Program} % or Bachelor's Degree Program
 \programname{Universal Computing}
-
-%\programtype{Fachhochschul-Bachelorstudiengang} % select/edit
-\programtype{Fachhochschul-Masterstudiengang}
-\institution{Fachhochschule Oberösterreich}
-
-%\logofile{}	% deprecated, to be set in theme file!
+\institution{University of Applied Sciences Upper Austria}
 
 \placeofstudy{Hagenberg}
-\dateofsubmission{2024}{06}{25} % {YYYY}{MM}{DD}
+\dateofsubmission{2025}{07}{01} % {YYYY}{MM}{DD}
 
-\advisor{Roger K.~Putnik, M.Sc.} % optional
+% List of advisors, up to 4 are possible, title in [] is optional
+\advisor{Dr. Roger K.~Putnik, M.Sc.}
+%\advisor[Second Advisor]{FH-Prof.\textsuperscript{in} Susanna A.~D. Visor, PhD}
 
-\license{cclicense} 			% publish under Creative Commons License (recommended)
-%\license{strictlicense}	% restrictive clause - "all rights reserved"
-
+\license{cclicense}      % Publish under Creative Commons License (recommended)
+%\license{strictlicense} % Restrictive license, "all rights reserved"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                   % Front part (roman page numbers)
