@@ -223,12 +223,12 @@
 }
 
 \newcommand{\cclicense}{% for backward compatibility, use \license{cc} instead
-	\ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cclicense} instead!}%
+	\ClassWarning{hgbthesis}{\string\cclicense\space command is deprecated, use \string\license{cc} instead!}%
 	\license{cc}%
 }
 
 \newcommand{\strictlicense}{% for backward compatibility, use \license{strict} instead
-	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strictlicense} instead!}%
+	\ClassWarning{hgbthesis}{\string\strictlicense\space command is deprecated, use \string\license{strict} instead!}%
 	\license{strict}%
 }
 
