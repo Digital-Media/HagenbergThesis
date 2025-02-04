@@ -20,7 +20,7 @@ Department of Digital Media, Hagenberg (Austria)}
 
 \begin{abstract}\noindent
 The \textsf{hagenberg-thesis} package is a collection of modern LaTeX
-templates for university theses (bachelor, master, or diploma programs) and
+templates for university theses (bachelor, master, diploma or PhD programs) and
 related documents. This manual describes the main features of this package.
 Pre-configured document templates for English and German manuscripts and a
 complete tutorial are available on the package's home repository.
@@ -50,7 +50,7 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report}, and
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}} (\texttt{book}):
-    for bachelor's, master's, and diploma theses,
+    for bachelor's, master's, diploma, and PhD theses,
     \item \textbf{\texttt{hgbreport}} (\texttt{report}):
     for project and term reports,
     \item \textbf{\texttt{hgbarticle}} (\texttt{article}):
@@ -123,6 +123,9 @@ The result is a short exposé that contains only one chapter. Thus,
 chapter numbers are not displayed. Remove the \texttt{proposal} option to
 migrate a proposal document straight to the final thesis (and restore the usual
 numbering scheme).
+
+The example also shows that the main document language (\texttt{language=english}) and the
+language on the title page (\texttt{titlelanguage=german}) can be set independently.
 
 \subsection{Thesis settings (class \texttt{hgbthesis})}
 
@@ -328,6 +331,7 @@ The following types of code environments are defined:%
     \item \textbf{\texttt{ObjCCode}}: for ObjectiveC,
     \item \textbf{\texttt{PhpCode}}: for PHP,
     \item \textbf{\texttt{PythonCode}}: for Python,
+    \item \textbf{\texttt{ScalaCode}}: for Scala,
     \item \textbf{\texttt{Swift}}: for Swift,
     \item \textbf{\texttt{XmlCode}}: for XML.
 \end{itemize}

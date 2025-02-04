@@ -1,5 +1,4 @@
 %%% File encoding: UTF-8
-%%% äöüÄÖÜß  <-- no German umlauts here? Use an UTF-8 compatible editor!
 
 %%% Magic comments for setting the correct parameters in compatible IDEs
 % !TeX encoding = utf8
@@ -12,18 +11,18 @@
 
 \documentclass[type=master,theme=default,language=english,smartquotes]{hgbthesis}
 % Supported options in [..]: 
-%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
-%		Theme (layout of title pages): theme=default
-%		Thesis proposal: 'proposal' or 'proposal=true' 
-%		Main text language: language = 'german' (default), 'english'
-%		Title page language: titlelanguage = 'german', 'english' (default is main language)
-%		Use automatic quotation marks: 'smartquotes'
-%		Use APA citation style: 'apa'
-%		Page layout: 'oneside' (single-sided, default), 'twoside' (double-sided)
+%    Type of work (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
+%    Title page theme (theme=): 'default' (default), 'fhooe24'
+%    Use as thesis proposal: 'proposal' or 'proposal=true' 
+%    Main document language (language=): 'german' (default), 'english'
+%    Title page language (titlelanguage=): 'german', 'english' (default is main language)
+%    Conversion to typographic quotation marks: 'smartquotes'
+%    Use APA citation style: 'apa'
+%    Page layout: 'oneside' (single-sided, default), 'twoside' (double-sided)
 %%%-----------------------------------------------------------------------------
 
-\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\bibliography{references} % BibLaTeX-Literaturdatei (references.bib)
+\graphicspath{{images/}}  % Location of images and graphics
+\bibliography{references} % Biblatex bibliography file (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
@@ -33,21 +32,23 @@
 % Title page entries
 %%%-----------------------------------------------------------------------------
 
-\title{Partial Solutions to Universal Problems}
+\title{Partial Solutions to "Universal" Problems}
+\subtitle{A Fundamental Introduction}
 \author{Alex A.\ Wiseguy}
-\programname{Universal Computing}
 
-%\programtype{Fachhochschul-Bachelorstudiengang} % select/edit
-\programtype{Fachhochschul-Masterstudiengang}
-\institution{Fachhochschule Oberösterreich}
+\programtype{Master's Degree Program} % or Bachelor's Degree Program
+\programname{Universal Computing}
+\institution{University of Applied Sciences Upper Austria}
 
 \placeofstudy{Hagenberg}
-\dateofsubmission{2024}{06}{25} % {YYYY}{MM}{DD}
+\dateofsubmission{2025}{07}{01} % {YYYY}{MM}{DD}
 
-\advisor{Roger K.~Putnik, M.Sc.} % optional
+% List of advisors, up to 4 are possible, title in [] is optional
+\advisor{Dr. Roger K.~Putnik, M.Sc.}
+%\advisor[Second Advisor]{FH-Prof.\textsuperscript{in} Susanna A.~D. Visor, PhD}
 
-\license{cclicense} 			% publish under Creative Commons License (recommended)
-%\license{strictlicense}	% restrictive clause - "all rights reserved"
+\license{cc}      % Publish under Creative Commons License (recommended)
+%\license{strict} % Restrictive license, "all rights reserved"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                   % Front part (roman page numbers)
