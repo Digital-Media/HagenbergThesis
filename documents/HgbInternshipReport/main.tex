@@ -1,5 +1,4 @@
 %%% Einfaches Template für einen Abschlussbericht zum Berufspraktikum
-%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 %%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
 % !TeX encoding = utf8
@@ -10,16 +9,16 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-\documentclass[type=internship,theme=default,language=german,smartquotes]{hgbthesis}
-% Supported options in [..]: 
-%		Type of thesis: type = 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
-%		Theme (layout of title pages): theme=default
-%		Thesis proposal: 'proposal' or 'proposal=true' 
-%		Main text language: language = 'german' (default), 'english'
-%		Title page language: titlelanguage = 'german', 'english' (default is main language)
-%		Use automatic quotation marks: 'smartquotes'
-%		Use APA citation style: 'apa'
-%		Page layout: 'oneside' (single-sided, default), 'twoside' (double-sided)
+\documentclass[type=internship,theme=fhooe24,language=german,titlelanguage=german,smartquotes]{hgbthesis}
+% Zulässige Optionen in [..]: 
+%    Typ der Arbeit (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
+%    Theme der Titelseite (theme=): 'default' (default), 'fhooe24'
+%    Als Exposé verwenden: 'proposal' oder 'proposal=true' 
+%    Hauptsprache im Dokument (language=): 'german' (default), 'english'
+%    Sprache der Titelseite (titlelanguage=): 'german', 'english' (default is main language)
+%    Umwandlung in typografische Anführungszeichen: 'smartquotes'
+%    APA Zitierstil: 'apa'
+%    Layout: 'oneside' (einseitig, default), 'twoside' (zweiseitig)
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % directory for user images and graphics
@@ -34,15 +33,20 @@
 %%%-----------------------------------------------------------------------------
 
 \title{Endbericht zum Berufspraktikum bei Mogulovich International}
+%\subtitle{Untertitel nur wenn unbedingt notwendig}
 \author{Alex A.\ Schlaumeier}
 
 \programtype{Fachhochschul-Bachelorstudiengang}
 \programname{Medientechnik und -design}
 \institution{Fachhochschule Oberösterreich}
-\placeofstudy{Hagenberg}
 
-\dateofsubmission{2024}{06}{25}
+\placeofstudy{Hagenberg}
+\dateofsubmission{2025}{07}{01} % {JJJJ}{MM}{TT}
+
+% Liste der Kontaktpersonen, bis zu 4 sind möglich, Titel in [] ist optional
 \advisor{Pjotr I.~Czar, M.A.}
+%\advisor[Team Lead]{Bettina B. Ackend}
+
 \companyName{%
    Mogulovich International Media GmbH\\
    Online Division\\
@@ -50,8 +54,8 @@
 }
 \companyUrl{www.mogul.at}
 
-\license{cclicense} 			% publish under Creative Commons License (recommended)
-%\license{strictlicense}	% restrictive clause - "all rights reserved"
+\license{cc}      % Unter Creative Commons Lizenz veröffentlichen (empfohlen)
+%\license{strict} % Restriktieve Lizenz, "Alle Rechte vorbehalten"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)
