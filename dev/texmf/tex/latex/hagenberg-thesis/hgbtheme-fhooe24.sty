@@ -36,13 +36,16 @@
 
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls
   \hgb@MakeTitlePage%
+	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+		{\hgb@MakeCompanyPage}%
+		{}%
 	\ifthenelse{\boolean{hgb@IsProposal}}%
 		{}% no copyright/declaration pages for proposals
 		{%
 			\hgb@MakeCopyrightPage%
 			\hgb@MakeDeclarationPage%
 		}%
-}
+}%
 		
 %% Title page ---------------------------------------------------
 
@@ -99,11 +102,19 @@
 	\end{textblock}
 
 	% advisors(s) -------------------------------------
-	\begin{textblock}{10}(0,17)
-		\ifthenelse{\hgb@AdvisorCount > 0}%
-			{\@makeAdvisorTable}% defined below
-			{\color{red}No advisor(s) specified!\\}%
-	\end{textblock}
+	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+		{}%
+		{%
+			\begin{textblock}{10}(0,17)
+				\ifthenelse{\hgb@AdvisorCount > 0}%
+					{%
+						\@makeAdvisorTable% defined below
+					}%
+					{%
+						\color{red}No advisor(s) specified!\\
+					}%
+			\end{textblock}
+		}%
 
 	\null%	required to tell LaTeX that there is a non-empty content box
 \end{titlepage}%
@@ -150,4 +161,41 @@
 	\vspace{12mm}
 	\noindent
 	\hgb@Author
+}
+
+%% Company Page for Internship Reports ------------------------------
+
+\newcommand{\hgb@MakeCompanyPage}{%
+	\newpage
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		\vspace{25mm} 
+		{\hgbDictionaryGet{internship}{\hgb@TitleLanguage}:}
+		\\
+		\vspace{3mm}
+		{\Large\sf\hgb@CompanyName\\ \mbox{}}
+		\\
+		{\sf \hgb@CompanyUrl}
+		\\
+		\vspace{45mm} 
+		\ifthenelse{\hgb@AdvisorCount = 1}%
+			{%
+				{\hgbDictionaryGet{internship-contact-single}{\hgb@TitleLanguage}:}%
+			}%
+			{}%
+		\ifthenelse{\hgb@AdvisorCount > 1}%
+			{%
+				{\hgbDictionaryGet{internship-contact-multiple}{\hgb@TitleLanguage}:}%
+			}%
+			{}%
+		\par\vspace{6mm}%
+		\ifthenelse{\hgb@AdvisorCount > 0}%
+			{%
+				\large\sffamily\@makeAdvisorTable% defined above
+			}%
+			{%
+				\color{red}No advisor(s) specified!\\
+			}%
+	\end{center}
 }
