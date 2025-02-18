@@ -1,0 +1,226 @@
+%% This file is part of the Hagenberg Thesis package
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\ProvidesPackage{hgbtheme-default}[2025/02/18]%%AUTO
+\RequirePackage{hgbdict}
+\RequirePackage{forloop}
+\RequirePackage[absolute]{textpos}
+
+% Define a grid of 10mm squares so there's 21 horizontal and 29 vertical ones
+\setlength{\TPHorizModule}{10mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+
+%% Define various language-dependent text chunks to be used below -------------
+
+\hgbDictionarySet{submitted-to}{german}{eingereicht am}%
+\hgbDictionarySet{submitted-to}{english}{submitted to the}%
+
+\hgbDictionarySet{at-place-of-study}{german}{an der}%
+\hgbDictionarySet{at-place-of-study}{english}{at the}%
+
+\hgbDictionarySet{declaration-date}{english}%
+	{\hgb@GetMonthName{english}{\hgb@SubmissionMonth} \hgb@SubmissionDay, \hgb@SubmissionYear}%
+\hgbDictionarySet{declaration-date}{german}%
+	{am \hgb@SubmissionDay.~\hgb@GetMonthName{german}{\hgb@SubmissionMonth} \hgb@SubmissionYear}%
+
+%% Use the default logo if unspecified (and not empty):
+
+\ifthenelse{\equal{\hgb@LogoFile}{@unspecified}}%
+	{\renewcommand{\hgb@LogoFile}{hgbtheme-default-logo.pdf}}{}%
+
+%% Initialization (optional) --------------------------------------------------
+
+\AddToHook{hgb@InitThemeHook}{%
+	% add initialization code if needed
+}%
+
+%% Structure of front pages ---------------------------------------------------
+  
+\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls
+  \hgb@MakeTitlePage%
+	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+		{\hgb@MakeCompanyPage}%
+		{}%
+	\ifthenelse{\boolean{hgb@IsProposal}}%
+		{}% no copyright/declaration pages for proposals
+		{%
+			\hgb@MakeCopyrightPage%
+			\hgb@MakeDeclarationPage%
+		}%
+}%
+
+%% Title page ---------------------------------------------------
+
+\newcommand{\hgb@MakeTitlePage}{%
+\begin{titlepage}%
+	\hgb@TitlePageFont%
+
+	% title and subtitle --------------------------------------------------
+	\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+		\begin{textblock}{15}[0,1](3,7)
+			\centering
+			{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
+			\ifthenelse{\equal{\hgb@SubTitle}{}}%
+				{}% no subtitle defined
+				{%
+					\par\vspace{4mm}% separating space between title and subtitle		
+					{\Large\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
+				}%
+		\end{textblock}
+	\end{SwitchLanguage}%
+
+	% author --------------------------------------------------
+	\begin{textblock}{15}[0,0.5](3,9)
+		\centering
+		{\large\hgb@Author\par}%
+	\end{textblock}
+
+	% logo --------------------------------------------------
+	\begin{textblock}{15}(3,11)
+		\centering
+		\hgb@MakeLogo%
+	\end{textblock}
+
+	% thesis type ---------------------------------------------
+	\begin{textblock}{15}[0,0.5](3,16)
+		\centering
+		{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
+		\ifthenelse{\boolean{hgb@IsProposal}}%
+			{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
+	\end{textblock}
+
+	% program type, program name, institution, place of study ---------------------------------
+	\begin{textblock}{15}(3,18)
+		\centering
+		{\hgbDictionaryGet{submitted-to}{\hgb@TitleLanguage}\par}%
+		\vspace{1mm}%
+		{\large \hgb@ProgramType\par}%
+		\vspace{1mm}%
+		{\large\hgb@ProgramName\par}%
+		\vspace{4mm}%
+		{\hgbDictionaryGet{at-place-of-study}{\hgb@TitleLanguage}\par}%
+		\vspace{1mm}%
+		{\large\hgb@Institution\par}%
+		\vspace{1mm}%
+		{\large in \hgb@PlaceOfStudy\par}%
+	\end{textblock}
+
+	% submission year  ---------------------------------
+	\begin{textblock}{15}(3,23)
+		\centering
+		{\large\hgb@SubmissionYear\par}%
+	\end{textblock}
+
+	% advisors(s) (do not show for internship report) -------------------------------------
+	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+		{}%
+		{%
+			\begin{textblock}{15}(3,25)
+				\centering
+				\ifthenelse{\hgb@AdvisorCount > 0}%
+					{%
+						\@makeAdvisorTable% defined below
+					}
+					{%
+						\color{red}No advisor(s) specified!\\
+					}%
+			\end{textblock}
+		}%
+
+	\null%	required to tell LaTeX that there is a non-empty content box
+\end{titlepage}%
+}
+
+%% Logo Generation ----------------------------------------
+
+\newlength{\hgb@LogoHeight}
+\setlength{\hgb@LogoHeight}{3\TPVertModule} % logo is 3 grid fields (30mm) high
+
+\newcommand{\hgb@MakeLogo}[0]{%
+\ifthenelse{\equal{\hgb@LogoFile}{}}%	check if \hgb@LogoFile is empty (not @unspecified)
+	{\vspace*{\hgb@LogoHeight}}%			skip logo
+	{\includegraphics[height=\hgb@LogoHeight]{\hgb@LogoFile}}%	insert logo
+}
+
+%% Advisor Table ----------------------------------------
+
+\newcommand{\@makeAdvisorTable}{%
+  \newcounter{C}%
+	\renewcommand{\arraystretch}{1.25}%
+	\setlength{\tabcolsep}{0.4em}%
+  \begin{tabular}{ll}%
+    \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
+      \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
+      \ifthenelse{\value{C} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
+    }%
+  \end{tabular}%
+}
+
+% Copyright/License Page ----------------------------------------
+
+\newcommand{\hgb@MakeCopyrightPage}{%
+  \newpage
+  \thispagestyle{plain}
+  \rule{0mm}{1mm}
+  \vspace*{75mm}
+  \begin{center}
+  \textsf{\copyright\ Copyright\ \hgb@SubmissionYear\ \hgb@Author}
+  \end{center}
+  \vspace{8mm}
+  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}} % defined above
+}
+
+% Declaration Page ----------------------------------------
+
+\newcommand{\hgb@MakeDeclarationPage}{
+	\chapter{\hgbDictionaryGet{declaration-title}{\hgb@TitleLanguage}}
+	\noindent%
+	\hgbDictionaryGet{declaration-text}{\hgb@TitleLanguage}%
+	\par
+	\vspace{10mm}
+	\noindent
+	{\hgb@PlaceOfStudy, \hgbDictionaryGet{declaration-date}{\hgb@TitleLanguage}}%
+	\par
+	\vspace{12mm}
+	\noindent
+	\hgb@Author
+}
+
+%% Company Page for Internship Reports ------------------------------
+
+\newcommand{\hgb@MakeCompanyPage}{%
+	\newpage
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		\vspace{25mm} 
+		{\hgbDictionaryGet{internship}{\hgb@TitleLanguage}:}
+		\\
+		\vspace{3mm}
+		{\Large\sf\hgb@CompanyName\\ \mbox{}}
+		\\
+		{\sf \hgb@CompanyUrl}
+		\\
+		\vspace{45mm} 
+		\ifthenelse{\hgb@AdvisorCount = 1}%
+			{%
+				{\hgbDictionaryGet{internship-contact-single}{\hgb@TitleLanguage}:}%
+			}%
+			{}%
+		\ifthenelse{\hgb@AdvisorCount > 1}%
+			{%
+				{\hgbDictionaryGet{internship-contact-multiple}{\hgb@TitleLanguage}:}%
+			}%
+			{}%
+		\par\vspace{6mm}%
+		\ifthenelse{\hgb@AdvisorCount > 0}%
+			{%
+				\large\sffamily\@makeAdvisorTable% defined above
+			}%
+			{%
+				\color{red}No advisor(s) specified!\\
+			}%
+	\end{center}
+}

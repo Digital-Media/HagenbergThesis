@@ -1,6 +1,5 @@
 %% A simple template for a scientific article using the Hagenberg setup
 %% based on the standard LaTeX 'article' class
-%%% äöüÄÖÜß  <-- no German umlauts here? Use a UTF-8 compatible editor!
 
 %%% Magic comments for setting the correct parameters in compatible IDEs
 % !TeX encoding = utf8
@@ -14,8 +13,8 @@
 \documentclass[english,twocolumn,smartquotes]{hgbarticle}
 % Valid options in [..]: 
 %    Main language: 'german' (default), 'english'
-%    Turn on smart quote handling: 'smartquotes'
-%    APA bibliography style: 'apa'
+%    Conversion to typographic quotation marks: 'smartquotes'
+%    Use APA citation style: 'apa'
 %    Typeset the text in two columns: 'twocolumn'
 %%%-----------------------------------------------------------------------------
 
@@ -43,10 +42,12 @@
 %%%-----------------------------------------------------------------------------
 
 \begin{abstract}\noindent
-This document shows how to use the \textsf{hgbarticle} class, which combines
-the standard \latex \textsf{article} class with the \texttt{hgb.sty}
-(Hagenberg) thesis styles. For example, this may be useful if you wish to
-publish part of your thesis as a journal article without major changes.
+This document shows how to author an \emph{article} using the full functionality
+of the \texttt{hagenberg-thesis} framework. It uses class \texttt{hgb\-article} which is based
+on the standard \latex \textsf{article} class. This may be useful, for example, if you wish to
+publish part of your thesis as a journal article or conference paper without major changes.
+Note that this is not intended as a substitute for \latex's standard \texttt{article}
+class and many publishers provide their own \latex\ class files.
 \end{abstract}
 
 %%%-----------------------------------------------------------------------------
@@ -57,7 +58,7 @@ If you wish to write this report in German, you should replace the specification
 %
 \begin{verbatim}
 \documentclass[english,twocolumn,
-    smartquotes]{hgbarticle}
+            smartquotes]{hgbarticle}
 \end{verbatim}
 %
 at the top of this document by
@@ -151,6 +152,18 @@ same as in the thesis template. The only difference is that
 %%%-----------------------------------------------------------------------------
 
 \section{Our Radically New Approach}
+
+\lipsum[5-7]
+
+\subsection{Initial Steps}
+
+\lipsum[5-7]
+
+\subsection{Alternatives}
+
+\lipsum[5-7]
+
+\subsection{Future Activities}
 
 \lipsum[5-7]
 

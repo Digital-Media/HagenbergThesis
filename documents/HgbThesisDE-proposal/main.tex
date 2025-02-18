@@ -1,5 +1,4 @@
 %%% Dateikodierung: UTF-8
-%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 %%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
 % !TeX encoding = utf8
@@ -10,17 +9,19 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-\documentclass[bachelor,german,smartquotes,proposal]{hgbthesis}
+\documentclass[type=bachelor,theme=default,language=german,titlelanguage=german,smartquotes,proposal]{hgbthesis}
 % Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
+%    Typ der Arbeit (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
+%    Theme der Titelseite (theme=): 'default' (default), 'fhooe24'
+%    Als Exposé verwenden: 'proposal' oder 'proposal=true' 
+%    Hauptsprache im Dokument (language=): 'german' (default), 'english'
+%    Sprache der Titelseite (titlelanguage=): 'german', 'english' (default is main language)
+%    Umwandlung in typografische Anführungszeichen: 'smartquotes'
 %    APA Zitierstil: 'apa'
+%    Layout: 'oneside' (einseitig, default), 'twoside' (zweiseitig)
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
 \bibliography{references} % Biblatex-Literaturdatei (references.bib)
 
 %%%-----------------------------------------------------------------------------
@@ -32,16 +33,19 @@
 %%%-----------------------------------------------------------------------------
 
 \title{Designfaktoren bei variabler Spieler*innenanzahl für Computerspiele im öffentlichen Raum}
+%\subtitle{Ein Ansatz für dynamisches Game Design} % optional
 \author{Peter Ingo Eberhardt}
-\programname{Medientechnik und -design}
 
-\programtype{Fachhochschul-Bachelorstudiengang}
-%\programtype{Fachhochschul-Masterstudiengang} % auswählen/editieren
+\programtype{Fachhochschul-Bachelorstudiengang} % oder Fachhochschul-Masterstudiengang
+\programname{Medientechnik und -design}
+\institution{Fachhochschule Oberösterreich}
 
 \placeofstudy{Hagenberg}
-\dateofsubmission{2024}{06}{25} % {YYYY}{MM}{DD}
+\dateofsubmission{2025}{07}{01} % {JJJJ}{MM}{TT}
 
-\advisor{Dr. Alois B.~Treuer} % optional
+% OptionaL: mögliche/gewünschte Betreuungspersonen, bis zu 4, Titel in [] ist optional
+\advisor{Dr. Alois B.~Treuer} 
+%\advisor[Alternative Betreuerin]{FH-Prof.\textsuperscript{in} Susanna A.~D. Visor, PhD}
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)

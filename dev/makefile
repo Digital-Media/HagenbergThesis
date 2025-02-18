@@ -14,14 +14,18 @@ ZIPEXE := zip
 MKFILELATEX := $(realpath makefile-latex)
 
 # -----------------------------------------------------------------------
+# directory where 'make' is started
+TEXMFDIR := $(realpath texmf)
 # directory where we keep the original .cls and .sty files
-SOURCEDIR=latex
+SOURCEDIR = $(realpath texmf)/tex/latex/hagenberg-thesis
+# directory where we keep the original .bib files
+BIBTEXDIR = $(realpath texmf)/bibtex/bib
 # directory for holding .sty files from other packages if needed
-SOURCEDIRFOREIGN=latex-foreign
+SOURCEDIRFOREIGN = $(realpath texmf)/tex/latex-foreign
 # Target directory for the compiled documents (examples):
-DOCUMENTSDIR := ../documents
-# Collect all subdirectories (examples) in DOCUMENTSDIR:
-EXAMPLES := $(shell cd $(DOCUMENTSDIR); find * -maxdepth 0 -type d)
+DOCSDIR := $(realpath ../documents)
+# Collect all subdirectories (examples) in DOCSDIR:
+DOCSLIST := $(shell cd $(DOCSDIR); find * -maxdepth 0 -type d)
 # -----------------------------------------------------------------------
 # Date-related stuff:
 TODAY := $(shell date +"%Y\/%m\/%d")
@@ -32,83 +36,107 @@ RELEASEDATE := $(TODAY)
 DATEPATTERN := \[[0-9]\{4\}\/[0-9]\{2\}\/[0-9]\{2\}\]%%AUTO
 # -----------------------------------------------------------------------
 # This directory holds everything needed for CTAN distribution:
-CTANDIR := ctan
+CTANDIR := $(realpath ctan)
 # The official package name on CTAN
-CTANPKG := hagenberg-thesis
+CTANBUNDLE := hagenberg-thesis
 # The subdirectory to hold the sample documents in CTAN
-CTANEXAMPLES := examples
+# CTANDOCSLIST := examples
 # The release date line in ctan/hagenberg-thesis/README.md starts with "### Version:"
-READMEVERSIONTAG := \#\#\# Version:
+READMEVERSIONTAG := "\#\#\# Version:"
 # -----------------------------------------------------------------------
 
 all : setdates build ctan
-.PHONY : all setdates build ctan $(EXAMPLES)
+.PHONY : all showsetup inittex setdates build ctan $(DOCSLIST)
+
+showsetup :
+	@echo TEXMFDIR = $(TEXMFDIR)
+	@echo SOURCEDIR = $(SOURCEDIR)
+	@echo BIBTEXDIR = $(BIBTEXDIR)
+	@echo SOURCEDIRFOREIGN = $(SOURCEDIRFOREIGN)
+	@echo DOCSDIR = $(DOCSDIR)
+	@echo DOCSLIST = $(DOCSLIST)
+	@echo TODAY = $(TODAY)
+	@echo RELEASEDATE = $(RELEASEDATE)
+	@echo DATEPATTERN = $(DATEPATTERN)
+	@echo CTANDIR = $(CTANDIR)
+	@echo CTANBUNDLE = $(CTANBUNDLE)
+#	@echo CTANDOCSLIST = $(CTANDOCSLIST)
+	@echo READMEVERSIONTAG = $(READMEVERSIONTAG)
+	
+inittex :
+#	Add /dev/texmf... as a TEXMF root directory (not executed in a full make).
+#	Note: this must be a clean TEXMF dir, with nothing else in it. Otherwise MikTeX 'update-fndb' throws an error!
+# https://docs.miktex.org/manual/initexmf.html
+# https://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex
+#
+	initexmf --register-root=$(TEXMFDIR) --verbose
+	initexmf --update-fndb --verbose
+#	initexmf -u
+	initexmf --report
+#	initexmf --unregister-root=$(TEXMFDIR) --verbose
+
 
 setdates :
 # Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
-#	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty files:
+#	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty *.tex files:
 	@echo Updating release date in all sty/cls files to [$(RELEASEDATE)]
-	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls)
+	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(BIBTEXDIR)/*.bib)
 	@echo ""
 
-build : $(EXAMPLES)
-#	Defines a make target for each directory name in EXAMPLES
+build : $(DOCSLIST)
+#	Defines a make target for each directory name in DOCSLIST
 
-$(EXAMPLES) : 
-#	Builds and zips every document (directory) in EXAMPLES
+$(DOCSLIST) : 
+#	Builds and zips every document (directory) in DOCSLIST
 	@echo "+++ Processing document \"$@\" +++"
-#	Copy all .sty .cls *.bib files to the example directory:
-	@echo "updating .sty, .cls, .bib files from $(SOURCEDIR)/"
-	@find $(SOURCEDIR)/ -type f -name "*.sty" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
-	@find $(SOURCEDIR)/ -type f -name "*.cls" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
-	@find $(SOURCEDIR)/ -type f -name "*.bib" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
-	@find $(SOURCEDIRFOREIGN)/ -type f -name "*.sty" -exec cp -u {} $(DOCUMENTSDIR)/$@ \;
-#	@cp -u $(SOURCEDIR)/*.sty $(DOCUMENTSDIR)/$@
-#	@cp -u $(SOURCEDIR)/*.cls $(DOCUMENTSDIR)/$@
-#	@cp -u $(SOURCEDIR)/*.bib $(DOCUMENTSDIR)/$@
-#	@cp -u $(SOURCEDIRFOREIGN)/*.sty $(DOCUMENTSDIR)/$@
-#
-#	Run the LaTeX build in a sub-makefile:
-	@make --silent -C $(DOCUMENTSDIR)/$@ -f $(MKFILELATEX)
+#	Copy all .sty .cls *.bib files to the document directory:
+	@echo "Temporarily copying cls/sty/pdf files from $(SOURCEDIR) and $(SOURCEDIRFOREIGN)"
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.cls" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.pdf" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(SOURCEDIRFOREIGN)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
+	@find $(BIBTEXDIR)/ -maxdepth 1 -type f -name "*.bib" -exec cp -u {} $(DOCSDIR)/$@ \;
+#	Run the LaTeX build in a sub-makefile (removes main.pdf first, i.e., runs always):
+	rm -f $(DOCSDIR)/$@/main.pdf
+	@make --silent -C $(DOCSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
-#	@echo "creating $@.zip"
-#	@cd $(DOCUMENTSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
+	@echo "Creating document ZIP file $@.zip"
+	@cd $(DOCSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
+#	Remove all local .sty .cls *.bib files from the document directory:
+	@echo "Final cleanup in $(DOCSDIR)/$@"
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.sty" -delete
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.cls" -delete
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.bib" -delete
+	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.pdf" -and -not -name "main.pdf" -delete
 	@echo ""
 	
 ctan :
 #	Builds the CTAN distribution
 	@echo "" 
 	@echo "Building CTAN bundle ..."
-#	Copy all .sty and .cls files to ctan/hagenberg-thesis/latex/
-	@echo "  copying .sty and .cls files from $(SOURCEDIR)/"
-	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(CTANDIR)/$(CTANPKG)/latex
-#
-#	Copy the entire documents/ directory to ctan/hagenberg-thesis/ (clear target first)
-#	@echo "  copying $(DOCUMENTSDIR)/ directory to $(CTANEXAMPLES)/"
-#	@rm -r -f $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/*
-#	@cp -u -R $(DOCUMENTSDIR)/* $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)
-#
-#	Remove all .sty and .cls files in ctan/hagenberg-thesis/examples/ (recursively):
-#	@echo "  removing all .sty and .cls files in $(CTANEXAMPLES)/"
-#	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.sty" -type f -delete
-#	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -name "*.cls" -type f -delete
-#
-#	Remove all top-level ZIP files in ctan/hagenberg-thesis/examples/:
-#	@echo "  removing ZIP files in $(CTANEXAMPLES)/"
-#	@find $(CTANDIR)/$(CTANPKG)/$(CTANEXAMPLES)/ -maxdepth 1 -name "*.zip" -type f -delete
+#	Clear CTAN /latex/ and /bibtex/ directories
+	@find $(CTANDIR)/$(CTANBUNDLE)/latex  -maxdepth 1 -type f -name "*.*" -delete
+	@find $(CTANDIR)/$(CTANBUNDLE)/bibtex -maxdepth 1 -type f -name "*.*" -delete
+#	Copy all files to ctan/hagenberg-thesis/latex/
+	@echo "  Copying cls/sty/pdf files from $(SOURCEDIR)/"
+	@cp -u $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(SOURCEDIR)/*.pdf $(CTANDIR)/$(CTANBUNDLE)/latex
+	@echo "  Copying .bib files from $(BIBTEXDIR)/"
+	@cp -u $(BIBTEXDIR)/*.bib $(CTANDIR)/$(CTANBUNDLE)/bibtex
 #
 #	Copy manual/tutorial source and PDFs to ctan/hagenberg-thesis/doc/
-	@echo "  copying manual/tutorial source and PDFs to $(CTANDIR)/doc/"
-	@cp -u $(DOCUMENTSDIR)/Manual/main.tex $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).tex
-	@cp -u $(DOCUMENTSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG).pdf
-	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorialEN/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial-en.pdf
-	@cp -u $(DOCUMENTSDIR)/HgbThesisTutorialDE/main.pdf $(CTANDIR)/$(CTANPKG)/doc/$(CTANPKG)-tutorial-de.pdf
+	@find $(CTANDIR)/$(CTANBUNDLE)/doc -maxdepth 1 -name "*.*" -type f -delete
+	@echo "  Copying manual/tutorial source and PDFs to $(CTANDIR)/doc/"
+	@cp -u $(DOCSDIR)/Manual/main.tex $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).tex
+	@cp -u $(DOCSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).pdf
+	@cp -u $(DOCSDIR)/HgbThesisTutorialEN/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE)-tutorial-en.pdf
+	@cp -u $(DOCSDIR)/HgbThesisTutorialDE/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE)-tutorial-de.pdf
+#
 #	Update version number in package README file:
-	@echo "  updating version number in package README.md"
-	@$(shell sed -i 's|$(READMEVERSIONTAG).*|$(READMEVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANPKG)/README.md)
+	@echo "  Updating version number in package $(CTANDIR)/$(CTANBUNDLE)/README.md"
+	@$(shell sed -i 's|$(READMEVERSIONTAG).*|$(READMEVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANBUNDLE)/README.md)
 #	Make a ZIP of the complete CTAN bundle:
 	@echo "  ZIPing the complete CTAN bundle"
-	@cd $(CTANDIR)/; rm -f $(CTANPKG).zip; $(ZIPEXE) -r -q $(CTANPKG).zip $(CTANPKG)
+	@cd $(CTANDIR)/; rm -f $(CTANBUNDLE).zip; $(ZIPEXE) -r -q $(CTANBUNDLE).zip $(CTANBUNDLE)
 
 
 

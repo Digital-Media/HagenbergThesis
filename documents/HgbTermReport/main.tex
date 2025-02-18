@@ -1,6 +1,5 @@
 %% A simple template for a term report using the Hagenberg setup
 %% based on the standard LaTeX 'report' class
-%%% äöüÄÖÜß  <-- no German umlauts here? Use an UTF-8 compatible editor!
 
 %%% Magic comments for setting the correct parameters in compatible IDEs
 % !TeX encoding = utf8
@@ -12,11 +11,12 @@
 \RequirePackage{hgbpdfa}        % Creates a PDF/A-2b compliant document
 
 \documentclass[english,notitlepage,smartquotes]{hgbreport}
-% Valid options in [..]: 
+% Supported options in [..]:
 %    Main language: 'german' (default), 'english'
-%    Turn on smart quote handling: 'smartquotes'
-%    APA bibliography style: 'apa'
+%    Conversion to typographic quotation marks: 'smartquotes'
+%    Use APA citation style: 'apa'
 %    Do not create a separate title page: 'notitlepage'
+%    Page layout: 'oneside' (single-sided, default), 'twoside' (double-sided)
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Location of images and graphics

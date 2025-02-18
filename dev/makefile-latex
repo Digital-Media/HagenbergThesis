@@ -26,7 +26,9 @@ all: $(LATEXMAIN).pdf clean
 .PHONY : all clean listfiles
 
 # LaTeX is only run when any of the contributing files has been modified
-$(LATEXMAIN).pdf: $(TEXFILES) $(PICFILES)
+# $(LATEXMAIN).pdf: $(TEXFILES) $(PICFILES)
+# LaTeX is always run
+$(LATEXMAIN).pdf:
 	@echo "running LaTeX on $(LATEXJOB)/$(LATEXMAIN).tex"
 #	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXMAIN)
 #	-$(BIBTEX) $(LATEXMAIN)
@@ -35,20 +37,19 @@ $(LATEXMAIN).pdf: $(TEXFILES) $(PICFILES)
 #
 #	Experimental: using latexmk (comes with MikTeX et al.):
 	@latexmk -pdf -silent $(LATEXMAIN)
-	@echo "cleaning up $(LATEXJOB)"
 	@latexmk -c -silent $(LATEXMAIN)
 #
+
+clean:	# most of this is done my "latexmk -c"
+	@echo "After-LaTeX cleanup in $(LATEXJOB)/:"
+	@rm -f *.bbl *.bcf *.blg *.fls *.log *.out *.toc *.run.xml *.tcp *.tps
+#	@find . -name "*.aux" -type f -delete
+
+#zip:
 #	Make a ZIP for importing to Overleaf:
-	@echo "creating $(DOCUMENTSDIR)/$(LATEXJOB).zip"
-	@cd ../; rm -f $(DOCUMENTSDIR)/$(LATEXJOB).zip; $(ZIPEXE) -r -q $(LATEXJOB).zip $(LATEXJOB)
-
-clean:	# obsolete (done my latexmk -c)
-	@echo "tex files: $(TEXFILES)"
-	@echo "pic files: $(PICFILES)"
-	@echo "cleaning up $(LATEXJOB)/"
-	@rm -f *.bbl *.bcf *.blg *.fls *.log *.out *.toc *.run.xml *.tps
-	@find . -name "*.aux" -type f -delete
-
+#	@echo "Creating document ZIP file $(DOCUMENTSDIR)/$(LATEXJOB).zip"
+#	@cd ../; rm -f $(DOCUMENTSDIR)/$(LATEXJOB).zip; $(ZIPEXE) -r -q $(LATEXJOB).zip $(LATEXJOB)
+	
 listfiles:
 	@echo "tex files: $(TEXFILES)"
 	@echo "image files: $(PICFILES)"

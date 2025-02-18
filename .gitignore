@@ -3,12 +3,16 @@
 *.bbl
 *.bcf
 *.blg
+*.fdb_latexmk
+*.fls
 *.log
 *.out
+*.ind
+*.ilg
+*.idx
 *.run.xml
 *.synctex
 *.synctex.gz
 *.toc
 *.tps
 *.tcp
-

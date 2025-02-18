@@ -22,7 +22,7 @@ disciplines.%
 \footnote{Adaptation to other specifications is relatively easy.}
 Technically, this part is based on the program \texttt{biber}%
 \footnote{\url{https://ctan.org/pkg/biber}}
-in combination with the \latex\ package \texttt{biblatex} \cite{Kime2023}.
+in combination with the \latex\ package \texttt{biblatex} \cite{Kime2024}.
 
 Reference management consists of two elements: \emph{citations} in the text
 refer to entries in the \emph{bibliography} (or multiple bibliographies). The
@@ -127,7 +127,7 @@ is helpful to suppress these back references for individual citations, by using
 %
 This also works with \verb!\mcite! and other \verb!cite! commands; note that 
 the outer brackets are important here. For example, in item
-{\backtrackerfalse\parencite{Bezos2023}} of the bibliography 
+{\backtrackerfalse\parencite{Bezos2025}} of the bibliography 
 the current page (\the\value{page}) should \emph{not} be listed.
 
 \subsection{Common Mistakes}
@@ -706,7 +706,7 @@ documentation does not need to exist in printed form.
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{Mittelbach2023,
+@manual{Mittelbach2024,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
   date={2023-05-13},
@@ -715,7 +715,7 @@ documentation does not need to exist in printed form.
   langid={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2023}] \fullcite{Mittelbach2023}
+\item[\cite{Mittelbach2024}] \fullcite{Mittelbach2024}
 \end{itemize}
 %
 Often no author is named in such documents. Instead, the name of the
@@ -814,7 +814,7 @@ the application for a legal text (see also \cite{FhStG1993} and
 
 If the entry types for printed publications listed so far do not suffice, one
 should first look at the other types (not described in detail here) in the
-\texttt{biblatex} manual \cite{Kime2023}. For example, \texttt{@collection} for
+\texttt{biblatex} manual \cite{Kime2024}. For example, \texttt{@collection} for
 a complete collection (\ie, not just a single contribution).
 
 If none of them fit, then the \texttt{@misc} type can be used. It provides a
@@ -913,7 +913,7 @@ associated \emph{technical report}, see above) can be found, the
 In the latter case, the specification of the link (via \texttt{doi} or alternatively
 \texttt{url}) is essential. Details on the \texttt{pubstate} field
 (\texttt{prepublished}) can be found in the \texttt{biblatex} documentation
-\cite[Sec.\ 4.9.2.11]{Kime2023}. Otherwise (if unknown or not published),
+\cite[Sec.\ 4.9.2.11]{Kime2024}. Otherwise (if unknown or not published),
 %
 \begin{itemize}
 \item[]\texttt{note=\{unpublished\}} \quad or

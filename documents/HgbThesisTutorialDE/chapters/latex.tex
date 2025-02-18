@@ -94,13 +94,13 @@ finden sich \ua im Rahmen des {\em Comprehensive TeX Archive Network} (CTAN) auf
     \url{https://ctan.org/}
 \end{quote}
 %
-Besonders nützlich sind auch \citetitle{Pakin2021} \cite{Pakin2021} und die
+Besonders nützlich sind auch \citetitle{Pakin2024} \cite{Pakin2024} und die
 Beschreibungen wichtiger \latex-Pakete, wie
 %
 \begin{itemize}
-    \item[] \texttt{babel} \cite{Bezos2023},
-    \item[] \texttt{graphics}, \texttt{graphicx} \cite{Carlisle2021},
-    \item[] \texttt{fancyhdr} \cite{Oostrum2022},
+    \item[] \texttt{babel} \cite{Bezos2025},
+    \item[] \texttt{graphics}, \texttt{graphicx} \cite{Carlisle2024},
+    \item[] \texttt{fancyhdr} \cite{Oostrum2025},
     \item[] \texttt{caption} \cite{Sommerfeldt2023}.
 \end{itemize}
 
@@ -753,12 +753,12 @@ Dokuments erforderlich sind:
   \item Weitere Style-Dateien, die von \nolinkurl{hgbthesis.cls} importiert
     werden:
     \begin{itemize}
-        \item[] \nolinkurl{hgbabbrev.sty} (div.\ Abkürzungen),
-        \item[] \nolinkurl{hgbalgo.sty} (Algorithmen),
-        \item[] \nolinkurl{hgbbib.sty} (Literaturverwaltung),
-        \item[] \nolinkurl{hgbheadings.sty} (Seiten-Header),
-        \item[] \nolinkurl{hgblistings.sty} (Code-Listings),
-        \item[] \nolinkurl{hgbmath.sty} (Mathematisches).
+			\item[] \nolinkurl{hgbabbrev.sty} (div.\ Abkürzungen),
+			\item[] \nolinkurl{hgbalgo.sty} (Algorithmen),
+			\item[] \nolinkurl{hgbbib.sty} (Literaturverwaltung),
+			\item[] \nolinkurl{hgbheadings.sty} (Seiten-Header),
+			\item[] \nolinkurl{hgblistings.sty} (Code-Listings),
+			\item[] \nolinkurl{hgbmath.sty} (Mathematisches).
     \end{itemize}
 \end{itemize}
 
@@ -769,38 +769,45 @@ Dokuments erforderlich sind:
 Alle (\verb!.tex!) Dokumente dieses Pakets beginnen mit der Anweisung
 %
 \begin{itemize}
-    \item[] \verb!\documentclass[!\texttt{\emph{type}},
-    \texttt{\emph{language}}\verb!]{hgbthesis}!.
+    \item[] \verb!\documentclass[!\texttt{type=\emph{type}},%
+    \texttt{language=\emph{language}}\verb!]{hgbthesis}!.
 \end{itemize}
 %
 Mit der \texttt{\emph{type}}-Option wird der Typ der Arbeit spezifiziert:
 %
 \begin{itemize}
-    \item[] \texttt{master} (Masterarbeit = \emph{default}),
-    \item[] \texttt{diploma} (Diplomarbeit),
-    \item[] \texttt{bachelor} (Bachelorarbeit),
-    \item[] \texttt{internship} (Praktikumsbericht),
-		\item[] \texttt{proposal} (Exposé, in Verbindung mit \texttt{bachelor} oder \texttt{master}).
+	\item[] \texttt{master} (Masterarbeit = \emph{default}),
+	\item[] \texttt{diploma} (Diplomarbeit),
+	\item[] \texttt{bachelor} (Bachelorarbeit),
+	\item[] \texttt{internship} (Praktikumsbericht).
 \end{itemize}
 %
 Mit der Option \texttt{\emph{language}} kann die Hauptsprache des Dokuments
 spezifiziert werden, die möglichen Werte dafür sind
 %
 \begin{itemize}
-    \item[] \texttt{german} (\emph{default}),
-    \item[] \texttt{english}.
+	\item[] \texttt{german} (\emph{default}),
+	\item[] \texttt{english}.
 \end{itemize}
 %
 Weitere Optionen:
 %
 \begin{itemize}
-    \item[] \texttt{smartquotes} (Verwendung gerader Hochkommas,
-	s.\ Abschnitt~\ref{sec:anfuehrungszeichen}).
+	\item[] \texttt{proposal} (Exposé, in Verbindung mit \texttt{type=bachelor} 
+		oder \texttt{master}).
+	\item[] \texttt{smartquotes} (Verwendung gerader Hochkommas,
+		s.\ Abschnitt~\ref{sec:anfuehrungszeichen}).
+	\item[] \texttt{oneside} (\emph{default}) oder \texttt{twoside} für 
+		ein- \bzw\ zweiseitiges Dokumentenlayout.
 \end{itemize}
 %
-Wird \emph{keine} Option angegeben, lautet die Standardeinstellung
-\texttt{[master,german]}. Der vollständige Quelltext für eine entsprechende
-\verb!.tex! Hauptdatei ist in Anhang \ref{app:latex} gelistet.
+Wird \emph{keine} der \oa\ Optionen angeführt, dann wird die Default-Einstellung
+\begin{itemize}
+	\item[] \texttt{[type=master,language=german,oneside]} % theme=default,
+\end{itemize}
+verwendet.%
+\footnote{Der vollständige Quelltext für eine entsprechende
+\texttt{.tex} Hauptdatei ist in Anhang \ref{app:latex} gelistet.}
 
 \subsubsection{Angaben zur Arbeit}
 
@@ -941,6 +948,7 @@ dass keine \emph{doppelten} Punkte gesetzt werden.
         \verb+\sa+   & \sa   & & \verb+\zB+  & \zB  \\
         \verb+\so+   & \so   & & \verb+\ZB+  & \ZB  \\
         \verb+\su+   & \su   & & \verb+\etc+ & \etc \\
+				\verb+\oa+   & \oa   & &                    \\
 		\midrule
 		\verb+\ie+   & \ie   & & \verb+\eg+  & \eg  \\
         \verb+\wrt+  & \wrt  & & \verb+\Eg+  & \Eg  \\
@@ -951,11 +959,11 @@ dass keine \emph{doppelten} Punkte gesetzt werden.
 \subsection{Sprachumschaltung}
 \label{sec:sprachumschaltung}
 
-Für englischsprachige Abschnitte (\zB\ das Abstract oder englische Zitate)
-sollte die \emph{Sprache} von Deutsch auf Englisch umgeschaltet werden, um
+Für englischsprachige Abschnitte (\zB\ das \emph{Abstract} oder englische Zitate)
+sollte die Sprache von Deutsch auf Englisch umgeschaltet werden, um
 die richtige Form der Silbentrennung zu erhalten. Damit nicht versehentlich
 auf das Rückstellen der Sprache vergessen wird, sind dafür zwei spezielle
-Umgebungen (\emph{environments}) vorgesehen:
+\latex-Umgebungen (\emph{environments}) vorgesehen:
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{english}

@@ -1,5 +1,4 @@
 %%% Einfaches Template für einen Abschlussbericht zum Berufspraktikum
-%%% äöüÄÖÜß  <-- keine deutschen Umlaute hier? UTF-faehigen Editor verwenden!
 
 %%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
 % !TeX encoding = utf8
@@ -10,18 +9,20 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
 
-\documentclass[internship,german,smartquotes]{hgbthesis}
+\documentclass[type=internship,theme=fhooe24,language=german,titlelanguage=german,smartquotes]{hgbthesis}
 % Zulässige Optionen in [..]: 
-%    Typ der Arbeit: 'diploma', 'master' (default), 'bachelor', 'internship'
-%		 Zusätzlich für ein Thesis-Exposé: 'proposal' (für 'bachelor' und 'master')
-%    Hauptsprache: 'german' (default), 'english'
-%    Option zur Umwandlung in typografische Anführungszeichen: 'smartquotes'
+%    Typ der Arbeit (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
+%    Theme der Titelseite (theme=): 'default' (default), 'fhooe24'
+%    Als Exposé verwenden: 'proposal' oder 'proposal=true' 
+%    Hauptsprache im Dokument (language=): 'german' (default), 'english'
+%    Sprache der Titelseite (titlelanguage=): 'german', 'english' (default is main language)
+%    Umwandlung in typografische Anführungszeichen: 'smartquotes'
 %    APA Zitierstil: 'apa'
+%    Layout: 'oneside' (einseitig, default), 'twoside' (zweiseitig)
 %%%-----------------------------------------------------------------------------
 
-\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\logofile{logo}           % Logo-Datei: images/logo.pdf (kein Logo: \logofile{})
-\bibliography{references} % Biblatex-Literaturdatei (references.bib)
+\graphicspath{{images/}}  % directory for user images and graphics
+\bibliography{references} % biblatex literature file (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
@@ -32,20 +33,29 @@
 %%%-----------------------------------------------------------------------------
 
 \title{Endbericht zum Berufspraktikum bei Mogulovich International}
+%\subtitle{Untertitel nur wenn unbedingt notwendig}
 \author{Alex A.\ Schlaumeier}
 
 \programtype{Fachhochschul-Bachelorstudiengang}
 \programname{Medientechnik und -design}
-\placeofstudy{Hagenberg}
+\institution{Fachhochschule Oberösterreich}
 
-\dateofsubmission{2024}{06}{25}
+\placeofstudy{Hagenberg}
+\dateofsubmission{2025}{07}{01} % {JJJJ}{MM}{TT}
+
+% Liste der Kontaktpersonen, bis zu 4 sind möglich, Titel in [] ist optional
 \advisor{Pjotr I.~Czar, M.A.}
+%\advisor[Team Lead]{Bettina B. Ackend}
+
 \companyName{%
    Mogulovich International Media GmbH\\
    Online Division\\
    Hubertusgasse 3a, 1020 Wien
 }
 \companyUrl{www.mogul.at}
+
+\license{cc}      % Unter Creative Commons Lizenz veröffentlichen (empfohlen)
+%\license{strict} % Restriktieve Lizenz, "Alle Rechte vorbehalten"
 
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)

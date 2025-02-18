@@ -7,9 +7,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- 2025/02/18: [#15](https://github.com/Digital-Media/HagenbergThesis/issues/15): Added a way to handle cover pages more flexible. They are now themeable, their language can be set independently, multiple advisors can be specified and the cover now corresponds to ÖNORM A 2662. 
+- 2025/02/18: [#77](https://github.com/Digital-Media/HagenbergThesis/issues/77): Added a `dissertation` option in the course of the flexible cover page.
+- 2025/02/18: [#163](https://github.com/Digital-Media/HagenbergThesis/issues/163): Updated editor list in appendix a and mentioned Overleaf compile timeout.
+- 2024/12/14: [#1](https://github.com/Digital-Media/HagenbergThesis/issues/1): Added the options `oneside` and `twoside` for switching between onesided and twosided layouts for saving paper when printing.
+- 2024/12/09: [#169](https://github.com/Digital-Media/HagenbergThesis/issues/169): Added the `\DocumentMetadata` command to the style files to be futureproof in terms of document metadata handling.
 - 2024/12/06: [#165](https://github.com/Digital-Media/HagenbergThesis/pull/165): Added a code environment for Scala. Thanks to [@marcelhas](https://github.com/marcelhas).
 
 ### Changed
+
+- 2025/02/18: Updated the content of `references.bib`. Updated versions of various manuals and online sources. Adapted linked references in the documents accordingly.
+- 2025/02/18: Updated the deadlines and semesters in the main files of all documents.
 
 ### Deprecated
 
