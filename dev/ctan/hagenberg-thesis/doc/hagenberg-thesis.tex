@@ -21,7 +21,8 @@ Department of Digital Media, Hagenberg (Austria)}
 \begin{abstract}\noindent
 The \textsf{hagenberg-thesis} package is a collection of modern LaTeX
 templates for university theses (bachelor, master, diploma or PhD programs) and
-related documents. This manual describes the main features of this package.
+related documents. This manual describes the main features of this package
+and how they may be customized.
 Pre-configured document templates for English and German manuscripts and a
 complete tutorial are available on the package's home repository.
 \end{abstract}
@@ -432,7 +433,7 @@ package), \eg, by
 \end{LaTeXCode}
 
 
-\section{PDF/A generation (\texttt{hgbpdfa.sty})}
+\subsection{PDF/A generation (\texttt{hgbpdfa.sty})}
 
 Package \texttt{hgbpdfa} contains definitions for generating PDF/A-compliant 
 (PDF/A-2b) output files. It is based on the \texttt{pdfmanagement-testphase}
@@ -444,28 +445,32 @@ package (requires version 0.95s or higher) and must be loaded before the
 If omitted, a plain PDF (non-PDF/A-compliant) file is generated.
 
 
-\section{\emph{Themes} -- customizing thesis title pages}
+
+\section{Custom front pages using \emph{themes}}
 \label{sec:Themes}
 
-The content and structure of the title pages generated for the various thesis types
-(\texttt{bachelor}, \texttt{master} \etc) may be customized to meet the specific
+The content and structure of the front pages generated for the various thesis types
+(\texttt{bachelor}, \texttt{master} \etc) may be easily customized to meet the specific
 requirements of different institutions or departments.
-Note that customization is typically done at the institutional level and not
+Note that this kind of customization is typically done at the institutional level and not
 by the individual author (student).
+
 
 \subsection{Preconfigured themes}
 
 The various front page arrangements are called \emph{themes} in the following.
-Each theme is identified by a unique \texttt{themeID} and associated with a 
-particular style file (\latex\ package) named \verb!hgbtheme-<themeID>.sty!.
-For example, the \texttt{default} theme  is defined by file
+Each theme is identified by a unique \texttt{\textit{themeID}} and associated with a 
+particular style file (\latex\ package) named 
+\texttt{hgbtheme-\textit{themeID}.sty}.
+For example, the theme with \texttt{\textit{themeID}} = \texttt{default} is defined 
+by the associated file
 \begin{itemize}
-  \item[] \texttt{hgbtheme-default.sty},
-  %\item[] \texttt{hgbtheme-custom.sty}.
+  \item[] \texttt{hgbtheme-default.sty}.
 \end{itemize}
 %
 Additional resources required by a theme (such as graphics files) must be named with the 
-complete \emph{theme name} (\verb!hgbtheme-<themeID>!) as a prefix, for example,%
+complete \emph{theme name} (\texttt{hgbtheme-\textit{themeID}})
+as a prefix, for example,%
 \footnote{This is to avoid file name conflicts since themes are part of the 
 CTAN distribution and thus all theme-related files will eventually end up in a single, 
 flat directory.}
@@ -475,8 +480,8 @@ flat directory.}
 %
 which contains the logo graphics used by that theme.
 
-To \emph{use} a specific theme, option \verb!theme=<themeID>! is added to the 
-\verb!\documentclass! command, for example,
+To \emph{use} a specific theme, option \texttt{theme=\textit{themeID}}
+is added to the \verb!\documentclass! command, for example,
 \begin{itemize}
 	\item[] \verb!\documentclass[theme=default,...]{hgbthesis}!
 \end{itemize}
@@ -502,7 +507,7 @@ It defines \texttt{hgbtheme-default.sty} as the parent theme by the initial comm
 All commands defined in the parent theme are visible and may be redefined,
 typically by \verb!\renewcommand! (see Sec.\ \ref{sec:ThemeStyleCommands}
 for available commands).
-To activate the associated theme simply use \texttt{custom} as the theme ID
+To activate the associated theme simply use \texttt{custom} as the \texttt{\textit{themeID}}
 in the associated document option, \ie,
 %
 \begin{LaTeXCode}[numbers=none]
@@ -518,7 +523,7 @@ institution or department(s).
 For this purpose, simply copy file \texttt{hgbtheme-default.sty} or \texttt{hgbtheme-custom.sty}
 to a new file, \eg, \texttt{hgbtheme-physics.sty},%
 \footnote{To be placed in the main document directory. Note the naming conventions!}
-and modify it accordingly. The associated theme can then be activated by
+and modify it accordingly. The associated theme can then be invoked by
 %
 \begin{LaTeXCode}[numbers=none]
 \documentclass[theme=physics,...]{hgbthesis}
@@ -531,11 +536,11 @@ An error will be raised if the associated \texttt{.sty} file cannot be found.
 \subsection{Commands and variables available to custom theme styles}
 \label{sec:ThemeStyleCommands}
 
-Any theme style must at least define the
+Any theme style must at least define the command
 \begin{itemize}
   \item[] \verb!\hgb@MakeFrontPages{..}!
 \end{itemize}
-command, which is pre-defined (as throwing an error) in \texttt{hgbthesis.cls}
+which is pre-defined (as throwing an error) in \texttt{hgbthesis.cls}
 and invoked by \verb!\maketitle!.
 If \texttt{default} is used as the parent theme, \verb!\hgb@MakeFrontPages! 
 is already set up properly and redefinition is optional, \ie,
@@ -595,7 +600,7 @@ for adding custom initialization code for the current theme in the form
 \end{LaTeXCode}
 %
 typically placed at the beginning of the theme file. The collected code for
-this hook is executed immediately before \verb!\maketitle!.
+this hook is executed immediately \emph{before} \verb!\maketitle!.
 
 
 In addition, theme \texttt{hgbtheme-default.sty} defines the following
