@@ -5,32 +5,53 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: ASCII
 
-\ProvidesPackage{hgbheadings}[2023/12/04]%%AUTO
+\ProvidesPackage{hgbheadings}[2025/02/18]%%AUTO
 
 \RequirePackage{fancyhdr}
+\RequirePackage{extramarks} % http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf (p. 20)
 \pagestyle{fancy}
 
 \RequirePackage[sf,raggedright]{titlesec}	% use sans serif for chapter/section headings
 
+% Specify the CONTENT to be shown in page headers:
+% See also http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf (p. 18)
 \@ifundefined{chapter}%
-   {}%
-	 {\renewcommand{\chaptermark}[1]{%
+	{% documents without 'chapter' (article etc.)
+		\renewcommand{\sectionmark}[1]{%
+			\markboth{\thesection\ #1}{}}%
+		\renewcommand{\subsectionmark}[1]{%
+			\markright{\thesubsection\ #1}}%
+	}%
+	{% documents with 'chapter' (book etc.)
+		\renewcommand{\chaptermark}[1]{%
 			\ifthenelse{\value{chapter} < 1}%
 				{\markboth{#1}{}}%
-				{\markboth{\thechapter.\ #1}{}}
-		}}
+				{\markboth{\thechapter\ #1}{}}}%
+		\renewcommand{\sectionmark}[1]{%
+			\markright{\thesection\ #1}}%
+	}%
 
+% Specify the FORMAT of page headers:
 \addtolength{\headheight}{\baselineskip}
-\renewcommand{\headrulewidth}{0pt}		% thin line under header
-\renewcommand{\footrulewidth}{0pt}
-\fancyhf{}                            	% clear all fields.
-\fancyhead[R]{\sffamily\thepage} %{\bf \rightmark}
-\fancyhead[L]{\sffamily\nouppercase{\leftmark}}  %{\slshape \leftmark}
+\renewcommand{\headrulewidth}{0pt}	% no line under header
+\renewcommand{\footrulewidth}{0pt}	% no line above footer
+
+\fancyhf{}% clear all header/footer fields
+
+\ifthenelse{\boolean{@twoside}}% @twoside is defined in LaTeX kernel
+	{% twopside:
+		\fancyhead[RO,LE]{\sffamily\thepage}%
+		\fancyhead[LO]{\sffamily\nouppercase{\rightmark}}%
+		\fancyhead[RE]{\sffamily\nouppercase{\firstleftmark}}%
+	}%
+	{% oneside:
+		\fancyhead[R]{\sffamily\thepage}%
+		\fancyhead[L]{\sffamily\nouppercase{\firstleftmark}}%
+	}%
 
 \fancypagestyle{plain}{%
-	\fancyhf{}							% clear all header and footer fields
-	\fancyfoot[C]{\sffamily\thepage}	% except the center
+	\fancyhf{}% clear all header/footer fields except the center
+	\fancyfoot[C]{\sffamily\thepage}
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
 }
-

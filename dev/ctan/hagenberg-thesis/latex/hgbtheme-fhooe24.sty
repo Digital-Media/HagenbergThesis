@@ -1,16 +1,21 @@
-
 %% This file is part of the Hagenberg Thesis package
 %% Author: Wilhelm Burger (wilbur@ieee.org)
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-\ProvidesPackage{hgbtheme-fhooe24}[2023/12/04]%%AUTO
+\ProvidesPackage{hgbtheme-fhooe24}[2025/02/18]%%AUTO
 \RequirePackage{hgbdict}
 \RequirePackage{forloop}
 \RequirePackage{tikz}
+\RequirePackage[absolute]{textpos}
 
-% use \@currname to retrieve theme name?
+% FH OÖ CD defines 15 square boxes horizontally on the page, thus one is 14mm wide
+\setlength{\TPHorizModule}{14mm}
+\setlength{\TPVertModule}{\TPHorizModule}
 
+% Theres a margin of one box/module in the CD so we set the origin to that to avoid offset
+\textblockorigin{\TPHorizModule}{\TPHorizModule}
+\setlength{\parindent}{0pt}
 
 %% Define various language-dependent text chunks to be used below -------------
 
@@ -23,7 +28,7 @@
 %% Initialization (optional) --------------------------------------------------
 
 \AddToHook{hgb@InitThemeHook}{%
-	\typeout{hgbtheme-default: initializing theme}%
+	\typeout{hgbtheme-fhooe24: initializing theme}%
 	% add initialization code if needed
 }%
 
@@ -31,20 +36,21 @@
 
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls
   \hgb@MakeTitlePage%
+	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+		{\hgb@MakeCompanyPage}%
+		{}%
 	\ifthenelse{\boolean{hgb@IsProposal}}%
 		{}% no copyright/declaration pages for proposals
 		{%
 			\hgb@MakeCopyrightPage%
 			\hgb@MakeDeclarationPage%
 		}%
-}
+}%
 		
 %% Title page ---------------------------------------------------
 
 \newcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
-	\newgeometry{top=0mm,bottom=14mm,right=14mm,left=14mm}
-	\setlength{\parindent}{0pt}
 	% background image -----------------------------------------
 	\AddToHookNext{shipout/background}{
 		\begin{tikzpicture}[remember picture,overlay]
@@ -53,51 +59,68 @@
 			};
 		\end{tikzpicture}
 	}
-	\vspace*{98mm}%
+
 	\hgb@TitlePageFont%
-	\setlength{\unitlength}{1cm}%
+
 	% author --------------------------------------------------
-	{\Large\hgb@Author\par}%
-	\vskip 14mm%
+	\begin{textblock}{10}[0,1](0,7)
+		{\Large\hgb@Author\par}%
+	\end{textblock}
+
 	% title --------------------------------------------------
-	\parbox[c][56mm][t]{140mm}{%
-		\raggedright%
-		%\centering%
-		\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+	\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+		\begin{textblock}{10}(0,8)
+			\raggedright% set ragged right to avoid hyphenation
 			{\huge\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
-			\vskip 7mm%
+			\vspace{5mm}% add space between title and subtitle
 			{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
-		\end{SwitchLanguage}%
-	}
-	\vskip 0mm%
+		\end{textblock}
+	\end{SwitchLanguage}%
+
 	% thesis type ---------------------------------------------
-	{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
+	\begin{textblock}{10}[0,1](0,12)
+		{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
 		\ifthenelse{\boolean{hgb@IsProposal}}%
 			{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
-	\vskip 14mm%
-	% program type ---------------------------------
-	%{\large \hgb@ProgramType}%
-	%\vskip 4mm%
-	% program name ---------------------------------
-	{\large\hgb@ProgramName\par}%
-	\vskip 0mm%
-	% place of study  ---------------------------------
-	{\large\hgb@Institution\par}%
-	\vskip 4mm%
+	\end{textblock}
+
+	% program type, program name ---------------------------------
+	\begin{textblock}{10}(0,13)
+		{\large \hgb@ProgramType\par}%
+		{\large\hgb@ProgramName\par}%
+	\end{textblock}
+
+	% institution, place of study ---------------------------------------------
+	\begin{textblock}{10}(0,14)
+		{\large\hgb@Institution\par}%
 		{\large\hgb@PlaceOfStudy\par}%
-	\vskip 8mm%
+	\end{textblock}
+
+	% submission year  ---------------------------------
+	\begin{textblock}{10}[0,1](0,16)
 		{\large\hgb@SubmissionYear\par}%
-	\vskip 0mm%
+	\end{textblock}
+
 	% advisors(s) -------------------------------------
-	\parbox[c][28mm][b]{\textwidth}{%
-		%\centering\large\tabcolsep0.25em%
-		\ifthenelse{\hgb@AdvisorCount > 0}%
-			{\@makeAdvisorTable}% defined below
-			{\color{red}No advisor(s) specified!\\}%
-	}
-	\restoregeometry%
+	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+		{}%
+		{%
+			\begin{textblock}{10}(0,17)
+				\ifthenelse{\hgb@AdvisorCount > 0}%
+					{%
+						\@makeAdvisorTable% defined below
+					}%
+					{%
+						\color{red}No advisor(s) specified!\\
+					}%
+			\end{textblock}
+		}%
+
+	\null%	required to tell LaTeX that there is a non-empty content box
 \end{titlepage}%
 }
+
+%% Advisor Table ----------------------------------------
 
 \newcommand{\@makeAdvisorTable}{%
   \newcounter{C}%
@@ -138,4 +161,41 @@
 	\vspace{12mm}
 	\noindent
 	\hgb@Author
+}
+
+%% Company Page for Internship Reports ------------------------------
+
+\newcommand{\hgb@MakeCompanyPage}{%
+	\newpage
+	\thispagestyle{plain}
+	\rule{0mm}{1mm}
+	\begin{center}
+		\vspace{25mm} 
+		{\hgbDictionaryGet{internship}{\hgb@TitleLanguage}:}
+		\\
+		\vspace{3mm}
+		{\Large\sf\hgb@CompanyName\\ \mbox{}}
+		\\
+		{\sf \hgb@CompanyUrl}
+		\\
+		\vspace{45mm} 
+		\ifthenelse{\hgb@AdvisorCount = 1}%
+			{%
+				{\hgbDictionaryGet{internship-contact-single}{\hgb@TitleLanguage}:}%
+			}%
+			{}%
+		\ifthenelse{\hgb@AdvisorCount > 1}%
+			{%
+				{\hgbDictionaryGet{internship-contact-multiple}{\hgb@TitleLanguage}:}%
+			}%
+			{}%
+		\par\vspace{6mm}%
+		\ifthenelse{\hgb@AdvisorCount > 0}%
+			{%
+				\large\sffamily\@makeAdvisorTable% defined above
+			}%
+			{%
+				\color{red}No advisor(s) specified!\\
+			}%
+	\end{center}
 }

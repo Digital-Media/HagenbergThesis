@@ -7,7 +7,9 @@
 %% This package defines a simple dictionary mechanism for terms used in title pages.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{hgbdict}[2023/12/04]%%AUTO
+\ProvidesPackage{hgbdict}[2025/02/18]%%AUTO
+
+\newcommand{\hgbDictionaryUndefined}{undefined}%
 
 % Usage: \hgbDictionarySet{bachelor-thesis}{english}{Bachelor Thesis}
 % Note: previously existing entry for the same key are replaced!
@@ -19,7 +21,7 @@
 \newcommand{\hgbDictionaryGet}[2]{%  #1=key, #2=lang
 \ifcsname hgb@dict-#1-#2\endcsname% \ifdefined, \@ifundefined
   \csname hgb@dict-#1-#2\endcsname%
-  \else Term '#1' is undefined for language '#2'!%
+  \else \hgbDictionaryUndefined% Term '#1' is undefined for language '#2'!%
   \fi
 }
 
@@ -56,8 +58,11 @@
 \hgbDictionarySet{internship}{english}{Internship}
 \hgbDictionarySet{internship}{german}{Praktikumsstelle}
 
-\hgbDictionarySet{internship-contact}{english}{Supervisor}
-\hgbDictionarySet{internship-contact}{german}{Kontaktperson}
+\hgbDictionarySet{internship-contact-single}{english}{Contact}
+\hgbDictionarySet{internship-contact-single}{german}{Kontaktperson}
+
+\hgbDictionarySet{internship-contact-multiple}{english}{Contacts}
+\hgbDictionarySet{internship-contact-multiple}{german}{Kontaktpersonen}
 
 % License texts: 
 

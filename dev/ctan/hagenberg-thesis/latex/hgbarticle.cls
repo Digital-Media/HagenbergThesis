@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2023/12/04]%%AUTO
+\ProvidesClass{hgbarticle}[2025/02/18]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -19,6 +19,8 @@
 
 %% Handling class options --------------------------------------------------------------
 
+\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{article}}	% default
+\DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
 % pass all other options to hgb.sty

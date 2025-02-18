@@ -4,7 +4,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-\ProvidesPackage{hgblistings}[2023/12/04]%%AUTO
+\ProvidesPackage{hgblistings}[2025/02/18]%%AUTO
 
 \RequirePackage{xifthen}
 \RequirePackage{textcomp}	%% required for upquote option
@@ -406,6 +406,13 @@ keepspaces=true,%
 	#1}}%
 {}
 
+% Code Enivornmente for Scala
+\lstnewenvironment{ScalaCode}[1][]
+{\lstset{%
+	language=Scala,
+	escapeinside={/+}{+/}, % makes "/+" and "+/" available for Latex escapes (labels etc.)
+	#1}}%
+{}
 
 % Language Definition and Code Environment for Swift
 \lstdefinelanguage{Swift}
