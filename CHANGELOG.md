@@ -25,6 +25,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Fixed
 
+- 2025/02/21: [#170](https://github.com/Digital-Media/HagenbergThesis/issues/170): Fixed wrong sorting behavior when using the `nosplit` option with `\MakeBibliography`.
+
 ## [2023/11/06]
 
 ### Added
