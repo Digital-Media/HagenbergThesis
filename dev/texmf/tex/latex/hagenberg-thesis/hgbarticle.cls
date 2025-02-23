@@ -17,12 +17,18 @@
 \else{\errmessage{hgbarticle: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
+%% Variable definitions -------------------------------------------------------
+
+\newboolean{reviewmode}
+\setboolean{reviewmode}{false}
+
 %% Handling class options --------------------------------------------------------------
 
 \DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{article}}	% default
 \DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
 \DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
+\DeclareOption{review}{\setboolean{reviewmode}{true}}
 % pass all other options to hgb.sty
 \DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
 \ProcessOptions*
@@ -38,6 +44,22 @@
 \fi%
 
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
+
+%% Review mode with line numbers ----------------------------------------------
+
+\ifthenelse{\boolean{reviewmode}}%
+	{
+		\RequirePackage{lineno}
+		%\DeclareVoidOption{columnwise}{\setpagewiselinenumbers
+		%								\columnwiselinenumberstrue
+		%								\realpagewiselinenumbers}
+		\linenumbers
+		%\renewcommand\linenumberfont{\normalfont\tiny\sffamily}
+		%\setlength\linenumbersep{1em}
+		%\ModifyLineNumber{\color{gray}}
+		%\renewcommand\thelinenumber{\arabic{linenumber}}
+	}%
+	{}%
 
 %% Set title font to SF and inject PDF meta-data
 \RequirePackage{titling}
