@@ -7,6 +7,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+## [2025/02/24]
+
+### Added
+
 - 2025/02/24: [#171](https://github.com/Digital-Media/HagenbergThesis/issues/171): Added the class option `review` for `HgbArticle` to display line numbers while reviewing an article.
 - 2025/02/18: [#15](https://github.com/Digital-Media/HagenbergThesis/issues/15): Added a way to handle cover pages more flexible. They are now themeable, their language can be set independently, multiple advisors can be specified and the cover now corresponds to ÖNORM A 2662. 
 - 2025/02/18: [#77](https://github.com/Digital-Media/HagenbergThesis/issues/77): Added a `dissertation` option in the course of the flexible cover page.
@@ -19,10 +31,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - 2025/02/18: Updated the content of `references.bib`. Updated versions of various manuals and online sources. Adapted linked references in the documents accordingly.
 - 2025/02/18: Updated the deadlines and semesters in the main files of all documents.
-
-### Deprecated
-
-### Removed
 
 ### Fixed
 
@@ -170,7 +178,8 @@ replacing obsolete CD/DVD by cloud archive submission.
 This is the first release on GitHub. Future versions will now be published on this repository.
 This version has also been ported to Overleaf for online editing.
 
-[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2023/11/06...HEAD
+[Unreleased]: https://github.com/Digital-Media/HagenbergThesis/compare/2025/02/24...HEAD
+[2025/02/24]: https://github.com/Digital-Media/HagenbergThesis/compare/2023/11/06...2025/02/24
 [2023/11/06]: https://github.com/Digital-Media/HagenbergThesis/compare/2023/02/13...2023/11/06
 [2023/02/13]: https://github.com/Digital-Media/HagenbergThesis/compare/2020/10/29...2023/02/13
 [2020/10/29]: https://github.com/Digital-Media/HagenbergThesis/compare/2019/05/16...2020/10/29
