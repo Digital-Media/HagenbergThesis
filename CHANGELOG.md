@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- 2025/02/24: [#171](https://github.com/Digital-Media/HagenbergThesis/issues/171): Added the class option `review` for `HgbArticle` to display line numbers while reviewing an article.
 - 2025/02/18: [#15](https://github.com/Digital-Media/HagenbergThesis/issues/15): Added a way to handle cover pages more flexible. They are now themeable, their language can be set independently, multiple advisors can be specified and the cover now corresponds to ÖNORM A 2662. 
 - 2025/02/18: [#77](https://github.com/Digital-Media/HagenbergThesis/issues/77): Added a `dissertation` option in the course of the flexible cover page.
 - 2025/02/18: [#163](https://github.com/Digital-Media/HagenbergThesis/issues/163): Updated editor list in appendix a and mentioned Overleaf compile timeout.
