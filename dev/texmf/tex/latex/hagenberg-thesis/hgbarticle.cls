@@ -43,22 +43,23 @@
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \fi%
 
-\RequirePackage{hgb}	% load style file hgb.sty with options registered above
-
 %% Review mode with line numbers ----------------------------------------------
 
 \ifthenelse{\boolean{reviewmode}}%
-	{
+	{%
 		\if@twocolumn%
-			% When in two-column mode, use switch to dipslay line numbers right of the second column
-			\RequirePackage[mathlines,switch]{lineno}
+			% When in two-column mode, use switch to display line numbers right of the second column
+			\RequirePackage[mathlines,switch]{lineno}%
 		\else%
-			\RequirePackage[mathlines]{lineno}
+			\RequirePackage[mathlines]{lineno}%
 		\fi%
-		\renewcommand{\linenumberfont}{\sffamily\tiny\color{gray}}
-		\linenumbers
+		\renewcommand{\linenumberfont}{\sffamily\tiny\color{gray}}%
+		\linenumbers%
 	}%
 	{}%
+
+% load style file hgb.sty with options registered above	
+\RequirePackage{hgb}
 
 %% Set title font to SF and inject PDF meta-data
 \RequirePackage{titling}
