@@ -49,15 +49,14 @@
 
 \ifthenelse{\boolean{reviewmode}}%
 	{
-		\RequirePackage{lineno}
-		%\DeclareVoidOption{columnwise}{\setpagewiselinenumbers
-		%								\columnwiselinenumberstrue
-		%								\realpagewiselinenumbers}
+		\if@twocolumn%
+			% When in two-column mode, use switch to dipslay line numbers right of the second column
+			\RequirePackage[mathlines,switch]{lineno}
+		\else%
+			\RequirePackage[mathlines]{lineno}
+		\fi%
+		\renewcommand{\linenumberfont}{\sffamily\tiny\color{gray}}
 		\linenumbers
-		%\renewcommand\linenumberfont{\normalfont\tiny\sffamily}
-		%\setlength\linenumbersep{1em}
-		%\ModifyLineNumber{\color{gray}}
-		%\renewcommand\thelinenumber{\arabic{linenumber}}
 	}%
 	{}%
 
