@@ -39,10 +39,10 @@ DATEPATTERN := \[[0-9]\{4\}\/[0-9]\{2\}\/[0-9]\{2\}\]%%AUTO
 CTANDIR := $(realpath ctan)
 # The official package name on CTAN
 CTANBUNDLE := hagenberg-thesis
-# The subdirectory to hold the sample documents in CTAN
-# CTANDOCSLIST := examples
+# The CTAN Readme file name:
+CTANREADMEFILE := README.md
 # The release date line in ctan/hagenberg-thesis/README.md starts with "### Version:"
-READMEVERSIONTAG := "\#\#\# Version:"
+CTANVERSIONTAG := \#\#\# Version:
 # -----------------------------------------------------------------------
 
 all : setdates build ctan
@@ -60,8 +60,8 @@ showsetup :
 	@echo DATEPATTERN = $(DATEPATTERN)
 	@echo CTANDIR = $(CTANDIR)
 	@echo CTANBUNDLE = $(CTANBUNDLE)
-#	@echo CTANDOCSLIST = $(CTANDOCSLIST)
-	@echo READMEVERSIONTAG = $(READMEVERSIONTAG)
+	@echo CTANREADMEFILE = $(CTANREADMEFILE)
+	@echo CTANVERSIONTAG = $(CTANVERSIONTAG)
 	
 inittex :
 #	Add /dev/texmf... as a TEXMF root directory (not executed in a full make).
@@ -132,14 +132,9 @@ ctan :
 	@cp -u $(DOCSDIR)/HgbThesisTutorialDE/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE)-tutorial-de.pdf
 #
 #	Update version number in package README file:
-	@echo "  Updating version number in package $(CTANDIR)/$(CTANBUNDLE)/README.md"
-	@$(shell sed -i 's|$(READMEVERSIONTAG).*|$(READMEVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANBUNDLE)/README.md)
+	@echo "  Updating version number in package $(CTANDIR)/$(CTANBUNDLE)/$(CTANREADMEFILE)"
+	@$(shell sed -i 's|$(CTANVERSIONTAG).*|$(CTANVERSIONTAG) $(RELEASEDATE)|' $(CTANDIR)/$(CTANBUNDLE)/$(CTANREADMEFILE))
+#
 #	Make a ZIP of the complete CTAN bundle:
 	@echo "  ZIPing the complete CTAN bundle"
 	@cd $(CTANDIR)/; rm -f $(CTANBUNDLE).zip; $(ZIPEXE) -r -q $(CTANBUNDLE).zip $(CTANBUNDLE)
-
-
-
-	
-	
-	
