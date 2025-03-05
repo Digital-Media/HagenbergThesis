@@ -31,19 +31,262 @@ Use the **create** links in the table below to open the document on **[Overleaf]
 Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
 The following sample documents (with numerical citations using `numeric-comp`) are currently available:
 
-| Name                   | Document Type                       | Language | PDF                                                                                                                                                                                                     | ZIP                                                                                                                                                                                        | Overleaf\*                                                                                                                                                                                                                             |
-|:-----------------------|:------------------------------------|:--------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `HgbThesisTutorialEN`  | **Thesis Template and Tutorial**    | English  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN/main.pdf)  | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN.zip)  | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN.zip)  |
-| `HgbThesisTutorialDE`  | **Thesis Template and Tutorial**    |  German  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE/main.pdf)  | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE.zip)  | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE.zip)  |
-| `HgbThesisEN`          | Minimal Thesis Template             | English  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN/main.pdf)          | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN.zip)          | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN.zip)          |
-| `HgbThesisDE`          | Minimal Thesis Template             |  German  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE/main.pdf)          | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE.zip)          | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE.zip)          |
-| `HgbInternshipReport`  | Internship Report                   |  German  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbInternshipReport/main.pdf)  | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbInternshipReport.zip)  | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbInternshipReport.zip)  |
-| `HgbLabReportEN`       | Lab Report (weekly assignments)     | English  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN/main.pdf)       | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN.zip)       | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN.zip)       |
-| `HgbLabReportDE`       | Lab Report (weekly assignments)     |  German  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportDE/main.pdf)       | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportDE.zip)       | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportDE.zip)       |
-| `HgbTermReport`        | Term/Project Report (full semester) | English  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport/main.pdf)        | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip)        | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip)        |
-| `HgbArticle`           | Journal Article                     | English  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle/main.pdf)           | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip)           | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip)           |
-| `HgbThesisEN-proposal` | Thesis Proposal (Exposé)            | English  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal/main.pdf) | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal.zip) | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal.zip) |
-| `HgbThesisDE-proposal` | Thesis Proposal (Exposé)            |  German  | [![View PDF](https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal/main.pdf) | [![Download Project](https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray)](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal.zip) | [![Create in Overleaf](https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray)](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal.zip) |
+<h2>Sample Documents</h2>
+
+<p>Each sample document is based on a custom LaTeX document class (<code>hgbthesis.cls</code>) 
+and various style files (<code>hgb.sty</code>, ...). The style files can also be used independently 
+for other kinds of documents. The following sample documents (with numerical citations 
+using <code>numeric-comp</code>) are currently available:</p>
+
+<table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+  <!-- Festlegung der Spaltenbreiten -->
+  <col style="width: 30%;">
+  <col style="width: 30%;">
+  <col style="width: 10%;">
+  <col style="width: 10%;">
+  <col style="width: 10%;">
+  <col style="width: 10%;">
+  
+  <!-- Tabellenkopf -->
+  <thead>
+    <tr>
+      <th style="text-align: left;">Name</th>
+      <th style="text-align: left;">Document Type</th>
+      <th style="text-align: center;">Language</th>
+      <th style="text-align: center;">PDF</th>
+      <th style="text-align: center;">ZIP</th>
+      <th style="text-align: center;">Overleaf*</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>HgbThesisTutorialEN</code></td>
+      <td><strong>Thesis Template and Tutorial</strong></td>
+      <td style="text-align: center;">English</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbThesisTutorialDE</code></td>
+      <td><strong>Thesis Template and Tutorial</strong></td>
+      <td style="text-align: center;">German</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbThesisEN</code></td>
+      <td>Minimal Thesis Template</td>
+      <td style="text-align: center;">English</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbThesisDE</code></td>
+      <td>Minimal Thesis Template</td>
+      <td style="text-align: center;">German</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbInternshipReport</code></td>
+      <td>Internship Report</td>
+      <td style="text-align: center;">German</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbInternshipReport/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbInternshipReport.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbInternshipReport.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbLabReportEN</code></td>
+      <td>Lab Report (weekly assignments)</td>
+      <td style="text-align: center;">English</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportEN.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbLabReportDE</code></td>
+      <td>Lab Report (weekly assignments)</td>
+      <td style="text-align: center;">German</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportDE/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportDE.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbLabReportDE.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbTermReport</code></td>
+      <td>Term/Project Report (full semester)</td>
+      <td style="text-align: center;">English</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbTermReport.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbArticle</code></td>
+      <td>Journal Article</td>
+      <td style="text-align: center;">English</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbArticle.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbThesisEN-proposal</code></td>
+      <td>Thesis Proposal (Exposé)</td>
+      <td style="text-align: center;">English</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisEN-proposal.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td><code>HgbThesisDE-proposal</code></td>
+      <td>Thesis Proposal (Exposé)</td>
+      <td style="text-align: center;">German</td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal/main.pdf">
+          <img src="https://img.shields.io/badge/View-red?logo=googledocs&logoColor=white&labelColor=gray" alt="View PDF">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal.zip">
+          <img src="https://img.shields.io/badge/Download-blue?logo=latex&labelColor=gray" alt="Download Project">
+        </a>
+      </td>
+      <td style="text-align: center;">
+        <a href="https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisDE-proposal.zip">
+          <img src="https://img.shields.io/badge/Create-47A141?logo=overleaf&labelColor=gray" alt="Create in Overleaf">
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>*Note:</em> A (free) account is required to open documents on 
+<a href="https://www.overleaf.com/">Overleaf</a>. The 
+<a href="https://www.overleaf.com/user/subscription/plans">Standard plan or higher</a> 
+is recommended to avoid compile-timeouts in larger documents.</p>
+
 
 ### APA Style Documents
 
