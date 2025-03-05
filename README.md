@@ -39,15 +39,15 @@ for other kinds of documents. The following sample documents (with numerical cit
 using <code>numeric-comp</code>) are currently available:</p>
 
 <table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
-  <!-- Festlegung der Spaltenbreiten -->
-  <col style="width: 30%;">
-  <col style="width: 30%;">
-  <col style="width: 10%;">
-  <col style="width: 10%;">
-  <col style="width: 10%;">
-  <col style="width: 10%;">
+  <colgroup>>
+    <col style="width: 30%;">
+    <col style="width: 30%;">
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+    <col style="width: 10%;">
+  </colgroups>
   
-  <!-- Tabellenkopf -->
   <thead>
     <tr>
       <th style="text-align: left;">Name</th>
@@ -58,6 +58,7 @@ using <code>numeric-comp</code>) are currently available:</p>
       <th style="text-align: center;">Overleaf*</th>
     </tr>
   </thead>
+  
   <tbody>
     <tr>
       <td><code>HgbThesisTutorialEN</code></td>
