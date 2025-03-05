@@ -38,27 +38,34 @@ and various style files (<code>hgb.sty</code>, ...). The style files can also be
 for other kinds of documents. The following sample documents (with numerical citations 
 using <code>numeric-comp</code>) are currently available:</p>
 
-<table style="table-layout: fixed; width: 100%; border-collapse: collapse;">
-  <colgroup>>
-    <col style="width: 30%;">
-    <col style="width: 30%;">
-    <col style="width: 10%;">
-    <col style="width: 10%;">
-    <col style="width: 10%;">
-    <col style="width: 10%;">
-  </colgroups>
-  
+<style>
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+table th:first-of-type, table th:nth-of-type(2) {
+    width: 30%;
+    text-align: left;
+}
+table th {
+    width: 10%;
+    text-align: center;
+}
+</style>
+
+<table> 
   <thead>
     <tr>
-      <th style="text-align: left;">Name</th>
-      <th style="text-align: left;">Document Type</th>
-      <th style="text-align: center;">Language</th>
-      <th style="text-align: center;">PDF</th>
-      <th style="text-align: center;">ZIP</th>
-      <th style="text-align: center;">Overleaf*</th>
+      <th>Name</th>
+      <th>Document Type</th>
+      <th>Language</th>
+      <th>PDF</th>
+      <th>ZIP</th>
+      <th>Overleaf*</th>
     </tr>
   </thead>
-  
+
   <tbody>
     <tr>
       <td><code>HgbThesisTutorialEN</code></td>
