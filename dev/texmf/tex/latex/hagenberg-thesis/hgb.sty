@@ -156,7 +156,7 @@
 \newcommand{\@MissingArg}[1]{\textcolor{red}{#1}}
 
 \RequirePackage[T1,hyphens,obeyspaces,spaces,lowtilde]{url}
-\urlstyle{sf}
+%\urlstyle{sf}
 
 \RequirePackage{verbatim}
 \RequirePackage{moreverb}
@@ -411,6 +411,7 @@
 % by default. We recommend to use the 'tabular' environment instead.
 
 \AtBeginDocument{%
+  \urlstyle{sf}
   \@ifpackageloaded{subfigure}{%
     \PackageError{hgb}{Use of the 'subfigure' package is not supported in this setup, because it is obsolete}{}
 	\let\subfigure\undefined% just to make sure ...
