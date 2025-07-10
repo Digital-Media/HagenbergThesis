@@ -26,7 +26,7 @@ aufgrund der Anweisung
 %
 am Beginn der Datei \verb!main.tex! (wodurch \verb!hgbpdfa.sty! geladen wird).
 Man beachte, dass diese Anweisung \emph{vor} der \verb!\documentclass!-Deklaration
-platziert werden muss. Erforderliche Meta\-daten (\zB Autor und Titel) werden
+platziert werden muss. Erforderliche Meta\-daten (\zB Autor*in und Titel) werden
 automatisch aus den Dokumenteinstellungen übernommen und in das Ausgabe-PDF eingefügt.%
 \footnote{Dieses Setup basiert auf neuer Funktionalität, die aktuell in den
 \texttt{pdflatex}-Kern eingebaut wird und erfordert das Paket 
@@ -91,13 +91,21 @@ Natürlich ist die PDF/A-Validierung auch im Werkzeugsatz von Adobe \emph{Acroba
 Vor dem Drucken der Arbeit empfiehlt es sich, einige Dinge zu beachten, um
 unnötigen Aufwand (und auch Kosten) zu vermeiden.
 
+\subsection{Digitale Abgabe oder Druck}
+
+Viele Studiengänge verlangen mittlerweile aus Gründen der Nachhaltigkeit -- vor
+allem bei Bachelorarbeiten -- keine gedruckte Abgabe mehr. Ein Upload der
+PDF-Datei genügt in diesem Fall. Die Erklärung wird dann entweder digital im
+Dokument signiert oder der Studiengang holt die Erklärung auf andere Art und
+Weise ein. Es empfiehlt sich, die Abgabemodalitäten rechtzeitig in Erfahrung zu bringen, um ein unnötiges Ausdrucken der Arbeit zu vermeiden.
+
 \subsection{Drucker und Papier}
 
-Die Abschlussarbeit sollte in der Endfassung unbedingt auf einem qualitativ
-hochwertigen \emph{Laserdrucker} ausgedruckt werden; Ausdrucke mit
+Wenn die Abschlussarbeit gedruckt wird, sollte dies in der Endfassung unbedingt
+auf einem qualitativ hochwertigen \emph{Laserdrucker} geschehen; Ausdrucke mit
 Tintenstrahldruckern sind \emph{nicht} ausreichend. Auch das verwendete
 Papier sollte von guter Qualität (holzfrei) und üblicher Stärke (typ.\  
-$80\,\mathrm{g} / \mathrm{m}^2$) sein. Falls nor einzelne \emph{farbige} Seiten 
+$80\,\mathrm{g} / \mathrm{m}^2$) sein. Falls nur einzelne \emph{farbige} Seiten 
 notwendig sind, kann man diese auch einzeln auf einem Farb-Laserdrucker ausdrucken
 und dem übrigen (schwarz/weiß gedruckten) Dokument beifügen.
 
@@ -127,7 +135,7 @@ Textbreite%
 \footnote{\Convert[unit=mm]{\the\textwidth}	im aktuellen Dokument} % using 'lengthconvert' package
 oder mithilfe der Messgrafik am Ende dieses Dokuments gezeigt.
 Sicherheitshalber sollte diese Messgrafik bis zur Fertigstellung der
-Arbeit beibehalten und die entsprechende Seite erst ganz am Schluss zu
+Arbeit beibehalten und die entsprechende Seite erst ganz am Schluss
 entfernt werden. Wenn, wie häufig der Fall, einzelne Seiten getrennt in Farbe
 gedruckt werden, so sollten natürlich auch diese genau auf die Einhaltung der
 Druckgröße kontrolliert werden!
@@ -165,48 +173,3 @@ notfalls eine gekürzte Version angeben, wie \zB:
 %
 Nach dem Binden sollte man die fertige Arbeit unbedingt nochmals auf 
 Vollständigkeit, korrekte Anordnung der Seites \etc\ überprüfen.
-
-
-
-\begin{comment}	% this is outdated
-\section{Elektronische Datenträger (CD-R, DVD)}
-
-Speziell bei Arbeiten im Bereich der Informationstechnik (aber nicht nur
-dort) fallen fast immer Informationen an, wie Programme, Daten, Grafiken,
-Kopien von Internetseiten \usw, die für eine spätere Verwendung elektronisch
-verfügbar sein sollten. Vernünftigerweise wird man diese Daten während der
-Arbeit bereits gezielt sammeln und der fertigen Arbeit auf einer CD-ROM oder
-DVD beilegen.%
-\footnote{Als Alternative sehen Institute zunehmend den Upload dieser Daten
-in ein entsprechendes Online-Archiv vor, zumal CD/DVD-Laufwerke in neuen
-Geräten kaum mehr eingebaut werden. Das konkrete Vorgehen sollte man
-jedenfalls mit den zuständigen Stellen abstimmen.}
-Es ist außerdem sinnvoll -- schon allein aus Gründen der elektronischen
-Archivierbarkeit -- auch die eigene Arbeit selbst als PDF-Datei beizulegen.%
-\footnote{Auch Bilder und Grafiken könnten in elektronischer Form nützlich
-sein, die \latex-Dateien sind hingegen überflüssig.}
-
-Falls ein elektronischer Datenträger (CD-ROM, DVD) beigelegt wird, sollte auf
-folgende Dinge geachtet werden:
-%
-\begin{enumerate}
-	\item Jedem abzugebenden Exemplar muss eine identische Kopie des
-	Datenträgers beiliegen.
-	\item Verwenden Sie qualitativ hochwertige Rohlinge und überprüfen
-	Sie nach der Fertigstellung die tatsächlich gespeicherten Inhalte
-	des Datenträgers!
-	\item Der Datenträger sollte in eine im hinteren Umschlag eingeklebte
-	Hülle eingefügt sein und sollte so zu entnehmen sein, dass die Hülle
-	dabei \emph{nicht} zerstört wird (die meisten Buchbinder haben geeignete
-	Hüllen parat).
-	\item Der Datenträger muss so beschriftet sein, dass er der
-	Abschlussarbeit eindeutig zuzuordnen ist, am Besten durch ein
-	gedrucktes Label%
-	\footnote{Nicht beim lose abgegebenen Bibliotheksexemplar --
-	dieses erhält ein standardisiertes Label durch die Bibliothek.}
-	oder sonst durch \emph{saubere}	Beschriftung mit der Hand und einem
-	feinen, wasserfesten Stift.
-	\item Nützlich ist auch ein (grobes) Verzeichnis der Inhalte des
-	Datenträgers (wie exemplarisch in Anhang \ref{app:materials}).
-\end{enumerate}
-\end{comment}
