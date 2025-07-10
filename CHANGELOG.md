@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - 2025/05/26: [#180](https://github.com/Digital-Media/HagenbergThesis/issues/180): Fixed wrong URL style in APA documents.
 - 2025/05/26: [#182](https://github.com/Digital-Media/HagenbergThesis/issues/182): Fixed wrong accent character for Exposé in German documents.
+- 2025/07/10: [#185](https://github.com/Digital-Media/HagenbergThesis/issues/185): Fixed PDF-A generation due to a change in the `pdfmanagement-testphase` package.
 
 ## [2025/02/24]
 
