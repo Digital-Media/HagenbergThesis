@@ -275,7 +275,6 @@
 
 %% Do before running \maketitle:
 \AddToHook{cmd/maketitle/before}{%
-	
 	% initialize remaining parameters:
 	\renewcommand{\hgb@Author}{\@author}%
 	\renewcommand{\hgb@Title}{\@title}%

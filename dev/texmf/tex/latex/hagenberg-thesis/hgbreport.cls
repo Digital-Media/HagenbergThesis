@@ -12,6 +12,11 @@
 
 \typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
 
+%% Set up output font encoding and PDF format
+\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
+\usepackage{lmodern}			% alternatively install(!) cm-super package
+\usepackage{hgbpdfa}			% enable PDF/A output
+
 \RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
@@ -34,27 +39,17 @@
 
 \LoadClass[a4paper,11pt]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
-
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\newcommand{\hgb@TitlePageFont}{\sffamily}
 
-
-%% Set title font to SF and inject PDF meta-data
-\renewcommand{\maketitlehooka}{%
-  \sffamily%
-  \hypersetup{
-		pdftitle={\@title},
-		pdfauthor={\@author},
-		pdfsubject={},
-		pdfcreator={LaTeX using class hgbreport [\hgbDate]},
-		pdfproducer={pdflatex},
-		pdfkeywords={}
-	}%
+%% Do before running \maketitle:
+\AddToHook{cmd/maketitle/before}{%
+	\hgb@SetDocumentMetadata%
 }
 
 %% Set abstract name to bold
 \RequirePackage{abstract}%
 \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
-
 
 %% Additional Hagenberg packages ----------------------------------------------
 
