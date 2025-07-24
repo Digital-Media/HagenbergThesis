@@ -12,7 +12,8 @@
 \providecommand{\hgb@MainLanguage}{german}  	% also defined in hgbthesis.cls
 \providecommand{\hgb@TitleLanguage}{}  				% also defined in hgbthesis.cls
 
-
+%% Required Packages ----------------------------------------------------------
+\RequirePackage[utf8]{inputenc}
 \RequirePackage{xifthen}
 \RequirePackage{hgbdict}
 
@@ -33,14 +34,9 @@
 \DeclareOption*{\PackageWarning{hgb}{Unknown option '\CurrentOption'.}}
 \ProcessOptions*
 
-%% Required Packages ----------------------------------------------------------
 
-\RequirePackage{lmodern}				% use Latin Modern Fonts
-\RequirePackage{cmap}						% make generated PDF files "searchable and copyable"
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}		% T1 font encoding for improved hyphenation
 
-% Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
+%% Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
 \ifthenelse{\equal{\hgb@MainLanguage}{german}}%
 	{\RequirePackage[main=ngerman,english]{babel}}{}
 \ifthenelse{\equal{\hgb@MainLanguage}{english}}%
@@ -138,7 +134,7 @@
 	{\hgb@WarnOldPackage{\the\hgbAge}}{}
 
 
-%% ----------------------------------------------------------------------------
+%%% ----------------------------------------------------------------------------
 
 \RequirePackage{upquote} 			% uses "right" quotes in the verbatim environment
 \RequirePackage{marvosym}
@@ -162,17 +158,17 @@
 \RequirePackage{moreverb}
 \def\verbatimtabsize{2\relax}
 
-\RequirePackage{ifpdf}
-\ifpdf % LaTeX is in native PDF mode (pdflatex) 
-  \RequirePackage{epstopdf}			% converting EPS to PDF for pdflatex
-%  \pdfcompresslevel=0				% 0 = no compression, 9 = max. compression
-%  \pdfimageresolution=300
-\else								% LaTeX is in emulation mode (DVI-PS-PDF)
-  \RequirePackage[hyphenbreaks]{breakurl} % allows line breaks in URLs without pdflatex (DIV, PS, PDF)
-\fi	
+%\RequirePackage{ifpdf}
+%\ifpdf % LaTeX is in native PDF mode (pdflatex) 
+  %\RequirePackage{epstopdf}			% converting EPS to PDF for pdflatex %wilbur: still needed?
+%%  \pdfcompresslevel=0				% 0 = no compression, 9 = max. compression
+%%  \pdfimageresolution=300
+%\else								% LaTeX is in emulation mode (DVI-PS-PDF)
+  %\RequirePackage[hyphenbreaks]{breakurl} % allows line breaks in URLs without pdflatex (DVI, PS, PDF) %wilbur: check!
+%\fi	
 
 
-%% hyperref Setup -------------------------------------------------------------
+%% Generic hyperref setup -------------------------------------------------------
 \RequirePackage[unicode]{hyperref}	% utf8-change
 \hypersetup{
 	linktocpage=true,				  % make page number, not text, be link on TOC, LOF and LOT 
@@ -190,7 +186,7 @@
 	\def\and{\texorpdfstring{\oldand}{, }}%
 }
 
-\RequirePackage[figure,table,table*]{hypcap}	% do not redefine figure* for use in article (without captions)
+\RequirePackage[figure,table,table*]{hypcap}	% to adjust anchors of captions (https://ctan.org/pkg/hypcap)
 
 %% Miscellaneous Utility Commands ---------------------------------------------
 
@@ -266,7 +262,7 @@
 	\renewcommand{\footnote}[1]{\@WarnFootnoteInCaption\relax}#1}
 \captionsetup{textformat=nofootnotes}
 
-% Make float placement easier    
+%% Make float placement easier    
 \renewcommand{\floatpagefraction}{.9}	% previously: .5
 \renewcommand{\textfraction}{.1}		% previously: .2
 \renewcommand{\topfraction}{.9}			% previously: .7
@@ -303,7 +299,7 @@
 
 %% Program environments  ------------------------------------------------------
 
-% Define the program float environment:
+%% Define the program float environment:
 \@ifundefined{chapter}%
    {\newfloat{program}{tbp}{lop}}%
 	 {\newfloat{program}{tbp}{lop}[chapter]}
@@ -311,32 +307,22 @@
 \floatstyle{plain}
 \restylefloat*{program}
 
-\hgbDictionarySet{program-env-name}{english}{Program}
-\hgbDictionarySet{program-env-name}{german}{Programm}
 
-
-%% Add \DocumentMetadata settings ---------------------------------------------
-
-\hgbDictionarySet{iso-language-code}{english}{en}
-\hgbDictionarySet{iso-language-code}{german}{de}
-\hgbDictionarySet{iso-language-code}{ngerman}{de}
-\hgbDictionarySet{iso-language-code}{french}{fr}
-% ... etc.
+%% PDF Metadata settings -----------------------------------------------------
 
 \newcommand{\hgb@SetDocumentMetadata}{%
-	\def\theLang{\hgbDictionaryGet{iso-language-code}{\hgb@MainLanguage}}%
-	\ifthenelse{\equal{\theLang}{\hgbDictionaryUndefined}}%
-		{\PackageWarning{hgb}{Unknown main document language '\hgb@MainLanguage' (set to 'en').}%
-		 \DocumentMetadata{lang=en}}%			use en as default
-		{\DocumentMetadata{lang=\theLang}}%
-	% there may be more settings to come ...
+	\hypersetup{
+			pdftitle={\@title},
+			pdfauthor={\@author},
+			pdflang={\hgbDictionaryGet{iso-language-code}{\hgb@MainLanguage}},
+			pdfsubject={},
+			pdfcreator={LaTeX using 'hagenberg-thesis' package [\hgbDate]},
+			pdfproducer={pdflatex},
+			pdfkeywords={}
+		}%
 }
 
-\AtBeginDocument{%
-  \hgb@SetDocumentMetadata%		This may only be called in the document preamble!
-}%
-
-\AtBeginDocument{%
+\AtBeginDocument{%	set name of 'program' environments according to document language
 	\floatname{program}{\hgbDictionaryGet{program-env-name}{\hgb@MainLanguage}}%
 }%
 

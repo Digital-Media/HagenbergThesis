@@ -39,12 +39,11 @@
 
 
 %% Set title font to SF and inject PDF meta-data
-\RequirePackage{titling}
 \renewcommand{\maketitlehooka}{%
   \sffamily%
   \hypersetup{
-		pdftitle={\thetitle},   % \thetitle is defined by titling package (instead of \@title)
-		pdfauthor={\theauthor}, % \theauthor is defined by titling package (instead of \@author)
+		pdftitle={\@title},
+		pdfauthor={\@author},
 		pdfsubject={},
 		pdfcreator={LaTeX using class hgbreport [\hgbDate]},
 		pdfproducer={pdflatex},
