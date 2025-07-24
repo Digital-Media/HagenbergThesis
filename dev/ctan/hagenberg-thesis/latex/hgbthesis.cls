@@ -14,7 +14,12 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
-\ProvidesClass{hgbthesis}[2025/06/25]%%AUTO
+\ProvidesClass{hgbthesis}[2025/07/24]%%AUTO
+
+%% Set up output font encoding and PDF format
+\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
+\usepackage{lmodern}			% alternatively install(!) cm-super package
+\usepackage{hgbpdfa}			% enable PDF/A output
 
 \RequirePackage{xifthen}
 
@@ -129,7 +134,6 @@
 \LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
-\RequirePackage{titling}
 \newcommand{\hgb@TitlePageFont}{\sffamily}
 
 %% Setup for Pages in the Front Matter:
@@ -256,21 +260,12 @@
 	\ClassError{hgbthesis}{Command \string\hgb@MakeFrontPages\space is not defined!}\relax%
 }
 
-% Redefine LaTeX's \maketitle to add PDF meta data
+% Redefine LaTeX's \maketitle
 \renewcommand{\maketitle}{% redefine standard \maketitle command
-	\hypersetup{
-			pdftitle={\hgb@FullTitle},%
-      pdfauthor={\hgb@Author},%
-			pdfsubject={\hgb@ProgramType~\hgb@ProgramName,~\hgb@PlaceOfStudy},
-			pdfcreator={LaTeX using class hgbthesis [\hgbDate]},
-			pdfproducer={pdflatex},
-			pdfkeywords={},
-			pageanchor=false%					disable hyperref page anchors in front pages
-	}%
 	\SetLanguage{\hgb@TitleLanguage}
-	\hgb@MakeFrontPages%						generate front pages
+	\hgb@MakeFrontPages%						generate front pages (using the specified theme)
 	\SetLanguage{\hgb@MainLanguage}
-	\hypersetup{pageanchor=true}%		enable hyperref page anchors in the main document
+	\hypersetup{pageanchor=true}%		re-enable hyperref page anchors in the main document (only)
 }
 
 % Define new hook to be used in theme style files for various initializations: 
@@ -278,16 +273,18 @@
 % Invoked before \maketitle (by hook code below).
 \NewHook{hgb@InitThemeHook}
 
-% Initialize remaining parameters before running \maketitle:
+%% Do before running \maketitle:
 \AddToHook{cmd/maketitle/before}{%
-	\renewcommand{\hgb@Author}{\theauthor}%		defined by 'titling' package
-	\renewcommand{\hgb@Title}{\thetitle}%		  defined by 'titling' package
+	% initialize remaining parameters:
+	\renewcommand{\hgb@Author}{\@author}%
+	\renewcommand{\hgb@Title}{\@title}%
 	\ifthenelse{\equal{\hgb@SubTitle}{}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title}}%
 		{\renewcommand{\hgb@FullTitle}{\hgb@Title: \hgb@SubTitle}}%
 	%
-	%\ifthenelse{\boolean{hgb@IsProposal}}{\hgb@ProposalSetup}{}% wilbur: moved to \AtBeginDocument
+	% now trigger the generation of title pages (using the specified theme):
 	\UseHook{hgb@InitThemeHook}%	execute collected code for hgb@InitThemeHook (if any)
+	\hgb@SetDocumentMetadata%
 }
 
 % Special sectioning setup for thesis proposals: ----------------------------
@@ -317,6 +314,7 @@
 }
 
 \AtBeginDocument{%
+	\hypersetup{pageanchor=false}	% to avoid duplicate page identifiers in front matter
 	\ifthenelse{\boolean{hgb@IsProposal}}{\hgb@ProposalSetup}{}%
 }
 

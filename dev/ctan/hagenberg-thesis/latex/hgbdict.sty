@@ -7,7 +7,7 @@
 %% This package defines a simple dictionary mechanism for terms used in title pages.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{hgbdict}[2025/06/25]%%AUTO
+\ProvidesPackage{hgbdict}[2025/07/24]%%AUTO
 
 \newcommand{\hgbDictionaryUndefined}{undefined}%
 
@@ -24,6 +24,21 @@
   \else \hgbDictionaryUndefined% Term '#1' is undefined for language '#2'!%
   \fi
 }
+
+%% ----------------------------------------------------------------------------
+%% Language-related entries:
+%% ----------------------------------------------------------------------------
+
+\hgbDictionarySet{iso-language-code}{english}{en}
+\hgbDictionarySet{iso-language-code}{german}{de}
+\hgbDictionarySet{iso-language-code}{ngerman}{de}
+\hgbDictionarySet{iso-language-code}{french}{fr}
+
+%% used as PDF document language tags (see https://www.rfc-editor.org/info/rfc4647):
+\hgbDictionarySet{language-range-tag}{english}{en-GB}
+\hgbDictionarySet{language-range-tag}{german}{de-DE}
+\hgbDictionarySet{language-range-tag}{ngerman}{de-DE}
+\hgbDictionarySet{language-range-tag}{french}{fr-FR}
 
 %% ----------------------------------------------------------------------------
 %% Add thesis-relevant dictionary items
@@ -49,6 +64,12 @@
 
 \hgbDictionarySet{advisorheader}{english}{Supervisor}
 \hgbDictionarySet{advisorheader}{german}{Betreuer*in}
+
+\hgbDictionarySet{program-env-name}{english}{Program}
+\hgbDictionarySet{program-env-name}{german}{Programm}
+
+% ... etc.
+
 
 % Internship-related terms:
 

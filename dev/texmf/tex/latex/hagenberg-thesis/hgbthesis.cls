@@ -14,7 +14,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
-\ProvidesClass{hgbthesis}[2025/06/25]%%AUTO
+\ProvidesClass{hgbthesis}[2025/07/24]%%AUTO
 
 %% Set up output font encoding and PDF format
 \usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
