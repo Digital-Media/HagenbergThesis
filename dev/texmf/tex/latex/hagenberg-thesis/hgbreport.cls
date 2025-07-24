@@ -24,6 +24,8 @@
 \else{\errmessage{hgbreport: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
+\RequirePackage{hgbvars}
+
 %% Handling class options --------------------------------------------------------------
 
 \DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{report}}	%default
@@ -40,7 +42,7 @@
 \LoadClass[a4paper,11pt]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
-\newcommand{\hgb@TitlePageFont}{\sffamily}
+\renewcommand{\hgb@TitlePageFont}{\sffamily}
 
 %% Do before running \maketitle:
 \AddToHook{cmd/maketitle/before}{%
