@@ -16,11 +16,6 @@
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
 \ProvidesClass{hgbthesis}[2025/07/24]%%AUTO
 
-%% Set up output font encoding and PDF format
-%\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
-%\usepackage{lmodern}			% alternatively install(!) cm-super package
-%\usepackage{hgbpdfa}			% enable PDF/A output
-
 \RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
@@ -32,14 +27,10 @@
 
 %% Commands for Title Pages (used in class options) ---------------------------
 
-%\newcommand{\hgb@ThesisType}{master}%									type of thesis (theme name)						
-%
-%\newcommand{\hgb@MainLanguage}{german}%								the main language for this document:
-%\newcommand{\hgb@TitleLanguage}{}%										the language to be used for the front pages
 
-%\newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
+\newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
 \setboolean{hgb@IsProposal}{false}
-%\newcommand{\hgb@ProposalName}{UNDEFINED}
+\newcommand{\hgb@ProposalName}{UNDEFINED}
 
 \newcommand{\hgb@@pagelayout}{oneside}% default to 'oneside' (used locally only in this file!)
 
@@ -143,33 +134,19 @@
 
 % General Thesis Parameters ----------------------------------------
 
-%	Initialized from standard '\author{}' parameter (by \maketitle hook below)
-%\newcommand{\hgb@Author}{Author undefined!}
-
 \newcommand{\@warnmultipleauthors}%
 	{\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
 
-%\newcommand{\hgb@Title}{Undefined document title!}% derived from \title (initialized in \maketitle hook)
-
-%\newcommand{\hgb@SubTitle}{}
 \newcommand{\subtitle}[1]{\renewcommand{\hgb@SubTitle}{#1}}
 
-%\newcommand{\hgb@FullTitle}{}% = title + subtitle (initialized in \maketitle hook)
-
-%\newcommand{\hgb@ThesisName}{Undefined thesis name!}%
-
-%\newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@Institution}{#1}}
 }
 
-%\newcommand{\hgb@ProgramType}{\@MissingArg{Type of degree program not specified!}}
 \newcommand{\programtype}[1]{\renewcommand{\hgb@ProgramType}{#1}}
 
-%\newcommand{\hgb@ProgramName}{\@MissingArg{Name of degree program not specified!}}
 \newcommand{\programname}[1]{\renewcommand{\hgb@ProgramName}{#1}}
 
-%\newcommand{\hgb@PlaceOfStudy}{\@MissingArg{Place of study not specified!}}
 \newcommand{\placeofstudy}[1]{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 
 % Advisor(s) -------------------------------------------------------------------
@@ -221,8 +198,6 @@
 
 % Copyright/License Settings --------------------------------------------------
 
-%\newcommand{\hgb@License}{cclicense}
-
 \newcommand{\license}[1]{%
 	\renewcommand{\hgb@License}{#1}
 	\ifthenelse{\equal{#1}{cc}}{\renewcommand{\hgb@License}{cclicense}}{}%
@@ -240,17 +215,13 @@
 }
 
 % Legacy commands, keep for internship reports:
-%\newcommand{\hgb@CompanyName}{\@MissingArg{Company not specified!}}
 \newcommand{\companyName}[1]{\renewcommand{\hgb@CompanyName}{#1}}
-
-%\newcommand{\hgb@CompanyUrl}{\@MissingArg{Company URL not specified!}}
 \newcommand{\companyUrl}[1]{\renewcommand{\hgb@CompanyUrl}{#1}}
 
 
 %% Logo -------------------------------------------------------------------------
 
 % Specify the institution's logo - DEPRECATED - logo is now handled in theme files only!
-%\newcommand{\hgb@LogoFile}{@unspecified}	% 
 \newcommand{\logofile}[1]{%
 	\ClassWarning{hgbthesis}{Command \string\logofile\space is deprecated, logo should be specified in theme file!}%
 	%\renewcommand{\hgb@LogoFile}{#1}
