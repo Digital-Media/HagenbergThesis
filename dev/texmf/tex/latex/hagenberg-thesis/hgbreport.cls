@@ -13,9 +13,9 @@
 \typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
 
 %% Set up output font encoding and PDF format
-\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
-\usepackage{lmodern}			% alternatively install(!) cm-super package
-\usepackage{hgbpdfa}			% enable PDF/A output
+%\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
+%\usepackage{lmodern}			% alternatively install(!) cm-super package
+%\usepackage{hgbpdfa}			% enable PDF/A output
 
 \RequirePackage{xifthen}
 

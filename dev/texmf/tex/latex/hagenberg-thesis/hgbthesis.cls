@@ -17,9 +17,9 @@
 \ProvidesClass{hgbthesis}[2025/07/24]%%AUTO
 
 %% Set up output font encoding and PDF format
-\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
-\usepackage{lmodern}			% alternatively install(!) cm-super package
-\usepackage{hgbpdfa}			% enable PDF/A output
+%\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
+%\usepackage{lmodern}			% alternatively install(!) cm-super package
+%\usepackage{hgbpdfa}			% enable PDF/A output
 
 \RequirePackage{xifthen}
 
