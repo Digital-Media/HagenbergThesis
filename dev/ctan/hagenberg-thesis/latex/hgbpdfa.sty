@@ -10,12 +10,23 @@
 %% Setup for producing 	PDF/A-2B compliant output using the new LaTeX-internal
 %% PDF metadata management features 
 %% (see https://ctan.org/tex-archive/macros/latex/contrib/pdfmanagement-testphase).
-%% This package should be loaded as early as possible (though not necessarily
-%% before \documentclass).
+%% This package should be loaded before \documentclass.
 
 %\pdfmajorversion=1
 %\pdfminorversion=7  % PDF Version 1.7 (Acrobat 8.x)
 
-\RequirePackage{pdfmanagement}
-\SetKeys[document/metadata]{pdfversion=1.7,pdfstandard=A-2b}
+%% Check to see if the new 'pdfmanagement' implementation (starting July 2025)
+%% is already available, otherwise fall back to the older 'pdfmanagement-testphase'
+%% (currently needed on Overleaf, for example).
+\IfFileExists{pdfmanagement.sty}{
+  % Package exists — do something
+	\RequirePackage{pdfmanagement}
+	\SetKeys[document/metadata]{pdfversion=1.7,pdfstandard=A-2b}
+}{
+  % Package doesn't exist — fallback or warning
+	\RequirePackage{pdfmanagement-testphase} % only needed before LaTeX 2022-06-01
+	\DeclareDocumentMetadata{pdfversion=1.7,pdfstandard=A-2b}
+}
 
+\RequirePackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
+\RequirePackage{lmodern}			% alternatively install(!) cm-super package

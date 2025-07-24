@@ -16,11 +16,6 @@
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
 \ProvidesClass{hgbthesis}[2025/07/24]%%AUTO
 
-%% Set up output font encoding and PDF format
-\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
-\usepackage{lmodern}			% alternatively install(!) cm-super package
-\usepackage{hgbpdfa}			% enable PDF/A output
-
 \RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
@@ -28,12 +23,10 @@
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
+\RequirePackage{hgbvars}
+
 %% Commands for Title Pages (used in class options) ---------------------------
 
-\newcommand{\hgb@ThesisType}{master}%									type of thesis (theme name)						
-
-\newcommand{\hgb@MainLanguage}{german}%								the main language for this document:
-\newcommand{\hgb@TitleLanguage}{}%										the language to be used for the front pages
 
 \newboolean{hgb@IsProposal} % indicates if this document is a proposal (true) or final thesis (false).
 \setboolean{hgb@IsProposal}{false}
@@ -134,39 +127,26 @@
 \LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
-\newcommand{\hgb@TitlePageFont}{\sffamily}
+%\newcommand{\hgb@TitlePageFont}{\sffamily}
+\renewcommand{\hgb@TitlePageFont}{\sffamily}
 
 %% Setup for Pages in the Front Matter:
 
 % General Thesis Parameters ----------------------------------------
 
-%	Initialized from standard '\author{}' parameter (by \maketitle hook below)
-\newcommand{\hgb@Author}{Author undefined!}
-
 \newcommand{\@warnmultipleauthors}%
 	{\ClassWarning{hgbthesis}{Multiple authors are not supported ('\string\and' is ignored)!}}%
 
-\newcommand{\hgb@Title}{Undefined document title!}% derived from \title (initialized in \maketitle hook)
-
-\newcommand{\hgb@SubTitle}{}
 \newcommand{\subtitle}[1]{\renewcommand{\hgb@SubTitle}{#1}}
 
-\newcommand{\hgb@FullTitle}{}% = title + subtitle (initialized in \maketitle hook)
-
-\newcommand{\hgb@ThesisName}{Undefined thesis name!}%
-
-\newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
 \newcommand{\institution}[1]{%
 	\ifthenelse{\isempty{#1}}{}{\renewcommand{\hgb@Institution}{#1}}
 }
 
-\newcommand{\hgb@ProgramType}{\@MissingArg{Type of degree program not specified!}}
 \newcommand{\programtype}[1]{\renewcommand{\hgb@ProgramType}{#1}}
 
-\newcommand{\hgb@ProgramName}{\@MissingArg{Name of degree program not specified!}}
 \newcommand{\programname}[1]{\renewcommand{\hgb@ProgramName}{#1}}
 
-\newcommand{\hgb@PlaceOfStudy}{\@MissingArg{Place of study not specified!}}
 \newcommand{\placeofstudy}[1]{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 
 % Advisor(s) -------------------------------------------------------------------
@@ -204,7 +184,7 @@
 
 \DTMsavenow{hgb@SubmissionDate}  % default submission date is today
 
-\newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}
+\newcommand{\dateofsubmission}[3]{%	usage: \dateofsubmission{yyyy}{mm}{dd}	- used anywhere??
 	\DTMsavenoparsedate{hgb@SubmissionDate}{#1}{#2}{#3}{-1}
 }
 
@@ -217,8 +197,6 @@
 }
 
 % Copyright/License Settings --------------------------------------------------
-
-\newcommand{\hgb@License}{cclicense}
 
 \newcommand{\license}[1]{%
 	\renewcommand{\hgb@License}{#1}
@@ -237,20 +215,16 @@
 }
 
 % Legacy commands, keep for internship reports:
-\newcommand{\hgb@CompanyName}{\@MissingArg{Company not specified!}}
 \newcommand{\companyName}[1]{\renewcommand{\hgb@CompanyName}{#1}}
-
-\newcommand{\hgb@CompanyUrl}{\@MissingArg{Company URL not specified!}}
 \newcommand{\companyUrl}[1]{\renewcommand{\hgb@CompanyUrl}{#1}}
 
 
 %% Logo -------------------------------------------------------------------------
 
 % Specify the institution's logo - DEPRECATED - logo is now handled in theme files only!
-\newcommand{\hgb@LogoFile}{@unspecified}	% 
 \newcommand{\logofile}[1]{%
 	\ClassWarning{hgbthesis}{Command \string\logofile\space is deprecated, logo should be specified in theme file!}%
-	\renewcommand{\hgb@LogoFile}{#1}
+	%\renewcommand{\hgb@LogoFile}{#1}
 }
 
 %% Create title pages -------------------------------------

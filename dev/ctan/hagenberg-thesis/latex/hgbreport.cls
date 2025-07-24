@@ -12,17 +12,14 @@
 
 \typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
 
-%% Set up output font encoding and PDF format
-\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
-\usepackage{lmodern}			% alternatively install(!) cm-super package
-\usepackage{hgbpdfa}			% enable PDF/A output
-
 \RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
 \ifpdf{}% \typeout{hgbreport: *** LaTeX in PDF mode ***}
 \else{\errmessage{hgbreport: *** LaTeX NOT running in PDF mode ***}}
 \fi
+
+\RequirePackage{hgbvars}
 
 %% Handling class options --------------------------------------------------------------
 
@@ -40,7 +37,7 @@
 \LoadClass[a4paper,11pt]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
-\newcommand{\hgb@TitlePageFont}{\sffamily}
+\renewcommand{\hgb@TitlePageFont}{\sffamily}
 
 %% Do before running \maketitle:
 \AddToHook{cmd/maketitle/before}{%
