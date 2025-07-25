@@ -1,11 +1,15 @@
 # Local makefile to buld LaTeX examples in subdirectories.
 # -----------------------------------------------------------------------
 # Usage (assuming a Linux-type shell, e.g. Git Bash on Windows):
-# 'make' or 'make all' -> to rebuild everything
-# 'make setdates' -> update version dates in *.sty and *.cls files
-# 'make build' -> to build all example documents
-# 'make <example>' -> to buld a specific example document, e.g. 'make HgbArticle'
-# 'make ctan' -> to build the complete CTAN distribution
+#	'make' or 'make all' -> to rebuild everything
+#	'make setdates' -> update version dates in *.sty and *.cls files
+#	'make documents' -> to compile all example documents
+#	'make <example>' -> to buld a specific example document, e.g. 'make HgbArticle'
+#	'make manual' -> to compile the package manual
+#	'make ctan' -> to build the complete CTAN distribution
+#
+#	'make inittex' -> to add /dev/texmf... as a local TEXMF root directory
+#	'make uninittex' -> to remove /dev/texmf... as a local TEXMF root directory
 # -----------------------------------------------------------------------
 
 SHELL = /bin/sh
@@ -22,10 +26,12 @@ SOURCEDIR = $(realpath texmf)/tex/latex/hagenberg-thesis
 BIBTEXDIR = $(realpath texmf)/bibtex/bib
 # directory for holding .sty files from other packages if needed
 SOURCEDIRFOREIGN = $(realpath texmf)/tex/latex-foreign
-# Target directory for the compiled documents (examples):
+# Directory for the sample documents:
 DOCSDIR := $(realpath ../documents)
 # Collect all subdirectories (examples) in DOCSDIR:
 DOCSLIST := $(shell cd $(DOCSDIR); find * -maxdepth 0 -type d)
+# Directory for zipped sample documents (e.g., to be used with Overleaf):
+DOWNLOADDIR := $(realpath ../download)
 # -----------------------------------------------------------------------
 # Date-related stuff:
 TODAY := $(shell date +"%Y\/%m\/%d")
@@ -34,6 +40,9 @@ TODAY := $(shell date +"%Y\/%m\/%d")
 RELEASEDATE := $(TODAY)
 # The pattern used to find the release date in .sty and .cls files: '[yyyy/mm/dd]%%AUTO'
 DATEPATTERN := \[[0-9]\{4\}\/[0-9]\{2\}\/[0-9]\{2\}\]%%AUTO
+# -----------------------------------------------------------------------
+# Source/target directory for the manual:
+MANUALDIR := $(realpath ../manual)
 # -----------------------------------------------------------------------
 # This directory holds everything needed for CTAN distribution:
 CTANDIR := $(realpath ctan)
@@ -45,8 +54,8 @@ CTANREADMEFILE := README.md
 CTANVERSIONTAG := \#\#\# Version:
 # -----------------------------------------------------------------------
 
-all : setdates build ctan
-.PHONY : all showsetup inittex setdates build ctan $(DOCSLIST)
+all : setdates documents manual ctan
+.PHONY : all showsetup inittex setdates documents manual ctan $(DOCSLIST)
 
 showsetup :
 	@echo TEXMFDIR = $(TEXMFDIR)
@@ -64,31 +73,39 @@ showsetup :
 	@echo CTANVERSIONTAG = $(CTANVERSIONTAG)
 	
 inittex :
-#	Add /dev/texmf... as a TEXMF root directory (not executed in a full make).
+#	Add /dev/texmf... as a TEXMF root directory (not executed in a regular make).
 #	Note: this must be a clean TEXMF dir, with nothing else in it. Otherwise MikTeX 'update-fndb' throws an error!
-# https://docs.miktex.org/manual/initexmf.html
-# https://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex
+#	Usage: make inittex
+#	https://docs.miktex.org/manual/initexmf.html
+#	https://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex
 #
 	initexmf --register-root=$(TEXMFDIR) --verbose
 	initexmf --update-fndb --verbose
 #	initexmf -u
 	initexmf --report
-#	initexmf --unregister-root=$(TEXMFDIR) --verbose
 
+#	Unlink /dev/texmf... as a TEXMF root directory (not executed in a regular make).
+#	Usage: make uninittex
+uninittex :
+	initexmf --unregister-root=$(TEXMFDIR) --verbose
+	initexmf --update-fndb --verbose
+	initexmf --report
 
 setdates :
-# Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
+#	Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
 #	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty *.tex files:
-	@echo Updating release date in all sty/cls files to [$(RELEASEDATE)]
+	@echo Updating release date in all sty/cls/bib files to [$(RELEASEDATE)]
 	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(BIBTEXDIR)/*.bib)
 	@echo ""
 
-build : $(DOCSLIST)
+documents : $(DOCSLIST)
 #	Defines a make target for each directory name in DOCSLIST
 
 $(DOCSLIST) : 
 #	Builds and zips every document (directory) in DOCSLIST
-	@echo "+++ Processing document \"$@\" +++"
+	@echo ""
+	@echo "++++++++++ Processing document $@ in $(DOCSDIR)/$@ ++++++++++"
+	@echo ""
 #	Copy all .sty .cls *.bib files to the document directory:
 	@echo "Temporarily copying cls/sty/pdf files from $(SOURCEDIR) and $(SOURCEDIRFOREIGN)"
 	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(DOCSDIR)/$@ \;
@@ -100,14 +117,35 @@ $(DOCSLIST) :
 	rm -f $(DOCSDIR)/$@/main.pdf
 	@make --silent -C $(DOCSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
-	@echo "Creating document ZIP file $@.zip"
-	@cd $(DOCSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
+	@echo "Creating document ZIP file $(DOWNLOADDIR)/$@.zip"
+	rm -f $(DOWNLOADDIR)/$@.zip
+	@cd $(DOCSDIR)/; $(ZIPEXE) -r -q $(DOWNLOADDIR)/$@.zip $@
 #	Remove all local .sty .cls *.bib files from the document directory:
 	@echo "Final cleanup in $(DOCSDIR)/$@"
-	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.sty" -delete
-	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.cls" -delete
-	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.bib" -delete
+	find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.sty" -delete
+	find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.cls" -delete
+#	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.bib" -delete
 	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.pdf" -and -not -name "main.pdf" -delete
+	@echo ""
+	
+manual : 
+#	Builds the manual
+	@echo ""
+	@echo "++++++++++ Processing manual in $(MANUALDIR)/$@ ++++++++++"
+	@echo ""
+#	Copy all .sty .cls *.bib files to the document directory:
+	@echo "Temporarily copying cls/sty/pdf files from $(SOURCEDIR) and $(SOURCEDIRFOREIGN)"
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(MANUALDIR) \;
+	@find $(SOURCEDIR)/ -maxdepth 1 -type f -name "*.cls" -exec cp -u {} $(MANUALDIR) \;
+	@find $(SOURCEDIRFOREIGN)/ -maxdepth 1 -type f -name "*.sty" -exec cp -u {} $(MANUALDIR) \;
+#	Run the LaTeX build in a sub-makefile (removes main.pdf first, i.e., runs always):
+	rm -f $(MANUALDIR)/main.pdf
+	@make --silent -C $(MANUALDIR) -f $(MKFILELATEX)
+#	Remove all local .sty .cls *.bib files from the document directory:
+	@echo "Final cleanup in $(MANUALDIR)"
+	find $(MANUALDIR) -maxdepth 1 -type f -name "*.sty" -delete
+	find $(MANUALDIR) -maxdepth 1 -type f -name "*.cls" -delete
+	@find $(MANUALDIR) -maxdepth 1 -type f -name "*.pdf" -and -not -name "main.pdf" -delete
 	@echo ""
 	
 ctan :
@@ -125,9 +163,10 @@ ctan :
 #
 #	Copy manual/tutorial source and PDFs to ctan/hagenberg-thesis/doc/
 	@find $(CTANDIR)/$(CTANBUNDLE)/doc -maxdepth 1 -name "*.*" -type f -delete
-	@echo "  Copying manual/tutorial source and PDFs to $(CTANDIR)/doc/"
-	@cp -u $(DOCSDIR)/Manual/main.tex $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).tex
-	@cp -u $(DOCSDIR)/Manual/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).pdf
+	@echo "  Copying manual source and PDFs to $(CTANDIR)/doc/"
+	@cp -u $(MANUALDIR)/main.tex $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).tex
+	@cp -u $(MANUALDIR)/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE).pdf
+	@echo "  Copying tutorials to $(CTANDIR)/doc/"
 	@cp -u $(DOCSDIR)/HgbThesisTutorialEN/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE)-tutorial-en.pdf
 	@cp -u $(DOCSDIR)/HgbThesisTutorialDE/main.pdf $(CTANDIR)/$(CTANBUNDLE)/doc/$(CTANBUNDLE)-tutorial-de.pdf
 #
