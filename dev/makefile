@@ -79,7 +79,7 @@ inittex :
 setdates :
 # Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
 #	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty *.tex files:
-	@echo Updating release date in all sty/cls files to [$(RELEASEDATE)]
+	@echo Updating release date in all sty/cls/bib files to [$(RELEASEDATE)]
 	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(BIBTEXDIR)/*.bib)
 	@echo ""
 
@@ -106,7 +106,7 @@ $(DOCSLIST) :
 	@echo "Final cleanup in $(DOCSDIR)/$@"
 	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.sty" -delete
 	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.cls" -delete
-	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.bib" -delete
+#	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.bib" -delete
 	@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.pdf" -and -not -name "main.pdf" -delete
 	@echo ""
 	
