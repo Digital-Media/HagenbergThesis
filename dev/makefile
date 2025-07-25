@@ -26,10 +26,12 @@ SOURCEDIR = $(realpath texmf)/tex/latex/hagenberg-thesis
 BIBTEXDIR = $(realpath texmf)/bibtex/bib
 # directory for holding .sty files from other packages if needed
 SOURCEDIRFOREIGN = $(realpath texmf)/tex/latex-foreign
-# Target directory for the compiled documents (examples):
+# Directory for the sample documents:
 DOCSDIR := $(realpath ../documents)
 # Collect all subdirectories (examples) in DOCSDIR:
 DOCSLIST := $(shell cd $(DOCSDIR); find * -maxdepth 0 -type d)
+# Directory for zipped sample documents (e.g., to be used with Overleaf):
+DOWNLOADDIR := $(realpath ../download)
 # -----------------------------------------------------------------------
 # Date-related stuff:
 TODAY := $(shell date +"%Y\/%m\/%d")
@@ -115,8 +117,9 @@ $(DOCSLIST) :
 	rm -f $(DOCSDIR)/$@/main.pdf
 	@make --silent -C $(DOCSDIR)/$@ -f $(MKFILELATEX)
 #	Make a ZIP for importing to Overleaf:
-	@echo "Creating document ZIP file $@.zip"
-	@cd $(DOCSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
+	@echo "Creating document ZIP file $(DOWNLOADDIR)/$@.zip"
+	rm -f $(DOWNLOADDIR)/$@.zip
+	@cd $(DOCSDIR)/; $(ZIPEXE) -r -q $(DOWNLOADDIR)/$@.zip $@
 #	Remove all local .sty .cls *.bib files from the document directory:
 	@echo "Final cleanup in $(DOCSDIR)/$@"
 	find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.sty" -delete
