@@ -64,20 +64,26 @@ showsetup :
 	@echo CTANVERSIONTAG = $(CTANVERSIONTAG)
 	
 inittex :
-#	Add /dev/texmf... as a TEXMF root directory (not executed in a full make).
+#	Add /dev/texmf... as a TEXMF root directory (not executed in a regular make).
 #	Note: this must be a clean TEXMF dir, with nothing else in it. Otherwise MikTeX 'update-fndb' throws an error!
-# https://docs.miktex.org/manual/initexmf.html
-# https://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex
+#	Usage: make inittex
+#	https://docs.miktex.org/manual/initexmf.html
+#	https://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex
 #
 	initexmf --register-root=$(TEXMFDIR) --verbose
 	initexmf --update-fndb --verbose
 #	initexmf -u
 	initexmf --report
-#	initexmf --unregister-root=$(TEXMFDIR) --verbose
 
+#	Unlink /dev/texmf... as a TEXMF root directory (not executed in a regular make).
+#	Usage: make uninittex
+uninittex :
+	initexmf --unregister-root=$(TEXMFDIR) --verbose
+	initexmf --update-fndb --verbose
+	initexmf --report
 
 setdates :
-# Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
+#	Problem: setdates updates ALL such files, thus all examples must be rebuilt!!!
 #	Replaces any date of the form [yyyy/mm/dd] in *.cls and *.sty *.tex files:
 	@echo Updating release date in all sty/cls/bib files to [$(RELEASEDATE)]
 	@$(shell sed -i 's|$(DATEPATTERN)|\[$(RELEASEDATE)\]%%AUTO|' $(SOURCEDIR)/*.sty $(SOURCEDIR)/*.cls $(BIBTEXDIR)/*.bib)
@@ -99,6 +105,15 @@ $(DOCSLIST) :
 #	Run the LaTeX build in a sub-makefile (removes main.pdf first, i.e., runs always):
 	rm -f $(DOCSDIR)/$@/main.pdf
 	@make --silent -C $(DOCSDIR)/$@ -f $(MKFILELATEX)
+#
+	@if [ "$@" = "Manual" ]; then \
+		echo "SPECIAL handling for $@"; \
+		@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.bib" -delete; \
+		@find $(DOCSDIR)/$@ -maxdepth 1 -type f -name "*.pdf" -and -not -name "main.pdf" -delete; \
+	else \
+		echo "Generic handling for $@"; \
+	fi
+#
 #	Make a ZIP for importing to Overleaf:
 	@echo "Creating document ZIP file $@.zip"
 	@cd $(DOCSDIR)/; rm -f $@.zip; $(ZIPEXE) -r -q $@.zip $@
