@@ -7,7 +7,7 @@ Typical package users will probably find no relevant information here.
 
 `/dev` is the development directory for the [HagenbergThesis](https://github.com/Digital-Media/HagenbergThesis) package. It contains the following in the respective directories:
 
-- `texmf`: Master style files, classes, and bibliography for the package.
+- `texmf`: Master style files, classes, and bibliography for the package. Note that, during development, only the central versions of these files are used.
 - `ctan`: Distribution files for `hagenberg-thesis` submitted to [CTAN](https://ctan.org/pkg/hagenberg-thesis).
 
 ## How to Use
@@ -64,19 +64,27 @@ Relax and grab a coffee...
 
 It is also possible to execute specific parts of the build process. Call `make` with the following arguments:
 
-- `make inittex`: Adds `/dev/texmf/` as a TEXMF root directory. This should be run once before building documents locally in `/documents/`. Note that this is not executed during a normal (full) `make`.
-- `make uninittex`: Unlinks `/dev/texmf/` as a TEXMF root directory. This is needed for building documents in `/documents/` from global `hagenberg-thesis` package files installed in the local LaTeX installation (distributed via CTAN).
-- `make setdate`: Sets the version number to the current date in all `.sty` and `.cls` files.
-- `make build`: Builds all sample documents in the `documents` directory.
-- `make [DocumentName]`: Builds a single sample document. Replace `[DocumentName]` with the respective document's directory name. E.g., use `make HgbThesisTutorialDE` to build the thesis tutorial document or `make HgbArticle` to build the article document.
-- `make manual`: Builds the package manual.
-- `make ctan`: Builds and gathers all files required for the CTAN distribution (in directory `ctan`).
+- `make inittex`: <br>
+Adds `/dev/texmf/` as a TEXMF root directory. This should be run once before building documents locally in `/documents/`. Note that this is not executed during a normal (full) `make`.
+- `make uninittex`: <br>
+Unlinks `/dev/texmf/` as a TEXMF root directory. This is needed for building documents in `/documents/` from global `hagenberg-thesis` package files installed in the local LaTeX installation (distributed via CTAN).
+- `make setdate`: <br>
+Sets the version number to the current date in all `.sty` and `.cls` files.
+- `make build`: <br>
+Builds all sample documents in the `documents` directory.
+- `make <DocumentName>`: <br>
+Builds a single sample document. Replace `<DocumentName>` with the respective document's directory name. E.g., use `make HgbThesisTutorialDE` to build the thesis tutorial document or `make HgbArticle` to build the article document.
+- `make manual`: <br>
+Builds the package manual.
+- `make ctan`: <br>
+Collects all files required for the CTAN distribution (in directory `ctan`).
 
 ### Testing Changes
 
 To test and review your changes, open one of the example documents in the `documents` directory (e.g., `HgbThesisTutorial`) after a complete or partial build process.
 This will include the updated pdf, which can then be tested and evaluated (e.g., for PDF/A and included metadata). Note that the package's required `.sty`, `.cls` and `.pdf` files are only copied temporarily to the document directories during the build process and subsequently removed again. Only an up-to-date copy of the common bibtex file `references.bib` remains in the document directory, because it cannot be distributed through CTAN.
 
+Note that the zip'ed documents in directory `downloads/` all contain local copies of the current `.sty`, `.cls` and `.pdf` package files. Thus these documents, once expanded, can be readily re-compiled in stand-alone mode.
 
 ### GIT Repository Cleanup
 
