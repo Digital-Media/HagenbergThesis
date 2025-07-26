@@ -310,7 +310,7 @@ follows:
 \begin{LaTeXCode}[numbers=left]
 \documentclass[master,english,smartquotes]{hgbthesis}
    ...
-\bibliography{references} /+\label{tex:references1}+/
+\bibliography{hgbreferences} /+\label{tex:references1}+/
    ...
 \begin{document}
    ...
@@ -320,13 +320,13 @@ follows:
 \end{LaTeXCode}
 %
 In the "preamble",
-\verb!\bibliography{references}!%
+\verb!\bibliography{hgbreferences}!%
 \footnote{The \texttt{{\bs}bibliography} command is actually a relic from BibTeX
 and is replaced in \texttt{biblatex} by the \texttt{{\bs}addbibresource}
 statement. Both statements are equivalent, but often only
 \texttt{{\bs}bibliography} makes the associated \texttt{.bib} file visible in
 the file structure of the editor environment.}
-(line \ref{tex:references1}) refers to a BibLaTeX file \nolinkurl{references.bib},
+(line \ref{tex:references1}) refers to a BibLaTeX file \nolinkurl{hgbreferences.bib},
 which holdss all references.
 If multiple BibLaTeX files are used, they can be specified in the same form.
 
@@ -454,7 +454,7 @@ types above them.}
 
 This category includes all works published in printed form, for example, in
 books, conference proceedings, journal articles, theses, etc. In the following
-examples, the BibLaTeX entry in the file \nolinkurl{references.bib} is given,
+examples, the BibLaTeX entry in the file \nolinkurl{hgbreferences.bib} is given,
 followed by the corresponding result in the bibliography.
 
 \subsubsection{\texttt{\bfseries @book}}

@@ -82,7 +82,7 @@ Collects all files required for the CTAN distribution (in directory `ctan`).
 ### Testing Changes
 
 To test and review your changes, open one of the example documents in the `documents` directory (e.g., `HgbThesisTutorial`) after a complete or partial build process.
-This will include the updated pdf, which can then be tested and evaluated (e.g., for PDF/A and included metadata). Note that the package's required `.sty`, `.cls` and `.pdf` files are only copied temporarily to the document directories during the build process and subsequently removed again. Only an up-to-date copy of the common bibtex file `references.bib` remains in the document directory, because it cannot be distributed through CTAN.
+This will include the updated pdf, which can then be tested and evaluated (e.g., for PDF/A and included metadata). Note that the package's required `.sty`, `.cls` and `.pdf` files are only copied temporarily to the document directories during the build process and subsequently removed again. Only an up-to-date copy of the common bibtex file `hgbreferences.bib` remains in the document directory, because it cannot be distributed through CTAN.
 
 Note that the zip'ed documents in directory `downloads/` all contain local copies of the current `.sty`, `.cls` and `.pdf` package files. Thus these documents, once expanded, can be readily re-compiled in stand-alone mode.
 
