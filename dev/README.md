@@ -31,7 +31,7 @@ The `makefile` in this directory does the following:
 
 #### Preparing the Build Process for Windows
 
-This requires `make` and `zip` executables to be installed, e.g., the GNU Win32 implementations:
+This requires `make` and `zip` executables to be installed, e.g., the GNU Win32 implementations on Windows:
 
 1. Install **GnuWin Make** through one of the following options:
    1. Download and run the [GnuWin Make installer](http://gnuwin32.sourceforge.net/downlinks/make.php). This installs `make.exe` in `C:\Program Files (x86)\GnuWin32\bin`.
