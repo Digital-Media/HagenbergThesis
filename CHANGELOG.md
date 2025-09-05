@@ -7,7 +7,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- 2025/07/26: [#188](https://github.com/Digital-Media/HagenbergThesis/pull/188): Added an English version for the internship report (`HgbInternshipReportEN`) and renamed the existing version to `HgbInternshipReportDE`. Thanks to [@maxi-smidt](https://github.com/maxi-smidt).
+
 ### Changed
+
+- 2025/07/26: [#187](https://github.com/Digital-Media/HagenbergThesis/issues/187): Reworked printing chapter due to mostly digital submissions.
 
 ### Deprecated
 
@@ -18,6 +22,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - 2025/05/26: [#180](https://github.com/Digital-Media/HagenbergThesis/issues/180): Fixed wrong URL style in APA documents.
 - 2025/05/26: [#182](https://github.com/Digital-Media/HagenbergThesis/issues/182): Fixed wrong accent character for Exposé in German documents.
 - 2025/07/10: [#185](https://github.com/Digital-Media/HagenbergThesis/issues/185): Fixed PDF-A generation due to a change in the `pdfmanagement-testphase` package.
+- 2025/07/25: [#194](https://github.com/Digital-Media/HagenbergThesis/issues/194): Fixed bibliography file distributions in the project.
+- 2025/09/05: [#190](https://github.com/Digital-Media/HagenbergThesis/issues/190): Fixed setup due to a change in `pdf-management-testphase` (again). Also reworked the project structure.
 
 ## [2025/02/24]
 
