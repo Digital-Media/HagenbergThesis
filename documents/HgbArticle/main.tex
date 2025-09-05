@@ -8,7 +8,6 @@
 % !BIB program = biber
 
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
-\RequirePackage{hgbpdfa}        % Creates a PDF/A-2b compliant document
 
 \documentclass[english,twocolumn,smartquotes]{hgbarticle}
 % Valid options in [..]: 
@@ -22,19 +21,20 @@
 \usepackage{lipsum}       % Create lorem ipsum dummy text (can be removed)
 \flushbottom              % Add vertical space where necessary to fill the page
 \graphicspath{{images/}}  % Location of images and graphics
-\bibliography{references} % Biblatex bibliography file (references.bib)
+\bibliography{hgbreferences} % Biblatex bibliography file (hgbreferences.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}
 %%%-----------------------------------------------------------------------------
 
-\author{
-	Alex A.\ Wiseguy\\ 
-	\email{wiseguy@gmail.com}
-	\and
-	Adrian Spongehead\\
-	\email{spongehead@gmx.net}
-}
+%\author{
+	%Alex A.\ Wiseguy\\ 
+	%\email{wiseguy@gmail.com}
+	%\and
+	%Adrian Spongehead\\
+	%\email{spongehead@gmx.net}
+%}
+\author{Benno X.\ Klabuster}
 \title{Reasoning About the Unreasonable}
 \date{}
 
@@ -43,12 +43,14 @@
 %%%-----------------------------------------------------------------------------
 
 \begin{abstract}\noindent
-This document shows how to author an \emph{article} using the full functionality
-of the \texttt{hagenberg-thesis} framework. It uses class \texttt{hgb\-article} which is based
-on the standard \latex \textsf{article} class. This may be useful, for example, if you wish to
-publish part of your thesis as a journal article or conference paper without major changes.
-Note that this is not intended as a substitute for \latex's standard \texttt{article}
-class and many publishers provide their own \latex\ class files.
+This document shows how to author a journal article using the full functionality
+of the \texttt{hagenberg-thesis} framework. It uses class \texttt{hgb\-article} 
+which itself is based on the standard \latex \texttt{article} class. This may be 
+useful, for example, if you wish to publish part of your thesis as a journal article
+or conference paper without major changes.
+Note that this is not intended as a substitute for the standard \texttt{article}
+class and many publishers provide their own \latex\ class files for their journal
+publications.
 \end{abstract}
 
 %%%-----------------------------------------------------------------------------
@@ -85,6 +87,7 @@ problems with mathematical structures \cite{Voss2014}. While smaller
 equations like
 %
 \begin{equation}
+x = a + b
 \bar{\mathbf{M}} =  
 \begin{pmatrix}
 	A \ast H^{G}_{\sigma}   & C \ast H^{G}_{\sigma} \\
@@ -102,6 +105,7 @@ Equation \ref{wideEquation} need special treatment.
 %
 \begin{figure*}[t]
 	\begin{equation}
+	y = c + d
 		\begin{split}
 			\lambda_{1,2}
 			&= \frac{\mathrm{tr}(\bar{\mathbf{M}})}{2} \pm \sqrt{\Bigl
@@ -175,7 +179,7 @@ same as in the thesis template. The only difference is that
 \lipsum[8-9]
 
 %%%-----------------------------------------------------------------------------
-\printbibliography % alternatively: \MakeBibliography[nosplit]
+\printbibliography      % alternatively use: \MakeBibliography[nosplit]
 %%%-----------------------------------------------------------------------------
 
 %%%-----------------------------------------------------------------------------

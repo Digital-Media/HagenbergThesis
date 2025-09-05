@@ -7,7 +7,7 @@
 % !BIB program = biber
 
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
-\RequirePackage{hgbpdfa}        % Creates a PDF/A-2b compliant document
+\RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
 \documentclass[type=bachelor,theme=default,language=english,titlelanguage=english,smartquotes,proposal]{hgbthesis}
 % Supported options in [..]: 
@@ -22,7 +22,7 @@
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Location of images and graphics
-\bibliography{references} % Biblatex bibliography file (references.bib)
+\bibliography{hgbreferences} % Biblatex bibliography file (hgbreferences.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}

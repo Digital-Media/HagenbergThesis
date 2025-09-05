@@ -1,0 +1,33 @@
+%% hgbvars.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses,
+%% defining a set of macros/variables available to other sub-packages.
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\ProvidesPackage{hgbvars}[2025/09/05]%%AUTO
+
+\newcommand{\hgb@Author}{UNDEFINED}
+\newcommand{\hgb@Title}{UNDEFINED}% derived from \title (initialized in \maketitle hook)
+\newcommand{\hgb@SubTitle}{}
+\newcommand{\hgb@FullTitle}{}
+
+\newcommand{\hgb@Institution}{\@MissingArg{Name of institution not specified!}}
+\newcommand{\hgb@ProgramType}{\@MissingArg{Type of degree program not specified!}}
+\newcommand{\hgb@ProgramName}{\@MissingArg{Name of degree program not specified!}}
+\newcommand{\hgb@PlaceOfStudy}{\@MissingArg{Place of study not specified!}}
+
+\newcommand{\hgb@ThesisType}{}%	type of thesis (theme name)	
+\newcommand{\hgb@ThesisName}{}%
+					
+\newcommand{\hgb@MainLanguage}{english}%	the main language for this document:
+\newcommand{\hgb@TitleLanguage}{english}%	the language to be used for the front pages
+
+\newcommand{\hgb@License}{UNDEFINED}
+
+\newcommand{\hgb@CompanyName}{\@MissingArg{Company not specified!}}
+\newcommand{\hgb@CompanyUrl}{\@MissingArg{Company URL not specified!}}
+
+\newcommand{\hgb@LogoFile}{@unspecified} 
+
+\newcommand{\hgb@TitlePageFont}{}

@@ -8,7 +8,12 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2025/06/25]%%AUTO
+\ProvidesClass{hgbarticle}[2025/09/05]%%AUTO
+
+%% Set up output font encoding and PDF format
+\usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
+\usepackage{lmodern}			% alternatively install(!) cm-super package
+\usepackage{hgbpdfa}			% enable PDF/A output
 
 \RequirePackage{xifthen}
 
@@ -61,21 +66,13 @@
 % load style file hgb.sty with options registered above	
 \RequirePackage{hgb}
 
-%% Set title font to SF and inject PDF meta-data
-\RequirePackage{titling}
-\renewcommand{\maketitlehooka}{%
+% Set title font to SF and inject PDF meta-data
+\AddToHook{cmd/maketitle/before}{%
   \sffamily%
-  \hypersetup{
-		pdftitle={\thetitle},   % \thetitle is defined by titling package (instead of \@title)
-		pdfauthor={\theauthor}, % \theauthor is defined by titling package (instead of \@author)
-		pdfsubject={},
-		pdfcreator={LaTeX using class hgbreport [\hgbDate]},
-		pdfproducer={pdflatex},
-		pdfkeywords={}
-	}%
+	\hgb@SetDocumentMetadata%
 }
 
-%% Set abstract name to bold (single column format only)
+% Set abstract name to bold (single column format only)
 \if@twocolumn%
 \else%
 \RequirePackage{abstract}

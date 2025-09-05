@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbreport}[2025/06/25]%%AUTO
+\ProvidesClass{hgbreport}[2025/09/05]%%AUTO
 
 \typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
 
@@ -18,6 +18,8 @@
 \ifpdf{}% \typeout{hgbreport: *** LaTeX in PDF mode ***}
 \else{\errmessage{hgbreport: *** LaTeX NOT running in PDF mode ***}}
 \fi
+
+\RequirePackage{hgbvars}
 
 %% Handling class options --------------------------------------------------------------
 
@@ -34,28 +36,17 @@
 
 \LoadClass[a4paper,11pt]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
-
 \RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\renewcommand{\hgb@TitlePageFont}{\sffamily}
 
-
-%% Set title font to SF and inject PDF meta-data
-\RequirePackage{titling}
-\renewcommand{\maketitlehooka}{%
-  \sffamily%
-  \hypersetup{
-		pdftitle={\thetitle},   % \thetitle is defined by titling package (instead of \@title)
-		pdfauthor={\theauthor}, % \theauthor is defined by titling package (instead of \@author)
-		pdfsubject={},
-		pdfcreator={LaTeX using class hgbreport [\hgbDate]},
-		pdfproducer={pdflatex},
-		pdfkeywords={}
-	}%
+%% Do before running \maketitle:
+\AddToHook{cmd/maketitle/before}{%
+	\hgb@SetDocumentMetadata%
 }
 
 %% Set abstract name to bold
 \RequirePackage{abstract}%
 \renewcommand{\abstractnamefont}{\sffamily\small\bfseries}
-
 
 %% Additional Hagenberg packages ----------------------------------------------
 

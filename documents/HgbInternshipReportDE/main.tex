@@ -7,7 +7,7 @@
 % !BIB program = biber
 
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
-\RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
+\RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
 \documentclass[type=internship,theme=fhooe24,language=german,titlelanguage=german,smartquotes]{hgbthesis}
 % Zulässige Optionen in [..]: 
@@ -21,8 +21,8 @@
 %    Layout: 'oneside' (einseitig, default), 'twoside' (zweiseitig)
 %%%-----------------------------------------------------------------------------
 
-\graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken
-\bibliography{references} % Biblatex-Literaturdatei (references.bib)
+\graphicspath{{images/}}     % Verzeichnis mit Bildern und Grafiken
+\bibliography{hgbreferences} % Biblatex-Literaturdatei (references.bib)
 
 %%%-----------------------------------------------------------------------------
 \begin{document}

@@ -8,7 +8,7 @@
 % !BIB program = biber
 
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
-\RequirePackage{hgbpdfa}        % Erzeugt ein PDF/A-2b-konformes Dokument
+\RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
 \documentclass[german,notitlepage,smartquotes]{hgbreport}
 % Zulässige Optionen in [..]: 
@@ -21,7 +21,7 @@
 
 \renewcommand{\chapter}[1]{} % Deaktiviere den \chapter Befehl
 \graphicspath{{images/}}     % Verzeichnis mit Bildern und Grafiken
-\bibliography{references}    % Biblatex-Literaturdatei (references.bib)
+\bibliography{hgbreferences}    % Biblatex-Literaturdatei (hgbreferences.bib)
 \ExecuteBibliographyOptions{backref=false} % Keine Rückreferenzen bei Quellen
 
 %%%-----------------------------------------------------------------------------

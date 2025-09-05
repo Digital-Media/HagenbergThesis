@@ -331,7 +331,7 @@ der \latex-Haupt\-datei sieht folgendermaßen aus:
 \begin{LaTeXCode}[numbers=left]
 \documentclass[master,german,smartquotes]{hgbthesis}
    ...
-\bibliography{references} /+\label{tex:literatur1}+/
+\bibliography{hgbreferences} /+\label{tex:literatur1}+/
    ...
 \begin{document}
    ...
@@ -341,13 +341,13 @@ der \latex-Haupt\-datei sieht folgendermaßen aus:
 \end{LaTeXCode}
 %
 In der "Präambel" (Zeile \ref{tex:literatur1}) wird mit
-\verb!\bibliography{references}!%
+\verb!\bibliography{hgbreferences}!%
 \footnote{Das Makro \texttt{{\bs}bibliography} ist eigentlich ein Relikt aus
 BibTeX und wird in \texttt{biblatex} durch die Anweisung
 \texttt{{\bs}addbibresource} ersetzt. Beide Anweisungen sind gleichwertig,
 allerdings wird oft nur mit \texttt{{\bs}bibliography} die zugehörige
 \texttt{.bib}-Datei im File-Verzeichnis der Editor-Umgebung sichtbar.}
-auf eine BibLaTeX-Datei \nolinkurl{references.bib} verwiesen, welche alle
+auf eine BibLaTeX-Datei \nolinkurl{hgbreferences.bib} verwiesen, welche alle
 Quelleneinträge enthält.
 Falls mehrere Bibla\-tex-Dateien verwendet werden, können sie in der gleichen
 Form angegeben werden.
@@ -477,7 +477,7 @@ die jeweils darüber stehenden Typen.}
 Diese Kategorie umfasst alle Werke, die in gedruckter Form publiziert wurden,
 also beispielsweise in Büchern, Konferenzbänden, Zeitschriftenartikeln,
 Diplomarbeiten \usw In den folgenden Beispielen ist jeweils der
-BibLaTeX-Eintrag in der Datei \nolinkurl{references.bib} angegeben, gefolgt
+BibLaTeX-Eintrag in der Datei \nolinkurl{hgbreferences.bib} angegeben, gefolgt
 vom zugehörigen Ergebnis im Quellenverzeichnis.
 
 
