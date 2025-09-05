@@ -3,12 +3,12 @@
 ## What You Find Here
 
 This is a collection of modern LaTeX classes, style files, and example documents for authoring **Bachelor, Master, Diploma, or PhD theses** and related academic manuscripts in English and German.
-Pre-configured English and German documents are available. They are easy to use even for LaTeX beginners and compatible with LaTeX distributions for Windows, macOS, and Linux. The document classes are immediately usable and convenient to customize.
+Pre-configured English and German documents are available. They are easy to use, even for LaTeX beginners, and compatible with LaTeX distributions for Windows, macOS, and Linux. The document classes are immediately usable and convenient to customize.
 
-The main document, [**HgbThesisTutorialEN**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN/main.pdf) or [**HgbThesisTutorialDE**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE/main.pdf), serves both as a **template** and **tutorial** for authoring a bachelor, master, diploma or PhD thesis with LaTeX. 
+The main document, [**HgbThesisTutorialEN**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialEN/main.pdf) or [**HgbThesisTutorialDE**](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/HgbThesisTutorialDE/main.pdf), serves both as a **template** and **tutorial** for authoring a bachelor's, master's, diploma, or PhD thesis with LaTeX. 
 Developed initially as an internal standard at the Upper Austria University of Applied Sciences in Hagenberg, this setup has become popular at several other (mostly German-speaking) institutions over the last few years.
 
-This site is the main repository for the **hagenberg-thesis** package, which is also available on **[CTAN](https://ctan.org/pkg/hagenberg-thesis)** and shared by popular package repositories such as [*MikTeX*](https://miktex.org/) and [*TexLive*](https://www.tug.org/texlive/).
+This site serves as the primary repository for the **hagenberg-thesis** package, which is also available on CTAN and shared by popular package repositories, including [*MiKTeX*](https://miktex.org/) and [*TeX Live*](https://www.tug.org/texlive/).
 Note that the **most recent versions are always found *here***, while only periodic [releases](https://github.com/Digital-Media/HagenbergThesis/releases) are submitted to CTAN.
 
 
@@ -62,7 +62,7 @@ To use the [APA 7th edition style for citations and references](https://apastyle
 
 All documents in this collection are set up to optionally create PDF/A-compliant output files (PDF/A-2b, to be exact).
 Note that while the original documents are indeed PDF/A-compliant, any *derived* document may *not* be so. 
-Therefore, it is important to **validate** the resulting PDF file before submission using one of the options listed below.
+Therefore, it is crucial to **validate** the resulting PDF file before submission using one of the options listed below.
 Most violations of the PDF/A standard arise from the inclusion of other PDF files, particularly graphics. 
 Typical issues are related to using non-embedded fonts and incorrect or unwanted color spaces.
 This setup assumes sRGB colors, which should also be used when creating your own illustrations. Here are some **PDF/A validation software and services**:
@@ -78,7 +78,7 @@ The **hagenberg-thesis** classes and styles try to provide as much functionality
 
 ## Further Information
 
-* [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/main/documents/Manual/main.pdf)
+* [Package manual](https://github.com/Digital-Media/HagenbergThesis/raw/main/manual/main.pdf)
 * [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
 * [Recent changes](CHANGELOG.md)
 * [License](LICENSE.md)
