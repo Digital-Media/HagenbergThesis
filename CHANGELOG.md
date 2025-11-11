@@ -24,7 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - 2025/07/10: [#185](https://github.com/Digital-Media/HagenbergThesis/issues/185): Fixed PDF-A generation due to a change in the `pdfmanagement-testphase` package.
 - 2025/07/25: [#194](https://github.com/Digital-Media/HagenbergThesis/issues/194): Fixed bibliography file distributions in the project.
 - 2025/09/05: [#190](https://github.com/Digital-Media/HagenbergThesis/issues/190): Fixed setup due to a change in `pdf-management-testphase` (again). Also reworked the project structure.
-
+- 2025/11/11: [#199](https://github.com/Digital-Media/HagenbergThesis/issues/199): Fixed Babel loading unwanted configuration files.
 ## [2025/02/24]
 
 ### Added
