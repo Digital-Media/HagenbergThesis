@@ -9,16 +9,17 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[type=master,theme=default,language=german,titlelanguage=german,smartquotes]{hgbthesis}
-% Zulässige Optionen in [..]: 
-%    Typ der Arbeit (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
-%    Theme der Titelseite (theme=): 'default' (default), 'fhooe24'
-%    Als Exposé verwenden: 'proposal' oder 'proposal=true' 
-%    Hauptsprache im Dokument (language=): 'german' (default), 'english'
-%    Sprache der Titelseite (titlelanguage=): 'german', 'english' (default is main language)
-%    Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
-%    Layout: 'oneside' (einseitig, default), 'twoside' (zweiseitig)
+\documentclass[type=master,theme=default,language=german,titlelanguage=german,smartquotes=true]{hgbthesis}
+% Zulässige Optionen in [..]:
+%    Typ der Arbeit (type=): master (default), bachelor, diploma, phd, internship
+%    Theme der Titelseite (theme=): default (default), fhooe24
+%    Als Exposé verwenden: proposal=true, proposal=false (default)
+%    Hauptsprache im Dokument (language=): german (default), english
+%    Sprache der Titelseite (titlelanguage=): german, english (default: Hauptsprache)
+%    Typografische Anführungszeichen: smartquotes=true, smartquotes=false (default)
+%    APA Zitierstil: apa=true, apa=false (default)
+%    Layout: twoside=false (einseitig, default), twoside=true (zweiseitig)
+%    Kein Update-Check: noUpdateCheck=true
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Verzeichnis mit Bildern und Grafiken

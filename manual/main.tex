@@ -108,7 +108,7 @@ In addition, the following class-specific options are accepted:
 			language on title pages, defaults to main document language if omitted,
 		\item \texttt{theme=}\{\textit{themeID}\}:
 			cover page theme style (default: \texttt{default}),
-		\item \texttt{proposal} (= \texttt{proposal=true}): flag to indicate proposal documents.
+		\item \texttt{proposal=true}: flag to indicate proposal documents (\texttt{proposal=false} is the default).
 	\end{itemize}
 
 \noindent\textbf{\texttt{hgbreport}}:
@@ -137,7 +137,7 @@ The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé
 only effective in \emph{conjunction} with the main thesis types, \eg,
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[type=bachelor,language=english,titlelanguage=german,proposal]{hgbthesis}
+\documentclass[type=bachelor,language=english,titlelanguage=german,proposal=true]{hgbthesis}
 \end{LaTeXCode}
 %
 The result is a short exposé that contains only one chapter. Thus,

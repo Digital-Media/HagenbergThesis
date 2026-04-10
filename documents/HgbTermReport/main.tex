@@ -10,14 +10,14 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[language=english,titlepage=false,smartquotes]{hgbreport}
+\documentclass[language=english,titlepage=false,smartquotes=true]{hgbreport}
 % Supported options in [..]:
-%    Main language: language=german (default), language=english
-%    Typographic quotes: smartquotes (= smartquotes=true), smartquotes=false
-%    APA citation style: apa (= apa=true), apa=false
+%    Main language: language=english (default), language=german
+%    Typographic quotes: smartquotes=true, smartquotes=false (default)
+%    APA citation style: apa=true, apa=false (default)
 %    Title page: titlepage=true (default), titlepage=false
 %    Page layout: twoside=false (single-sided, default), twoside=true (double-sided)
-%    No update check: noUpdateCheck (= noUpdateCheck=true)
+%    No update check: noUpdateCheck=true
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Location of images and graphics
@@ -61,12 +61,12 @@ at the top of this document by
 	\verb!\documentclass[language=german]{hgbreport}!.
 \end{quote}
 %
-In addition, the \texttt{smartquotes} document option is used in this document
+In addition, \texttt{smartquotes=true} is used in this document
 for simplified insertion of quotes. To omit the default \emph{title page}
-(as in this document) use the \texttt{notitlepage} option, \eg,
+(as in this document) use \texttt{titlepage=false}, \eg,
 %
 \begin{quote}
-	\verb!\documentclass[language=english,notitlepage]{hgbreport}!.
+	\verb!\documentclass[language=english,titlepage=false]{hgbreport}!.
 \end{quote}
 %
 Also, you may want to place the text of the individual chapters in separate
