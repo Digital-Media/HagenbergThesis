@@ -27,16 +27,60 @@
 \newboolean{reviewmode}
 \setboolean{reviewmode}{false}
 
-%% Handling class options --------------------------------------------------------------
+%% Handling class options -----------------------------------------------------
 
-\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{article}}	% default
-\DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{article}}
-\DeclareOption{twocolumn}{\PassOptionsToClass{\CurrentOption}{article}}
-\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-\DeclareOption{review}{\setboolean{reviewmode}{true}}
-% pass all other options to hgb.sty
-\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\ProcessOptions*
+\RequirePackage{hgbvars}	% declares shared variables and hgb@SmartQuotesOn / hgb@NoUpdateCheck
+
+%% Class option helpers (canonical definitions in hgb.sty via \providecommand;
+%% defined here first with \newcommand so they are available before \LoadClass).
+%% \@currname expands to 'hgbarticle' at call time (not at definition time).
+\newcommand{\@RegisterClassOption}[2]{%
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
+}
+\newcommand{\@ValidateClassOption}[2]{%
+  \ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+    {}%
+  \else\ClassError{\@currname}{illegal key/value option: #1=#2}\relax%
+  \fi%
+}
+\newcommand{\@WarnDeprecatedOption}[2]{%
+  \ClassWarning{\@currname}{option '#1' is deprecated, use '#2' instead!}%
+}
+
+\@RegisterClassOption{language}{english}
+\@RegisterClassOption{language}{german}
+
+% We are using the \DeclareKeys / \ProcessKeyOptions system (LaTeX2e kernel, 2022+).
+% See http://mirrors.ctan.org/macros/latex/base/source2e.pdf (p. 956),
+% https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
+\DeclareKeys[hgbarticle]{
+  % Legacy language options (deprecated, but still accepted):
+  english.code    = {\renewcommand{\hgb@MainLanguage}{english}%
+                     \@WarnDeprecatedOption{english}{language=english}},
+  german.code     = {\renewcommand{\hgb@MainLanguage}{german}%
+                     \@WarnDeprecatedOption{german}{language=german}},
+  ngerman.code    = {\renewcommand{\hgb@MainLanguage}{german}%
+                     \@WarnDeprecatedOption{ngerman}{language=german}},
+  % New key-value options:
+  language.code   = {\@ValidateClassOption{language}{#1}%
+                     \renewcommand{\hgb@MainLanguage}{#1}},
+  apa.code        = \PassOptionsToPackage{\CurrentOption}{hgbbib},
+  apa.default:n   = true,
+  review.code     = \setboolean{reviewmode}{#1},
+  review.default:n = true,
+  oneside.code    = \PassOptionsToClass{oneside}{article},
+  twoside.code    = \PassOptionsToClass{twoside}{article},
+  twocolumn.code  = \PassOptionsToClass{twocolumn}{article},
+  % hgb@SmartQuotesOn / hgb@NoUpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
+  smartquotes.code    = \setboolean{hgb@SmartQuotesOn}{true},
+  smartquotes.default:n = true,
+  noUpdateCheck.code  = \setboolean{hgb@NoUpdateCheck}{true},
+  noUpdateCheck.default:n = true,
+}
+\DeclareUnknownKeyHandler[hgbarticle]{
+  \PassOptionsToPackage{\CurrentOption}{hgb}
+}
+\ProcessKeyOptions[hgbarticle]
 
 %% Paper options and style file -----------------------------------------------
 
@@ -63,7 +107,6 @@
 	}%
 	{}%
 
-% load style file hgb.sty with options registered above	
 \RequirePackage{hgb}
 
 % Set title font to SF and inject PDF meta-data

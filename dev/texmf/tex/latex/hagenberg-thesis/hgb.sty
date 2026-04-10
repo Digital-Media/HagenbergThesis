@@ -8,21 +8,35 @@
 \ProvidesPackage{hgb}[2025/11/10]%%AUTO
 \typeout{******************* hgb.sty  (options=\@nameuse{opt@hgb.sty}) ***********************}
 
-% Create a default/fallback main language so it is set no matter what
-%\providecommand{\hgb@MainLanguage}{german}  	% also defined in hgbthesis.cls
-%\providecommand{\hgb@TitleLanguage}{}  				% also defined in hgbthesis.cls
+%% Class option helpers (also defined inline in each cls file; \providecommand is a no-op
+%% if already defined). \@currname expands to the calling class name at call time.
+
+% Register a permissible key=value option pair.
+% Usage: \@RegisterClassOption{type}{master}
+\providecommand{\@RegisterClassOption}[2]{%
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
+}
+
+% Validate a key=value option pair; \ClassError reports the actual calling class name.
+% Usage: \@ValidateClassOption{type}{master}
+\providecommand{\@ValidateClassOption}[2]{%
+  \ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+    {}%
+  \else\ClassError{\@currname}{illegal key/value option: #1=#2}\relax%
+  \fi%
+}
+
+% Warn about a deprecated class option; \ClassWarning reports the actual calling class name.
+% Usage: \@WarnDeprecatedOption{english}{language=english}
+\providecommand{\@WarnDeprecatedOption}[2]{%
+  \ClassWarning{\@currname}{option '#1' is deprecated, use '#2' instead!}%
+}
 
 %% Required Packages ----------------------------------------------------------
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{xifthen}
-\RequirePackage{hgbvars}
+\RequirePackage{hgbvars}	% also declares hgb@SmartQuotesOn and hgb@NoUpdateCheck booleans
 \RequirePackage{hgbdict}
-
-\newboolean{hgb@SmartQuotesOn}
-\setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
-
-\newboolean{hgb@NoUpdateCheck}
-\setboolean{hgb@NoUpdateCheck}{false}	% update check is perfomed by default
 
 % Handle package options passed from the class file
 % Language options are not passed through by hgbthesis.cls!
@@ -37,15 +51,17 @@
 
 
 
-%% Set main language by selectively loading babel with the 'main' parameter (babel 3.9+)
-\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
-	{\RequirePackage[main=ngerman,english,noconfigs]{babel}}{}
-\ifthenelse{\equal{\hgb@MainLanguage}{english}}%
-	{\RequirePackage[main=english,ngerman,noconfigs]{babel}}{}
+%% Babel language support -----------------------------------------------------
+%% hgb.sty loads AFTER \ProcessKeyOptions in the cls file, so \hgb@MainLanguage
+%% is already final here — Babel can be loaded immediately with the correct language.
 
-% If title language has not been set make it the same as main language:
+\ifthenelse{\equal{\hgb@MainLanguage}{german}}%
+  {\RequirePackage[main=ngerman,english,noconfigs]{babel}}{}%
+\ifthenelse{\equal{\hgb@MainLanguage}{english}}%
+  {\RequirePackage[main=english,ngerman,noconfigs]{babel}}{}%
+% If title language has not been set, default to the main language:
 \ifthenelse{\equal{\hgb@TitleLanguage}{}}%
-	{\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
+  {\renewcommand{\hgb@TitleLanguage}{\hgb@MainLanguage}}{}%
 
 %% Setup for smart quotes (csquotes package) ----------------------------------
 
@@ -56,13 +72,16 @@
 	\ifthenelse{\boolean{hgb@SmartQuotesOn}}{\@enablequotes}{}%	instead of '\EnableQuotes' to allow smartquotes in preamble
 }
 
+% Load csquotes immediately if smartquotes are enabled.
+% hgb.sty loads after \ProcessKeyOptions (so hgb@SmartQuotesOn is final) and
+% after Babel (loaded above), so \languageshorthands is available.
 \ifthenelse{\boolean{hgb@SmartQuotesOn}}{%
-	\languageshorthands{none}%			%% turn off babel's shorthands (permanently)
-	\usepackage[autostyle=true,german=quotes]{csquotes}%
-	\MakeOuterQuote{"}%
-	\renewcommand{\SmartQuotesActive}{\iftoggle{csq@active}{true}{false}}%
-	\@SmartQuotesRefresh}%
-{}%
+  \RequirePackage[autostyle=true,german=quotes]{csquotes}%
+  \MakeOuterQuote{"}%
+  \renewcommand{\SmartQuotesActive}{\iftoggle{csq@active}{true}{false}}%
+  \languageshorthands{none}%
+  \@SmartQuotesRefresh%
+}{}%
 
 
 %% Language setting commands and environments (babel) -------------------------
@@ -187,7 +206,7 @@
 	\def\and{\texorpdfstring{\oldand}{, }}%
 }
 
-\RequirePackage[figure,table,table*]{hypcap}	% to adjust anchors of captions (https://ctan.org/pkg/hypcap)
+\RequirePackage[figure,table,table*]{hypcap}% to adjust anchors of captions (https://ctan.org/pkg/hypcap)
 
 %% Miscellaneous Utility Commands ---------------------------------------------
 

@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- 2026/04/10: Modernized class option handling in `hgbarticle.cls` and `hgbreport.cls` to match `hgbthesis.cls`: key-value syntax (`language=english|german`) is now canonical; bare `english`/`german` options remain functional but issue a deprecation warning. Shared helper macros moved to `hgb.sty`. Babel loading restructured to correctly honor the `language=` option in all three classes.
 - 2025/07/26: [#187](https://github.com/Digital-Media/HagenbergThesis/issues/187): Reworked printing chapter due to mostly digital submissions.
 
 ### Deprecated

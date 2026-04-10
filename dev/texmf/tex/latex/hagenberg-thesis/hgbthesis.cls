@@ -25,6 +25,22 @@
 
 \RequirePackage{hgbvars}
 
+%% Class option helpers (canonical definitions in hgb.sty via \providecommand;
+%% defined here first with \newcommand so they are available before \LoadClass).
+%% \@currname expands to 'hgbthesis' at call time (not at definition time).
+\newcommand{\@RegisterClassOption}[2]{%
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
+}
+\newcommand{\@ValidateClassOption}[2]{%
+  \ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+    {}%
+  \else\ClassError{\@currname}{illegal key/value option: #1=#2}\relax%
+  \fi%
+}
+\newcommand{\@WarnDeprecatedOption}[2]{%
+  \ClassWarning{\@currname}{option '#1' is deprecated, use '#2' instead!}%
+}
+
 %% Commands for Title Pages (used in class options) ---------------------------
 
 
@@ -33,25 +49,6 @@
 \newcommand{\hgb@ProposalName}{UNDEFINED}
 
 \newcommand{\hgb@@pagelayout}{oneside}% default to 'oneside' (used locally only in this file!)
-
-%% Utilities for handling class options -------------------------------------
-
-% Issue warning when using deprecated options:
-\newcommand{\@WarnDeprecatedOption}[2]{% #1=obsolete option, #2=replacement option
-	\ClassWarning{hgbthesis}{option '#1' is deprecated, use '#2' instead!}}%
-	
-% Register permissible key/value option, e.g.: \@RegisterClassOption{type}{master}
-\newcommand{\@RegisterClassOption}[2]{%  #1=optionKey, #2=optionValue
-  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
-}
-
-% Check if key/value option is permissible, e.g.: \@ValidateClassOption{type}{master}
-\newcommand{\@ValidateClassOption}[2]{%  #1=optionKey, #2=optionValue
-\ifcsname hgb@keyvalueoption-#1-#2\endcsname%
-  {}%
-  \else \ClassError{hgbthesis}{illegal key/value option: #1=#2}\relax%
-  \fi%
-}
 
 %% Specifiying/loading thesis theme styles ---------------------------------------------------
 
@@ -109,9 +106,14 @@
 	%	This works, but default should be 'oneside' for backward compatibility ('twoside' is default for class 'book')
 	%oneside.code			= \PassOptionsToClass{\CurrentOption}{book},
 	%twoside.code			= \PassOptionsToClass{\CurrentOption}{book},
-	% Instead we define 
+	% Instead we define
 	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}},
 	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}},
+	% hgb@SmartQuotesOn / hgb@NoUpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
+	smartquotes.code		= \setboolean{hgb@SmartQuotesOn}{true},
+	smartquotes.default:n	= true,
+	noUpdateCheck.code		= \setboolean{hgb@NoUpdateCheck}{true},
+	noUpdateCheck.default:n	= true,
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -126,7 +128,7 @@
 %\LoadClass[a4paper,11pt,oneside]{book}
 \LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
-\RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\RequirePackage{hgb}
 %\newcommand{\hgb@TitlePageFont}{\sffamily}
 \renewcommand{\hgb@TitlePageFont}{\sffamily}
 

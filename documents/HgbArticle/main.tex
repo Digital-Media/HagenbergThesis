@@ -9,9 +9,9 @@
 
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 
-\documentclass[english,twocolumn,smartquotes]{hgbarticle}
-% Valid options in [..]: 
-%		Main language: 'german' (default), 'english'
+\documentclass[language=english,twocolumn,smartquotes]{hgbarticle}
+% Valid options in [..]:
+%		Main language: language=german (default), language=english
 %		Conversion to typographic quotation marks: 'smartquotes'
 %		Use APA citation style: 'apa'
 %		Typeset the text in two columns: 'twocolumn'
@@ -60,14 +60,14 @@ publications.
 If you wish to write this report in German, you should replace the specification
 %
 \begin{verbatim}
-\documentclass[english,twocolumn,
+\documentclass[language=english,twocolumn,
             smartquotes]{hgbarticle}
 \end{verbatim}
 %
 at the top of this document by
 %
 \begin{verbatim}
-\documentclass[german,twocolumn,
+\documentclass[language=german,twocolumn,
     smartquotes]{hgbarticle}
 \end{verbatim}
 %

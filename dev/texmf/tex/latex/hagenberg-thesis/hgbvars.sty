@@ -31,3 +31,11 @@
 \newcommand{\hgb@LogoFile}{@unspecified} 
 
 \newcommand{\hgb@TitlePageFont}{}
+
+%% Booleans shared across cls/sty files (declared here so they are available
+%% before hgb.sty loads, i.e. before \LoadClass in the cls files).
+\RequirePackage{xifthen}
+\newboolean{hgb@SmartQuotesOn}
+\setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
+\newboolean{hgb@NoUpdateCheck}
+\setboolean{hgb@NoUpdateCheck}{false}	% update check is performed by default

@@ -21,22 +21,62 @@
 
 \RequirePackage{hgbvars}
 
-%% Handling class options --------------------------------------------------------------
+%% Handling class options -----------------------------------------------------
 
-\DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{report}}	%default
-\DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{report}}
-\DeclareOption{notitlepage}{\PassOptionsToClass{\CurrentOption}{report}}
-\DeclareOption{apa}{\PassOptionsToPackage{\CurrentOption}{hgbbib}}
-% pass all other options to hgb.sty
-\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{hgb}}
-\ProcessOptions*
+%% Class option helpers (canonical definitions in hgb.sty via \providecommand;
+%% defined here first with \newcommand so they are available before \LoadClass).
+%% \@currname expands to 'hgbreport' at call time (not at definition time).
+\newcommand{\@RegisterClassOption}[2]{%
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
+}
+\newcommand{\@ValidateClassOption}[2]{%
+  \ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+    {}%
+  \else\ClassError{\@currname}{illegal key/value option: #1=#2}\relax%
+  \fi%
+}
+\newcommand{\@WarnDeprecatedOption}[2]{%
+  \ClassWarning{\@currname}{option '#1' is deprecated, use '#2' instead!}%
+}
 
+\@RegisterClassOption{language}{english}
+\@RegisterClassOption{language}{german}
+
+% We are using the \DeclareKeys / \ProcessKeyOptions system (LaTeX2e kernel, 2022+).
+% See http://mirrors.ctan.org/macros/latex/base/source2e.pdf (p. 956),
+% https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
+\DeclareKeys[hgbreport]{
+  % Legacy language options (deprecated, but still accepted):
+  english.code     = {\renewcommand{\hgb@MainLanguage}{english}%
+                      \@WarnDeprecatedOption{english}{language=english}},
+  german.code      = {\renewcommand{\hgb@MainLanguage}{german}%
+                      \@WarnDeprecatedOption{german}{language=german}},
+  ngerman.code     = {\renewcommand{\hgb@MainLanguage}{german}%
+                      \@WarnDeprecatedOption{ngerman}{language=german}},
+  % New key-value options:
+  language.code    = {\@ValidateClassOption{language}{#1}%
+                      \renewcommand{\hgb@MainLanguage}{#1}},
+  apa.code         = \PassOptionsToPackage{\CurrentOption}{hgbbib},
+  apa.default:n    = true,
+  oneside.code     = \PassOptionsToClass{oneside}{report},
+  twoside.code     = \PassOptionsToClass{twoside}{report},
+  notitlepage.code = \PassOptionsToClass{notitlepage}{report},
+  % hgb@SmartQuotesOn / hgb@NoUpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
+  smartquotes.code    = \setboolean{hgb@SmartQuotesOn}{true},
+  smartquotes.default:n = true,
+  noUpdateCheck.code  = \setboolean{hgb@NoUpdateCheck}{true},
+  noUpdateCheck.default:n = true,
+}
+\DeclareUnknownKeyHandler[hgbreport]{
+  \PassOptionsToPackage{\CurrentOption}{hgb}
+}
+\ProcessKeyOptions[hgbreport]
 
 %% Paper options and style file -----------------------------------------------
 
 \LoadClass[a4paper,11pt]{report}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
-\RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\RequirePackage{hgb}
 \renewcommand{\hgb@TitlePageFont}{\sffamily}
 
 %% Do before running \maketitle:

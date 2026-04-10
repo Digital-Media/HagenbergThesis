@@ -10,9 +10,9 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[english,notitlepage,smartquotes]{hgbreport}
+\documentclass[language=english,notitlepage,smartquotes]{hgbreport}
 % Supported options in [..]:
-%    Main language: 'german' (default), 'english'
+%    Main language: language=german (default), language=english
 %    Conversion to typographic quotation marks: 'smartquotes'
 %    Use APA citation style: 'apa'
 %    Do not create a separate title page: 'notitlepage'
@@ -51,13 +51,13 @@ element. If you wish to write this report in German you should substitute the
 line
 %
 \begin{quote}
-	\verb!\documentclass[english]{hgbreport}! 
+	\verb!\documentclass[language=english]{hgbreport}!
 \end{quote}
 %
 at the top of this document by
 %
 \begin{quote}
-	\verb!\documentclass[german]{hgbreport}!.
+	\verb!\documentclass[language=german]{hgbreport}!.
 \end{quote}
 %
 In addition, the \texttt{smartquotes} document option is used in this document
@@ -65,7 +65,7 @@ for simplified insertion of quotes. To omit the default \emph{title page}
 (as in this document) use the \texttt{notitlepage} option, \eg,
 %
 \begin{quote}
-	\verb!\documentclass[notitlepage,english]{hgbreport}!.
+	\verb!\documentclass[language=english,notitlepage]{hgbreport}!.
 \end{quote}
 %
 Also, you may want to place the text of the individual chapters in separate
