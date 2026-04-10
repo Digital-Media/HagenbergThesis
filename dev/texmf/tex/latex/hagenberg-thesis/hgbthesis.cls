@@ -84,19 +84,20 @@
 	titlelanguage.code = {\@ValidateClassOption{titlelanguage}{#1}\renewcommand{\hgb@TitleLanguage}{#1}},
 	proposal.code			= \setboolean{hgb@IsProposal}{#1},
 	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
-	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
-	apa.default:n			= true,	% TODO: check if default value is properly passed!
-	%
-	%	This works, but default should be 'oneside' for backward compatibility ('twoside' is default for class 'book')
-	%oneside.code			= \PassOptionsToClass{\CurrentOption}{book},
-	%twoside.code			= \PassOptionsToClass{\CurrentOption}{book},
-	% Instead we define
-	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}},
-	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}},
+	apa.code					= {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
+	apa.default:n			= true,
+	%	twoside=true|false: default is 'oneside' for backward compatibility ('twoside' is book's default).
+	%	\hgb@@pagelayout is injected into \LoadClass[...\hgb@@pagelayout]{book} below.
+	twoside.code			= {\ifthenelse{\equal{#1}{true}}%
+								{\renewcommand{\hgb@@pagelayout}{twoside}}%
+								{\renewcommand{\hgb@@pagelayout}{oneside}}},
+	twoside.default:n		= true,
+	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}%
+								\@WarnDeprecatedOption{oneside}{twoside=false}},
 	% hgb@SmartQuotesOn / hgb@NoUpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
-	smartquotes.code		= \setboolean{hgb@SmartQuotesOn}{true},
+	smartquotes.code		= \setboolean{hgb@SmartQuotesOn}{#1},
 	smartquotes.default:n	= true,
-	noUpdateCheck.code		= \setboolean{hgb@NoUpdateCheck}{true},
+	noUpdateCheck.code		= \setboolean{hgb@NoUpdateCheck}{#1},
 	noUpdateCheck.default:n	= true,
 }
 

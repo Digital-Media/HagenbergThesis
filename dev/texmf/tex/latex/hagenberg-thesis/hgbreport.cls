@@ -10,8 +10,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{hgbreport}[2025/11/10]%%AUTO
 
-\typeout{****************** hgbreport.cls (options=\@nameuse{opt@hgbreport.cls}) ***********************}
-
 \RequirePackage{xifthen}
 
 \RequirePackage{ifpdf}	% for checking PDF mode 
@@ -40,15 +38,23 @@
   % New key-value options:
   language.code    = {\@ValidateClassOption{language}{#1}%
                       \renewcommand{\hgb@MainLanguage}{#1}},
-  apa.code         = \PassOptionsToPackage{\CurrentOption}{hgbbib},
+  apa.code         = {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
   apa.default:n    = true,
-  oneside.code     = \PassOptionsToClass{oneside}{report},
-  twoside.code     = \PassOptionsToClass{twoside}{report},
-  notitlepage.code = \PassOptionsToClass{notitlepage}{report},
+  twoside.code     = {\ifthenelse{\equal{#1}{true}}%
+                       {\PassOptionsToClass{twoside}{report}}%
+                       {\PassOptionsToClass{oneside}{report}}},
+  twoside.default:n = true,
+  oneside.code     = {\PassOptionsToClass{oneside}{report}%
+                      \@WarnDeprecatedOption{oneside}{twoside=false}},
+  titlepage.code   = {\ifthenelse{\equal{#1}{false}}%
+                       {\PassOptionsToClass{notitlepage}{report}}{}},
+  titlepage.default:n = true,
+  notitlepage.code = {\PassOptionsToClass{notitlepage}{report}%
+                      \@WarnDeprecatedOption{notitlepage}{titlepage=false}},
   % hgb@SmartQuotesOn / hgb@NoUpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
-  smartquotes.code    = \setboolean{hgb@SmartQuotesOn}{true},
+  smartquotes.code    = \setboolean{hgb@SmartQuotesOn}{#1},
   smartquotes.default:n = true,
-  noUpdateCheck.code  = \setboolean{hgb@NoUpdateCheck}{true},
+  noUpdateCheck.code  = \setboolean{hgb@NoUpdateCheck}{#1},
   noUpdateCheck.default:n = true,
 }
 \DeclareUnknownKeyHandler[hgbreport]{

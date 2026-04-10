@@ -48,17 +48,24 @@
   % New key-value options:
   language.code   = {\@ValidateClassOption{language}{#1}%
                      \renewcommand{\hgb@MainLanguage}{#1}},
-  apa.code        = \PassOptionsToPackage{\CurrentOption}{hgbbib},
+  apa.code        = {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
   apa.default:n   = true,
   review.code     = \setboolean{reviewmode}{#1},
   review.default:n = true,
-  oneside.code    = \PassOptionsToClass{oneside}{article},
-  twoside.code    = \PassOptionsToClass{twoside}{article},
-  twocolumn.code  = \PassOptionsToClass{twocolumn}{article},
+  twoside.code    = {\ifthenelse{\equal{#1}{true}}%
+                      {\PassOptionsToClass{twoside}{article}}%
+                      {\PassOptionsToClass{oneside}{article}}},
+  twoside.default:n = true,
+  oneside.code    = {\PassOptionsToClass{oneside}{article}%
+                     \@WarnDeprecatedOption{oneside}{twoside=false}},
+  twocolumn.code  = {\ifthenelse{\equal{#1}{true}}%
+                      {\PassOptionsToClass{twocolumn}{article}}%
+                      {\PassOptionsToClass{onecolumn}{article}}},
+  twocolumn.default:n = true,
   % hgb@SmartQuotesOn / hgb@NoUpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
-  smartquotes.code    = \setboolean{hgb@SmartQuotesOn}{true},
+  smartquotes.code    = \setboolean{hgb@SmartQuotesOn}{#1},
   smartquotes.default:n = true,
-  noUpdateCheck.code  = \setboolean{hgb@NoUpdateCheck}{true},
+  noUpdateCheck.code  = \setboolean{hgb@NoUpdateCheck}{#1},
   noUpdateCheck.default:n = true,
 }
 \DeclareUnknownKeyHandler[hgbarticle]{

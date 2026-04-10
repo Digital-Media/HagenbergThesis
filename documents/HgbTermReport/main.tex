@@ -10,13 +10,14 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[language=english,notitlepage,smartquotes]{hgbreport}
+\documentclass[language=english,titlepage=false,smartquotes]{hgbreport}
 % Supported options in [..]:
 %    Main language: language=german (default), language=english
-%    Conversion to typographic quotation marks: 'smartquotes'
-%    Use APA citation style: 'apa'
-%    Do not create a separate title page: 'notitlepage'
-%    Page layout: 'oneside' (single-sided, default), 'twoside' (double-sided)
+%    Typographic quotes: smartquotes (= smartquotes=true), smartquotes=false
+%    APA citation style: apa (= apa=true), apa=false
+%    Title page: titlepage=true (default), titlepage=false
+%    Page layout: twoside=false (single-sided, default), twoside=true (double-sided)
+%    No update check: noUpdateCheck (= noUpdateCheck=true)
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Location of images and graphics

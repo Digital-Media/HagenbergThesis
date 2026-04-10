@@ -73,16 +73,25 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report}, and
 
 \subsubsection{General options}
 
-All document classes accept the following general options:
+All three document classes accept the following general options:
 %
 \begin{itemize}
-    \item \texttt{english}|\texttt{german}: specifies the main document language,%
-		\footnote{With class \texttt{hgbthesis} this is equivalent to \texttt{language=english|german}.}
-	  \item \texttt{oneside}|\texttt{twoside}: document layout (default is \texttt{oneside}),
-    \item \texttt{smartquotes}: use smart quotes replacement (\verb!"!...\verb!"! $\rightarrow$ ``...''),
-    \item \texttt{apa} (use \texttt{apa} bibliography style instead of
-    \texttt{numeric-comp}),
-    \item \texttt{noUpdateCheck} (suppress check of package release date).
+	\item \texttt{language=}\{\texttt{english}|\texttt{german}\}:
+		main document language (default: \texttt{english}).%
+		\footnote{The bare options \texttt{english} and \texttt{german} still work but are deprecated.
+		Note that \texttt{german} implicitly loads Babel's \texttt{ngerman} setup; when switching languages
+		(see Sec.~\ref{sec:LanguageSwitchingCommands}) only \texttt{german} should be used.}
+	\item \texttt{twoside=}\{\texttt{false}|\texttt{true}\}:
+		page layout (default: \texttt{false} = single-sided).
+		The bare option \texttt{oneside} is deprecated (use \texttt{twoside=false}).
+	\item \texttt{smartquotes} (= \texttt{smartquotes=true}):
+		smart quotes replacement (\verb!"!...\verb!"! $\rightarrow$ ``...'');
+		use \texttt{smartquotes=false} to disable explicitly,
+	\item \texttt{apa} (= \texttt{apa=true}):
+		use APA bibliography style instead of \texttt{numeric-comp};
+		default is \texttt{apa=false},
+	\item \texttt{noUpdateCheck} (= \texttt{noUpdateCheck=true}):
+		suppress check of package release date.
 \end{itemize}
 
 
@@ -93,26 +102,26 @@ In addition, the following class-specific options are accepted:
 \noindent\textbf{\texttt{hgbthesis}}:
 	\begin{itemize}
 		\item \texttt{type=}%
-			\{\texttt{bachelor}|\texttt{master}|\texttt{diploma}|\texttt{phd}|\texttt{internship}|\texttt{custom}\}:
-				thesis type,
-		\item \texttt{language=}\{\texttt{english}|\texttt{german}\}: main document language,%
-			\footnote{Note: The \texttt{german} option implicitly loads Babel's \texttt{ngerman} setup. 
-			When switching languages (see Sec.~\ref{sec:LanguageSwitchingCommands}) only \texttt{german}
-			should be used.}
-		\item \texttt{titlelanguage=}\{\texttt{english}|\texttt{german}\}: 
+			\{\texttt{bachelor}|\texttt{master}|\texttt{diploma}|\texttt{phd}|\texttt{internship}\}:
+				thesis type (required),
+		\item \texttt{titlelanguage=}\{\texttt{english}|\texttt{german}\}:
 			language on title pages, defaults to main document language if omitted,
-		\item \texttt{proposal}: flag to indicate proposal documents.
+		\item \texttt{theme=}\{\textit{themeID}\}:
+			cover page theme style (default: \texttt{default}),
+		\item \texttt{proposal} (= \texttt{proposal=true}): flag to indicate proposal documents.
 	\end{itemize}
 
 \noindent\textbf{\texttt{hgbreport}}:
 	\begin{itemize}
-		\item \texttt{notitlepage}: no separate title page.
+		\item \texttt{titlepage=}\{\texttt{true}|\texttt{false}\}:
+			title page on/off (default: \texttt{true}).
+			The bare option \texttt{notitlepage} is deprecated (use \texttt{titlepage=false}).
 	\end{itemize}
-		
+
 \noindent\textbf{\texttt{hgbarticle}}:
 	\begin{itemize}
-		\item \texttt{twocolumn}: two-column page layout,
-		\item \texttt{review}: review mode with line numbers.
+		\item \texttt{twocolumn} (= \texttt{twocolumn=true}): two-column page layout,
+		\item \texttt{review} (= \texttt{review=true}): review mode with line numbers.
 	\end{itemize}
 
 \noindent
@@ -124,7 +133,7 @@ For example, to start a master's thesis in German, simply place
 %
 at the beginning of the document.
 
-The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'' or ``Proposal'' ) and is 
+The \texttt{proposal} option is intended for a \emph{thesis proposal} (``Exposé'' or ``Proposal'') and is
 only effective in \emph{conjunction} with the main thesis types, \eg,
 %
 \begin{LaTeXCode}[numbers=none]

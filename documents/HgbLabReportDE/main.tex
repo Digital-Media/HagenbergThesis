@@ -10,13 +10,14 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[language=german,notitlepage,smartquotes]{hgbreport}
+\documentclass[language=german,titlepage=false,smartquotes]{hgbreport}
 % Zulässige Optionen in [..]:
 %    Hauptsprache: language=german (default), language=english
-%    Umwandlung in typografische Anführungszeichen: 'smartquotes'
-%    APA Zitierstil: 'apa'
-%    Erzeuge keine separate Titelseite: 'notitlepage'
-%    Layout: 'oneside' (einseitig, default), 'twoside' (zweiseitig)
+%    Umwandlung in typografische Anführungszeichen: smartquotes (= smartquotes=true), smartquotes=false
+%    APA Zitierstil: apa (= apa=true), apa=false
+%    Titelseite: titlepage=true (default), titlepage=false
+%    Layout: twoside=false (einseitig, default), twoside=true (zweiseitig)
+%    Kein Update-Check: noUpdateCheck (= noUpdateCheck=true)
 %%%-----------------------------------------------------------------------------
 
 \renewcommand{\chapter}[1]{} % Deaktiviere den \chapter Befehl
