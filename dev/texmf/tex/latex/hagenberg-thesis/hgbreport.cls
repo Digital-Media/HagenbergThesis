@@ -19,25 +19,9 @@
 \else{\errmessage{hgbreport: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
-\RequirePackage{hgbvars}
+\RequirePackage{hgbvars}	% declares shared variables, booleans, and class option helpers
 
 %% Handling class options -----------------------------------------------------
-
-%% Class option helpers (canonical definitions in hgb.sty via \providecommand;
-%% defined here first with \newcommand so they are available before \LoadClass).
-%% \@currname expands to 'hgbreport' at call time (not at definition time).
-\newcommand{\@RegisterClassOption}[2]{%
-  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
-}
-\newcommand{\@ValidateClassOption}[2]{%
-  \ifcsname hgb@keyvalueoption-#1-#2\endcsname%
-    {}%
-  \else\ClassError{\@currname}{illegal key/value option: #1=#2}\relax%
-  \fi%
-}
-\newcommand{\@WarnDeprecatedOption}[2]{%
-  \ClassWarning{\@currname}{option '#1' is deprecated, use '#2' instead!}%
-}
 
 \@RegisterClassOption{language}{english}
 \@RegisterClassOption{language}{german}
