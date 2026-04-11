@@ -35,7 +35,7 @@
 %% Required Packages ----------------------------------------------------------
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{xifthen}
-\RequirePackage{hgbvars}	% also declares hgb@SmartQuotesOn and hgb@NoUpdateCheck booleans
+\RequirePackage{hgbvars}	% also declares hgb@SmartQuotesOn and hgb@UpdateCheck booleans
 \RequirePackage{hgbdict}
 
 % Handle package options passed from the class file
@@ -45,7 +45,7 @@
 \DeclareOption{ngerman}{\renewcommand{\hgb@MainLanguage}{german}\typeout{hgb.sty: option 'ngerman' used}}
 
 \DeclareOption{smartquotes}{\setboolean{hgb@SmartQuotesOn}{true}\typeout{hgb.sty: option 'smartquotes' used}}
-\DeclareOption{noUpdateCheck}{\setboolean{hgb@NoUpdateCheck}{true}}
+\DeclareOption{noupdatecheck}{\setboolean{hgb@UpdateCheck}{false}}% deprecated, use updateCheck=false
 \DeclareOption*{\PackageWarning{hgb}{Unknown option '\CurrentOption'.}}
 \ProcessOptions*
 
@@ -150,7 +150,7 @@
 ^^J} % https://tex.stackexchange.com/questions/6529/newline-linebreak-in-message
 }
 
-\ifthenelse{\hgb@Age>\value{hgb@AgeLimit} \AND \NOT \boolean{hgb@NoUpdateCheck}}%
+\ifthenelse{\hgb@Age>\value{hgb@AgeLimit} \AND \boolean{hgb@UpdateCheck}}%
 	{\hgb@WarnOldPackage{\the\hgb@Age}}{}
 
 

@@ -62,11 +62,13 @@
                       {\PassOptionsToClass{twocolumn}{article}}%
                       {\PassOptionsToClass{onecolumn}{article}}},
   twocolumn.default:n = true,
-  % hgb@SmartQuotesOn / hgb@NoUpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
+  % hgb@SmartQuotesOn / hgb@UpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
   smartquotes.code    = \setboolean{hgb@SmartQuotesOn}{#1},
   smartquotes.default:n = true,
-  noUpdateCheck.code  = \setboolean{hgb@NoUpdateCheck}{#1},
-  noUpdateCheck.default:n = true,
+  updatecheck.code    = \setboolean{hgb@UpdateCheck}{#1},
+  updatecheck.default:n = true,
+  noupdatecheck.code  = {\setboolean{hgb@UpdateCheck}{false}%
+                         \@WarnDeprecatedOption{noupdatecheck}{updatecheck=false}},
 }
 \DeclareUnknownKeyHandler[hgbarticle]{
   \PassOptionsToPackage{\CurrentOption}{hgb}
