@@ -17,6 +17,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Deprecated
 
+- 2026/04/10: Bare language options `english`, `german`, `ngerman` as class options (use `language=english` / `language=german` instead).
+- 2026/04/10: Bare `oneside` class option (use `twoside=false` instead).
+- 2026/04/10: Bare `notitlepage` class option in `hgbreport` (use `titlepage=false` instead).
+
 ### Removed
 
 ### Fixed

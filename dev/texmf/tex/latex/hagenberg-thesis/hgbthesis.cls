@@ -64,7 +64,7 @@
 \@RegisterClassOption{titlelanguage}{english}
 \@RegisterClassOption{titlelanguage}{german}
 
-% We are using the 
+% We are using the \DeclareKeys / \ProcessKeyOptions system (LaTeX2e kernel, 2022+).
 % See http://mirrors.ctan.org/macros/latex/base/source2e.pdf (p. 956),
 % https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{

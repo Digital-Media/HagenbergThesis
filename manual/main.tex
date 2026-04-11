@@ -84,14 +84,15 @@ All three document classes accept the following general options:
 	\item \texttt{twoside=}\{\texttt{false}|\texttt{true}\}:
 		page layout (default: \texttt{false} = single-sided).
 		The bare option \texttt{oneside} is deprecated (use \texttt{twoside=false}).
-	\item \texttt{smartquotes} (= \texttt{smartquotes=true}):
+	\item \texttt{smartquotes=true}:
 		smart quotes replacement (\verb!"!...\verb!"! $\rightarrow$ ``...'');
-		use \texttt{smartquotes=false} to disable explicitly,
-	\item \texttt{apa} (= \texttt{apa=true}):
+		default is \texttt{smartquotes=false},
+	\item \texttt{apa=true}:
 		use APA bibliography style instead of \texttt{numeric-comp};
 		default is \texttt{apa=false},
-	\item \texttt{noUpdateCheck} (= \texttt{noUpdateCheck=true}):
-		suppress check of package release date.
+	\item \texttt{noUpdateCheck=true}:
+		suppress check of package release date;
+		default is \texttt{noUpdateCheck=false}.
 \end{itemize}
 
 
@@ -120,15 +121,15 @@ In addition, the following class-specific options are accepted:
 
 \noindent\textbf{\texttt{hgbarticle}}:
 	\begin{itemize}
-		\item \texttt{twocolumn} (= \texttt{twocolumn=true}): two-column page layout,
-		\item \texttt{review} (= \texttt{review=true}): review mode with line numbers.
+		\item \texttt{twocolumn=true}: two-column page layout (default: \texttt{twocolumn=false}),
+		\item \texttt{review=true}: review mode with line numbers (default: \texttt{review=false}).
 	\end{itemize}
 
 \noindent
 For example, to start a master's thesis in German, simply place
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[type=master,language=german,smartquotes]{hgbthesis}
+\documentclass[type=master,language=german,smartquotes=true]{hgbthesis}
 \end{LaTeXCode}
 %
 at the beginning of the document.
