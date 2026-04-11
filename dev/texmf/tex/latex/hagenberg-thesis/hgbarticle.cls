@@ -8,7 +8,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{hgbarticle}[2025/11/10]%%AUTO
+\ProvidesClass{hgbarticle}[2026/04/12]%%AUTO
 
 %% Set up output font encoding and PDF format
 \usepackage[T1]{fontenc}	% pdfmanagement requires T1 encoding!
