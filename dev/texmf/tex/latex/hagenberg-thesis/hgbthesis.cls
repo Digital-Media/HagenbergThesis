@@ -14,7 +14,7 @@
 %% Package Information --------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}[2022/06/01]  % recent LaTeX kernel version, must support \DeclareKeys (ltkeys)
-\ProvidesClass{hgbthesis}[2025/11/10]%%AUTO
+\ProvidesClass{hgbthesis}[2026/04/12]%%AUTO
 
 \RequirePackage{xifthen}
 
@@ -23,7 +23,7 @@
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
-\RequirePackage{hgbvars}
+\RequirePackage{hgbvars}	% declares shared variables, booleans, and class option helpers
 
 %% Commands for Title Pages (used in class options) ---------------------------
 
@@ -33,25 +33,6 @@
 \newcommand{\hgb@ProposalName}{UNDEFINED}
 
 \newcommand{\hgb@@pagelayout}{oneside}% default to 'oneside' (used locally only in this file!)
-
-%% Utilities for handling class options -------------------------------------
-
-% Issue warning when using deprecated options:
-\newcommand{\@WarnDeprecatedOption}[2]{% #1=obsolete option, #2=replacement option
-	\ClassWarning{hgbthesis}{option '#1' is deprecated, use '#2' instead!}}%
-	
-% Register permissible key/value option, e.g.: \@RegisterClassOption{type}{master}
-\newcommand{\@RegisterClassOption}[2]{%  #1=optionKey, #2=optionValue
-  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
-}
-
-% Check if key/value option is permissible, e.g.: \@ValidateClassOption{type}{master}
-\newcommand{\@ValidateClassOption}[2]{%  #1=optionKey, #2=optionValue
-\ifcsname hgb@keyvalueoption-#1-#2\endcsname%
-  {}%
-  \else \ClassError{hgbthesis}{illegal key/value option: #1=#2}\relax%
-  \fi%
-}
 
 %% Specifiying/loading thesis theme styles ---------------------------------------------------
 
@@ -83,7 +64,7 @@
 \@RegisterClassOption{titlelanguage}{english}
 \@RegisterClassOption{titlelanguage}{german}
 
-% We are using the 
+% We are using the \DeclareKeys / \ProcessKeyOptions system (LaTeX2e kernel, 2022+).
 % See http://mirrors.ctan.org/macros/latex/base/source2e.pdf (p. 956),
 % https://tex.stackexchange.com/questions/417704/key-value-syntax-in-package-options
 \DeclareKeys{
@@ -103,15 +84,23 @@
 	titlelanguage.code = {\@ValidateClassOption{titlelanguage}{#1}\renewcommand{\hgb@TitleLanguage}{#1}},
 	proposal.code			= \setboolean{hgb@IsProposal}{#1},
 	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
-	apa.code					= \PassOptionsToPackage{\CurrentOption}{hgbbib},
-	apa.default:n			= true,	% TODO: check if default value is properly passed!
-	%
-	%	This works, but default should be 'oneside' for backward compatibility ('twoside' is default for class 'book')
-	%oneside.code			= \PassOptionsToClass{\CurrentOption}{book},
-	%twoside.code			= \PassOptionsToClass{\CurrentOption}{book},
-	% Instead we define 
-	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}},
-	twoside.code			= {\renewcommand{\hgb@@pagelayout}{twoside}},
+	apa.code					= {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
+	apa.default:n			= true,
+	%	twoside=true|false: default is 'oneside' for backward compatibility ('twoside' is book's default).
+	%	\hgb@@pagelayout is injected into \LoadClass[...\hgb@@pagelayout]{book} below.
+	twoside.code			= {\ifthenelse{\equal{#1}{true}}%
+								{\renewcommand{\hgb@@pagelayout}{twoside}}%
+								{\renewcommand{\hgb@@pagelayout}{oneside}}},
+	twoside.default:n		= true,
+	oneside.code			= {\renewcommand{\hgb@@pagelayout}{oneside}%
+								\@WarnDeprecatedOption{oneside}{twoside=false}},
+	% hgb@SmartQuotesOn / hgb@UpdateCheck are declared in hgbvars.sty and read by hgb.sty later:
+	smartquotes.code		= \setboolean{hgb@SmartQuotesOn}{#1},
+	smartquotes.default:n	= true,
+	updatecheck.code		= \setboolean{hgb@UpdateCheck}{#1},
+	updatecheck.default:n	= true,
+	noupdatecheck.code		= {\setboolean{hgb@UpdateCheck}{false}%
+								\@WarnDeprecatedOption{noupdatecheck}{updatecheck=false}},
 }
 
 \DeclareUnknownKeyHandler[hgbthesis]{
@@ -126,7 +115,7 @@
 %\LoadClass[a4paper,11pt,oneside]{book}
 \LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
-\RequirePackage{hgb}	% load style file hgb.sty with options registered above
+\RequirePackage{hgb}
 %\newcommand{\hgb@TitlePageFont}{\sffamily}
 \renewcommand{\hgb@TitlePageFont}{\sffamily}
 

@@ -9,16 +9,17 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[type=bachelor,theme=default,language=english,titlelanguage=english,smartquotes,proposal]{hgbthesis}
-% Supported options in [..]: 
-%    Type of work (type=): 'master' (default), 'bachelor', 'diploma', 'phd', 'internship'
-%    Title page theme (theme=): 'default' (default), 'fhooe24'
-%    Use as thesis proposal: 'proposal' or 'proposal=true' 
-%    Main document language (language=): 'german' (default), 'english'
-%    Title page language (titlelanguage=): 'german', 'english' (default is main language)
-%    Conversion to typographic quotation marks: 'smartquotes'
-%    Use APA citation style: 'apa'
-%    Page layout: 'oneside' (single-sided, default), 'twoside' (double-sided)
+\documentclass[type=bachelor,theme=default,language=english,titlelanguage=english,smartquotes=true,proposal=true]{hgbthesis}
+% Supported options in [..]:
+%    Type of work (type=): master (default), bachelor, diploma, phd, internship
+%    Title page theme (theme=): default (default), fhooe24
+%    Use as thesis proposal: proposal=true, proposal=false (default)
+%    Main document language (language=): english (default), german
+%    Title page language (titlelanguage=): english, german (default: main language)
+%    Typographic quotes: smartquotes=true, smartquotes=false (default)
+%    APA citation style: apa=true, apa=false (default)
+%    Page layout: twoside=false (single-sided, default), twoside=true (double-sided)
+%    Update check: updatecheck=true (default), updatecheck=false (to suppress)
 %%%-----------------------------------------------------------------------------
 
 \graphicspath{{images/}}  % Location of images and graphics

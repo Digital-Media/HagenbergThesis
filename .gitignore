@@ -16,3 +16,16 @@
 *.toc
 *.tps
 *.tcp
+
+# AI tool configuration files
+CLAUDE.md
+.claude/settings.local.json
+.cursorrules
+.cursor/
+.github/copilot-instructions.md
+.windsurfrules
+.aider*
+.continue/
+.cody/
+.devin/
+AGENTS.md

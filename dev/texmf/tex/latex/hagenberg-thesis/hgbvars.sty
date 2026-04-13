@@ -5,7 +5,7 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-\ProvidesPackage{hgbvars}[2025/11/10]%%AUTO
+\ProvidesPackage{hgbvars}[2026/04/12]%%AUTO
 
 \newcommand{\hgb@Author}{UNDEFINED}
 \newcommand{\hgb@Title}{UNDEFINED}% derived from \title (initialized in \maketitle hook)
@@ -31,3 +31,34 @@
 \newcommand{\hgb@LogoFile}{@unspecified} 
 
 \newcommand{\hgb@TitlePageFont}{}
+
+%% Booleans and class option helpers shared across cls/sty files.
+%% Declared here (not in hgb.sty) so they are available before \LoadClass.
+%% hgb.sty re-declares them with \providecommand / no re-declaration needed.
+%% Note: hgb@UpdateCheck=true means the check IS performed (positive naming, like titlepage).
+\RequirePackage{xifthen}
+\newboolean{hgb@SmartQuotesOn}
+\setboolean{hgb@SmartQuotesOn}{false}	% smart quotes are turned off by default
+\newboolean{hgb@UpdateCheck}
+\setboolean{hgb@UpdateCheck}{true}	% update check is performed by default
+
+% Register a permissible key=value option pair.
+% Usage: \@RegisterClassOption{type}{master}
+\newcommand{\@RegisterClassOption}[2]{%
+  \expandafter\def\csname hgb@keyvalueoption-#1-#2\endcsname{\relax}%
+}
+
+% Validate a key=value option pair; \ClassError shows the actual calling class name.
+% Usage: \@ValidateClassOption{type}{master}
+\newcommand{\@ValidateClassOption}[2]{%
+  \ifcsname hgb@keyvalueoption-#1-#2\endcsname%
+    {}%
+  \else\ClassError{\@currname}{illegal key/value option: #1=#2}\relax%
+  \fi%
+}
+
+% Warn about a deprecated class option; \ClassWarning shows the actual calling class name.
+% Usage: \@WarnDeprecatedOption{english}{language=english}
+\newcommand{\@WarnDeprecatedOption}[2]{%
+  \ClassWarning{\@currname}{option '#1' is deprecated, use '#2' instead!}%
+}

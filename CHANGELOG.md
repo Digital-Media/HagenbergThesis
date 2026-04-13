@@ -11,9 +11,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Changed
 
+- 2026/04/12: Renamed `noupdatecheck` to `updatecheck=true|false` for consistency with other boolean options (`true` = perform check, default; `false` = suppress); `noupdatecheck` kept as deprecated alias.
+- 2026/04/10: Extended key-value option syntax to all boolean class options: `twoside=true|false` replaces the paired `oneside`/`twoside` options (bare `oneside` deprecated); `titlepage=true|false` replaces `notitlepage` in `hgbreport` (deprecated); `twocolumn=true|false` now correctly handles `=false` in `hgbarticle`; `smartquotes` and `apa` now correctly handle explicit `=false`.
+- 2026/04/10: Modernized class option handling in `hgbarticle.cls` and `hgbreport.cls` to match `hgbthesis.cls`: key-value syntax (`language=english|german`) is now canonical; bare `english`/`german` options remain functional but issue a deprecation warning. Shared helper macros moved to `hgbvars.sty`. Babel loading restructured to correctly honor the `language=` option in all three classes.
 - 2025/07/26: [#187](https://github.com/Digital-Media/HagenbergThesis/issues/187): Reworked printing chapter due to mostly digital submissions.
 
 ### Deprecated
+
+- 2026/04/10: Bare language options `english`, `german`, `ngerman` as class options (use `language=english` / `language=german` instead).
+- 2026/04/10: Bare `oneside` class option (use `twoside=false` instead).
+- 2026/04/10: Bare `notitlepage` class option in `hgbreport` (use `titlepage=false` instead).
+- 2026/04/12: `noupdatecheck` class option (use `updatecheck=false` instead).
 
 ### Removed
 
@@ -103,7 +111,7 @@ replacing obsolete CD/DVD by cloud archive submission.
 - Modified repository setup (without GIT submodules) and adapted build process. All build-related parts are now contained in the new ``dev/`` directory, where .sty, .cls and .bib files are stored in a single place (``dev/latex/``). The build process updates the ``documents/`` and ``dev/ctan/`` directories. There is no duplication of document source files, all are in ``documents/``. Release dates are now automatically inserted (during build) into any date field, the ``9999/01/01`` dummy markers are not required any more. Experimental: ``latexmk`` is used in the build process.
 - `hgbthesis.cls` now issues a package warning if trying to define multiple authors inside the `\author{..}` command. The `\and` and `\thanks{..}` commands are suppressed.
 - Added `PythonCode` environment to include Python code in `listings` environments. Moved all build-related elements to a separate non-public repository, leaving only user-relevant parts in `HagenbergThesis`.
-- Added a new load-time check to validate if the currently used `hagenberg-thesis` installation is no older than 365 days (in `hgb.sty`). Otherwise a warning is issued with a reminder to check for updates on Github. This check can be suppressed by passing the new class option `noUpdateCheck`. In all `.cls` files the handling of class options was modified to pass all non-declared options to `hgb.sty`. In this course, the (obsolete) `datetime` package was replaced by the `datetime2` package (https://github.com/Digital-Media/HagenbergThesis/commit/2bc1895658b51904bfbbc2a7ec63230f23b9e17f).
+- Added a new load-time check to validate if the currently used `hagenberg-thesis` installation is no older than 365 days (in `hgb.sty`). Otherwise a warning is issued with a reminder to check for updates on Github. This check can be suppressed by passing the new class option `noupdatecheck`. In all `.cls` files the handling of class options was modified to pass all non-declared options to `hgb.sty`. In this course, the (obsolete) `datetime` package was replaced by the `datetime2` package (https://github.com/Digital-Media/HagenbergThesis/commit/2bc1895658b51904bfbbc2a7ec63230f23b9e17f).
 - Added information on how/when to use the ``@unpublished`` biblatex tag in ``examples/HgbThesisTutorial`` (https://github.com/Digital-Media/HagenbergThesis/commit/90296eafc6089949780bf9c5e40b85836274fe3c).
 
 ### Changed
