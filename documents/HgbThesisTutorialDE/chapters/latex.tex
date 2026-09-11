@@ -827,6 +827,10 @@ Dokumententyp sind unterschiedliche Elemente für die Titelseiten erforderlich
     \verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em
     mm}\verb!}{!\texttt{\em dd}\verb!}!, \newline%
     \verb!\advisor{!\texttt{\em Name des*der Betreuers*Betreuerin}\verb!}! --
+    optional, \newline%
+    \verb!\institution{!\texttt{\em Hochschule}\verb!}! --
+    optional (Standard: laut Theme der Titelseite), \newline%
+    \verb!\academicdegree{!\texttt{\em Akademischer Grad}\verb!}! --
     optional.
 \end{itemize}
 %
@@ -842,7 +846,8 @@ folgende Elemente berücksichtigt:
 \end{itemize}
 
 \begin{table}
-    \caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen.}
+    \caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen
+        ($+$ \ldots\ erforderlich, $\circ$ \ldots\ optional, $-$ \ldots\ nicht verwendet).}
     \label{tab:TitelElemente}
     \centering\small
     \begin{tabular}{@{}lcccc@{}}
@@ -854,11 +859,13 @@ folgende Elemente berücksichtigt:
         \verb!\author!           & $+$ & $+$ & $+$ & $+$ \\
         \verb!\programtype!      & $+$ & $+$ & $+$ & $+$ \\
         \verb!\programname!      & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\institution!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
+        \verb!\academicdegree!   & $\circ$ & $\circ$ & $\circ$ & $-$ \\
         \verb!\placeofstudy!     & $+$ & $+$ & $+$ & $+$ \\
         \verb!\dateofsubmission! & $+$ & $+$ & $+$ & $+$ \\
         \verb!\advisor!          & $+$ & $+$ & $+$ & $+$ \\
         \verb!\companyName!      & $-$ & $-$ & $-$ & $+$ \\
-        \verb!\companyPhone!     & $-$ & $-$ & $-$ & $+$ \\
+        \verb!\companyUrl!       & $-$ & $-$ & $-$ & $+$ \\
         \bottomrule
     \end{tabular}
 \end{table}

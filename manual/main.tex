@@ -107,7 +107,7 @@ In addition, the following class-specific options are accepted:
 		\item \texttt{titlelanguage=}\{\texttt{english}|\texttt{german}\}:
 			language on title pages, defaults to main document language if omitted,
 		\item \texttt{theme=}\{\textit{themeID}\}:
-			cover page theme style (default: \texttt{default}),
+			cover page theme style (default: \texttt{default}, see Sec.~\ref{sec:Themes}),
 		\item \texttt{proposal=true}: flag to indicate proposal documents (\texttt{proposal=false} is the default).
 	\end{itemize}
 
@@ -159,8 +159,9 @@ parameters must be specified at the beginning of the main document:
     \item \verb!\author{...}!,
     \item \verb!\programtype{...}! (optional), 
     \item \verb!\programname{...}!,
-    \item \verb!\institution{...}!,
+    \item \verb!\institution{...}! (optional if provided by the theme, see Sec.~\ref{sec:ThemeBrand}),
     \item \verb!\placeofstudy{...}!,
+    \item \verb!\academicdegree{...}! (optional), \eg, \verb!\academicdegree{Master of Science in Engineering (MSc)}!,
     \item \verb!\dateofsubmission{yyyy}{mm}{dd}!,
     \item \verb!\advisor[]{...}! (optional, multiple \verb!\advisor! statements allowed),
 \end{itemize}
@@ -494,16 +495,52 @@ as a prefix, for example,%
 CTAN distribution and thus all theme-related files will eventually end up in a single, 
 flat directory.}
 \begin{itemize}
-	\item[] \texttt{hgbtheme-default-logo.pdf}
+	\item[] \texttt{hgbtheme-fhooe26-logo.pdf}
 \end{itemize}
 %
-which contains the logo graphics used by that theme.
+which contains the logo graphics used by theme \texttt{fhooe26}.
+The following themes are part of this package:
+%
+\begin{itemize}
+	\item \texttt{default}: title page following the title page prototype for theses of the
+		University of Applied Sciences Upper Austria (FH OÖ), with the logo at the top left
+		and left-aligned text. This theme always uses the \emph{current} official brand
+		(logo and name) of the institution (see Sec.~\ref{sec:ThemeBrand}).
+	\item \texttt{fhooe26}: same layout as \texttt{default} with the FH OÖ brand pinned, \ie,
+		it keeps the FH OÖ logo and name after future brand changes.
+	\item \texttt{classic}: the former \texttt{default} theme (centered layout with the FH OÖ shield logo).
+	\item \texttt{fhooe24}: title page with the FH OÖ cover background of 2024.
+	\item \texttt{custom}: template for a custom theme (see Sec.~\ref{sec:CustomizingThemes}).
+\end{itemize}
 
 To \emph{use} a specific theme, option \texttt{theme=\textit{themeID}}
 is added to the \verb!\documentclass! command, for example,
 \begin{itemize}
 	\item[] \verb!\documentclass[theme=default,...]{hgbthesis}!
 \end{itemize}
+
+
+\subsection{Brand: logo and institution name}
+\label{sec:ThemeBrand}
+
+Theme \texttt{default} keeps the \emph{brand}, \ie, the logo and the name of the institution,
+separate from the layout of the title page. The brand is set by the command
+\begin{itemize}
+	\item[] \verb!\hgb@SetBrand[<logo height>]{<logo file>}{<name in German>}{<name in English>}!
+\end{itemize}
+%
+where the optional logo height defaults to 28\,mm.
+The institution's name is printed in the title page language, unless it is specified
+explicitly by \verb!\institution{...}! in the document.
+Brand themes like \texttt{fhooe26} load \texttt{default} as their parent theme and call
+\verb!\hgb@SetBrand! afterwards, for example,
+%
+\begin{LaTeXCode}[numbers=none]
+\hgb@UseTheme{default}	% parent theme (layout)
+\hgb@SetBrand{my-logo.pdf}{Name der Hochschule}{Name of the institution}
+\end{LaTeXCode}
+%
+The same approach can be used in a custom theme to adapt the title page to another institution.
 
 
 \subsection{Customizing themes}
@@ -582,6 +619,7 @@ These are defined in \texttt{hgbthesis.cls} and should \emph{not} be redefined:
   \item[] \verb!\hgb@Institution!
   \item[] \verb!\hgb@ProgramType!
   \item[] \verb!\hgb@ProgramName!
+  \item[] \verb!\hgb@AcademicDegree! (empty if not specified)
   \item[] \verb!\hgb@PlaceOfStudy!
 \medskip
 	\item[] \verb!\hgb@ThesisName!
@@ -622,17 +660,19 @@ typically placed at the beginning of the theme file. The collected code for
 this hook is executed immediately \emph{before} \verb!\maketitle!.
 
 
-In addition, theme \texttt{hgbtheme-default.sty} defines the following
-commands for generating individual title pages:
+In addition, theme \texttt{hgbtheme-classic.sty} defines the following
+commands for generating individual title pages, which are inherited by theme \texttt{default}
+(and thus by \texttt{fhooe26} and \texttt{custom}):
 %
 \begin{itemize}
-  \item[] \verb!\hgb@MakeTitlePage!
-  \item[] \verb!\hgb@MakeAdvisorPage!
+  \item[] \verb!\hgb@MakeTitlePage! (redefined by \texttt{default})
+  \item[] \verb!\hgb@MakeCompanyPage! (internship reports only)
   \item[] \verb!\hgb@MakeCopyrightPage!
   \item[] \verb!\hgb@MakeDeclarationPage!
 \end{itemize}
 %
 Each of these may be redefined by inheriting themes.
+Theme \texttt{default} additionally provides \verb!\hgb@SetBrand! (see Sec.~\ref{sec:ThemeBrand}).
 
 \section{Package dependencies}
 

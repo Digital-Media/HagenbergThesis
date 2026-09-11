@@ -136,6 +136,8 @@
 
 \newcommand{\programname}[1]{\renewcommand{\hgb@ProgramName}{#1}}
 
+\newcommand{\academicdegree}[1]{\renewcommand{\hgb@AcademicDegree}{#1}}
+
 \newcommand{\placeofstudy}[1]{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 
 % Advisor(s) -------------------------------------------------------------------
