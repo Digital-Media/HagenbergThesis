@@ -9,9 +9,11 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[type=master,theme=default,language=english,smartquotes=true]{hgbthesis}
+\documentclass[type=master,degree=engineering,theme=default,language=english,smartquotes=true]{hgbthesis}
 % Supported options in [..]:
 %    Type of work (type=): master (default), bachelor, diploma, phd, internship
+%    Academic degree (degree=): engineering (BSc/MSc), arts-design (BA/MA), business (BA/MA),
+%        social-sciences (BA/MA); all values: see manual
 %    Title page theme (theme=): default (default), fhooe26, classic, fhooe24
 %    Use as thesis proposal: proposal=true, proposal=false (default)
 %    Main document language (language=): english (default), german
@@ -37,9 +39,9 @@
 \subtitle{A Fundamental Introduction}
 \author{Alex A.\ Wiseguy}
 
-\programtype{Master's degree program} % or Bachelor's degree program
+%\programtype{Master's degree program} % optional, default: derived from type=
 \programname{Universal Computing}
-\academicdegree{Master of Science in Engineering (MSc)} % optional
+%\academicdegree{Master of Science in Engineering (MSc)} % optional, free text instead of degree=
 %\institution{University of Applied Sciences Upper Austria} % optional, default: institution name of the theme
 
 \placeofstudy{Hagenberg}

@@ -85,6 +85,52 @@
 \hgbDictionarySet{internship-contact-multiple}{english}{Contacts}
 \hgbDictionarySet{internship-contact-multiple}{german}{Kontaktpersonen}
 
+% Types of degree programs (default of \programtype, derived from the class option 'type'):
+
+\hgbDictionarySet{bachelor-programtype}{english}{Bachelor's degree program}
+\hgbDictionarySet{bachelor-programtype}{german}{Bachelorstudiengang}
+
+\hgbDictionarySet{master-programtype}{english}{Master's degree program}
+\hgbDictionarySet{master-programtype}{german}{Masterstudiengang}
+
+\hgbDictionarySet{diploma-programtype}{english}{Diploma degree program}
+\hgbDictionarySet{diploma-programtype}{german}{Diplomstudiengang}
+
+\hgbDictionarySet{phd-programtype}{english}{Doctoral program}
+\hgbDictionarySet{phd-programtype}{german}{Doktoratsstudium}
+
+\hgbDictionarySet{internship-programtype}{english}{Bachelor's degree program}
+\hgbDictionarySet{internship-programtype}{german}{Bachelorstudiengang}
+
+% Academic degrees (class option 'degree=<key>'; the level is taken from the class option 'type').
+% Usage: \hgbDefineDegree{<key>}{<bachelor degree>}{<master degree>}
+% An empty argument means that the degree does not exist at this level.
+% Degree names are the same in all languages.
+\newcommand{\hgbDefineDegree}[3]{%
+	\if\relax\detokenize{#2}\relax\else
+		\hgbDictionarySet{degree-bachelor-#1}{english}{#2}%
+		\hgbDictionarySet{degree-bachelor-#1}{german}{#2}%
+	\fi
+	\if\relax\detokenize{#3}\relax\else
+		\hgbDictionarySet{degree-master-#1}{english}{#3}%
+		\hgbDictionarySet{degree-master-#1}{german}{#3}%
+	\fi
+}
+
+% Degrees of Austrian FH degree programs as defined by AQ Austria (board decision of 2021-07-07,
+% approved by the ministry on 2021-08-18), abbreviations without dots:
+\hgbDefineDegree{arts-design}{Bachelor of Arts in Arts and Design (BA)}{Master of Arts in Arts and Design (MA)}
+\hgbDefineDegree{engineering}{Bachelor of Science in Engineering (BSc)}{Master of Science in Engineering (MSc)}
+\hgbDefineDegree{social-sciences}{Bachelor of Arts in Social Sciences (BA)}{Master of Arts in Social Sciences (MA)}
+\hgbDefineDegree{business}{Bachelor of Arts in Business (BA)}{Master of Arts in Business (MA)}
+\hgbDefineDegree{military-leadership}{Bachelor of Arts in Military Leadership (BA)}{Master of Arts in Military Leadership (MA)}
+\hgbDefineDegree{police-leadership}{Bachelor of Arts in Police Leadership (BA)}{}
+\hgbDefineDegree{security-management}{}{Master of Arts in Security Management (MA)}
+\hgbDefineDegree{cultural-studies}{Bachelor of Arts in Cultural Studies (BA)}{Master of Arts in Cultural Studies (MA)}
+\hgbDefineDegree{natural-sciences}{Bachelor of Science in Natural Sciences (BSc)}{Master of Science in Natural Sciences (MSc)}
+\hgbDefineDegree{health-studies}{Bachelor of Science in Health Studies (BSc)}{Master of Science in Health Studies (MSc)}
+\hgbDefineDegree{law}{Bachelor of Laws (LLB)}{Master of Laws (LLM)}
+
 % License texts: 
 
 \hgbDictionarySet{strictlicense}{english}{All Rights Reserved}

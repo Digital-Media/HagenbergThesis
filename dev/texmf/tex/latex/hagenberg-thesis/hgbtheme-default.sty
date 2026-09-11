@@ -82,8 +82,8 @@
 		\vspace{18.7mm}%
 		{\hgb@TitlePageSizeNormal\hgb@ThesisName%
 			\ifthenelse{\boolean{hgb@IsProposal}}{\space(\hgb@ProposalName)}{}\par}%
-		\ifthenelse{\equal{\hgb@AcademicDegree}{}}%
-			{}% no academic degree specified
+		\ifthenelse{\equal{\hgb@AcademicDegree}{} \OR \boolean{hgb@IsProposal}}%
+			{}% no academic degree specified, or proposal (not submitted to obtain the degree)
 			{%
 				\vspace{3.2mm}%
 				{\fontsize{16}{25.8}\selectfont%

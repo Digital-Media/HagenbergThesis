@@ -765,6 +765,9 @@ Additional options:
 \begin{itemize}
 		\item[] \texttt{titlelanguage=\emph{language}} (language of the title pages,
 			defaults to the main language).
+		\item[] \texttt{degree=\emph{key}} (academic degree on the title page, \eg,
+			\texttt{engineering} for ``Bachelor/Master of Science in Engineering''; all
+			supported values are listed in the package manual).
 		\item[] \texttt{proposal=true} (exposé, in connection with 
 			\texttt{type=bachelor} or \texttt{master}).
     \item[] \texttt{smartquotes=true} (use of upright double quotes, see
@@ -795,7 +798,6 @@ Table~\ref{tab:TitleElements}). The following information is required for
     \item[] %
     \verb!\title{!\texttt{\em Thesis or report title}\verb!}!, \newline%
     \verb!\author{!\texttt{\em Author}\verb!}!, \newline%
-    \verb!\programtype{!\texttt{\em Type of program}\verb!}!, \newline%
     \verb!\programname{!\texttt{\em Program}\verb!}!, \newline%
     \verb!\placeofstudy{!\texttt{\em Place of study}\verb!}!, \newline%
     \verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em
@@ -804,8 +806,10 @@ Table~\ref{tab:TitleElements}). The following information is required for
     optional, \newline%
     \verb!\institution{!\texttt{\em Institution}\verb!}! --
     optional (default: provided by the title page theme), \newline%
+    \verb!\programtype{!\texttt{\em Type of program}\verb!}! --
+    optional (default: derived from \texttt{type}), \newline%
     \verb!\academicdegree{!\texttt{\em Academic degree}\verb!}! --
-    optional.
+    optional (free text instead of the class option \texttt{degree}).
 \end{itemize}
 %
 \noindent
@@ -831,10 +835,10 @@ addition to the basic information:
         \midrule
         \verb!\title!            & $+$ & $+$ & $+$ & $+$ \\
         \verb!\author!           & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\programtype!      & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\programtype!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
         \verb!\programname!      & $+$ & $+$ & $+$ & $+$ \\
         \verb!\institution!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
-        \verb!\academicdegree!   & $\circ$ & $\circ$ & $\circ$ & $-$ \\
+        \texttt{degree=}, \verb!\academicdegree! & $\circ$ & $\circ$ & $\circ$ & $-$ \\
         \verb!\placeofstudy!     & $+$ & $+$ & $+$ & $+$ \\
         \verb!\dateofsubmission! & $+$ & $+$ & $+$ & $+$ \\
         \verb!\advisor!          & $+$ & $+$ & $+$ & $+$ \\

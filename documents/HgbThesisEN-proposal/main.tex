@@ -9,9 +9,11 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[type=bachelor,theme=default,language=english,titlelanguage=english,smartquotes=true,proposal=true]{hgbthesis}
+\documentclass[type=bachelor,degree=engineering,theme=default,language=english,titlelanguage=english,smartquotes=true,proposal=true]{hgbthesis}
 % Supported options in [..]:
 %    Type of work (type=): master (default), bachelor, diploma, phd, internship
+%    Academic degree (degree=): engineering (BSc/MSc), arts-design (BA/MA), business (BA/MA),
+%        social-sciences (BA/MA); all values: see manual
 %    Title page theme (theme=): default (default), fhooe26, classic, fhooe24
 %    Use as thesis proposal: proposal=true, proposal=false (default)
 %    Main document language (language=): english (default), german
@@ -37,7 +39,7 @@
 %\subtitle{An Approach for Dynamic Game Design} % optional
 \author{Peter Ingo Eberhardt}
 
-\programtype{Bachelor's degree program} % or Master's degree program
+%\programtype{Bachelor's degree program} % optional, default: derived from type=
 \programname{Media Technology and Design}
 %\institution{University of Applied Sciences Upper Austria} % optional, default: institution name of the theme
 

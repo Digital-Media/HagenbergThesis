@@ -108,6 +108,8 @@ In addition, the following class-specific options are accepted:
 			language on title pages, defaults to main document language if omitted,
 		\item \texttt{theme=}\{\textit{themeID}\}:
 			cover page theme style (default: \texttt{default}, see Sec.~\ref{sec:Themes}),
+		\item \texttt{degree=}\{\textit{key}\}:
+			academic degree on the title page, \eg, \texttt{engineering} (see Sec.~\ref{sec:AcademicDegrees}),
 		\item \texttt{proposal=true}: flag to indicate proposal documents (\texttt{proposal=false} is the default).
 	\end{itemize}
 
@@ -128,7 +130,7 @@ In addition, the following class-specific options are accepted:
 For example, to start a master's thesis in German, simply place
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[type=master,language=german,smartquotes=true]{hgbthesis}
+\documentclass[type=master,degree=engineering,language=german,smartquotes=true]{hgbthesis}
 \end{LaTeXCode}
 %
 at the beginning of the document.
@@ -157,11 +159,11 @@ parameters must be specified at the beginning of the main document:
     \item \verb!\title{...}!,
     \item \verb!\subtitle{...}! (optional),
     \item \verb!\author{...}!,
-    \item \verb!\programtype{...}!, 
+    \item \verb!\programtype{...}! (optional, derived from \texttt{type} by default, see Sec.~\ref{sec:AcademicDegrees}), 
     \item \verb!\programname{...}!,
     \item \verb!\institution{...}! (optional if provided by the theme, see Sec.~\ref{sec:ThemeBrand}),
     \item \verb!\placeofstudy{...}!,
-    \item \verb!\academicdegree{...}! (optional), \eg, \verb!\academicdegree{Master of Science in Engineering (MSc)}!,
+    \item \verb!\academicdegree{...}! (optional, free text replacing the degree selected by the class option \texttt{degree}, see Sec.~\ref{sec:AcademicDegrees}),
     \item \verb!\dateofsubmission{yyyy}{mm}{dd}!,
     \item \verb!\advisor[]{...}! (optional, multiple \verb!\advisor! statements allowed),
 \end{itemize}
@@ -192,6 +194,87 @@ Other (optional) settings for \texttt{hgbthesis} include:
 		This command is \textbf{deprecated} -- the thesis logo 
 		should be specified in the associated \emph{theme} file instead (see Sec.~\ref{sec:Themes}).
 \end{itemize}
+
+\subsection{Degree program type and academic degree}
+\label{sec:AcademicDegrees}
+
+The type of the degree program and the academic degree on the title page are derived from the
+class options \texttt{type} and \texttt{degree}, so that all theses of a degree program use the
+same wording.
+The \emph{type of degree program} is derived from \texttt{type} and printed in the title page
+language (see Table~\ref{tab:ProgramTypes}). \verb!\programtype{...}! replaces it by any
+text, \eg, for an internship report in a master's program.
+
+\begin{table}[htbp]
+\caption{Type of degree program derived from the class option \texttt{type}.}
+\label{tab:ProgramTypes}
+\centering\small
+\begin{tabular}{@{}lll@{}}
+	\toprule
+	\texttt{type=} & German & English \\
+	\midrule
+	\texttt{bachelor}   & Bachelorstudiengang & Bachelor's degree program \\
+	\texttt{master}     & Masterstudiengang   & Master's degree program \\
+	\texttt{diploma}    & Diplomstudiengang   & Diploma degree program \\
+	\texttt{phd}        & Doktoratsstudium    & Doctoral program \\
+	\texttt{internship} & Bachelorstudiengang & Bachelor's degree program \\
+	\bottomrule
+\end{tabular}
+\end{table}
+
+The \emph{academic degree} is selected by the class option \texttt{degree=\textit{key}}, where
+\textit{key} denotes the subject group and the level (bachelor or master) is taken from
+\texttt{type}. For example,
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[type=master,degree=engineering,...]{hgbthesis}
+\end{LaTeXCode}
+%
+results in ``Master of Science in Engineering (MSc)'' on the title page.
+Table~\ref{tab:AcademicDegrees} lists all supported keys. They cover all academic degrees of
+Austrian FH degree programs as defined by AQ Austria (board decision of July 7, 2021).%
+\footnote{\url{https://www.aq.ac.at/de/akkreditierung/fachhochschulen/downloads.php}}
+An unknown key, or a key that is not available for the given type (\eg, \texttt{degree=security-management}
+with \texttt{type=bachelor}), results in an error.
+The academic degree is shown by themes based on \texttt{default} (see Sec.~\ref{sec:Themes}),
+but not for internship reports and not for proposals (\texttt{proposal=true}). Thus the option can
+remain unchanged when a proposal is turned into the final thesis.
+
+Academic degrees not covered by the option (\eg, of universities, of other countries, or doctoral
+degrees) are specified as free text by \verb!\academicdegree{...}!, for example,
+\verb!\academicdegree{Master of Science (MSc)}!.
+If both are given, \verb!\academicdegree! takes precedence and a warning is issued.
+Custom themes may define additional keys by
+%
+\begin{LaTeXCode}[numbers=none]
+\hgbDefineDegree{<key>}{<bachelor degree>}{<master degree>}
+\end{LaTeXCode}
+%
+where an empty argument means that the degree does not exist at that level.
+
+\begin{table}[htbp]
+\caption{Supported values of the class option \texttt{degree} (academic degrees of Austrian FH degree programs).}
+\label{tab:AcademicDegrees}
+\centering\footnotesize
+\begin{tabular}{@{}lll@{}}
+	\toprule
+	\texttt{degree=} & \texttt{type=bachelor} & \texttt{type=master} \\
+	\midrule
+	\texttt{arts-design}         & Bachelor of Arts in Arts and Design (BA)      & Master of Arts in Arts and Design (MA) \\
+	\texttt{engineering}         & Bachelor of Science in Engineering (BSc)      & Master of Science in Engineering (MSc) \\
+	\texttt{social-sciences}     & Bachelor of Arts in Social Sciences (BA)      & Master of Arts in Social Sciences (MA) \\
+	\texttt{business}            & Bachelor of Arts in Business (BA)             & Master of Arts in Business (MA) \\
+	\texttt{military-leadership} & Bachelor of Arts in Military Leadership (BA)  & Master of Arts in Military Leadership (MA) \\
+	\texttt{police-leadership}   & Bachelor of Arts in Police Leadership (BA)    & -- \\
+	\texttt{security-management} & --                                            & Master of Arts in Security Management (MA) \\
+	\texttt{cultural-studies}    & Bachelor of Arts in Cultural Studies (BA)     & Master of Arts in Cultural Studies (MA) \\
+	\texttt{natural-sciences}    & Bachelor of Science in Natural Sciences (BSc) & Master of Science in Natural Sciences (MSc) \\
+	\texttt{health-studies}      & Bachelor of Science in Health Studies (BSc)   & Master of Science in Health Studies (MSc) \\
+	\texttt{law}                 & Bachelor of Laws (LLB)                        & Master of Laws (LLM) \\
+	\bottomrule
+\end{tabular}
+\end{table}
+
 
 \section{Style files and user commands}
 
