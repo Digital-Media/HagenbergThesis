@@ -748,6 +748,7 @@ The \texttt{\emph{type}} option specifies the type of document:
     \item[] \texttt{master} (master thesis = \emph{default}),
     \item[] \texttt{diploma} (diploma thesis),
     \item[] \texttt{bachelor} (bachelor thesis),
+    \item[] \texttt{phd} (doctoral thesis),
     \item[] \texttt{internship} (internship report).
 \end{itemize}
 %
@@ -755,24 +756,26 @@ The \texttt{\emph{language}} option can be used to specify the primary language
 of the document; possible values are:
 %
 \begin{itemize}
-    \item[] \texttt{german} (\emph{default}),
-    \item[] \texttt{english}.
+    \item[] \texttt{english} (\emph{default}),
+    \item[] \texttt{german}.
 \end{itemize}
 %
 Additional options:
 %
 \begin{itemize}
-		\item[] \texttt{proposal} (exposé, in connection with 
+		\item[] \texttt{titlelanguage=\emph{language}} (language of the title pages,
+			defaults to the main language).
+		\item[] \texttt{proposal=true} (exposé, in connection with 
 			\texttt{type=bachelor} or \texttt{master}).
-    \item[] \texttt{smartquotes} (use of upright double quotes, see
+    \item[] \texttt{smartquotes=true} (use of upright double quotes, see
 			Section~\ref{sec:quotation-marks}).
-		\item[] \texttt{oneside} (\emph{default}) or \texttt{twoside} for 
+		\item[] \texttt{twoside=false} (\emph{default}) or \texttt{twoside=true} for 
 			a one- or two-page document layout, respectively.
 \end{itemize}
 %
 If \emph{none} of the above options is specified, the default settings are 
 \begin{itemize}
-	\item[] \texttt{[type=master,language=german,oneside]} % theme=default,
+	\item[] \texttt{[type=master,language=english,twoside=false]} % theme=default,
 \end{itemize}
 are used.%
 \footnote{The full source code for a corresponding \texttt{.tex} main file is listed in

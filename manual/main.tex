@@ -61,7 +61,7 @@ based on the standard \latex\ classes \texttt{book}, \texttt{report}, and
 %
 \begin{itemize}
     \item \textbf{\texttt{hgbthesis}} (\texttt{book}):
-    for bachelor's, master's, diploma, and PhD theses,
+    for bachelor's, master's, diploma, and PhD theses as well as internship reports,
     \item \textbf{\texttt{hgbreport}} (\texttt{report}):
     for project and term reports,
     \item \textbf{\texttt{hgbarticle}} (\texttt{article}):
@@ -103,7 +103,7 @@ In addition, the following class-specific options are accepted:
 	\begin{itemize}
 		\item \texttt{type=}%
 			\{\texttt{bachelor}|\texttt{master}|\texttt{diploma}|\texttt{phd}|\texttt{internship}\}:
-				thesis type (required),
+				thesis type (default: \texttt{master}),
 		\item \texttt{titlelanguage=}\{\texttt{english}|\texttt{german}\}:
 			language on title pages, defaults to main document language if omitted,
 		\item \texttt{theme=}\{\textit{themeID}\}:
@@ -157,7 +157,7 @@ parameters must be specified at the beginning of the main document:
     \item \verb!\title{...}!,
     \item \verb!\subtitle{...}! (optional),
     \item \verb!\author{...}!,
-    \item \verb!\programtype{...}! (optional), 
+    \item \verb!\programtype{...}!, 
     \item \verb!\programname{...}!,
     \item \verb!\institution{...}! (optional if provided by the theme, see Sec.~\ref{sec:ThemeBrand}),
     \item \verb!\placeofstudy{...}!,

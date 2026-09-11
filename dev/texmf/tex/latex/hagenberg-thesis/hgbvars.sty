@@ -18,13 +18,13 @@
 \newcommand{\hgb@AcademicDegree}{}%	optional, shown on the title page if not empty
 \newcommand{\hgb@PlaceOfStudy}{\@MissingArg{Place of study not specified!}}
 
-\newcommand{\hgb@ThesisType}{}%	type of thesis (theme name)	
+\newcommand{\hgb@ThesisType}{master}%	type of thesis (default: master)
 \newcommand{\hgb@ThesisName}{}%
 					
 \newcommand{\hgb@MainLanguage}{english}%	the main language for this document:
-\newcommand{\hgb@TitleLanguage}{english}%	the language to be used for the front pages
+\newcommand{\hgb@TitleLanguage}{}%	the language to be used for the front pages (empty = main language, set in hgb.sty)
 
-\newcommand{\hgb@License}{UNDEFINED}
+\newcommand{\hgb@License}{cclicense}%	default license (see \license in hgbthesis.cls)
 
 \newcommand{\hgb@CompanyName}{\@MissingArg{Company not specified!}}
 \newcommand{\hgb@CompanyUrl}{\@MissingArg{Company URL not specified!}}
