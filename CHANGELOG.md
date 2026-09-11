@@ -33,6 +33,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - 2025/07/25: [#194](https://github.com/Digital-Media/HagenbergThesis/issues/194): Fixed bibliography file distributions in the project.
 - 2025/09/05: [#190](https://github.com/Digital-Media/HagenbergThesis/issues/190): Fixed setup due to a change in `pdf-management-testphase` (again). Also reworked the project structure.
 - 2025/11/11: [#199](https://github.com/Digital-Media/HagenbergThesis/issues/199): Fixed Babel loading unwanted configuration files.
+- 2026/09/11: Fixed the missing default thesis type: `hgbthesis` now uses `type=master` if no type is given, as documented (previously the title page showed "undefined").
+- 2026/09/11: Fixed the missing default license: `\license{cc}` is now used if `\license` is omitted, as documented (previously the copyright page showed "undefined").
+- 2026/09/11: Fixed the wrong accent character for "Exposé" in the German dictionary entry of `hgbdict.sty` and corrected its file header.
+- 2026/09/11: Fixed outdated option descriptions in `HgbThesisTutorialDE`/`HgbThesisTutorialEN` (default language is `english`, key-value syntax, missing `phd` type, `titlelanguage` option), wrong language defaults in the comments of the German sample documents, and minor inconsistencies in the manual.
+
 ## [2025/02/24]
 
 ### Added
