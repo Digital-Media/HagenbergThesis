@@ -85,7 +85,7 @@
 		\ifthenelse{\equal{\hgb@AcademicDegree}{}}%
 			{}% no academic degree specified
 			{%
-				\vspace{1.2mm}%
+				\vspace{3.2mm}%
 				{\fontsize{16}{25.8}\selectfont%
 					\hgbDictionaryGet{academic-degree-intro}{\hgb@TitleLanguage}\\
 					\hgb@AcademicDegree\par}%
@@ -106,44 +106,47 @@
 	\begin{textblock}{155}[0,1](25,280)
 		\raggedright
 		\hgb@TitlePageSizeSmall
-		\hgbDictionaryGet{submission-year}{\hgb@TitleLanguage}: \hgb@SubmissionYear\par
-		\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
-			{}%
-			{%
-				\ifthenelse{\hgb@AdvisorCount > 0}%
-					{\hgb@MakeSupervisionTable}% defined below
-					{\color{red}No advisor(s) specified!}%
-				\par
-			}%
+		\hgb@MakeSubmissionTable\par% defined below
 	\end{textblock}
 
 	\null%	required to tell LaTeX that there is a non-empty content box
 \end{titlepage}%
 }
 
-%% Supervision Table (title page) ----------------------------------------
+%% Submission Table (title page) ----------------------------------------
+%% Year of submission and advisors in one bottom-aligned table, so that all rows
+%% have the same distance and the table grows upwards with more advisors.
 %% Advisors without explicit role are labeled "Betreuung"/"Supervision";
 %% consecutive advisors with the same role share one label.
 %% (The company page of internship reports uses \@makeAdvisorTable of theme 'classic'.)
 
 \newcounter{hgb@advisor}
 
-\newcommand{\hgb@MakeSupervisionTable}{%
+\newcommand{\hgb@MakeSubmissionTable}{%
 	\begingroup
 	\renewcommand{\arraystretch}{1.0}%
 	\begin{tabular}[b]{@{}l@{\space}l@{}}%
-		\forloop{hgb@advisor}{1}{\not{\value{hgb@advisor} > \hgb@AdvisorCount}}{%   see 'forloop' package
-			\ifthenelse{\value{hgb@advisor} > 1 \AND
-					\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgb@getAdvisorRole{\the\numexpr\value{hgb@advisor}-1\relax}}}%
-				{}% same role as the previous advisor
-				{%
-					\ifthenelse{\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}}}%
-						{\hgbDictionaryGet{supervision}{\hgb@TitleLanguage}:}% default role
-						{\hgb@getAdvisorRole{\thehgb@advisor}:}%
-				}%
-			& \hgb@getAdvisorName{\thehgb@advisor}%
-			\ifthenelse{\value{hgb@advisor} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
-		}%
+		\multicolumn{2}{@{}l@{}}{\hgbDictionaryGet{submission-year}{\hgb@TitleLanguage}: \hgb@SubmissionYear}%
+		\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+			{}% no advisors on the title page of internship reports
+			{%
+				\ifthenelse{\hgb@AdvisorCount > 0}%
+					{%
+						\forloop{hgb@advisor}{1}{\not{\value{hgb@advisor} > \hgb@AdvisorCount}}{%   see 'forloop' package
+							\\
+							\ifthenelse{\value{hgb@advisor} > 1 \AND
+									\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgb@getAdvisorRole{\the\numexpr\value{hgb@advisor}-1\relax}}}%
+								{}% same role as the previous advisor
+								{%
+									\ifthenelse{\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}}}%
+										{\hgbDictionaryGet{supervision}{\hgb@TitleLanguage}:}% default role
+										{\hgb@getAdvisorRole{\thehgb@advisor}:}%
+								}%
+							& \hgb@getAdvisorName{\thehgb@advisor}%
+						}%
+					}%
+					{\\ \multicolumn{2}{@{}l@{}}{\color{red}No advisor(s) specified!}}%
+			}%
 	\end{tabular}%
 	\endgroup
 }
