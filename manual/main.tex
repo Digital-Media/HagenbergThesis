@@ -205,7 +205,7 @@ The \emph{type of degree program} is derived from \texttt{type} and printed in t
 language (see Table~\ref{tab:ProgramTypes}). \verb!\programtype{...}! replaces it by any
 text, \eg, for an internship report in a master's program.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \caption{Type of degree program derived from the class option \texttt{type}.}
 \label{tab:ProgramTypes}
 \centering\small
@@ -242,7 +242,11 @@ remain unchanged when a proposal is turned into the final thesis.
 
 Academic degrees not covered by the option (\eg, of universities, of other countries, or doctoral
 degrees) are specified as free text by \verb!\academicdegree{...}!, for example,
-\verb!\academicdegree{Master of Science (MSc)}!.
+%
+\begin{LaTeXCode}[numbers=none]
+\academicdegree{Master of Science (MSc)}
+\end{LaTeXCode}
+%
 If both are given, \verb!\academicdegree! takes precedence and a warning is issued.
 Custom themes may define additional keys by
 %
@@ -252,25 +256,34 @@ Custom themes may define additional keys by
 %
 where an empty argument means that the degree does not exist at that level.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \caption{Supported values of the class option \texttt{degree} (academic degrees of Austrian FH degree programs).}
 \label{tab:AcademicDegrees}
-\centering\footnotesize
+\centering\small
 \begin{tabular}{@{}lll@{}}
 	\toprule
-	\texttt{degree=} & \texttt{type=bachelor} & \texttt{type=master} \\
+	\texttt{degree=} & \texttt{type=} & Academic degree \\
 	\midrule
-	\texttt{arts-design}         & Bachelor of Arts in Arts and Design (BA)      & Master of Arts in Arts and Design (MA) \\
-	\texttt{engineering}         & Bachelor of Science in Engineering (BSc)      & Master of Science in Engineering (MSc) \\
-	\texttt{social-sciences}     & Bachelor of Arts in Social Sciences (BA)      & Master of Arts in Social Sciences (MA) \\
-	\texttt{business}            & Bachelor of Arts in Business (BA)             & Master of Arts in Business (MA) \\
-	\texttt{military-leadership} & Bachelor of Arts in Military Leadership (BA)  & Master of Arts in Military Leadership (MA) \\
-	\texttt{police-leadership}   & Bachelor of Arts in Police Leadership (BA)    & -- \\
-	\texttt{security-management} & --                                            & Master of Arts in Security Management (MA) \\
-	\texttt{cultural-studies}    & Bachelor of Arts in Cultural Studies (BA)     & Master of Arts in Cultural Studies (MA) \\
-	\texttt{natural-sciences}    & Bachelor of Science in Natural Sciences (BSc) & Master of Science in Natural Sciences (MSc) \\
-	\texttt{health-studies}      & Bachelor of Science in Health Studies (BSc)   & Master of Science in Health Studies (MSc) \\
-	\texttt{law}                 & Bachelor of Laws (LLB)                        & Master of Laws (LLM) \\
+	\texttt{arts-design}         & \texttt{bachelor} & Bachelor of Arts in Arts and Design (BA) \\
+	                             & \texttt{master}   & Master of Arts in Arts and Design (MA) \\ \addlinespace
+	\texttt{engineering}         & \texttt{bachelor} & Bachelor of Science in Engineering (BSc) \\
+	                             & \texttt{master}   & Master of Science in Engineering (MSc) \\ \addlinespace
+	\texttt{social-sciences}     & \texttt{bachelor} & Bachelor of Arts in Social Sciences (BA) \\
+	                             & \texttt{master}   & Master of Arts in Social Sciences (MA) \\ \addlinespace
+	\texttt{business}            & \texttt{bachelor} & Bachelor of Arts in Business (BA) \\
+	                             & \texttt{master}   & Master of Arts in Business (MA) \\ \addlinespace
+	\texttt{military-leadership} & \texttt{bachelor} & Bachelor of Arts in Military Leadership (BA) \\
+	                             & \texttt{master}   & Master of Arts in Military Leadership (MA) \\ \addlinespace
+	\texttt{police-leadership}   & \texttt{bachelor} & Bachelor of Arts in Police Leadership (BA) \\ \addlinespace
+	\texttt{security-management} & \texttt{master}   & Master of Arts in Security Management (MA) \\ \addlinespace
+	\texttt{cultural-studies}    & \texttt{bachelor} & Bachelor of Arts in Cultural Studies (BA) \\
+	                             & \texttt{master}   & Master of Arts in Cultural Studies (MA) \\ \addlinespace
+	\texttt{natural-sciences}    & \texttt{bachelor} & Bachelor of Science in Natural Sciences (BSc) \\
+	                             & \texttt{master}   & Master of Science in Natural Sciences (MSc) \\ \addlinespace
+	\texttt{health-studies}      & \texttt{bachelor} & Bachelor of Science in Health Studies (BSc) \\
+	                             & \texttt{master}   & Master of Science in Health Studies (MSc) \\ \addlinespace
+	\texttt{law}                 & \texttt{bachelor} & Bachelor of Laws (LLB) \\
+	                             & \texttt{master}   & Master of Laws (LLM) \\
 	\bottomrule
 \end{tabular}
 \end{table}
