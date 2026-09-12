@@ -75,6 +75,20 @@ The type of degree program and the academic degree on the title page are derived
 Degrees not covered by the option (e.g., of universities or other countries) can be given as free text with `\academicdegree{...}`.
 
 
+### Affidavit and Documentation of AI Tool Usage
+
+`\maketitle` creates the affidavit ("Eidesstattliche Erklärung" or "Affidavit") with the text of the FH OÖ template. It is followed by the documentation of the usage of generative AI tools, which all sample documents include directly after `\maketitle` (file `front/ki-dokumentation.tex` or `front/ai-usage.tex`). It is composed of predefined text modules; use the applicable ones and delete the others:
+
+```latex
+\begin{aiusage}
+	\aiusedfor{literature-search}
+	\aiusedfor{proofreading}
+\end{aiusage}
+```
+
+Use `\aiusednone` if no AI tools were used. If your degree program requires a detailed documentation, use the environment `aiusagedetails` instead (see the commented part of the file and the [package manual](https://github.com/Digital-Media/HagenbergThesis/blob/build/manual/main.pdf)).
+
+
 ### PDF/A Generation and Validation
 
 All documents in this collection are set up to optionally create PDF/A-compliant output files (PDF/A-2b, to be exact).

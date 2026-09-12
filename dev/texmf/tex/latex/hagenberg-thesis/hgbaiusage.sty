@@ -1,0 +1,483 @@
+%% hgbaiusage.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wolfgang Hochleitner
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+%% This package provides the documentation of the usage of generative AI tools in a thesis,
+%% which is placed after the affidavit (i.e., after \maketitle):
+%%   - environment 'aiusage': short form, composed of text modules,
+%%   - environment 'aiusagedetails': detailed form with confirmations and a table of activities.
+%% All texts are printed in the title page language (class option 'titlelanguage').
+%%
+%% The texts of the detailed form are taken from: Gimpel, H., Dilger, P., Lämmermann, L., Urbach, N. (2023).
+%% COGNISANCE: Declaration of Generative AI Tool Usage in Higher Education Tests. Research Center for
+%% Information Management. These texts are licensed under CC BY-SA 4.0
+%% (https://creativecommons.org/licenses/by-sa/4.0/); the source is printed below the detailed form.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgbaiusage}[2026/09/12]%%AUTO
+
+\RequirePackage{hgbdict}
+\RequirePackage{etoolbox}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{amssymb}	% check boxes (\square, \boxtimes)
+
+\newcommand{\hgb@AIUsageGet}[1]{\hgbDictionaryGet{#1}{\hgb@TitleLanguage}}
+
+%% ----------------------------------------------------------------------------
+%% Short form (text modules)
+%% ----------------------------------------------------------------------------
+
+\hgbDictionarySet{aiusage-title}{english}{Documentation of AI Tools Usage}
+\hgbDictionarySet{aiusage-title}{german}{Dokumentation der Nutzung von KI-Tools}
+
+\hgbDictionarySet{aiusage-intro}{english}{%
+Regarding the use of generative artificial intelligence tools such as chatbots, image generators,
+programming applications and paraphrasing or translation tools, I hereby document that}
+\hgbDictionarySet{aiusage-intro}{german}{%
+Über den Einsatz von Hilfsmitteln der generativen Künstlichen Intelligenz wie Chatbots, Bildgeneratoren,
+Programmieranwendungen, Paraphrasier- oder Übersetzungstools dokumentiere ich, dass}
+
+\hgbDictionarySet{aiusage-none}{english}{%
+I did not use any generative artificial intelligence tools in writing this document.}
+\hgbDictionarySet{aiusage-none}{german}{%
+ich keinerlei Hilfsmittel der generativen Künstlichen Intelligenz beim Verfassen dieser Arbeit benutzt habe.}
+
+\hgbDictionarySet{aiusage-used}{english}{I used generative artificial intelligence tools, to}
+\hgbDictionarySet{aiusage-used}{german}{ich Hilfsmittel der generativen Künstlichen Intelligenz verwendet habe,}
+
+% Purposes for \aiusedfor{<key>}:
+\hgbDictionarySet{aiusage-purpose-ideas}{english}{%
+gather initial ideas for potential research questions and relevant theories.}
+\hgbDictionarySet{aiusage-purpose-ideas}{german}{%
+um erste Ideen für mögliche Forschungsfragen und relevante Theorien zu sammeln.}
+
+\hgbDictionarySet{aiusage-purpose-literature-search}{english}{search for literature.}
+\hgbDictionarySet{aiusage-purpose-literature-search}{german}{um Literatur zu finden.}
+
+\hgbDictionarySet{aiusage-purpose-literature-understanding}{english}{%
+better understand academic literature (e.g., summaries).}
+\hgbDictionarySet{aiusage-purpose-literature-understanding}{german}{%
+um Literatur besser nachvollziehen zu können (Zusammenfassungen, etc.).}
+
+\hgbDictionarySet{aiusage-purpose-proofreading}{english}{%
+proofread parts of the thesis and improve the linguistic style.}
+\hgbDictionarySet{aiusage-purpose-proofreading}{german}{%
+um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
+
+\newcommand{\hgb@AIUsagePurposes}{ideas, literature-search, literature-understanding, proofreading}
+
+\newcount\hgb@AIUsageItems
+\newif\ifhgb@AIUsageNone
+
+% Usage:
+%   \begin{aiusage}
+%     \aiusednone                        % no AI tools used, or any number of:
+%     \aiusedfor{<key>}                  % predefined purpose (see \hgb@AIUsagePurposes)
+%     \aiusedforother{<text>}            % other purpose, continuing the sentence like the predefined ones
+%   \end{aiusage}
+\newenvironment{aiusage}{%
+	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
+	\chapter{\hgb@AIUsageGet{aiusage-title}}%
+	\global\hgb@AIUsageItems=\z@
+	\global\hgb@AIUsageNonefalse
+	\noindent\hgb@AIUsageGet{aiusage-intro}\space\ignorespaces
+}{%
+	\ifnum\hgb@AIUsageItems>\z@
+		\end{itemize}%
+	\else
+		\ifhgb@AIUsageNone\else
+			\PackageWarning{hgbaiusage}{No usage of AI tools documented in environment 'aiusage'.\MessageBreak
+				Use \string\aiusednone, \string\aiusedfor{...} or \string\aiusedforother{...}}%
+		\fi
+	\fi
+	\par
+	\end{SwitchLanguage}%
+}
+
+\newcommand{\aiusednone}{%
+	\ifnum\hgb@AIUsageItems>\z@
+		\PackageError{hgbaiusage}{\string\aiusednone\space cannot be combined with \string\aiusedfor}%
+			{Remove either \string\aiusednone\space or all \string\aiusedfor/\string\aiusedforother\space entries.}%
+	\else
+		\global\hgb@AIUsageNonetrue
+		\hgb@AIUsageGet{aiusage-none}%
+	\fi
+	\ignorespaces
+}
+
+\newcommand{\aiusedfor}[1]{%
+	\ifcsname hgb@dict-aiusage-purpose-#1-english\endcsname
+		\hgb@AIUsageItem{\hgb@AIUsageGet{aiusage-purpose-#1}}%
+	\else
+		\PackageError{hgbaiusage}{Unknown purpose '#1' in \string\aiusedfor}%
+			{Use one of: \hgb@AIUsagePurposes, or \string\aiusedforother{...} for other purposes.}%
+	\fi
+}
+
+\newcommand{\aiusedforother}[1]{\hgb@AIUsageItem{#1}}
+
+\newcommand{\hgb@AIUsageItem}[1]{%
+	\ifhgb@AIUsageNone
+		\PackageError{hgbaiusage}{\string\aiusedfor\space cannot be combined with \string\aiusednone}%
+			{Remove either \string\aiusednone\space or all \string\aiusedfor/\string\aiusedforother\space entries.}%
+	\else
+		\ifnum\hgb@AIUsageItems=\z@
+			\hgb@AIUsageGet{aiusage-used}%
+			\begin{itemize}%
+		\fi
+		\global\advance\hgb@AIUsageItems by \@ne
+		\item #1%
+	\fi
+}
+
+%% ----------------------------------------------------------------------------
+%% Detailed form (after Gimpel et al., 2023; CC BY-SA 4.0)
+%% ----------------------------------------------------------------------------
+
+\hgbDictionarySet{aiusagedetails-title}{english}{Documentation of Generative AI Tool Usage}
+\hgbDictionarySet{aiusagedetails-title}{german}{Dokumentation der Nutzung generativer KI-Tools}
+
+\hgbDictionarySet{aiusagedetails-responsible}{english}{Responsible use of the AI tools}
+\hgbDictionarySet{aiusagedetails-responsible}{german}{Verantwortungsvoller Umgang mit KI-Tools}
+
+\hgbDictionarySet{aiusagedetails-confirm}{english}{Confirm the following statements.}
+\hgbDictionarySet{aiusagedetails-confirm}{german}{Bestätigen Sie die folgenden Aussagen.}
+
+\hgbDictionarySet{aiusagedetails-statements}{english}{Statements on responsible use of AI tools}
+\hgbDictionarySet{aiusagedetails-statements}{german}{Aussagen zum verantwortungsvollen Umgang mit KI-Tools}
+
+\hgbDictionarySet{aiusagedetails-confirmation}{english}{Confirmation: Yes}
+\hgbDictionarySet{aiusagedetails-confirmation}{german}{Bestätigung: Ja}
+
+% Statements for \aiconfirm{<key>}:
+\hgbDictionarySet{aiusagedetails-statement-accuracy}{english}{%
+I/we confirm that the outputs generated by AI tools have been verified for accuracy and corrected where required.}
+\hgbDictionarySet{aiusagedetails-statement-accuracy}{german}{%
+Ich/wir habe(n) mich/uns vergewissert, dass die von den KI-Tools gelieferten Ergebnisse korrekt sind,
+oder dass ich/wir sie wenn erforderlich korrigiert habe(n).}
+
+\hgbDictionarySet{aiusagedetails-statement-responsibility}{english}{%
+I/we acknowledge that the responsibility for the thesis lies with the author(s), and not with the AI tools
+or any other person.}
+\hgbDictionarySet{aiusagedetails-statement-responsibility}{german}{%
+Ich/wir erkenne(n) an, dass die Verantwortung für die Arbeit bei dem/den Autor(en) liegt, nicht bei den
+KI-Tools oder einer anderen Person.}
+
+\hgbDictionarySet{aiusagedetails-activities}{english}{Detailed activities for which the tools were used}
+\hgbDictionarySet{aiusagedetails-activities}{german}{Detaillierte Tätigkeiten, für die KI-Tools genutzt wurden}
+
+\hgbDictionarySet{aiusagedetails-activities-note}{english}{%
+Indicate which AI tool you used for which activity and to what extent.\newline
+Note: Listing AI tools in the table below does not exempt you from providing a more detailed description
+of their use within the written sections of the thesis, where required.}
+\hgbDictionarySet{aiusagedetails-activities-note}{german}{%
+Geben Sie an, welches KI-Tool Sie für welche Tätigkeit genutzt haben.
+Hinweis: Die in nachfolgender Tabelle erfolgte Angabe der KI-Tools entbindet nicht von gegebenenfalls
+erforderlicher näherer Beschreibung der Verwendung im Rahmen der textuellen Ausführung der Arbeit.}
+
+% Table header:
+\hgbDictionarySet{aiusagedetails-activity}{english}{Activity}
+\hgbDictionarySet{aiusagedetails-activity}{german}{Aktivität}
+\hgbDictionarySet{aiusagedetails-description}{english}{Description}
+\hgbDictionarySet{aiusagedetails-description}{german}{Beschreibung}
+\hgbDictionarySet{aiusagedetails-tools}{english}{Tools used (if any)}
+\hgbDictionarySet{aiusagedetails-tools}{german}{Verwendete KI-Tools (falls zutreffend)}
+\hgbDictionarySet{aiusagedetails-usage}{english}{Description of the tool usage}
+\hgbDictionarySet{aiusagedetails-usage}{german}{Beschreibung der Nutzung der KI-Tools}
+\hgbDictionarySet{aiusagedetails-usage-note}{english}{(type of usage, affected sections of the paper/thesis, etc.)}
+\hgbDictionarySet{aiusagedetails-usage-note}{german}{(Art der Nutzung, betroffene Abschnitte der Arbeit, etc.)}
+
+\hgbDictionarySet{aiusagedetails-tools-note}{english}{%
+Provide the names of the tools used, e.g.\ ChatGPT, DeepL Write, Microsoft 365 Copilot, Neuroflash,
+Grammarly, DeepL Translator, Google Translate, Perplexity, Elicit, Explainpaper, ResearchRabbit, GitHub Copilot.}
+\hgbDictionarySet{aiusagedetails-tools-note}{german}{%
+Nennen Sie die Namen der verwendeten KI-Tools, z.\,B. ChatGPT, DeepL Write, Microsoft 365 Copilot,
+Neuroflash, Grammarly, DeepL Translator, Google Translate, Perplexity, Elicit, Explainpaper,
+ResearchRabbit, GitHub Copilot.}
+
+% Activities for \aiactivity{<key>}{<tools>}{<description>} (label and description points):
+\newcommand{\hgb@AIUsagePoint}[1]{%
+	\par\noindent\hangindent=1em\hangafter=1\makebox[1em][l]{\textbullet}\hspace{0pt}#1\par}
+
+\hgbDictionarySet{aiusage-activity-ideas}{english}{Idea generation \& conceptualization}
+\hgbDictionarySet{aiusage-activity-ideas-desc}{english}{%
+	\hgb@AIUsagePoint{Generating ideas, objectives and research questions}%
+	\hgb@AIUsagePoint{Identifying and defining relevant concepts and theoretical models}%
+	\hgb@AIUsagePoint{Development of a conceptual framework for the content}}
+\hgbDictionarySet{aiusage-activity-ideas}{german}{Ideenfindung \& Konzeptualisierung}
+\hgbDictionarySet{aiusage-activity-ideas-desc}{german}{%
+	\hgb@AIUsagePoint{Entwicklung von Ideen, Zielsetzungen und Forschungsfragen}%
+	\hgb@AIUsagePoint{Identifikation relevanter theoretischer Modelle}%
+	\hgb@AIUsagePoint{Entwicklung eines inhaltlichen Konzepts}}
+
+\hgbDictionarySet{aiusage-activity-literature}{english}{Literature search and analysis}
+\hgbDictionarySet{aiusage-activity-literature-desc}{english}{%
+	\hgb@AIUsagePoint{Search for relevant literature}%
+	\hgb@AIUsagePoint{Reviewing potentially relevant literature}%
+	\hgb@AIUsagePoint{Summaries of relevant literature}}
+\hgbDictionarySet{aiusage-activity-literature}{german}{Literaturrecherche und -analyse}
+\hgbDictionarySet{aiusage-activity-literature-desc}{german}{%
+	\hgb@AIUsagePoint{Suche nach relevanter Literatur}%
+	\hgb@AIUsagePoint{Überprüfung von potenziell relevanter Literatur}%
+	\hgb@AIUsagePoint{Zusammenfassungen von relevanter Literatur}}
+
+\hgbDictionarySet{aiusage-activity-methodology}{english}{Methodology}
+\hgbDictionarySet{aiusage-activity-methodology-desc}{english}{%
+	\hgb@AIUsagePoint{Search for an appropriate methodology}%
+	\hgb@AIUsagePoint{Development and adaptation of the methodology to the research question(s)}}
+\hgbDictionarySet{aiusage-activity-methodology}{german}{Methodik}
+\hgbDictionarySet{aiusage-activity-methodology-desc}{german}{%
+	\hgb@AIUsagePoint{Suche nach einer geeigneten Methodik}%
+	\hgb@AIUsagePoint{Entwicklung und Anpassung der Methodik an die Forschungsfrage(n)}}
+
+\hgbDictionarySet{aiusage-activity-coding}{english}{Coding}
+\hgbDictionarySet{aiusage-activity-coding-desc}{english}{%
+	\hgb@AIUsagePoint{Creation and documentation of code, algorithms, and software}%
+	\hgb@AIUsagePoint{Testing and debugging of existing code, algorithms, software}%
+	\hgb@AIUsagePoint{Understanding and analysis of existing code, algorithms, and software}}
+\hgbDictionarySet{aiusage-activity-coding}{german}{Coding}
+\hgbDictionarySet{aiusage-activity-coding-desc}{german}{%
+	\hgb@AIUsagePoint{Erstellen und dokumentieren von Code, Algorithmen, Software}%
+	\hgb@AIUsagePoint{Testen und debuggen von bestehendem Code, Algorithmen, Software}%
+	\hgb@AIUsagePoint{Verständnis von bestehendem Code, Algorithmen, Software}}
+
+\hgbDictionarySet{aiusage-activity-data}{english}{Data collection and analysis}
+\hgbDictionarySet{aiusage-activity-data-desc}{english}{%
+	\hgb@AIUsagePoint{Collection of primary or secondary data}%
+	\hgb@AIUsagePoint{Qualitative data analysis (including summarizing and coding)}%
+	\hgb@AIUsagePoint{Quantitative data analysis (including statistics)}%
+	\hgb@AIUsagePoint{AI-assisted mathematical, computational, or other formal techniques for modeling,
+		simulation, and analytics}}
+\hgbDictionarySet{aiusage-activity-data}{german}{Datenerhebung und -analyse}
+\hgbDictionarySet{aiusage-activity-data-desc}{german}{%
+	\hgb@AIUsagePoint{Erhebung von Primär- oder Sekundärdaten}%
+	\hgb@AIUsagePoint{Qualitative Datenanalyse (einschließlich Zusammenfassungen und Coding)}%
+	\hgb@AIUsagePoint{Quantitative Datenanalyse (einschließlich statistische Auswertung)}%
+	\hgb@AIUsagePoint{AI-gestützte mathematische, computergestützte oder andere formale Techniken zur
+		Modellierung, Simulation und Analyse}}
+
+\hgbDictionarySet{aiusage-activity-interpretation}{english}{Interpretation and Validation}
+\hgbDictionarySet{aiusage-activity-interpretation-desc}{english}{%
+	\hgb@AIUsagePoint{Interpretation of results}%
+	\hgb@AIUsagePoint{Derivation of implications for research and practice}%
+	\hgb@AIUsagePoint{Verification of the overall replicability\slash reproducibility of the results and
+		other research outputs}}
+\hgbDictionarySet{aiusage-activity-interpretation}{german}{Interpretation und Validierung}
+\hgbDictionarySet{aiusage-activity-interpretation-desc}{german}{%
+	\hgb@AIUsagePoint{Interpretation der Ergebnisse}%
+	\hgb@AIUsagePoint{Ableitung von Implikationen für Forschung und Praxis}%
+	\hgb@AIUsagePoint{Überprüfung der allgemeinen Replikation\slash Reproduzierbarkeit der Ergebnisse und
+		anderer Forschungsergebnisse}}
+
+\hgbDictionarySet{aiusage-activity-structure}{english}{Structuring and planning the text}
+\hgbDictionarySet{aiusage-activity-structure-desc}{english}{%
+	\hgb@AIUsagePoint{Structure of the thesis}%
+	\hgb@AIUsagePoint{Structuring of individual sections of the thesis (e.g., bulletpoint outlines per section)}}
+\hgbDictionarySet{aiusage-activity-structure}{german}{Strukturierung und Planung des Textes}
+\hgbDictionarySet{aiusage-activity-structure-desc}{german}{%
+	\hgb@AIUsagePoint{Gliederung der Arbeit}%
+	\hgb@AIUsagePoint{Gliederung von Abschnitten der Arbeit (z.\,B. Stichpunktliste pro Abschnitt)}}
+
+\hgbDictionarySet{aiusage-activity-generation}{english}{Generating the text}
+\hgbDictionarySet{aiusage-activity-generation-desc}{english}{%
+	\hgb@AIUsagePoint{Generation of text for topics in various sections of the thesis (including title and
+		abstract)}}
+\hgbDictionarySet{aiusage-activity-generation}{german}{Generierung des Textes}
+\hgbDictionarySet{aiusage-activity-generation-desc}{german}{%
+	\hgb@AIUsagePoint{Generierung von Text zu Themen in verschiedenen Abschnitten der Arbeit (einschließlich
+		Titel und Zusammenfassungen)}}
+
+\hgbDictionarySet{aiusage-activity-translation}{english}{Translating text}
+\hgbDictionarySet{aiusage-activity-translation-desc}{english}{%
+	\hgb@AIUsagePoint{Translation of text written by the author(s)}%
+	\hgb@AIUsagePoint{Translation of text written by others}}
+\hgbDictionarySet{aiusage-activity-translation}{german}{Übersetzen von Text}
+\hgbDictionarySet{aiusage-activity-translation-desc}{german}{%
+	\hgb@AIUsagePoint{Übersetzung der von den Autor:innen verfassten Texte}%
+	\hgb@AIUsagePoint{Übersetzung der von anderen geschriebenen Texten}}
+
+\hgbDictionarySet{aiusage-activity-editing}{english}{Reviewing \& editing the text}
+\hgbDictionarySet{aiusage-activity-editing-desc}{english}{%
+	\hgb@AIUsagePoint{Critical review, feedback or revision of the content or grammar of the thesis}%
+	\hgb@AIUsagePoint{Proofreading}%
+	\hgb@AIUsagePoint{Rephrasing or paraphrasing text}%
+	\hgb@AIUsagePoint{Shortening / expanding the text}}
+\hgbDictionarySet{aiusage-activity-editing}{german}{Überprüfung \& Editierung des Textes}
+\hgbDictionarySet{aiusage-activity-editing-desc}{german}{%
+	\hgb@AIUsagePoint{Kritische Überprüfung, Feedback oder Überarbeitung des Inhalts oder der Grammatik der Arbeit}%
+	\hgb@AIUsagePoint{Korrekturlesen}%
+	\hgb@AIUsagePoint{Umformulierung oder Paraphrasierung von Text}%
+	\hgb@AIUsagePoint{Kürzung\slash Erweiterung des Textes}}
+
+\hgbDictionarySet{aiusage-activity-references}{english}{Citation Management}
+\hgbDictionarySet{aiusage-activity-references-desc}{english}{%
+	\hgb@AIUsagePoint{Creation of the reference list}%
+	\hgb@AIUsagePoint{Formatting of the references}}
+\hgbDictionarySet{aiusage-activity-references}{german}{Quellenverwaltung}
+\hgbDictionarySet{aiusage-activity-references-desc}{german}{%
+	\hgb@AIUsagePoint{Erstellen der Referenzliste}%
+	\hgb@AIUsagePoint{Formatierung der Referenzen}}
+
+\newcommand{\hgb@AIUsageActivities}{ideas,literature,methodology,coding,data,interpretation,structure,generation,translation,editing,references}
+
+\hgbDictionarySet{aiusagedetails-further}{english}{Further use of AI tools:}
+\hgbDictionarySet{aiusagedetails-further}{german}{Darüberhinausgehende Nutzung von KI-Tools:}
+
+\hgbDictionarySet{aiusagedetails-source}{english}{%
+Source reference: Gimpel, H., Dilger, P., Lämmermann, L., Urbach, N. (2023). COGNISANCE: Declaration of
+Generative AI Tool Usage in Higher Education Tests. Research Center for Information Management, May 22, 2023.
+Licensed under CC BY-SA 4.0 (\url{https://creativecommons.org/licenses/by-sa/4.0/}).}
+\hgbDictionarySet{aiusagedetails-source}{german}{%
+Quellenangabe: Gimpel, H., Dilger, P., Lämmermann, L., Urbach, N. (2023). KOGNITION: Erklärung zur Nutzung
+von generativen KI-Tools in Hochschulprüfungen. Forschungsinstitut für Informationsmanagement, Mai 22, 2023.
+Lizenziert unter CC BY-SA 4.0 (\url{https://creativecommons.org/licenses/by-sa/4.0/}).}
+
+\newcommand{\hgb@AIUsageChecked}{\ensuremath{\boxtimes}}
+\newcommand{\hgb@AIUsageUnchecked}{\ensuremath{\square}}
+
+% Usage (the environment only collects the entries, the form is created at its end):
+%   \begin{aiusagedetails}
+%     \aiconfirm{accuracy}                               % confirm statements (check boxes)
+%     \aiconfirm{responsibility}
+%     \aiactivity{<key>}{<tools>}{<description>}         % any number, keys see \hgb@AIUsageActivities
+%     \aifurtheruse{<text>}                              % optional
+%   \end{aiusagedetails}
+\newenvironment{aiusagedetails}{%
+	\hgb@AIUsageDetailsReset
+	\setbox\z@\vbox\bgroup	% discard anything else than the commands above
+}{%
+	\egroup
+	\hgb@MakeAIUsageDetails
+}
+
+\newcommand{\hgb@AIUsageDetailsReset}{%
+	\csgdef{hgb@AIUsageConfirm@accuracy}{\hgb@AIUsageUnchecked}%
+	\csgdef{hgb@AIUsageConfirm@responsibility}{\hgb@AIUsageUnchecked}%
+	\@for\hgb@tmpkey:=\hgb@AIUsageActivities\do{%
+		\csgdef{hgb@AIUsageTools@\hgb@tmpkey}{}%
+		\csgdef{hgb@AIUsageUse@\hgb@tmpkey}{}%
+	}%
+	\gdef\hgb@AIUsageFurther{}%
+}
+
+\newcommand{\aiconfirm}[1]{%
+	\ifcsname hgb@dict-aiusagedetails-statement-#1-english\endcsname
+		\csgdef{hgb@AIUsageConfirm@#1}{\hgb@AIUsageChecked}%
+	\else
+		\PackageError{hgbaiusage}{Unknown statement '#1' in \string\aiconfirm}%
+			{Use 'accuracy' or 'responsibility'.}%
+	\fi
+}
+
+% Repeated entries for the same activity are appended.
+\newcommand{\aiactivity}[3]{%
+	\ifcsname hgb@dict-aiusage-activity-#1-english\endcsname
+		\ifcsempty{hgb@AIUsageTools@#1}%
+			{\csgdef{hgb@AIUsageTools@#1}{#2}}%
+			{\csgappto{hgb@AIUsageTools@#1}{\par #2}}%
+		\ifcsempty{hgb@AIUsageUse@#1}%
+			{\csgdef{hgb@AIUsageUse@#1}{#3}}%
+			{\csgappto{hgb@AIUsageUse@#1}{\par #3}}%
+	\else
+		\PackageError{hgbaiusage}{Unknown activity '#1' in \string\aiactivity}%
+			{Use one of: \hgb@AIUsageActivities.}%
+	\fi
+}
+
+\newcommand{\aifurtheruse}[1]{%
+	\ifdefempty{\hgb@AIUsageFurther}%
+		{\gdef\hgb@AIUsageFurther{#1}}%
+		{\gappto\hgb@AIUsageFurther{\par #1}}%
+}
+
+\newcommand{\hgb@AIUsageStatementRow}[1]{%
+	\hgb@AIUsageGet{aiusagedetails-statement-#1} & {\large\csuse{hgb@AIUsageConfirm@#1}} \\}
+
+\newcommand{\hgb@AIUsageHead}{%
+	\textbf{\hgb@AIUsageGet{aiusagedetails-activity}} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-description}} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-tools}}\textsuperscript{1} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-usage}}\newline\hgb@AIUsageGet{aiusagedetails-usage-note} \\}
+
+\newcommand{\hgb@AIUsageRow}[1]{%
+	\textbf{\hgb@AIUsageGet{aiusage-activity-#1}} &
+	\hgb@AIUsageGet{aiusage-activity-#1-desc} &
+	\csuse{hgb@AIUsageTools@#1} &
+	\csuse{hgb@AIUsageUse@#1} \\}
+
+\newcommand{\hgb@MakeAIUsageDetails}{%
+	\ifcsequal{hgb@AIUsageConfirm@accuracy}{hgb@AIUsageUnchecked}%
+		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed in environment 'aiusagedetails'.\MessageBreak
+			Use \string\aiconfirm{accuracy}}}{}%
+	\ifcsequal{hgb@AIUsageConfirm@responsibility}{hgb@AIUsageUnchecked}%
+		{\PackageWarning{hgbaiusage}{Statement 'responsibility' not confirmed in environment 'aiusagedetails'.\MessageBreak
+			Use \string\aiconfirm{responsibility}}}{}%
+	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
+	\chapter{\hgb@AIUsageGet{aiusagedetails-title}}%
+	%
+	\section*{\hgb@AIUsageGet{aiusagedetails-responsible}}%
+	\noindent\hgb@AIUsageGet{aiusagedetails-confirm}\par
+	\medskip
+	\noindent
+	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-36mm-2\tabcolsep\relax}%
+		>{\centering\arraybackslash}p{36mm}@{}}
+		\toprule
+		\textbf{\hgb@AIUsageGet{aiusagedetails-statements}} & \textbf{\hgb@AIUsageGet{aiusagedetails-confirmation}} \\
+		\midrule
+		\hgb@AIUsageStatementRow{accuracy}
+		\addlinespace
+		\hgb@AIUsageStatementRow{responsibility}
+		\bottomrule
+	\end{tabular}\par
+	%
+	\section*{\hgb@AIUsageGet{aiusagedetails-activities}}%
+	\noindent\hgb@AIUsageGet{aiusagedetails-activities-note}\par
+	\begingroup
+	\footnotesize
+	\setlength{\tabcolsep}{4pt}%
+	\setlength{\LTleft}{\z@}%
+	\setlength{\LTright}{\fill}%
+	\setlength{\LTpost}{\smallskipamount}%
+	% \hspace{0pt} allows hyphenation of the first word in a cell (not in column 2, which starts with \par)
+	\begin{longtable}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.19\linewidth-\tabcolsep\relax}%
+		>{\raggedright\arraybackslash}p{\dimexpr0.37\linewidth-2\tabcolsep\relax}%
+		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.16\linewidth-2\tabcolsep\relax}%
+		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.28\linewidth-\tabcolsep\relax}@{}}
+		\toprule
+		\hgb@AIUsageHead
+		\midrule
+		\endfirsthead
+		\toprule
+		\hgb@AIUsageHead
+		\midrule
+		\endhead
+		\bottomrule
+		\endfoot
+		\bottomrule
+		\endlastfoot
+		\hgb@AIUsageRow{ideas}\midrule
+		\hgb@AIUsageRow{literature}\midrule
+		\hgb@AIUsageRow{methodology}\midrule
+		\hgb@AIUsageRow{coding}\midrule
+		\hgb@AIUsageRow{data}\midrule
+		\hgb@AIUsageRow{interpretation}\midrule
+		\hgb@AIUsageRow{structure}\midrule
+		\hgb@AIUsageRow{generation}\midrule
+		\hgb@AIUsageRow{translation}\midrule
+		\hgb@AIUsageRow{editing}\midrule
+		\hgb@AIUsageRow{references}
+	\end{longtable}%
+	\noindent\textsuperscript{1}\,\hgb@AIUsageGet{aiusagedetails-tools-note}\par
+	\endgroup
+	%
+	\bigskip
+	\noindent\textbf{\hgb@AIUsageGet{aiusagedetails-further}}\par
+	\noindent\hgb@AIUsageFurther\par
+	\bigskip
+	{\footnotesize\noindent\hgb@AIUsageGet{aiusagedetails-source}\par}%
+	\end{SwitchLanguage}%
+}
