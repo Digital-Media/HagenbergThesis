@@ -51,6 +51,10 @@ and its development repository.%
 The package is made available under the terms of the Creative Commons
 Attribution 4.0 International Public License.%
 \footnote{\url{https://creativecommons.org/licenses/by/4.0/legalcode}}
+The only exception are the texts of the detailed documentation of AI tool usage in
+\texttt{hgbaiusage-cognisance.sty} (see Sec.~\ref{sec:AIUsage}), which are licensed under the
+Creative Commons Attribution-ShareAlike 4.0 International Public License.%
+\footnote{\url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}}
 
 
 \section{Document classes}
@@ -296,7 +300,8 @@ independently of the document classes listed above:
 \begin{itemize}
   \item \texttt{hgb.sty}: language and date setup, custom commands;
   \item \texttt{hgbabbrev.sty}: various abbreviation macros;
-  \item \texttt{hgbaiusage.sty}: documentation of AI tool usage (for \texttt{hgbthesis});
+  \item \texttt{hgbaiusage.sty}: documentation of AI tool usage (for \texttt{hgbthesis}; texts of the
+    detailed form in \texttt{hgbaiusage-cognisance.sty}, CC BY-SA 4.0);
   \item \texttt{hgbalgo.sty}: additions to \texttt{algpseudocodex} package;
   \item \texttt{hgbbib.sty}: bibliography setup;
   \item \texttt{hgbdict.sty}: language dictionary functions;
@@ -605,10 +610,14 @@ An empty environment results in a warning. Examples of other purposes in English
 
 The environment \texttt{aiusagedetails} creates a form with two statements on the responsible use
 of AI tools (with check boxes) and a table of eleven activities, listing the AI tools used for each
-activity and a description of their use. Its texts are taken from Gimpel et al.\ (2023)%
+activity and a description of their use. Its texts were adapted by FH O\"O (2026) from
+Gimpel et al.\ (2023)%
 \footnote{Gimpel, H., Dilger, P., L\"ammermann, L., Urbach, N. (2023). COGNISANCE: Declaration of
-Generative AI Tool Usage in Higher Education Tests. Research Center for Information Management.}
-and licensed under CC BY-SA 4.0; the source is printed below the form. For example,
+Generative AI Tool Usage in Higher Education Tests. Research Center for Information Management.
+\url{https://doi.org/10.17605/OSF.IO/VGXF7}}
+and, unlike the rest of the package, are licensed under CC BY-SA 4.0. Therefore, they are kept in the
+separate file \texttt{hgbaiusage-cognisance.sty}, and the source reference is printed below the form.
+For example,
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{aiusagedetails}

@@ -88,6 +88,8 @@ Degrees not covered by the option (e.g., of universities or other countries) can
 
 Use `\aiusednone` if no AI tools were used. If your degree program requires a detailed documentation, use the environment `aiusagedetails` instead (see the commented part of the file and the [package manual](https://github.com/Digital-Media/HagenbergThesis/blob/build/manual/main.pdf)).
 
+The texts of the detailed form were adapted by FH OÖ from *KOGNITION/COGNISANCE* by Gimpel et al. (2023, [doi:10.17605/OSF.IO/VGXF7](https://doi.org/10.17605/OSF.IO/VGXF7)). Unlike the rest of this project, they are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) and are therefore kept in the separate file [`hgbaiusage-cognisance.sty`](dev/texmf/tex/latex/hagenberg-thesis/hgbaiusage-cognisance.sty); the form prints the source reference.
+
 
 ### PDF/A Generation and Validation
 
@@ -112,6 +114,6 @@ The **hagenberg-thesis** classes and styles try to provide as much functionality
 * [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
 * [Recent changes](CHANGELOG.md)
 * [How to contribute](CONTRIBUTING.md)
-* [License](LICENSE)
+* [License](LICENSE) (CC BY 4.0; exception: the texts in [`hgbaiusage-cognisance.sty`](dev/texmf/tex/latex/hagenberg-thesis/hgbaiusage-cognisance.sty) are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))
 * [Issues](https://github.com/Digital-Media/HagenbergThesis/issues)
 * [Discussions](https://github.com/Digital-Media/HagenbergThesis/discussions)
