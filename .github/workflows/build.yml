@@ -2,8 +2,10 @@
 #
 # - Pull requests to main and manual runs (any branch): build and check; the PDFs and log
 #   files are attached to the run as an artifact, nothing is committed.
-# - Push to main (i.e., merging a pull request): build, check, and commit the results
-#   (PDFs, ZIP files, CTAN bundle, date stamps) to main.
+# - Push to main (i.e., merging a pull request): build, check, and publish the results
+#   (PDFs, ZIP files, CTAN bundle, date stamps) to the branch 'build'. This branch consists of
+#   a single commit without history that is replaced on every build, so the repository does
+#   not grow; main only contains source files.
 #
 # The checks ('make check') fail on build errors, problematic LaTeX/Biber warnings and
 # PDF files that are not PDF/A-2b compliant (veraPDF).
@@ -98,15 +100,18 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-      - name: Commit and push build results
+      - name: Publish build results to branch 'build'
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # a single commit without history: the sources of main (with updated date stamps)
+          # plus all generated files, which are ignored on main
+          git checkout --orphan build
           git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-          git commit -m "Rebuild documents, manual and CTAN bundle" -m "Automatic build of ${GITHUB_SHA}."
-          git push
+          git add -f documents/*/main.pdf download/*.zip manual/main.pdf dev/ctan/hagenberg-thesis.zip \
+            dev/ctan/hagenberg-thesis/latex dev/ctan/hagenberg-thesis/bibtex dev/ctan/hagenberg-thesis/doc
+          git commit -q -m "Build results of ${GITHUB_SHA}" \
+            -m "Generated from main by the workflow 'Build and check documents'. This branch is replaced on every build."
+          git push --force origin build
+          git show --stat --format='%h %s' HEAD | tail -n 3

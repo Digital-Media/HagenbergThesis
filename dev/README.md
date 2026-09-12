@@ -88,7 +88,7 @@ The GitHub Actions workflow `.github/workflows/build.yml` uses the same makefile
 
 - For every **pull request** to `main`, it runs `make all` and `make check`. The pull request should only be merged if this check passes. The PDFs and log files are attached to the workflow run as an artifact (see the *Summary* page of the run).
 - The workflow can also be started **manually** for any branch (*Actions* ➔ *Build and check documents* ➔ *Run workflow*), e.g., to build the PDFs of a branch without a pull request.
-- After a **push to `main`** (i.e., merging a pull request), it runs the same build and check and commits the results (date stamps, PDFs, ZIP files, CTAN bundle) to `main`. Hence, pull requests should only contain source changes, not generated files.
+- After a **push to `main`** (i.e., merging a pull request), it runs the same build and check and publishes the results (date stamps, PDFs, ZIP files, CTAN bundle) to the branch `build`, a single commit without history that is replaced on every build. `main` only contains source files; the generated files are ignored there.
 
 ### Testing Changes
 
