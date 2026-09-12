@@ -98,6 +98,6 @@ The **hagenberg-thesis** classes and styles try to provide as much functionality
 * [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
 * [Recent changes](CHANGELOG.md)
 * [How to contribute](CONTRIBUTING.md)
-* [License](LICENSE.md)
+* [License](LICENSE)
 * [Issues](https://github.com/Digital-Media/HagenbergThesis/issues)
 * [Discussions](https://github.com/Digital-Media/HagenbergThesis/discussions)
