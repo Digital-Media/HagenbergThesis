@@ -161,6 +161,8 @@ ctan :
 #	Builds the CTAN distribution
 	@echo "" 
 	@echo "Building CTAN bundle ..."
+#	Create the CTAN directories if necessary (they are not part of the repository)
+	@mkdir -p $(CTANDIR)/$(CTANBUNDLE)/latex $(CTANDIR)/$(CTANBUNDLE)/bibtex $(CTANDIR)/$(CTANBUNDLE)/doc
 #	Clear CTAN /latex/ and /bibtex/ directories
 	@find $(CTANDIR)/$(CTANBUNDLE)/latex  -maxdepth 1 -type f -name "*.*" -delete
 	@find $(CTANDIR)/$(CTANBUNDLE)/bibtex -maxdepth 1 -type f -name "*.*" -delete
