@@ -1,5 +1,7 @@
 # Hagenberg Thesis Document Collection (LaTeX)
 
+[![Build and check documents](https://github.com/Digital-Media/HagenbergThesis/actions/workflows/build.yml/badge.svg)](https://github.com/Digital-Media/HagenbergThesis/actions/workflows/build.yml)
+
 ## What You Find Here
 
 This is a collection of modern LaTeX classes, style files, and example documents for authoring **Bachelor, Master, Diploma, or PhD theses** and related academic manuscripts in English and German.
