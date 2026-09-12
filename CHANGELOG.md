@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - 2025/07/26: [#188](https://github.com/Digital-Media/HagenbergThesis/pull/188): Added an English version for the internship report (`HgbInternshipReportEN`) and renamed the existing version to `HgbInternshipReportDE`. Thanks to [@maxi-smidt](https://github.com/maxi-smidt).
+- 2026/09/12: [#207](https://github.com/Digital-Media/HagenbergThesis/issues/207): Added a GitHub Actions workflow that builds and checks all documents, the manual and the CTAN bundle with the makefiles for every pull request, and commits the results to `main` after merging. New make target `check` (checks the log files for errors and problematic warnings and validates PDF/A-2b compliance with veraPDF); the log files of each build are kept in `dev/logs/`.
 
 ### Changed
 

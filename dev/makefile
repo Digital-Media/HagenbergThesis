@@ -7,6 +7,7 @@
 #	'make <example>' -> to buld a specific example document, e.g. 'make HgbArticle'
 #	'make manual' -> to compile the package manual
 #	'make ctan' -> to build the complete CTAN distribution
+#	'make check' -> to check the build results (log files, PDF/A compliance with veraPDF)
 #
 #	'make inittex' -> to add /dev/texmf... as a local TEXMF root directory
 #	'make uninittex' -> to remove /dev/texmf... as a local TEXMF root directory
@@ -44,6 +45,12 @@ DATEPATTERN := \[[0-9]\{4\}\/[0-9]\{2\}\/[0-9]\{2\}\]%%AUTO
 # Source/target directory for the manual:
 MANUALDIR := $(realpath ../manual)
 # -----------------------------------------------------------------------
+# Directory where makefile-latex keeps the LaTeX/Biber log files of each build (for 'make check'):
+LOGDIR ?= $(CURDIR)/logs
+export LOGDIR
+# veraPDF command used by 'make check' for the PDF/A check ('skip' to skip it):
+VERAPDF ?= verapdf
+# -----------------------------------------------------------------------
 # This directory holds everything needed for CTAN distribution:
 CTANDIR := $(realpath ctan)
 # The official package name on CTAN
@@ -55,7 +62,7 @@ CTANVERSIONTAG := \#\#\# Version:
 # -----------------------------------------------------------------------
 
 all : setdates documents manual ctan
-.PHONY : all showsetup inittex setdates documents manual ctan $(DOCSLIST)
+.PHONY : all showsetup inittex setdates documents manual ctan check $(DOCSLIST)
 
 showsetup :
 	@echo TEXMFDIR = $(TEXMFDIR)
@@ -71,6 +78,8 @@ showsetup :
 	@echo CTANBUNDLE = $(CTANBUNDLE)
 	@echo CTANREADMEFILE = $(CTANREADMEFILE)
 	@echo CTANVERSIONTAG = $(CTANVERSIONTAG)
+	@echo LOGDIR = $(LOGDIR)
+	@echo VERAPDF = $(VERAPDF)
 	
 inittex :
 #	Add /dev/texmf... as a TEXMF root directory (not executed in a regular make).
@@ -177,3 +186,10 @@ ctan :
 #	Make a ZIP of the complete CTAN bundle:
 	@echo "  ZIPing the complete CTAN bundle"
 	@cd $(CTANDIR)/; rm -f $(CTANBUNDLE).zip; $(ZIPEXE) -r -q $(CTANBUNDLE).zip $(CTANBUNDLE)
+
+check :
+#	Checks the results of a previous build (e.g., 'make' or 'make documents manual'):
+#	PDF files exist, no errors or problematic warnings in the log files in LOGDIR,
+#	PDF/A-2b compliance (requires veraPDF, e.g., 'make check VERAPDF=/path/to/verapdf';
+#	use 'make check VERAPDF=skip' to skip this part).
+	@bash check-build.sh "$(LOGDIR)" "$(VERAPDF)" $(foreach doc,$(DOCSLIST),$(DOCSDIR)/$(doc)/main.pdf) $(MANUALDIR)/main.pdf
