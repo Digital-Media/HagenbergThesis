@@ -62,7 +62,7 @@ To use the [APA 7th edition style for citations and references](https://apastyle
 
 ### Degree Program and Academic Degree
 
-The type of degree program and the academic degree on the title page are derived from the class options `type` and `degree`. For example, `\documentclass[type=master,degree=engineering]{hgbthesis}` results in "Masterstudiengang" (or "Master's degree program") and "Master of Science in Engineering (MSc)". All academic degrees of Austrian universities of applied sciences are supported; the [package manual](https://github.com/Digital-Media/HagenbergThesis/raw/main/manual/main.pdf) lists all values. The degree of your program is stated in its curriculum. Common values at FH OÖ are:
+The type of degree program and the academic degree on the title page are derived from the class options `type` and `degree`. For example, `\documentclass[type=master,degree=engineering]{hgbthesis}` results in "Masterstudiengang" (or "Master's degree program") and "Master of Science in Engineering (MSc)". All academic degrees of Austrian universities of applied sciences are supported; the [package manual](https://github.com/Digital-Media/HagenbergThesis/raw/build/manual/main.pdf) lists all values. The degree of your program is stated in its curriculum. Common values at FH OÖ are:
 
 | `degree=`         | `type=bachelor`                          | `type=master`                          | FH OÖ programs (examples)                                                    |
 |:------------------|:-----------------------------------------|:---------------------------------------|:-----------------------------------------------------------------------------|
