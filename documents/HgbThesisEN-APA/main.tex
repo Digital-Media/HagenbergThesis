@@ -9,10 +9,12 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired
 
-\documentclass[type=bachelor,theme=default,language=english,titlelanguage=english,smartquotes=true,apa=true]{hgbthesis}
+\documentclass[type=bachelor,degree=engineering,theme=default,language=english,titlelanguage=english,smartquotes=true,apa=true]{hgbthesis}
 % Supported options in [..]:
 %    Type of work (type=): master (default), bachelor, diploma, phd, internship
-%    Title page theme (theme=): default (default), fhooe24
+%    Academic degree (degree=): engineering (BSc/MSc), arts-design (BA/MA), business (BA/MA),
+%        social-sciences (BA/MA); all values: see manual
+%    Title page theme (theme=): default (default), fhooe26, classic, fhooe24
 %    Use as thesis proposal: proposal=true, proposal=false (default)
 %    Main document language (language=): english (default), german
 %    Title page language (titlelanguage=): english, german (default: main language)
@@ -37,9 +39,10 @@
 \subtitle{A Fundamental Introduction}
 \author{Alex A.\ Wiseguy}
 
-\programtype{Master's Degree Program} % or Bachelor's Degree Program
+%\programtype{Master's degree program} % optional, default: derived from type=
 \programname{Universal Computing}
-\institution{University of Applied Sciences Upper Austria}
+%\academicdegree{Master of Science in Engineering (MSc)} % optional, free text instead of degree=
+%\institution{University of Applied Sciences Upper Austria} % optional, default: institution name of the theme
 
 \placeofstudy{Hagenberg}
 \dateofsubmission{2025}{07}{01} % {YYYY}{MM}{DD}

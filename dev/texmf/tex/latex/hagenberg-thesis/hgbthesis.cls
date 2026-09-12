@@ -33,6 +33,7 @@
 \newcommand{\hgb@ProposalName}{UNDEFINED}
 
 \newcommand{\hgb@@pagelayout}{oneside}% default to 'oneside' (used locally only in this file!)
+\newcommand{\hgb@DegreeKey}{}% class option 'degree' (key of the academic degree, see hgbdict.sty)
 
 %% Specifiying/loading thesis theme styles ---------------------------------------------------
 
@@ -80,6 +81,7 @@
 	% new options
 	type.code 				= {\@ValidateClassOption{type}{#1}\renewcommand{\hgb@ThesisType}{#1}},
 	theme.code 				= \renewcommand{\@ThemeID}{#1},
+	degree.code				= \renewcommand{\hgb@DegreeKey}{#1},	% validated at the end of this file
 	language.code			= {\@ValidateClassOption{language}{#1}\renewcommand{\hgb@MainLanguage}{#1}},
 	titlelanguage.code = {\@ValidateClassOption{titlelanguage}{#1}\renewcommand{\hgb@TitleLanguage}{#1}},
 	proposal.code			= \setboolean{hgb@IsProposal}{#1},
@@ -135,6 +137,13 @@
 \newcommand{\programtype}[1]{\renewcommand{\hgb@ProgramType}{#1}}
 
 \newcommand{\programname}[1]{\renewcommand{\hgb@ProgramName}{#1}}
+
+% Free text for the academic degree, replaces the degree selected by the class option 'degree':
+\newcommand{\academicdegree}[1]{%
+	\ifthenelse{\equal{\hgb@DegreeKey}{}}{}%
+		{\ClassWarning{hgbthesis}{\string\academicdegree\space overrides the class option 'degree=\hgb@DegreeKey'}}%
+	\renewcommand{\hgb@AcademicDegree}{#1}%
+}
 
 \newcommand{\placeofstudy}[1]{\renewcommand{\hgb@PlaceOfStudy}{#1}}
 
@@ -288,6 +297,7 @@
 
 \renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{\hgb@ThesisType-docname}{\hgb@TitleLanguage}}%
 \renewcommand{\hgb@ProposalName}{\hgbDictionaryGet{proposal-name}{\hgb@TitleLanguage}}%
+\renewcommand{\hgb@ProgramType}{\hgbDictionaryGet{\hgb@ThesisType-programtype}{\hgb@TitleLanguage}}% default, see \programtype
 
 
 %% Additional Hagenberg packages ----------------------------------------------
@@ -301,5 +311,28 @@
 \RequirePackage{hgbdict}
 
 \hgb@UseTheme{\@ThemeID}%		load theme style file
+
+%% Academic degree from class option 'degree' ---------------------------------
+%% Resolved after loading the theme, which may define additional degrees (\hgbDefineDegree).
+%% The level (bachelor/master) is taken from the class option 'type'; internship reports show no degree.
+
+\ifthenelse{\equal{\hgb@DegreeKey}{} \OR \equal{\hgb@ThesisType}{internship}}%
+	{}%
+	{%
+		\ifcsname hgb@dict-degree-\hgb@ThesisType-\hgb@DegreeKey-english\endcsname
+			\renewcommand{\hgb@AcademicDegree}{\hgbDictionaryGet{degree-\hgb@ThesisType-\hgb@DegreeKey}{\hgb@TitleLanguage}}%
+		\else
+			\ifcsname hgb@dict-degree-bachelor-\hgb@DegreeKey-english\endcsname
+				\ClassError{hgbthesis}{academic degree 'degree=\hgb@DegreeKey' is not available for 'type=\hgb@ThesisType'}%
+					{Use a degree that exists for this type or specify it as free text with \string\academicdegree{...}.}%
+			\else\ifcsname hgb@dict-degree-master-\hgb@DegreeKey-english\endcsname
+				\ClassError{hgbthesis}{academic degree 'degree=\hgb@DegreeKey' is not available for 'type=\hgb@ThesisType'}%
+					{Use a degree that exists for this type or specify it as free text with \string\academicdegree{...}.}%
+			\else
+				\ClassError{hgbthesis}{unknown academic degree 'degree=\hgb@DegreeKey'}%
+					{See the package manual for the supported values or specify the degree as free text with \string\academicdegree{...}.}%
+			\fi\fi
+		\fi
+	}%
 
 \endinput

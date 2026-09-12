@@ -60,6 +60,20 @@ To use the [APA 7th edition style for citations and references](https://apastyle
 \*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**. The [Standard plan or higher](https://www.overleaf.com/user/subscription/plans) is recommended to avoid compile-timeouts in larger documents.
 
 
+### Degree Program and Academic Degree
+
+The type of degree program and the academic degree on the title page are derived from the class options `type` and `degree`. For example, `\documentclass[type=master,degree=engineering]{hgbthesis}` results in "Masterstudiengang" (or "Master's degree program") and "Master of Science in Engineering (MSc)". All academic degrees of Austrian universities of applied sciences are supported; the [package manual](https://github.com/Digital-Media/HagenbergThesis/raw/build/manual/main.pdf) lists all values. The degree of your program is stated in its curriculum. Common values at FH OÖ are:
+
+| `degree=`         | `type=bachelor`                          | `type=master`                          | FH OÖ programs (examples)                                                    |
+|:------------------|:-----------------------------------------|:---------------------------------------|:-----------------------------------------------------------------------------|
+| `engineering`     | Bachelor of Science in Engineering (BSc) | Master of Science in Engineering (MSc) | Software Engineering, Design of Digital Products (Hagenberg)                  |
+| `arts-design`     | Bachelor of Arts in Arts and Design (BA) | Master of Arts in Arts and Design (MA) | Digital Arts (Hagenberg)                                                     |
+| `business`        | Bachelor of Arts in Business (BA)        | Master of Arts in Business (MA)        | Process Management and Business Intelligence, Marketing and Electronic Business (Steyr) |
+| `social-sciences` | Bachelor of Arts in Social Sciences (BA) | Master of Arts in Social Sciences (MA) | Social Work (Linz)                                                           |
+
+Degrees not covered by the option (e.g., of universities or other countries) can be given as free text with `\academicdegree{...}`.
+
+
 ### PDF/A Generation and Validation
 
 All documents in this collection are set up to optionally create PDF/A-compliant output files (PDF/A-2b, to be exact).

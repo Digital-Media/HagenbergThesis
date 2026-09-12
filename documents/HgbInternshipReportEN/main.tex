@@ -9,10 +9,10 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}        % Creates a PDF/A-2b compliant document
 
-\documentclass[type=internship,theme=fhooe24,language=english,titlelanguage=english,smartquotes=true]{hgbthesis}
+\documentclass[type=internship,theme=default,language=english,titlelanguage=english,smartquotes=true]{hgbthesis}
 % Supported options in [..]:
 %    Type of work (type=): master (default), bachelor, diploma, phd, internship
-%    Title page theme (theme=): default (default), fhooe24
+%    Title page theme (theme=): default (default), fhooe26, classic, fhooe24
 %    Use as thesis proposal: proposal=true, proposal=false (default)
 %    Main document language (language=): english (default), german
 %    Title page language (titlelanguage=): english, german (default: main language)
@@ -37,9 +37,9 @@
 %\subtitle{Subtitle only if absolutely necessary}
 \author{Alex A.\ Wiseguy}
 
-\programtype{Bachelor's Degree Program}
+%\programtype{Bachelor's degree program} % optional, default: derived from type=
 \programname{Universal Computing}
-\institution{University of Applied Sciences Upper Austria}
+%\institution{University of Applied Sciences Upper Austria} % optional, default: institution name of the theme
 
 \placeofstudy{Hagenberg}
 \dateofsubmission{2025}{07}{01} % {JJJJ}{MM}{TT}

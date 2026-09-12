@@ -796,6 +796,9 @@ Weitere Optionen:
 \begin{itemize}
 	\item[] \texttt{titlelanguage=\emph{language}} (Sprache der Titelseiten,
 		standardmäßig die Hauptsprache).
+	\item[] \texttt{degree=\emph{key}} (akademischer Grad auf der Titelseite, \zB\
+		\texttt{engineering} für "Bachelor/Master of Science in Engineering"; alle
+		unterstützten Werte sind im Manual des Pakets angeführt).
 	\item[] \texttt{proposal=true} (Exposé, in Verbindung mit \texttt{type=bachelor} 
 		oder \texttt{master}).
 	\item[] \texttt{smartquotes=true} (Verwendung gerader Hochkommas,
@@ -824,13 +827,18 @@ Dokumententyp sind unterschiedliche Elemente für die Titelseiten erforderlich
     \item[] %
     \verb!\title{!\texttt{\em Titel der Arbeit}\verb!}!, \newline%
     \verb!\author{!\texttt{\em Autor*in}\verb!}!, \newline%
-    \verb!\programtype{!\texttt{\em Typ des Studiums}\verb!}!, \newline%
     \verb!\programname{!\texttt{\em Studiengang}\verb!}!, \newline%
     \verb!\placeofstudy{!\texttt{\em Studienort}\verb!}!, \newline%
     \verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em
     mm}\verb!}{!\texttt{\em dd}\verb!}!, \newline%
     \verb!\advisor{!\texttt{\em Name des*der Betreuers*Betreuerin}\verb!}! --
-    optional.
+    optional, \newline%
+    \verb!\institution{!\texttt{\em Hochschule}\verb!}! --
+    optional (Standard: laut Theme der Titelseite), \newline%
+    \verb!\programtype{!\texttt{\em Typ des Studiums}\verb!}! --
+    optional (Standard: abgeleitet aus \texttt{type}), \newline%
+    \verb!\academicdegree{!\texttt{\em Akademischer Grad}\verb!}! --
+    optional (Freitext anstelle der Klassenoption \texttt{degree}).
 \end{itemize}
 %
 \noindent
@@ -845,7 +853,8 @@ folgende Elemente berücksichtigt:
 \end{itemize}
 
 \begin{table}
-    \caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen.}
+    \caption{Elemente in Titelseiten für verschiedene Dokumentenoptionen
+        ($+$ \ldots\ erforderlich, $\circ$ \ldots\ optional, $-$ \ldots\ nicht verwendet).}
     \label{tab:TitelElemente}
     \centering\small
     \begin{tabular}{@{}lcccc@{}}
@@ -855,13 +864,15 @@ folgende Elemente berücksichtigt:
         \midrule
         \verb!\title!            & $+$ & $+$ & $+$ & $+$ \\
         \verb!\author!           & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\programtype!      & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\programtype!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
         \verb!\programname!      & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\institution!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
+        \texttt{degree=}, \verb!\academicdegree! & $\circ$ & $\circ$ & $\circ$ & $-$ \\
         \verb!\placeofstudy!     & $+$ & $+$ & $+$ & $+$ \\
         \verb!\dateofsubmission! & $+$ & $+$ & $+$ & $+$ \\
         \verb!\advisor!          & $+$ & $+$ & $+$ & $+$ \\
         \verb!\companyName!      & $-$ & $-$ & $-$ & $+$ \\
-        \verb!\companyPhone!     & $-$ & $-$ & $-$ & $+$ \\
+        \verb!\companyUrl!       & $-$ & $-$ & $-$ & $+$ \\
         \bottomrule
     \end{tabular}
 \end{table}

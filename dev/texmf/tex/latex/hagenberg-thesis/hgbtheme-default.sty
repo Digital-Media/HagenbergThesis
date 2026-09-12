@@ -1,34 +1,57 @@
 %% This file is part of the Hagenberg Thesis package
-%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% Authors: Wilhelm Burger (wilbur@ieee.org), Wolfgang Hochleitner
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-\ProvidesPackage{hgbtheme-default}[2026/09/12]%%AUTO
+%% Title page following the FH OÖ title page prototype for theses (2025-10-22).
+%% The copyright, declaration and company pages are inherited from theme 'classic'.
+%% The brand (logo and institution name) is kept separate from the layout and set by
+%% \hgb@SetBrand (see below). This theme always uses the current official brand;
+%% brand themes (e.g., 'fhooe26') pin a specific brand.
+
+\ProvidesPackage{hgbtheme-default}[2026/04/12]%%AUTO
+\hgb@UseTheme{classic}%	parent theme
 \RequirePackage{hgbdict}
 \RequirePackage{forloop}
 \RequirePackage[absolute]{textpos}
 
-% Define a grid of 10mm squares so there's 21 horizontal and 29 vertical ones
-\setlength{\TPHorizModule}{10mm}
-\setlength{\TPVertModule}{\TPHorizModule}
+% All positions on the title page are given in mm from the top left corner of the page:
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
 
 %% Define various language-dependent text chunks to be used below -------------
 
-\hgbDictionarySet{submitted-to}{german}{eingereicht am}%
-\hgbDictionarySet{submitted-to}{english}{submitted to the}%
+\hgbDictionarySet{academic-degree-intro}{german}{zur Erlangung des akademischen Grades}%
+\hgbDictionarySet{academic-degree-intro}{english}{to obtain the academic degree of}%
 
-\hgbDictionarySet{at-place-of-study}{german}{an der}%
-\hgbDictionarySet{at-place-of-study}{english}{at the}%
+\hgbDictionarySet{submission-year}{german}{Jahr der Einreichung}%
+\hgbDictionarySet{submission-year}{english}{Year of submission}%
 
-\hgbDictionarySet{declaration-date}{english}%
-	{\hgb@GetMonthName{english}{\hgb@SubmissionMonth} \hgb@SubmissionDay, \hgb@SubmissionYear}%
-\hgbDictionarySet{declaration-date}{german}%
-	{am \hgb@SubmissionDay.~\hgb@GetMonthName{german}{\hgb@SubmissionMonth} \hgb@SubmissionYear}%
+% label on the title page for advisors specified by \advisor{..} without optional argument:
+\hgbDictionarySet{supervision}{german}{Betreuung}%
+\hgbDictionarySet{supervision}{english}{Supervision}%
 
-%% Use the default logo if unspecified (and not empty):
+%% Brand (logo and institution name) ------------------------------------------
 
-\ifthenelse{\equal{\hgb@LogoFile}{@unspecified}}%
-	{\renewcommand{\hgb@LogoFile}{hgbtheme-default-logo.pdf}}{}%
+% Usage: \hgb@SetBrand[<logo height>]{<logo file>}{<institution name german>}{<institution name english>}
+% The institution name is used on the title page unless \institution{..} is specified in the document.
+\newcommand{\hgb@SetBrand}[4][28mm]{%
+	\setlength{\hgb@LogoHeight}{#1}%	length defined in theme 'classic'
+	\renewcommand{\hgb@LogoFile}{#2}%
+	\hgbDictionarySet{institution-name}{german}{#3}%
+	\hgbDictionarySet{institution-name}{english}{#4}%
+}
+
+\renewcommand{\hgb@Institution}{\hgbDictionaryGet{institution-name}{\hgb@TitleLanguage}}
+
+% Current official brand:
+\hgb@SetBrand{hgbtheme-fhooe26-logo.pdf}{Fachhochschule Oberösterreich}{University of Applied Sciences Upper Austria}
+
+%% Fonts of the title page ----------------------------------------------------
+
+\newcommand{\hgb@TitlePageSizeNormal}{\fontsize{16}{19}\selectfont}%	author, thesis type
+\newcommand{\hgb@TitlePageSizeTitle}{\fontsize{24}{31.5}\selectfont}%	title (bold)
+\newcommand{\hgb@TitlePageSizeSmall}{\fontsize{14}{23}\selectfont}%		year of submission, supervision
 
 %% Initialization (optional) --------------------------------------------------
 
@@ -36,191 +59,94 @@
 	% add initialization code if needed
 }%
 
-%% Structure of front pages ---------------------------------------------------
-  
-\renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls
-  \hgb@MakeTitlePage%
-	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
-		{\hgb@MakeCompanyPage}%
-		{}%
-	\ifthenelse{\boolean{hgb@IsProposal}}%
-		{}% no copyright/declaration pages for proposals
-		{%
-			\hgb@MakeCopyrightPage%
-			\hgb@MakeDeclarationPage%
-		}%
-}%
+%% Title page -----------------------------------------------------------------
 
-%% Title page ---------------------------------------------------
-
-\newcommand{\hgb@MakeTitlePage}{%
+\renewcommand{\hgb@MakeTitlePage}{%
 \begin{titlepage}%
 	\hgb@TitlePageFont%
-
-	% title and subtitle --------------------------------------------------
-	\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
-		\begin{textblock}{15}[0,1](3,7)
-			\centering
-			{\LARGE\bfseries\linespread{1.0}\selectfont\hgb@Title\par}%
-			\ifthenelse{\equal{\hgb@SubTitle}{}}%
-				{}% no subtitle defined
-				{%
-					\par\vspace{4mm}% separating space between title and subtitle		
-					{\Large\bfseries\linespread{1.0}\selectfont\hgb@SubTitle\par}%
-				}%
-		\end{textblock}
-	\end{SwitchLanguage}%
-
-	% author --------------------------------------------------
-	\begin{textblock}{15}[0,0.5](3,9)
-		\centering
-		{\large\hgb@Author\par}%
-	\end{textblock}
+	\setlength{\parindent}{0pt}%
 
 	% logo --------------------------------------------------
-	\begin{textblock}{15}(3,11)
-		\centering
-		\hgb@MakeLogo%
+	\begin{textblock}{155}(25,12)
+		\hgb@MakeLogo%	defined in theme 'classic'
 	\end{textblock}
 
-	% thesis type ---------------------------------------------
-	\begin{textblock}{15}[0,0.5](3,16)
-		\centering
-		{\Large\@addspaces{\MakeUppercase{\hgb@ThesisName}}%
-		\ifthenelse{\boolean{hgb@IsProposal}}%
-			{\space\space(\@addspaces{\MakeUppercase{\hgb@ProposalName}})}{}\par}
+	% author, title, thesis type, academic degree (flowing text) --------------
+	\begin{textblock}{155}(25,64)
+		\raggedright
+		{\hgb@TitlePageSizeNormal\hgb@Author\par}%
+		\vspace{10.8mm}%
+		\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+			{\hgb@TitlePageSizeTitle\bfseries\hgb@FullTitle\par}%
+		\end{SwitchLanguage}%
+		\vspace{18.7mm}%
+		{\hgb@TitlePageSizeNormal\hgb@ThesisName%
+			\ifthenelse{\boolean{hgb@IsProposal}}{\space(\hgb@ProposalName)}{}\par}%
+		\ifthenelse{\equal{\hgb@AcademicDegree}{} \OR \boolean{hgb@IsProposal}}%
+			{}% no academic degree specified, or proposal (not submitted to obtain the degree)
+			{%
+				\vspace{3.2mm}%
+				{\fontsize{16}{25.8}\selectfont%
+					\hgbDictionaryGet{academic-degree-intro}{\hgb@TitleLanguage}\\
+					\hgb@AcademicDegree\par}%
+			}%
 	\end{textblock}
 
-	% program type, program name, institution, place of study ---------------------------------
-	\begin{textblock}{15}(3,18)
-		\centering
-		{\hgbDictionaryGet{submitted-to}{\hgb@TitleLanguage}\par}%
-		\vspace{1mm}%
-		{\large \hgb@ProgramType\par}%
-		\vspace{1mm}%
-		{\large\hgb@ProgramName\par}%
-		\vspace{4mm}%
-		{\hgbDictionaryGet{at-place-of-study}{\hgb@TitleLanguage}\par}%
-		\vspace{1mm}%
-		{\large\hgb@Institution\par}%
-		\vspace{1mm}%
-		{\large in \hgb@PlaceOfStudy\par}%
+	% program type, program name, institution, place of study ---------------
+	\begin{textblock}{155}(25,209.5)
+		\raggedright
+		\fontsize{16}{20.4}\selectfont
+		\hgb@ProgramType\par
+		\hgb@ProgramName\par
+		\hgb@Institution\par
+		\hgb@PlaceOfStudy\par
 	\end{textblock}
 
-	% submission year  ---------------------------------
-	\begin{textblock}{15}(3,23)
-		\centering
-		{\large\hgb@SubmissionYear\par}%
+	% year of submission, advisor(s) (not for internship reports), bottom aligned
+	\begin{textblock}{155}[0,1](25,280)
+		\raggedright
+		\hgb@TitlePageSizeSmall
+		\hgb@MakeSubmissionTable\par% defined below
 	\end{textblock}
-
-	% advisors(s) (do not show for internship report) -------------------------------------
-	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
-		{}%
-		{%
-			\begin{textblock}{15}(3,25)
-				\centering
-				\ifthenelse{\hgb@AdvisorCount > 0}%
-					{%
-						\@makeAdvisorTable% defined below
-					}
-					{%
-						\color{red}No advisor(s) specified!\\
-					}%
-			\end{textblock}
-		}%
 
 	\null%	required to tell LaTeX that there is a non-empty content box
 \end{titlepage}%
 }
 
-%% Logo Generation ----------------------------------------
+%% Submission Table (title page) ----------------------------------------
+%% Year of submission and advisors in one bottom-aligned table, so that all rows
+%% have the same distance and the table grows upwards with more advisors.
+%% Advisors without explicit role are labeled "Betreuung"/"Supervision";
+%% consecutive advisors with the same role share one label.
+%% (The company page of internship reports uses \@makeAdvisorTable of theme 'classic'.)
 
-\newlength{\hgb@LogoHeight}
-\setlength{\hgb@LogoHeight}{3\TPVertModule} % logo is 3 grid fields (30mm) high
+\newcounter{hgb@advisor}
 
-\newcommand{\hgb@MakeLogo}[0]{%
-\ifthenelse{\equal{\hgb@LogoFile}{}}%	check if \hgb@LogoFile is empty (not @unspecified)
-	{\vspace*{\hgb@LogoHeight}}%			skip logo
-	{\includegraphics[height=\hgb@LogoHeight]{\hgb@LogoFile}}%	insert logo
-}
-
-%% Advisor Table ----------------------------------------
-
-\newcommand{\@makeAdvisorTable}{%
-  \newcounter{C}%
-	\renewcommand{\arraystretch}{1.25}%
-	\setlength{\tabcolsep}{0.4em}%
-  \begin{tabular}{ll}%
-    \forloop{C}{1}{\not{\value{C} > \hgb@AdvisorCount}}{%   see 'forloop' package
-      \hgb@getAdvisorRole{\theC}: & \hgb@getAdvisorName{\theC}%
-      \ifthenelse{\value{C} < \hgb@AdvisorCount}{\\}{}% avoid extra \\ in last line!
-    }%
-  \end{tabular}%
-}
-
-% Copyright/License Page ----------------------------------------
-
-\newcommand{\hgb@MakeCopyrightPage}{%
-  \newpage
-  \thispagestyle{plain}
-  \rule{0mm}{1mm}
-  \vspace*{75mm}
-  \begin{center}
-  \textsf{\copyright\ Copyright\ \hgb@SubmissionYear\ \hgb@Author}
-  \end{center}
-  \vspace{8mm}
-  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}} % defined above
-}
-
-% Declaration Page ----------------------------------------
-
-\newcommand{\hgb@MakeDeclarationPage}{
-	\chapter{\hgbDictionaryGet{declaration-title}{\hgb@TitleLanguage}}
-	\noindent%
-	\hgbDictionaryGet{declaration-text}{\hgb@TitleLanguage}%
-	\par
-	\vspace{10mm}
-	\noindent
-	{\hgb@PlaceOfStudy, \hgbDictionaryGet{declaration-date}{\hgb@TitleLanguage}}%
-	\par
-	\vspace{12mm}
-	\noindent
-	\hgb@Author
-}
-
-%% Company Page for Internship Reports ------------------------------
-
-\newcommand{\hgb@MakeCompanyPage}{%
-	\newpage
-	\thispagestyle{plain}
-	\rule{0mm}{1mm}
-	\begin{center}
-		\vspace{25mm} 
-		{\hgbDictionaryGet{internship}{\hgb@TitleLanguage}:}
-		\\
-		\vspace{3mm}
-		{\Large\sf\hgb@CompanyName\\ \mbox{}}
-		\\
-		{\sf \hgb@CompanyUrl}
-		\\
-		\vspace{45mm} 
-		\ifthenelse{\hgb@AdvisorCount = 1}%
+\newcommand{\hgb@MakeSubmissionTable}{%
+	\begingroup
+	\renewcommand{\arraystretch}{1.0}%
+	\begin{tabular}[b]{@{}l@{\space}l@{}}%
+		\multicolumn{2}{@{}l@{}}{\hgbDictionaryGet{submission-year}{\hgb@TitleLanguage}: \hgb@SubmissionYear}%
+		\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+			{}% no advisors on the title page of internship reports
 			{%
-				{\hgbDictionaryGet{internship-contact-single}{\hgb@TitleLanguage}:}%
+				\ifthenelse{\hgb@AdvisorCount > 0}%
+					{%
+						\forloop{hgb@advisor}{1}{\not{\value{hgb@advisor} > \hgb@AdvisorCount}}{%   see 'forloop' package
+							\\
+							\ifthenelse{\value{hgb@advisor} > 1 \AND
+									\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgb@getAdvisorRole{\the\numexpr\value{hgb@advisor}-1\relax}}}%
+								{}% same role as the previous advisor
+								{%
+									\ifthenelse{\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}}}%
+										{\hgbDictionaryGet{supervision}{\hgb@TitleLanguage}:}% default role
+										{\hgb@getAdvisorRole{\thehgb@advisor}:}%
+								}%
+							& \hgb@getAdvisorName{\thehgb@advisor}%
+						}%
+					}%
+					{\\ \multicolumn{2}{@{}l@{}}{\color{red}No advisor(s) specified!}}%
 			}%
-			{}%
-		\ifthenelse{\hgb@AdvisorCount > 1}%
-			{%
-				{\hgbDictionaryGet{internship-contact-multiple}{\hgb@TitleLanguage}:}%
-			}%
-			{}%
-		\par\vspace{6mm}%
-		\ifthenelse{\hgb@AdvisorCount > 0}%
-			{%
-				\large\sffamily\@makeAdvisorTable% defined above
-			}%
-			{%
-				\color{red}No advisor(s) specified!\\
-			}%
-	\end{center}
+	\end{tabular}%
+	\endgroup
 }
