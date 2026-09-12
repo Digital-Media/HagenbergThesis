@@ -1,0 +1,112 @@
+# Builds and checks the sample documents, the manual and the CTAN bundle with the makefiles in dev/.
+#
+# - Pull requests to main and manual runs (any branch): build and check; the PDFs and log
+#   files are attached to the run as an artifact, nothing is committed.
+# - Push to main (i.e., merging a pull request): build, check, and commit the results
+#   (PDFs, ZIP files, CTAN bundle, date stamps) to main.
+#
+# The checks ('make check') fail on build errors, problematic LaTeX/Biber warnings and
+# PDF files that are not PDF/A-2b compliant (veraPDF).
+
+name: Build and check documents
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  # cancel outdated runs of a pull request, but never interrupt a build of main
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    name: Build and check
+    # the results committed by this workflow must not trigger another build
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    permissions:
+      contents: write
+    timeout-minutes: 45
+
+    steps:
+      - name: Install tools (make, zip, git, Java for veraPDF)
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends make zip unzip git curl ca-certificates default-jre-headless
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show versions
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          pdflatex --version | head -n 1
+          latexmk --version | tail -n 1
+          biber --version
+          java -version 2>&1 | head -n 1
+
+      - name: Build documents, manual and CTAN bundle (make all)
+        run: make -C dev all
+
+      - name: Install veraPDF
+        run: |
+          curl -sSL -o /tmp/verapdf-installer.zip https://software.verapdf.org/releases/verapdf-installer.zip
+          unzip -q /tmp/verapdf-installer.zip -d /tmp/verapdf-installer
+          INSTALLER=$(find /tmp/verapdf-installer -name 'verapdf-izpack-installer-*.jar' | head -n 1)
+          cat > /tmp/verapdf-auto-install.xml <<'EOF'
+          <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+          <AutomatedInstallation langpack="eng">
+            <com.izforge.izpack.panels.htmlhello.HTMLHelloPanel id="welcome"/>
+            <com.izforge.izpack.panels.target.TargetPanel id="install_dir">
+              <installpath>/opt/verapdf</installpath>
+            </com.izforge.izpack.panels.target.TargetPanel>
+            <com.izforge.izpack.panels.packs.PacksPanel id="sdk_pack_select">
+              <pack index="0" name="veraPDF GUI" selected="true"/>
+              <pack index="1" name="veraPDF Mac and *nix Scripts" selected="true"/>
+            </com.izforge.izpack.panels.packs.PacksPanel>
+            <com.izforge.izpack.panels.install.InstallPanel id="install"/>
+            <com.izforge.izpack.panels.finish.FinishPanel id="finish"/>
+          </AutomatedInstallation>
+          EOF
+          java -jar "$INSTALLER" /tmp/verapdf-auto-install.xml
+          # use the installed start script, or call the CLI class directly if there is none
+          if [ -x /opt/verapdf/verapdf ]; then
+            ln -sf /opt/verapdf/verapdf /usr/local/bin/verapdf
+          else
+            printf '#!/bin/sh\nexec java -cp "/opt/verapdf/etc:/opt/verapdf/bin/*" -Dfile.encoding=UTF8 org.verapdf.apps.GreenfieldCliWrapper "$@"\n' > /usr/local/bin/verapdf
+            chmod +x /usr/local/bin/verapdf
+          fi
+          verapdf --version | head -n 1
+
+      - name: Check build results (make check)
+        run: make -C dev check VERAPDF=verapdf
+
+      - name: Upload PDFs and log files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: documents-${{ github.run_number }}
+          path: |
+            documents/*/main.pdf
+            manual/main.pdf
+            dev/logs/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Commit and push build results
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "Rebuild documents, manual and CTAN bundle" -m "Automatic build of ${GITHUB_SHA}."
+          git push

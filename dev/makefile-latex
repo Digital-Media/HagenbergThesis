@@ -36,7 +36,15 @@ $(LATEXMAIN).pdf:
 #	-$(PDFLATEX) $(LATEXFLAGS) $(LATEXMAIN)
 #
 #	Experimental: using latexmk (comes with MikTeX et al.):
-	@latexmk -pdf -silent $(LATEXMAIN)
+#	If LOGDIR is set (absolute path), the log files are kept there for 'make check',
+#	also if the build fails:
+	@latexmk -pdf -silent $(LATEXMAIN); status=$$?; \
+	if [ -n "$(LOGDIR)" ]; then \
+		mkdir -p "$(LOGDIR)"; \
+		cp -f $(LATEXMAIN).log "$(LOGDIR)/$(LATEXJOB).log" 2>/dev/null || true; \
+		cp -f $(LATEXMAIN).blg "$(LOGDIR)/$(LATEXJOB).blg" 2>/dev/null || true; \
+	fi; \
+	exit $$status
 	@latexmk -c -silent $(LATEXMAIN)
 #
 

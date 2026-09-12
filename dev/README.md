@@ -68,9 +68,9 @@ It is also possible to execute specific parts of the build process. Call `make` 
 Adds `/dev/texmf/` as a TEXMF root directory. This should be run once before building documents locally in `/documents/`. Note that this is not executed during a normal (full) `make`.
 - `make uninittex`: <br>
 Unlinks `/dev/texmf/` as a TEXMF root directory. This is needed for building documents in `/documents/` from global `hagenberg-thesis` package files installed in the local LaTeX installation (distributed via CTAN).
-- `make setdate`: <br>
+- `make setdates`: <br>
 Sets the version number to the current date in all `.sty` and `.cls` files.
-- `make build`: <br>
+- `make documents`: <br>
 Builds all sample documents in the `documents` directory.
 - `make <DocumentName>`: <br>
 Builds a single sample document. Replace `<DocumentName>` with the respective document's directory name. E.g., use `make HgbThesisTutorialDE` to build the thesis tutorial document or `make HgbArticle` to build the article document.
@@ -78,6 +78,17 @@ Builds a single sample document. Replace `<DocumentName>` with the respective do
 Builds the package manual.
 - `make ctan`: <br>
 Collects all files required for the CTAN distribution (in directory `ctan`).
+- `make check`: <br>
+Checks the results of a previous build: all PDF files exist, the LaTeX and Biber log files (kept in `dev/logs/` during each build) contain no errors or problematic warnings (e.g., undefined references or citations, missing characters, warnings of the package itself), and all PDF files are PDF/A-2b compliant.
+The PDF/A check requires [veraPDF](https://verapdf.org/software/): use `make check VERAPDF=/path/to/verapdf` if it is not on the path, or `make check VERAPDF=skip` to skip it.
+
+### Continuous Integration
+
+The GitHub Actions workflow `.github/workflows/build.yml` uses the same makefiles in a current TeX Live:
+
+- For every **pull request** to `main`, it runs `make all` and `make check`. The pull request should only be merged if this check passes. The PDFs and log files are attached to the workflow run as an artifact (see the *Summary* page of the run).
+- The workflow can also be started **manually** for any branch (*Actions* ➔ *Build and check documents* ➔ *Run workflow*), e.g., to build the PDFs of a branch without a pull request.
+- After a **push to `main`** (i.e., merging a pull request), it runs the same build and check and commits the results (date stamps, PDFs, ZIP files, CTAN bundle) to `main`. Hence, pull requests should only contain source changes, not generated files.
 
 ### Testing Changes
 
