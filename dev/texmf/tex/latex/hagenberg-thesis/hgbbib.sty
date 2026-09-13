@@ -94,7 +94,8 @@
 \newcommand{\@AssignToBibCategory}[1]% argument 1: entry key 
 {\ifthenelse{%
 		\ifentrytype{online}\OR
-		\ifentrytype{www}}
+		\ifentrytype{www}\OR
+		\ifentrytype{electronic}}
 	{\addtocategory{online}{#1}}%
 {\ifthenelse{%
 		\ifentrytype{movie}\OR
@@ -104,8 +105,7 @@
 		\ifentrytype{image}}
 	{\addtocategory{media}{#1}}%
 {\ifthenelse{%
-		\ifentrytype{software}\OR
-		\ifentrytype{electronic}}
+		\ifentrytype{software}}
 	{\addtocategory{software}{#1}}%
 	{\addtocategory{literature}{#1}}% else (default)
 }}}
@@ -148,12 +148,12 @@
 		}
 		\map{ % software entry types
 			\pertype{software}
-			\pertype{electronic}
 			\step[fieldset=presort, fieldvalue = {C}]
 		}
-		\map{ % online entry types
+		\map{ % online entry types (electronic and www are aliases of online in biblatex)
 			\pertype{online}
 			\pertype{www}
+			\pertype{electronic}
 			\step[fieldset=presort, fieldvalue = {D}]
 		}
 	}
@@ -234,7 +234,7 @@
 \DeclareBibliographyAlias{movie}{misc}
 \DeclareBibliographyAlias{audio}{misc}
 \DeclareBibliographyAlias{software}{misc}
-\DeclareBibliographyAlias{electronic}{misc}
+\DeclareBibliographyAlias{electronic}{online}	% alias of online (as in biblatex), not misc
 \DeclareBibliographyAlias{image}{misc}
 \DeclareBibliographyAlias{standard}{misc}
 \DeclareBibliographyAlias{legislation}{misc}
