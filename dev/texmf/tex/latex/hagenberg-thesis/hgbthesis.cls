@@ -127,6 +127,7 @@
 \LoadClass[a4paper,11pt,\hgb@@pagelayout]{book}
 \RequirePackage[top=36mm,bottom=40mm,left=32mm,right=32mm]{geometry} %showframe
 \RequirePackage{hgb}
+\renewcommand*{\@pnumwidth}{2em}	% width of page numbers in the TOC, enough for roman numbers like 'viii' (default 1.55em)
 %\newcommand{\hgb@TitlePageFont}{\sffamily}
 \renewcommand{\hgb@TitlePageFont}{\sffamily}
 
@@ -318,6 +319,7 @@
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
 \RequirePackage{hgbdict}
+\RequirePackage{hgbaiusage}	% documentation of AI tool usage (environments 'aiusage', 'aiusagedetails')
 
 \hgb@UseTheme{\@ThemeID}%		load theme style file
 

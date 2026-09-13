@@ -864,14 +864,17 @@ depending on the above settings:
         \toprule
         \emph{Page} & \emph{Content} \\
         \midrule
-        \textrm{i}   & Title page \\
-        \textrm{ii}  & Advisor page (only when \verb!\advisor! is specified) \\
-        \textrm{iii} & Copyright page \\
-        \textrm{iv}  & Affidavit \\
+        --           & Title page (without page number) \\
+        \textrm{i}   & Copyright page \\
+        \textrm{ii}  & Affidavit \\
         \bottomrule
     \end{tabular}
 \end{center}
 %
+The page numbers apply to the single-sided layout. In internship reports, the
+title page is followed by an additional page with details of the internship.
+The documentation of AI tools usage is included directly after
+\verb!\maketitle! (see Section~\ref{sec:DocumentingAIUsage}).
 The copyright page%
 \footnote{If the \texttt{proposal} option is used, the pages for copyright and
 affidavit are omitted.}

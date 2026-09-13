@@ -1,0 +1,290 @@
+%% hgbaiusage.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wolfgang Hochleitner
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+%% This package provides the documentation of the usage of generative AI tools in a thesis,
+%% which is placed after the affidavit (i.e., after \maketitle):
+%%   - environment 'aiusage': short form, composed of text modules,
+%%   - environment 'aiusagedetails': detailed form with confirmations and a table of activities.
+%% All texts are printed in the title page language (class option 'titlelanguage').
+%%
+%% The texts of the detailed form are in the separate file hgbaiusage-cognisance.sty, which is licensed under
+%% CC BY-SA 4.0 (adapted from Gimpel et al., 2023). This file itself is licensed like the package (CC BY 4.0).
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgbaiusage}[2026/09/12]%%AUTO
+
+\RequirePackage{hgbdict}
+\RequirePackage{etoolbox}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{amssymb}	% check boxes (\square, \boxtimes)
+\RequirePackage{hgbaiusage-cognisance}	% texts of the detailed form (CC BY-SA 4.0)
+
+\newcommand{\hgb@AIUsageGet}[1]{\hgbDictionaryGet{#1}{\hgb@TitleLanguage}}
+
+%% ----------------------------------------------------------------------------
+%% Short form (text modules)
+%% ----------------------------------------------------------------------------
+
+\hgbDictionarySet{aiusage-title}{english}{Documentation of AI Tools Usage}
+\hgbDictionarySet{aiusage-title}{german}{Dokumentation der Nutzung von KI-Tools}
+
+\hgbDictionarySet{aiusage-intro}{english}{%
+Regarding the use of generative artificial intelligence tools such as chatbots, image generators,
+programming applications and paraphrasing or translation tools, I hereby document that}
+\hgbDictionarySet{aiusage-intro}{german}{%
+Über den Einsatz von Hilfsmitteln der generativen Künstlichen Intelligenz wie Chatbots, Bildgeneratoren,
+Programmieranwendungen, Paraphrasier- oder Übersetzungstools dokumentiere ich, dass}
+
+\hgbDictionarySet{aiusage-none}{english}{%
+I did not use any generative artificial intelligence tools in writing this document.}
+\hgbDictionarySet{aiusage-none}{german}{%
+ich keinerlei Hilfsmittel der generativen Künstlichen Intelligenz beim Verfassen dieser Arbeit benutzt habe.}
+
+\hgbDictionarySet{aiusage-used}{english}{I used generative artificial intelligence tools, to}
+\hgbDictionarySet{aiusage-used}{german}{ich Hilfsmittel der generativen Künstlichen Intelligenz verwendet habe,}
+
+% Purposes for \aiusedfor{<key>}:
+\hgbDictionarySet{aiusage-purpose-ideas}{english}{%
+gather initial ideas for potential research questions and relevant theories.}
+\hgbDictionarySet{aiusage-purpose-ideas}{german}{%
+um erste Ideen für mögliche Forschungsfragen und relevante Theorien zu sammeln.}
+
+\hgbDictionarySet{aiusage-purpose-literature-search}{english}{search for literature.}
+\hgbDictionarySet{aiusage-purpose-literature-search}{german}{um Literatur zu finden.}
+
+\hgbDictionarySet{aiusage-purpose-literature-understanding}{english}{%
+better understand academic literature (e.g., summaries).}
+\hgbDictionarySet{aiusage-purpose-literature-understanding}{german}{%
+um Literatur besser nachvollziehen zu können (Zusammenfassungen, etc.).}
+
+\hgbDictionarySet{aiusage-purpose-proofreading}{english}{%
+proofread parts of the thesis and improve the linguistic style.}
+\hgbDictionarySet{aiusage-purpose-proofreading}{german}{%
+um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
+
+\newcommand{\hgb@AIUsagePurposes}{ideas, literature-search, literature-understanding, proofreading}
+
+\newcount\hgb@AIUsageItems
+\newif\ifhgb@AIUsageNone
+
+% Usage:
+%   \begin{aiusage}
+%     \aiusednone                        % no AI tools used, or any number of:
+%     \aiusedfor{<key>}                  % predefined purpose (see \hgb@AIUsagePurposes)
+%     \aiusedforother{<text>}            % other purpose, continuing the sentence like the predefined ones
+%   \end{aiusage}
+\newenvironment{aiusage}{%
+	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
+	\chapter{\hgb@AIUsageGet{aiusage-title}}%
+	\global\hgb@AIUsageItems=\z@
+	\global\hgb@AIUsageNonefalse
+	\noindent\hgb@AIUsageGet{aiusage-intro}\space\ignorespaces
+}{%
+	\ifnum\hgb@AIUsageItems>\z@
+		\end{itemize}%
+	\else
+		\ifhgb@AIUsageNone\else
+			\PackageWarning{hgbaiusage}{No usage of AI tools documented in environment 'aiusage'.\MessageBreak
+				Use \string\aiusednone, \string\aiusedfor{...} or \string\aiusedforother{...}}%
+		\fi
+	\fi
+	\par
+	\end{SwitchLanguage}%
+}
+
+\newcommand{\aiusednone}{%
+	\ifnum\hgb@AIUsageItems>\z@
+		\PackageError{hgbaiusage}{\string\aiusednone\space cannot be combined with \string\aiusedfor}%
+			{Remove either \string\aiusednone\space or all \string\aiusedfor/\string\aiusedforother\space entries.}%
+	\else
+		\global\hgb@AIUsageNonetrue
+		\hgb@AIUsageGet{aiusage-none}%
+	\fi
+	\ignorespaces
+}
+
+\newcommand{\aiusedfor}[1]{%
+	\ifcsname hgb@dict-aiusage-purpose-#1-english\endcsname
+		\hgb@AIUsageItem{\hgb@AIUsageGet{aiusage-purpose-#1}}%
+	\else
+		\PackageError{hgbaiusage}{Unknown purpose '#1' in \string\aiusedfor}%
+			{Use one of: \hgb@AIUsagePurposes, or \string\aiusedforother{...} for other purposes.}%
+	\fi
+}
+
+\newcommand{\aiusedforother}[1]{\hgb@AIUsageItem{#1}}
+
+\newcommand{\hgb@AIUsageItem}[1]{%
+	\ifhgb@AIUsageNone
+		\PackageError{hgbaiusage}{\string\aiusedfor\space cannot be combined with \string\aiusednone}%
+			{Remove either \string\aiusednone\space or all \string\aiusedfor/\string\aiusedforother\space entries.}%
+	\else
+		\ifnum\hgb@AIUsageItems=\z@
+			\hgb@AIUsageGet{aiusage-used}%
+			\begin{itemize}%
+		\fi
+		\global\advance\hgb@AIUsageItems by \@ne
+		\item #1%
+	\fi
+}
+
+%% ----------------------------------------------------------------------------
+%% Detailed form (texts in hgbaiusage-cognisance.sty, CC BY-SA 4.0)
+%% ----------------------------------------------------------------------------
+
+% Bullet point in the description of an activity (used by the texts):
+\newcommand{\hgb@AIUsagePoint}[1]{%
+	\par\noindent\hangindent=1em\hangafter=1\makebox[1em][l]{\textbullet}\hspace{0pt}#1\par}
+
+\newcommand{\hgb@AIUsageActivities}{ideas,literature,methodology,coding,data,interpretation,structure,generation,translation,editing,references}
+
+\newcommand{\hgb@AIUsageChecked}{\ensuremath{\boxtimes}}
+\newcommand{\hgb@AIUsageUnchecked}{\ensuremath{\square}}
+
+% Usage (the environment only collects the entries, the form is created at its end):
+%   \begin{aiusagedetails}
+%     \aiconfirm{accuracy}                               % confirm statements (check boxes)
+%     \aiconfirm{responsibility}
+%     \aiactivity{<key>}{<tools>}{<description>}         % any number, keys see \hgb@AIUsageActivities
+%     \aifurtheruse{<text>}                              % optional
+%   \end{aiusagedetails}
+\newenvironment{aiusagedetails}{%
+	\hgb@AIUsageDetailsReset
+	\setbox\z@\vbox\bgroup	% discard anything else than the commands above
+}{%
+	\egroup
+	\hgb@MakeAIUsageDetails
+}
+
+\newcommand{\hgb@AIUsageDetailsReset}{%
+	\csgdef{hgb@AIUsageConfirm@accuracy}{\hgb@AIUsageUnchecked}%
+	\csgdef{hgb@AIUsageConfirm@responsibility}{\hgb@AIUsageUnchecked}%
+	\@for\hgb@tmpkey:=\hgb@AIUsageActivities\do{%
+		\csgdef{hgb@AIUsageTools@\hgb@tmpkey}{}%
+		\csgdef{hgb@AIUsageUse@\hgb@tmpkey}{}%
+	}%
+	\gdef\hgb@AIUsageFurther{}%
+}
+
+\newcommand{\aiconfirm}[1]{%
+	\ifcsname hgb@dict-aiusagedetails-statement-#1-english\endcsname
+		\csgdef{hgb@AIUsageConfirm@#1}{\hgb@AIUsageChecked}%
+	\else
+		\PackageError{hgbaiusage}{Unknown statement '#1' in \string\aiconfirm}%
+			{Use 'accuracy' or 'responsibility'.}%
+	\fi
+}
+
+% Repeated entries for the same activity are appended.
+\newcommand{\aiactivity}[3]{%
+	\ifcsname hgb@dict-aiusage-activity-#1-english\endcsname
+		\ifcsempty{hgb@AIUsageTools@#1}%
+			{\csgdef{hgb@AIUsageTools@#1}{#2}}%
+			{\csgappto{hgb@AIUsageTools@#1}{\par #2}}%
+		\ifcsempty{hgb@AIUsageUse@#1}%
+			{\csgdef{hgb@AIUsageUse@#1}{#3}}%
+			{\csgappto{hgb@AIUsageUse@#1}{\par #3}}%
+	\else
+		\PackageError{hgbaiusage}{Unknown activity '#1' in \string\aiactivity}%
+			{Use one of: \hgb@AIUsageActivities.}%
+	\fi
+}
+
+\newcommand{\aifurtheruse}[1]{%
+	\ifdefempty{\hgb@AIUsageFurther}%
+		{\gdef\hgb@AIUsageFurther{#1}}%
+		{\gappto\hgb@AIUsageFurther{\par #1}}%
+}
+
+\newcommand{\hgb@AIUsageStatementRow}[1]{%
+	\hgb@AIUsageGet{aiusagedetails-statement-#1} & {\large\csuse{hgb@AIUsageConfirm@#1}} \\}
+
+\newcommand{\hgb@AIUsageHead}{%
+	\textbf{\hgb@AIUsageGet{aiusagedetails-activity}} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-description}} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-tools}}\textsuperscript{1} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-usage}}\newline\hgb@AIUsageGet{aiusagedetails-usage-note} \\}
+
+\newcommand{\hgb@AIUsageRow}[1]{%
+	\textbf{\hgb@AIUsageGet{aiusage-activity-#1}} &
+	\hgb@AIUsageGet{aiusage-activity-#1-desc} &
+	\csuse{hgb@AIUsageTools@#1} &
+	\csuse{hgb@AIUsageUse@#1} \\}
+
+\newcommand{\hgb@MakeAIUsageDetails}{%
+	\ifcsequal{hgb@AIUsageConfirm@accuracy}{hgb@AIUsageUnchecked}%
+		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed in environment 'aiusagedetails'.\MessageBreak
+			Use \string\aiconfirm{accuracy}}}{}%
+	\ifcsequal{hgb@AIUsageConfirm@responsibility}{hgb@AIUsageUnchecked}%
+		{\PackageWarning{hgbaiusage}{Statement 'responsibility' not confirmed in environment 'aiusagedetails'.\MessageBreak
+			Use \string\aiconfirm{responsibility}}}{}%
+	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
+	\chapter{\hgb@AIUsageGet{aiusagedetails-title}}%
+	%
+	\section*{\hgb@AIUsageGet{aiusagedetails-responsible}}%
+	\noindent\hgb@AIUsageGet{aiusagedetails-confirm}\par
+	\medskip
+	\noindent
+	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-36mm-2\tabcolsep\relax}%
+		>{\centering\arraybackslash}p{36mm}@{}}
+		\toprule
+		\textbf{\hgb@AIUsageGet{aiusagedetails-statements}} & \textbf{\hgb@AIUsageGet{aiusagedetails-confirmation}} \\
+		\midrule
+		\hgb@AIUsageStatementRow{accuracy}
+		\addlinespace
+		\hgb@AIUsageStatementRow{responsibility}
+		\bottomrule
+	\end{tabular}\par
+	%
+	\section*{\hgb@AIUsageGet{aiusagedetails-activities}}%
+	\noindent\hgb@AIUsageGet{aiusagedetails-activities-note}\par
+	\begingroup
+	\footnotesize
+	\setlength{\tabcolsep}{4pt}%
+	\setlength{\LTleft}{\z@}%
+	\setlength{\LTright}{\fill}%
+	\setlength{\LTpost}{\smallskipamount}%
+	% \hspace{0pt} allows hyphenation of the first word in a cell (not in column 2, which starts with \par)
+	\begin{longtable}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.19\linewidth-\tabcolsep\relax}%
+		>{\raggedright\arraybackslash}p{\dimexpr0.37\linewidth-2\tabcolsep\relax}%
+		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.16\linewidth-2\tabcolsep\relax}%
+		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.28\linewidth-\tabcolsep\relax}@{}}
+		\toprule
+		\hgb@AIUsageHead
+		\midrule
+		\endfirsthead
+		\toprule
+		\hgb@AIUsageHead
+		\midrule
+		\endhead
+		\bottomrule
+		\endfoot
+		\bottomrule
+		\endlastfoot
+		\hgb@AIUsageRow{ideas}\midrule
+		\hgb@AIUsageRow{literature}\midrule
+		\hgb@AIUsageRow{methodology}\midrule
+		\hgb@AIUsageRow{coding}\midrule
+		\hgb@AIUsageRow{data}\midrule
+		\hgb@AIUsageRow{interpretation}\midrule
+		\hgb@AIUsageRow{structure}\midrule
+		\hgb@AIUsageRow{generation}\midrule
+		\hgb@AIUsageRow{translation}\midrule
+		\hgb@AIUsageRow{editing}\midrule
+		\hgb@AIUsageRow{references}
+	\end{longtable}%
+	\noindent\textsuperscript{1}\,\hgb@AIUsageGet{aiusagedetails-tools-note}\par
+	\endgroup
+	%
+	\bigskip
+	\noindent\textbf{\hgb@AIUsageGet{aiusagedetails-further}}\par
+	\noindent\hgb@AIUsageFurther\par
+	\bigskip
+	{\footnotesize\noindent\hgb@AIUsageGet{aiusagedetails-source}\par}%
+	\end{SwitchLanguage}%
+}

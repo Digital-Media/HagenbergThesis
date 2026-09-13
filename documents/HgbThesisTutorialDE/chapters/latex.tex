@@ -893,15 +893,17 @@ automatisch generiert, abhängig von den obigen Einstellungen:
         \toprule
         \emph{Seite} & \emph{Inhalt} \\
         \midrule
-        \textrm{i}   & Titelseite \\
-        \textrm{ii}  & Betreuer*innenseite (nur wenn \verb!\advisor!
-                       angegeben) \\
-        \textrm{iii} & Copyright-Seite\\
-        \textrm{iv}  & Eidesstattliche Erklärung\\
+        --           & Titelseite (ohne Seitennummer) \\
+        \textrm{i}   & Copyright-Seite \\
+        \textrm{ii}  & Eidesstattliche Erklärung \\
         \bottomrule
     \end{tabular}
 \end{center}
 %
+Die Seitennummern gelten für das einseitige Layout. Bei Praktikumsberichten
+folgt auf die Titelseite zusätzlich eine Seite mit Angaben zur
+Praktikumsstelle. Direkt nach \verb!\maketitle! wird die Dokumentation der
+Nutzung von KI-Tools eingebunden (siehe Abschnitt~\ref{sec:KIDokumentation}).
 Auf der Copyright-Seite%
 \footnote{Bei Verwendung der Option \texttt{proposal} werden die Seiten für
 Copyright und Eidesstattliche Erklärung weggelassen.}
