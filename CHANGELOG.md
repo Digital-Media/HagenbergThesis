@@ -45,6 +45,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - 2026/09/11: Fixed the default title page language: without `titlelanguage` option, the front pages now use the main document language as documented (previously they were always English).
 - 2026/09/11: Fixed the wrong accent character for "Exposé" in the German dictionary entry of `hgbdict.sty` and corrected its file header.
 - 2026/09/11: Fixed outdated option descriptions in `HgbThesisTutorialDE`/`HgbThesisTutorialEN` (default language is `english`, key-value syntax, missing `phd` type, `titlelanguage` option), wrong language defaults in the comments of the German sample documents, and minor inconsistencies in the manual.
+- 2026/09/12: [#216](https://github.com/Digital-Media/HagenbergThesis/issues/216): `hgbthesis` and `hgbreport` now load the T1 font encoding and the Latin Modern fonts themselves (with pdfLaTeX only), like `hgbarticle`. Previously these were only loaded by `hgbpdfa`, so documents without PDF/A output fell back to OT1 and Computer Modern (umlauts copied from the PDF as separate accents, poorer hyphenation of words with umlauts). Note that documents without `hgbpdfa` may therefore show slightly different line and page breaks. Documents with `hgbpdfa` are not affected.
 
 ## [2025/02/24]
 

@@ -671,8 +671,11 @@ The environment only collects the following entries; the form is created at its 
 Package \texttt{hgbpdfa} contains definitions for generating PDF/A-compliant 
 (PDF/A-2b) output files. It is based on the emerging \latex-3 \texttt{pdfmanagement} package.%
 \footnote{\url{https://ctan.org/pkg/pdfmanagement-testphase}}
-\texttt{hgbpdfa.sty} is automatically loaded by the predefined document \texttt{.cls} files,
-\ie, they all produce PDF/A-compliant output.
+\texttt{hgbpdfa.sty} is loaded by \texttt{hgbarticle.cls}. For \texttt{hgbthesis} and
+\texttt{hgbreport}, it is loaded at the very beginning of the main document, \ie, before
+\verb!\documentclass! (as in all sample documents), and may be omitted if no PDF/A output is
+required. The font encoding (\texttt{T1}) and the Latin Modern fonts (\texttt{lmodern}) are loaded
+by all classes independently of \texttt{hgbpdfa} when compiling with \texttt{pdflatex}.
 PDF metadata insertion is done with the associated \texttt{hyperref-generic} 
 module (using \verb!\hypersetup!) in \texttt{hgb.sty}).
 

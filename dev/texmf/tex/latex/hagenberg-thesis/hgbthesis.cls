@@ -23,6 +23,15 @@
 \else{\errmessage{hgbthesis: *** LaTeX NOT running in PDF mode ***}}
 \fi
 
+% Font encoding and fonts, independent of 'hgbpdfa' (pdfTeX only; LuaTeX and XeTeX use Unicode fonts).
+% fontenc is not loaded again if T1 is already the default encoding (e.g., set by 'hgbpdfa'), since reloading it
+% changes the layout slightly (\@ifpackageloaded cannot be used, because fontenc allows to be loaded multiple times).
+\RequirePackage{iftex}
+\ifPDFTeX
+	\ifthenelse{\equal{\encodingdefault}{T1}}{}{\RequirePackage[T1]{fontenc}}
+	\RequirePackage{lmodern}
+\fi
+
 \RequirePackage{hgbvars}	% declares shared variables, booleans, and class option helpers
 
 %% Commands for Title Pages (used in class options) ---------------------------
