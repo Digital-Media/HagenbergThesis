@@ -157,11 +157,11 @@ Gleichzeitig bergen solche Tools auch Risiken. Insbesondere sollen sie
 Gefahr, dass fehlerhafte Texte entstehen oder Erkenntnisse unkritisch
 übernommen werden. Des Weiteren können KI-Modelle Vorurteile reproduzieren oder
 Beweisführungen verwenden, die einer gründlichen wissenschaftlichen Arbeitsweise
-widersprechen. Nicht zuletzt ist ein mit einem KI-Tool generierter Text nicht
-(wie etwa in der Erklärung der mit dieser Vorlage generierten Dokumenten
-ersichtlich) "selbstständig und ohne fremde Hilfe verfasst", was dem Gedanken
-einer Abschlussarbeit als eigenständige wissenschaftliche Leistung
-entgegensteht.
+widersprechen. Nicht zuletzt wird in der Eidesstattlichen Erklärung (wie in
+den mit dieser Vorlage erstellten Dokumenten) bestätigt, dass die Arbeit
+"selbständig verfasst" wurde und "nur die angegebenen Quellen und Hilfsmittel"
+verwendet wurden. Ein mit einem KI-Tool generierter Text steht dem Gedanken
+einer Abschlussarbeit als eigenständige wissenschaftliche Leistung entgegen.
 
 \subsection{Wichtige Punkte im Umgang mit KI-Tools}
 
@@ -169,11 +169,13 @@ entgegensteht.
     \item KI-Tools im Text ausschließlich einsetzen, um die eigenen
     Formulierungen zu überarbeiten oder um sprachliche Verbesserungen
     vorzunehmen.
-    \item Den Einsatz von KI-Assistenten dokumentieren, wenn große Teile der
-    Ausführungen oder Überarbeitungen wesentlich mithilfe eines solchen Tools
-    entstanden sind.
-    \item Diese Dokumentention kann \zB durch eine Anmerkung in einer Fußnote
-    oder am Beginn eines Abschnitts erfolgen. Die Angabe des konkret
+    \item Den Einsatz von KI-Tools in der Dokumentation der Nutzung von
+    KI-Tools am Beginn der Arbeit angeben (siehe
+    Abschnitt~\ref{sec:KIDokumentation}).
+    \item Sind große Teile der Ausführungen oder Überarbeitungen wesentlich
+    mithilfe eines solchen Tools entstanden, dies zusätzlich an der
+    betreffenden Stelle dokumentieren, \zB durch eine Anmerkung in einer
+    Fußnote oder am Beginn eines Abschnitts. Die Angabe des konkret
     verwendeten Prompts ist sinnvoll, wenn dieser über ein einfaches
     "überarbeite diesen Absatz" hinausgeht.
     \item Eine Quellenangabe mit dem KI-Werkzeug als Autor*in sollte vermieden
@@ -185,3 +187,54 @@ entgegensteht.
     Autor*in der Arbeit. Es ist daher wichtig, die Ergebnisse kritisch zu
     prüfen, hinterfragen und gegebenenfalls zu korrigieren.
 \end{itemize}
+
+\subsection{Dokumentation der Nutzung von KI-Tools}
+\label{sec:KIDokumentation}
+
+Viele Hochschulen verlangen, dass die Nutzung von KI-Tools in der Arbeit
+dokumentiert wird. In den mit dieser Vorlage erstellten Dokumenten folgt dazu
+auf die Eidesstattliche Erklärung eine eigene Seite \emph{Dokumentation der
+Nutzung von KI-Tools} mit den Textbausteinen der FH Oberösterreich. Sie wird mit
+der Umgebung \texttt{aiusage} in der Datei \verb!front/ki-dokumentation.tex!
+erzeugt, die in \verb!main.tex! direkt nach \verb!\maketitle! eingebunden ist.
+Darin werden die zutreffenden Textbausteine ausgewählt und die unzutreffenden
+gelöscht, \zB:
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{aiusage}
+  \aiusedfor{literature-search}
+  \aiusedfor{proofreading}
+\end{aiusage}
+\end{LaTeXCode}
+%
+Wurden keine KI-Tools verwendet, wird stattdessen \verb!\aiusednone!
+angegeben. Weitere Textbausteine sind:
+%
+\begin{itemize}
+    \item \verb!\aiusedfor{ideas}!: erste Ideen für Forschungsfragen und
+    Theorien sammeln,
+    \item \verb!\aiusedfor{literature-understanding}!: Literatur besser
+    nachvollziehen,
+    \item \verb!\aiusedforother{um ... zu ...}!: andere Anwendungen.
+\end{itemize}
+%
+Arten der Nutzung, die in dieser Liste nicht vorkommen, sind jedoch unbedingt
+vorab mit der Betreuungsperson zu klären.
+
+Verlangt der Studiengang eine ausführlichere Dokumentation, wird stattdessen
+die Langfassung verwendet. Sie ist in \verb!front/ki-dokumentation.tex! bereits
+auskommentiert vorbereitet und erzeugt ein Formular, in dem der
+verantwortungsvolle Umgang mit KI-Tools bestätigt und für einzelne Tätigkeiten
+(\zB Literaturrecherche, Coding oder Korrekturlesen) angegeben wird, welche
+KI-Tools wofür verwendet wurden:
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{aiusagedetails}
+  \aiconfirm{accuracy}
+  \aiconfirm{responsibility}
+  \aiactivity{coding}{GitHub Copilot}{Generierung von Testfunktionen (Kapitel 4)}
+  \aiactivity{editing}{DeepL Write}{Korrekturlesen der Kapitel 1--5}
+\end{aiusagedetails}
+\end{LaTeXCode}
+%
+Alle Befehle und Tätigkeiten sind im Manual des Pakets beschrieben.

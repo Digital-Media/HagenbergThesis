@@ -51,6 +51,10 @@ and its development repository.%
 The package is made available under the terms of the Creative Commons
 Attribution 4.0 International Public License.%
 \footnote{\url{https://creativecommons.org/licenses/by/4.0/legalcode}}
+The only exception are the texts of the detailed documentation of AI tool usage in
+\texttt{hgbaiusage-cognisance.sty} (see Sec.~\ref{sec:AIUsage}), which are licensed under the
+Creative Commons Attribution-ShareAlike 4.0 International Public License.%
+\footnote{\url{https://creativecommons.org/licenses/by-sa/4.0/legalcode}}
 
 
 \section{Document classes}
@@ -296,6 +300,8 @@ independently of the document classes listed above:
 \begin{itemize}
   \item \texttt{hgb.sty}: language and date setup, custom commands;
   \item \texttt{hgbabbrev.sty}: various abbreviation macros;
+  \item \texttt{hgbaiusage.sty}: documentation of AI tool usage (for \texttt{hgbthesis}; texts of the
+    detailed form in \texttt{hgbaiusage-cognisance.sty}, CC BY-SA 4.0);
   \item \texttt{hgbalgo.sty}: additions to \texttt{algpseudocodex} package;
   \item \texttt{hgbbib.sty}: bibliography setup;
   \item \texttt{hgbdict.sty}: language dictionary functions;
@@ -548,6 +554,116 @@ package), \eg, by
     \definecolor{AlgKeywordColor}{named}{black}
     \definecolor{AlgProcedureColor}{rgb}{0.0, 0.5, 0.0}     % dark green
 \end{LaTeXCode}
+
+
+\subsection{Documentation of AI tool usage (\texttt{hgbaiusage.sty})}
+\label{sec:AIUsage}
+
+Package \texttt{hgbaiusage} is loaded by \texttt{hgbthesis} and creates the documentation of the
+usage of generative AI tools, which follows the affidavit, \ie, it is placed directly after
+\verb!\maketitle!. It starts a new unnumbered chapter, and all texts are printed in the title page
+language (option \texttt{titlelanguage}). The texts are those of the FH O\"O templates (2026), as is the
+text of the affidavit created by \verb!\maketitle!.
+
+\subsubsection*{Short form}
+
+The environment \texttt{aiusage} composes the documentation of predefined text modules, for example,
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{aiusage}
+  \aiusedfor{literature-search}
+  \aiusedfor{proofreading}
+\end{aiusage}
+\end{LaTeXCode}
+%
+The following commands are available inside the environment:
+\begin{itemize}
+	\item \verb!\aiusednone!: no generative AI tools were used (cannot be combined with the other commands),
+	\item \verb!\aiusedfor{<key>}!: AI tools were used for a predefined purpose (see Table~\ref{tab:AIUsagePurposes}),
+	\item \verb!\aiusedforother{<text>}!: AI tools were used for another purpose; \verb!<text>! continues
+		the sentence like the predefined text modules (see the examples below).
+\end{itemize}
+An empty environment results in a warning. Examples of other purposes in English and German:
+%
+\begin{LaTeXCode}[numbers=none]
+\aiusedforother{create the figures in Chapter 3.}
+\aiusedforother{um die Abbildungen in Kapitel 3 zu erzeugen.}
+\end{LaTeXCode}
+
+\begin{table}[H]
+\caption{Predefined purposes for \texttt{\bs aiusedfor} (short form).}
+\label{tab:AIUsagePurposes}
+\centering\small
+\begin{tabular}{@{}lp{0.6\linewidth}@{}}
+	\toprule
+	\textit{key} & Text (English) \\
+	\midrule
+	\texttt{ideas}                    & gather initial ideas for potential research questions and relevant theories. \\
+	\texttt{literature-search}        & search for literature. \\
+	\texttt{literature-understanding} & better understand academic literature (e.g., summaries). \\
+	\texttt{proofreading}             & proofread parts of the thesis and improve the linguistic style. \\
+	\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection*{Detailed form}
+
+The environment \texttt{aiusagedetails} creates a form with two statements on the responsible use
+of AI tools (with check boxes) and a table of eleven activities, listing the AI tools used for each
+activity and a description of their use. Its texts were adapted by FH O\"O (2026) from
+Gimpel et al.\ (2023)%
+\footnote{Gimpel, H., Dilger, P., L\"ammermann, L., Urbach, N. (2023). COGNISANCE: Declaration of
+Generative AI Tool Usage in Higher Education Tests. Research Center for Information Management.
+\url{https://doi.org/10.17605/OSF.IO/VGXF7}}
+and, unlike the rest of the package, are licensed under CC BY-SA 4.0. Therefore, they are kept in the
+separate file \texttt{hgbaiusage-cognisance.sty}, and the source reference is printed below the form.
+For example,
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{aiusagedetails}
+  \aiconfirm{accuracy}
+  \aiconfirm{responsibility}
+  \aiactivity{coding}{GitHub Copilot}{Generation of test functions (Chapter 4)}
+  \aiactivity{editing}{DeepL Write}{Proofreading of Chapters 1--5}
+  \aifurtheruse{Generation of test data for the evaluation (Section 5.2).}
+\end{aiusagedetails}
+\end{LaTeXCode}
+%
+The environment only collects the following entries; the form is created at its end.
+\begin{itemize}
+	\item \verb!\aiconfirm{accuracy}!, \verb!\aiconfirm{responsibility}!: checks the box of the
+		statement that the outputs of AI tools were verified and corrected where required, and that
+		the responsibility lies with the author(s), respectively. A statement that is not confirmed
+		results in a warning.
+	\item \verb!\aiactivity{<key>}{<tools>}{<description>}!: AI tools used for an activity (see
+		Table~\ref{tab:AIUsageActivities}) and a description of their use (type of usage, affected
+		sections, \etc). Multiple entries for the same activity are appended; activities without
+		entries remain empty.
+	\item \verb!\aifurtheruse{<text>}!: further use of AI tools (optional).
+\end{itemize}
+
+\begin{table}[H]
+\caption{Activities for \texttt{\bs aiactivity} (detailed form).}
+\label{tab:AIUsageActivities}
+\centering\small
+\begin{tabular}{@{}ll@{}}
+	\toprule
+	\textit{key} & Activity (English) \\
+	\midrule
+	\texttt{ideas}          & Idea generation \& conceptualization \\
+	\texttt{literature}     & Literature search and analysis \\
+	\texttt{methodology}    & Methodology \\
+	\texttt{coding}         & Coding \\
+	\texttt{data}           & Data collection and analysis \\
+	\texttt{interpretation} & Interpretation and validation \\
+	\texttt{structure}      & Structuring and planning the text \\
+	\texttt{generation}     & Generating the text \\
+	\texttt{translation}    & Translating text \\
+	\texttt{editing}        & Reviewing \& editing the text \\
+	\texttt{references}     & Citation management \\
+	\bottomrule
+\end{tabular}
+\end{table}
 
 
 \subsection{PDF/A generation (\texttt{hgbpdfa.sty})}
