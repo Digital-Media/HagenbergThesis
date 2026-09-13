@@ -6,8 +6,8 @@ Typesetting mathematical elements is certainly one of the strongest features of
 \latex. A distinction is made between mathematical elements in continuous text
 and free-standing equations, which are usually numbered consecutively.
 Analogous to figures and tables, this makes it easy to cross-reference equations.
-Here are only some examples and special topics, much more can be found in 
-\cite[Ch.\ 7]{Kopka2003} and~\cite{Voss2014}.
+Here are only some examples and special topics, much more can be found in
+\cite[Ch.\ 7]{Kopka2003} and in the \citetitle{Downes2017} \cite{Downes2017}.
 
 
 \section{Mathematical Elements in Continuous Text}
@@ -42,9 +42,9 @@ The following basic math fonts are available:
     \begin{tabular}{lcl}
         $\mathrm{Roman}$      & & \verb!$\mathrm{Roman}$!,      \\
 				$\mathit{Italic}$     & & \verb!$\mathit{Italic}$!,      \\
-				$\mathbf{Bold}$     	& & \verb!$\mathit{Bold}$!,      \\
+				$\mathbf{Bold}$     	& & \verb!$\mathbf{Bold}$!,      \\
         $\mathsf{Sans Serif}$ & & \verb!$\mathsf{Sans Serif}$!, \\
-        $\mathtt{Typewriter}$ & & \verb!$\mathttt{Typewriter}$!, \\
+        $\mathtt{Typewriter}$ & & \verb!$\mathtt{Typewriter}$!, \\
 				$\mathcal{CALLIGRAPHIC}$ & & \verb!$\mathcal{CALLIGRAPHIC}$!,\\
 				$\mathbb{BLACKBOARD}$ & & \verb!$\mathbb{BLACKBOARD}$!,\\
 				$\mathfrak{Fraktur}$ & & \verb!$\mathfrak{Fraktur}$!.
@@ -65,9 +65,9 @@ elsewhere one can use \verb|\allowbreak| to enable line breaks. Here is a small
 example:
 %
 \begin{itemize}
-	\item[a)] For example, (bla bla bla) a simple row vector is defined in the form
+	\item[a)] For example, a simple row vector of length $n$ is defined in the form
 	$\boldsymbol{x} = (x_0, x_1, \ldots, x_{n-1})$.
-	\item[b)] For example, (bla bla bla) a simple row vector is defined in the form
+	\item[b)] For example, a simple row vector of length $n$ is defined in the form
 	$\boldsymbol{x} = (x_0,\allowbreak x_1,\allowbreak\ldots,\allowbreak
 	x_{n-1})$.
 \end{itemize}
@@ -136,8 +136,8 @@ For multiline equations \latex\ offers the \verb!eqnarray! environment which, ho
 generates somewhat idiosyncratic spacing. It is recommended to use the extended
 possibilities of the \texttt{amsmath} package%
 \footnote{American Mathematical Society (AMS). \texttt{amsmath} is part of the 
-\latex\ default installation and is automatically imported by \texttt{hgb.sty}.}
-for this right away. Here is an example with two equations aligned to the $=$ sign,
+\latex\ default installation and is automatically imported by \texttt{hgbmath.sty}.}
+\cite{Mittelbach2025} for this right away. Here is an example with two equations aligned to the $=$ sign,
 %
 \begin{align}
 	f_1 (x,y) &= \frac{1}{1-x} + y , \label{eq:f1} \\
@@ -233,7 +233,9 @@ as a placeholder for the minus sign above it.
 As an alternative to \texttt{pmatrix}, the \texttt{bmatrix} environment can
 be used to create matrices and vectors with square brackets.
 Numerous other mathematical constructs of the \texttt{amsmath} package are
-described in \cite{Mittelbach2024}.
+described in \cite{Mittelbach2025}; further extensions are provided by the
+\texttt{mathtools} package.%
+\footnote{\url{https://ctan.org/pkg/mathtools}}
 
 
 \subsection{References to Equations}
@@ -272,7 +274,7 @@ the most common ones are listed  in the following.
 \subsection{Number Sets}
 
 Some frequently used symbols are unfortunately not included in the original 
-mathematical character set of \latex, suchh as the symbols for the real and natural 
+mathematical character set of \latex, such as the symbols for the real and natural 
 numbers. In the \texttt{hagenberg-thesis} package these symbols are defined
 as macros%
 \footnote{Based on the \emph{AMS Blackboard Fonts}.}
@@ -294,7 +296,7 @@ of $*$ for simple multiplication---correct is $\cdot$ (\verb!\cdot!).%
 %
 For statements like "a field with $25 \times 70$ meters" (but also almost
 \emph{only} for that) it makes sense to use the $\times$ (\verb!\times!) operator
--- and \emph{not} simply the text character~"x"!
+and \emph{not} simply the text character~"x"!
 
 
 \subsection{Variables (Symbols) With Multiple Characters}
@@ -303,12 +305,12 @@ Especially in the mathematical specification of algorithms and programs
 it is often necessary to use symbols (variable names) with more than one
 character, \eg,
 %
-	\[Scalefactor\leftarrow p^2 \cdot 1.5 \; ,\]
+	\[Scalefactor\leftarrow Scalefactor^2 \cdot 1.5 \; ,\]
 %
 \emph{falsely} implemented by
 %
 \begin{LaTeXCode}[numbers=none]
-$Scalefactor \leftarrow Scalefactor^2! \verb!\cdot 1.5$
+$Scalefactor \leftarrow Scalefactor^2 \cdot 1.5$
 \end{LaTeXCode}
 %
 The reason is that \latex interprets the character sequence "Scalefactor" as
@@ -359,8 +361,8 @@ This convention should also be followed for self-defined functions, such as in
 
 \subsection{Units of Measurement and Currencies}
 
-When specifying units of measurement, normal font is usually used (no italics) 
-should be used, \eg:
+When specifying units of measurement, normal font (no italics) is usually
+used, \eg:
 %
 \begin{quote}
 	The maximum speed of the \textit{Bell XS-1} is 345\,m/s with a takeoff weight 
@@ -380,7 +382,7 @@ set but is provided by the \texttt{marvosym} package (\texttt{{\bs}EUR}).}
 
 In math mode (\ie, within \verb!$! \ldots \verb!$!, \verb!\[! \ldots \verb!\]! or 
 in equations) \latex\ generally follows the Anglo-American convention that 
-\emph{dot} (\verb!.!) is used as the comma sign decimal numbers.
+\emph{dot} (\verb!.!) is used as the decimal separator.
 For example, \verb!$3.141$! produces the output "3.141", as one would expect.
 Unfortunately, to use a European comma in decimal numbers, it is \emph{not}
 sufficient to simply replace \verb!.! with \verb!,!.
@@ -399,15 +401,30 @@ numbers in math mode like this:
 \begin{quote}
 	\verb!$3{,}141$! $\quad \rightarrow \quad 3{,}141$
 \end{quote}
+%
+A more convenient solution is the \texttt{icomma} package,%
+\footnote{\url{https://ctan.org/pkg/icomma}}
+which typesets a comma that is directly followed by a digit as a decimal
+separator, while a comma followed by a space is still treated as punctuation.
+For the consistent formatting of numbers and units of measurement (including
+the decimal separator), the \texttt{siunitx} package is recommended as well.%
+\footnote{\url{https://ctan.org/pkg/siunitx}}
+Both packages are not part of this template and must be loaded in the preamble
+of the document if needed.
 
 
 \subsection{Mathematical Tools}
 
-For the creation of complicated equations it is sometimes helpful to resort 
-to special software or interactive tools. Among other things, \latex statements
-for mathematical equations can be exported from Microsoft's \emph{Equation Editor}
-or \emph{Mathematica} in a relatively simple way and copied directly (usually
-with some manual rework) into your own \latex document.
+For the creation of complicated equations it is sometimes helpful to resort
+to special software or interactive tools. For example, the equation editor of
+Microsoft \emph{Word} can read and write equations in \latex format, and
+\latex statements can be exported from \emph{Mathematica}. Tools such as
+\emph{Mathpix} recognize formulas in images or PDF documents, and
+\emph{Detexify}%
+\footnote{\url{https://detexify.kirelabs.org/classify.html}}
+helps to find the right \latex command for a hand-drawn symbol. The results can
+be copied directly (usually with some manual rework) into your own \latex
+document.
 
 
 \section{Algorithms}
@@ -420,14 +437,14 @@ loops, procedures, \etc) familiar from programming, algorithms are a proven
 link between the mathematical formulation and the associated program code.
 
 An essential aspect of an algorithmic description---which should be
-structurally as similar as possible to the implementation--- is its
+structurally as similar as possible to the implementation---is its
 \emph{independence} from a specific programming language.
 This results in better readability, broader applicability, and increased
 sustainability (possibly beyond the lifetime of a programming language).
 When formulating algorithms, one should consider the following, among other
 things:%
 \footnote{See also
-\url{http://mirrors.ctan.org/macros/latex/contrib/algorithms/algorithms.pdf}
+\url{https://mirrors.ctan.org/macros/latex/contrib/algorithms/algorithms.pdf}
 (Section~7).}
 %
 \begin{itemize}
@@ -446,7 +463,7 @@ things:%
 	%$\wedge$ (\verb!$\wedge$!) for \texttt{\&\&},
 	%\etc
 	\item
-	Similarly. do not use elements or syntax of a specific programming language (for
+	Similarly, do not use elements or syntax of a specific programming language (for
 	example, a "\texttt{;}" at the end of a statement is unnecessary).
 	\item
 	If an algorithm becomes too long for a page, consider how to divide it

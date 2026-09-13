@@ -78,7 +78,7 @@ Labels besser unterscheiden zu können.
 
 Die Länge der Captions kann dabei sehr unterschiedlich sein. Je nach
 Anwendung und Stil ergibt sich manchmal eine sehr kurze Caption
-(Abb .~\ref{fig:CocaCola}) oder eine längere (Abb.~\ref{fig:ibm360}).
+(Abb.~\ref{fig:CocaCola}) oder eine längere (Abb.~\ref{fig:ibm360}).
 Man beachte, wie bei kurzen Captions ein zentrierter Satz und bei langen
 Captions ein Blocksatz verwendet wird (\latex macht das automatisch).
 Captions sollten \emph{immer} mit einem Punkt abgeschlossen sein.%
@@ -106,7 +106,7 @@ Captions sollten \emph{immer} mit einem Punkt abgeschlossen sein.%
 \section{Abbildungen}
 
 Für die Einbindung von Grafiken in \latex wird die Verwendung des
-Stan\-dard-Pakets \texttt{graphicx} \cite{Carlisle2024} empfohlen (wird durch
+Stan\-dard-Pakets \texttt{graphicx} \cite{Carlisle2026} empfohlen (wird durch
 das \texttt{hagenberg-thesis}-Paket bereits eingebunden). Mit dem aktuell
 verwendeten Workflow (\texttt{pdflatex}) können Bild- bzw.\ Grafikformate
 ausschließlich in folgenden Formaten eingebunden werden:
@@ -269,8 +269,8 @@ konkrete Strichstärken ($\geq 0.25\,\mathrm{pt}$) einstellen!
 \subsection{\tex-Schriften auch in Grafiken?}
 \label{sec:tex-schriften-in-grafiken}
 
-Grundsätzlich sollten auch die in Grafiken verwendete Schriften möglichst genau
-mit der Schrift im Haupttext übereinstimmen. Eine interessantes Werkzeug dafür
+Grundsätzlich sollten auch die in Grafiken verwendeten Schriften möglichst genau
+mit der Schrift im Haupttext übereinstimmen. Ein interessantes Werkzeug dafür
 ist der \emph{Ipe Extensible Drawing Editor},%
 \footnote{\url{https://ipe.otfried.org/}}
 ein Zeichenprogramm, das Texte in Grafiken direkt mit \latex\ generiert
@@ -278,36 +278,35 @@ ein Zeichenprogramm, das Texte in Grafiken direkt mit \latex\ generiert
 
 Bei Abbildungen, die mit anderen externen Grafikprogrammen erzeugt werden, kann
 man zumindest \emph{ähnlich} aussehende Schriften (wie \emph{Times-Roman} oder
-\emph{Garamond}) verwenden. Es ist aber auch möglich, die 
-\emph{Computer-Modern} (CM) Schriftfamilie von {\tex}/{\latex} direkt
-zur Erzeugung von Grafiken einzusetzen.
-Es stehen einige Portierungen von CM als \emph{TrueType}-Schriften zur
-Verfügung, die auch in herkömmlichen Grafikprogrammen unter \emph{Windows}
-und \emph{macOS} verwendet werden können:
+\emph{Garamond}) verwenden. Es ist aber auch möglich, die in diesem Dokument
+verwendeten \emph{Latin-Modern}-Schriften, eine Weiterentwicklung der
+\emph{Computer-Modern}-Schriften (CM) von {\tex}/{\latex}, direkt zur Erzeugung
+von Grafiken einzusetzen. Sie stehen auch in Formaten zur Verfügung, die in
+herkömmlichen Grafikprogrammen unter \emph{Windows}, \emph{macOS} und
+\emph{Linux} verwendet werden können:
 %
 \begin{itemize}
+\item	%\subsubsection{\emph{Latin Modern} Fonts (OpenType)}
+Empfehlenswert sind die "Latin Modern" OpenType-Schriften,%
+\footnote{\url{https://www.gust.org.pl/projects/e-foundry/latin-modern}}
+die speziell für die Verwendung im Umfeld von \latex\ entwickelt wurden und
+auch Teil gängiger \latex-Distributionen sind (\zB im Verzeichnis
+\nolinkurl{fonts/opentype/public/lm}). Diese Schriften enthalten \ua\ Zeichen
+mit Umlauten und sind daher auch für deutsche Texte gut geeignet.
 \item	%\subsubsection{\emph{BaKoMa}-Schriften (TrueType)}
-Empfehlenswert ist \zB\ die "BaKoMa Fonts Collection",%
-\footnote{\url{http://ctan.org/pkg/bakoma-fonts}}
-die neben den CM Standardschriften auch die mathematischen Schriften der
-AMS-Familie ent\-hält. 
-\item	%\subsubsection{\emph{Latin Modern Roman} Fonts (OpenType)}
-Eine Alternative dazu sind die "LM-Roman"%
-\footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
-Open-Type Schriften, die speziell für die Verwendung im Umfeld von \latex\
-entwickelt wurden. Sie sind auch Teil der MikTeX-Installation.%
-\footnote{\zB unter \url{C:/Program Files/MiKTeX 2.9/fonts/opentype/public/lm}}
-Diese Schriften enthalten \ua\ Zeichen mit Umlauten und sind daher auch für 
-deutsche Texte gut geeignet.
+Eine Alternative dazu ist die "BaKoMa Fonts Collection" (TrueType),%
+\footnote{\url{https://ctan.org/pkg/bakoma-fonts}}
+die neben den CM-Standardschriften auch die mathematischen Schriften der
+AMS-Familie ent\-hält.
 \end{itemize}
 %
-Natürlich müssen diese Schriften vor der Verwendung zunächst auf dem eigenen PC
-installiert werden.
+Natürlich müssen diese Schriften vor der Verwendung zunächst auf dem eigenen
+Rechner installiert werden.
 
 \subsection{Grafiken mit \latex-Overlays (\texttt{overpic})}
 \label{sec:GraphicOverlays}
 
-Manchmal ist es erforderlich, ein bestehendes Bilder oder eine Grafik mit
+Manchmal ist es erforderlich, ein bestehendes Bild oder eine Grafik mit
 \latex-eigenen (Vektor-){\obnh}Elementen zu überlagern, \zB\ für Markierungen oder
 Beschriftungen. Ein typisches Beispiel ist in Abb.~\ref{fig:overpic-example}
 gezeigt, wo eine mit \emph{Mathematica} generierte PDF-Grafik mit
@@ -456,8 +455,8 @@ Seiten der Tabelle.
 		\toprule
 		Sprache    & Typ           & Anwendung        & Standardisierung   \\
 		\midrule
-		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2020 \\
-		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2014  \\
+		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2024 \\
+		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2023 \\
 		JavaScript & Interpretiert & Web              & ECMA-262           \\
 		Python     & Interpretiert & Machine Learning & PEPs               \\
 		\bottomrule
@@ -482,8 +481,8 @@ Seiten der Tabelle.
 		\toprule
 		Sprache    & Typ           & Anwendung        & Standardisierung   \\
 		\midrule
-		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2020 \\
-		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2014  \\
+		C++        & Kompiliert    & Applikationen    & ISO/IEC 14882:2024 \\
+		COBOL      & Kompiliert    & Business         & ISO/IEC 1989:2023 \\
 		JavaScript & Interpretiert & Web              & ECMA-262           \\
 		Python     & Interpretiert & Machine Learning & PEPs               \\
 		\bottomrule
@@ -554,11 +553,11 @@ strengen Abteilungsregeln zu lockern. Details dazu finden sich im zugehörigen
 			SW/HW &
 			{\RR depth values} &
 			\\
-			{\RR goraud shading with z-buffer} &
+			{\RR Gouraud shading with z-buffer} &
 			SW/HW &
 			{\RR smooth shading, simple fog, point light sources} &
 			{\RR SGI entry models} \\
-			{\RR phong shading with z-buffer} &
+			{\RR Phong shading with z-buffer} &
 			SW/HW &
 			{\RR highlights} &
 			\\
@@ -579,7 +578,7 @@ wird dann das durch die \texttt{table}-Umgebung erzeugte Floating zum
 Problem, denn es verhindert Umbrüche über mehrere Seiten. Um einen
 Seitenumbruch in Tabellen zu ermöglichen, kann das \texttt{longtable}-Paket%
 \footnote{%
-\url{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}}
+\url{https://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}}
 verwendet werden. Es ersetzt die \texttt{tabular}-Umgebung und benötigt kein
 umgebendes \texttt{table}-Environment.%
 \footnote{Man beachte, dass ein \texttt{longtable} \emph{kein} float-Element 
@@ -607,7 +606,7 @@ müssen diese Anweisungen vor dem Beginn der Tabelle stehen und mit
 \footnote{Die Dummy-Umgebung "\texttt{block}" ist in \texttt{hgb.sty} 
 definiert. Sie hat keine Funktion, bietet aber einen begrenzten 
 Definitionsbereich für das vorübergehende Setzen (und automatische Zurücksetzen)
-von \latex\-Variablen.}
+von \latex-Variablen.}
 umschlossen werden. Weitere Details finden sich im Quellcode zu diesem Dokument.
 
 
@@ -666,7 +665,7 @@ umschlossen werden. Weitere Details finden sich im Quellcode zu diesem Dokument.
 Um in einer Tabelle mehrere Spalten zu einer zusammenzufassen wird die Anweisung
 %
 \begin{GenericCode}[numbers=none]
-\multicolumn{number}{format}{text}
+\multicolumn{Anzahl}{Format}{Text}
 \end{GenericCode}
 %
 verwendet. \texttt{Anzahl} definiert die Menge an Spalten, die verbunden
@@ -677,7 +676,7 @@ Text.
 Um mehrere Zeilen zu einer zusammenzufassen, kann mit
 %
 \begin{GenericCode}[numbers=none]
-\multirow{number}{width}{text}
+\multirow{Anzahl}{Breite}{Text}
 \end{GenericCode}
 %
 eine ähnliche Anweisung verwendet werden. \texttt{Anzahl} repräsentiert hier
@@ -732,7 +731,7 @@ Damit sind auch die in Tabelle~\ref{tab:CodeUmgebungen} aufgelisteten
 Code-Umgebungen realisiert.
 %
 \begin{table}
-\caption{In \nolinkurl{hgb.sty} vordefinierte Code-Umgebungen.}
+\caption{In \nolinkurl{hgblistings.sty} vordefinierte Code-Umgebungen.}
 \label{tab:CodeUmgebungen}
 \centering
 \begin{tabular}{@{}lll@{}}
@@ -803,7 +802,7 @@ dass innerhalb der Kommentare auch mathematischer Text (wie etwa in Zeile
 
 Alle in Tabelle~\ref{tab:CodeUmgebungen} angeführten Code-Umgebungen können
 mit optionalen Argumenten verwendet werden, die insbesondere zur Steuerung
-der Zeilennummerierung hilfreich. Im Normalfall (also ohne zusätzliche
+der Zeilennummerierung hilfreich sind. Im Normalfall (also ohne zusätzliche
 Angabe) mit
 %
 \begin{LaTeXCode}[numbers=none]
