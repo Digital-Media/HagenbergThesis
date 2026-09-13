@@ -133,6 +133,23 @@
 %% \lstinputlisting) selects [hgb]Java. Keyword classes: 1 = keywords (ListingsKeywordColor),
 %% 2 = built-in types, functions and annotations (ListingsTypeColor).
 
+% Bash, stand-alone definition (the definition of listings mixes keywords and common commands such as cat, ps
+% and sed); reserved words are keywords, builtins are keywords of class 2; $# and ${#...} start no comments
+\lstdefinelanguage[hgb]{bash}{
+	morekeywords={break,case,continue,coproc,do,done,elif,else,esac,exit,fi,for,function,if,in,return,select,
+		then,time,until,while},
+	morekeywords=[2]{alias,bg,bind,builtin,caller,cd,command,compgen,complete,declare,dirs,disown,echo,
+		enable,eval,exec,export,false,fc,fg,getopts,hash,help,history,jobs,kill,let,local,logout,mapfile,popd,
+		printf,pushd,pwd,read,readarray,readonly,set,shift,shopt,source,test,times,trap,true,type,typeset,
+		ulimit,umask,unalias,unset,wait},
+	otherkeywords={$\#},
+	sensitive,
+	morecomment=[l]\#,
+	moredelim=[s][]{$\{}{\}},
+	morestring=[b]",
+	morestring=[d]',
+}[keywords,comments,strings]
+
 % C (C23), based on ANSI C
 \lstdefinelanguage[hgb]{C}[ANSI]{C}{
 	morekeywords={inline,restrict,_Alignas,_Alignof,_Atomic,_BitInt,_Bool,_Complex,_Decimal32,_Decimal64,
@@ -206,6 +223,60 @@
 	morestring=[b]',
 }
 
+% Dart 3 (incl. common Flutter types)
+\lstdefinelanguage{Dart}{
+	morekeywords={abstract,as,assert,async,await,base,break,case,catch,class,const,continue,covariant,default,
+		deferred,do,dynamic,else,enum,export,extends,extension,external,factory,false,final,finally,for,if,
+		implements,import,in,interface,is,late,library,mixin,new,null,on,operator,part,required,rethrow,return,
+		sealed,static,super,switch,sync,this,throw,true,try,typedef,var,void,when,while,with,yield},
+	morekeywords=[2]{bool,BuildContext,double,Duration,Function,Future,int,Iterable,List,Map,Never,Null,num,
+		Object,Record,Set,State,StatefulWidget,StatelessWidget,Stream,String,Widget,@immutable,@override,
+		@protected},
+	sensitive,
+	morecomment=[l]//,
+	morecomment=[n]{/*}{*/},
+	morestring=[s]{"""}{"""},
+	morestring=[s]{'''}{'''},
+	morestring=[b]",
+	morestring=[b]',
+}[keywords,comments,strings]
+
+% GLSL 4.60 (OpenGL Shading Language); vector, matrix and sampler types and built-in variables are keywords
+% of class 2
+\lstdefinelanguage{GLSL}{
+	morekeywords={attribute,bool,break,buffer,case,centroid,coherent,const,continue,default,discard,do,double,
+		else,false,flat,float,for,highp,if,in,inout,int,invariant,layout,lowp,mediump,noperspective,out,patch,
+		precise,precision,readonly,restrict,return,sample,shared,smooth,struct,subroutine,switch,true,uint,
+		uniform,varying,void,volatile,while,writeonly},
+	morekeywords=[2]{bvec2,bvec3,bvec4,dmat2,dmat3,dmat4,dvec2,dvec3,dvec4,image2D,image3D,imageCube,
+		isampler2D,isampler3D,ivec2,ivec3,ivec4,mat2,mat2x3,mat2x4,mat3,mat3x2,mat3x4,mat4,mat4x2,mat4x3,
+		sampler1D,sampler2D,sampler2DArray,sampler2DShadow,sampler3D,samplerCube,samplerCubeShadow,usampler2D,
+		uvec2,uvec3,uvec4,vec2,vec3,vec4,
+		gl_FragColor,gl_FragCoord,gl_FragDepth,gl_FrontFacing,gl_GlobalInvocationID,gl_InstanceID,
+		gl_LocalInvocationID,gl_LocalInvocationIndex,gl_NumWorkGroups,gl_PointCoord,gl_PointSize,gl_Position,
+		gl_PrimitiveID,gl_VertexID,gl_WorkGroupID,gl_WorkGroupSize},
+	sensitive,
+	morecomment=[l]//,
+	morecomment=[s]{/*}{*/},
+	moredelim=*[directive]\#,
+	moredirectives={define,elif,else,endif,error,extension,if,ifdef,ifndef,include,line,pragma,undef,version},
+}[keywords,comments,directives]
+
+% Go, stand-alone definition (the definition of listings treats predeclared types and functions as keywords)
+\lstdefinelanguage[hgb]{Go}{
+	morekeywords={break,case,chan,const,continue,default,defer,else,fallthrough,false,for,func,go,goto,if,
+		import,interface,iota,map,nil,package,range,return,select,struct,switch,true,type,var},
+	morekeywords=[2]{any,append,bool,byte,cap,clear,close,comparable,complex,complex64,complex128,copy,
+		delete,error,float32,float64,imag,int,int8,int16,int32,int64,len,make,max,min,new,panic,print,println,
+		real,recover,rune,string,uint,uint8,uint16,uint32,uint64,uintptr},
+	sensitive,
+	morecomment=[l]//,
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+	morestring=[s]{`}{`},
+}[keywords,comments,strings]
+
 % HTML5, based on the HTML definition of listings (element and attribute names are keywords, as are the names
 % of other elements, e.g., custom elements)
 \lstdefinelanguage[hgb]{HTML}[]{HTML}{
@@ -252,6 +323,34 @@
 	morestring=[b]`,
 }
 
+% JSON (also with comments, e.g., tsconfig.json)
+\lstdefinelanguage{JSON}{
+	morekeywords={false,null,true},
+	sensitive,
+	morecomment=[l]//,
+	morecomment=[s]{/*}{*/},
+	morestring=[b]",
+}
+
+% Kotlin 2; soft keywords that are common identifiers (e.g., data, value, get, set) are not keywords
+\lstdefinelanguage{Kotlin}{
+	morekeywords={abstract,annotation,as,break,by,catch,class,companion,const,constructor,continue,crossinline,
+		do,else,enum,external,false,final,finally,for,fun,if,import,in,infix,init,inline,inner,interface,
+		internal,is,lateinit,noinline,null,object,open,operator,out,override,package,private,protected,public,
+		reified,return,sealed,super,suspend,tailrec,this,throw,true,try,typealias,val,var,vararg,when,where,
+		while},
+	morekeywords=[2]{Any,Array,Boolean,Byte,Char,Double,Float,Int,List,Long,Map,MutableList,MutableMap,
+		MutableSet,Nothing,Pair,Result,Sequence,Set,Short,String,UInt,ULong,Unit,emptyList,listOf,mapOf,
+		mutableListOf,mutableMapOf,print,println,setOf,@Composable,@Deprecated,@JvmField,@JvmOverloads,
+		@JvmStatic,@Serializable,@Suppress,@Throws,@Volatile},
+	sensitive,
+	morecomment=[l]//,
+	morecomment=[n]{/*}{*/},
+	morestring=[s]{"""}{"""},
+	morestring=[b]",
+	morestring=[b]',
+}[keywords,comments,strings]
+
 % LaTeX, based on the LaTeX definition of listings, with commands of common packages and of this package
 \lstdefinelanguage[hgb]{TeX}[LaTeX]{TeX}{
 	moretexcs={addbibresource,advisor,autoref,boldsymbol,bottomrule,captionof,chapter,cite,citetitle,cmidrule,
@@ -262,6 +361,20 @@
 		subsubsection,subtitle,text,textbf,textcite,textit,textsc,textsf,texttt,textwidth,toprule,url,
 		usepackage,verb},
 }
+
+% MATLAB, stand-alone definition (the definition of listings treats about 900 function names as keywords)
+\lstdefinelanguage[hgb]{Matlab}{
+	morekeywords={arguments,break,case,catch,classdef,continue,else,elseif,end,enumeration,eps,events,false,
+		for,function,global,if,Inf,inf,methods,NaN,nan,otherwise,parfor,persistent,pi,properties,return,spmd,
+		switch,true,try,while},
+	morekeywords=[2]{abs,cell,disp,double,error,figure,fprintf,hold,isempty,length,linspace,max,mean,min,
+		numel,ones,plot,rand,size,sprintf,sqrt,struct,sum,title,xlabel,ylabel,zeros},
+	sensitive,
+	morecomment=[l]\%,
+	morecomment=[s]{\%\{}{\%\}},	% after [l]\%, since the last defined delimiter takes precedence
+	morestring=[m]',
+	morestring=[m]",
+}[keywords,comments,strings]
 
 % Objective-C (current), based on the Objective-C dialect of listings (as a separate language)
 \lstdefinelanguage{ObjectiveC}[Objective]{C}{
@@ -299,9 +412,45 @@
 	morekeywords=[2]{print},
 }
 
+% R, stand-alone definition (the definition of listings treats about 800 function names as keywords)
+\lstdefinelanguage[hgb]{R}{
+	morekeywords={break,else,FALSE,for,function,if,in,Inf,NA,NA_character_,NA_complex_,NA_integer_,NA_real_,
+		NaN,next,NULL,repeat,return,TRUE,while},
+	morekeywords=[2]{apply,data.frame,factor,is.na,lapply,length,library,list,matrix,mean,paste,paste0,
+		print,require,sapply,seq,stop,sum,vapply,vector,warning},
+	sensitive,
+	alsoletter={.},
+	alsoother={$},
+	morecomment=[l]\#,
+	morestring=[b]",
+	morestring=[b]',
+}[keywords,comments,strings]
+
+% Rust (edition 2024); no character literals, since ' also starts lifetimes
+\lstdefinelanguage{Rust}{
+	morekeywords={as,async,await,break,const,continue,crate,dyn,else,enum,extern,false,fn,for,if,impl,in,let,
+		loop,macro_rules,match,mod,move,mut,pub,ref,return,self,Self,static,struct,super,trait,true,type,
+		unsafe,use,where,while},
+	morekeywords=[2]{Arc,Box,BTreeMap,Cell,Err,HashMap,HashSet,None,Ok,Option,Rc,RefCell,Result,Some,String,
+		Vec,bool,char,f32,f64,i8,i16,i32,i64,i128,isize,str,u8,u16,u32,u64,u128,usize},
+	sensitive,
+	morecomment=[l]//,
+	morecomment=[n]{/*}{*/},
+	morestring=[b]",
+}[keywords,comments,strings]
+
 % Scala 3, based on the Scala 3 dialect of listings
 \lstdefinelanguage[hgb]{Scala}[3.0]{Scala}{
 	morekeywords={then,using},
+}
+
+% SQL, based on the SQL definition of listings (SQL-92), with keywords and types of current database systems
+\lstdefinelanguage[hgb]{SQL}[]{SQL}{
+	morekeywords={AUTO_INCREMENT,CALL,CONFLICT,DATABASE,DECLARE,DO,EXPLAIN,FETCH,FILTER,FOR,FUNCTION,IF,
+		ILIKE,IS,LATERAL,MATCHED,MERGE,NOTHING,OF,OFFSET,OVER,PARTITION,PROCEDURE,REFERENCES,REPLACE,RETURNING,
+		RETURNS,SCHEMA,SEQUENCE,TO,TRUNCATE,WINDOW,WITH},
+	morekeywords=[2]{BIGINT,BIGSERIAL,BOOL,BOOLEAN,BYTEA,DATETIME,DOUBLE,JSON,JSONB,PRECISION,REAL,SERIAL,
+		TEXT,TINYINT,UUID},
 }
 
 % Swift 6, stand-alone definition
@@ -326,21 +475,42 @@
 		sourceLocation,unavailable},
 }[keywords,comments,strings,directives]
 
+% TypeScript 5, based on JavaScript
+\lstdefinelanguage{TypeScript}[]{JavaScript}{
+	morekeywords={abstract,accessor,asserts,declare,enum,implements,infer,interface,is,keyof,namespace,
+		override,private,protected,public,readonly,satisfies,type,unique},
+	morekeywords=[2]{any,bigint,boolean,never,number,object,string,symbol,unknown,Awaited,Exclude,Extract,
+		NonNullable,Omit,Partial,Pick,Readonly,Record,Required,ReturnType},
+}
+
 % XML, based on the XML definition of listings; all element names are keywords (instead of only those that
 % are also keywords of XML, e.g., version)
 \lstdefinelanguage[hgb]{XML}[]{XML}{
 	markfirstintag=true,
 }
 
+% YAML 1.2; only double-quoted strings, since listings continues unterminated strings on the next line and
+% apostrophes are common in unquoted values (e.g., name: Don't fail)
+\lstdefinelanguage{YAML}{
+	morekeywords={false,null,true},
+	sensitive=false,
+	morecomment=[l]\#,
+	morestring=[b]",
+}
+
 \lstset{
+	defaultdialect=[hgb]bash,
 	defaultdialect=[hgb]C,
 	defaultdialect=[hgb]C++,
+	defaultdialect=[hgb]Go,
 	defaultdialect=[hgb]Java,
+	defaultdialect=[hgb]Matlab,
 	defaultdialect=[hgb]PHP,
 	defaultdialect=[hgb]Python,
+	defaultdialect=[hgb]R,
 	defaultdialect=[hgb]Swift,
 }
-% Not possible for dialects based on a language without dialect (HTML, Scala, XML), since the empty base
+% Not possible for dialects based on a language without dialect (HTML, Scala, SQL, XML), since the empty base
 % dialect would then refer to the default dialect itself; these are selected explicitly in the environments.
 
 %% Code environments -----------------------------------------------------------
@@ -351,20 +521,32 @@
 	\lstnewenvironment{#1}[1][]{\lstset{language={#2},escapeinside={/+}{+/},##1}}{}%
 }
 
+\hgb@NewCodeEnvironment{BashCode}{bash}			% Bash
 \hgb@NewCodeEnvironment{CCode}{C}				% C (C23)
 \hgb@NewCodeEnvironment{CppCode}{C++}			% C++ (C++23)
 \hgb@NewCodeEnvironment{CsCode}{CSharp}			% C#
 \hgb@NewCodeEnvironment{CssCode}{CSS}			% CSS
+\hgb@NewCodeEnvironment{DartCode}{Dart}			% Dart
+\hgb@NewCodeEnvironment{GlslCode}{GLSL}			% GLSL
+\hgb@NewCodeEnvironment{GoCode}{Go}				% Go
 \hgb@NewCodeEnvironment{HtmlCode}{[hgb]HTML}	% HTML5
 \hgb@NewCodeEnvironment{JavaCode}{Java}			% Java
 \hgb@NewCodeEnvironment{JsCode}{JavaScript}		% JavaScript
+\hgb@NewCodeEnvironment{JsonCode}{JSON}			% JSON
+\hgb@NewCodeEnvironment{KotlinCode}{Kotlin}		% Kotlin
 \hgb@NewCodeEnvironment{LaTeXCode}{[hgb]TeX}	% LaTeX
+\hgb@NewCodeEnvironment{MatlabCode}{Matlab}		% MATLAB
 \hgb@NewCodeEnvironment{ObjCCode}{ObjectiveC}	% Objective-C
 \hgb@NewCodeEnvironment{PhpCode}{PHP}			% PHP
 \hgb@NewCodeEnvironment{PythonCode}{Python}		% Python 3
+\hgb@NewCodeEnvironment{RCode}{R}				% R
+\hgb@NewCodeEnvironment{RustCode}{Rust}			% Rust
 \hgb@NewCodeEnvironment{ScalaCode}{[hgb]Scala}	% Scala 3
+\hgb@NewCodeEnvironment{SqlCode}{[hgb]SQL}		% SQL
 \hgb@NewCodeEnvironment{SwiftCode}{Swift}		% Swift
+\hgb@NewCodeEnvironment{TsCode}{TypeScript}		% TypeScript
 \hgb@NewCodeEnvironment{XmlCode}{[hgb]XML}		% XML
+\hgb@NewCodeEnvironment{YamlCode}{YAML}			% YAML
 
 % Code environment for generic code (no language, no escapes)
 \lstnewenvironment{GenericCode}[1][]
