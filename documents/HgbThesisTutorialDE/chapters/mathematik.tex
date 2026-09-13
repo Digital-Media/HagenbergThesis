@@ -6,7 +6,8 @@ von \latex. Man unterscheidet zwischen mathematischen Elementen im Fließtext
 und freistehenden Gleichungen, die in der Regel fortlaufend nummeriert werden.
 Analog zu Abbildungen und Tabellen sind dadurch Querverweise zu Gleichungen
 leicht zu realisieren. Hier nur einige Beispiele und spezielle Themen, vieles
-weitere dazu findet sich \zB in \cite[Kap.\ 7]{Kopka2003} und~\cite{Voss2014}.
+weitere dazu findet sich \zB in \cite[Kap.\ 7]{Kopka2003} und im
+\citetitle{Downes2017} \cite{Downes2017}.
 
 
 \section{Mathematische Elemente im Fließtext}
@@ -42,9 +43,9 @@ Mathe\-matik-Modus, wo die folgenden Basis-Schriftarten zur Verfügung stehen:
     \begin{tabular}{lcl}
         $\mathrm{Roman}$      & & \verb!$\mathrm{Roman}$!,      \\
 				$\mathit{Italic}$     & & \verb!$\mathit{Italic}$!,      \\
-				$\mathbf{Bold}$     	& & \verb!$\mathit{Bold}$!,      \\
+				$\mathbf{Bold}$     	& & \verb!$\mathbf{Bold}$!,      \\
         $\mathsf{Sans Serif}$ & & \verb!$\mathsf{Sans Serif}$!, \\
-        $\mathtt{Typewriter}$ & & \verb!$\mathttt{Typewriter}$!, \\
+        $\mathtt{Typewriter}$ & & \verb!$\mathtt{Typewriter}$!, \\
 				$\mathcal{CALLIGRAPHIC}$ & & \verb!$\mathcal{CALLIGRAPHIC}$!,\\
 				$\mathbb{BLACKBOARD}$ & & \verb!$\mathbb{BLACKBOARD}$!,\\
 				$\mathfrak{Fraktur}$ & & \verb!$\mathfrak{Fraktur}$!.
@@ -136,8 +137,8 @@ Für mehrzeilige Gleichungen bietet \latex\ die \verb!eqnarray!-Umgebung, die
 allerdings etwas eigenwillige Zwischenräume erzeugt. Es empfiehlt sich, dafür
 gleich auf die erweiterten Möglichkeiten des \texttt{amsmath}-Pakets%
 \footnote{American Mathematical Society (AMS). \texttt{amsmath} ist Teil der
-\latex\ Standardinstallation und wird von \texttt{hgb.sty} bereits importiert.}
-\cite{Mittelbach2024} zurückzugreifen. Hier ein Beispiel mit zwei am $=$
+\latex\ Standardinstallation und wird von \texttt{hgbmath.sty} bereits importiert.}
+\cite{Mittelbach2025} zurückzugreifen. Hier ein Beispiel mit zwei am $=$
 Zeichen ausgerichteten Gleichungen,
 %
 \begin{align}
@@ -234,7 +235,9 @@ Platzhalter für das darüberliegende Minuszeichen verwendet wird. Alternativ
 zu \texttt{pmatrix} kann mit der \texttt{bmatrix}-Umgebung Matrizen und
 Vektoren mit eckigen Klammern erzeugt werden. Zahlreiche weitere
 mathematische Konstrukte des \texttt{amsmath}-Pakets sind in
-\cite{Mittelbach2024} beschrieben.
+\cite{Mittelbach2025} beschrieben, weitere Ergänzungen dazu bietet das Paket
+\texttt{mathtools}.%
+\footnote{\url{https://ctan.org/pkg/mathtools}}
 
 
 \subsection{Verweise auf Gleichungen}
@@ -247,8 +250,8 @@ Angabe der entsprechenden Nummer in runden Klammern, \zB\
 \end{center}
 %
 Um Missverständnisse zu vermeiden, sollte aber -- \va\ in Texten mit nur
-wenigen mathematischen Elementen -- "Gleichung \ref{eq:f1}", "Gl
-.~\ref{eq:f1}" oder "Gl.~(\ref{eq:f1})" geschrieben werden (natürlich
+wenigen mathematischen Elementen -- "Gleichung \ref{eq:f1}",
+"Gl.~\ref{eq:f1}" oder "Gl.~(\ref{eq:f1})" geschrieben werden (natürlich
 konsistent).
 %
 \begin{center}
@@ -310,7 +313,7 @@ zu verwenden, \zB
 \emph{fälschlicherweise} erzeugt durch
 %
 \begin{LaTeXCode}[numbers=none]
-$Scalefactor \leftarrow Scalefactor^2! \verb!\cdot 1.5$
+$Scalefactor \leftarrow Scalefactor^2 \cdot 1.5$
 \end{LaTeXCode}
 %
 Dabei interpretiert \latex allerdings die Zeichenkette "Scalefactor" als 
@@ -400,16 +403,31 @@ elegante) Lösung ist, Kommazahlen im Mathematik-Modus so zu schreiben:
 \begin{quote}
 	\verb!$3{,}141$! $\quad \rightarrow \quad 3{,}141$
 \end{quote}
+%
+Komfortabler ist das Paket \texttt{icomma},%
+\footnote{\url{https://ctan.org/pkg/icomma}}
+mit dem ein Komma, auf das unmittelbar eine Ziffer folgt, als
+Dezimaltrennzeichen gesetzt wird, während ein Komma mit nachfolgendem
+Leerzeichen weiterhin als Satzzeichen gilt. Für die einheitliche Formatierung
+von Zahlen und Maßeinheiten (einschließlich des Dezimaltrennzeichens)
+empfiehlt sich zudem das Paket \texttt{siunitx}.%
+\footnote{\url{https://ctan.org/pkg/siunitx}}
+Beide Pakete sind nicht Teil dieser Vorlage und müssen bei Bedarf in der
+Präambel des Dokuments geladen werden.
 
 
 \subsection{Mathematische Werkzeuge}
 
 Für die Erstellung komplizierter Gleichungen ist es mitunter hilfreich, auf
-spezielle Software zurückzugreifen. Unter anderem können aus dem Microsoft
-\emph{Equation Editor} und aus {\em Mathematica} auf relativ einfache Weise
-\latex-An\-wei\-sun\-gen für mathematische Gleichungen exportiert und direkt
-(mit etwas manueller Nacharbeit) in das eigene \latex-Dokument übernommen
-werden.
+spezielle Software zurückzugreifen. So kann etwa der Formeleditor von
+Microsoft \emph{Word} Gleichungen im \latex-Format ein- und ausgeben, und aus
+\emph{Mathematica} lassen sich \latex-An\-wei\-sun\-gen exportieren. Werkzeuge
+wie \emph{Mathpix} erkennen Formeln in Bildern oder PDF-Dokumenten, und
+\emph{Detexify}%
+\footnote{\url{https://detexify.kirelabs.org/classify.html}}
+hilft beim Auffinden des passenden \latex-Makros für ein von Hand gezeichnetes
+Symbol. Die Ergebnisse können (meist mit etwas manueller Nacharbeit) direkt in
+das eigene \latex-Dokument übernommen werden.
 
 
 \section{Algorithmen}
@@ -429,12 +447,12 @@ Anwendbarkeit und erhöhte Nachhaltigkeit (möglicherweise über die Lebensdauer
 einer Programmiersprache hinaus). Bei der Formulierung von Algorithmen sollte
 man \ua\ folgendes beachten:%
 \footnote{Siehe auch
-\url{http://mirrors.ctan.org/macros/latex/contrib/algorithms/algorithms.pdf}
+\url{https://mirrors.ctan.org/macros/latex/contrib/algorithms/algorithms.pdf}
 (Abschnitt~7).}
 %
 \begin{itemize}
 	\item
-	Verwende in Algorithmen die gleichen kurze Symbole (wie $a, i, x, S,
+	Verwende in Algorithmen die gleichen kurzen Symbole (wie $a, i, x, S,
 	\alpha \ldots$), wie man sie auch in mathematischen Definitionen und
 	Gleichungen verwendet.
 	\item

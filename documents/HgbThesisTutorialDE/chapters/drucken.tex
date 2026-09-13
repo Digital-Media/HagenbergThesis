@@ -28,11 +28,12 @@ am Beginn der Datei \verb!main.tex! (wodurch \verb!hgbpdfa.sty! geladen wird).
 Man beachte, dass diese Anweisung \emph{vor} der \verb!\documentclass!-Deklaration
 platziert werden muss. Erforderliche Meta\-daten (\zB Autor*in und Titel) werden
 automatisch aus den Dokumenteinstellungen übernommen und in das Ausgabe-PDF eingefügt.%
-\footnote{Dieses Setup basiert auf neuer Funktionalität, die aktuell in den
-\texttt{pdflatex}-Kern eingebaut wird und erfordert das Paket 
-\texttt{pdfmanagement-testphase} in Version 0.95s (2022-09-26) oder höher.
-Bei älteren Versionen wird eine Warnung ausgegeben und keine PDF/A-konforme
-Ausgabe erzeugt.}
+\footnote{Dieses Setup basiert auf dem PDF-Management des \latex-Kerns (Paket
+\texttt{pdfmanagement} \bzw\ \texttt{pdfmanagement-testphase} bei älteren
+Distributionen) und erfordert daher eine aktuelle \latex-Distribution.}
+Wird keine PDF/A-Ausgabe benötigt, kann diese Anweisung einfach entfernt werden.
+Die Schriften (Latin Modern mit T1-Kodierung, s.\ Abschn.~\ref{sec:Schriftarten})
+sind davon nicht betroffen.
 
 
 \subsection{PDF/A Problemstellen}
@@ -70,10 +71,7 @@ Eine einfache (und kostenlose) Methode zur Überprüfung der PDF/A-Konformität 
   \footnote{\url{https://demo.verapdf.org}}
 \end{itemize}
 %
-Abbildung \ref{fig:verapdf-report} zeigt ein Beispiel. Ein ähnliches Service bietet
-auch \textsf{pdf-online.com},%
-\footnote{\url{https://www.pdf-online.com/osa/validate.aspx}}
-dessen Einstellung leider bereits angekündigt ist.
+Abbildung \ref{fig:verapdf-report} zeigt ein Beispiel.
 Natürlich ist die PDF/A-Validierung auch im Werkzeugsatz von Adobe \emph{Acrobat} enthalten.
 
 \begin{figure}[htbp]
@@ -103,8 +101,9 @@ bringen, um ein unnötiges Ausdrucken der Arbeit zu vermeiden.
 \subsection{Drucker und Papier}
 
 Wenn die Abschlussarbeit gedruckt wird, sollte dies in der Endfassung unbedingt
-auf einem qualitativ hochwertigen \emph{Laserdrucker} geschehen; Ausdrucke mit
-Tintenstrahldruckern sind \emph{nicht} ausreichend. Auch das verwendete
+auf einem qualitativ hochwertigen Drucker (typischerweise einem
+\emph{Laserdrucker}) geschehen; Ausdrucke mit einfachen Tintenstrahldruckern
+sind dafür meist weniger gut geeignet. Auch das verwendete
 Papier sollte von guter Qualität (holzfrei) und üblicher Stärke (typ.\  
 $80\,\mathrm{g} / \mathrm{m}^2$) sein. Falls nur einzelne \emph{farbige} Seiten 
 notwendig sind, kann man diese auch einzeln auf einem Farb-Laserdrucker ausdrucken
@@ -134,7 +133,7 @@ page" im Druckmenü verursacht, wobei die Seiten meist zu klein ausgedruckt
 werden. Überprüfen Sie daher die Größe des Ausdrucks anhand der eingestellten
 Textbreite%
 \footnote{\Convert[unit=mm]{\the\textwidth}	im aktuellen Dokument} % using 'lengthconvert' package
-oder mithilfe der Messgrafik am Ende dieses Dokuments gezeigt.
+oder mithilfe der Messgrafik am Ende dieses Dokuments.
 Sicherheitshalber sollte diese Messgrafik bis zur Fertigstellung der
 Arbeit beibehalten und die entsprechende Seite erst ganz am Schluss
 entfernt werden. Wenn, wie häufig der Fall, einzelne Seiten getrennt in Farbe

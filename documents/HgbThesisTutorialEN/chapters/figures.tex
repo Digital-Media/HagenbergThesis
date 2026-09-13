@@ -10,7 +10,7 @@ Figures and tables are usually placed together with a numbered \emph{caption}
 \begin{figure}
     \centering
     \includegraphics[width=.75\textwidth]{cola-public-domain-photo-p}
-    \caption{Coca-Cola Werbung 1940 \cite{CocaCola1940}.}
+    \caption{Coca-Cola advertisement, 1940 \cite{CocaCola1940}.}
     \label{fig:CocaCola}
 \end{figure}
 
@@ -60,7 +60,7 @@ immediately follow the \verb!\caption{}! statement:
 \begin{figure}
     \centering
     \includegraphics[width=.95\textwidth]{cola-public-domain-photo-p}
-    \caption{Coca-Cola Werbung 1940 \cite{CocaCola1940}.}
+    \caption{Coca-Cola advertisement, 1940 \cite{CocaCola1940}.}
     \label{fig:CocaCola}
 \end{figure}
 \end{LaTeXCode}
@@ -100,7 +100,7 @@ Note how short captions are \emph{centered} while long captions use
 \section{Figures}
 
 For the inclusion of graphics in \latex the use of the
-standard package \texttt{graphicx} \cite{Carlisle2024} is recommended
+standard package \texttt{graphicx} \cite{Carlisle2026} is recommended
 (automatically loaded by the \texttt{hagenberg-thesis} package).
 With the current workflow (using \texttt{pdflatex}) images and graphics
 can only be included in the following formats:
@@ -161,7 +161,7 @@ This is usually only necessary for raster images, especially if they are very
 bright towards the edge and would not be distinguishable from the background
 without a frame.
 
-\subsection{Raster (Pixel) Praphics}
+\subsection{Raster (Pixel) Graphics}
 
 In general, raster images should be prepared in advance so that they lose as
 little quality as possible when printed later. It is therefore advisable to
@@ -212,7 +212,7 @@ only be used for these.}
 
 \subsection{Vector (Line) Graphics}
 
-For illustrations and schematic diagrams (\zB flowcharts, entity-relationship
+For illustrations and schematic diagrams (\eg, flowcharts, entity-relationship
 diagrams or other structural representations), vector graphics (PDF) should
 always be used. Rasterized graphics, as they are usually available as GIF or
 PNG files on web pages, have no place in a print document; if necessary they
@@ -259,39 +259,40 @@ a drawing program that generates text in graphics directly with \latex\
 (including mathematical expressions) and uses PDF as its native file format.
 For images created with other external graphics programs, you can use at
 least \emph{similarly} looking fonts (like \emph{Times-Roman} or
-\emph{Garamond}). However, it is also possible to use the
-\emph{Computer-Modern} (CM) font family from {\tex}/{\latex} directly to
-generate graphics. Some ports of CM are available as \emph{TrueType} fonts,
-which can also be used in conventional graphics programs under \emph{Windows}
-and \emph{macOS}:
+\emph{Garamond}). However, it is also possible to use the \emph{Latin Modern}
+fonts of this document, an extension of the \emph{Computer Modern} (CM) fonts
+of {\tex}/{\latex}, directly to generate graphics. They are also available in
+formats that can be used in conventional graphics programs under
+\emph{Windows}, \emph{macOS}, and \emph{Linux}:
 %
 \begin{itemize}
     \item
-    Recommendable is the "BaKoMa Fonts Collection",%
-    \footnote{\url{http://ctan.org/pkg/bakoma-fonts}}
-    which contains (beside the CM standard fonts) also the mathematical fonts
-    of the
-    AMS family.
+    Recommendable are the "Latin Modern" OpenType fonts,%
+    \footnote{\url{https://www.gust.org.pl/projects/e-foundry/latin-modern}}
+    which were specifically developed for use in the \latex environment and
+    are also part of common \latex distributions (\eg, in the directory
+    \nolinkurl{fonts/opentype/public/lm}). These fonts include dedicated glyphs
+    for "umlauts" and are therefore well suited for German texts as well.
     \item
-    Another option are the "LM-Roman" Open-Type fonts,%
-    \footnote{\url{http://www.gust.org.pl/projects/e-foundry/latin-modern}}
-    which were specifically developed for use in the \latex environment.
-    They are also part of the standard \latex distributions, such as MikTeX.
-    These fonts include dedicated glyphs for "umlauts" and are therefore well
-    suited for German texts as well.
+    An alternative is the "BaKoMa Fonts Collection" (TrueType),%
+    \footnote{\url{https://ctan.org/pkg/bakoma-fonts}}
+    which contains (besides the CM standard fonts) also the mathematical fonts
+    of the AMS family.
 \end{itemize}
 %
-Of course, these fonts must first be installed on your computer before 
+Of course, these fonts must first be installed on your computer before
 you can use them.
 
-\subsection{Grapics With \latex Overlays (Using \texttt{overpic})}
+\subsection{Graphics With \latex Overlays (Using \texttt{overpic})}
 \label{sec:GraphicOverlays}
 
 Sometimes it is necessary to overlay an existing image or graphic with
 \latex's own (vector) elements, \eg, for markers or labels. A typical example
 is shown in Figure~\ref{fig:overpic-example} where a PDF graphic created with
 \emph{Mathematica} is annotated with mathematical text elements. This is
-accomplished using the \texttt{overpic} package, where the underlying graphic
+accomplished using the \texttt{overpic} package,%
+\footnote{\url{https://ctan.org/pkg/overpic}}
+where the underlying graphic
 is not imported with \verb!\includegraphics! but \verb!\begin{overpic}!
 \ldots \verb!\end{overpic}!, with a similar syntax:
 %
@@ -320,8 +321,8 @@ is not imported with \verb!\includegraphics! but \verb!\begin{overpic}!
     \caption{Example of using the \texttt{overpic} package to insert \latex
     elements over an imported graphic. In this case, the mathematical
     elements $x$, $f(x)$, $\cos(x)$ and $\smash{\cos(\frac{7}{3} x)}$ as well
-    as two diagonal straight lines and filled (colored) circles were inserted
-    . All this is drawn on top of a vector graphic imported from file
+    as two diagonal straight lines and filled (colored) circles were inserted.
+    All this is drawn on top of a vector graphic imported from file
     \texttt{mathematica-example.pdf}.}
     \label{fig:overpic-example}
 \end{figure}
@@ -424,8 +425,8 @@ the (usually unwanted) margin at the left and right table borders.
         \toprule
         Language   & Type        & Typical Use      & Standards          \\
         \midrule
-        C++        & Compiled    & Applications     & ISO/IEC 14882:2020 \\
-        COBOL      & Compiled    & Business         & ISO/IEC 1989:2014  \\
+        C++        & Compiled    & Applications     & ISO/IEC 14882:2024 \\
+        COBOL      & Compiled    & Business         & ISO/IEC 1989:2023 \\
         JavaScript & Interpreted & Web              & ECMA-262           \\
         Python     & Interpreted & Machine Learning & PEPs               \\
         \bottomrule
@@ -450,8 +451,8 @@ the (usually unwanted) margin at the left and right table borders.
         \toprule
         Language   & Type        & Typical Use      & Standards          \\
         \midrule
-        C++        & Compiled    & Applications     & ISO/IEC 14882:2020 \\
-        COBOL      & Compiled    & Business         & ISO/IEC 1989:2014  \\
+        C++        & Compiled    & Applications     & ISO/IEC 14882:2024 \\
+        COBOL      & Compiled    & Business         & ISO/IEC 1989:2023 \\
         JavaScript & Interpreted & Web              & ECMA-262           \\
         Python     & Interpreted & Machine Learning & PEPs               \\
         \bottomrule
@@ -471,14 +472,14 @@ particularly the first two determine their basic layout:
     \item Never use double lines.
     \item Place units in the column header (not in the table content area).
     \item A decimal separator is always preceded by a digit; thus write
-    "$0{,}1$" not just "${,}1$".
+    "$0.1$" not just "$.1$".
 \end{enumerate}
 
 
-The \latex package \texttt{booktabs} makes it easy to meet these requirements
+The \latex package \texttt{booktabs} makes it easy to meet these requirements.
 Within the \texttt{tabular} environment (which defines the actual table), the
-number of columns---preferably set left-justified (\texttt{l}
-specifiers)--- are defined first. \verb|\toprule| marks the beginning of the
+number of columns---preferably left-aligned (\texttt{l}
+specifiers)---is defined first. \verb|\toprule| marks the beginning of the
 table, followed by the header, which is terminated by \verb|\midrule|. This is
 followed by the lines with the table contents. Using \verb|\bottomrule| the
 table is closed with another horizontal line. \verb|\midrule| calls can also
@@ -519,11 +520,11 @@ source text.
             SW/HW &
                 {\RR depth values} &
             \\
-            {\RR goraud shading with z-buffer} &
+            {\RR Gouraud shading with z-buffer} &
             SW/HW &
                 {\RR smooth shading, simple fog, point light sources} &
                 {\RR SGI entry models} \\
-            {\RR phong shading with z-buffer} &
+            {\RR Phong shading with z-buffer} &
             SW/HW &
                 {\RR highlights} &
             \\
@@ -544,7 +545,7 @@ created by the \texttt{table} environment becomes a problem, because it
 prevents breaks across multiple pages. To allow page breaks \emph{within}
 tables, the \texttt{longtable} package can be used.%
 \footnote{%
-\url{http://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}}
+\url{https://mirrors.ctan.org/macros/latex/required/tools/longtable.pdf}}
 It replaces the \texttt{tabular} environment and does not require a
 surrounding \texttt{table} environment.%
 \footnote{Note that a \texttt{longtable} is \emph{no} float element but 
@@ -621,30 +622,6 @@ additional details.
 \end{longtable}
 \end{block}
 
-%{\setlength{\tabcolsep}{10pt} % separator between columns (standard = 6pt)
-%\def\arraystretch{1.50}      % vertical stretch factor (standard = 1.0)
-%\begin{longtable}{@{}lp{0.23\textwidth}@{}}
-    %\caption{A long table that potentially breaks over two pages.} \\
-    %\toprule
-    %First Column            & Second Column                              \\
-    %\midrule\endhead
-    %\label{tab:LongtableDemo}
-    %The column on the right contains a lot of text. &
-    %There is a lot of text in this column, which creates a long column.
-    %Here, too, it can make sense to set the content left-aligned. However,
-    %\texttt{longtable} does not wrap lines in such columns, only between
-    %individual lines. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %More lines follow here. & This content serves only as a placeholder. \\
-    %\bottomrule
-%\end{longtable}}
 
 
 \subsection{Joining Columns and Rows}
@@ -713,8 +690,8 @@ and \texttt{listingsutf8}.%
 \footnote{\url{https://ctan.org/pkg/listingsutf8}}
 
 \begin{table}
-    \caption{Language-specific code environments defined in \nolinkurl{hgb
-    .sty}.}
+    \caption{Language-specific code environments defined in
+    \nolinkurl{hgblistings.sty}.}
     \label{tab:CodeEnvironments}
     \centering
     \begin{tabular}{@{}lll@{}}
@@ -837,9 +814,9 @@ static String extractEmail(String line) {
     line = line.trim(); // find the first blank
     int i = line.indexOf(' ');
     if (i > 0)
-    return line.substring(i).trim();
+        return line.substring(i).trim();
     else
-    return null;
+        return null;
 }
 \end{JavaCode}
 %

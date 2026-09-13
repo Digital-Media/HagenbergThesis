@@ -11,8 +11,10 @@ large and complicated documents with professional requirements. Working with
 than with conventional tools for word processing.
 
 First, unlike most common word processors, \latex is not \textsc{WYSIWYG}.%
-\footnote{"What You See Is What You Get." There were some \textsc{WYSIWYG}
-editors for \latex, but they all have disappeared in the last years.}
+\footnote{"What You See Is What You Get." Real \textsc{WYSIWYG} editors for
+\latex hardly exist. However, a similar way of working is offered, for example,
+by the visual editor of \textsf{Overleaf} or by \textsf{LyX}, which follows the
+\textsc{WYSIWYM} principle ("What You See Is What You Mean").}
 However, it is a \emph{markup} language (like HTML) that can be somewhat
 complicated for beginners together with a set of associated tools. The
 supposedly strong restrictions of \latex, especially concerning the choice of
@@ -80,19 +82,21 @@ As a well-known and often referenced manual to \latex
     \item \citetitle{Kopka2003} by \textcite{Kopka2003}
 \end{itemize}
 %
-can be recommended. Numerous other documents on \latex and related topics can be
+can be recommended. The most comprehensive and up-to-date reference work is
+\citetitle{Mittelbach2023} by \textcite{Mittelbach2023}. Numerous other
+documents on \latex and related topics can be
 found online at the \emph{Comprehensive TeX Archive Network} (CTAN) at
 %
 \begin{quote}
     \url{https://ctan.org/}.
 \end{quote}
 %
-Particularly useful are \citetitle{Pakin2024} \cite{Pakin2024} and the
+Particularly useful are \citetitle{Pakin2026} \cite{Pakin2026} and the
 descriptions of important \latex packages, such as
 %
 \begin{itemize}
-    \item[] \texttt{babel} \cite{Bezos2025},
-    \item[] \texttt{graphics}, \texttt{graphicx} \cite{Carlisle2024},
+    \item[] \texttt{babel} \cite{Bezos2026},
+    \item[] \texttt{graphics}, \texttt{graphicx} \cite{Carlisle2026},
     \item[] \texttt{fancyhdr} \cite{Oostrum2025},
     \item[] \texttt{caption} \cite{Sommerfeldt2023}.
 \end{itemize}
@@ -105,11 +109,17 @@ font used. Text passages can then be accentuated by changing the font style
 using different kinds of markup.
 
 \subsection{Fonts}
+\label{sec:fonts}
 
 \latex normally uses the fonts of the \emph{Computer Modern} (CM) series, which,
 like the \emph{TeX} software itself, were developed by Donald Knuth.%
 \footnote{\url{https://www-cs-faculty.stanford.edu/~knuth/}}
-The three basic CM series fonts in \latex are
+This template uses the \emph{Latin Modern} fonts derived from them (package
+\texttt{lmodern}) with the T1 font encoding (package \texttt{fontenc}), which,
+among other things, contain accented characters such as umlauts as separate
+glyphs and thus allow correct hyphenation and searchable PDF documents. These
+fonts are loaded regardless of whether PDF/A output (\texttt{hgbpdfa}, see
+Section~\ref{sec:PDFA}) is produced. The three basic font types are
 %
 \begin{quote}
     \begin{tabular}{lcl}
@@ -120,13 +130,16 @@ The three basic CM series fonts in \latex are
 \end{quote}
 %
 In the eyes of many users, the quality and timelessness of these fonts alone is
-a reason to use \latex for professional purposes. Another advantage of
-\emph{TeX} fonts is that the different font families and weights are very
-well-matched in size.
+a reason to use \latex for professional purposes. Another advantage of these
+fonts is that the different font families and weights are very well-matched in
+size.
 
-In addition, any \emph{PostScript} font (Type 1) can be used in \latex, but this
-requires some finetuning in practice. Frequently used are, \eg, \emph{Times}
-and \emph{Palatino}, but there is a trend back to using the classic CM fonts.
+In addition, other fonts can be used in \latex. For \texttt{pdflatex},
+numerous ready-made font packages are available (\eg, for \emph{Times} or
+\emph{Palatino}); with \texttt{lualatex} and the \texttt{fontspec} package, any
+installed \emph{OpenType} font can be used directly. However, changing the
+fonts should be well considered, since it changes the overall appearance of the
+thesis.
 
 \subsection{Text Effects}
 
@@ -143,11 +156,11 @@ Text can be formatted in different ways.
     \item \textsl{Slanted} (\verb!\textsl{..}!) denotes a slanted typeface and
     thus differs significantly from \textit{italic}; for comparison:
     \begin{quote}
-        \verb!\textrm{Daimler-Chrysler}! $\rightarrow$
-        \textrm{Daimler-Chrysler} \newline%
-        \verb!\textsl{Daimler-Chrysler}! $\rightarrow$
-        \textsl{Daimler-Chrysler} \newline%
-        \verb!\textit{Daimler-Chrysler}! $\rightarrow$ \textit{Daimler-Chrysler}
+        \verb!\textrm{Softwarepark Hagenberg}! $\rightarrow$
+        \textrm{Softwarepark Hagenberg} \newline%
+        \verb!\textsl{Softwarepark Hagenberg}! $\rightarrow$
+        \textsl{Softwarepark Hagenberg} \newline%
+        \verb!\textit{Softwarepark Hagenberg}! $\rightarrow$ \textit{Softwarepark Hagenberg}
     \end{quote}
 %
     \item \textbf{Boldface} (\verb!\textbf{..}!) is used for \textbf{headings},
@@ -204,7 +217,7 @@ necessary!
 	\fbox{%
 		\begin{minipage}{0.9\textwidth}
 			Especially the use of \texttt{\textbackslash\textbackslash} and
-			\texttt{\textbackslash{newline}} commands for line breaks is a
+			\texttt{\textbackslash{newline}} commands to separate paragraphs is a
 			common \emph{error}. Also, the statement
 			\texttt{\textbackslash{paragraph}\{\}} must \emph{not} be used
 			in this context; it is---unlike in HTML---a command to define
@@ -287,7 +300,7 @@ depth (see the \latex documentation for details).
 A thesis is---like a book---usually formatted in one column and justified, which
 makes sense for the continuous text due to the considerable line length.
 However, there are often problems with hyphenation and justification within
-tables because of the small column width. Using ragged-right aligment (\eg, in
+tables because of the small column width. Using ragged-right alignment (\eg, in
 Table~\ref{tab:synthesis-techniques} on page \pageref{tab:synthesis-techniques})
 is advisable in such cases.
 
@@ -368,7 +381,7 @@ Examples:\ \verb!\label{cha:Introduction}! or \verb!\label{fig:Screen-1}!.
 Using the commands
 %
 \begin{LaTeXCode}[numbers=none]
-\ref{/+\emph{key}+/} /+\quad oder \quad+/ \pageref{/+\emph{key}+/}
+\ref{/+\emph{key}+/} /+\quad or \quad+/ \pageref{/+\emph{key}+/}
 \end{LaTeXCode}
 %
 allows the item or page number associated with \texttt{\emph{key}} to be
@@ -442,7 +455,7 @@ typesetting areas, punctuation requires the author's care.
 \subsection{\emph{French Spacing}}
 
 In English-language typesetting, it is customary to insert an increased space
-(compared to the usual space between words) after the end each sentence.
+(compared to the usual space between words) after the end of each sentence.
 Although this is not enabled by default for this document (it is also not
 traditionally done in German and French), it is sometimes preferred because of
 improved readability. If the English ("non-French") sentence separation with
@@ -487,7 +500,7 @@ for using them:%
 	{\verb*!---!}).
 	\item In \emph{German}, the slightly shorter \emph{en dash} surrounded by
 	two spaces is usually used -- wie hier zu sehen (in \latex by typing
-	{\verb*! -- !})). This dash is also used in both languages to indicate
+	{\verb*! -- !}). This dash is also used in both languages to indicate
 	intervals of numbers (pages 12--19), but in this case without spaces.
 \end{enumerate}
 
@@ -720,14 +733,23 @@ required for this document:
   \item \nolinkurl{hgb.sty} (style file): Contains central definitions and
     settings. This file is automatically loaded by \nolinkurl{hgbthesis.cls},
     but it can also be used for other documents.
+  \item \nolinkurl{hgbtheme-*.sty} (style files): themes for the design of the
+    title pages, selected with the class option \texttt{theme} (\texttt{default},
+    \texttt{fhooe26}, \texttt{classic}, or \texttt{fhooe24}; see
+    Section~\ref{sec:hagenberg-settings}).
   \item Additional style files imported by \nolinkurl{hgbthesis.cls}:
     \begin{itemize}
         \item[] \nolinkurl{hgbabbrev.sty} (various abbreviations),
+        \item[] \nolinkurl{hgbaiusage.sty} (documentation of AI tools usage; the
+          texts of the detailed form in \nolinkurl{hgbaiusage-cognisance.sty} are
+          licensed under CC BY-SA 4.0),
         \item[] \nolinkurl{hgbalgo.sty} (algorithms),
         \item[] \nolinkurl{hgbbib.sty} (reference management),
+        \item[] \nolinkurl{hgbdict.sty} (language-dependent terms),
         \item[] \nolinkurl{hgbheadings.sty} (page headers),
         \item[] \nolinkurl{hgblistings.sty} (code listings),
-        \item[] \nolinkurl{hgbmath.sty} (mathematical functionalities).
+        \item[] \nolinkurl{hgbmath.sty} (mathematical functionalities),
+        \item[] \nolinkurl{hgbvars.sty} (shared variables and options).
     \end{itemize}
 \end{itemize}
 
@@ -745,9 +767,9 @@ All sample (\verb!.tex!) documents of this package start with the statement
 The \texttt{\emph{type}} option specifies the type of document:
 %
 \begin{itemize}
-    \item[] \texttt{master} (master thesis = \emph{default}),
+    \item[] \texttt{master} (master's thesis = \emph{default}),
     \item[] \texttt{diploma} (diploma thesis),
-    \item[] \texttt{bachelor} (bachelor thesis),
+    \item[] \texttt{bachelor} (bachelor's thesis),
     \item[] \texttt{phd} (doctoral thesis),
     \item[] \texttt{internship} (internship report).
 \end{itemize}
@@ -763,22 +785,29 @@ of the document; possible values are:
 Additional options:
 %
 \begin{itemize}
+		\item[] \texttt{theme=\emph{theme}} (design of the title page: \texttt{default}
+			(\emph{default}), \texttt{fhooe26}, \texttt{classic}, or \texttt{fhooe24};
+			details in the package manual).
 		\item[] \texttt{titlelanguage=\emph{language}} (language of the title pages,
 			defaults to the main language).
 		\item[] \texttt{degree=\emph{key}} (academic degree on the title page, \eg,
 			\texttt{engineering} for ``Bachelor/Master of Science in Engineering''; all
 			supported values are listed in the package manual).
-		\item[] \texttt{proposal=true} (exposé, in connection with 
+		\item[] \texttt{proposal=true} (thesis proposal, in connection with 
 			\texttt{type=bachelor} or \texttt{master}).
     \item[] \texttt{smartquotes=true} (use of upright double quotes, see
 			Section~\ref{sec:quotation-marks}).
 		\item[] \texttt{twoside=false} (\emph{default}) or \texttt{twoside=true} for 
-			a one- or two-page document layout, respectively.
+			a one- or two-sided document layout, respectively.
+		\item[] \texttt{apa=true} (APA citation style instead of the numeric style,
+			see Section~\ref{sec:APA}).
+		\item[] \texttt{updatecheck=false} (suppresses the warning if the package
+			version used is outdated; \emph{default}: \texttt{true}).
 \end{itemize}
 %
-If \emph{none} of the above options is specified, the default settings are 
+If \emph{none} of the above options is specified, the default settings 
 \begin{itemize}
-	\item[] \texttt{[type=master,language=english,twoside=false]} % theme=default,
+	\item[] \texttt{[type=master,theme=default,language=english,twoside=false]}
 \end{itemize}
 are used.%
 \footnote{The full source code for a corresponding \texttt{.tex} main file is listed in
@@ -802,14 +831,23 @@ Table~\ref{tab:TitleElements}). The following information is required for
     \verb!\placeofstudy{!\texttt{\em Place of study}\verb!}!, \newline%
     \verb!\dateofsubmission{!\texttt{\em yyyy}\verb!}{!\texttt{\em
     mm}\verb!}{!\texttt{\em dd}\verb!}!, \newline%
-    \verb!\advisor{!\texttt{\em Supervisor name}\verb!}! --
-    optional, \newline%
+    \verb!\advisor[!\texttt{\em Role}\verb!]{!\texttt{\em Name}\verb!}! --
+    up to four advisors, the role is optional.
+\end{itemize}
+%
+\noindent
+The following information is optional:
+%
+\begin{itemize}
+    \item[] %
+    \verb!\subtitle{!\texttt{\em Subtitle}\verb!}! --
+    only if absolutely necessary, \newline%
     \verb!\institution{!\texttt{\em Institution}\verb!}! --
-    optional (default: provided by the title page theme), \newline%
+    default: provided by the title page theme, \newline%
     \verb!\programtype{!\texttt{\em Type of program}\verb!}! --
-    optional (default: derived from \texttt{type}), \newline%
+    default: derived from \texttt{type}, \newline%
     \verb!\academicdegree{!\texttt{\em Academic degree}\verb!}! --
-    optional (free text instead of the class option \texttt{degree}).
+    free text instead of the option \texttt{degree}.
 \end{itemize}
 %
 \noindent
@@ -828,22 +866,24 @@ addition to the basic information:
         ($+$ \ldots\ required, $\circ$ \ldots\ optional, $-$ \ldots\ not used).}
     \label{tab:TitleElements}
     \centering\small
-    \begin{tabular}{@{}lcccc@{}}
+    \begin{tabular}{@{}lccccc@{}}
         \toprule
         \emph{Element} & \texttt{master} & \texttt{bachelor} & 
-				\texttt{diploma} & \texttt{internship} \\
+				\texttt{diploma} & \texttt{phd} & \texttt{internship} \\
         \midrule
-        \verb!\title!            & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\author!           & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\programtype!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
-        \verb!\programname!      & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\institution!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
-        \texttt{degree=}, \verb!\academicdegree! & $\circ$ & $\circ$ & $\circ$ & $-$ \\
-        \verb!\placeofstudy!     & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\dateofsubmission! & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\advisor!          & $+$ & $+$ & $+$ & $+$ \\
-        \verb!\companyName!      & $-$ & $-$ & $-$ & $+$ \\
-        \verb!\companyUrl!       & $-$ & $-$ & $-$ & $+$ \\
+        \verb!\title!            & $+$ & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\subtitle!         & $\circ$ & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
+        \verb!\author!           & $+$ & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\programtype!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
+        \verb!\programname!      & $+$ & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\institution!      & $\circ$ & $\circ$ & $\circ$ & $\circ$ & $\circ$ \\
+        \texttt{degree=}         & $\circ$ & $\circ$ & $-$ & $-$ & $-$ \\
+        \verb!\academicdegree!   & $\circ$ & $\circ$ & $\circ$ & $\circ$ & $-$ \\
+        \verb!\placeofstudy!     & $+$ & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\dateofsubmission! & $+$ & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\advisor!          & $+$ & $+$ & $+$ & $+$ & $+$ \\
+        \verb!\companyName!      & $-$ & $-$ & $-$ & $-$ & $+$ \\
+        \verb!\companyUrl!       & $-$ & $-$ & $-$ & $-$ & $+$ \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -883,16 +923,16 @@ following settings can determine the associated text at the beginning of the
 document.
 %
 \begin{description}
-    \item[\normalfont\texttt{{\bs}cclicense}] ~ \newline
+    \item[\normalfont\texttt{{\bs}license\{cc\}}] ~ \newline
     Publication under a Creative Commons license%
     \footnote{\url{https://creativecommons.org/licenses/by-nc-nd/4.0/}}
     that permits free redistribution of the work with attribution to the author,
     but no commercial use or adaptation. This is the \emph{recommended} default
     setting.
-    \item[\normalfont\texttt{{\bs}strictlicense}] ~ \newline
+    \item[\normalfont\texttt{{\bs}license\{strict\}}] ~ \newline
     Classic restriction of usage rights (\emph{All Rights Reserved}).
     \item[\normalfont\texttt{{\bs}license\{\emph{License text}\}}] ~ \newline
-    If necessary, this can specify an alternative \text{\emph{license text}}.
+    If necessary, this can specify an alternative \texttt{\emph{license text}}.
     Such changes should, of course, be coordinated with the university.
 \end{description}
 
@@ -972,45 +1012,53 @@ The current language setting can be displayed with the command
 
 Several additional \latex\ packages are required to use this document
 (Table~\ref{tab:packages}). These packages are automatically loaded by the
-\texttt{hagenberg-thesis} package. All packages used are part of the \latex\
-standard installation, as, for example, in MikTeX, where corresponding
-documentation can also be found (mainly as DVI files). The current versions of
-the packages are available online on the CTAN sites given in
-Section~\ref{sec:literature}.
+\texttt{hagenberg-thesis} package. All packages used are part of common \latex\
+distributions (\eg, TeX Live or MiKTeX) and are also available in
+\textsf{Overleaf}. The corresponding documentation (as PDF) can be opened
+locally with \texttt{texdoc \emph{packagename}} or found online on the CTAN
+sites given in Section~\ref{sec:literature}.
 
 \begin{table}
     \caption{The most important of the \latex extensions used in the
     \texttt{hagenberg-thesis} package. These are already included in typical
-    \latex\ standard installations (\eg, MikTeX).}
+    \latex\ standard installations (\eg, TeX Live, MiKTeX).}
     \label{tab:packages}
     \centering\small
     \begin{tabular}{@{}ll@{}}
         \toprule
         \emph{Package}        & \emph{Function} \\
         \midrule
-        \texttt{algorithmicx} & Description of algorithms \\
-        \texttt{amsfonts},
-        \texttt{amsbsy}       & Mathematical symbols \\
-        \texttt{amsmath}      & Mathematical typesetting \\
-        \texttt{babel}        & Language switching \\
-        \texttt{biblatex}     & Bibliography management \\
-        \texttt{caption}      & More flexible captions \\
-        \texttt{csquotes}     & Context-sensitive quotation marks \\
-        \texttt{marvosym}     & \euro symbol (\verb!\euro!) \\
-        \texttt{exscale}      & Correct font sizes in math mode \\
-        \texttt{fancyhdr}     & Controlling headers and footers \\
-        \texttt{float}        & Improved float handling \\
-        \texttt{fontenc}      & Use of T1 (Western European) character encoding \\
-        \texttt{graphicx}     & Including of graphics \\
-        \texttt{hyperref}     & Handling of cross-references in the PDF document \\
-        \texttt{ifthen},
-        \texttt{xifthen}      & Conditional commands in \latex \\
-        \texttt{inputenc}     & Extended input encodings \\
-        \texttt{listings}     & Code listings \\
-        \texttt{upquote}      & Realistic quotes in \texttt{verbatim} texts \\
-        \texttt{url}          & URL handling in text \\
-        \texttt{verbatim}     & Better \texttt{verbatim} environments \\
-        \texttt{xcolor}       & Colored text elements and background colors \\
+        \texttt{algpseudocodex}, \texttt{algorithm} & Description of algorithms \\
+        \texttt{amsmath}, \texttt{amsfonts},
+        \texttt{amssymb}, \texttt{amsbsy}             & Mathematical typesetting and symbols \\
+        \texttt{babel}                                & Language switching \\
+        \texttt{biblatex} (with \texttt{biber})       & Bibliography management \\
+        \texttt{booktabs}                             & Tables with a professional layout \\
+        \texttt{caption}                              & More flexible captions \\
+        \texttt{csquotes}                             & Context-sensitive quotation marks \\
+        \texttt{datetime2}                            & Dates (\eg, date of submission) \\
+        \texttt{enumitem}                             & Customizing lists \\
+        \texttt{exscale}                              & Correct font sizes in math mode \\
+        \texttt{fancyhdr}, \texttt{extramarks}        & Controlling headers and footers \\
+        \texttt{float}                                & Improved float handling \\
+        \texttt{fontenc}, \texttt{lmodern}            & T1 font encoding, Latin Modern fonts \\
+        \texttt{geometry}                             & Page layout (type area) \\
+        \texttt{graphicx}                             & Including graphics \\
+        \texttt{hyperref}, \texttt{hypcap}            & Handling of cross-references in the PDF document \\
+        \texttt{inputenc}                             & Extended input encodings \\
+        \texttt{listings}, \texttt{listingsutf8}      & Code listings \\
+        \texttt{longtable}, \texttt{multirow}         & Multipage tables, joined rows \\
+        \texttt{marvosym}                             & \euro symbol (\verb!\euro!) \\
+        \texttt{overpic}, \texttt{pict2e}             & Graphics with \latex overlays \\
+        \texttt{pdfmanagement}                        & PDF/A output (with \texttt{hgbpdfa}) \\
+        \texttt{pdfpages}                             & Including PDF documents \\
+        \texttt{textpos}                              & Positioning on the title page \\
+        \texttt{titlesec}, \texttt{tocbasic}          & Design of headings and lists (\eg, contents) \\
+        \texttt{upquote}                              & Realistic quotes in \texttt{verbatim} texts \\
+        \texttt{url}                                  & URL handling in text \\
+        \texttt{verbatim}                             & Better \texttt{verbatim} environments \\
+        \texttt{xcolor}                               & Colored text elements and background colors \\
+        \texttt{xifthen}                              & Conditional commands in \latex \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -1047,11 +1095,11 @@ If no errors are shown, at least the syntactical structure of the document is
 okay. However, one should take a closer look at the list of messages at the
 latest when finishing the thesis. This is highly recommended to eliminate any
 remaining problems, such as overlong lines of text (overfull boxes), unresolved
-references, and similar issues. In any case, the console output should look like 
-this eventually:
-%
-\begin{GenericCode}[numbers=none]
-LaTeX-Result: 0 Error(s), 0 Warning(s), ...
-\end{GenericCode}
+references, and similar issues. In any case, the log should eventually contain no
+errors and, if possible, no warnings. Most editors (\eg, \textsf{TeXstudio}) as
+well as \textsf{Overleaf} list errors, warnings, and messages about overfull or
+underfull lines (\emph{overfull} or \emph{underfull boxes}) clearly in a
+separate view, from which one can jump directly to the corresponding location
+in the source text. 
 
 

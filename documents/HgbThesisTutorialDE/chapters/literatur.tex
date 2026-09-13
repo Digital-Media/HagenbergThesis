@@ -24,7 +24,7 @@ ein Schema vor, das in den natur\-wissen\-schaftlich-technischen Disziplinen
 \footnote{Die Anpassung an andere Vorgaben ist relativ leicht möglich.}
 Technisch basiert dieser Teil auf dem Programm \texttt{Biber}%
 \footnote{\url{https://ctan.org/pkg/biber}}
-in Kombination mit dem \latex-Paket \texttt{biblatex} \cite{Kime2024}.
+in Kombination mit dem \latex-Paket \texttt{biblatex} \cite{Kime2026}.
 
 Die Verwaltung von Quellen besteht grundsätzlich aus zwei Elementen:
 \emph{Quellenverweise} im Text beziehen sich auf Einträge im
@@ -96,7 +96,7 @@ Seitennummern. Dafür bietet das \texttt{hagenberg-thesis}-Paket das
 zusätzliche Makro%
 \footnote{\texttt{\textbackslash mcite} ist in \texttt{hgbbib.sty} definiert und
 funktioniert ähnlich dem \texttt{{\bs}cites}-Kommando von \texttt{biblatex}
-(s.\ \url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}).}
+(s.\ \url{https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}).}
 %
 \begin{itemize}
 \item[]
@@ -136,7 +136,7 @@ Zitationen zu unterdrücken, möglich durch
 %
 Das funktioniert auch mit \verb!\mcite! und anderen \verb!cite!-Makros;
 die äußeren Klammern sind dabei wichtig. Beispielsweise sollte im
-Literaturverzeichnis bei Quelle {\backtrackerfalse\parencite{Bezos2025}} 
+Literaturverzeichnis bei Quelle {\backtrackerfalse\parencite{Bezos2026}} 
 die aktuelle Seite (\the\value{page}) \emph{nicht} aufscheinen.
 
 
@@ -198,7 +198,7 @@ Für das Zitat selbst sollte übrigens die dafür vorgesehene
 \texttt{quote}-Umgebung verwendet werden, die durch beidseitige Einrückungen
 das Zitat vom eigenen Text klar abgrenzt und damit die Gefahr von
 Unklarheiten (wo ist das Ende des Zitats?) mindert. In obigem Beispiel wird
-zudem auch auf Englisch umgeschalten (siehe Abschn.\
+zudem auch auf Englisch umgeschaltet (siehe Abschn.\
 \ref{sec:sprachumschaltung}):%
 \footnote{Man beachte auch die englischen Hochkommas innerhalb
 des Zitats, welche durch die \texttt{smartquotes}-Option gesetzt werden.}
@@ -287,7 +287,7 @@ Im eigentlichen Quellenverzeichnis erscheint somit nur die Sekundärquelle
 Für die Erstellung des Quellenverzeichnisses gibt es in \latex grundsätzlich
 mehrere Möglichkeiten. Die traditionelle Methode ist die Verwendung von
 \texttt{BibTeX} \cite{Patashnik1988} \bzw (moderner) mit \texttt{biber}%
-\footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}
+\footnote{\url{https://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf}}
 und \texttt{biblatex}, wie im Folgenden beschrieben.
 
 \subsection{Literaturdaten in BibTeX und BibLaTeX}
@@ -310,8 +310,8 @@ eigene Anwendungen zur Wartung von BibTeX-Verzeichnissen, wie beispielsweise
 
 \subsubsection{Verwendung von \texttt{biblatex} und \texttt{biber}}
 
-Dieses Dokument verwendet \texttt{biblatex} (Version 1.4 oder höher) in
-Verbindung mit dem Programm \texttt{biber}, das viele Unzulänglichkeiten des
+Dieses Dokument verwendet \texttt{biblatex} in Verbindung mit dem Programm
+\texttt{biber}, das viele Unzulänglichkeiten des
 traditionellen BibTeX-Workflows behebt und dessen Möglichkeiten deutlich
 erweitert.%
 \footnote{Tatsächlich ist \texttt{biblatex} die erste radikale (und längst
@@ -322,14 +322,17 @@ Referenzierung von modernen, multimedialen Formaten unumgänglich sind.
 Allerdings sind die in \texttt{biblatex} verwendeten Literaturdaten dadurch
 nicht mehr vollständig rückwärts-kompatibel zu BibTeX. Es ist daher in der
 Regel notwendig, bestehende oder aus Online-Quellen übernommene BibTeX-Daten
-manuell zu überarbeiten (\sa\ Abschnitt~\ref{sec:TippsZuBiblatex}).
+manuell zu überarbeiten (\sa\ Abschnitt~\ref{sec:TippsZuBiblatex}). Die
+Versionen von \texttt{biblatex} und \texttt{biber} müssen übrigens zueinander
+passen, was bei einer aktuellen \latex-Distribution automatisch gewährleistet
+ist.
 
 In dieser Vorlage sind die Schnittstellen zu \texttt{biblatex} weitgehend in
 der Style-Datei \nolinkurl{hgbbib.sty} verpackt. Die typische Verwendung in
 der \latex-Haupt\-datei sieht folgendermaßen aus:
 %
 \begin{LaTeXCode}[numbers=left]
-\documentclass[master,german,smartquotes]{hgbthesis}
+\documentclass[type=master,language=german,smartquotes=true]{hgbthesis}
    ...
 \bibliography{hgbreferences} /+\label{tex:literatur1}+/
    ...
@@ -379,7 +382,7 @@ Bedarf relativ leicht möglich.}
 \begin{itemize}
     \item[] \textsf{literature} -- für klassische Publikationen, die gedruckt
     oder online vorliegen;
-    \item[] \textsf{avmedia} -- für Filme, audio-visuelle Medien (auf DVD,
+    \item[] \textsf{media} -- für Filme, audio-visuelle Medien (auf DVD,
     Streaming \usw);
     \item[] \textsf{software} -- für Softwareprodukte, APIs, Computer Games;
     \item[] \textsf{online} -- für Artefakte, die \emph{ausschließlich}
@@ -416,7 +419,7 @@ zugeordnet.
 	\addlinespace
 %
 	\midrule
-	\emph{Audiovisuelle Medien} (\textsf{avmedia}) & & \\
+	\emph{Audiovisuelle Medien} (\textsf{media}) & & \\
 	\midrule
 	Audio (CD) & \texttt{@audio} & \pageref{sec:@audio}\\
 	Bild, Foto, Grafik & \texttt{@image} & \pageref{sec:@image}\\
@@ -450,13 +453,13 @@ die jeweils darüber stehenden Typen.}
 \setlength{\tabcolsep}{4mm}
 \begin{tabular}{@{}llll@{}}
 	\toprule
-	\textsf{literature} & \textsf{avmedia} & \textsf{software} & \textsf{online} \\
+	\textsf{literature} & \textsf{media} & \textsf{software} & \textsf{online} \\
 	\midrule
 	\texttt{@book} & \texttt{@audio} & \texttt{@software} & \texttt{@online} \\
 	\texttt{@incollection} & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
 	\texttt{@inproceedings} & \texttt{@video} & & \texttt{\color{midgray}@www} \\
 	\texttt{@article} & \texttt{@movie} & & \\
-	\texttt{@thesis} & \texttt{@software} & & \\
+	\texttt{@thesis} & \texttt{@image} & & \\
 	\texttt{@report} & & & \\
 	\texttt{@manual} & & & \\
 	\texttt{@standard} & & & \\
@@ -566,7 +569,6 @@ Verwendung des neuen Felds \texttt{venue} zur Angabe des Tagungsorts und
   publisher={Morgan Kaufmann Publishers},
   location={San Francisco},
   pages={819-821},
-  doi={10.1007/978-1-4615-3566-9},
   langid={english}
 }
 \end{GenericCode}
@@ -653,10 +655,9 @@ Analog zur Dissertation (s.\ oben), allerdings mit \texttt{type=\{mathesis\}}.%
 \begin{GenericCode}[numbers=none]
 @thesis{Loimayr2019,
   author={Loimayr, Nora},
-  title={Utilization of GPU-Based Smoothed Particle Hydrodynamics for Immersive Audiovisal Experiences},
+  title={Utilization of GPU-Based Smoothed Particle Hydrodynamics for Immersive Audiovisual Experiences},
   type={mathesis},
   date={2019-11-26},
-  month={11},
   institution={University of Applied Sciences Upper Austria, Interactive Media},
   location={Hagenberg, Austria},
   url={https://theses.fh-hagenberg.at/thesis/Loimayr19},
@@ -713,10 +714,10 @@ vorhanden.
   title={Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92},
   type={techreport},
   institution={NASA Dryden Flight Research Center},
-  date={1948-01},
+  date={1948-04-19},
   location={Edwards, CA},
   number={NACA-RM-L8A05A},
-  url={https://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf},
+  url={https://ntrs.nasa.gov/api/citations/19930085320/downloads/19930085320.pdf},
   langid={english}
 }
 \end{GenericCode}
@@ -728,7 +729,7 @@ vorhanden.
 \subsubsection{\texttt{\bfseries @manual}}
 \label{sec:@manual}
 
-Dieser Publikationstyp bietet sich jegliche Art von technischer oder anderer
+Dieser Publikationstyp bietet sich für jegliche Art von technischer oder anderer
 Dokumentation an, wie etwa Produktbeschreibungen, Anleitungen,
 Präsentationen, White Papers \usw Die Dokumentation muss dabei nicht zwingend
 gedruckt existieren.
@@ -736,16 +737,16 @@ gedruckt existieren.
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{Mittelbach2024,
+@manual{Mittelbach2025,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
-  date={2023-05-13},
-  version={2.17o},
-  url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
+  date={2025-07-09},
+  version={2.17z},
+  url={https://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
   langid={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2024}] \fullcite{Mittelbach2024}
+\item[\cite{Mittelbach2025}] \fullcite{Mittelbach2025}
 \end{itemize}
 %
 Oft wird bei derartigen Dokumenten kein*e Autor*in genannt. Dann wird der
@@ -774,7 +775,7 @@ Typ \texttt{@standard} unterstützt. Hier ein typisches Beispiel:
   shortauthor={WHATWG},
   title={HTML},
   titleaddon={Living Standard},
-  date={2023-11-06},
+  date={2026-09-08},
   url={https://html.spec.whatwg.org/multipage/},
   langid={english}
 }
@@ -829,7 +830,7 @@ für einen Gesetzestext (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 @legislation{OoeRaumordnungsgesetz1994,
   title={Landesgesetz vom 6. Oktober 1993 über die Raumordnung im Land Oberösterreich},
   titleaddon={Oö. Raumordnungsgesetz 1994 - Oö. ROG 1994},
-  howpublished={LGBl.Nr. 114/1993 zuletzt geändert durch LGBl.Nr. 111/2022},
+  howpublished={LGBl.Nr. 114/1993 zuletzt geändert durch LGBl.Nr. 62/2026},
   date={1993-12-23},
   url={https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrOO&Gesetzesnummer=10000370},
   langid={ngerman}
@@ -847,14 +848,14 @@ für einen Gesetzestext (\sa\ \cite{FhStG1993} und \cite{EuRichtlinie2000}).
 Sollte mit den bisher angeführten Eintragungstypen für gedruckte
 Publikationen nicht das Auslangen gefunden werden, sollte man sich zunächst
 die weiteren (hier nicht näher beschriebenen) Typen im
-\texttt{biblatex}-Handbuch \cite{Kime2024} ansehen, beispielsweise
+\texttt{biblatex}-Handbuch \cite{Kime2026} ansehen, beispielsweise
 \texttt{@collection} für einen Sammelband als Ganzes (also nicht nur ein
 Beitrag darin).
 
 Wenn nichts davon passt, dann kann auf den Typ \texttt{@misc} zurückgegriffen
 werden, der ein Textfeld \texttt{howpublished} vorsieht, in dem die Art der
 Veröffentlichung individuell angegeben werden kann. Ebenso kann mit dem Feld
-\texttt{type} spezifiziert werden, um welches Art von Dokument es sich handelt.
+\texttt{type} spezifiziert werden, um welche Art von Dokument es sich handelt.
 
 %%------------------------------------------------------
 
@@ -864,7 +865,7 @@ Veröffentlichung individuell angegeben werden kann. Ebenso kann mit dem Feld
 Für gedruckte Kompositionen%
 \footnote{Engl.\ \emph{sheet music} oder \emph{musical scores}}
 gibt es in BibLaTeX leider keinen speziellen Eintragstyp. Bei einer
-\emph{einzelnen} Ausgabe verwendet man am Einfachsten den Typ \texttt{@book},
+\emph{einzelnen} Ausgabe verwendet man am einfachsten den Typ \texttt{@book},
 wie \zB\ (\sa\ \cite{HaydnCelloConcerto2,ShostakovichOp110})
 %
 \begin{itemize}
@@ -894,7 +895,7 @@ wurden, kann man -- wie für einen Sammelband -- den Typ
   author={Gershwin, George and Heyward, DuBose},
   title={Summertime},
   booktitle={The Greatest Songs of George Gershwin},
-  publisher={Chappel Music},
+  publisher={Chappell Music},
   location={London},
   pages={40-43},
   date={1979},
@@ -933,7 +934,7 @@ findet, kann man sich \evtl\ mit dem \texttt{@unpublished}-Tag abhelfen:
 \item %
 \begin{GenericCode}[numbers=none]
 @unpublished{Dai2016,
-  author={Dai, Jifeng and Li,Yi and He, Kaiming and Sun, Jian},
+  author={Dai, Jifeng and Li, Yi and He, Kaiming and Sun, Jian},
   title={{R-FCN:} Object Detection via Region-Based Fully Convolutional Networks},
   date={2016},
   pubstate={prepublished},
@@ -949,7 +950,7 @@ findet, kann man sich \evtl\ mit dem \texttt{@unpublished}-Tag abhelfen:
 Im letzten Fall ist die Angabe des Links (über \texttt{doi} oder alternativ
 \texttt{url}) natürlich unverzichtbar. Details zum Feld \texttt{pubstate}
 (\texttt{prepublished}) findet man in der \texttt{biblatex}-Dokumentation
-\cite[Abschn.\ 4.9.2.11]{Kime2024}. Andernfalls (wenn unbekannt oder wirklich
+\cite[Abschn.\ 4.9.2.11]{Kime2026}. Andernfalls (wenn unbekannt oder wirklich
 nicht veröffentlicht) kann anstelle von \texttt{pubstate} auch der Eintrag
 %
 \begin{itemize}
@@ -960,7 +961,7 @@ nicht veröffentlicht) kann anstelle von \texttt{pubstate} auch der Eintrag
 verwendet werden.
 
 
-\subsection{Filme und audio-visuelle Medien (\textsf{avmedia})}
+\subsection{Filme und audio-visuelle Medien (\textsf{media})}
 \label{sec:KategorieAvmedia}
 
 Diese Kategorie ist dazu vorgesehen, audio-visuelle Produktionen wie Filme,
@@ -1080,7 +1081,7 @@ Punkt am Ende des \texttt{note}-Texts in der Ausgabe nicht verdoppelt wird.}
   title={Nosferatu -- A Symphony of Horrors},
   howpublished={Film},
   date={1922},
-  note={Drehbuch/Regie: F.\ W.\ Murnau. Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.},
+  note={Directed by F.\ W.\ Murnau, screenplay by Henrik Galeen. Starring Max Schreck, Gustav von Wangenheim, Greta Schröder.},
   langid={english}
 }
 \end{GenericCode}
@@ -1092,7 +1093,7 @@ mit einem (möglicherweise gleichnamigen) Buch auszuschließen.
 
 \subsubsection{Zeitangaben zu Musikaufnahmen und Filmen}
 
-Einen Verweis auf eine bestimmten Stelle in einem Musikstück oder Film kann
+Einen Verweis auf eine bestimmte Stelle in einem Musikstück oder Film kann
 man ähnlich ausführen wie die Seitenangabe in einem Druckwerk. Besonders
 legendär (und häufig parodiert) ist beispielsweise die Duschszene in
 \emph{Psycho} \cite[T=00:32:10]{Psycho1960}:
@@ -1151,13 +1152,13 @@ Nachfolgend ein Beispiel für den Verweis auf ein typisches Software-Projekt:
 \subsection{Online-Quellen (\texttt{\bfseries @online})}
 \label{sec:KategorieOnline}
 
-Bei Verweisen auf Online-Resourcen sind grundsätzlich drei Fälle zu
+Bei Verweisen auf Online-Ressourcen sind grundsätzlich drei Fälle zu
 unterscheiden:
 %
 \begin{itemize}
     \item[A.] Man möchte allgemein auf eine Webseite verweisen, etwa auf die
-    "Panasonic products for business" Seite.%
-    \footnote{\url{http://business.panasonic.co.uk/}}
+    Website des Softwareparks Hagenberg.%
+    \footnote{\url{https://www.softwarepark-hagenberg.at/}}
     In diesem Fall wird nicht auf ein konkretes "Werk" verwiesen und daher
     erfolgt \emph{keine} Aufnahme in das Quellenverzeichnis. Stattdessen genügt
     eine einfache Fußnote mit \verb!\footnote{\url{..}}!, wie im vorigen Satz
@@ -1191,8 +1192,8 @@ eines oder mehrerer Heiliger aufbewahrt werden \cite{WikiReliquienschrein2023}.
 @online{WikiReliquienschrein2023,
   title={Reliquienschrein},
   url={https://de.wikipedia.org/wiki/Reliquienschrein},
-  date={2023-09-22},
-  urldate={2023-11-06},
+  date={2026-06-10},
+  urldate={2026-09-13},
   langid={ngerman}
 }
 \end{GenericCode}
@@ -1295,7 +1296,7 @@ Häufig finden sich Weglassungen oder Fehler bei Einträgen von
 \texttt{volume}, \texttt{number} und \texttt{pages}, \va\ bei Sammelbänden
 (\texttt{@incollection}) und Konferenzbeiträgen (\texttt{@inproceedings}).
 Auch die Namen von Konferenzen und Tagungsorten werden oft nicht korrekt
-angegeben (sogar in offiziellen ACM- und IEEE-Quellen). ISBN, und
+angegeben (sogar in offiziellen ACM- und IEEE-Quellen). ISBN und
 ISSN sind in der Regel überflüssig und sollten weggelassen werden.
 Ein DOI-Eintrag (Digital Object Identifier) ist jedoch sinnvoll. Dieser
 eindeutigen Nummer wird von BibLaTeX ein Hyperlink hinterlegt, der auf die
@@ -1351,6 +1352,7 @@ müssen aber alle angeführten Quellen auch im Text referenziert sein!
 
 
 \section{Verwendung des APA-Zitierstils}
+\label{sec:APA}
 
 \begin{sloppypar}
 Als Alternative zu dem in diesem Dokument eingestellten numerischen
@@ -1365,10 +1367,10 @@ Auch die Formatierung der Einträge im Quellenverzeichnis ist unterschiedlich.
 \end{sloppypar}
 
 Um APA als Zitierstil im gesamten Dokument zu verwenden, muss in der
-Hauptdatei die Dokumenten\-option "\texttt{apa}" angegeben werden, \zB
+Hauptdatei die Option \texttt{apa=true} angegeben werden, \zB
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[master,german,smartquotes,apa]{hgbthesis}
+\documentclass[type=master,language=german,smartquotes=true,apa=true]{hgbthesis}
 \end{LaTeXCode}
 %
 Um Quellen im Text zu referenzieren sind mehrere \emph{unterschiedliche
@@ -1464,16 +1466,14 @@ Die oben verwendeten Quellen werden wie folgt im Quellenverzeichnis dargestellt:
 Daniel, M., Gundlach, P., Schmidt, W., Knappen, J., Partl, H. \& Hyna, I.
 (2018, 8. April).
 \textit{\LaTeX2e-Kurzbeschreibung.} Version 3.0c.
-\textrm{\url{http://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}
-(siehe S.\ 63, 64)
+\textrm{\url{https://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}
 \item
 Kopka, H. \& Daly, P. W. (2003). \textit{Guide to \LaTeX} (4. Aufl.).
-Addison-Wesley. (Siehe S.\ 63, 64).
+Addison-Wesley.
 \item
 Oetiker, T., Partl, H., Hyna, I. \& Schlegl, E. (2021, 9. März). \textit{The
-Not So ShortIntroduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.} Version 6.4.
-\url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf} (siehe S.\
-63, 64).
+Not So Short Introduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.} Version 6.4.
+\url{https://mirrors.ctan.org/info/lshort/english/lshort.pdf}
 \end{list}
 \end{sloppypar}
 
@@ -1512,6 +1512,13 @@ agieren und zumindest folgende Regeln beachten:
     Quellenangabe. Auch indirekt übernommene oder aus einer anderen Sprache
     übersetzte Passagen müssen mit entsprechenden Quellenangaben
     gekennzeichnet sein!
+    \item
+    Werden Texte mithilfe von KI-Tools erzeugt oder überarbeitet, ist das in
+    der Dokumentation der Nutzung von KI-Tools anzugeben (s.\
+    Abschnitt~\ref{sec:KIDokumentation}). Mit KI-Tools generierte Inhalte
+    gelten nicht als eigene Leistung; mit der Eidesstattlichen Erklärung wird
+    zudem bestätigt, dass die Arbeit selbständig verfasst und nur die
+    angegebenen Quellen und Hilfsmittel verwendet wurden.
 \end{itemize}
 %
 Im Zweifelsfall finden sich detailliertere Regeln in jedem guten Buch über

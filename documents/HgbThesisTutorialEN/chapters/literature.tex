@@ -22,7 +22,7 @@ disciplines.%
 \footnote{Adaptation to other specifications is relatively easy.}
 Technically, this part is based on the program \texttt{biber}%
 \footnote{\url{https://ctan.org/pkg/biber}}
-in combination with the \latex\ package \texttt{biblatex} \cite{Kime2024}.
+in combination with the \latex\ package \texttt{biblatex} \cite{Kime2026}.
 
 Reference management consists of two elements: \emph{citations} in the text
 refer to entries in the \emph{bibliography} (or multiple bibliographies). The
@@ -88,7 +88,7 @@ respective page numbers, is complex. For this purpose, the
 \texttt{hagenberg-thesis} package offers the additional command%
 \footnote{\texttt{\textbackslash mcite} is defined in \texttt{hgbbib.sty} and
 works similar to the \texttt{{\bs}cites} command of \texttt{biblatex}
-(see \url{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}).}
+(see \url{https://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}).}
 %
 \begin{itemize}
 \item[]
@@ -97,8 +97,8 @@ works similar to the \texttt{{\bs}cites} command of \texttt{biblatex}
 			\verb![!\textit{textN}\verb!]{!\textit{keyN}\verb!}!,
 \end{itemize}
 %
-where, for each given citation, key (\textit{key}) an associated \textit{text} can
-also be specified, for example:
+where an associated \textit{text} can be specified for each citation key
+(\textit{key}), for example:
 %
 \begin{itemize}
     \item Similar results can be found in 
@@ -127,7 +127,7 @@ is helpful to suppress these back references for individual citations, by using
 %
 This also works with \verb!\mcite! and other \verb!cite! commands; note that 
 the outer brackets are important here. For example, in item
-{\backtrackerfalse\parencite{Bezos2025}} of the bibliography 
+{\backtrackerfalse\parencite{Bezos2026}} of the bibliography 
 the current page (\the\value{page}) should \emph{not} be listed.
 
 \subsection{Common Mistakes}
@@ -137,7 +137,7 @@ for inexperienced authors. However, these can be easily avoided.
 
 \subsubsection{Placing References Outside Sentences}
 
-Citations should be placed \emph{within} or\emph{at the end} of a sentence (\ie, before the
+Citations should be placed \emph{within} or \emph{at the end} of a sentence (\ie, before the
 period), not \emph{outside}:
 %
 \begin{quote}
@@ -202,7 +202,7 @@ italicized, but not both!
 \texttt{smartquotes})}
 
 The \texttt{csquotes} package%
-\footnote{\url{https://ctan.org/pkg/csquotes}, see also section
+\footnote{\url{https://ctan.org/pkg/csquotes}, see also Section
 \ref{sec:quotation-marks}.}
 (automatically loaded by the \texttt{smartquotes} option) defines several
 additional environments for quotes, \eg
@@ -254,7 +254,7 @@ observed:
 %
 \paragraph{Example:} Suppose one would like to quote a passage from the famous
 book (\textrm{A}) \emph{Dialogo} by Galileo Galilei (which is difficult to obtain),
-referenced in a more recent work from 1969 (\textrm{A}). One could accomplish this,
+referenced in a more recent work from 1969 (\textrm{B}). One could accomplish this,
 \eg, with the following footnote (all page numbers are fictional).%
 \footnote{Galileo Galilei, \emph{Dialogo sopra i due massimi sistemi del
 mondo tolemaico e copernicano}, p.~314 (1632). Quoted from 
@@ -267,11 +267,11 @@ Only the secondary source \cite{Hemleben1969} is included in the actual bibliogr
 There are several options for creating the bibliography in \latex. The
 traditional method is to use \texttt{BibTeX} \cite{Patashnik1988}. Another (more
 modern) approach uses \texttt{biber}%
-\footnote{\url{http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf}}
+\footnote{\url{https://mirrors.ctan.org/biblio/biber/base/documentation/biber.pdf}}
 and \texttt{biblatex}, as described below.
 
 
-\subsection{Bibliographic Data in BibTeX and BibLaTex}
+\subsection{Bibliographic Data in BibTeX and BibLaTeX}
 \label{sec:bibtex}
 
 BibTeX is a stand-alone program that generates a bibliography suitable for
@@ -290,8 +290,8 @@ BibTeX bibliographies, such as \emph{JabRef}.%
 
 \subsubsection{Using \texttt{biblatex} and \texttt{biber}}
 
-This document uses \texttt{biblatex} (version 1.4 or higher) in conjunction with
-the software \texttt{biber}, which addresses many shortcomings of the
+This document uses \texttt{biblatex} in conjunction with the software
+\texttt{biber}, which addresses many shortcomings of the
 traditional BibTeX workflow and significantly extends its capabilities.%
 \footnote{In fact, \texttt{biblatex} is the first radical (and long-needed)
 overhaul of the outdated BibTeX workflow and has already replaced the latter in
@@ -301,14 +301,16 @@ referencing modern multimedia sources. However, this means that the
 bibliographic data used in \texttt{biblatex} are no longer fully backward
 compatible with BibTeX. It is, therefore, usually necessary to manually revise
 existing BibTeX data or data taken from online sources (see
-Section~\ref{sec:tips-on-biblatex}).
+Section~\ref{sec:tips-on-biblatex}). By the way, the versions of
+\texttt{biblatex} and \texttt{biber} must match, which is automatically the
+case with a current \latex distribution.
 
 In our setup, the interface to \texttt{biblatex} is contained in the style
 file \nolinkurl{hgbbib.sty}. The typical usage in the main \latex file is as
 follows:
 %
 \begin{LaTeXCode}[numbers=left]
-\documentclass[master,english,smartquotes]{hgbthesis}
+\documentclass[type=master,language=english,smartquotes=true]{hgbthesis}
    ...
 \bibliography{hgbreferences} /+\label{tex:references1}+/
    ...
@@ -327,7 +329,7 @@ statement. Both statements are equivalent, but often only
 \texttt{{\bs}bibliography} makes the associated \texttt{.bib} file visible in
 the file structure of the editor environment.}
 (line \ref{tex:references1}) refers to a BibLaTeX file \nolinkurl{hgbreferences.bib},
-which holdss all references.
+which holds all references.
 If multiple BibLaTeX files are used, they can be specified in the same form.
 
 The \verb!\MakeBibliography! statement near the end of the document
@@ -348,7 +350,7 @@ here with the title "References". Two variants are possible:
 \label{sec:reference-categories}
 
 The \texttt{hagenberg-thesis} package provides the following categories for split
-bibliographies (see Table~\ref{tab:references-and-entry-types}):%.
+bibliographies (see Table~\ref{tab:references-and-entry-types}):%
 \footnote{These categories are defined in the file \nolinkurl{hgbbib.sty}. Any
 changes and the definition of additional categories are pretty straightforward
 if required.}
@@ -356,7 +358,7 @@ if required.}
 \begin{itemize}
     \item[] \textsf{literature} -- for classic publications that are available
     in print or online;
-    \item[] \textsf{avmedia} -- for movies, audio-visual media (on DVD,
+    \item[] \textsf{media} -- for movies, audio-visual media (on DVD,
     streaming, \etc);
     \item[] \textsf{software} -- for software, APIs, computer games;
     \item[] \textsf{online} -- for artifacts that are \emph{only} available
@@ -391,11 +393,11 @@ the category \textsf{literature}.
 	Norm, standard & \texttt{@standard} & \pageref{sec:@standard}\\
 	Laws, bills, regulations, \etc & \texttt{@legislation} & \pageref{sec:@legislation}\\
 	Compositions, sheet music & \texttt{@book}, \texttt{@incollection} & \pageref{sec:sheet-music}\\
-	Pre-publications (\eg conference submissions) & \texttt{@unpublished} & \pageref{sec:@unpublished}\\
+	Pre-publications (\eg, conference submissions) & \texttt{@unpublished} & \pageref{sec:@unpublished}\\
 	\addlinespace
 %
 	\midrule
-	\emph{Audiovisual media} (\textsf{avmedia}) & & \\
+	\emph{Audiovisual media} (\textsf{media}) & & \\
 	\midrule
 	Audio (CD) & \texttt{@audio} & \pageref{sec:@audio}\\
 	Image, photo, graphic & \texttt{@image} & \pageref{sec:@image}\\
@@ -429,13 +431,13 @@ types above them.}
 \setlength{\tabcolsep}{4mm}
 \begin{tabular}{@{}llll@{}}
 	\toprule
-	\textsf{literature} & \textsf{avmedia} & \textsf{software} & \textsf{online} \\
+	\textsf{literature} & \textsf{media} & \textsf{software} & \textsf{online} \\
 	\midrule
 	\texttt{@book} & \texttt{@audio} & \texttt{@software} & \texttt{@online} \\
 	\texttt{@incollection} & \texttt{\color{midgray}@music} & & \texttt{\color{midgray}@electronic} \\
 	\texttt{@inproceedings} & \texttt{@video} & & \texttt{\color{midgray}@www} \\
 	\texttt{@article} & \texttt{@movie} & & \\
-	\texttt{@thesis} & \texttt{@software} & & \\
+	\texttt{@thesis} & \texttt{@image} & & \\
 	\texttt{@report} & & & \\
 	\texttt{@manual} & & & \\
 	\texttt{@standard} & & & \\
@@ -540,7 +542,6 @@ between the fields \texttt{venue} to indicate the place of the conference and
   publisher={Morgan Kaufmann Publishers},
   location={San Francisco},
   pages={819-821},
-  doi={10.1007/978-1-4615-3566-9},
   langid={english}
 }
 \end{GenericCode}
@@ -617,7 +618,7 @@ Equivalent to a dissertation (see above), but with
 
 %%------------------------------------------------------
 
-\paragraph{Master Thesis:} ~ \newline
+\paragraph{Master's Thesis:} ~ \newline
 Equivalent to a dissertation (see above), but with \texttt{type=\{mathesis\}}.%
 
 %
@@ -626,10 +627,9 @@ Equivalent to a dissertation (see above), but with \texttt{type=\{mathesis\}}.%
 \begin{GenericCode}[numbers=none]
 @thesis{Loimayr2019,
   author={Loimayr, Nora},
-  title={Utilization of GPU-Based Smoothed Particle Hydrodynamics for Immersive Audiovisal Experiences},
+  title={Utilization of GPU-Based Smoothed Particle Hydrodynamics for Immersive Audiovisual Experiences},
   type={mathesis},
   date={2019-11-26},
-  month={11},
   institution={University of Applied Sciences Upper Austria, Interactive Media},
   location={Hagenberg, Austria},
   url={https://theses.fh-hagenberg.at/thesis/Loimayr19},
@@ -644,8 +644,8 @@ without any additional markup (using the \verb!\url{..}! command).
 
 %%------------------------------------------------------
 
-\paragraph{Bachelor Thesis:} ~ \newline
-Bachelor theses are not usually considered "proper" publications, but it must
+\paragraph{Bachelor's Thesis:} ~ \newline
+Bachelor's theses are not usually considered "proper" publications, but it must
 still be possible to reference them if necessary, for example:
 %
 \begin{itemize}
@@ -684,10 +684,10 @@ sense to provide a corresponding URL, if available.
   title={Results obtained during accelerated transonic tests of the {Bell} {XS-1} airplane in flights to a {MACH} number of 0.92},
   type={techreport},
   institution={NASA Dryden Flight Research Center},
-  date={1948-01},
+  date={1948-04-19},
   location={Edwards, CA},
   number={NACA-RM-L8A05A},
-  url={https://www.nasa.gov/centers/dryden/pdf/87528main_RM-L8A05A.pdf},
+  url={https://ntrs.nasa.gov/api/citations/19930085320/downloads/19930085320.pdf},
   langid={english}
 }
 \end{GenericCode}
@@ -706,22 +706,22 @@ documentation does not need to exist in printed form.
 \begin{itemize}
 \item[]
 \begin{GenericCode}[numbers=none]
-@manual{Mittelbach2024,
+@manual{Mittelbach2025,
   author={Mittelbach, Frank and Schöpf, Rainer and Downes, Michael and Jones, David M. and Carlisle, David},
   title={The \texttt{amsmath} package},
-  date={2023-05-13},
-  version={2.17o},
-  url={http://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
+  date={2025-07-09},
+  version={2.17z},
+  url={https://mirrors.ctan.org/macros/latex/required/amsmath/amsmath.pdf},
   langid={english}
 }
 \end{GenericCode}
-\item[\cite{Mittelbach2024}] \fullcite{Mittelbach2024}
+\item[\cite{Mittelbach2025}] \fullcite{Mittelbach2025}
 \end{itemize}
 %
 Often no author is named in such documents. Instead, the name of the
 \emph{company} or \emph{institution} is specified in the \texttt{author} field,
 but within \emph{additional parentheses} \texttt{\{..\}}, so that the
-argument is not misinterpreted as \emph{first name} + \emph{last name}.%.
+argument is not misinterpreted as \emph{first name} + \emph{last name}.%
 \footnote{Unlike BibTeX, \texttt{biblatex} does not accept the
 \texttt{organization} field as a replacement for \texttt{author} in
 \texttt{@manual} entries.}
@@ -743,7 +743,7 @@ type \texttt{@standard}. Here is a typical example:
   shortauthor={WHATWG},
   title={HTML},
   titleaddon={Living Standard},
-  date={2023-11-06},
+  date={2026-09-08},
   url={https://html.spec.whatwg.org/multipage/},
   langid={english}
 }
@@ -797,7 +797,7 @@ the application for a legal text (see also \cite{FhStG1993} and
 @legislation{OoeRaumordnungsgesetz1994,
   title={Landesgesetz vom 6. Oktober 1993 über die Raumordnung im Land Oberösterreich},
   titleaddon={Oö. Raumordnungsgesetz 1994 - Oö. ROG 1994},
-  howpublished={LGBl.Nr. 114/1993 zuletzt geändert durch LGBl.Nr. 111/2022},
+  howpublished={LGBl.Nr. 114/1993 zuletzt geändert durch LGBl.Nr. 62/2026},
   date={1993-12-23},
   url={https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=LrOO&Gesetzesnummer=10000370},
   langid={ngerman}
@@ -814,7 +814,7 @@ the application for a legal text (see also \cite{FhStG1993} and
 
 If the entry types for printed publications listed so far do not suffice, one
 should first look at the other types (not described in detail here) in the
-\texttt{biblatex} manual \cite{Kime2024}. For example, \texttt{@collection} for
+\texttt{biblatex} manual \cite{Kime2026}. For example, \texttt{@collection} for
 a complete collection (\ie, not just a single contribution).
 
 If none of them fit, then the \texttt{@misc} type can be used. It provides a
@@ -858,7 +858,7 @@ a scientific collection---the type \texttt{@incollection}:
   author={Gershwin, George and Heyward, DuBose},
   title={Summertime},
   booktitle={The Greatest Songs of George Gershwin},
-  publisher={Chappel Music},
+  publisher={Chappell Music},
   location={London},
   pages={40-43},
   date={1979},
@@ -896,7 +896,7 @@ associated \emph{technical report}, see above) can be found, the
 \item %
 \begin{GenericCode}[numbers=none]
 @unpublished{Dai2016,
-  author={Dai, Jifeng and Li,Yi and He, Kaiming and Sun, Jian},
+  author={Dai, Jifeng and Li, Yi and He, Kaiming and Sun, Jian},
   title={{R-FCN:} Object Detection via Region-Based Fully Convolutional Networks},
   date={2016},
   pubstate={prepublished},
@@ -913,17 +913,17 @@ associated \emph{technical report}, see above) can be found, the
 In the latter case, the specification of the link (via \texttt{doi} or alternatively
 \texttt{url}) is essential. Details on the \texttt{pubstate} field
 (\texttt{prepublished}) can be found in the \texttt{biblatex} documentation
-\cite[Sec.\ 4.9.2.11]{Kime2024}. Otherwise (if unknown or not published),
+\cite[Sec.\ 4.9.2.11]{Kime2026}. Otherwise (if unknown or not published),
 %
 \begin{itemize}
 \item[]\texttt{note=\{unpublished\}} \quad or
-   \quad \texttt{note=\{unververöffentlicht\}}
+   \quad \texttt{note=\{unveröffentlicht\}}
 \end{itemize}
 %
 can be used instead of \texttt{pubstate}.
 
 
-\subsection{Movies and Audio-Visual Media (\textsf{avmedia})}
+\subsection{Movies and Audio-Visual Media (\textsf{media})}
 \label{sec:category-avmedia}
 
 This category covers audio-visual productions such as movies, sound recordings,
@@ -1038,7 +1038,7 @@ of the \texttt{note} text is not duplicated in the output.}
   title={Nosferatu -- A Symphony of Horrors},
   howpublished={Film},
   date={1922},
-  note={Drehbuch/Regie: F.\ W.\ Murnau. Mit Max Schreck, Gustav von Wangenheim, Greta Schröder.},
+  note={Directed by F.\ W.\ Murnau, screenplay by Henrik Galeen. Starring Max Schreck, Gustav von Wangenheim, Greta Schröder.},
   langid={english}
 }
 \end{GenericCode}
@@ -1113,9 +1113,9 @@ In the case of references to online resources, three cases need to be
 distinguished:
 %
 \begin{itemize}
-    \item[A.] Referring to a web page in general, such as the "Panasonic
-    products for business" page.%
-    \footnote{\url{http://business.panasonic.co.uk/}}
+    \item[A.] Referring to a web page in general, such as the website of the
+    Softwarepark Hagenberg.%
+    \footnote{\url{https://www.softwarepark-hagenberg.at/}}
     In this case, there is no reference to a specific "work"; therefore, it is
     \emph{not included} in the bibliography. Instead, as shown in the previous
     sentence, it is sufficient to use a simple footnote with
@@ -1147,12 +1147,12 @@ kept \cite{WikiReliquienschrein2023}.
 @online{WikiReliquienschrein2023,
   title={Reliquienschrein},
   url={https://de.wikipedia.org/wiki/Reliquienschrein},
-  date={2023-09-22},
-  urldate={2023-11-06},
+  date={2026-06-10},
+  urldate={2026-09-13},
   langid={ngerman}
 }
 \end{GenericCode}
-\item[\cite{WikiReliquienschrein2023}] \fullcite{WikiReliquienschrein2023}
+\item[\cite{WikiReliquienschrein2023}] \begin{sloppypar}\fullcite{WikiReliquienschrein2023}\end{sloppypar}
 \end{itemize}
 %
 In this case, the reference consists mainly of a URL. With \texttt{date}, one
@@ -1166,7 +1166,7 @@ However, if \emph{no} author is available, then---as shown in the examples
 above---at least a meaningful \emph{title} (\texttt{title}) should be added,
 which may be used for sorting the bibliography.
 
-\subsection{Tips for Creating BibLaTex Files}
+\subsection{Tips for Creating BibLaTeX Files}
 \label{sec:tips-on-biblatex}
 
 The following items should be considered for creating correct BibLaTeX
@@ -1182,7 +1182,7 @@ consist of only the year (\texttt{YYYY}) or year and month (\texttt{YYYY-MM}).
 Likewise, durations can also be defined in the format
 \texttt{YYYY-MM-DD/YYYY-MM-DD}. Related fields are \texttt{origdate} (original
 publication date for, \eg, a reprint or translation), \texttt{eventdate} (date
-of a conference), and \texttt{urldate} (access date of an URL).
+of a conference), and \texttt{urldate} (access date of a URL).
 
 Should \texttt{year} and \texttt{month} nevertheless be used, note that the
 latter is numeric in BibLaTeX (in contrast to BibTeX) and is specified,
@@ -1209,7 +1209,7 @@ page \pageref{sec:@book} (under \texttt{@book}), in case of a
 \emph{first} edition, the \texttt{edition} field should
 \emph{not} be specified if there is no other edition!
 
-\subsubsection{Caution When Incorporating Existing Bibtex Entries}
+\subsubsection{Caution When Incorporating Existing BibTeX Entries}
 
 Many publishers and literature brokers offer ready-made BibTeX entries for
 download. However, great care should be taken because these entries are often
@@ -1276,7 +1276,7 @@ the most critical provisions related to the bibliography:
     \item Conference proceedings: Refer to conference proceedings consistently
     in the form "Proceedings of the \emph{XY Conference on Something} \ldots".
     Indicate the conference venue, and remember to specify the page numbers!
-    \item For technical reports, master theses, and dissertations, the
+    \item For technical reports, master's theses, and dissertations, the
     institution (university and department, company, \etc) \emph{must} be
     provided!
 \end{itemize}
@@ -1291,6 +1291,7 @@ Normally, however, all cited sources must also be referenced in the text!
 
 
 \section{Using the APA Citation Style}
+\label{sec:APA}
 
 As an alternative to the numeric citation style set in this document
 (\texttt{numeric-comp}), the style of the American Psychological Association%
@@ -1300,11 +1301,11 @@ and agreed upon with the supervisor. This type of reference formatting uses the
 author's name and the year of publication instead of a number in square
 brackets. The formatting of the entries in the bibliography is also different.
 
-To use APA as the citation style throughout the document, the document option
-"\texttt{apa}" must be specified in the main file, \eg,
+To use APA as the citation style throughout the document, the option
+\texttt{apa=true} must be specified in the main file, \eg,
 %
 \begin{LaTeXCode}[numbers=none]
-\documentclass[master,english,smartquotes,apa]{hgbthesis}
+\documentclass[type=master,language=english,smartquotes=true,apa=true]{hgbthesis}
 \end{LaTeXCode}
 %
 Depending on the type of use, several \emph{different commands} are necessary
@@ -1395,16 +1396,14 @@ The references used above are displayed in the bibliography as follows:
 \item
 Daniel, M., Gundlach, P., Schmidt, W., Knappen, J., Partl, H. \& Hyna, I.
 (2018, April 8). \textit{\LaTeX2e-Kurzbeschreibung.} Version 3.0c.
-\textrm{\url{http://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}.
-(cit. on pp.\ 63, 64)
+\textrm{\url{https://mirrors.ctan.org/info/lshort/german/l2kurz.pdf}}
 \item
 Kopka, H. \& Daly, P. W. (2003). \textit{Guide to \LaTeX} (4th ed.).
-Addison-Wesley. (Cit. on pp.\ 63, 64).
+Addison-Wesley.
 \item
 Oetiker, T., Partl, H., Hyna, I. \& Schlegl, E. (2021, March 9). \textit{The
-Not So ShortIntroduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.} Version 6.4.
-\url{http://mirrors.ctan.org/info/lshort/english/lshort.pdf} (cit. on pp.\
-63, 64).
+Not So Short Introduction to \LaTeX2e: Or \LaTeX2e in 139 minutes.} Version 6.4.
+\url{https://mirrors.ctan.org/info/lshort/english/lshort.pdf}
 \end{list}
 \end{sloppypar}
 
@@ -1438,6 +1437,12 @@ least observe the following rules:
     Under no circumstances tolerable is to directly adopt or \emph{paraphrase}
     longer text passages, whether with or without citation. Passages used
     indirectly or translated from another language must also be cited properly!
+    \item
+    If texts are generated or revised with the help of AI tools, this must be
+    stated in the documentation of AI tools usage (see
+    Section~\ref{sec:DocumentingAIUsage}). Content generated by AI tools is not
+    one's own work; moreover, the affidavit confirms that the thesis was written
+    independently and that only the references and aids indicated were used.
 \end{itemize}
 %
 In case of doubt, more detailed rules can be found in any good book on
