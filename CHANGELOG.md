@@ -46,6 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - 2026/09/11: Fixed the wrong accent character for "Exposé" in the German dictionary entry of `hgbdict.sty` and corrected its file header.
 - 2026/09/11: Fixed outdated option descriptions in `HgbThesisTutorialDE`/`HgbThesisTutorialEN` (default language is `english`, key-value syntax, missing `phd` type, `titlelanguage` option), wrong language defaults in the comments of the German sample documents, and minor inconsistencies in the manual.
 - 2026/09/12: [#216](https://github.com/Digital-Media/HagenbergThesis/issues/216): `hgbthesis` and `hgbreport` now load the T1 font encoding and the Latin Modern fonts themselves (with pdfLaTeX only), like `hgbarticle`. Previously these were only loaded by `hgbpdfa`, so documents without PDF/A output fell back to OT1 and Computer Modern (umlauts copied from the PDF as separate accents, poorer hyphenation of words with umlauts). Note that documents without `hgbpdfa` may therefore show slightly different line and page breaks. Documents with `hgbpdfa` are not affected.
+- 2026/09/13: [#217](https://github.com/Digital-Media/HagenbergThesis/issues/217): Fixed the handling of `@electronic` entries in `hgbbib.sty`: like `@online` and `@www` (aliases in biblatex), they are now sorted and categorized as online sources. Previously they were printed as online sources but sorted as software, so citation lists containing such an entry were not in numeric order and not compressed (e.g. `[1, 4, 2, 3, 5, 6]` instead of `[1–6]`).
 
 ## [2025/02/24]
 
