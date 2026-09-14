@@ -180,7 +180,7 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 %     \aiconfirm{accuracy}                               % confirm statements (check boxes)
 %     \aiconfirm{responsibility}
 %     \aiactivity{<key>}{<tools>}{<description>}         % any number, keys see \hgb@AIUsageActivities
-%     \aifurtheruse{<text>}                              % optional
+%     \aifurtheruse{<text>}                              % optional, one per further use
 %   \end{aiusagedetails}
 % Without the option, the table lists all activities, as the FH OÖ template does.
 \newenvironment{aiusagedetails}[1][]{%
@@ -207,7 +207,9 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		\csgdef{hgb@AIUsageTools@\hgb@tmpkey}{}%
 		\csgdef{hgb@AIUsageUse@\hgb@tmpkey}{}%
 	}%
+	\global\hgb@AIUsageFurtherCount=\z@
 	\gdef\hgb@AIUsageFurther{}%
+	\gdef\hgb@AIUsageFurtherFirst{}%
 }
 
 \newcommand{\aiconfirm}[1]{%
@@ -234,10 +236,15 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\fi
 }
 
+% One \aifurtheruse per further use: a single entry is printed as a paragraph, several entries as a
+% bulleted list (like the descriptions of the activities).
+\newcount\hgb@AIUsageFurtherCount
 \newcommand{\aifurtheruse}[1]{%
-	\ifdefempty{\hgb@AIUsageFurther}%
-		{\gdef\hgb@AIUsageFurther{#1}}%
-		{\gappto\hgb@AIUsageFurther{\par #1}}%
+	\global\advance\hgb@AIUsageFurtherCount by \@ne
+	\ifnum\hgb@AIUsageFurtherCount=\@ne
+		\gdef\hgb@AIUsageFurtherFirst{#1}%
+	\fi
+	\gappto\hgb@AIUsageFurther{\hgb@AIUsagePoint{#1}}%
 }
 
 \newcommand{\hgb@AIUsageStatementRow}[1]{%
@@ -339,9 +346,13 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	%
 	\bigskip
 	\noindent\textbf{\hgb@AIUsageGet{aiusagedetails-further}}\par
-	\noindent\ifdefempty{\hgb@AIUsageFurther}%
-		{\hgb@AIUsageGet{aiusagedetails-further-none}}%
-		{\hgb@AIUsageFurther}\par
+	\ifcase\hgb@AIUsageFurtherCount
+		\noindent\hgb@AIUsageGet{aiusagedetails-further-none}\par
+	\or
+		\noindent\hgb@AIUsageFurtherFirst\par
+	\else
+		\hgb@AIUsageFurther
+	\fi
 	\bigskip
 	{\footnotesize\noindent\hgb@AIUsageGet{aiusagedetails-source}\par}%
 	\end{SwitchLanguage}%

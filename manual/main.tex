@@ -707,6 +707,7 @@ warning is issued. For example,
   \aiactivity{coding}{GitHub Copilot}{Generation of test functions (Chapter 4)}
   \aiactivity{editing}{DeepL Write}{Proofreading of Chapters 1--5}
   \aifurtheruse{Generation of test data for the evaluation (Section 5.2).}
+  \aifurtheruse{Creation of charts from the measurement data (Section 5.3).}
 \end{aiusagedetails}
 \end{LaTeXCode}
 %
@@ -720,8 +721,10 @@ The environment only collects the following entries; the form is created at its 
 		Table~\ref{tab:AIUsageActivities}) and a description of their use (type of usage, affected
 		sections, \etc). Multiple entries for the same activity are appended; activities without
 		entries remain empty (or are omitted with the option \texttt{compact}, see below).
-	\item \verb!\aifurtheruse{<text>}!: further use of AI tools (optional; without it, \emph{None} or \emph{Keine} is printed
-		below the heading).
+	\item \verb!\aifurtheruse{<text>}!: further use of AI tools that fits none of the activities
+		(optional). Use one \verb!\aifurtheruse! per use: a single entry is printed as a paragraph,
+		several entries as a bulleted list; without any entry, \emph{None} or \emph{Keine} is printed
+		below the heading.
 \end{itemize}
 %
 By default, the table lists all activities, as the FH O\"O template does. With the optional argument

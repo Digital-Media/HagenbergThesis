@@ -251,6 +251,7 @@ KI-Tools wofür verwendet wurden:
   \aiconfirm{responsibility}
   \aiactivity{coding}{GitHub Copilot}{Generierung von Testfunktionen (Kapitel 4)}
   \aiactivity{editing}{DeepL Write}{Korrekturlesen der Kapitel 1--5}
+  \aifurtheruse{Erzeugung von Testdaten für die Evaluierung (Abschnitt 5.2).}
 \end{aiusagedetails}
 \end{LaTeXCode}
 %
@@ -258,5 +259,8 @@ Die Tabelle enthält wie die Vorlage der FH Oberösterreich standardmäßig alle
 Tätigkeiten; mit \verb!\begin{aiusagedetails}[compact]! werden nur jene mit
 Einträgen ausgegeben. Die Ausfüllhinweise der Vorlage (\zB zur Angabe der
 KI-Tools) erscheinen nicht im Formular, sondern als Kommentare in
-\verb!front/ki-dokumentation.tex!.
+\verb!front/ki-dokumentation.tex!. Nutzungen, die keiner Tätigkeit der Tabelle
+entsprechen, werden mit \verb!\aifurtheruse{...}! angegeben, und zwar ein Befehl
+pro Nutzung. Ein einzelner Eintrag erscheint als Absatz, mehrere erscheinen als
+Aufzählung; ohne \verb!\aifurtheruse! steht dort "Keine".
 Alle Befehle und Tätigkeiten sind im Manual des Pakets beschrieben.
