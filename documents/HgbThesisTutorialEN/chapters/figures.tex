@@ -426,7 +426,7 @@ the (usually unwanted) margin at the left and right table borders.
         Language   & Type        & Typical Use      & Standards          \\
         \midrule
         C++        & Compiled    & Applications     & ISO/IEC 14882:2024 \\
-        COBOL      & Compiled    & Business         & ISO/IEC 1989:2023 \\
+        COBOL      & Compiled    & Business         & ISO/IEC 1989:2023  \\
         JavaScript & Interpreted & Web              & ECMA-262           \\
         Python     & Interpreted & Machine Learning & PEPs               \\
         \bottomrule
@@ -452,7 +452,7 @@ the (usually unwanted) margin at the left and right table borders.
         Language   & Type        & Typical Use      & Standards          \\
         \midrule
         C++        & Compiled    & Applications     & ISO/IEC 14882:2024 \\
-        COBOL      & Compiled    & Business         & ISO/IEC 1989:2023 \\
+        COBOL      & Compiled    & Business         & ISO/IEC 1989:2023  \\
         JavaScript & Interpreted & Web              & ECMA-262           \\
         Python     & Interpreted & Machine Learning & PEPs               \\
         \bottomrule
@@ -779,7 +779,9 @@ int w = ip.getWidth(); /+\label{ExampleCodeLabel}+/
 An example with Java is shown in Prog.~\ref{prog:CodeExample}, where the
 above label is placed in line \ref{ExampleCodeLabel}. Note that mathematical
 text (such as in line \ref{MathInCode} of Prog.~\ref{prog:CodeExample}) can
-also be placed inside escaped comments.
+also be placed inside comments: with the option \verb![mathescape=true]!, text
+between \verb!$! \ldots\ \verb!$! is typeset as math and fits into the
+appearance of the comment.
 
 
 \subsubsection{Code Style}
@@ -917,7 +919,7 @@ numerical cross references used instead. See Programs
 % place caption consistently either at the top or bottom:
 \caption{Example of a program listing (Java) as a float element.}
 \label{prog:CodeExample}
-\begin{JavaCode}
+\begin{JavaCode}[mathescape=true]
 import ij.ImagePlus;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
@@ -938,11 +940,11 @@ public class My_Inverter implements PlugInFilter {
         for (int u = 0; u < w; u++) {
             for (int v = 0; v < h; v++) {
                 int p = ip.getPixel(u, v);
-                ip.putPixel(u, v, 255 - p); // invert: /+\smash{$I'(u,v) \leftarrow (255 - I(u,v))$}\label{MathInCode}+/
+                ip.putPixel(u, v, 255 - p); // invert: $\smash{I'(u,v) \leftarrow (255 - I(u,v))}$/+\label{MathInCode}+/
             }
         }
     }
-} // end of class /+My\_Inverter+/
+} // end of class My_Inverter
 \end{JavaCode}
 %
 \end{program}
