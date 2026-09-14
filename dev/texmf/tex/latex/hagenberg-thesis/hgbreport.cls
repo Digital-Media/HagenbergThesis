@@ -49,6 +49,7 @@
                       \renewcommand{\hgb@MainLanguage}{#1}},
   apa.code         = {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
   apa.default:n    = true,
+  codestyle.code   = \PassOptionsToPackage{codestyle=#1}{hgblistings}, % color|mono|classic, validated there
   twoside.code     = {\ifthenelse{\equal{#1}{true}}%
                        {\PassOptionsToClass{twoside}{report}}%
                        {\PassOptionsToClass{oneside}{report}}},

@@ -97,6 +97,7 @@
 	proposal.default:n	= true,	% https://tex.stackexchange.com/a/682260/175415
 	apa.code					= {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
 	apa.default:n			= true,
+	codestyle.code			= \PassOptionsToPackage{codestyle=#1}{hgblistings},	% color|mono|classic, validated there
 	%	twoside=true|false: default is 'oneside' for backward compatibility ('twoside' is book's default).
 	%	\hgb@@pagelayout is injected into \LoadClass[...\hgb@@pagelayout]{book} below.
 	twoside.code			= {\ifthenelse{\equal{#1}{true}}%

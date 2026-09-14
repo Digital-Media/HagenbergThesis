@@ -94,6 +94,8 @@ All three document classes accept the following general options:
 	\item \texttt{apa=true}:
 		use APA bibliography style instead of \texttt{numeric-comp};
 		default is \texttt{apa=false},
+	\item \texttt{codestyle=}\{\texttt{color}|\texttt{mono}|\texttt{classic}\}:
+		appearance of code listings, see Sec.~\ref{sec:CodeStyle} (default: \texttt{color}),
 	\item \texttt{updatecheck=true} (default): perform check of package release date;
 		use \texttt{updatecheck=false} to suppress.
 \end{itemize}
@@ -439,26 +441,60 @@ space, \ie, they can be used without additional controls, as in
 
 
 \subsection{Code environments (\texttt{hgblistings.sty})}
+\label{sec:CodeEnvironments}
 
-The following types of code environments are defined:%
+The code environments listed in Table~\ref{tab:CodeEnvironments} are defined. Their keywords correspond
+to current language versions (\eg, C23, C++23, C\#~13, Java~21, Python~3, PHP~8.4, Swift~6); built-in
+types and functions form a second keyword class. The table also lists the language names for
+including code files with \verb!\lstinputlisting!, for example,
 %
-\begin{itemize}
-    \item \textbf{\texttt{CCode}}: for C (ANSI),
-    \item \textbf{\texttt{CppCode}}: for C++ (ISO),
-    \item \textbf{\texttt{CsCode}}: for C\#,
-    \item \textbf{\texttt{CssCode}}: for CSS,
-    \item \textbf{\texttt{GenericCode}}: for generic code,
-    \item \textbf{\texttt{HtmlCode}}: for HTML,
-    \item \textbf{\texttt{JavaCode}}: for Java,
-    \item \textbf{\texttt{JsCode}}: for JavaScript,
-    \item \textbf{\texttt{LaTeXCode}}: for \latex,
-    \item \textbf{\texttt{ObjCCode}}: for ObjectiveC,
-    \item \textbf{\texttt{PhpCode}}: for PHP,
-    \item \textbf{\texttt{PythonCode}}: for Python,
-    \item \textbf{\texttt{ScalaCode}}: for Scala,
-    \item \textbf{\texttt{Swift}}: for Swift,
-    \item \textbf{\texttt{XmlCode}}: for XML.
-\end{itemize}
+\begin{LaTeXCode}[numbers=none]
+\lstinputlisting[language=Java]{code/Main.java}
+\end{LaTeXCode}
+%
+Languages that are also defined by \texttt{listings} are extended by the dialect \texttt{[hgb]}, which is
+set as default dialect where possible (\eg, \texttt{language=Java} selects \texttt{[hgb]Java}). For HTML,
+\latex, Scala, SQL and XML, the dialect must be specified explicitly (\eg, \texttt{language=\{[hgb]SQL\}});
+otherwise, the original definition of \texttt{listings} is used.
+
+\begin{table}[H]
+\caption{Code environments and language names for \texttt{\textbackslash lstinputlisting}.}
+\label{tab:CodeEnvironments}
+\centering\small
+\begin{tabular}{@{}lll@{}}
+	\toprule
+	Language     & Environment          & \texttt{language=} \\
+	\midrule
+	Bash         & \texttt{BashCode}    & \texttt{bash} \\
+	C            & \texttt{CCode}       & \texttt{C} \\
+	C++          & \texttt{CppCode}     & \texttt{C++} \\
+	C\#          & \texttt{CsCode}      & \texttt{CSharp} \\
+	CSS          & \texttt{CssCode}     & \texttt{CSS} \\
+	Dart         & \texttt{DartCode}    & \texttt{Dart} \\
+	GLSL         & \texttt{GlslCode}    & \texttt{GLSL} \\
+	Go           & \texttt{GoCode}      & \texttt{Go} \\
+	HTML         & \texttt{HtmlCode}    & \texttt{\{[hgb]HTML\}} \\
+	Java         & \texttt{JavaCode}    & \texttt{Java} \\
+	JavaScript   & \texttt{JsCode}      & \texttt{JavaScript} \\
+	JSON         & \texttt{JsonCode}    & \texttt{JSON} \\
+	Kotlin       & \texttt{KotlinCode}  & \texttt{Kotlin} \\
+	\latex       & \texttt{LaTeXCode}   & \texttt{\{[hgb]TeX\}} \\
+	MATLAB       & \texttt{MatlabCode}  & \texttt{Matlab} \\
+	Objective-C  & \texttt{ObjCCode}    & \texttt{ObjectiveC} \\
+	PHP          & \texttt{PhpCode}     & \texttt{PHP} \\
+	Python       & \texttt{PythonCode}  & \texttt{Python} \\
+	R            & \texttt{RCode}       & \texttt{R} \\
+	Rust         & \texttt{RustCode}    & \texttt{Rust} \\
+	Scala        & \texttt{ScalaCode}   & \texttt{\{[hgb]Scala\}} \\
+	SQL          & \texttt{SqlCode}     & \texttt{\{[hgb]SQL\}} \\
+	Swift        & \texttt{SwiftCode}   & \texttt{Swift} \\
+	TypeScript   & \texttt{TsCode}      & \texttt{TypeScript} \\
+	XML          & \texttt{XmlCode}     & \texttt{\{[hgb]XML\}} \\
+	YAML         & \texttt{YamlCode}    & \texttt{YAML} \\
+	generic code & \texttt{GenericCode} & \texttt{\{\}} \\
+	\bottomrule
+\end{tabular}
+\end{table}
 %
 \texttt{hgblistings} is based on the \texttt{listingsutf8}%
 \footnote{\url{https://ctan.org/pkg/listingsutf8}}
@@ -471,6 +507,50 @@ line numbers:
     \begin{JavaCode}[numbers=none]
     ... // Java code comes here
     \end{JavaCode}
+\end{LaTeXCode}
+
+
+\subsubsection{Code style}
+\label{sec:CodeStyle}
+
+The appearance of all code environments is selected by the class option \texttt{codestyle}:
+%
+\begin{itemize}
+	\item \texttt{codestyle=color} (default): white background with a thin gray line between the line
+		numbers and the code; syntax highlighting with colors similar to common development environments
+		(Visual Studio Code) with sufficient contrast (WCAG~2 AA) for keywords (dark blue), built-in types
+		and functions (teal), strings (dark red) and comments (green, italic),
+	\item \texttt{codestyle=mono}: the same layout without colors (comments in italics), \eg, for printing
+		in black and white,
+	\item \texttt{codestyle=classic}: gray background without colors, as in previous versions of this
+		package.
+\end{itemize}
+%
+The styles are also defined as \texttt{listings} styles \texttt{hgbcolor}, \texttt{hgbmono} and
+\texttt{hgbclassic}, so they can be selected for individual listings as well:
+%
+\begin{LaTeXCode}[numbers=none]
+    \begin{JavaCode}[style=hgbmono]
+    ... // Java code without colors
+    \end{JavaCode}
+\end{LaTeXCode}
+%
+The following colors are used and may be redefined in the preamble:
+%
+\begin{itemize}
+	\item \texttt{ListingsKeywordColor}: keywords,
+	\item \texttt{ListingsTypeColor}: built-in types and functions,
+	\item \texttt{ListingsStringColor}: strings,
+	\item \texttt{ListingsCommentColor}: comments,
+	\item \texttt{ListingsLineNumberColor}: line numbers,
+	\item \texttt{ListingsRuleColor}: line between the line numbers and the code,
+	\item \texttt{ListingsBackgroundColor}: background (\texttt{classic} only).
+\end{itemize}
+%
+For example,
+%
+\begin{LaTeXCode}[numbers=none]
+    \definecolor{ListingsKeywordColor}{HTML}{0000FF}
 \end{LaTeXCode}
 
 

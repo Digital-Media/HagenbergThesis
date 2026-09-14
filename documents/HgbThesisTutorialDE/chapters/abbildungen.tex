@@ -736,34 +736,58 @@ Code-Umgebungen realisiert.
 \centering
 \begin{tabular}{@{}lll@{}}
 	\toprule
-	C (ANSI):    & \verb!\begin{CCode}!
+	Bash:        & \verb!\begin{BashCode}!
+		& \verb!...! \verb!\end{BashCode}! \\
+	C:           & \verb!\begin{CCode}!
 		& \verb!...! \verb!\end{CCode}! \\
-	C++ (ISO):   & \verb!\begin{CppCode}!
+	C++:         & \verb!\begin{CppCode}!
 		& \verb!...! \verb!\end{CppCode}! \\
 	C\#:         & \verb!\begin{CsCode}!
 		& \verb!...! \verb!\end{CsCode}! \\
 	CSS:         & \verb!\begin{CssCode}!
 		& \verb!...! \verb!\end{CssCode}! \\
+	Dart:        & \verb!\begin{DartCode}!
+		& \verb!...! \verb!\end{DartCode}! \\
+	GLSL:        & \verb!\begin{GlslCode}!
+		& \verb!...! \verb!\end{GlslCode}! \\
+	Go:          & \verb!\begin{GoCode}!
+		& \verb!...! \verb!\end{GoCode}! \\
 	HTML:        & \verb!\begin{HtmlCode}!
 		& \verb!...! \verb!\end{HtmlCode}! \\
 	Java:        & \verb!\begin{JavaCode}!
 		& \verb!...! \verb!\end{JavaCode}! \\
 	JavaScript:  & \verb!\begin{JsCode}!
 		& \verb!...! \verb!\end{JsCode}! \\
+	JSON:        & \verb!\begin{JsonCode}!
+		& \verb!...! \verb!\end{JsonCode}! \\
+	Kotlin:      & \verb!\begin{KotlinCode}!
+		& \verb!...! \verb!\end{KotlinCode}! \\
 	\latex:      & \verb!\begin{LaTeXCode}!
 		& \verb!...! \verb!\end{LaTeXCode}! \\
+	MATLAB:      & \verb!\begin{MatlabCode}!
+		& \verb!...! \verb!\end{MatlabCode}! \\
 	Objective-C: & \verb!\begin{ObjCCode}!
 		& \verb!...! \verb!\end{ObjCCode}! \\
 	PHP:         & \verb!\begin{PhpCode}!
 		& \verb!...! \verb!\end{PhpCode}! \\
 	Python:      & \verb!\begin{PythonCode}!
 		& \verb!...! \verb!\end{PythonCode}! \\
+	R:           & \verb!\begin{RCode}!
+		& \verb!...! \verb!\end{RCode}! \\
+	Rust:        & \verb!\begin{RustCode}!
+		& \verb!...! \verb!\end{RustCode}! \\
 	Scala:       & \verb!\begin{ScalaCode}!
 		& \verb!...! \verb!\end{ScalaCode}! \\
+	SQL:         & \verb!\begin{SqlCode}!
+		& \verb!...! \verb!\end{SqlCode}! \\
 	Swift:       & \verb!\begin{SwiftCode}!
 		& \verb!...! \verb!\end{SwiftCode}! \\
+	TypeScript:  & \verb!\begin{TsCode}!
+		& \verb!...! \verb!\end{TsCode}! \\
 	XML:         & \verb!\begin{XmlCode}!
 		& \verb!...! \verb!\end{XmlCode}! \\
+	YAML:        & \verb!\begin{YamlCode}!
+		& \verb!...! \verb!\end{YamlCode}! \\
 	Generisch:   & \verb!\begin{GenericCode}!
 		& \verb!...! \verb!\end{GenericCode}! \\
 	\bottomrule
@@ -796,6 +820,29 @@ Ein Beispiel mit Java ist in Prog.~\ref{prog:CodeExample} gezeigt, wobei der
 oben angeführte Label in Zeile \ref{ExampleCodeLabel} steht. Man beachte,
 dass innerhalb der Kommentare auch mathematischer Text (wie etwa in Zeile
 \ref{MathInCode} von Prog.~\ref{prog:CodeExample}) stehen kann.
+
+
+\subsubsection{Darstellung des Codes}
+\label{sec:CodeStil}
+
+Programmcode wird standardmäßig mit Syntaxhervorhebung gesetzt:
+Schlüsselwörter, eingebaute Typen und Funktionen, Strings und Kommentare
+erscheinen in Farben, die jenen gängiger Entwicklungsumgebungen (\zB\ Visual
+Studio Code) ähneln und ausreichend Kontrast bieten, neben einer dünnen grauen
+Linie mit den Zeilennummern. Mit der Dokumentoption \texttt{codestyle} kann für
+das gesamte Dokument eine andere Darstellung gewählt werden:
+%
+\begin{itemize}
+	\item[] \texttt{codestyle=color} (\emph{default}): farbige Syntaxhervorhebung,
+	\item[] \texttt{codestyle=mono}: dasselbe Layout ohne Farben, \zB\ für den
+		Schwarz-Weiß-Druck,
+	\item[] \texttt{codestyle=classic}: grauer Hintergrund ohne Farben (die
+		Darstellung früherer Versionen dieses Pakets).
+\end{itemize}
+%
+Die Farben, die Verwendung der Stile für einzelne Listings sowie die
+Sprachnamen für das Einbinden von Code-Dateien mit \verb!\lstinputlisting!
+sind im Manual des Pakets beschrieben.
 
 
 \subsubsection{Nummerierung der Code-Zeilen}

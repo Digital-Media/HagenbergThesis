@@ -50,6 +50,7 @@
                      \renewcommand{\hgb@MainLanguage}{#1}},
   apa.code        = {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
   apa.default:n   = true,
+  codestyle.code  = \PassOptionsToPackage{codestyle=#1}{hgblistings}, % color|mono|classic, validated there
   review.code     = \setboolean{reviewmode}{#1},
   review.default:n = true,
   twoside.code    = {\ifthenelse{\equal{#1}{true}}%
