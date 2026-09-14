@@ -696,34 +696,58 @@ and \texttt{listingsutf8}.%
     \centering
     \begin{tabular}{@{}lll@{}}
         \toprule
-        C (ANSI): & \verb!\begin{CCode}!
+        Bash: & \verb!\begin{BashCode}!
+        & \verb!...! \verb!\end{BashCode}! \\
+        C: & \verb!\begin{CCode}!
         & \verb!...! \verb!\end{CCode}! \\
-        C++ (ISO): & \verb!\begin{CppCode}!
+        C++: & \verb!\begin{CppCode}!
         & \verb!...! \verb!\end{CppCode}! \\
         C\#: & \verb!\begin{CsCode}!
         & \verb!...! \verb!\end{CsCode}! \\
         CSS: & \verb!\begin{CssCode}!
         & \verb!...! \verb!\end{CssCode}! \\
+        Dart: & \verb!\begin{DartCode}!
+        & \verb!...! \verb!\end{DartCode}! \\
+        GLSL: & \verb!\begin{GlslCode}!
+        & \verb!...! \verb!\end{GlslCode}! \\
+        Go: & \verb!\begin{GoCode}!
+        & \verb!...! \verb!\end{GoCode}! \\
         HTML: & \verb!\begin{HtmlCode}!
         & \verb!...! \verb!\end{HtmlCode}! \\
         Java: & \verb!\begin{JavaCode}!
         & \verb!...! \verb!\end{JavaCode}! \\
         JavaScript: & \verb!\begin{JsCode}!
         & \verb!...! \verb!\end{JsCode}! \\
+        JSON: & \verb!\begin{JsonCode}!
+        & \verb!...! \verb!\end{JsonCode}! \\
+        Kotlin: & \verb!\begin{KotlinCode}!
+        & \verb!...! \verb!\end{KotlinCode}! \\
         \latex: & \verb!\begin{LaTeXCode}!
         & \verb!...! \verb!\end{LaTeXCode}! \\
+        MATLAB: & \verb!\begin{MatlabCode}!
+        & \verb!...! \verb!\end{MatlabCode}! \\
         Objective-C: & \verb!\begin{ObjCCode}!
         & \verb!...! \verb!\end{ObjCCode}! \\
         PHP: & \verb!\begin{PhpCode}!
         & \verb!...! \verb!\end{PhpCode}! \\
         Python: & \verb!\begin{PythonCode}!
         & \verb!...! \verb!\end{PythonCode}! \\
+        R: & \verb!\begin{RCode}!
+        & \verb!...! \verb!\end{RCode}! \\
+        Rust: & \verb!\begin{RustCode}!
+        & \verb!...! \verb!\end{RustCode}! \\
         Scala: & \verb!\begin{ScalaCode}!
         & \verb!...! \verb!\end{ScalaCode}! \\
+        SQL: & \verb!\begin{SqlCode}!
+        & \verb!...! \verb!\end{SqlCode}! \\
         Swift: & \verb!\begin{SwiftCode}!
         & \verb!...! \verb!\end{SwiftCode}! \\
+        TypeScript: & \verb!\begin{TsCode}!
+        & \verb!...! \verb!\end{TsCode}! \\
         XML: & \verb!\begin{XmlCode}!
         & \verb!...! \verb!\end{XmlCode}! \\
+        YAML: & \verb!\begin{YamlCode}!
+        & \verb!...! \verb!\end{YamlCode}! \\
         Generic: & \verb!\begin{GenericCode}!
         & \verb!...! \verb!\end{GenericCode}! \\
         \bottomrule
@@ -756,6 +780,28 @@ An example with Java is shown in Prog.~\ref{prog:CodeExample}, where the
 above label is placed in line \ref{ExampleCodeLabel}. Note that mathematical
 text (such as in line \ref{MathInCode} of Prog.~\ref{prog:CodeExample}) can
 also be placed inside escaped comments.
+
+
+\subsubsection{Code Style}
+\label{sec:CodeStyle}
+
+By default, program code is typeset with syntax highlighting: keywords,
+built-in types and functions, strings and comments are shown in colors similar
+to common development environments (\eg, Visual Studio Code) with sufficient
+contrast, next to a thin gray line with the line numbers. The class option
+\texttt{codestyle} selects a different style for the whole document:
+%
+\begin{itemize}
+	\item[] \texttt{codestyle=color} (\emph{default}): syntax highlighting in color,
+	\item[] \texttt{codestyle=mono}: the same layout without colors, \eg, for
+		printing in black and white,
+	\item[] \texttt{codestyle=classic}: gray background without colors (the look
+		of earlier versions of this package).
+\end{itemize}
+%
+The colors, the use of the styles for individual listings and the language
+names for including code files with \verb!\lstinputlisting! are described in
+the package manual.
 
 
 \subsubsection{Numbering of the Code Lines}
