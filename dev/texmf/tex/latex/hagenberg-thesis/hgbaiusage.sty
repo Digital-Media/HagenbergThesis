@@ -159,16 +159,31 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 \newcommand{\hgb@AIUsageChecked}{\ensuremath{\boxtimes}}
 \newcommand{\hgb@AIUsageUnchecked}{\ensuremath{\square}}
 
+\newif\ifhgb@AIUsageCompact
+
+% Text replacing the table in compact mode if no activity has an entry (own text of this package, not
+% part of the adapted texts in hgbaiusage-cognisance.sty):
+\hgbDictionarySet{aiusagedetails-noactivities}{english}{AI tools were not used for any of these activities.}
+\hgbDictionarySet{aiusagedetails-noactivities}{german}{Für keine dieser Tätigkeiten wurden KI-Tools genutzt.}
+
 % Usage (the environment only collects the entries, the form is created at its end):
-%   \begin{aiusagedetails}
+%   \begin{aiusagedetails}[compact]                      % option 'compact': list only activities with entries
 %     \aiconfirm{accuracy}                               % confirm statements (check boxes)
 %     \aiconfirm{responsibility}
 %     \aiactivity{<key>}{<tools>}{<description>}         % any number, keys see \hgb@AIUsageActivities
 %     \aifurtheruse{<text>}                              % optional
 %   \end{aiusagedetails}
-\newenvironment{aiusagedetails}{%
+% Without the option, the table lists all activities, as the FH OÖ template does.
+\newenvironment{aiusagedetails}[1][]{%
 	\global\hgb@AIUsageDetailsUsedtrue
 	\hgb@AIUsageCheckForms
+	\ifstrempty{#1}%
+		{\global\hgb@AIUsageCompactfalse}%
+		{\ifstrequal{#1}{compact}%
+			{\global\hgb@AIUsageCompacttrue}%
+			{\global\hgb@AIUsageCompactfalse
+			 \PackageError{hgbaiusage}{Unknown option '#1' of environment 'aiusagedetails'}%
+				{The only option is 'compact' (list only the activities with entries).}}}%
 	\hgb@AIUsageDetailsReset
 	\setbox\z@\vbox\bgroup	% discard anything else than the commands above
 }{%
@@ -231,6 +246,56 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\csuse{hgb@AIUsageTools@#1} &
 	\csuse{hgb@AIUsageUse@#1} \\}
 
+% Rows of the table of activities (separated by \midrule); in compact mode, only activities with entries:
+\newcommand{\hgb@AIUsageCollectRows}{%
+	\gdef\hgb@AIUsageRowList{}%
+	\@for\hgb@tmpkey:=\hgb@AIUsageActivities\do{%
+		\ifhgb@AIUsageCompact
+			\ifboolexpr{test {\ifcsempty{hgb@AIUsageTools@\hgb@tmpkey}}
+				and test {\ifcsempty{hgb@AIUsageUse@\hgb@tmpkey}}}%
+				{}{\hgb@AIUsageAppendRow}%
+		\else
+			\hgb@AIUsageAppendRow
+		\fi
+	}%
+}
+
+\newcommand{\hgb@AIUsageAppendRow}{%
+	\ifdefempty{\hgb@AIUsageRowList}{}{\gappto\hgb@AIUsageRowList{\midrule}}%
+	\xappto\hgb@AIUsageRowList{\noexpand\hgb@AIUsageRow{\hgb@tmpkey}}%
+}
+
+% Table of activities (may break across pages):
+\newcommand{\hgb@AIUsageTable}{%
+	\begingroup
+	\footnotesize
+	\setlength{\tabcolsep}{4pt}%
+	\setlength{\LTleft}{\z@}%
+	\setlength{\LTright}{\fill}%
+	\setlength{\LTpost}{\smallskipamount}%
+	% \hspace{0pt} allows hyphenation of the first word in a cell (not in column 2, which starts with \par)
+	\begin{longtable}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.19\linewidth-\tabcolsep\relax}%
+		>{\raggedright\arraybackslash}p{\dimexpr0.37\linewidth-2\tabcolsep\relax}%
+		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.16\linewidth-2\tabcolsep\relax}%
+		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.28\linewidth-\tabcolsep\relax}@{}}
+		\toprule
+		\hgb@AIUsageHead
+		\midrule
+		\endfirsthead
+		\toprule
+		\hgb@AIUsageHead
+		\midrule
+		\endhead
+		\bottomrule
+		\endfoot
+		\bottomrule
+		\endlastfoot
+		\hgb@AIUsageRowList
+	\end{longtable}%
+	\noindent\textsuperscript{1}\,\hgb@AIUsageGet{aiusagedetails-tools-note}\par
+	\endgroup
+}
+
 \newcommand{\hgb@MakeAIUsageDetails}{%
 	\ifcsequal{hgb@AIUsageConfirm@accuracy}{hgb@AIUsageUnchecked}%
 		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed in environment 'aiusagedetails'.\MessageBreak
@@ -258,43 +323,10 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	%
 	\section*{\hgb@AIUsageGet{aiusagedetails-activities}}%
 	\noindent\hgb@AIUsageGet{aiusagedetails-activities-note}\par
-	\begingroup
-	\footnotesize
-	\setlength{\tabcolsep}{4pt}%
-	\setlength{\LTleft}{\z@}%
-	\setlength{\LTright}{\fill}%
-	\setlength{\LTpost}{\smallskipamount}%
-	% \hspace{0pt} allows hyphenation of the first word in a cell (not in column 2, which starts with \par)
-	\begin{longtable}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.19\linewidth-\tabcolsep\relax}%
-		>{\raggedright\arraybackslash}p{\dimexpr0.37\linewidth-2\tabcolsep\relax}%
-		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.16\linewidth-2\tabcolsep\relax}%
-		>{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr0.28\linewidth-\tabcolsep\relax}@{}}
-		\toprule
-		\hgb@AIUsageHead
-		\midrule
-		\endfirsthead
-		\toprule
-		\hgb@AIUsageHead
-		\midrule
-		\endhead
-		\bottomrule
-		\endfoot
-		\bottomrule
-		\endlastfoot
-		\hgb@AIUsageRow{ideas}\midrule
-		\hgb@AIUsageRow{literature}\midrule
-		\hgb@AIUsageRow{methodology}\midrule
-		\hgb@AIUsageRow{coding}\midrule
-		\hgb@AIUsageRow{data}\midrule
-		\hgb@AIUsageRow{interpretation}\midrule
-		\hgb@AIUsageRow{structure}\midrule
-		\hgb@AIUsageRow{generation}\midrule
-		\hgb@AIUsageRow{translation}\midrule
-		\hgb@AIUsageRow{editing}\midrule
-		\hgb@AIUsageRow{references}
-	\end{longtable}%
-	\noindent\textsuperscript{1}\,\hgb@AIUsageGet{aiusagedetails-tools-note}\par
-	\endgroup
+	\hgb@AIUsageCollectRows
+	\ifdefempty{\hgb@AIUsageRowList}%
+		{\medskip\noindent\hgb@AIUsageGet{aiusagedetails-noactivities}\par}%
+		{\hgb@AIUsageTable}%
 	%
 	\bigskip
 	\noindent\textbf{\hgb@AIUsageGet{aiusagedetails-further}}\par

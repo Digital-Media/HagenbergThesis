@@ -719,9 +719,21 @@ The environment only collects the following entries; the form is created at its 
 	\item \verb!\aiactivity{<key>}{<tools>}{<description>}!: AI tools used for an activity (see
 		Table~\ref{tab:AIUsageActivities}) and a description of their use (type of usage, affected
 		sections, \etc). Multiple entries for the same activity are appended; activities without
-		entries remain empty.
+		entries remain empty (or are omitted with the option \texttt{compact}, see below).
 	\item \verb!\aifurtheruse{<text>}!: further use of AI tools (optional).
 \end{itemize}
+%
+By default, the table lists all activities, as the FH O\"O template does. With the optional argument
+\texttt{compact}, only the activities with entries are listed; if no activity has an entry, a
+sentence stating this replaces the table:
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{aiusagedetails}[compact]
+  ...
+\end{aiusagedetails}
+\end{LaTeXCode}
+%
+The sample documents contain an example line for every activity, most of them commented out.
 
 \begin{table}[H]
 \caption{Activities for \texttt{\bs aiactivity} (detailed form).}
