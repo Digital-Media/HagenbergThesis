@@ -13,14 +13,34 @@
 \end{aiusage}
 
 %%% Alternative: detailed documentation (long form) if required by the degree program.
-%%% Activities for \aiactivity{<activity>}{<AI tools>}{<description of the usage>}:
-%%% ideas, literature, methodology, coding, data, interpretation, structure,
-%%% generation, translation, editing, references
+%%% To use it, delete the short form above (only one of the two forms is intended) and uncomment
+%%% the following block. Uncomment the applicable activities and delete the others:
+%%% \aiactivity{<activity>}{<AI tools>}{<description of the usage>}
+%%% For the AI tools, give the names of the tools used (e.g., ChatGPT, DeepL Write, Microsoft 365
+%%% Copilot, Perplexity, GitHub Copilot); for the description, the type of usage and the affected
+%%% sections of the thesis. The table does not replace a more detailed description of the usage
+%%% in the text of the thesis, where required. \aiconfirm{...} confirms the two statements on the
+%%% responsible use of AI tools.
+%%% Further uses that fit none of the activities: one \aifurtheruse{...} per use (several are
+%%% listed as bullet points); without \aifurtheruse, "None" is printed.
+%%% By default, the table lists all activities (as the FH OÖ template does);
+%%% with [compact], only those with entries.
 
-%\begin{aiusagedetails}
-%	\aiconfirm{accuracy}         % outputs of AI tools verified and corrected where required
-%	\aiconfirm{responsibility}   % responsibility lies with the author(s)
+%\begin{aiusagedetails}             % table with all activities
+%%\begin{aiusagedetails}[compact]   % alternative: only activities with entries
+%	\aiconfirm{accuracy}            % outputs of AI tools verified and corrected where required
+%	\aiconfirm{responsibility}      % responsibility lies with the author(s)
+%	%\aiactivity{ideas}{ChatGPT}{Gathering initial ideas for research questions (Chapter~1)}
 %	\aiactivity{literature}{Perplexity}{Search for literature on ... (Chapter~2)}
+%	%\aiactivity{methodology}{ChatGPT}{Comparison of possible evaluation methods (Chapter~3)}
+%	%\aiactivity{coding}{GitHub Copilot}{Generation of test functions (Chapter~4)}
+%	%\aiactivity{data}{ChatGPT}{Creation of scripts for the statistical analysis (Section~5.1)}
+%	%\aiactivity{interpretation}{ChatGPT}{Discussion of possible explanations of the results (Section~5.3)}
+%	%\aiactivity{structure}{ChatGPT}{Suggestions for the structure of Chapter~2}
+%	%\aiactivity{generation}{ChatGPT}{First draft of the abstract, revised by the author afterwards}
+%	%\aiactivity{translation}{DeepL Translator}{Translation of quotations from German (Chapter~2)}
 %	\aiactivity{editing}{DeepL Write}{Proofreading of Chapters~1--5}
-%	%\aifurtheruse{...}
+%	%\aiactivity{references}{ChatGPT}{Formatting of individual references}
+%	%\aifurtheruse{Generation of test data for the evaluation (Section~5.2).}
+%	%\aifurtheruse{Creation of charts from the measurement data (Section~5.3).}
 %\end{aiusagedetails}

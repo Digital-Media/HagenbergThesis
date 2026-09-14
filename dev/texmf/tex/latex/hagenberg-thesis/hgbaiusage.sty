@@ -26,6 +26,21 @@
 
 \newcommand{\hgb@AIUsageGet}[1]{\hgbDictionaryGet{#1}{\hgb@TitleLanguage}}
 
+% Messages of the warnings of this package: every line is shorter than 79 characters (TeX wraps longer lines in
+% the log), and no line but the last one ends with a period (TeXstudio, for example, ends a warning at such a
+% line, so that the following lines would be missing).
+%
+% Only one of the two forms is intended; a warning is issued if both are used (in any order):
+\newif\ifhgb@AIUsageShortUsed
+\newif\ifhgb@AIUsageDetailsUsed
+\newcommand{\hgb@AIUsageCheckForms}{%
+	\ifhgb@AIUsageShortUsed\ifhgb@AIUsageDetailsUsed
+		\PackageWarning{hgbaiusage}{Both 'aiusage' and 'aiusagedetails' are used, but\MessageBreak
+			only one of the two forms is intended. Remove the\MessageBreak
+			other one}%
+	\fi\fi
+}
+
 %% ----------------------------------------------------------------------------
 %% Short form (text modules)
 %% ----------------------------------------------------------------------------
@@ -60,7 +75,7 @@ um erste Ideen für mögliche Forschungsfragen und relevante Theorien zu sammeln
 \hgbDictionarySet{aiusage-purpose-literature-understanding}{english}{%
 better understand academic literature (e.g., summaries).}
 \hgbDictionarySet{aiusage-purpose-literature-understanding}{german}{%
-um Literatur besser nachvollziehen zu können (Zusammenfassungen, etc.).}
+um Literatur besser nachvollziehen zu können (Zusammenfassungen etc.).}
 
 \hgbDictionarySet{aiusage-purpose-proofreading}{english}{%
 proofread parts of the thesis and improve the linguistic style.}
@@ -79,6 +94,8 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 %     \aiusedforother{<text>}            % other purpose, continuing the sentence like the predefined ones
 %   \end{aiusage}
 \newenvironment{aiusage}{%
+	\global\hgb@AIUsageShortUsedtrue
+	\hgb@AIUsageCheckForms
 	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
 	\chapter{\hgb@AIUsageGet{aiusage-title}}%
 	\global\hgb@AIUsageItems=\z@
@@ -89,8 +106,9 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		\end{itemize}%
 	\else
 		\ifhgb@AIUsageNone\else
-			\PackageWarning{hgbaiusage}{No usage of AI tools documented in environment 'aiusage'.\MessageBreak
-				Use \string\aiusednone, \string\aiusedfor{...} or \string\aiusedforother{...}}%
+			\PackageWarning{hgbaiusage}{No usage of AI tools documented in 'aiusage'. Use\MessageBreak
+				\string\aiusednone, \string\aiusedfor{...} or\MessageBreak
+				\string\aiusedforother{...}}%
 		\fi
 	\fi
 	\par
@@ -146,14 +164,35 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 \newcommand{\hgb@AIUsageChecked}{\ensuremath{\boxtimes}}
 \newcommand{\hgb@AIUsageUnchecked}{\ensuremath{\square}}
 
+\newif\ifhgb@AIUsageCompact
+
+% Text replacing the table in compact mode if no activity has an entry (own text of this package, not
+% part of the adapted texts in hgbaiusage-cognisance.sty):
+\hgbDictionarySet{aiusagedetails-noactivities}{english}{AI tools were not used for any of these activities.}
+\hgbDictionarySet{aiusagedetails-noactivities}{german}{Für keine dieser Tätigkeiten wurden KI-Tools genutzt.}
+
+% Text below the heading of further use if \aifurtheruse is not used (own text of this package):
+\hgbDictionarySet{aiusagedetails-further-none}{english}{None}
+\hgbDictionarySet{aiusagedetails-further-none}{german}{Keine}
+
 % Usage (the environment only collects the entries, the form is created at its end):
-%   \begin{aiusagedetails}
+%   \begin{aiusagedetails}[compact]                      % option 'compact': list only activities with entries
 %     \aiconfirm{accuracy}                               % confirm statements (check boxes)
 %     \aiconfirm{responsibility}
 %     \aiactivity{<key>}{<tools>}{<description>}         % any number, keys see \hgb@AIUsageActivities
-%     \aifurtheruse{<text>}                              % optional
+%     \aifurtheruse{<text>}                              % optional, one per further use
 %   \end{aiusagedetails}
-\newenvironment{aiusagedetails}{%
+% Without the option, the table lists all activities, as the FH OÖ template does.
+\newenvironment{aiusagedetails}[1][]{%
+	\global\hgb@AIUsageDetailsUsedtrue
+	\hgb@AIUsageCheckForms
+	\ifstrempty{#1}%
+		{\global\hgb@AIUsageCompactfalse}%
+		{\ifstrequal{#1}{compact}%
+			{\global\hgb@AIUsageCompacttrue}%
+			{\global\hgb@AIUsageCompactfalse
+			 \PackageError{hgbaiusage}{Unknown option '#1' of environment 'aiusagedetails'}%
+				{The only option is 'compact' (list only the activities with entries).}}}%
 	\hgb@AIUsageDetailsReset
 	\setbox\z@\vbox\bgroup	% discard anything else than the commands above
 }{%
@@ -168,7 +207,9 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		\csgdef{hgb@AIUsageTools@\hgb@tmpkey}{}%
 		\csgdef{hgb@AIUsageUse@\hgb@tmpkey}{}%
 	}%
+	\global\hgb@AIUsageFurtherCount=\z@
 	\gdef\hgb@AIUsageFurther{}%
+	\gdef\hgb@AIUsageFurtherFirst{}%
 }
 
 \newcommand{\aiconfirm}[1]{%
@@ -195,10 +236,15 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\fi
 }
 
+% One \aifurtheruse per further use: a single entry is printed as a paragraph, several entries as a
+% bulleted list (like the descriptions of the activities).
+\newcount\hgb@AIUsageFurtherCount
 \newcommand{\aifurtheruse}[1]{%
-	\ifdefempty{\hgb@AIUsageFurther}%
-		{\gdef\hgb@AIUsageFurther{#1}}%
-		{\gappto\hgb@AIUsageFurther{\par #1}}%
+	\global\advance\hgb@AIUsageFurtherCount by \@ne
+	\ifnum\hgb@AIUsageFurtherCount=\@ne
+		\gdef\hgb@AIUsageFurtherFirst{#1}%
+	\fi
+	\gappto\hgb@AIUsageFurther{\hgb@AIUsagePoint{#1}}%
 }
 
 \newcommand{\hgb@AIUsageStatementRow}[1]{%
@@ -207,7 +253,7 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 \newcommand{\hgb@AIUsageHead}{%
 	\textbf{\hgb@AIUsageGet{aiusagedetails-activity}} &
 	\textbf{\hgb@AIUsageGet{aiusagedetails-description}} &
-	\textbf{\hgb@AIUsageGet{aiusagedetails-tools}}\textsuperscript{1} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-tools}} &
 	\textbf{\hgb@AIUsageGet{aiusagedetails-usage}}\newline\hgb@AIUsageGet{aiusagedetails-usage-note} \\}
 
 \newcommand{\hgb@AIUsageRow}[1]{%
@@ -216,33 +262,27 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\csuse{hgb@AIUsageTools@#1} &
 	\csuse{hgb@AIUsageUse@#1} \\}
 
-\newcommand{\hgb@MakeAIUsageDetails}{%
-	\ifcsequal{hgb@AIUsageConfirm@accuracy}{hgb@AIUsageUnchecked}%
-		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed in environment 'aiusagedetails'.\MessageBreak
-			Use \string\aiconfirm{accuracy}}}{}%
-	\ifcsequal{hgb@AIUsageConfirm@responsibility}{hgb@AIUsageUnchecked}%
-		{\PackageWarning{hgbaiusage}{Statement 'responsibility' not confirmed in environment 'aiusagedetails'.\MessageBreak
-			Use \string\aiconfirm{responsibility}}}{}%
-	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
-	\chapter{\hgb@AIUsageGet{aiusagedetails-title}}%
-	%
-	\section*{\hgb@AIUsageGet{aiusagedetails-responsible}}%
-	\noindent\hgb@AIUsageGet{aiusagedetails-confirm}\par
-	\medskip
-	\noindent
-	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-36mm-2\tabcolsep\relax}%
-		>{\centering\arraybackslash}p{36mm}@{}}
-		\toprule
-		\textbf{\hgb@AIUsageGet{aiusagedetails-statements}} & \textbf{\hgb@AIUsageGet{aiusagedetails-confirmation}} \\
-		\midrule
-		\hgb@AIUsageStatementRow{accuracy}
-		\addlinespace
-		\hgb@AIUsageStatementRow{responsibility}
-		\bottomrule
-	\end{tabular}\par
-	%
-	\section*{\hgb@AIUsageGet{aiusagedetails-activities}}%
-	\noindent\hgb@AIUsageGet{aiusagedetails-activities-note}\par
+% Rows of the table of activities (separated by \midrule); in compact mode, only activities with entries:
+\newcommand{\hgb@AIUsageCollectRows}{%
+	\gdef\hgb@AIUsageRowList{}%
+	\@for\hgb@tmpkey:=\hgb@AIUsageActivities\do{%
+		\ifhgb@AIUsageCompact
+			\ifboolexpr{test {\ifcsempty{hgb@AIUsageTools@\hgb@tmpkey}}
+				and test {\ifcsempty{hgb@AIUsageUse@\hgb@tmpkey}}}%
+				{}{\hgb@AIUsageAppendRow}%
+		\else
+			\hgb@AIUsageAppendRow
+		\fi
+	}%
+}
+
+\newcommand{\hgb@AIUsageAppendRow}{%
+	\ifdefempty{\hgb@AIUsageRowList}{}{\gappto\hgb@AIUsageRowList{\midrule}}%
+	\xappto\hgb@AIUsageRowList{\noexpand\hgb@AIUsageRow{\hgb@tmpkey}}%
+}
+
+% Table of activities (may break across pages):
+\newcommand{\hgb@AIUsageTable}{%
 	\begingroup
 	\footnotesize
 	\setlength{\tabcolsep}{4pt}%
@@ -266,24 +306,53 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		\endfoot
 		\bottomrule
 		\endlastfoot
-		\hgb@AIUsageRow{ideas}\midrule
-		\hgb@AIUsageRow{literature}\midrule
-		\hgb@AIUsageRow{methodology}\midrule
-		\hgb@AIUsageRow{coding}\midrule
-		\hgb@AIUsageRow{data}\midrule
-		\hgb@AIUsageRow{interpretation}\midrule
-		\hgb@AIUsageRow{structure}\midrule
-		\hgb@AIUsageRow{generation}\midrule
-		\hgb@AIUsageRow{translation}\midrule
-		\hgb@AIUsageRow{editing}\midrule
-		\hgb@AIUsageRow{references}
+		\hgb@AIUsageRowList
 	\end{longtable}%
-	\noindent\textsuperscript{1}\,\hgb@AIUsageGet{aiusagedetails-tools-note}\par
 	\endgroup
+}
+
+\newcommand{\hgb@MakeAIUsageDetails}{%
+	\ifcsstring{hgb@AIUsageConfirm@accuracy}{\hgb@AIUsageUnchecked}%
+		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed in\MessageBreak
+			environment 'aiusagedetails'. Use\MessageBreak
+			\string\aiconfirm{accuracy}}}{}%
+	\ifcsstring{hgb@AIUsageConfirm@responsibility}{\hgb@AIUsageUnchecked}%
+		{\PackageWarning{hgbaiusage}{Statement 'responsibility' not confirmed in\MessageBreak
+			environment 'aiusagedetails'. Use\MessageBreak
+			\string\aiconfirm{responsibility}}}{}%
+	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
+	\chapter{\hgb@AIUsageGet{aiusagedetails-title}}%
+	%
+	% The instructions of the template to the authors (to confirm the statements, to indicate the tools used,
+	% the footnote with names of tools) are not printed; the sample documents give them as comments.
+	\section*{\hgb@AIUsageGet{aiusagedetails-responsible}}%
+	\noindent
+	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-36mm-2\tabcolsep\relax}%
+		>{\centering\arraybackslash}p{36mm}@{}}
+		\toprule
+		\textbf{\hgb@AIUsageGet{aiusagedetails-statements}} & \textbf{\hgb@AIUsageGet{aiusagedetails-confirmation}} \\
+		\midrule
+		\hgb@AIUsageStatementRow{accuracy}
+		\addlinespace
+		\hgb@AIUsageStatementRow{responsibility}
+		\bottomrule
+	\end{tabular}\par
+	%
+	\section*{\hgb@AIUsageGet{aiusagedetails-activities}}%
+	\hgb@AIUsageCollectRows
+	\ifdefempty{\hgb@AIUsageRowList}%
+		{\noindent\hgb@AIUsageGet{aiusagedetails-noactivities}\par}%
+		{\hgb@AIUsageTable}%
 	%
 	\bigskip
 	\noindent\textbf{\hgb@AIUsageGet{aiusagedetails-further}}\par
-	\noindent\hgb@AIUsageFurther\par
+	\ifcase\hgb@AIUsageFurtherCount
+		\noindent\hgb@AIUsageGet{aiusagedetails-further-none}\par
+	\or
+		\noindent\hgb@AIUsageFurtherFirst\par
+	\else
+		\hgb@AIUsageFurther
+	\fi
 	\bigskip
 	{\footnotesize\noindent\hgb@AIUsageGet{aiusagedetails-source}\par}%
 	\end{SwitchLanguage}%

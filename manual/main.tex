@@ -697,7 +697,8 @@ Generative AI Tool Usage in Higher Education Tests. Research Center for Informat
 \url{https://doi.org/10.17605/OSF.IO/VGXF7}}
 and, unlike the rest of the package, are licensed under CC BY-SA 4.0. Therefore, they are kept in the
 separate file \texttt{hgbaiusage-cognisance.sty}, and the source reference is printed below the form.
-For example,
+The detailed form replaces the short form, since only one of them is intended; if both are used, a
+warning is issued. For example,
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{aiusagedetails}
@@ -706,6 +707,7 @@ For example,
   \aiactivity{coding}{GitHub Copilot}{Generation of test functions (Chapter 4)}
   \aiactivity{editing}{DeepL Write}{Proofreading of Chapters 1--5}
   \aifurtheruse{Generation of test data for the evaluation (Section 5.2).}
+  \aifurtheruse{Creation of charts from the measurement data (Section 5.3).}
 \end{aiusagedetails}
 \end{LaTeXCode}
 %
@@ -718,9 +720,26 @@ The environment only collects the following entries; the form is created at its 
 	\item \verb!\aiactivity{<key>}{<tools>}{<description>}!: AI tools used for an activity (see
 		Table~\ref{tab:AIUsageActivities}) and a description of their use (type of usage, affected
 		sections, \etc). Multiple entries for the same activity are appended; activities without
-		entries remain empty.
-	\item \verb!\aifurtheruse{<text>}!: further use of AI tools (optional).
+		entries remain empty (or are omitted with the option \texttt{compact}, see below).
+	\item \verb!\aifurtheruse{<text>}!: further use of AI tools that fits none of the activities
+		(optional). Use one \verb!\aifurtheruse! per use: a single entry is printed as a paragraph,
+		several entries as a bulleted list; without any entry, \emph{None} or \emph{Keine} is printed
+		below the heading.
 \end{itemize}
+%
+By default, the table lists all activities, as the FH O\"O template does. With the optional argument
+\texttt{compact}, only the activities with entries are listed; if no activity has an entry, a
+sentence stating this replaces the table:
+%
+\begin{LaTeXCode}[numbers=none]
+\begin{aiusagedetails}[compact]
+  ...
+\end{aiusagedetails}
+\end{LaTeXCode}
+%
+The sample documents contain an example line for every activity, most of them commented out. Unlike
+the template, the form contains no instructions to the authors (\eg, to name the AI tools used);
+these are given as comments in the sample documents instead.
 
 \begin{table}[H]
 \caption{Activities for \texttt{\bs aiactivity} (detailed form).}

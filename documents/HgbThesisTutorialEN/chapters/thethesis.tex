@@ -199,7 +199,8 @@ However, any types of use that do not appear on this list must be clarified
 with your supervisor in advance.
 
 If the degree program requires more detailed documentation, the long form
-prepared in the commented part of \verb!front/ai-usage.tex! is used instead.
+prepared in the commented part of \verb!front/ai-usage.tex! is used instead
+(if both forms are used, \latex\ issues a warning).
 It creates a form that confirms the responsible use
 of AI tools and lists which AI tools were used for which activities (\eg,
 literature search, coding, or proofreading):
@@ -210,7 +211,16 @@ literature search, coding, or proofreading):
   \aiconfirm{responsibility}
   \aiactivity{coding}{GitHub Copilot}{Generation of test functions (Chapter 4)}
   \aiactivity{editing}{DeepL Write}{Proofreading of Chapters 1--5}
+  \aifurtheruse{Generation of test data for the evaluation (Section 5.2).}
 \end{aiusagedetails}
 \end{LaTeXCode}
 %
+Like the FH Upper Austria template, the table lists all activities by default;
+with \verb!\begin{aiusagedetails}[compact]!, only those with entries are listed.
+The instructions of the template (\eg, to name the AI tools) are not printed in
+the form but given as comments in \verb!front/ai-usage.tex!. Uses that
+correspond to none of the activities in the table are given with
+\verb!\aifurtheruse{...}!, one command per use. A single entry is printed as a
+paragraph, several entries as a bulleted list; without \verb!\aifurtheruse!,
+"None" is printed.
 All commands and activities are described in the package manual.
