@@ -26,6 +26,17 @@
 
 \newcommand{\hgb@AIUsageGet}[1]{\hgbDictionaryGet{#1}{\hgb@TitleLanguage}}
 
+% Only one of the two forms is intended; a warning is issued if both are used (in any order):
+\newif\ifhgb@AIUsageShortUsed
+\newif\ifhgb@AIUsageDetailsUsed
+\newcommand{\hgb@AIUsageCheckForms}{%
+	\ifhgb@AIUsageShortUsed\ifhgb@AIUsageDetailsUsed
+		\PackageWarning{hgbaiusage}{Both the short form (environment 'aiusage') and the\MessageBreak
+			detailed form (environment 'aiusagedetails') are used.\MessageBreak
+			Only one of them is intended; remove the other one}%
+	\fi\fi
+}
+
 %% ----------------------------------------------------------------------------
 %% Short form (text modules)
 %% ----------------------------------------------------------------------------
@@ -79,6 +90,8 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 %     \aiusedforother{<text>}            % other purpose, continuing the sentence like the predefined ones
 %   \end{aiusage}
 \newenvironment{aiusage}{%
+	\global\hgb@AIUsageShortUsedtrue
+	\hgb@AIUsageCheckForms
 	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
 	\chapter{\hgb@AIUsageGet{aiusage-title}}%
 	\global\hgb@AIUsageItems=\z@
@@ -154,6 +167,8 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 %     \aifurtheruse{<text>}                              % optional
 %   \end{aiusagedetails}
 \newenvironment{aiusagedetails}{%
+	\global\hgb@AIUsageDetailsUsedtrue
+	\hgb@AIUsageCheckForms
 	\hgb@AIUsageDetailsReset
 	\setbox\z@\vbox\bgroup	% discard anything else than the commands above
 }{%
