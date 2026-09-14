@@ -246,7 +246,7 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 \newcommand{\hgb@AIUsageHead}{%
 	\textbf{\hgb@AIUsageGet{aiusagedetails-activity}} &
 	\textbf{\hgb@AIUsageGet{aiusagedetails-description}} &
-	\textbf{\hgb@AIUsageGet{aiusagedetails-tools}}\textsuperscript{1} &
+	\textbf{\hgb@AIUsageGet{aiusagedetails-tools}} &
 	\textbf{\hgb@AIUsageGet{aiusagedetails-usage}}\newline\hgb@AIUsageGet{aiusagedetails-usage-note} \\}
 
 \newcommand{\hgb@AIUsageRow}[1]{%
@@ -301,7 +301,6 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		\endlastfoot
 		\hgb@AIUsageRowList
 	\end{longtable}%
-	\noindent\textsuperscript{1}\,\hgb@AIUsageGet{aiusagedetails-tools-note}\par
 	\endgroup
 }
 
@@ -317,9 +316,9 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
 	\chapter{\hgb@AIUsageGet{aiusagedetails-title}}%
 	%
+	% The instructions of the template to the authors (to confirm the statements, to indicate the tools used,
+	% the footnote with names of tools) are not printed; the sample documents give them as comments.
 	\section*{\hgb@AIUsageGet{aiusagedetails-responsible}}%
-	\noindent\hgb@AIUsageGet{aiusagedetails-confirm}\par
-	\medskip
 	\noindent
 	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-36mm-2\tabcolsep\relax}%
 		>{\centering\arraybackslash}p{36mm}@{}}
@@ -333,10 +332,9 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\end{tabular}\par
 	%
 	\section*{\hgb@AIUsageGet{aiusagedetails-activities}}%
-	\noindent\hgb@AIUsageGet{aiusagedetails-activities-note}\par
 	\hgb@AIUsageCollectRows
 	\ifdefempty{\hgb@AIUsageRowList}%
-		{\medskip\noindent\hgb@AIUsageGet{aiusagedetails-noactivities}\par}%
+		{\noindent\hgb@AIUsageGet{aiusagedetails-noactivities}\par}%
 		{\hgb@AIUsageTable}%
 	%
 	\bigskip
