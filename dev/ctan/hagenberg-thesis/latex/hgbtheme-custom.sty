@@ -1,0 +1,19 @@
+%% This file is part of the Hagenberg Thesis package
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+\ProvidesPackage{hgbtheme-custom}[2026/09/14]%%AUTO
+\hgb@UseTheme{default}% parent theme
+
+% To use the logo and name of another institution (brand), uncomment and edit:
+%\hgb@SetBrand[28mm]{my-logo.pdf}{Name der Hochschule}{Name of the institution}
+
+\hgbDictionarySet{special-thesis}{english}{Special Thesis}%	edit!
+\hgbDictionarySet{special-thesis}{german}{Spezialarbeit}%		edit!
+
+\renewcommand{\hgb@ThesisName}{\hgbDictionaryGet{special-thesis}{\hgb@TitleLanguage}}
+
+\AddToHook{hgb@InitThemeHook}{%
+	% add initialization code if needed
+}%

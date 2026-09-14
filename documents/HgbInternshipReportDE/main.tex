@@ -1,0 +1,145 @@
+%%% Einfaches Template für einen Abschlussbericht zum Berufspraktikum
+
+%%% Magic Comments zum Setzen der korrekten Parameter in kompatiblen IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = de_DE
+% !BIB program = biber
+
+\RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
+\RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired (fonts are not affected)
+
+\documentclass[type=internship,theme=default,language=german,titlelanguage=german,smartquotes=true]{hgbthesis}
+% Zulässige Optionen in [..]:
+%    Typ der Arbeit (type=): master (default), bachelor, diploma, phd, internship
+%    Theme der Titelseite (theme=): default (default), fhooe26, classic, fhooe24
+%    Als Exposé verwenden: proposal=true, proposal=false (default)
+%    Hauptsprache im Dokument (language=): german, english (default)
+%    Sprache der Titelseite (titlelanguage=): german, english (default: Hauptsprache)
+%    Typografische Anführungszeichen: smartquotes=true, smartquotes=false (default)
+%    APA Zitierstil: apa=true, apa=false (default)
+%    Code-Listings (codestyle=): color (default), mono, classic
+%    Layout: twoside=false (einseitig, default), twoside=true (zweiseitig)
+%    Update-Check: updatecheck=true (default), updatecheck=false (zum Deaktivieren)
+%%%-----------------------------------------------------------------------------
+
+\graphicspath{{images/}}     % Verzeichnis mit Bildern und Grafiken
+\bibliography{hgbreferences} % Biblatex-Literaturdatei (references.bib)
+
+%%%-----------------------------------------------------------------------------
+\begin{document}
+%%%-----------------------------------------------------------------------------
+
+%%%-----------------------------------------------------------------------------
+% Angaben für die Titelei (Titelseite, Eidesstattliche Erklärung etc.)
+%%%-----------------------------------------------------------------------------
+
+\title{Endbericht zum Berufspraktikum bei Mogulovich International}
+%\subtitle{Untertitel nur wenn unbedingt notwendig}
+\author{Alex A.\ Schlaumeier}
+
+%\programtype{Bachelorstudiengang} % optional, Standard: abgeleitet aus type=
+\programname{Medientechnik und -design}
+%\institution{Fachhochschule Oberösterreich} % optional, Standard: Name der Hochschule laut Theme
+
+\placeofstudy{Hagenberg}
+\dateofsubmission{2027}{07}{01} % {JJJJ}{MM}{TT}
+
+% Liste der Kontaktpersonen, bis zu 4 sind möglich, Titel in [] ist optional
+\advisor{Pjotr I.~Czar, M.A.}
+%\advisor[Team Lead]{Bettina B. Ackend}
+
+\companyName{%
+   Mogulovich International Media GmbH\\
+   Online Division\\
+   Hubertusgasse 3a, 1020 Wien
+}
+\companyUrl{www.mogul.at}
+
+\license{cc}      % Unter Creative Commons Lizenz veröffentlichen (empfohlen)
+%\license{strict} % Restriktieve Lizenz, "Alle Rechte vorbehalten"
+
+%%%-----------------------------------------------------------------------------
+\frontmatter                                       % Titelei (röm. Seitenzahlen)
+%%%-----------------------------------------------------------------------------
+
+\maketitle
+
+% Dokumentation der Nutzung von KI-Tools: zutreffende Textbausteine verwenden, Unzutreffendes
+% bitte löschen. Weitere Arten der Nutzung, die auf dieser Liste nicht erscheinen, sind unbedingt
+% vorab mit Ihrer Betreuungsperson zu klären. Ausführliche Dokumentation (aiusagedetails): siehe Manual.
+\begin{aiusage}
+	%\aiusednone                          % keinerlei Hilfsmittel der generativen KI benutzt
+	%\aiusedfor{ideas}                    % um erste Ideen für Forschungsfragen und Theorien zu sammeln
+	\aiusedfor{literature-search}         % um Literatur zu finden
+	%\aiusedfor{literature-understanding} % um Literatur besser nachvollziehen zu können
+	\aiusedfor{proofreading}              % um Korrektur zu lesen und den sprachlichen Stil zu verbessern
+	%\aiusedforother{um ... zu ...}       % weitere Anwendungen
+\end{aiusage}
+
+\tableofcontents
+
+%%%-----------------------------------------------------------------------------
+
+\chapter{Kurzfassung}
+
+Umfang der Kurzfassung: ca.\ 200 Worte.
+
+Zum allgemeinen Inhalt des Berichts: Dieser Bericht beschreibt den Ablauf des
+Praktikums, die Aufgaben und durchgeführten Projekte und Erfahrungen. Die
+eigenen Aktivitäten (Projekte) stehen dabei natürlich im Mittelpunkt und bilden
+den Hauptteil des Berichts. Wenn viele Kleinprojekte bearbeitet wurden, sollten
+einige davon exemplarisch genauer beschrieben werden. Neben der eigentlichen
+Arbeit sollten aber auch folgende weitere Aspekte berücksichtigt werden:
+%
+\begin{itemize}
+	\item Abläufe (Workflows) innerhalb des Unternehmens bzw.\ in Projekten
+	(grafische Darstellungen können dabei nützlich sein),
+	\item Arbeits- und Führungsstil, Kommunikation innerhalb des Unternehmens,
+	\item Kommunikation nach außen (Kund*innen, Partner*innen),
+	\item Zeitsituation, Terminprobleme,
+	\item Einbettung in das Team, soziale Erfahrungen,
+	\item Einsatz von speziellen Techniken, Methoden und Werkzeugen,
+	\item wichtige Herausforderungen oder Schwierigkeiten,
+	\item Anforderungen in Bezug auf die Ausbildung im Studium (gut
+	einsetzbare Kenntnisse, Defizite).
+\end{itemize}
+%
+Die nachfolgenden Kapitelüberschriften sollen nur zur Orientierung für die
+Struktur des Berichts dienen, über die konkrete Einteilung und den Wortlaut
+kann man natürlich selbst entscheiden.
+
+%%%-----------------------------------------------------------------------------
+\mainmatter                             % Hauptteil (ab hier arab. Seitenzahlen)
+%%%-----------------------------------------------------------------------------
+
+\chapter{Das Unternehmen}
+
+Umfang: 1--2 Seiten
+
+%%%-----------------------------------------------------------------------------
+
+\chapter{Projekte und Tätigkeiten während des Praktikums}
+
+Umfang: 2--3 Seiten (Projektziel(e), Projektumfeld)
+
+%%%-----------------------------------------------------------------------------
+     
+\chapter{Projektbeispiele}
+
+Umfang: 5--6 Seiten (Umsetzung, grober Terminplan, Ergebnisse,
+Qualitätssicherungsmaßnahmen)
+
+%%%-----------------------------------------------------------------------------
+
+\chapter{Erfahrungen und Zusammenfassung}
+
+Umfang: 1--2 Seiten
+
+%%%-----------------------------------------------------------------------------
+%\backmatter        % Schlussteil (nur bei Verwendung des Quellenverzeichnisses)
+%%%-----------------------------------------------------------------------------
+
+%\MakeBibliography % Quellenverzeichnis (sofern notwendig, sonst weglassen)
+
+\end{document}

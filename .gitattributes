@@ -1,0 +1,4 @@
+documents/* linguist-language=TeX
+docs/* linguist-documentation
+# Shell scripts must keep LF line endings (also on Windows with core.autocrlf=true):
+*.sh text eol=lf

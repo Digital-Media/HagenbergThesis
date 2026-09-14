@@ -1,0 +1,190 @@
+%% A simple template for a scientific article using the Hagenberg setup
+%% based on the standard LaTeX 'article' class
+
+%%% Magic comments for setting the correct parameters in compatible IDEs
+% !TeX encoding = utf8
+% !TeX program = pdflatex 
+% !TeX spellcheck = en_US
+% !BIB program = biber
+
+\RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
+
+\documentclass[language=english,twocolumn=true,smartquotes=true]{hgbarticle}
+% Valid options in [..]:
+%		Main language: language=english (default), language=german
+%		Typographic quotes: smartquotes=true, smartquotes=false (default)
+%		APA citation style: apa=true, apa=false (default)
+%		Code listings: codestyle=color (default), codestyle=mono, codestyle=classic
+%		Two-column layout: twocolumn=true, twocolumn=false (default)
+%		Review mode with line numbers: review=true, review=false (default)
+%		Page layout: twoside=false (single-sided, default), twoside=true (double-sided)
+%		Update check: updatecheck=true (default), updatecheck=false (to suppress)
+%%%-----------------------------------------------------------------------------
+
+\usepackage{lipsum}       % Create lorem ipsum dummy text (can be removed)
+\flushbottom              % Add vertical space where necessary to fill the page
+\graphicspath{{images/}}  % Location of images and graphics
+\bibliography{hgbreferences} % Biblatex bibliography file (hgbreferences.bib)
+
+%%%-----------------------------------------------------------------------------
+\begin{document}
+%%%-----------------------------------------------------------------------------
+
+%\author{
+	%Alex A.\ Wiseguy\\ 
+	%\email{wiseguy@gmail.com}
+	%\and
+	%Adrian Spongehead\\
+	%\email{spongehead@gmx.net}
+%}
+\author{Benno X.\ Klabuster}
+\title{Reasoning About the Unreasonable}
+\date{}
+
+%%%-----------------------------------------------------------------------------
+\maketitle
+%%%-----------------------------------------------------------------------------
+
+\begin{abstract}\noindent
+This document shows how to author a journal article using the full functionality
+of the \texttt{hagenberg-thesis} framework. It uses class \texttt{hgb\-article} 
+which itself is based on the standard \latex \texttt{article} class. This may be 
+useful, for example, if you wish to publish part of your thesis as a journal article
+or conference paper without major changes.
+Note that this is not intended as a substitute for the standard \texttt{article}
+class and many publishers provide their own \latex\ class files for their journal
+publications.
+\end{abstract}
+
+%%%-----------------------------------------------------------------------------
+
+\section{Introduction}
+
+If you wish to write this report in German, you should replace the specification
+%
+\begin{verbatim}
+\documentclass[language=english,twocolumn=true,
+            smartquotes=true]{hgbarticle}
+\end{verbatim}
+%
+at the top of this document by
+%
+\begin{verbatim}
+\documentclass[language=german,twocolumn=true,
+    smartquotes=true]{hgbarticle}
+\end{verbatim}
+%
+Use \texttt{twocolumn=false} for a single-column layout. Use \texttt{smartquotes=false}
+to disable simplified quotations.
+
+Also note that the topmost sectioning command available in the \texttt{article}
+class is \verb!\section{}!, i.e., there are \textbf{no chapters}!
+When converting a thesis, you thus need to \emph{demote} all chapter commands to
+sections, sections to subsections etc.
+
+\subsection{Mathematical Elements}
+
+This document is typeset in the typical two-column format required by many
+scientific journals. Unfortunately, the narrow text width often creates
+problems with mathematical structures \cite{Downes2017}. While smaller
+equations like
+%
+\begin{equation}
+x = a + b
+\bar{\mathbf{M}} =  
+\begin{pmatrix}
+	A \ast H^{G}_{\sigma}   & C \ast H^{G}_{\sigma} \\
+	C \ast H^{G}_{\sigma}   & B \ast H^{G}_{\sigma} 
+\end{pmatrix}
+=
+\begin{pmatrix}
+	\bar{A}   & \bar{C} \\
+	\bar{C}   & \bar{B} 
+\end{pmatrix}
+\end{equation}
+%
+may fit without any modification, larger structures like the one shown in
+Equation \ref{wideEquation} need special treatment.
+%
+\begin{figure*}[t]
+	\begin{equation}
+	y = c + d
+		\begin{split}
+			\lambda_{1,2}
+			&= \frac{\mathrm{tr}(\bar{\mathbf{M}})}{2} \pm \sqrt{\Bigl
+			(\frac{\mathrm{tr}(\bar{\mathbf{M}})}{2}\Bigr)^2
+			- \mathrm{det}(\bar{\mathbf{M}})}  \\
+			&= \frac{1}{2} \cdot \left( \bar{A} + \bar{B} \pm \sqrt{\bar{A}^2 -
+			2 \cdot \bar{A} \cdot \bar{B} + \bar{B}^2 + 4 \cdot \bar{C}^2}
+			\right)
+			,
+		\end{split}
+		\label{wideEquation}
+	\end{equation}
+\end{figure*}
+%
+In this case, the equation was wrapped into a \verb!\begin{figure*}! \ldots
+\verb!\end{figure*}! environment, which produces an unnumbered float object
+that extends across the full page width. Additional details can be found in
+the source text.
+
+\subsection{Graphics and Images}
+
+Similarly, the horizontal space available for graphical elements is the width
+of a single column. Thus elements inserted with \verb!\includegraphics{..}! 
+should use the length \verb!\columnwidth! for scaling. An example is shown in
+Fig.~\ref{fig:CocaCola} (see the source text for details).
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.0\columnwidth]{cola-public-domain-photo-p}
+	\caption{Coca-Cola advertisement photographed in 1940 \cite{CocaCola1940}.}
+	\label{fig:CocaCola}
+\end{figure}
+
+And by the way, the \texttt{lipsum} package was used to create the following
+dummy texts. 
+
+\subsection{Bibliography}
+
+The use of citations and the compilation of the bibliography work much the
+same as in the thesis template. The only difference is that
+\verb!\printbibliography! is used directly at the end of the document.
+
+%%%-----------------------------------------------------------------------------
+
+\section{Existing Techniques}
+
+\lipsum[2-4]
+
+%%%-----------------------------------------------------------------------------
+
+\section{Our Radically New Approach}
+
+\lipsum[5-7]
+
+\subsection{Initial Steps}
+
+\lipsum[5-7]
+
+\subsection{Alternatives}
+
+\lipsum[5-7]
+
+\subsection{Future Activities}
+
+\lipsum[5-7]
+
+%%%-----------------------------------------------------------------------------
+
+\section{Summary and Conclusion}
+
+\lipsum[8-9]
+
+%%%-----------------------------------------------------------------------------
+\printbibliography      % alternatively use: \MakeBibliography[nosplit]
+%%%-----------------------------------------------------------------------------
+
+%%%-----------------------------------------------------------------------------
+\end{document}
+%%%-----------------------------------------------------------------------------

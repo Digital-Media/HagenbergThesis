@@ -1,0 +1,119 @@
+# Hagenberg Thesis Document Collection (LaTeX)
+
+[![Build and check documents](https://github.com/Digital-Media/HagenbergThesis/actions/workflows/build.yml/badge.svg)](https://github.com/Digital-Media/HagenbergThesis/actions/workflows/build.yml)
+
+## What You Find Here
+
+This is a collection of modern LaTeX classes, style files, and example documents for authoring **Bachelor, Master, Diploma, or PhD theses** and related academic manuscripts in English and German.
+Pre-configured English and German documents are available. They are easy to use, even for LaTeX beginners, and compatible with LaTeX distributions for Windows, macOS, and Linux. The document classes are immediately usable and convenient to customize.
+
+The main document, [**HgbThesisTutorialEN**](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisTutorialEN/main.pdf) or [**HgbThesisTutorialDE**](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisTutorialDE/main.pdf), serves both as a **template** and **tutorial** for authoring a bachelor's, master's, diploma, or PhD thesis with LaTeX. 
+Developed initially as an internal standard at the University of Applied Sciences Upper Austria (FH OÖ) in Hagenberg, this setup has become popular at several other (mostly German-speaking) institutions over the last few years.
+
+This site serves as the primary repository for the **hagenberg-thesis** package, which is also available on CTAN and shared by popular package repositories, including [*MiKTeX*](https://miktex.org/) and [*TeX Live*](https://www.tug.org/texlive/).
+Note that the **most recent versions are always found *here***, while only periodic [releases](https://github.com/Digital-Media/HagenbergThesis/releases) are submitted to CTAN.
+
+
+## How to Use
+
+### Download (Local LaTeX Installation)
+
+To open a sample document on your computer, use the appropriate **download** (ZIP) link in the table below.
+Unzip the downloaded archive to a suitable location and open the `main.tex` file in your TeX editor.
+Make sure you have installed a current LaTeX environment.
+
+### Online Usage (Single-click Authoring)
+
+The sample documents can also be edited in a web browser without installing LaTeX on your computer.
+Use the **create** links in the table below to open the document on **[Overleaf](https://www.overleaf.com/)**.
+
+
+## Sample Documents
+
+Each sample document is based on a custom LaTeX document class (e.g., ``hgbthesis.cls``) and various style files  (``hgb.sty``, ...). The style files can also be used independently for other kinds of documents.
+The PDF and ZIP files linked below are built and checked automatically from the current state of the package.
+The following sample documents (with numerical citations using `numeric-comp`) are currently available:
+
+| Name                   | Document Type                       | Language | PDF                                                                                                            | ZIP                                                                                                      | Overleaf\*                                                                                                                                    |
+|:-----------------------|:------------------------------------|----------|----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `HgbThesisTutorialEN`  | **Thesis Template and Tutorial**    | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisTutorialEN/main.pdf)    | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisTutorialEN.zip)   | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisTutorialEN.zip)   |
+| `HgbThesisTutorialDE`  | **Thesis Template and Tutorial**    | German   | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisTutorialDE/main.pdf)    | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisTutorialDE.zip)   | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisTutorialDE.zip)   |
+| `HgbThesisEN`          | Minimal Thesis Template             | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisEN/main.pdf)            | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisEN.zip)           | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisEN.zip)           |
+| `HgbThesisDE`          | Minimal Thesis Template             | German   | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisDE/main.pdf)            | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisDE.zip)           | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisDE.zip)           |
+| `HgbInternshipReportDE` | Internship Report                   | German   | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbInternshipReportDE/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbInternshipReportDE.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbInternshipReportDE.zip) |
+| `HgbInternshipReportEN` | Internship Report                   | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbInternshipReportEN/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbInternshipReportEN.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbInternshipReportEN.zip) |
+| `HgbLabReportEN`       | Lab Report (weekly assignments)     | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbLabReportEN/main.pdf)         | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbLabReportEN.zip)        | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbLabReportEN.zip)        |
+| `HgbLabReportDE`       | Lab Report (weekly assignments)     | German   | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbLabReportDE/main.pdf)         | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbLabReportDE.zip)        | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbLabReportDE.zip)        |
+| `HgbTermReport`        | Term/Project Report (full semester) | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbTermReport/main.pdf)          | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbTermReport.zip)         | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbTermReport.zip)         |
+| `HgbArticle`           | Journal Article                     | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbArticle/main.pdf)             | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbArticle.zip)            | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbArticle.zip)            |
+| `HgbThesisEN-proposal` | Thesis Proposal (Exposé)            | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisEN-proposal/main.pdf)   | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisEN-proposal.zip)  | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisEN-proposal.zip)  |
+| `HgbThesisDE-proposal` | Thesis Proposal (Exposé)            | German   | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisDE-proposal/main.pdf)   | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisDE-proposal.zip)  | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisDE-proposal.zip)  |
+
+### APA Style Documents
+
+To use the [APA 7th edition style for citations and references](https://apastyle.apa.org/style-grammar-guidelines/references/), the option `apa=true` can be used in the document's preamble. Two separate sample documents are already prepared for the use of the APA style:
+
+| Name              | Document Type                       | Language | PDF                                                                                                     | ZIP                                                                                                 | Overleaf\*                                                                                                                               |
+|:------------------|:------------------------------------|----------|---------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `HgbThesisEN-APA` | Minimal Thesis Template (APA-style) | English  | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisEN-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisEN-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisEN-APA.zip) |
+| `HgbThesisDE-APA` | Minimal Thesis Template (APA-style) | German   | [preview](https://github.com/Digital-Media/HagenbergThesis/blob/build/documents/HgbThesisDE-APA/main.pdf) | [download](https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisDE-APA.zip) | [create](https://www.overleaf.com/docs?snip_uri=https://github.com/Digital-Media/HagenbergThesis/raw/build/download/HgbThesisDE-APA.zip) |
+
+\*Note: A (free) account is required to open documents on **[Overleaf](https://www.overleaf.com/)**. The [Standard plan or higher](https://www.overleaf.com/user/subscription/plans) is recommended to avoid compile-timeouts in larger documents.
+
+
+### Degree Program and Academic Degree
+
+The type of degree program and the academic degree on the title page are derived from the class options `type` and `degree`. For example, `\documentclass[type=master,degree=engineering]{hgbthesis}` results in "Masterstudiengang" (or "Master's degree program") and "Master of Science in Engineering (MSc)". All academic degrees of Austrian universities of applied sciences are supported; the [package manual](https://github.com/Digital-Media/HagenbergThesis/blob/build/manual/main.pdf) lists all values. The degree of your program is stated in its curriculum. Common values at FH OÖ are:
+
+| `degree=`         | `type=bachelor`                          | `type=master`                          | FH OÖ programs (examples)                                                    |
+|:------------------|:-----------------------------------------|:---------------------------------------|:-----------------------------------------------------------------------------|
+| `engineering`     | Bachelor of Science in Engineering (BSc) | Master of Science in Engineering (MSc) | Software Engineering, Design of Digital Products (Hagenberg)                  |
+| `arts-design`     | Bachelor of Arts in Arts and Design (BA) | Master of Arts in Arts and Design (MA) | Digital Arts (Hagenberg)                                                     |
+| `business`        | Bachelor of Arts in Business (BA)        | Master of Arts in Business (MA)        | Process Management and Business Intelligence, Marketing and Electronic Business (Steyr) |
+| `social-sciences` | Bachelor of Arts in Social Sciences (BA) | Master of Arts in Social Sciences (MA) | Social Work (Linz)                                                           |
+
+Degrees not covered by the option (e.g., of universities or other countries) can be given as free text with `\academicdegree{...}`.
+
+
+### Affidavit and Documentation of AI Tool Usage
+
+`\maketitle` creates the affidavit ("Eidesstattliche Erklärung" or "Affidavit") with the text of the FH OÖ template. It is followed by the documentation of the usage of generative AI tools, which all sample documents include directly after `\maketitle` (file `front/ki-dokumentation.tex` or `front/ai-usage.tex`). It is composed of predefined text modules; use the applicable ones and delete the others:
+
+```latex
+\begin{aiusage}
+	\aiusedfor{literature-search}
+	\aiusedfor{proofreading}
+\end{aiusage}
+```
+
+Use `\aiusednone` if no AI tools were used. If your degree program requires a detailed documentation, use the environment `aiusagedetails` instead (see the commented part of the file and the [package manual](https://github.com/Digital-Media/HagenbergThesis/blob/build/manual/main.pdf)).
+
+The texts of the detailed form were adapted by FH OÖ from *KOGNITION/COGNISANCE* by Gimpel et al. (2023, [doi:10.17605/OSF.IO/VGXF7](https://doi.org/10.17605/OSF.IO/VGXF7)). Unlike the rest of this project, they are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) and are therefore kept in the separate file [`hgbaiusage-cognisance.sty`](dev/texmf/tex/latex/hagenberg-thesis/hgbaiusage-cognisance.sty); the form prints the source reference.
+
+
+### PDF/A Generation and Validation
+
+All documents in this collection are set up to optionally create PDF/A-compliant output files (PDF/A-2b, to be exact).
+Note that while the original documents are indeed PDF/A-compliant (they are validated automatically with veraPDF on every change), any *derived* document may *not* be so. 
+Therefore, it is crucial to **validate** the resulting PDF file before submission (see below).
+Most violations of the PDF/A standard arise from the inclusion of other PDF files, particularly graphics. 
+Typical issues are related to using non-embedded fonts and incorrect or unwanted color spaces.
+This setup assumes sRGB colors, which should also be used when creating your own illustrations.
+
+To validate your PDF file, use **veraPDF**, the reference implementation for PDF/A validation, either as an [online validation service](https://demo.verapdf.org) or as a [downloadable validation client](https://verapdf.org/software).
+
+
+## Additional Features
+
+The **hagenberg-thesis** classes and styles try to provide as much functionality out-of-the-box as possible while still being easy to use. Additional functionality that did not permanently find its way into the files is documented in the [wiki for this repository](https://github.com/Digital-Media/HagenbergThesis/wiki).
+
+
+## Further Information
+
+* [Package manual](https://github.com/Digital-Media/HagenbergThesis/blob/build/manual/main.pdf)
+* [Package on CTAN (hagenberg-thesis)](https://ctan.org/pkg/hagenberg-thesis)
+* [Recent changes](CHANGELOG.md)
+* [How to contribute](CONTRIBUTING.md)
+* [License](LICENSE) (CC BY 4.0; exception: the texts in [`hgbaiusage-cognisance.sty`](dev/texmf/tex/latex/hagenberg-thesis/hgbaiusage-cognisance.sty) are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))
+* [Issues](https://github.com/Digital-Media/HagenbergThesis/issues)
+* [Discussions](https://github.com/Digital-Media/HagenbergThesis/discussions)

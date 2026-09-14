@@ -1,0 +1,152 @@
+%% This file is part of the Hagenberg Thesis package
+%% Authors: Wilhelm Burger (wilbur@ieee.org), Wolfgang Hochleitner
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+%% Title page following the FH OÖ title page prototype for theses (2025-10-22).
+%% The copyright, declaration and company pages are inherited from theme 'classic'.
+%% The brand (logo and institution name) is kept separate from the layout and set by
+%% \hgb@SetBrand (see below). This theme always uses the current official brand;
+%% brand themes (e.g., 'fhooe26') pin a specific brand.
+
+\ProvidesPackage{hgbtheme-default}[2026/09/14]%%AUTO
+\hgb@UseTheme{classic}%	parent theme
+\RequirePackage{hgbdict}
+\RequirePackage{forloop}
+\RequirePackage[absolute]{textpos}
+
+% All positions on the title page are given in mm from the top left corner of the page:
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+
+%% Define various language-dependent text chunks to be used below -------------
+
+\hgbDictionarySet{academic-degree-intro}{german}{zur Erlangung des akademischen Grades}%
+\hgbDictionarySet{academic-degree-intro}{english}{to obtain the academic degree of}%
+
+\hgbDictionarySet{submission-year}{german}{Jahr der Einreichung}%
+\hgbDictionarySet{submission-year}{english}{Year of submission}%
+
+% label on the title page for advisors specified by \advisor{..} without optional argument:
+\hgbDictionarySet{supervision}{german}{Betreuung}%
+\hgbDictionarySet{supervision}{english}{Supervision}%
+
+%% Brand (logo and institution name) ------------------------------------------
+
+% Usage: \hgb@SetBrand[<logo height>]{<logo file>}{<institution name german>}{<institution name english>}
+% The institution name is used on the title page unless \institution{..} is specified in the document.
+\newcommand{\hgb@SetBrand}[4][28mm]{%
+	\setlength{\hgb@LogoHeight}{#1}%	length defined in theme 'classic'
+	\renewcommand{\hgb@LogoFile}{#2}%
+	\hgbDictionarySet{institution-name}{german}{#3}%
+	\hgbDictionarySet{institution-name}{english}{#4}%
+}
+
+\renewcommand{\hgb@Institution}{\hgbDictionaryGet{institution-name}{\hgb@TitleLanguage}}
+
+% Current official brand:
+\hgb@SetBrand{hgbtheme-fhooe26-logo.pdf}{Fachhochschule Oberösterreich}{University of Applied Sciences Upper Austria}
+
+%% Fonts of the title page ----------------------------------------------------
+
+\newcommand{\hgb@TitlePageSizeNormal}{\fontsize{16}{19}\selectfont}%	author, thesis type
+\newcommand{\hgb@TitlePageSizeTitle}{\fontsize{24}{31.5}\selectfont}%	title (bold)
+\newcommand{\hgb@TitlePageSizeSmall}{\fontsize{14}{23}\selectfont}%		year of submission, supervision
+
+%% Initialization (optional) --------------------------------------------------
+
+\AddToHook{hgb@InitThemeHook}{%
+	% add initialization code if needed
+}%
+
+%% Title page -----------------------------------------------------------------
+
+\renewcommand{\hgb@MakeTitlePage}{%
+\begin{titlepage}%
+	\hgb@TitlePageFont%
+	\setlength{\parindent}{0pt}%
+
+	% logo --------------------------------------------------
+	\begin{textblock}{155}(25,12)
+		\hgb@MakeLogo%	defined in theme 'classic'
+	\end{textblock}
+
+	% author, title, thesis type, academic degree (flowing text) --------------
+	\begin{textblock}{155}(25,64)
+		\raggedright
+		{\hgb@TitlePageSizeNormal\hgb@Author\par}%
+		\vspace{10.8mm}%
+		\begin{SwitchLanguage}{\hgb@MainLanguage}% thesis title is assumed to be in main document language!
+			{\hgb@TitlePageSizeTitle\bfseries\hgb@FullTitle\par}%
+		\end{SwitchLanguage}%
+		\vspace{18.7mm}%
+		{\hgb@TitlePageSizeNormal\hgb@ThesisName%
+			\ifthenelse{\boolean{hgb@IsProposal}}{\space(\hgb@ProposalName)}{}\par}%
+		\ifthenelse{\equal{\hgb@AcademicDegree}{} \OR \boolean{hgb@IsProposal}}%
+			{}% no academic degree specified, or proposal (not submitted to obtain the degree)
+			{%
+				\vspace{3.2mm}%
+				{\fontsize{16}{25.8}\selectfont%
+					\hgbDictionaryGet{academic-degree-intro}{\hgb@TitleLanguage}\\
+					\hgb@AcademicDegree\par}%
+			}%
+	\end{textblock}
+
+	% program type, program name, institution, place of study ---------------
+	\begin{textblock}{155}(25,209.5)
+		\raggedright
+		\fontsize{16}{20.4}\selectfont
+		\hgb@ProgramType\par
+		\hgb@ProgramName\par
+		\hgb@Institution\par
+		\hgb@PlaceOfStudy\par
+	\end{textblock}
+
+	% year of submission, advisor(s) (not for internship reports), bottom aligned
+	\begin{textblock}{155}[0,1](25,280)
+		\raggedright
+		\hgb@TitlePageSizeSmall
+		\hgb@MakeSubmissionTable\par% defined below
+	\end{textblock}
+
+	\null%	required to tell LaTeX that there is a non-empty content box
+\end{titlepage}%
+}
+
+%% Submission Table (title page) ----------------------------------------
+%% Year of submission and advisors in one bottom-aligned table, so that all rows
+%% have the same distance and the table grows upwards with more advisors.
+%% Advisors without explicit role are labeled "Betreuung"/"Supervision";
+%% consecutive advisors with the same role share one label.
+%% (The company page of internship reports uses \@makeAdvisorTable of theme 'classic'.)
+
+\newcounter{hgb@advisor}
+
+\newcommand{\hgb@MakeSubmissionTable}{%
+	\begingroup
+	\renewcommand{\arraystretch}{1.0}%
+	\begin{tabular}[b]{@{}l@{\space}l@{}}%
+		\multicolumn{2}{@{}l@{}}{\hgbDictionaryGet{submission-year}{\hgb@TitleLanguage}: \hgb@SubmissionYear}%
+		\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
+			{}% no advisors on the title page of internship reports
+			{%
+				\ifthenelse{\hgb@AdvisorCount > 0}%
+					{%
+						\forloop{hgb@advisor}{1}{\not{\value{hgb@advisor} > \hgb@AdvisorCount}}{%   see 'forloop' package
+							\\
+							\ifthenelse{\value{hgb@advisor} > 1 \AND
+									\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgb@getAdvisorRole{\the\numexpr\value{hgb@advisor}-1\relax}}}%
+								{}% same role as the previous advisor
+								{%
+									\ifthenelse{\equal{\hgb@getAdvisorRole{\thehgb@advisor}}{\hgbDictionaryGet{advisorheader}{\hgb@TitleLanguage}}}%
+										{\hgbDictionaryGet{supervision}{\hgb@TitleLanguage}:}% default role
+										{\hgb@getAdvisorRole{\thehgb@advisor}:}%
+								}%
+							& \hgb@getAdvisorName{\thehgb@advisor}%
+						}%
+					}%
+					{\\ \multicolumn{2}{@{}l@{}}{\color{red}No advisor(s) specified!}}%
+			}%
+	\end{tabular}%
+	\endgroup
+}

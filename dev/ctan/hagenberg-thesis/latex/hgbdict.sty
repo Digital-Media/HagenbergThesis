@@ -1,0 +1,176 @@
+%% hgbdict.sty
+%% This file is part of the Hagenberg Thesis package for creating bachelors's and masters's theses
+%% Author: Wilhelm Burger (wilbur@ieee.org)
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+%% This package defines a simple dictionary mechanism for terms used in title pages.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hgbdict}[2026/09/14]%%AUTO
+
+\newcommand{\hgbDictionaryUndefined}{undefined}%
+
+% Usage: \hgbDictionarySet{bachelor-thesis}{english}{Bachelor Thesis}
+% Note: previously existing entry for the same key are replaced!
+\newcommand{\hgbDictionarySet}[3]{%  #1=key, #2=lang, #3=term
+  \expandafter\def\csname hgb@dict-#1-#2\endcsname{#3}
+}
+
+% Usage: \hgbDictionaryGet{bachelor-thesis}{english}
+\newcommand{\hgbDictionaryGet}[2]{%  #1=key, #2=lang
+\ifcsname hgb@dict-#1-#2\endcsname% \ifdefined, \@ifundefined
+  \csname hgb@dict-#1-#2\endcsname%
+  \else \hgbDictionaryUndefined% Term '#1' is undefined for language '#2'!%
+  \fi
+}
+
+%% ----------------------------------------------------------------------------
+%% Language-related entries:
+%% ----------------------------------------------------------------------------
+
+\hgbDictionarySet{iso-language-code}{english}{en}
+\hgbDictionarySet{iso-language-code}{german}{de}
+\hgbDictionarySet{iso-language-code}{ngerman}{de}
+\hgbDictionarySet{iso-language-code}{french}{fr}
+
+%% used as PDF document language tags (see https://www.rfc-editor.org/info/rfc4647):
+\hgbDictionarySet{language-range-tag}{english}{en-GB}
+\hgbDictionarySet{language-range-tag}{german}{de-DE}
+\hgbDictionarySet{language-range-tag}{ngerman}{de-DE}
+\hgbDictionarySet{language-range-tag}{french}{fr-FR}
+
+%% ----------------------------------------------------------------------------
+%% Add thesis-relevant dictionary items
+%% ----------------------------------------------------------------------------
+%% Note: don't rely on smart quotes being turned on!
+
+% Front page terms:
+
+\hgbDictionarySet{bachelor-docname}{english}{Bachelor Thesis}
+\hgbDictionarySet{bachelor-docname}{german}{Bachelorarbeit}
+
+\hgbDictionarySet{master-docname}{english}{Master's Thesis}
+\hgbDictionarySet{master-docname}{german}{Masterarbeit}
+
+\hgbDictionarySet{diploma-docname}{english}{Diploma Thesis}
+\hgbDictionarySet{diploma-docname}{german}{Diplomarbeit}
+
+\hgbDictionarySet{phd-docname}{english}{Doctoral Thesis}
+\hgbDictionarySet{phd-docname}{german}{Dissertation}
+
+\hgbDictionarySet{proposal-name}{english}{Proposal}
+\hgbDictionarySet{proposal-name}{german}{Exposé}
+
+\hgbDictionarySet{advisorheader}{english}{Supervisor}
+\hgbDictionarySet{advisorheader}{german}{Betreuer*in}
+
+\hgbDictionarySet{program-env-name}{english}{Program}
+\hgbDictionarySet{program-env-name}{german}{Programm}
+
+% ... etc.
+
+
+% Internship-related terms:
+
+\hgbDictionarySet{internship-docname}{english}{Internship Report}
+\hgbDictionarySet{internship-docname}{german}{Praktikumsbericht}
+
+\hgbDictionarySet{internship}{english}{Internship}
+\hgbDictionarySet{internship}{german}{Praktikumsstelle}
+
+\hgbDictionarySet{internship-contact-single}{english}{Contact}
+\hgbDictionarySet{internship-contact-single}{german}{Kontaktperson}
+
+\hgbDictionarySet{internship-contact-multiple}{english}{Contacts}
+\hgbDictionarySet{internship-contact-multiple}{german}{Kontaktpersonen}
+
+% Types of degree programs (default of \programtype, derived from the class option 'type'):
+
+\hgbDictionarySet{bachelor-programtype}{english}{Bachelor's degree program}
+\hgbDictionarySet{bachelor-programtype}{german}{Bachelorstudiengang}
+
+\hgbDictionarySet{master-programtype}{english}{Master's degree program}
+\hgbDictionarySet{master-programtype}{german}{Masterstudiengang}
+
+\hgbDictionarySet{diploma-programtype}{english}{Diploma degree program}
+\hgbDictionarySet{diploma-programtype}{german}{Diplomstudiengang}
+
+\hgbDictionarySet{phd-programtype}{english}{Doctoral program}
+\hgbDictionarySet{phd-programtype}{german}{Doktoratsstudium}
+
+\hgbDictionarySet{internship-programtype}{english}{Bachelor's degree program}
+\hgbDictionarySet{internship-programtype}{german}{Bachelorstudiengang}
+
+% Academic degrees (class option 'degree=<key>'; the level is taken from the class option 'type').
+% Usage: \hgbDefineDegree{<key>}{<bachelor degree>}{<master degree>}
+% An empty argument means that the degree does not exist at this level.
+% Degree names are the same in all languages.
+\newcommand{\hgbDefineDegree}[3]{%
+	\if\relax\detokenize{#2}\relax\else
+		\hgbDictionarySet{degree-bachelor-#1}{english}{#2}%
+		\hgbDictionarySet{degree-bachelor-#1}{german}{#2}%
+	\fi
+	\if\relax\detokenize{#3}\relax\else
+		\hgbDictionarySet{degree-master-#1}{english}{#3}%
+		\hgbDictionarySet{degree-master-#1}{german}{#3}%
+	\fi
+}
+
+% Degrees of Austrian FH degree programs as defined by AQ Austria (board decision of 2021-07-07,
+% approved by the ministry on 2021-08-18), abbreviations without dots:
+\hgbDefineDegree{arts-design}{Bachelor of Arts in Arts and Design (BA)}{Master of Arts in Arts and Design (MA)}
+\hgbDefineDegree{engineering}{Bachelor of Science in Engineering (BSc)}{Master of Science in Engineering (MSc)}
+\hgbDefineDegree{social-sciences}{Bachelor of Arts in Social Sciences (BA)}{Master of Arts in Social Sciences (MA)}
+\hgbDefineDegree{business}{Bachelor of Arts in Business (BA)}{Master of Arts in Business (MA)}
+\hgbDefineDegree{military-leadership}{Bachelor of Arts in Military Leadership (BA)}{Master of Arts in Military Leadership (MA)}
+\hgbDefineDegree{police-leadership}{Bachelor of Arts in Police Leadership (BA)}{}
+\hgbDefineDegree{security-management}{}{Master of Arts in Security Management (MA)}
+\hgbDefineDegree{cultural-studies}{Bachelor of Arts in Cultural Studies (BA)}{Master of Arts in Cultural Studies (MA)}
+\hgbDefineDegree{natural-sciences}{Bachelor of Science in Natural Sciences (BSc)}{Master of Science in Natural Sciences (MSc)}
+\hgbDefineDegree{health-studies}{Bachelor of Science in Health Studies (BSc)}{Master of Science in Health Studies (MSc)}
+\hgbDefineDegree{law}{Bachelor of Laws (LLB)}{Master of Laws (LLM)}
+
+% License texts: 
+
+\hgbDictionarySet{strictlicense}{english}{All Rights Reserved}
+\hgbDictionarySet{strictlicense}{german}{Alle Rechte vorbehalten}
+
+\hgbDictionarySet{cclicense}{english}{%
+\begin{english}
+	This work is published under the conditions of the \textsf{Creative Commons License} 
+	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0)%
+	---see \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
+\end{english}
+}
+
+\hgbDictionarySet{cclicense}{german}{%
+\begin{german}
+	Diese Arbeit wird unter den Bedingungen der \textsf{Creative Commons Lizenz} 
+	\emph{Attribution-NonCommercial-NoDerivatives 4.0 International} (CC BY-NC-ND 4.0) 
+	veröffentlicht -- siehe \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.%
+\end{german}
+}
+
+% Affidavit (text of the FH OÖ template of 2026-03-13):
+
+\hgbDictionarySet{declaration-title}{english}{Affidavit}
+\hgbDictionarySet{declaration-title}{german}{Eidesstattliche Erklärung}
+
+\hgbDictionarySet{declaration-text}{english}{%
+\begin{english}
+I hereby declare that I have written the presented thesis independently and have used only the references
+and aids indicated. All passages taken verbatim or paraphrased from the references are clearly identified as
+such. This thesis has not been submitted, in whole or in part, in the same or a similar form, to any other
+examination authority, and is identical to the electronically submitted text document.
+\end{english}
+}
+
+\hgbDictionarySet{declaration-text}{german}{%
+\begin{german}
+Ich erkläre eidesstattlich, dass ich die vorliegende Arbeit selbständig verfasst und nur die angegebenen
+Quellen und Hilfsmittel verwendet habe. Alle Stellen, die wörtlich oder inhaltlich den angegebenen Quellen
+entnommen wurden, sind als solche kenntlich gemacht. Die Arbeit wurde bisher in gleicher oder ähnlicher Form
+keiner anderen Prüfungsbehörde vorgelegt und ist mit dem elektronisch eingereichten Textdokument identisch.
+\end{german}
+}
