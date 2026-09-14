@@ -26,14 +26,18 @@
 
 \newcommand{\hgb@AIUsageGet}[1]{\hgbDictionaryGet{#1}{\hgb@TitleLanguage}}
 
+% Messages of the warnings of this package: every line is shorter than 79 characters (TeX wraps longer lines in
+% the log), and no line but the last one ends with a period (TeXstudio, for example, ends a warning at such a
+% line, so that the following lines would be missing).
+%
 % Only one of the two forms is intended; a warning is issued if both are used (in any order):
 \newif\ifhgb@AIUsageShortUsed
 \newif\ifhgb@AIUsageDetailsUsed
 \newcommand{\hgb@AIUsageCheckForms}{%
 	\ifhgb@AIUsageShortUsed\ifhgb@AIUsageDetailsUsed
-		\PackageWarning{hgbaiusage}{Both 'aiusage' and 'aiusagedetails' are used\MessageBreak
-			Only one of the two forms is intended.\MessageBreak
-			Remove the other one}%
+		\PackageWarning{hgbaiusage}{Both 'aiusage' and 'aiusagedetails' are used, but\MessageBreak
+			only one of the two forms is intended. Remove the\MessageBreak
+			other one}%
 	\fi\fi
 }
 
@@ -102,8 +106,8 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		\end{itemize}%
 	\else
 		\ifhgb@AIUsageNone\else
-			\PackageWarning{hgbaiusage}{No usage of AI tools documented in 'aiusage'\MessageBreak
-				Use \string\aiusednone, \string\aiusedfor{...} or\MessageBreak
+			\PackageWarning{hgbaiusage}{No usage of AI tools documented in 'aiusage'. Use\MessageBreak
+				\string\aiusednone, \string\aiusedfor{...} or\MessageBreak
 				\string\aiusedforother{...}}%
 		\fi
 	\fi
@@ -303,13 +307,13 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 
 \newcommand{\hgb@MakeAIUsageDetails}{%
 	\ifcsstring{hgb@AIUsageConfirm@accuracy}{\hgb@AIUsageUnchecked}%
-		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed\MessageBreak
-			in environment 'aiusagedetails'.\MessageBreak
-			Use \string\aiconfirm{accuracy}}}{}%
+		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed in\MessageBreak
+			environment 'aiusagedetails'. Use\MessageBreak
+			\string\aiconfirm{accuracy}}}{}%
 	\ifcsstring{hgb@AIUsageConfirm@responsibility}{\hgb@AIUsageUnchecked}%
-		{\PackageWarning{hgbaiusage}{Statement 'responsibility' not confirmed\MessageBreak
-			in environment 'aiusagedetails'.\MessageBreak
-			Use \string\aiconfirm{responsibility}}}{}%
+		{\PackageWarning{hgbaiusage}{Statement 'responsibility' not confirmed in\MessageBreak
+			environment 'aiusagedetails'. Use\MessageBreak
+			\string\aiconfirm{responsibility}}}{}%
 	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
 	\chapter{\hgb@AIUsageGet{aiusagedetails-title}}%
 	%
