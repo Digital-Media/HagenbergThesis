@@ -25,7 +25,7 @@ FAIL_PATTERNS=(
 	'LaTeX Warning: Label\(s\) may have changed'        # cross references not resolved
 	'Please \(re\)run Biber|Please rerun LaTeX'         # incomplete build (biblatex)
 	'Missing character: There is no'                    # character missing in font
-	'(Class|Package) hgb[a-z]* (Warning|Error)'         # warnings/errors of this package
+	'(Class|Package) hgb[a-z0-9-]* (Warning|Error)'     # warnings/errors of this package (incl. themes)
 )
 BIBER_FAIL_PATTERN='ERROR - '                          # Biber errors
 # Log lines that are only counted:
