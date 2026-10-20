@@ -763,7 +763,8 @@ Dokuments erforderlich sind:
     automatisch geladen, kann aber grundsätzlich auch für andere Dokumente
     verwendet werden.
   \item \nolinkurl{hgbtheme-*.sty} (Style-Dateien): Themes für die Titelseiten
-    (\texttt{default}, \texttt{fhooe26}, \texttt{classic}, \texttt{fhooe24}),
+    (\texttt{default}, \texttt{fhooe26}, \texttt{uap27}, \texttt{classic},
+    \texttt{fhooe24}),
     ausgewählt mit der Klassenoption \texttt{theme} (s.\
     Abschnitt~\ref{sec:HagenbergEinstellungen}).
   \item Weitere Style-Dateien, die von \nolinkurl{hgbthesis.cls} importiert
@@ -816,8 +817,13 @@ Weitere Optionen:
 %
 \begin{itemize}
 	\item[] \texttt{theme=\emph{theme}} (Gestaltung der Titelseite: \texttt{default}
-		(\emph{default}), \texttt{fhooe26}, \texttt{classic} oder \texttt{fhooe24};
-		Details im Manual des Pakets).
+		(\emph{default}), \texttt{fhooe26}, \texttt{uap27}, \texttt{classic} oder
+		\texttt{fhooe24}; Details im Manual des Pakets). Die FH Oberösterreich heißt
+		ab 18.~Jänner 2027 \emph{UAP -- University of Applied Sciences Upper
+		Austria}. Das Theme \texttt{default} verwendet automatisch das UAP-Logo,
+		sobald die Logo-Datei \nolinkurl{hgbtheme-uap27-logo.pdf} im Dokument
+		liegt (\zB\ im Verzeichnis \nolinkurl{images/}), sonst das Logo der FH
+		Oberösterreich.
 	\item[] \texttt{titlelanguage=\emph{language}} (Sprache der Titelseite,
 		standardmäßig die Hauptsprache; alle anderen Seiten einschließlich
 		Copyright-Seite und Eidesstattlicher Erklärung sind in der Hauptsprache).

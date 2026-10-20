@@ -844,9 +844,13 @@ The following themes are part of this package:
 	\item \texttt{default}: title page following the title page prototype for theses of the
 		University of Applied Sciences Upper Austria (FH OÖ), with the logo at the top left
 		and left-aligned text. This theme always uses the \emph{current} official brand
-		(logo and name) of the institution (see Sec.~\ref{sec:ThemeBrand}).
+		(logo and name) of the institution, \ie, it switches from FH OÖ to UAP automatically
+		as soon as the UAP logo file is available (see Sec.~\ref{sec:ThemeBrand}).
 	\item \texttt{fhooe26}: same layout as \texttt{default} with the FH OÖ brand pinned, \ie,
 		it keeps the FH OÖ logo and name after future brand changes.
+	\item \texttt{uap27}: same layout as \texttt{default} with the UAP brand pinned (UAP is the
+		name of FH OÖ from January 18, 2027), also before the official switch. Without the
+		UAP logo file, the title page is created without logo and a warning is issued.
 	\item \texttt{classic}: the former \texttt{default} theme (centered layout with the FH OÖ shield logo).
 	\item \texttt{fhooe24}: title page with the FH OÖ cover background of 2024.
 	\item \texttt{custom}: template for a custom theme (see Sec.~\ref{sec:CustomizingThemes}).
@@ -880,6 +884,35 @@ Brand themes like \texttt{fhooe26} load \texttt{default} as their parent theme a
 \end{LaTeXCode}
 %
 The same approach can be used in a custom theme to adapt the title page to another institution.
+A theme that calls \verb!\hgb@SetBrand! pins its brand.
+
+\subsubsection*{Switch from FH OÖ to UAP}
+
+From January 18, 2027, FH Oberösterreich is called \emph{UAP -- University of Applied Sciences
+Upper Austria}. Since the new logo must not be published before the official launch, the logo file
+is not part of this package until then. Theme \texttt{default} therefore decides on the brand when
+the title page is created:
+%
+\begin{itemize}
+	\item If the logo file \texttt{hgbtheme-uap27-logo.pdf} is found, the UAP brand is used:
+		the UAP logo (31.5\,mm high, \ie, the word mark ``UAP'' is about 12\,mm high) and the
+		institution name ``University of Applied Sciences Upper Austria'' in both languages, as
+		specified for scientific publications.
+	\item Otherwise, the FH OÖ brand is used as before.
+\end{itemize}
+%
+The file is looked up in the document directory, in the directories given by
+\verb!\graphicspath! (\eg, \texttt{images/}) and in the \TeX\ installation. Thus, to switch an
+existing document to the UAP brand, it is sufficient to add the logo file to it; neither the document
+nor the package files have to be changed. The log file states which brand is used. Themes that pin
+a brand (\texttt{fhooe26}, \texttt{uap27}, or a custom theme calling \verb!\hgb@SetBrand!) are not
+affected.
+
+The logo file must contain the umbrella brand (word mark with the English name and the German
+descriptor ``Hochschule für Angewandte Wissenschaften'') in the standard colors (red and black), be
+cropped tightly to the logo (without clear space, \eg, with \texttt{pdfcrop}), use the sRGB color
+space and contain no fonts (text converted to outlines), so that the document stays PDF/A-compliant.
+After the official launch, the logo file will be added to the package.
 
 
 \subsection{Customizing themes}
