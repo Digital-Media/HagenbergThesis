@@ -735,7 +735,7 @@ required for this document:
     but it can also be used for other documents.
   \item \nolinkurl{hgbtheme-*.sty} (style files): themes for the design of the
     title pages, selected with the class option \texttt{theme} (\texttt{default},
-    \texttt{fhooe26}, \texttt{classic}, or \texttt{fhooe24}; see
+    \texttt{fhooe26}, \texttt{uap27}, \texttt{classic}, or \texttt{fhooe24}; see
     Section~\ref{sec:hagenberg-settings}).
   \item Additional style files imported by \nolinkurl{hgbthesis.cls}:
     \begin{itemize}
@@ -786,8 +786,13 @@ Additional options:
 %
 \begin{itemize}
 		\item[] \texttt{theme=\emph{theme}} (design of the title page: \texttt{default}
-			(\emph{default}), \texttt{fhooe26}, \texttt{classic}, or \texttt{fhooe24};
-			details in the package manual).
+			(\emph{default}), \texttt{fhooe26}, \texttt{uap27}, \texttt{classic}, or
+			\texttt{fhooe24}; details in the package manual). From January 18, 2027,
+			FH Oberösterreich is called \emph{UAP -- University of Applied Sciences
+			Upper Austria}. Theme \texttt{default} uses the UAP logo automatically as
+			soon as the logo file \nolinkurl{hgbtheme-uap27-logo.pdf} is added to the
+			document (\eg, to the directory \nolinkurl{images/}), otherwise the logo of
+			FH Oberösterreich.
 		\item[] \texttt{titlelanguage=\emph{language}} (language of the title page,
 			defaults to the main language; all other pages, including the copyright
 			page and the affidavit, are in the main language).

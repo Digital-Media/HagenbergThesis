@@ -1,0 +1,27 @@
+%% This file is part of the Hagenberg Thesis package
+%% Author: Wolfgang Hochleitner
+%% GitHub: https://github.com/Digital-Media/HagenbergThesis
+%% File encoding: UTF-8
+
+%% Title page of theme 'default' with the UAP brand pinned (logo and institution name; UAP is the name of FH OÖ
+%% from 2027-01-18). Unlike 'default', which always follows the current official brand, this theme uses the UAP
+%% brand also before the official switch. The logo file 'hgbtheme-uap27-logo.pdf' is not part of the package
+%% before the official launch; it must be added to the document (e.g., to the directory 'images/').
+
+\ProvidesPackage{hgbtheme-uap27}[2026/10/21]%%AUTO
+\hgb@UseTheme{default}%	parent theme (layout)
+
+\hgb@BrandAutofalse%	pin the brand
+\hgb@SetBrandUAP%		defined in theme 'default'
+
+% Without the logo file, the title page is created without logo:
+\AddToHook{hgb@InitThemeHook}{%
+	\hgb@IfGraphicsFileExists{\hgb@UAPLogoFile}{}{%
+		% every line shorter than 79 characters, no line but the last one ends with a period (see hgbaiusage.sty)
+		\PackageWarning{hgbtheme-uap27}{UAP logo file not found, add\MessageBreak
+			'\hgb@UAPLogoFile' to the document\MessageBreak
+			(e.g., to the directory 'images/'). The title\MessageBreak
+			page is created without logo}%
+		\renewcommand{\hgb@LogoFile}{}%
+	}%
+}%
