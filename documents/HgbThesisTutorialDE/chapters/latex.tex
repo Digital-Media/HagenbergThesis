@@ -818,8 +818,9 @@ Weitere Optionen:
 	\item[] \texttt{theme=\emph{theme}} (Gestaltung der Titelseite: \texttt{default}
 		(\emph{default}), \texttt{fhooe26}, \texttt{classic} oder \texttt{fhooe24};
 		Details im Manual des Pakets).
-	\item[] \texttt{titlelanguage=\emph{language}} (Sprache der Titelseiten,
-		standardmäßig die Hauptsprache).
+	\item[] \texttt{titlelanguage=\emph{language}} (Sprache der Titelseite,
+		standardmäßig die Hauptsprache; alle anderen Seiten einschließlich
+		Copyright-Seite und Eidesstattlicher Erklärung sind in der Hauptsprache).
 	\item[] \texttt{degree=\emph{key}} (akademischer Grad auf der Titelseite, \zB\
 		\texttt{engineering} für "Bachelor/Master of Science in Engineering"; alle
 		unterstützten Werte sind im Manual des Pakets angeführt).
@@ -833,6 +834,10 @@ Weitere Optionen:
 		s.\ Abschnitt~\ref{sec:APA}).
 	\item[] \texttt{codestyle=color} (\emph{default}), \texttt{mono} oder \texttt{classic}
 		(Darstellung von Programmcode, s.\ Abschnitt~\ref{sec:CodeStil}).
+	\item[] \texttt{aiusage=detailed} (\emph{default}) oder \texttt{short}
+		(Dokumentation der Nutzung von KI-Tools als Langfassung vor dem Quellenverzeichnis
+		\bzw\ als Kurzfassung in der Eidesstattlichen Erklärung,
+		s.\ Abschnitt~\ref{sec:KIDokumentation}).
 	\item[] \texttt{updatecheck=false} (unterdrückt die Warnung, wenn die verwendete
 		Version des Pakets veraltet ist; \emph{default}: \texttt{true}).
 \end{itemize}
@@ -943,8 +948,9 @@ automatisch generiert, abhängig von den obigen Einstellungen:
 %
 Die Seitennummern gelten für das einseitige Layout. Bei Praktikumsberichten
 folgt auf die Titelseite zusätzlich eine Seite mit Angaben zur
-Praktikumsstelle. Direkt nach \verb!\maketitle! wird die Dokumentation der
-Nutzung von KI-Tools eingebunden (siehe Abschnitt~\ref{sec:KIDokumentation}).
+Praktikumsstelle. Die Dokumentation der Nutzung von KI-Tools ist Teil der
+Eidesstattlichen Erklärung oder wird vor dem Quellenverzeichnis ausgegeben (siehe
+Abschnitt~\ref{sec:KIDokumentation}).
 Auf der Copyright-Seite%
 \footnote{Bei Verwendung der Option \texttt{proposal} werden die Seiten für
 Copyright und Eidesstattliche Erklärung weggelassen.}

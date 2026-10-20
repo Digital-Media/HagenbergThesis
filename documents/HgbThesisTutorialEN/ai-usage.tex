@@ -1,0 +1,48 @@
+%%% Documentation of AI tools usage
+%%% This file is included in main.tex BEFORE \maketitle. Both forms are maintained here,
+%%% the class option aiusage= in main.tex selects the one that is printed:
+%%%   aiusage=detailed -> detailed form (form with table) as a separate chapter before the references
+%%%   aiusage=short    -> short form (text modules) as a supplement to the affidavit
+%%% Please check with your degree program which of the two forms is to be used.
+
+%%% Detailed form: uncomment the applicable activities and delete the others:
+%%% \aiactivity{<activity>}{<AI tools>}{<description of the usage>}
+%%% For the AI tools, give the names of the tools used (e.g., ChatGPT, DeepL Write, Microsoft 365
+%%% Copilot, Perplexity, GitHub Copilot); for the description, the type of usage and the affected
+%%% sections of the thesis. The table always lists all activities (as the FH OÖ template does);
+%%% activities without entries are marked with a dash. The table does not replace a more detailed
+%%% description of the usage in the text of the thesis, where required.
+%%% \aiconfirm{...} confirms the two statements on the responsible use of AI tools.
+%%% Further uses that fit none of the activities: one \aifurtheruse{...} per use (several are
+%%% listed as bullet points); without \aifurtheruse, a dash is printed.
+
+\begin{aiusagedetails}
+	\aiconfirm{accuracy}            % outputs of AI tools verified and corrected where required
+	\aiconfirm{responsibility}      % responsibility lies with the author(s)
+	%\aiactivity{ideas}{ChatGPT}{Gathering initial ideas for research questions (Chapter~1)}
+	\aiactivity{literature}{Perplexity}{Search for literature on ... (Chapter~2)}
+	%\aiactivity{methodology}{ChatGPT}{Comparison of possible evaluation methods (Chapter~3)}
+	%\aiactivity{coding}{GitHub Copilot}{Generation of test functions (Chapter~4)}
+	%\aiactivity{data}{ChatGPT}{Creation of scripts for the statistical analysis (Section~5.1)}
+	%\aiactivity{interpretation}{ChatGPT}{Discussion of possible explanations of the results (Section~5.3)}
+	%\aiactivity{structure}{ChatGPT}{Suggestions for the structure of Chapter~2}
+	%\aiactivity{generation}{ChatGPT}{First draft of the abstract, revised by the author afterwards}
+	%\aiactivity{translation}{DeepL Translator}{Translation of quotations from German (Chapter~2)}
+	\aiactivity{editing}{DeepL Write}{Proofreading of Chapters~1--5}
+	%\aiactivity{references}{ChatGPT}{Formatting of individual references}
+	%\aifurtheruse{Generation of test data for the evaluation (Section~5.2).}
+	%\aifurtheruse{Creation of charts from the measurement data (Section~5.3).}
+\end{aiusagedetails}
+
+%%% Short form: use the applicable text modules and delete anything that does not apply.
+%%% Any other types of use that do not appear on this list must be clarified
+%%% with your supervisor in advance.
+
+\begin{aiusage}
+	%\aiusednone                          % did not use any generative AI tools
+	%\aiusedfor{ideas}                    % gather initial ideas for research questions and theories
+	\aiusedfor{literature-search}         % search for literature
+	%\aiusedfor{literature-understanding} % better understand academic literature
+	\aiusedfor{proofreading}              % proofread and improve the linguistic style
+	%\aiusedforother{...}                 % additional applications
+\end{aiusage}

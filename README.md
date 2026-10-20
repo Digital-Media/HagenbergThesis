@@ -77,16 +77,27 @@ Degrees not covered by the option (e.g., of universities or other countries) can
 
 ### Affidavit and Documentation of AI Tool Usage
 
-`\maketitle` creates the affidavit ("Eidesstattliche Erklärung" or "Affidavit") with the text of the FH OÖ template. It is followed by the documentation of the usage of generative AI tools, which all sample documents include directly after `\maketitle` (file `front/ki-dokumentation.tex` or `front/ai-usage.tex`). It is composed of predefined text modules; use the applicable ones and delete the others:
+`\maketitle` creates the affidavit ("Eidesstattliche Erklärung" or "Affidavit") with the text of the FH OÖ template. The usage of generative AI tools is documented in one of two forms, which the sample documents both maintain in the file `ki-dokumentation.tex` or `ai-usage.tex` next to `main.tex` and `hgbreferences.bib` (included *before* `\maketitle`):
+
+- **Detailed form** (`aiusage=detailed`, default): a form with confirmations and a table of all activities, printed automatically as an unnumbered chapter directly before the bibliography; like the bibliography, it is not mentioned in the affidavit. Activities without entries are marked with a dash.
+- **Short form** (`aiusage=short`): composed of predefined text modules and printed as a supplement to the affidavit, so that a single signature covers both.
+
+Please check with your degree program which of the two forms is to be used. Since both forms are kept in the file, you can switch between them with the class option alone. Use the applicable entries and delete the others, for example:
 
 ```latex
+\begin{aiusagedetails}
+	\aiconfirm{accuracy}
+	\aiconfirm{responsibility}
+	\aiactivity{editing}{DeepL Write}{Proofreading of Chapters 1--5}
+\end{aiusagedetails}
+
 \begin{aiusage}
 	\aiusedfor{literature-search}
 	\aiusedfor{proofreading}
 \end{aiusage}
 ```
 
-Use `\aiusednone` if no AI tools were used. If your degree program requires a detailed documentation, use the environment `aiusagedetails` instead (see the commented part of the file and the [package manual](https://github.com/Digital-Media/HagenbergThesis/blob/build/manual/main.pdf)).
+Use `\aiusednone` in the short form if no AI tools were used. All commands are described in the [package manual](https://github.com/Digital-Media/HagenbergThesis/blob/build/manual/main.pdf).
 
 The texts of the detailed form were adapted by FH OÖ from *KOGNITION/COGNISANCE* by Gimpel et al. (2023, [doi:10.17605/OSF.IO/VGXF7](https://doi.org/10.17605/OSF.IO/VGXF7)). Unlike the rest of this project, they are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) and are therefore kept in the separate file [`hgbaiusage-cognisance.sty`](dev/texmf/tex/latex/hagenberg-thesis/hgbaiusage-cognisance.sty); the form prints the source reference.
 

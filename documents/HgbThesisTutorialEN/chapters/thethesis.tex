@@ -150,8 +150,9 @@ independent academic achievement.
 \begin{itemize}
 	\item Use AI tools in the text only to revise the wording or to make
 	linguistic improvements.
-	\item State the use of AI tools in the documentation of AI tools usage at
-	the beginning of the thesis (see Section~\ref{sec:DocumentingAIUsage}).
+	\item State the use of AI tools in the documentation of AI tools usage in
+	the affidavit or before the references (see
+	Section~\ref{sec:DocumentingAIUsage}).
 	\item If large parts of the text or revisions have been created with the
 	help of such a tool, document this additionally at the respective
 	position, for example, by adding a note in a footnote or at the beginning
@@ -169,13 +170,31 @@ independent academic achievement.
 \subsection{Documenting the Use of AI Tools}
 \label{sec:DocumentingAIUsage}
 
-Many universities require the use of AI tools in a thesis to be documented. In
-the documents created with this template, the affidavit is therefore followed
-by a separate page \emph{Documentation of AI Tools Usage} with the text modules
-of the University of Applied Sciences Upper Austria. It is created with the
-environment \texttt{aiusage} in the file \verb!front/ai-usage.tex!, which is
-included in \verb!main.tex! directly after \verb!\maketitle!. There, the
-applicable text modules are selected and all others deleted, for example:
+Many universities require the use of AI tools in a thesis to be documented.
+This template provides two forms with the texts of the University of Applied
+Sciences Upper Austria:
+%
+\begin{itemize}
+	\item The \emph{detailed form} is a form with a table of all activities. It
+	is printed automatically as a separate, unnumbered chapter directly before
+	the references and, like these, is not mentioned in the affidavit.
+	\item The \emph{short form}, composed of text modules, supplements the
+	affidavit, so that a single signature covers both.
+\end{itemize}
+%
+Please check with your degree program which of the two forms is to be used.
+Both forms are maintained in the file \verb!ai-usage.tex! (next to
+\verb!main.tex! and \verb!hgbreferences.bib!), which is included in \verb!main.tex! with \verb!\input! \emph{before}
+\verb!\maketitle!. The class option \texttt{aiusage=detailed} (detailed form,
+default) or \texttt{aiusage=short} (short form) selects the one that is
+printed, for example:
+%
+\begin{LaTeXCode}[numbers=none]
+\documentclass[...,aiusage=short]{hgbthesis}
+\end{LaTeXCode}
+%
+In the short form (environment \texttt{aiusage}), the applicable text modules
+are selected and all others deleted, for example:
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{aiusage}
@@ -198,12 +217,9 @@ modules are:
 However, any types of use that do not appear on this list must be clarified
 with your supervisor in advance.
 
-If the degree program requires more detailed documentation, the long form
-prepared in the commented part of \verb!front/ai-usage.tex! is used instead
-(if both forms are used, \latex\ issues a warning).
-It creates a form that confirms the responsible use
-of AI tools and lists which AI tools were used for which activities (\eg,
-literature search, coding, or proofreading):
+The detailed form (environment \texttt{aiusagedetails}) creates a form that
+confirms the responsible use of AI tools and lists which AI tools were used for
+which activities (\eg, literature search, coding, or proofreading):
 %
 \begin{LaTeXCode}[numbers=none]
 \begin{aiusagedetails}
@@ -215,12 +231,13 @@ literature search, coding, or proofreading):
 \end{aiusagedetails}
 \end{LaTeXCode}
 %
-Like the FH Upper Austria template, the table lists all activities by default;
-with \verb!\begin{aiusagedetails}[compact]!, only those with entries are listed.
-The instructions of the template (\eg, to name the AI tools) are not printed in
-the form but given as comments in \verb!front/ai-usage.tex!. Uses that
-correspond to none of the activities in the table are given with
-\verb!\aifurtheruse{...}!, one command per use. A single entry is printed as a
-paragraph, several entries as a bulleted list; without \verb!\aifurtheruse!,
-"None" is printed.
+Like the FH Upper Austria template, the table always lists all activities;
+activities without entries are marked with a dash (---). The instructions of
+the template (\eg, to name the AI tools) are not printed in the form but given
+as comments in \verb!ai-usage.tex!. Uses that correspond to none of the
+activities in the table are given with \verb!\aifurtheruse{...}!, one command
+per use. A single entry is printed as a paragraph, several entries as a
+bulleted list; without \verb!\aifurtheruse!, a dash is printed as well.
+If the thesis has no references (\verb!\MakeBibliography!), the detailed form
+is printed at the end of the document.
 All commands and activities are described in the package manual.
