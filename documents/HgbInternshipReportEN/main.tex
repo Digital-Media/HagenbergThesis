@@ -9,7 +9,7 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}        % Remove if NO PDF/A output is desired (fonts are not affected)
 
-\documentclass[type=internship,theme=default,language=english,titlelanguage=english,smartquotes=true]{hgbthesis}
+\documentclass[type=internship,theme=default,language=english,titlelanguage=english,smartquotes=true,aiusage=detailed]{hgbthesis}
 % Supported options in [..]:
 %    Type of work (type=): master (default), bachelor, diploma, phd, internship
 %    Title page theme (theme=): default (default), fhooe26, classic, fhooe24
@@ -19,6 +19,7 @@
 %    Typographic quotes: smartquotes=true, smartquotes=false (default)
 %    APA citation style: apa=true, apa=false (default)
 %    Code listings (codestyle=): color (default), mono, classic
+%    AI usage documentation (aiusage=): detailed (detailed form before the references, default), short (short form in the affidavit)
 %    Page layout: twoside=false (single-sided, default), twoside=true (double-sided)
 %    Update check: updatecheck=true (default), updatecheck=false (to suppress)
 %%%-----------------------------------------------------------------------------
@@ -59,15 +60,23 @@
 \license{cc}      % Publish under Creative Commons License (recommended)
 %\license{strict} % Restrictive license, "all rights reserved"
 
-%%%-----------------------------------------------------------------------------
-\frontmatter                                   % Front part (roman page numbers)
-%%%-----------------------------------------------------------------------------
+% Documentation of AI tools usage (before \maketitle): both forms are maintained here, the class
+% option aiusage= selects the one that is printed (detailed: detailed form as a separate chapter at
+% the end of the report, short: short form as a supplement to the affidavit). Please check with your
+% degree program which of the two forms is to be used.
 
-\maketitle
+% Detailed form: \aiactivity{<activity>}{<AI tools>}{<description of the usage>}, all activities
+% see the manual; activities without entries are marked with a dash in the table.
+\begin{aiusagedetails}
+	\aiconfirm{accuracy}            % outputs of AI tools verified and corrected where required
+	\aiconfirm{responsibility}      % responsibility lies with the author(s)
+	\aiactivity{literature}{Perplexity}{Search for literature on ...}
+	\aiactivity{editing}{DeepL Write}{Proofreading of the report}
+	%\aifurtheruse{...}             % further uses that fit none of the activities
+\end{aiusagedetails}
 
-% Documentation of AI tools usage: use the applicable text modules and delete anything that does
-% not apply. Any other types of use that do not appear on this list must be clarified with your
-% supervisor in advance. Detailed documentation (aiusagedetails): see the manual.
+% Short form: use the applicable text modules and delete anything that does not apply. Any other
+% types of use that do not appear on this list must be clarified with your supervisor in advance.
 \begin{aiusage}
 	%\aiusednone                          % did not use any generative AI tools
 	%\aiusedfor{ideas}                    % gather initial ideas for research questions and theories
@@ -77,6 +86,11 @@
 	%\aiusedforother{...}                 % additional applications
 \end{aiusage}
 
+%%%-----------------------------------------------------------------------------
+\frontmatter                                   % Front part (roman page numbers)
+%%%-----------------------------------------------------------------------------
+
+\maketitle
 \tableofcontents
 
 %%%-----------------------------------------------------------------------------

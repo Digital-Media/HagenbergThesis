@@ -9,7 +9,7 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired (fonts are not affected)
 
-\documentclass[type=master,degree=engineering,theme=default,language=german,titlelanguage=german,smartquotes=true]{hgbthesis}
+\documentclass[type=master,degree=engineering,theme=default,language=german,titlelanguage=german,smartquotes=true,aiusage=detailed]{hgbthesis}
 % Zulässige Optionen in [..]:
 %    Typ der Arbeit (type=): master (default), bachelor, diploma, phd, internship
 %    Akademischer Grad (degree=): engineering (BSc/MSc), arts-design (BA/MA), business (BA/MA),
@@ -21,6 +21,7 @@
 %    Typografische Anführungszeichen: smartquotes=true, smartquotes=false (default)
 %    APA Zitierstil: apa=true, apa=false (default)
 %    Code-Listings (codestyle=): color (default), mono, classic
+%    KI-Dokumentation (aiusage=): detailed (Langfassung vor dem Quellenverzeichnis, default), short (Kurzfassung in der Erklärung)
 %    Layout: twoside=false (einseitig, default), twoside=true (zweiseitig)
 %    Update-Check: updatecheck=true (default), updatecheck=false (zum Deaktivieren)
 %%%-----------------------------------------------------------------------------
@@ -55,12 +56,14 @@
 \license{cc}      % Unter Creative Commons Lizenz veröffentlichen (empfohlen)
 %\license{strict} % Restriktieve Lizenz, "Alle Rechte vorbehalten"
 
+% Dokumentation der Nutzung von KI-Tools (Kurz- und Langfassung, Auswahl mit aiusage=)
+\input{ki-dokumentation}
+
 %%%-----------------------------------------------------------------------------
 \frontmatter                                       % Titelei (röm. Seitenzahlen)
 %%%-----------------------------------------------------------------------------
 
 \maketitle
-\include{front/ki-dokumentation} % Dokumentation der Nutzung von KI-Tools
 \tableofcontents
 
 \include{front/vorwort} % Ein Vorwort ist optional

@@ -98,6 +98,7 @@
 	apa.code					= {\ifthenelse{\equal{#1}{true}}{\PassOptionsToPackage{apa}{hgbbib}}{}},
 	apa.default:n			= true,
 	codestyle.code			= \PassOptionsToPackage{codestyle=#1}{hgblistings},	% color|mono|classic, validated there
+	aiusage.code			= \PassOptionsToPackage{aiusage=#1}{hgbaiusage},	% detailed|short, validated there
 	%	twoside=true|false: default is 'oneside' for backward compatibility ('twoside' is book's default).
 	%	\hgb@@pagelayout is injected into \LoadClass[...\hgb@@pagelayout]{book} below.
 	twoside.code			= {\ifthenelse{\equal{#1}{true}}%
@@ -248,6 +249,9 @@
 	\SetLanguage{\hgb@TitleLanguage}
 	\hgb@MakeFrontPages%						generate front pages (using the specified theme)
 	\SetLanguage{\hgb@MainLanguage}
+	% proposals have no affidavit, so the short form of the documentation of AI tools usage gets a separate
+	% chapter (hgbaiusage):
+	\ifthenelse{\boolean{hgb@IsProposal}}{\hgb@MakeAIUsageChapter}{}%
 	\hypersetup{pageanchor=true}%		re-enable hyperref page anchors in the main document (only)
 }
 
@@ -320,7 +324,7 @@
 \RequirePackage{hgblistings}
 \RequirePackage{hgbbib}
 \RequirePackage{hgbdict}
-\RequirePackage{hgbaiusage}	% documentation of AI tool usage (environments 'aiusage', 'aiusagedetails')
+\RequirePackage{hgbaiusage}	% documentation of AI tool usage (environments 'aiusage', 'aiusagedetails', option 'aiusage')
 
 \hgb@UseTheme{\@ThemeID}%		load theme style file
 

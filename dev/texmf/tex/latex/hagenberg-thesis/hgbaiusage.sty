@@ -4,11 +4,16 @@
 %% GitHub: https://github.com/Digital-Media/HagenbergThesis
 %% File encoding: UTF-8
 
-%% This package provides the documentation of the usage of generative AI tools in a thesis,
-%% which is placed after the affidavit (i.e., after \maketitle):
-%%   - environment 'aiusage': short form, composed of text modules,
-%%   - environment 'aiusagedetails': detailed form with confirmations and a table of activities.
-%% All texts are printed in the title page language (class option 'titlelanguage').
+%% This package provides the documentation of the usage of generative AI tools in a thesis in two forms:
+%%   - environment 'aiusage': short form, composed of text modules, printed as part of the affidavit,
+%%   - environment 'aiusagedetails': detailed form with confirmations and a table of activities, printed
+%%     automatically as an unnumbered chapter before the bibliography.
+%% Both forms can be maintained in a document at the same time; the option 'aiusage=detailed|short' (usually
+%% given as class option of hgbthesis) selects the one that is printed (default: detailed). The short form
+%% supplements the affidavit; the detailed form is a separate part at the back of the document (like the
+%% bibliography) and is not mentioned in the affidavit. Both environments only collect their entries, so they
+%% must be given before \maketitle.
+%% Both forms are printed in the main language of the document (like the affidavit).
 %%
 %% The texts of the detailed form are in the separate file hgbaiusage-cognisance.sty, which is licensed under
 %% CC BY-SA 4.0 (adapted from Gimpel et al., 2023). This file itself is licensed like the package (CC BY 4.0).
@@ -16,6 +21,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{hgbaiusage}[2026/09/12]%%AUTO
 
+\RequirePackage{xifthen}
 \RequirePackage{hgbdict}
 \RequirePackage{etoolbox}
 \RequirePackage{array}
@@ -24,27 +30,36 @@
 \RequirePackage{amssymb}	% check boxes (\square, \boxtimes)
 \RequirePackage{hgbaiusage-cognisance}	% texts of the detailed form (CC BY-SA 4.0)
 
-\newcommand{\hgb@AIUsageGet}[1]{\hgbDictionaryGet{#1}{\hgb@TitleLanguage}}
+% aiusage=detailed|short: form of the documentation that is printed (default: detailed).
+\newcommand{\hgb@AIUsageForm}{detailed}
+\DeclareKeys[hgbaiusage]{
+	aiusage.code = {%
+		\ifthenelse{\equal{#1}{short} \OR \equal{#1}{detailed}}%
+			{\renewcommand{\hgb@AIUsageForm}{#1}}%
+			{\PackageError{hgbaiusage}{Unknown value '#1' for option 'aiusage'}%
+				{Allowed values are detailed (default) and short.}}},
+}
+\ProcessKeyOptions[hgbaiusage]
+
+\newcommand{\hgb@AIUsageIfDetailed}[2]{\ifthenelse{\equal{\hgb@AIUsageForm}{detailed}}{#1}{#2}}
+
+% Texts of both forms (main language of the document, like the affidavit):
+\newcommand{\hgb@AIUsageGet}[1]{\hgbDictionaryGet{#1}{\hgb@MainLanguage}}
 
 % Messages of the warnings of this package: every line is shorter than 79 characters (TeX wraps longer lines in
 % the log), and no line but the last one ends with a period (TeXstudio, for example, ends a warning at such a
 % line, so that the following lines would be missing).
-%
-% Only one of the two forms is intended; a warning is issued if both are used (in any order):
-\newif\ifhgb@AIUsageShortUsed
-\newif\ifhgb@AIUsageDetailsUsed
-\newcommand{\hgb@AIUsageCheckForms}{%
-	\ifhgb@AIUsageShortUsed\ifhgb@AIUsageDetailsUsed
-		\PackageWarning{hgbaiusage}{Both 'aiusage' and 'aiusagedetails' are used, but\MessageBreak
-			only one of the two forms is intended. Remove the\MessageBreak
-			other one}%
-	\fi\fi
-}
+
+\newif\ifhgb@AIUsageShortUsed			% environment 'aiusage' used
+\newif\ifhgb@AIUsageDetailsUsed			% environment 'aiusagedetails' used
+\newif\ifhgb@AIUsageDeclarationDone		% affidavit (with the short form, if selected) printed
+\newif\ifhgb@AIUsageDetailsDone			% detailed form printed
 
 %% ----------------------------------------------------------------------------
 %% Short form (text modules)
 %% ----------------------------------------------------------------------------
 
+% Title of the chapter in documents without affidavit (proposals):
 \hgbDictionarySet{aiusage-title}{english}{Documentation of AI Tools Usage}
 \hgbDictionarySet{aiusage-title}{german}{Dokumentation der Nutzung von KI-Tools}
 
@@ -86,33 +101,27 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 
 \newcount\hgb@AIUsageItems
 \newif\ifhgb@AIUsageNone
+\newcommand{\hgb@AIUsageItemList}{}
 
-% Usage:
+% Usage (before \maketitle; the environment only collects the entries, they are printed in the affidavit):
 %   \begin{aiusage}
 %     \aiusednone                        % no AI tools used, or any number of:
 %     \aiusedfor{<key>}                  % predefined purpose (see \hgb@AIUsagePurposes)
 %     \aiusedforother{<text>}            % other purpose, continuing the sentence like the predefined ones
 %   \end{aiusage}
 \newenvironment{aiusage}{%
+	\ifhgb@AIUsageDeclarationDone
+		\PackageWarning{hgbaiusage}{Environment 'aiusage' is used after \string\maketitle\MessageBreak
+			and therefore ignored. Place it before\MessageBreak
+			\string\maketitle}%
+	\fi
 	\global\hgb@AIUsageShortUsedtrue
-	\hgb@AIUsageCheckForms
-	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
-	\chapter{\hgb@AIUsageGet{aiusage-title}}%
 	\global\hgb@AIUsageItems=\z@
 	\global\hgb@AIUsageNonefalse
-	\noindent\hgb@AIUsageGet{aiusage-intro}\space\ignorespaces
+	\gdef\hgb@AIUsageItemList{}%
+	\setbox\z@\vbox\bgroup	% discard anything else than the commands above
 }{%
-	\ifnum\hgb@AIUsageItems>\z@
-		\end{itemize}%
-	\else
-		\ifhgb@AIUsageNone\else
-			\PackageWarning{hgbaiusage}{No usage of AI tools documented in 'aiusage'. Use\MessageBreak
-				\string\aiusednone, \string\aiusedfor{...} or\MessageBreak
-				\string\aiusedforother{...}}%
-		\fi
-	\fi
-	\par
-	\end{SwitchLanguage}%
+	\egroup
 }
 
 \newcommand{\aiusednone}{%
@@ -121,11 +130,11 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 			{Remove either \string\aiusednone\space or all \string\aiusedfor/\string\aiusedforother\space entries.}%
 	\else
 		\global\hgb@AIUsageNonetrue
-		\hgb@AIUsageGet{aiusage-none}%
 	\fi
-	\ignorespaces
 }
 
+% The text of a predefined purpose is stored as \hgb@AIUsageGet{...}, i.e., it is taken from the dictionary
+% when the short form is printed.
 \newcommand{\aiusedfor}[1]{%
 	\ifcsname hgb@dict-aiusage-purpose-#1-english\endcsname
 		\hgb@AIUsageItem{\hgb@AIUsageGet{aiusage-purpose-#1}}%
@@ -142,14 +151,48 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		\PackageError{hgbaiusage}{\string\aiusedfor\space cannot be combined with \string\aiusednone}%
 			{Remove either \string\aiusednone\space or all \string\aiusedfor/\string\aiusedforother\space entries.}%
 	\else
-		\ifnum\hgb@AIUsageItems=\z@
-			\hgb@AIUsageGet{aiusage-used}%
-			\begin{itemize}%
-		\fi
 		\global\advance\hgb@AIUsageItems by \@ne
-		\item #1%
+		\gappto\hgb@AIUsageItemList{\item #1}%
 	\fi
 }
+
+% Text of the short form, without spacing:
+\newcommand{\hgb@AIUsageShortText}{%
+	\noindent\hgb@AIUsageGet{aiusage-intro}\space
+	\ifnum\hgb@AIUsageItems>\z@
+		\hgb@AIUsageGet{aiusage-used}%
+		\begin{itemize}\hgb@AIUsageItemList\end{itemize}%
+	\else
+		\hgb@AIUsageGet{aiusage-none}%
+	\fi
+	\par
+}
+
+% Prints the short form with the given spacing or heading (#1) if aiusage=short. The short form must have
+% entries; otherwise a warning is issued and nothing is printed. With aiusage=detailed, nothing is printed.
+\newcommand{\hgb@AIUsagePrintShort}[1]{%
+	\global\hgb@AIUsageDeclarationDonetrue
+	\hgb@AIUsageIfDetailed{}{%
+		\ifnum\hgb@AIUsageItems=\z@
+			\ifhgb@AIUsageNone
+				#1\hgb@AIUsageShortText
+			\else
+				\PackageWarning{hgbaiusage}{No usage of AI tools documented. Use\MessageBreak
+					\string\aiusednone, \string\aiusedfor{...} or\MessageBreak
+					\string\aiusedforother{...} in environment 'aiusage'\MessageBreak
+					before \string\maketitle}%
+			\fi
+		\else
+			#1\hgb@AIUsageShortText
+		\fi}%
+}
+
+% Inserts the short form into the affidavit (with aiusage=short). This command is called by the declaration
+% page of the theme (\hgb@MakeDeclarationPage), between the text of the affidavit and the date.
+\newcommand{\hgb@AIUsageDeclaration}{\hgb@AIUsagePrintShort{\par\bigskip}}
+
+% Separate chapter for documents without affidavit (proposals), called by \maketitle of hgbthesis.
+\newcommand{\hgb@MakeAIUsageChapter}{\hgb@AIUsagePrintShort{\chapter{\hgb@AIUsageGet{aiusage-title}}}}
 
 %% ----------------------------------------------------------------------------
 %% Detailed form (texts in hgbaiusage-cognisance.sty, CC BY-SA 4.0)
@@ -164,40 +207,31 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 \newcommand{\hgb@AIUsageChecked}{\ensuremath{\boxtimes}}
 \newcommand{\hgb@AIUsageUnchecked}{\ensuremath{\square}}
 
-\newif\ifhgb@AIUsageCompact
+% Mark of an activity without entries and of missing further use (own text of this package): the dash used for
+% empty table cells in the respective language, i.e., an en dash in German and an em dash in English.
+\hgbDictionarySet{aiusagedetails-empty}{english}{\textemdash}
+\hgbDictionarySet{aiusagedetails-empty}{german}{\textendash}
 
-% Text replacing the table in compact mode if no activity has an entry (own text of this package, not
-% part of the adapted texts in hgbaiusage-cognisance.sty):
-\hgbDictionarySet{aiusagedetails-noactivities}{english}{AI tools were not used for any of these activities.}
-\hgbDictionarySet{aiusagedetails-noactivities}{german}{Für keine dieser Tätigkeiten wurden KI-Tools genutzt.}
-
-% Text below the heading of further use if \aifurtheruse is not used (own text of this package):
-\hgbDictionarySet{aiusagedetails-further-none}{english}{None}
-\hgbDictionarySet{aiusagedetails-further-none}{german}{Keine}
-
-% Usage (the environment only collects the entries, the form is created at its end):
-%   \begin{aiusagedetails}[compact]                      % option 'compact': list only activities with entries
+% Usage (before \maketitle; the environment only collects the entries, the form is printed before the
+% bibliography):
+%   \begin{aiusagedetails}
 %     \aiconfirm{accuracy}                               % confirm statements (check boxes)
 %     \aiconfirm{responsibility}
 %     \aiactivity{<key>}{<tools>}{<description>}         % any number, keys see \hgb@AIUsageActivities
 %     \aifurtheruse{<text>}                              % optional, one per further use
 %   \end{aiusagedetails}
-% Without the option, the table lists all activities, as the FH OÖ template does.
-\newenvironment{aiusagedetails}[1][]{%
+% The table lists all activities, as the FH OÖ template does; activities without entries are marked with a dash.
+\newenvironment{aiusagedetails}{%
+	\ifhgb@AIUsageDetailsDone
+		\PackageWarning{hgbaiusage}{Environment 'aiusagedetails' is used after the\MessageBreak
+			detailed form has been printed and therefore\MessageBreak
+			ignored. Place it before \string\maketitle}%
+	\fi
 	\global\hgb@AIUsageDetailsUsedtrue
-	\hgb@AIUsageCheckForms
-	\ifstrempty{#1}%
-		{\global\hgb@AIUsageCompactfalse}%
-		{\ifstrequal{#1}{compact}%
-			{\global\hgb@AIUsageCompacttrue}%
-			{\global\hgb@AIUsageCompactfalse
-			 \PackageError{hgbaiusage}{Unknown option '#1' of environment 'aiusagedetails'}%
-				{The only option is 'compact' (list only the activities with entries).}}}%
 	\hgb@AIUsageDetailsReset
 	\setbox\z@\vbox\bgroup	% discard anything else than the commands above
 }{%
 	\egroup
-	\hgb@MakeAIUsageDetails
 }
 
 \newcommand{\hgb@AIUsageDetailsReset}{%
@@ -256,29 +290,23 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\textbf{\hgb@AIUsageGet{aiusagedetails-tools}} &
 	\textbf{\hgb@AIUsageGet{aiusagedetails-usage}}\newline\hgb@AIUsageGet{aiusagedetails-usage-note} \\}
 
+% Content of a cell (macro name #1), or the dash if it is empty:
+\newcommand{\hgb@AIUsageCell}[1]{%
+	\ifcsempty{#1}{\hgb@AIUsageGet{aiusagedetails-empty}}{\csuse{#1}}}
+
 \newcommand{\hgb@AIUsageRow}[1]{%
 	\textbf{\hgb@AIUsageGet{aiusage-activity-#1}} &
 	\hgb@AIUsageGet{aiusage-activity-#1-desc} &
-	\csuse{hgb@AIUsageTools@#1} &
-	\csuse{hgb@AIUsageUse@#1} \\}
+	\hgb@AIUsageCell{hgb@AIUsageTools@#1} &
+	\hgb@AIUsageCell{hgb@AIUsageUse@#1} \\}
 
-% Rows of the table of activities (separated by \midrule); in compact mode, only activities with entries:
+% Rows of the table of activities (separated by \midrule):
 \newcommand{\hgb@AIUsageCollectRows}{%
 	\gdef\hgb@AIUsageRowList{}%
 	\@for\hgb@tmpkey:=\hgb@AIUsageActivities\do{%
-		\ifhgb@AIUsageCompact
-			\ifboolexpr{test {\ifcsempty{hgb@AIUsageTools@\hgb@tmpkey}}
-				and test {\ifcsempty{hgb@AIUsageUse@\hgb@tmpkey}}}%
-				{}{\hgb@AIUsageAppendRow}%
-		\else
-			\hgb@AIUsageAppendRow
-		\fi
+		\ifdefempty{\hgb@AIUsageRowList}{}{\gappto\hgb@AIUsageRowList{\midrule}}%
+		\xappto\hgb@AIUsageRowList{\noexpand\hgb@AIUsageRow{\hgb@tmpkey}}%
 	}%
-}
-
-\newcommand{\hgb@AIUsageAppendRow}{%
-	\ifdefempty{\hgb@AIUsageRowList}{}{\gappto\hgb@AIUsageRowList{\midrule}}%
-	\xappto\hgb@AIUsageRowList{\noexpand\hgb@AIUsageRow{\hgb@tmpkey}}%
 }
 
 % Table of activities (may break across pages):
@@ -311,7 +339,24 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\endgroup
 }
 
+% Heading of the detailed form: an unnumbered chapter in the table of contents, created like the heading of the
+% bibliography (biblatex heading 'bibintoc', see \MakeBibliography in hgbbib.sty):
+\newcommand{\hgb@AIUsageDetailsHeading}[1]{%
+	\ifdefined\printbibheading
+		\printbibheading[heading=bibintoc,title={#1}]%
+	\else
+		\chapter*{#1}\addcontentsline{toc}{chapter}{#1}\markboth{#1}{#1}%
+	\fi
+}
+
+% The detailed form as an unnumbered chapter (see below):
 \newcommand{\hgb@MakeAIUsageDetails}{%
+	\ifhgb@AIUsageDetailsUsed\else
+		\hgb@AIUsageDetailsReset
+		\PackageWarning{hgbaiusage}{No usage of AI tools documented with option\MessageBreak
+			aiusage=detailed. Use environment\MessageBreak
+			'aiusagedetails' before \string\maketitle}%
+	\fi
 	\ifcsstring{hgb@AIUsageConfirm@accuracy}{\hgb@AIUsageUnchecked}%
 		{\PackageWarning{hgbaiusage}{Statement 'accuracy' not confirmed in\MessageBreak
 			environment 'aiusagedetails'. Use\MessageBreak
@@ -320,8 +365,7 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 		{\PackageWarning{hgbaiusage}{Statement 'responsibility' not confirmed in\MessageBreak
 			environment 'aiusagedetails'. Use\MessageBreak
 			\string\aiconfirm{responsibility}}}{}%
-	\begin{SwitchLanguage}{\hgb@TitleLanguage}%
-	\chapter{\hgb@AIUsageGet{aiusagedetails-title}}%
+	\hgb@AIUsageDetailsHeading{\hgb@AIUsageGet{aiusagedetails-title}}%
 	%
 	% The instructions of the template to the authors (to confirm the statements, to indicate the tools used,
 	% the footnote with names of tools) are not printed; the sample documents give them as comments.
@@ -330,7 +374,8 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\begin{tabular}{@{}>{\raggedright\arraybackslash}p{\dimexpr\linewidth-36mm-2\tabcolsep\relax}%
 		>{\centering\arraybackslash}p{36mm}@{}}
 		\toprule
-		\textbf{\hgb@AIUsageGet{aiusagedetails-statements}} & \textbf{\hgb@AIUsageGet{aiusagedetails-confirmation}} \\
+		\textbf{\hgb@AIUsageGet{aiusagedetails-statements}} &
+			\textbf{\hgb@AIUsageGet{aiusagedetails-confirmation}} \\
 		\midrule
 		\hgb@AIUsageStatementRow{accuracy}
 		\addlinespace
@@ -340,14 +385,12 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	%
 	\section*{\hgb@AIUsageGet{aiusagedetails-activities}}%
 	\hgb@AIUsageCollectRows
-	\ifdefempty{\hgb@AIUsageRowList}%
-		{\noindent\hgb@AIUsageGet{aiusagedetails-noactivities}\par}%
-		{\hgb@AIUsageTable}%
+	\hgb@AIUsageTable
 	%
 	\bigskip
 	\noindent\textbf{\hgb@AIUsageGet{aiusagedetails-further}}\par
 	\ifcase\hgb@AIUsageFurtherCount
-		\noindent\hgb@AIUsageGet{aiusagedetails-further-none}\par
+		\noindent\hgb@AIUsageGet{aiusagedetails-empty}\par
 	\or
 		\noindent\hgb@AIUsageFurtherFirst\par
 	\else
@@ -355,5 +398,31 @@ um Teile der Arbeit Korrektur zu lesen und den sprachlichen Stil zu verbessern.}
 	\fi
 	\bigskip
 	{\footnotesize\noindent\hgb@AIUsageGet{aiusagedetails-source}\par}%
-	\end{SwitchLanguage}%
+}
+
+%% ----------------------------------------------------------------------------
+%% Placement of the detailed form before the bibliography
+%% ----------------------------------------------------------------------------
+
+% With aiusage=detailed, the detailed form is printed as an unnumbered chapter (listed in the table of contents)
+% directly before the bibliography created by \MakeBibliography (hgbbib.sty), with the same kind of heading.
+% Documents without \MakeBibliography get it at the end of the document.
+\newcommand{\hgb@AIUsagePrintDetails}{%
+	\hgb@AIUsageIfDetailed{%
+		\ifhgb@AIUsageDetailsDone\else
+			\global\hgb@AIUsageDetailsDonetrue
+			\hgb@MakeAIUsageDetails
+		\fi
+	}{}%
+}
+
+\AddToHook{cmd/MakeBibliography/before}{\hgb@AIUsagePrintDetails}
+
+\AddToHook{enddocument}{%
+	\hgb@AIUsagePrintDetails
+	\ifhgb@AIUsageDeclarationDone\else
+		\PackageWarning{hgbaiusage}{The documentation of AI tools usage was not printed.\MessageBreak
+			Use \string\maketitle, or call \string\hgb@AIUsageDeclaration\MessageBreak
+			in the declaration page of a custom theme}%
+	\fi
 }

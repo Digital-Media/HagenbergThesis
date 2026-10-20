@@ -9,7 +9,7 @@
 \RequirePackage[utf8]{inputenc} % Remove when using lualatex or xelatex!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired (fonts are not affected)
 
-\documentclass[type=bachelor,degree=engineering,theme=default,language=english,titlelanguage=english,smartquotes=true,apa=true]{hgbthesis}
+\documentclass[type=bachelor,degree=engineering,theme=default,language=english,titlelanguage=english,smartquotes=true,apa=true,aiusage=detailed]{hgbthesis}
 % Supported options in [..]:
 %    Type of work (type=): master (default), bachelor, diploma, phd, internship
 %    Academic degree (degree=): engineering (BSc/MSc), arts-design (BA/MA), business (BA/MA),
@@ -21,6 +21,7 @@
 %    Typographic quotes: smartquotes=true, smartquotes=false (default)
 %    APA citation style: apa=true, apa=false (default)
 %    Code listings (codestyle=): color (default), mono, classic
+%    AI usage documentation (aiusage=): detailed (detailed form before the references, default), short (short form in the affidavit)
 %    Page layout: twoside=false (single-sided, default), twoside=true (double-sided)
 %    Update check: updatecheck=true (default), updatecheck=false (to suppress)
 %%%-----------------------------------------------------------------------------
@@ -55,12 +56,14 @@
 \license{cc}      % Publish under Creative Commons License (recommended)
 %\license{strict} % Restrictive license, "all rights reserved"
 
+% Documentation of AI tools usage (short and detailed form, selected with aiusage=)
+\input{ai-usage}
+
 %%%-----------------------------------------------------------------------------
 \frontmatter                                   % Front part (roman page numbers)
 %%%-----------------------------------------------------------------------------
 
 \maketitle
-\include{front/ai-usage} % Documentation of AI tools usage
 \tableofcontents
 
 \include{front/preface} % A preface is optional

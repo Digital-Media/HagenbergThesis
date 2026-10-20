@@ -9,7 +9,7 @@
 \RequirePackage[utf8]{inputenc} % bei Verw. von lualatex oder xelatex entfernen!
 \RequirePackage{hgbpdfa}				% Remove if NO PDF/A output is desired (fonts are not affected)
 
-\documentclass[type=internship,theme=default,language=german,titlelanguage=german,smartquotes=true]{hgbthesis}
+\documentclass[type=internship,theme=default,language=german,titlelanguage=german,smartquotes=true,aiusage=detailed]{hgbthesis}
 % Zulässige Optionen in [..]:
 %    Typ der Arbeit (type=): master (default), bachelor, diploma, phd, internship
 %    Theme der Titelseite (theme=): default (default), fhooe26, classic, fhooe24
@@ -19,6 +19,7 @@
 %    Typografische Anführungszeichen: smartquotes=true, smartquotes=false (default)
 %    APA Zitierstil: apa=true, apa=false (default)
 %    Code-Listings (codestyle=): color (default), mono, classic
+%    KI-Dokumentation (aiusage=): detailed (Langfassung vor dem Quellenverzeichnis, default), short (Kurzfassung in der Erklärung)
 %    Layout: twoside=false (einseitig, default), twoside=true (zweiseitig)
 %    Update-Check: updatecheck=true (default), updatecheck=false (zum Deaktivieren)
 %%%-----------------------------------------------------------------------------
@@ -59,15 +60,24 @@
 \license{cc}      % Unter Creative Commons Lizenz veröffentlichen (empfohlen)
 %\license{strict} % Restriktieve Lizenz, "Alle Rechte vorbehalten"
 
-%%%-----------------------------------------------------------------------------
-\frontmatter                                       % Titelei (röm. Seitenzahlen)
-%%%-----------------------------------------------------------------------------
+% Dokumentation der Nutzung von KI-Tools (vor \maketitle): beide Fassungen werden hier gepflegt,
+% die Klassenoption aiusage= bestimmt, welche ausgegeben wird (detailed: Langfassung als eigenes
+% Kapitel am Ende des Berichts, short: Kurzfassung als Ergänzung der Erklärung). Welche der beiden
+% Fassungen zu verwenden ist, klären Sie bitte mit Ihrem Studiengang ab.
 
-\maketitle
+% Langfassung: \aiactivity{<Aktivität>}{<KI-Tools>}{<Beschreibung der Nutzung>}, alle Aktivitäten
+% siehe Manual; Aktivitäten ohne Eintrag werden in der Tabelle mit einem Gedankenstrich gekennzeichnet.
+\begin{aiusagedetails}
+	\aiconfirm{accuracy}            % Ergebnisse der KI-Tools überprüft und ggf. korrigiert
+	\aiconfirm{responsibility}      % Verantwortung liegt bei den Autor*innen
+	\aiactivity{literature}{Perplexity}{Suche nach Literatur zu ...}
+	\aiactivity{editing}{DeepL Write}{Korrekturlesen des Berichts}
+	%\aifurtheruse{...}             % Nutzungen, die keiner Aktivität entsprechen
+\end{aiusagedetails}
 
-% Dokumentation der Nutzung von KI-Tools: zutreffende Textbausteine verwenden, Unzutreffendes
-% bitte löschen. Weitere Arten der Nutzung, die auf dieser Liste nicht erscheinen, sind unbedingt
-% vorab mit Ihrer Betreuungsperson zu klären. Ausführliche Dokumentation (aiusagedetails): siehe Manual.
+% Kurzfassung: zutreffende Textbausteine verwenden, Unzutreffendes bitte löschen. Weitere Arten der
+% Nutzung, die auf dieser Liste nicht erscheinen, sind unbedingt vorab mit Ihrer Betreuungsperson
+% zu klären.
 \begin{aiusage}
 	%\aiusednone                          % keinerlei Hilfsmittel der generativen KI benutzt
 	%\aiusedfor{ideas}                    % um erste Ideen für Forschungsfragen und Theorien zu sammeln
@@ -77,6 +87,11 @@
 	%\aiusedforother{um ... zu ...}       % weitere Anwendungen
 \end{aiusage}
 
+%%%-----------------------------------------------------------------------------
+\frontmatter                                       % Titelei (röm. Seitenzahlen)
+%%%-----------------------------------------------------------------------------
+
+\maketitle
 \tableofcontents
 
 %%%-----------------------------------------------------------------------------
