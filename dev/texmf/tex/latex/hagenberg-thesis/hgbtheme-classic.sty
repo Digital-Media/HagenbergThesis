@@ -40,6 +40,7 @@
   
 \renewcommand{\hgb@MakeFrontPages}{  %% stub defined in hgbthesis.cls
   \hgb@MakeTitlePage%
+	\SetLanguage{\hgb@MainLanguage}%	only the title page is set in the title page language (option 'titlelanguage')
 	\ifthenelse{\equal{\hgb@ThesisType}{internship}}%
 		{\hgb@MakeCompanyPage}%
 		{}%
@@ -169,20 +170,20 @@
   \textsf{\copyright\ Copyright\ \hgb@SubmissionYear\ \hgb@Author}
   \end{center}
   \vspace{8mm}
-  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@TitleLanguage}} % defined above
+  \hgbJustifyOrCenter{\hgbDictionaryGet{\hgb@License}{\hgb@MainLanguage}} % defined above
 }
 
 % Declaration Page ----------------------------------------
 
 \newcommand{\hgb@MakeDeclarationPage}{
-	\chapter{\hgbDictionaryGet{declaration-title}{\hgb@TitleLanguage}}
+	\chapter{\hgbDictionaryGet{declaration-title}{\hgb@MainLanguage}}
 	\noindent%
-	\hgbDictionaryGet{declaration-text}{\hgb@TitleLanguage}%
+	\hgbDictionaryGet{declaration-text}{\hgb@MainLanguage}%
 	\par
 	\hgb@AIUsageDeclaration%	short form of the documentation of AI tools usage (hgbaiusage.sty)
 	\vspace{10mm}
 	\noindent
-	{\hgb@PlaceOfStudy, \hgbDictionaryGet{declaration-date}{\hgb@TitleLanguage}}%
+	{\hgb@PlaceOfStudy, \hgbDictionaryGet{declaration-date}{\hgb@MainLanguage}}%
 	\par
 	\vspace{12mm}
 	\noindent
@@ -197,7 +198,7 @@
 	\rule{0mm}{1mm}
 	\begin{center}
 		\vspace{25mm} 
-		{\hgbDictionaryGet{internship}{\hgb@TitleLanguage}:}
+		{\hgbDictionaryGet{internship}{\hgb@MainLanguage}:}
 		\\
 		\vspace{3mm}
 		{\Large\sf\hgb@CompanyName\\ \mbox{}}
@@ -207,12 +208,12 @@
 		\vspace{45mm} 
 		\ifthenelse{\hgb@AdvisorCount = 1}%
 			{%
-				{\hgbDictionaryGet{internship-contact-single}{\hgb@TitleLanguage}:}%
+				{\hgbDictionaryGet{internship-contact-single}{\hgb@MainLanguage}:}%
 			}%
 			{}%
 		\ifthenelse{\hgb@AdvisorCount > 1}%
 			{%
-				{\hgbDictionaryGet{internship-contact-multiple}{\hgb@TitleLanguage}:}%
+				{\hgbDictionaryGet{internship-contact-multiple}{\hgb@MainLanguage}:}%
 			}%
 			{}%
 		\par\vspace{6mm}%
