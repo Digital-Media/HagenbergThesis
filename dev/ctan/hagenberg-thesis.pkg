@@ -1,0 +1,48 @@
+% Description of the package for ctan-o-mat (https://ctan.org/pkg/ctan-o-mat), which validates and submits the
+% package to CTAN. Used by the workflow .github/workflows/ctan.yml, which replaces the placeholders @...@:
+%   @VERSION@       version (date stamp of the build, e.g., 2026-10-22)
+%   @UPLOADER@      name of the uploader (repository variable CTAN_UPLOADER)
+%   @EMAIL@         e-mail address of the uploader (repository variable CTAN_EMAIL)
+%   @ANNOUNCEMENT@  announcement text: link to the latest version in CHANGELOG.md and its summary
+% Syntax: simple fields \field{value} (no macros, no '%'), long fields \begin{field} ... \end{field};
+% '%' starts a comment, so URLs must not contain '%'.
+
+\pkg{hagenberg-thesis}
+\version{@VERSION@}
+\author{Wilhelm Burger, Wolfgang Hochleitner}
+\uploader{@UPLOADER@}
+\email{@EMAIL@}
+\update{true}
+\ctanPath{/macros/latex/contrib/hagenberg-thesis}
+\license{cc-by-4}
+\license{cc-by-sa-4}
+\home{https://github.com/Digital-Media/HagenbergThesis}
+\repository{https://github.com/Digital-Media/HagenbergThesis}
+\bugtracker{https://github.com/Digital-Media/HagenbergThesis/issues}
+\support{https://github.com/Digital-Media/HagenbergThesis/discussions}
+% topics of the package (one \topic per topic; keys: https://ctan.org/json/2.0/topics)
+\topic{dissertation}
+\topic{class}
+\topic{report-like}
+\topic{article-like}
+\topic{std-conform}
+\topic{doc-templ}
+\summary{Collection of LaTeX classes, style files and example documents for academic manuscripts}
+\begin{description}
+A collection of modern LaTeX classes, style files and example documents for authoring bachelor's,
+master's, diploma and PhD theses, internship reports, thesis proposals and related academic manuscripts
+in English and German. Includes comprehensive tutorials (in English and German) with detailed
+instructions and authoring guidelines.
+\end{description}
+\begin{announcement}
+@ANNOUNCEMENT@
+\end{announcement}
+\begin{note}
+Update of hagenberg-thesis, submitted with ctan-o-mat from the GitHub repository
+https://github.com/Digital-Media/HagenbergThesis (branch build).
+Documentation in doc/: package manual doc/hagenberg-thesis.pdf, tutorials
+doc/hagenberg-thesis-tutorial-en.pdf and doc/hagenberg-thesis-tutorial-de.pdf.
+License: CC BY 4.0, except the texts in latex/hgbaiusage-cognisance.sty (CC BY-SA 4.0), see README.md.
+List of changes: https://github.com/Digital-Media/HagenbergThesis/blob/main/CHANGELOG.md
+\end{note}
+\file{hagenberg-thesis.zip}

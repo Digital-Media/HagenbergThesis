@@ -1,0 +1,185 @@
+\chapter{Technische Informationen}
+\label{app:TechnischeInfos}
+
+\section{Aktuelle Paketversion}
+
+\begin{center}
+	\begin{tabular}{@{}ll@{}}
+		\toprule
+		Datum    & Datei            \\
+		\midrule
+		\hgbDate & \texttt{hgb.sty} \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+
+\section{Weitere Details}
+
+
+Dieses Paket sieht \mbox{UTF-8} kodierte Textdateien vor und
+unterstützt \latex\ ausschließlich im direkten PDF-Modus.%
+\footnote{Der "klassische" DVI-PS-PDF-Modus von \latex\ wird nicht mehr
+unterstützt.}
+
+\subsection{Technische Voraussetzungen}
+
+Eine aktuelle \latex-Installation (\latex-Kern ab Version 2022-06-01,
+empfohlen wird jeweils die aktuelle Version von TeX~Live oder MiKTeX) mit
+%
+\begin{itemize}
+		\item \texttt{biber}-Programm (BibTeX-Ersatz) und \texttt{biblatex}-Paket
+			in zueinander passenden Versionen,
+		\item Latin Modern Schriften (Paket \texttt{lmodern}).%
+			\footnote{\url{https://ctan.org/pkg/lm},
+				\url{https://tug.org/FontCatalogue/latinmodernroman/}}
+\end{itemize}
+%
+Darüber hinaus ein Texteditor für UTF-8 kodierte (Unicode) Dateien,
+sowie Software zum Öffnen und Betrachten von PDF-Dateien.
+
+
+\subsection{Verwendung unter Windows}
+\label{sec:VerwendungUnterWindows}
+
+Eine typische Installation unter Windows sieht folgendermaßen aus:
+%
+\begin{enumerate}
+\item \textbf{MiKTeX}%
+	\footnote{\url{https://miktex.org/} -- Achtung:
+	Generell wird die \emph{Komplettinstallation} von MiKTeX ("complete
+	MiKTeX") empfohlen, da diese bereits alle notwendigen Zusatzpakete und
+	Schriftdateien enthält. Bei der Installation ist darauf zu achten,
+	dass die automatische Installation erforderlicher Packages durch
+	"\emph{Install missing packages on-the-fly: = Yes}" ermöglicht wird
+	(NICHT "\emph{Ask me first}")! Außerdem ist zu empfehlen, unmittelbar
+	nach der Installation von MiKTeX sowie in weiterer Folge regelmäßig
+	mit dem Programm \texttt{MiKTeX Console} ein Update der installierten
+	Pakete durchzuführen.} (\latex-Basisumgebung),
+\item \textbf{TeXstudio}%
+	\footnote{\url{https://www.texstudio.org/}}
+	(Editor, unterstützt UTF-8 und beinhaltet einen integrierten PDF-Viewer).
+\end{enumerate}
+%
+Alternative Editoren und PDF-Viewer:
+%
+\begin{enumerate}
+	\item Visual Studio Code%
+	\footnote{\url{https://code.visualstudio.com/}}
+	mit LaTeX Workshop Extension,%
+	\footnote{\url{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}}
+	\item IntelliJ IDEA,%
+	\footnote{\url{https://www.jetbrains.com/idea/}}
+	mit TeXiFy-IDEA Plugin,%
+	\footnote{\url{https://plugins.jetbrains.com/plugin/9473-texify-idea}}
+	\item LyX,%
+	\footnote{\url{https://www.lyx.org/}}
+	\item TeXworks,%
+	\footnote{\url{https://www.tug.org/texworks/}}
+	\item WinEdt,%
+	\footnote{\url{https://www.winedt.com/}}
+	\item Sumatra PDF ("\latex-freundlicher" PDF-Viewer).%
+	\footnote{\url{https://www.sumatrapdfreader.org/}}
+\end{enumerate}
+
+\subsection{Verwendung unter macOS}
+
+Für macOS empfiehlt sich die folgende Konfiguration:
+%
+\begin{enumerate}
+\item 
+	\textbf{MacTeX}%
+	\footnote{\url{https://tug.org/mactex/} -- Achtung: Aktuelle
+	MacTeX-Distributionen verlangen in der Regel eine weitgehend aktuelle Version
+	von macOS. Auf älteren Versionen kann alternativ \emph{TeX Live} mit einem
+	speziellen Installationsscript installiert werden. Um die Pakete der
+	\latex-Distribution aktuell zu halten, sollte regelmäßig das \emph{TeX Live
+	Utility} ausgeführt werden.}
+	(\latex-Basisumgebung),
+\item \textbf{TeXstudio} (Editor, unterstützt UTF-8 und beinhaltet einen
+integrierten PDF-Viewer).
+\end{enumerate}
+%
+Alternative Editoren und PDF-Viewer:
+%
+\begin{enumerate}
+	\item Visual Studio Code mit LaTeX Workshop Extension,%
+	\item LyX,%
+	\item TeXworks,%
+	\item Skim (\latex-freundlicher PDF-Viewer).%
+	\footnote{\url{https://skim-app.sourceforge.io/}}
+\end{enumerate}
+
+
+\subsection{Verwendung unter Linux}
+
+Unter Linux kann folgendes Setup zum Einsatz kommen:
+%
+\begin{enumerate}
+	\item 
+	\textbf{TeX Live}%
+	\footnote{\url{https://tug.org/texlive/} -- Eine Installation unter Linux
+	erfolgt -- abhängig von der verwendeten Distribution -- am einfachsten mit
+	Hilfe des jeweiligen Paketverwaltungssystems (\zB \texttt{apt-get}).}
+	(\latex-Basisumgebung),
+	\item \textbf{TeXstudio} (Editor, unterstützt UTF-8 und beinhaltet einen
+	integrierten PDF-Viewer).
+\end{enumerate}
+%
+Alternative Editoren und PDF-Viewer:
+%
+\begin{enumerate}
+	\item Visual Studio Code mit LaTeX Workshop Extension,%
+	\item LyX,%
+	\item TeXworks,%
+	\item qpdfview (\latex-freundlicher PDF-Viewer).%
+	\footnote{\url{https://launchpad.net/qpdfview}}
+\end{enumerate}
+
+\subsection{Verwendung von Online-Umgebungen für \latex}
+
+Neben einer lokalen \latex-Installation mit Editor gibt es mittlerweile auch
+gute Online-Umgebungen, die das Erstellen von \latex-Dokumenten direkt im Browser
+ermöglichen. Die \latex-Basisumgebung ist dabei auf den Servern des Dienstes
+installiert. Dokumente können im Online-Editor erstellt oder auch bestehende
+Vorlagen (wie etwa dieses Dokument) hochgeladen und weiter bearbeitet werden.
+Die meisten Plattformen ermöglichen darüber hinaus ein kollaboratives
+Arbeiten an einem Dokument.
+
+Bei Verwendung solcher Umgebungen ist es sehr zu empfehlen, während
+der Arbeit regelmäßig \emph{Backups} der Online Daten durchzuführen, um 
+im schlimmsten Fall nicht wieder von vorne beginnen zu müssen.
+
+\subsubsection{Overleaf}
+
+Der bekannteste und mit dieser Vorlage getestete Editor ist \emph{Overleaf}%
+\footnote{\url{https://www.overleaf.com/}}.
+Um schnell Vorlagendokumente aus dem \texttt{hagenberg-thesis} Paket zu
+importieren, können die Im\-port-Links im \emph{Readme}-Abschnitt zum
+Github-Repository dieser Vorlage%
+\footnote{\url{https://github.com/Digital-Media/HagenbergThesis}}
+direkt verwendet werden.
+
+Zu beachten gilt, dass kostenlose Overleaf Accounts seit Ende 2023
+verkürzte Com\-pile-Timeouts von nur mehr 20 Sekunden aufweisen. Dies hat zur
+Folge, dass größere Abschlussarbeiten sowie auch dieses Vorlagendokument damit
+nicht mehr erstellt werden können, da die PDF-Generierung nach 20 Sekunden
+abbricht.
+
+Abhilfe schafft hier nur ein bezahlter Account (Lizenz) oder alternativ der
+Verzicht auf Overleaf und der Umstieg auf ein lokales Setup.
+In Bildungseinrichtungen, die über Lizenzen für Lehrende verfügen, können diese
+Dokumente erstellen und zur Kollaboration an den*die Studierende*n freigeben, um
+ein reibungsloses Arbeiten zu ermöglichen.
+
+\subsubsection{Andere Online-Services}
+
+Daneben gibt es noch weitere Online-Umgebungen für \latex\ und ihre Zahl wächst
+beständig, \zB:
+%
+\begin{enumerate}
+	\item Papeeria,%
+	\footnote{\url{https://papeeria.com/}}
+	\item CoCalc.%
+	\footnote{\url{https://cocalc.ai/}}
+\end{enumerate}

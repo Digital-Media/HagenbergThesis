@@ -1,0 +1,144 @@
+# Validates and (optionally) submits the package to CTAN with ctan-o-mat (https://ctan.org/pkg/ctan-o-mat).
+#
+# - Started manually only (Actions > Submit to CTAN > Run workflow); this requires write access to the repository.
+# - Takes the CTAN bundle and the version (date stamp) from the branch 'build', i.e., the latest build of main,
+#   and checks that 'build' corresponds to the current main.
+# - Always validates the submission. It is only submitted if 'submit' is selected, and only from main.
+# - The package data is kept in dev/ctan/hagenberg-thesis.pkg; name and e-mail address of the uploader are taken
+#   from the repository variables CTAN_UPLOADER and CTAN_EMAIL (Settings > Secrets and variables > Actions).
+# - Every submission is announced on the CTAN announcement list. The announcement (similar to babel) links to the
+#   section of the latest version in CHANGELOG.md and contains its summary, i.e., the bullet list directly below
+#   the heading of the version; the workflow stops if the summary is missing.
+# - The CTAN team reviews every submission and answers to the e-mail address of the uploader.
+
+name: Submit to CTAN
+
+on:
+  workflow_dispatch:
+    inputs:
+      submit:
+        description: 'Submit to CTAN (otherwise: validate only)'
+        type: boolean
+        default: false
+
+concurrency:
+  group: ctan
+  cancel-in-progress: false
+
+jobs:
+  ctan:
+    name: Validate or submit
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    permissions:
+      contents: read
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: bash
+    env:
+      CTAN_UPLOADER: ${{ vars.CTAN_UPLOADER }}
+      CTAN_EMAIL: ${{ vars.CTAN_EMAIL }}
+      SUBMIT: ${{ inputs.submit }}
+
+    steps:
+      - name: Install tools (git, unzip, Perl modules for ctan-o-mat)
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends git unzip ca-certificates libwww-perl liblwp-protocol-https-perl
+
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check preconditions
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          if [ "$SUBMIT" = "true" ] && [ "$GITHUB_REF" != "refs/heads/main" ]; then
+            echo "::error::The package can only be submitted from main (started on $GITHUB_REF)."
+            exit 1
+          fi
+          if [ -z "$CTAN_UPLOADER" ] || [ -z "$CTAN_EMAIL" ]; then
+            echo "::error::Set the repository variables CTAN_UPLOADER and CTAN_EMAIL (name and e-mail address of the uploader)."
+            exit 1
+          fi
+          # the branch 'build' must contain the build of the current main
+          built=$(git log -1 --format=%s origin/build | sed -n 's/^Build results of \([0-9a-f]*\)$/\1/p')
+          main=$(git rev-parse origin/main)
+          if [ "$built" != "$main" ]; then
+            echo "::error::The branch build (${built:-unknown}) is not the build of the current main ($main). Wait for the workflow 'Build and check documents' on main."
+            exit 1
+          fi
+          command -v ctan-o-mat || { echo "::error::ctan-o-mat not found in the TeX Live image."; exit 1; }
+          ctan-o-mat --version
+
+      - name: Prepare the upload (bundle and configuration from the branch build)
+        run: |
+          mkdir -p ctan-upload
+          git show origin/build:dev/ctan/hagenberg-thesis.zip > ctan-upload/hagenberg-thesis.zip
+          unzip -l ctan-upload/hagenberg-thesis.zip | tail -n 1
+          version=$(git show origin/build:dev/ctan/hagenberg-thesis/README.md | sed -n 's|^### Version: *\([0-9/]*\).*|\1|p' | tr / -)
+          if [ -z "$version" ]; then
+            echo "::error::Version not found in dev/ctan/hagenberg-thesis/README.md of the branch build."
+            exit 1
+          fi
+          # announcement: link to the latest version in CHANGELOG.md and its summary (bullet list below the heading)
+          cl_version=$(perl -ne 'if (/^## \[(\d{4}\/\d\d\/\d\d)\]/) { print $1; exit }' CHANGELOG.md)
+          if [ -z "$cl_version" ]; then
+            echo "::error::No version section (## [YYYY/MM/DD]) found in CHANGELOG.md."
+            exit 1
+          fi
+          if [ "$(echo "$cl_version" | tr / -)" != "$version" ]; then
+            echo "::warning::The latest version in CHANGELOG.md ($cl_version) differs from the version of the build ($version)."
+          fi
+          summary=$(perl -ne 'if (/^## \[\d{4}\/\d\d\/\d\d\]/) { exit if $in; $in = 1; next } if ($in) { exit if /^### /; print }' CHANGELOG.md \
+            | sed -e '/^[[:space:]]*$/d' -e 's/^- /* /')
+          if [ -z "$summary" ]; then
+            echo "::error::Add a short summary of the changes (bullet list) directly below the heading ## [$cl_version] in CHANGELOG.md."
+            exit 1
+          fi
+          url="https://github.com/Digital-Media/HagenbergThesis/blob/main/CHANGELOG.md#$(echo "$cl_version" | tr -d /)"
+          ANNOUNCEMENT=$(printf 'Changes in version %s are described in:\n\n  %s\n\nHere is a summary:\n\n%s\n' "$version" "$url" "$summary")
+          if [ "${#ANNOUNCEMENT}" -gt 8192 ]; then
+            echo "::error::The announcement is longer than 8192 characters; shorten the summary in CHANGELOG.md."
+            exit 1
+          fi
+          export ANNOUNCEMENT
+          # values are inserted literally (no shell or sed interpretation of the inputs)
+          VERSION="$version" perl -pe '
+            s/\@VERSION\@/$ENV{VERSION}/g; s/\@UPLOADER\@/$ENV{CTAN_UPLOADER}/g;
+            s/\@EMAIL\@/$ENV{CTAN_EMAIL}/g; s/\@ANNOUNCEMENT\@/$ENV{ANNOUNCEMENT}/g;
+          ' dev/ctan/hagenberg-thesis.pkg > ctan-upload/hagenberg-thesis.pkg
+          if grep -n '%' <(sed -n '/^\\begin{announcement}/,/^\\end{announcement}/p' ctan-upload/hagenberg-thesis.pkg); then
+            echo "::error::The announcement must not contain '%' (starts a comment in the configuration); check the summary in CHANGELOG.md."
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_ENV"
+          {
+            echo "## CTAN: hagenberg-thesis $version"
+            echo ""
+            echo "Mode: $([ "$SUBMIT" = "true" ] && echo "**submit**" || echo "validate only")"
+            echo ""
+            echo '```'
+            grep -v '^%' ctan-upload/hagenberg-thesis.pkg | grep -v '^\\email' | sed '/^$/d'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate (ctan-o-mat)
+        working-directory: ctan-upload
+        run: |
+          result=$(ctan-o-mat --validate hagenberg-thesis.pkg 2>&1) || { echo "$result"; exit 1; }
+          echo "$result"
+          if [ "$(echo "$result" | tail -n 1)" != "ok" ]; then
+            echo "::error::The validation by CTAN reported problems (see the log of this step)."
+            exit 1
+          fi
+          echo "Validation succeeded." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Submit to CTAN (ctan-o-mat --submit)
+        if: inputs.submit
+        working-directory: ctan-upload
+        run: |
+          ctan-o-mat --submit hagenberg-thesis.pkg
+          echo "**Submitted to CTAN** (version $version). The CTAN team answers to the e-mail address of the uploader." >> "$GITHUB_STEP_SUMMARY"

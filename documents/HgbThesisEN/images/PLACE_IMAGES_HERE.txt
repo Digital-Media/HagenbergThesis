@@ -1,0 +1,1 @@
+Place images (in PDF, PNG or JPG format) in this folder.
