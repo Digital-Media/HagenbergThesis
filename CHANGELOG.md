@@ -6,6 +6,17 @@ From 2026 on, each release starts with a short summary (bullet list) directly be
 
 ## [Unreleased]
 
+## [2026/10/22]
+
+- New affidavit following the template of FH OÖ (2026) and documentation of the use of generative AI tools: detailed form (default) before the bibliography or short form in the affidavit, selected with the new class option `aiusage`.
+- New default title page following the title page prototype of FH OÖ; the academic degree is set with the new class option `degree`, the former title page is available as theme `classic`.
+- Preparation of the switch to the UAP brand in January 2027: theme `default` uses the UAP logo as soon as its logo file is added to the document; new themes `fhooe26` and `uap27` pin the FH OÖ and the UAP brand, respectively.
+- Syntax highlighting for code listings with the new class option `codestyle` (`color`, `mono`, `classic`), modernized language definitions and code environments for twelve more languages.
+- Key-value syntax for all class options (e.g., `language=german`, `twoside=true`, `updatecheck=false`); the former bare options are deprecated.
+- The option `titlelanguage` only applies to the title page; all other pages use the main language of the document.
+- English version of the internship report, updated tutorials (English and German) and sample bibliography.
+- Fixes: T1 font encoding and Latin Modern fonts also without `hgbpdfa`, `@electronic` entries as online sources, document title in PDF viewers, and corrections of default values and German texts.
+
 ### Added
 
 - 2025/07/26: [#188](https://github.com/Digital-Media/HagenbergThesis/pull/188): Added an English version for the internship report (`HgbInternshipReportEN`) and renamed the existing version to `HgbInternshipReportDE`. Thanks to [@maxi-smidt](https://github.com/maxi-smidt).
