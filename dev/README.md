@@ -157,7 +157,7 @@ Every submission is announced on the CTAN announcement list (CTAN-ann), which al
 ...
 ```
 
-The workflow stops if the summary is missing; the summary must not contain `%`.
+The summary only lists the high-level changes that are relevant for users of the package (new or changed options, title pages, sample documents, important fixes); changes of the build process, the workflows or the repository are left out, they are only listed in the detailed sections of the CHANGELOG. The workflow stops if the summary is missing; the summary must not contain `%`.
 
 The workflow
 

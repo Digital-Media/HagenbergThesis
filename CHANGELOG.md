@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project DOES NOT adhere to [Semantic Versioning](https://semver.org/).
-From 2026 on, each release starts with a short summary (bullet list) directly below its heading, which is used for the announcement on CTAN.
+From 2026 on, each release starts with a short summary (bullet list) directly below its heading, which is used for the announcement on CTAN; it only lists the high-level changes that are relevant for users (not, e.g., changes of the build process or the repository).
 
 ## [Unreleased]
 
