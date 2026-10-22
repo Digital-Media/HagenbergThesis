@@ -23,6 +23,10 @@
 % topics of the package (one \topic per topic; keys: https://ctan.org/json/2.0/topics)
 \topic{dissertation}
 \topic{class}
+\topic{report-like}
+\topic{article-like}
+\topic{std-conform}
+\topic{doc-templ}
 \summary{Collection of LaTeX classes, style files and example documents for academic manuscripts}
 \begin{description}
 A collection of modern LaTeX classes, style files and example documents for authoring bachelor's,
