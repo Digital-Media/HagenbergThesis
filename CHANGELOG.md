@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project DOES NOT adhere to [Semantic Versioning](https://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). This project uses [Calendar Versioning](https://calver.org/) and does not adhere to [Semantic Versioning](https://semver.org/): each release is named after its date (`YYYY/MM/DD`), which is also the date stamp of the package files (`\ProvidesPackage`, `\ProvidesClass`) and, as `YYYY-MM-DD`, the version on CTAN.
 From 2026 on, each release starts with a short summary (bullet list) directly below its heading, which is used for the announcement on CTAN; it only lists the high-level changes that are relevant for users (not, e.g., changes of the build process or the repository).
 
 ## [Unreleased]
