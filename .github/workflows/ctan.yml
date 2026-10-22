@@ -6,6 +6,9 @@
 # - Always validates the submission. It is only submitted if 'submit' is selected, and only from main.
 # - The package data is kept in dev/ctan/hagenberg-thesis.pkg; name and e-mail address of the uploader are taken
 #   from the repository variables CTAN_UPLOADER and CTAN_EMAIL (Settings > Secrets and variables > Actions).
+# - Every submission is announced on the CTAN announcement list. The announcement (similar to babel) links to the
+#   section of the latest version in CHANGELOG.md and contains its summary, i.e., the bullet list directly below
+#   the heading of the version; the workflow stops if the summary is missing.
 # - The CTAN team reviews every submission and answers to the e-mail address of the uploader.
 
 name: Submit to CTAN
@@ -17,10 +20,6 @@ on:
         description: 'Submit to CTAN (otherwise: validate only)'
         type: boolean
         default: false
-      announcement:
-        description: 'Announcement for the CTAN announcement list (optional; default: link to the CHANGELOG)'
-        type: string
-        required: false
 
 concurrency:
   group: ctan
@@ -41,7 +40,6 @@ jobs:
       CTAN_UPLOADER: ${{ vars.CTAN_UPLOADER }}
       CTAN_EMAIL: ${{ vars.CTAN_EMAIL }}
       SUBMIT: ${{ inputs.submit }}
-      ANNOUNCEMENT: ${{ inputs.announcement }}
 
     steps:
       - name: Install tools (git, unzip, Perl modules for ctan-o-mat)
@@ -85,14 +83,35 @@ jobs:
             echo "::error::Version not found in dev/ctan/hagenberg-thesis/README.md of the branch build."
             exit 1
           fi
-          [ -n "$ANNOUNCEMENT" ] || ANNOUNCEMENT="List of changes: https://github.com/Digital-Media/HagenbergThesis/blob/main/CHANGELOG.md"
+          # announcement: link to the latest version in CHANGELOG.md and its summary (bullet list below the heading)
+          cl_version=$(perl -ne 'if (/^## \[(\d{4}\/\d\d\/\d\d)\]/) { print $1; exit }' CHANGELOG.md)
+          if [ -z "$cl_version" ]; then
+            echo "::error::No version section (## [YYYY/MM/DD]) found in CHANGELOG.md."
+            exit 1
+          fi
+          if [ "$(echo "$cl_version" | tr / -)" != "$version" ]; then
+            echo "::warning::The latest version in CHANGELOG.md ($cl_version) differs from the version of the build ($version)."
+          fi
+          summary=$(perl -ne 'if (/^## \[\d{4}\/\d\d\/\d\d\]/) { exit if $in; $in = 1; next } if ($in) { exit if /^### /; print }' CHANGELOG.md \
+            | sed -e '/^[[:space:]]*$/d' -e 's/^- /* /')
+          if [ -z "$summary" ]; then
+            echo "::error::Add a short summary of the changes (bullet list) directly below the heading ## [$cl_version] in CHANGELOG.md."
+            exit 1
+          fi
+          url="https://github.com/Digital-Media/HagenbergThesis/blob/main/CHANGELOG.md#$(echo "$cl_version" | tr -d /)"
+          ANNOUNCEMENT=$(printf 'Changes in version %s are described in:\n\n  %s\n\nHere is a summary:\n\n%s\n' "$version" "$url" "$summary")
+          if [ "${#ANNOUNCEMENT}" -gt 8192 ]; then
+            echo "::error::The announcement is longer than 8192 characters; shorten the summary in CHANGELOG.md."
+            exit 1
+          fi
+          export ANNOUNCEMENT
           # values are inserted literally (no shell or sed interpretation of the inputs)
           VERSION="$version" perl -pe '
             s/\@VERSION\@/$ENV{VERSION}/g; s/\@UPLOADER\@/$ENV{CTAN_UPLOADER}/g;
             s/\@EMAIL\@/$ENV{CTAN_EMAIL}/g; s/\@ANNOUNCEMENT\@/$ENV{ANNOUNCEMENT}/g;
           ' dev/ctan/hagenberg-thesis.pkg > ctan-upload/hagenberg-thesis.pkg
           if grep -n '%' <(sed -n '/^\\begin{announcement}/,/^\\end{announcement}/p' ctan-upload/hagenberg-thesis.pkg); then
-            echo "::error::The announcement must not contain '%' (starts a comment in the configuration)."
+            echo "::error::The announcement must not contain '%' (starts a comment in the configuration); check the summary in CHANGELOG.md."
             exit 1
           fi
           echo "version=$version" >> "$GITHUB_ENV"

@@ -143,12 +143,26 @@ The GitHub Actions workflow [`.github/workflows/ctan.yml`](../.github/workflows/
 
 1. Merge all changes of the release into `main` and wait until the workflow *Build and check documents* has published the build of `main` to the branch `build`.
 2. *Actions* ➔ *Submit to CTAN* ➔ *Run workflow* on `main`, **without** *Submit to CTAN*: the workflow validates the submission only. Check the result in the summary of the run.
-3. Run the workflow again **with** *Submit to CTAN* selected. Optionally, enter an announcement for the CTAN announcement list (otherwise, a link to the CHANGELOG is used).
+3. Run the workflow again **with** *Submit to CTAN* selected.
+
+Every submission is announced on the CTAN announcement list (CTAN-ann), which also lists the announcements on the [package page](https://ctan.org/pkg/hagenberg-thesis). The announcement is created from `CHANGELOG.md` (similar to the announcements of babel): a link to the section of the latest version and its **summary**, i.e., a short bullet list directly below the heading of the version, before the first `###` section. Therefore, add such a summary when preparing a release, for example:
+
+```markdown
+## [2026/10/22]
+
+- New affidavit and documentation of the use of generative AI tools (class option `aiusage`).
+- Syntax highlighting for code listings (class option `codestyle`).
+
+### Added
+...
+```
+
+The summary only lists the high-level changes that are relevant for users of the package (new or changed options, title pages, sample documents, important fixes); changes of the build process, the workflows or the repository are left out, they are only listed in the detailed sections of the CHANGELOG. The workflow stops if the summary is missing; the summary must not contain `%`.
 
 The workflow
 
 - takes the CTAN bundle (`dev/ctan/hagenberg-thesis.zip`) and the version (date stamp in `dev/ctan/hagenberg-thesis/README.md`, e.g., `2026-10-22`) from the branch `build`, and stops if `build` is not the build of the current `main`,
-- fills in the package description [`ctan/hagenberg-thesis.pkg`](ctan/hagenberg-thesis.pkg) (summary, description, licenses, URLs, note to the CTAN team),
+- fills in the package description [`ctan/hagenberg-thesis.pkg`](ctan/hagenberg-thesis.pkg) (summary, description, licenses, URLs, topics, note to the CTAN team) and the announcement,
 - always validates the submission first and submits it only if *Submit to CTAN* is selected, and only from `main`.
 
 Name and e-mail address of the uploader are taken from the repository variables `CTAN_UPLOADER` and `CTAN_EMAIL` (*Settings* ➔ *Secrets and variables* ➔ *Actions* ➔ *Variables*). The uploader should be a maintainer of the package on CTAN; the CTAN team reviews every submission and answers to this e-mail address.

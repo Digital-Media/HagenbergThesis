@@ -3,7 +3,7 @@
 %   @VERSION@       version (date stamp of the build, e.g., 2026-10-22)
 %   @UPLOADER@      name of the uploader (repository variable CTAN_UPLOADER)
 %   @EMAIL@         e-mail address of the uploader (repository variable CTAN_EMAIL)
-%   @ANNOUNCEMENT@  announcement text (input of the workflow, or a link to the CHANGELOG)
+%   @ANNOUNCEMENT@  announcement text: link to the latest version in CHANGELOG.md and its summary
 % Syntax: simple fields \field{value} (no macros, no '%'), long fields \begin{field} ... \end{field};
 % '%' starts a comment, so URLs must not contain '%'.
 
@@ -20,6 +20,13 @@
 \repository{https://github.com/Digital-Media/HagenbergThesis}
 \bugtracker{https://github.com/Digital-Media/HagenbergThesis/issues}
 \support{https://github.com/Digital-Media/HagenbergThesis/discussions}
+% topics of the package (one \topic per topic; keys: https://ctan.org/json/2.0/topics)
+\topic{dissertation}
+\topic{class}
+\topic{report-like}
+\topic{article-like}
+\topic{std-conform}
+\topic{doc-templ}
 \summary{Collection of LaTeX classes, style files and example documents for academic manuscripts}
 \begin{description}
 A collection of modern LaTeX classes, style files and example documents for authoring bachelor's,
