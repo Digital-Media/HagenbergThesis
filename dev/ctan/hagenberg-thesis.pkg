@@ -9,8 +9,7 @@
 
 \pkg{hagenberg-thesis}
 \version{@VERSION@}
-\author{Wilhelm Burger}
-\author{Wolfgang Hochleitner}
+\author{Wilhelm Burger, Wolfgang Hochleitner}
 \uploader{@UPLOADER@}
 \email{@EMAIL@}
 \update{true}
@@ -19,7 +18,7 @@
 \license{cc-by-sa-4}
 \home{https://github.com/Digital-Media/HagenbergThesis}
 \repository{https://github.com/Digital-Media/HagenbergThesis}
-\bugs{https://github.com/Digital-Media/HagenbergThesis/issues}
+\bugtracker{https://github.com/Digital-Media/HagenbergThesis/issues}
 \support{https://github.com/Digital-Media/HagenbergThesis/discussions}
 \summary{Collection of LaTeX classes, style files and example documents for academic manuscripts}
 \begin{description}
