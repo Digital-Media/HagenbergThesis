@@ -6,6 +6,10 @@ From 2026 on, each release starts with a short summary (bullet list) directly be
 
 ## [Unreleased]
 
+### Fixed
+
+- 2026/10/23: [#236](https://github.com/Digital-Media/HagenbergThesis/issues/236): The CTAN package description no longer sends a home page, since it was identical to the repository URL and CTAN avoids identical URLs (feedback of the CTAN team to the upload of 2026/10/22).
+
 ## [2026/10/22]
 
 - New affidavit following the template of FH OÖ (2026) and documentation of the use of generative AI tools: detailed form (default) before the bibliography or short form in the affidavit, selected with the new class option `aiusage`.
